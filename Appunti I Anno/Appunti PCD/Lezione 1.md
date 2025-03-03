@@ -23,7 +23,7 @@ Ci troviamo in un sistema distribuito :
 Il problema $BB$ è il seguente :
 - Degli $n$ nodi, ce ne sono $0\leq f\leq n$ che sono ***corrotti***.
 - Al nodo sorgente (il nodo 1) viene affidato un messaggio (un bit) $b\in\{0,1\}$
-- Vogliamo progettare un *protocollo* al termine del quale ogni nodo *onesto* $i$ dia in outpu un bit $y_i\in\{0,1\}$, tale che rispetti le seguenti condizioni : 
+- Vogliamo progettare un *protocollo* al termine del quale ogni nodo *onesto* $i$ dia in output un bit $y_i\in\{0,1\}$, tale che : 
 	1. **Validity** : Se la sorgente è un nodo onesto, allora $y_i=b,\forall i$ onesto
 	2. **Consistency** : Se $i,j$ sono onesti, allora $y_i=y_j$
 
