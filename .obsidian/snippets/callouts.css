@@ -2,3 +2,8 @@
     --callout-color: 102, 0, 102;
     --callout-icon: lucide-pin;
 }
+
+.callout[data-callout="teorem"] {
+    --callout-color: 1, 50, 32;
+    --callout-icon: lucide-pin;
+}
