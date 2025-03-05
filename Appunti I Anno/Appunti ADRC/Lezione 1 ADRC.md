@@ -13,7 +13,7 @@ Consideriamo un grafo $G(V,E)$.
 Il problema è dato il grafo trovare il MST $T\subseteq E$
 Il grafo è rappresentato con matrice di adiacenza
 
-Nei sistemi standard il problema è semplice dato che si ha una **visione globale** dell'input, ma la sua esecuzione è strettamente sequenziale. Si lavora con un solo processore.
+> Nei sistemi standard il problema è semplice dato che si ha una **visione globale** dell'input, ma la sua esecuzione è strettamente sequenziale. Si lavora con un solo processore.
 
 ***(Sistema Distribuito)***
 
@@ -23,7 +23,7 @@ Ho un processore su ogni nodo, che rappresenta una macchina.
 
 A tempo $0$ ogni nodo ha una conoscenza limitata dell'input, infatti ogni nodo conosce solo il suo $ID\in[n]$ e l'etichetta dell'arco con i suoi vicini.
 
-Si ha una **visione locale** dell'input, ma ci sono più processori su cui lavorare
+> Si ha una **visione locale** dell'input, ma ci sono più processori su cui lavorare
 
 L'algoritmo ha forti limiti sulla comunicazioni tra processori.
 
