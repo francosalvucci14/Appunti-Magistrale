@@ -1,2 +1,2 @@
-- [[Lezione 1 PROB - Introduzione & Cap 1]]
+- [[Lezione 1 PROB - Cap 1]]
 

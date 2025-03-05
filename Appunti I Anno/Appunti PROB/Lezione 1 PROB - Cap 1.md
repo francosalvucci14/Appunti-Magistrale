@@ -56,5 +56,23 @@ Diamo ora un paio di osservazioni :
 2. Si può verificare che $\mathcal P(\cdot)=\mathbb P(\cdot|E_2)$ è una nuova misura di probabilità
 3. Se $\mathbb P(E_2)\neq 0\implies E_1,E_2$ sono indipendenti $\iff\mathbb P(E_1|E_2)=\mathbb P(E_1)$
 4. È utile a volte riscrivere $(*)$ come $$\mathbb P(E_{1}\cap E_2)=\mathbb P(E_1|E_2)\mathbb P(E_2)$$ o anche $$\mathbb P(E_1|E_2)=\frac{\mathbb P(E_{1}\cap E_{2})}{\mathbb P(E_2)}=\underbracket{\mathbb P(E_2|E_1)}_{\text{a volte più semplice da calcolare}}\cdot\frac{\mathbb P(E_1)}{\mathbb P(E_2)}$$
->[!teorem]- dio
+>[!teorem]- Teorema 1.6 Formula Probabilità Totali
+>Siano $\{E_{i}\}_{i=1,\dots,n}n$ eventi disgiunti di $\mathbb F$ tale che $\bigcup_{i}E_i=\Omega$ (dicesi partizione di $\Omega$)
+>Allora : 
+>$\forall B\in\mathbb F$ si ha che $$\mathbb P(B)=\sum\limits_{i=1}^{n}\mathbb P(B\cap E_i)=\sum\limits_{i=1}^{n}\mathbb P(B|E_i)\mathbb P(E_i)$$
 
+Piccola digressione prima del teorema di Bayes
+
+Abbiamo visto che $$\mathbb P(E_1|E_2)=\mathbb P(E_2|E_1)\frac{\mathbb P(E_1)}{\mathbb P(E_2)}$$
+Scrivendo $$E_{2}=(E_{2}\cap E_{1})\cup(E_{2}\cap E_{1}^c)$$
+Otteniamo $$\mathbb P(E_1|E_2)=\frac{\mathbb P(E_2|E_1)\mathbb P(E_1)}{\mathbb P(E_2|E_1)\mathbb P(E_1)+\mathbb P(E_2|E_1^c)\mathbb P(E_1^c)}$$
+Sia pronti per definire il teorema di Bayes
+
+>[!teorem]- Teorema di Bayes (1.7)
+>Abbiamo le stesse ipotesi del teorema precedente
+>Sia $B\in\mathbb F$ con $\mathbb P(B)\neq0$
+>Si ha che : 
+>$$\mathbb P(E_j|B)=\frac{\mathbb P(B|E_j)\mathbb P(E_j)}{\sum\limits_{i=1}^{n}\mathbb P(B|E_i)\mathbb P(E_i)}$$
+>Valida per ogni $j$ fissato
+
+Vedi esempi + applicazione del teorema di Bayes sull'Ipad (col cazzo che li riscrivo in Latex)

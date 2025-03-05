@@ -4,6 +4,6 @@
 }
 
 .callout[data-callout="teorem"] {
-    --callout-color: 1, 50, 32;
+    --callout-color: 255, 36, 0;
     --callout-icon: lucide-pin;
 }
