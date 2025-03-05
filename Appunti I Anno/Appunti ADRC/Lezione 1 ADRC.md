@@ -9,7 +9,8 @@ Esempio
 
 ***(Sistema Standard)***
 
-Consideriamo un grafo $G(V,E)$. Il problema è dato il grafo trovare il MST $T\subseteq E$
+Consideriamo un grafo $G(V,E)$. 
+Il problema è dato il grafo trovare il MST $T\subseteq E$
 Il grafo è rappresentato con matrice di adiacenza
 
 Nei sistemi standard il problema è semplice dato che si ha una **visione globale** dell'input, ma la sua esecuzione è strettamente sequenziale. Si lavora con un solo processore.
