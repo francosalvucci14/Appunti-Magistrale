@@ -1,2 +1,2 @@
 - [[Lezione 1 ADRC]]
-- [[Lezione 2 ADRC]]
+- [[Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni]]
