@@ -23,7 +23,12 @@ Dove $i$ è il nodo e $r$ il round
 
 Vogliamo progettare un protocollo che faccia in modo che l'evoluzione dei log dei nodi nel tempo soddisfi le due proprietà seguenti : 
 - **Consistency** : Per ogni $i,j\in[n]$ e per ogni coppia di round $r,s\in\mathbb N$, se $i$ e $j$ sono nodi onesti allora $$LOG_{i}^{r}\preceq LOG_{j}^s$$o viceversa, dove con la notazione $LOG\preceq LOG'$ intendiamo che $LOG$ è un prefisso di $LOG'$
-- **Liveness** : Esiste un ***confirmation time*** $T_{conf}\in\mathbb N$ tale che, se una transazione **tx** viene affidata a un nodo onesto in un round $r\in\mathbb N$, allora per ogni nodo onesto $i\in[n],tx\in LOG_{i}^{r+T_{conf}}$
+- **Liveness** : Se **tx** è una transazione ricevuta in input da un nodo onesto $i$, allora tx verrà (prima o poi) inserita nel $LOG_j,\forall j$ altro nodo onesto
+
+Diamo ora la definizione di **confirmation time**
+
+>[!definition]- Confirmation Time
+>Esiste un ***confirmation time*** $T_{conf}\in\mathbb N$ tale che, se una transazione **tx** viene affidata a un nodo onesto in un round $r\in\mathbb N$, allora per ogni nodo onesto $i\in[n],tx\in LOG_{i}^{r+T_{conf}}$
 
 Vediamo quindi il **protocollo** per SMR
 
@@ -35,4 +40,10 @@ Per ogni $k=0,1,\dots$
 Al ROUND $kR$:
 - La "sorgente" di $\mathbb P_{BB}$ è il suo nodo $k$ mod $n$
 - Eseguiamo $\mathbb P_{BB}$ con $msg_{\text{k mod n}}=\left\{tx|\text{tx è stata data in input a k (mod n) e non è ancora inserita in }LOG_{k (mod\space n)}^{kR}\right\}$
-- 
+Ogni nodo $i$ alla fine di $\mathbb P_{BB}$:
+- Aggiunge a $LOG_i^{R(k+1)-1}$ quello che avrebbe dato in output con $\mathbb P_{BB}$
+
+Il confirmation time di questo protocollo è $O(nR)$ (per essere più precisi $(n+1)R$)
+
+Questo protocollo è la versione banale, i protocolli ad hoc per questo problema sono di tipo "blockchain"
+
