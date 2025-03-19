@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti PMLJ/Lezione 1 PMLJ.md",
+                "file": "Appunti I Anno/Appunti PROB/Lezione 3 PROB - Cap 2, V.A importanti.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 1 PMLJ"
+              "title": "Lezione 3 PROB - Cap 2, V.A importanti"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti PMLJ/Lezione 1 PMLJ.md",
+                "file": "Appunti I Anno/Appunti PROB/Lezione 3 PROB - Cap 2, V.A importanti.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 1 PMLJ"
+              "title": "Outline of Lezione 3 PROB - Cap 2, V.A importanti"
             }
           },
           {
@@ -163,7 +163,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -198,6 +199,7 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti PMLJ/Lezione 1 PMLJ.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 5 PCD - State Machine Replication.md",
     "Appunti I Anno/Appunti PCD/Lezione 4 PCD - Protocollo \"randomizzato\" per BB.md",
@@ -214,7 +216,6 @@
     "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
     "Appunti I Anno/Appunti PROB/Lezione 1 PROB - Cap 1.md",
-    "Appunti I Anno/Appunti PMLJ/Lezione 1 PMLJ.md",
     "Appunti I Anno/Appunti SSD/Indice delle lezioni SSD (Sistemi di Simulazione Distribuiti).md",
     "Appunti I Anno/Appunti SSD",
     "Appunti I Anno/Appunti PCD/Test git.md",
