@@ -2,3 +2,5 @@
 - [[Lezione 2 PCD - Protocollo Dolev-Strong (1983)]]
 - [[Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI]]
 - [[Lezione 4 PCD - Protocollo "randomizzato" per BB]]
+- [[Lezione 5 PCD - State Machine Replication]]
+- 
