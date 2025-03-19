@@ -34,5 +34,5 @@ Definiamo, $\forall i,LOG_i^0=\emptyset$
 Per ogni $k=0,1,\dots$ 
 Al ROUND $kR$:
 - La "sorgente" di $\mathbb P_{BB}$ è il suo nodo $k$ mod $n$
-- Eseguiamo $\mathbb P_{BB}$ con $msg_{\text{k mod n}}=\left\{tx|\text{tx è stata data in input a k (mod n) e non è ancora inserita in }LOG_{k mod n}^{kR}\right\}$
+- Eseguiamo $\mathbb P_{BB}$ con $msg_{\text{k mod n}}=\left\{tx|\text{tx è stata data in input a k (mod n) e non è ancora inserita in }LOG_{k (mod\space n)}^{kR}\right\}$
 - 
