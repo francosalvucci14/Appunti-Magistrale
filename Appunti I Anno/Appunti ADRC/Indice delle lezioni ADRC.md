@@ -1,2 +1,7 @@
 - [[Lezione 1 ADRC]]
 - [[Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni]]
+- [[Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube]]
+- [[Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD]]
+- [[Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+]]
+- [[Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding]]
+- 
