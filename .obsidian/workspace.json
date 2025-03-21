@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti PROB/Indice delle lezioni PROB.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Indice delle lezioni PROB"
+              "title": "Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube"
             }
           }
         ]
@@ -94,12 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube"
             }
           },
           {
@@ -162,8 +163,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -198,11 +198,13 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
+    "Appunti I Anno/Appunti PROB/Indice delle lezioni PROB.md",
     "Appunti I Anno/Appunti PROB/Lezione 6 PROB - Ancora su Cap 3 Disuguaglianze di Chernoff & Hoeffding.md",
     "Appunti I Anno/Appunti PROB/Lezione 5 PROB - Cap 3 Ancora su Momenti e Devianza, Disuguaglianza di Chebychev.md",
     "Appunti I Anno/Appunti PROB/Lezione 4 PROB - Cap 3 Momenti e Devianza.md",
     "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
     "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
     "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
@@ -211,10 +213,8 @@
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 1 PCD - Byzantine Broadcast Problem.md",
     "Appunti I Anno/Appunti PROB/Lezione 1 PROB - Cap 1.md",
-    "Appunti I Anno/Appunti PROB/Indice delle lezioni PROB.md",
     "Appunti I Anno/Appunti PROB/Lezione 2 PROB - Cap 2.md",
     "Appunti I Anno/Appunti PROB/Lezione 3 PROB - Cap 2, V.A importanti.md",
-    "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
     "Appunti I Anno/Appunti PCD/Lezione 5 PCD - State Machine Replication.md",
     "Appunti I Anno/Appunti PMLJ/Lezione 1 PMLJ.md",
     "Appunti I Anno/Appunti PCD/Lezione 4 PCD - Protocollo \"randomizzato\" per BB.md",
