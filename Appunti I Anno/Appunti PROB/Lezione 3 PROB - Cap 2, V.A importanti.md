@@ -10,5 +10,5 @@ Estendiamo questa relazione a funzioni più generali :
 >[!definition]- Funzioni convesse
 >$f:\mathbb R\to\mathbb R$ si dice **convessa** se $\forall x_1,x_2\in\mathbb R$ si ha che : $$\forall\lambda\in(0,1)\implies f(\lambda x_1+(1-\lambda)x_2)\leq \lambda f(x_1)+(1-\lambda)f(x_2)$$
 
-**Oss** : Se $f$ ammette derivata seconda, $f$ è convessa $\iff f^{''}(x)\geq0,\forall x$
+**Oss** $(*)$ : Se $f$ ammette derivata seconda, $f$ è convessa $\iff f^{''}(x)\geq0,\forall x$
 
