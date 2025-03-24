@@ -163,7 +163,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -196,7 +197,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "5d16911c615aabb1",
   "lastOpenFiles": [
     "Pasted image 20250324145010.png",
     "Appunti I Anno/Appunti ADRC/img",
