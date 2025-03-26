@@ -151,3 +151,139 @@ In totale : $$2m-n+1+2(m-(n-1))+n-1=4m-2n+2$$
 Quindi $M(SHOUT)=4m-2n+2$
 
 Notiamo che $\Omega(M)$ è **lower-bound** anche in questo caso
+
+Cerchiamo di abbassare la complessità $4m$, raffinando il protocollo SHOUT
+
+### Protocollo SHOUT+
+
+I messaggi NO sono realmente necessari? la risposta è no
+- un nodo ha bisogno di sapere quando può **terminare**
+
+**oss** : 
+Se $y$ manda No a $x$, allora deve accadere che $y$ ha mandato anche $Q?$ a $x$ PRIMA.
+Quindi, ricevere $Q?$ può essre *interpretato* come un NO dalla stessa porta !!
+
+Vediamo quindi il protocollo
+
+Gli stati possibili 
+- $S=\{Initiator,Idle,Active,Done\}$
+- $S_{init}=\{Initiator,Idle\}$
+- $S_{term}=\{Done\}$
+
+```
+INITIATOR
+Spontaneamente
+	root=True
+	Tree-neigh = {}
+	invia (Q) a N(x)
+	counter = 0
+	diventa ACTIVE
+```
+
+```
+IDLE
+Riceve(Q)
+	root=False
+	parent = sender
+	Tree-neigh = {sender}
+	invia (Yes) a sender
+	counter = 1
+	if counter = |N(x)|
+		diventa DONE
+	else
+		invia (Q) a N(x)-{sender}
+		diventa ACTIVE
+```
+
+```
+ACTIVE
+
+Riceve(Q) (da interpretare come NO)
+	counter = counter+1
+	if counter = |N(x)|
+		diventa DONE
+
+Riceve(Yes)
+	Tree-neigh = Tree-neigh U sender
+	counter = counter+1
+	if counter = |N(x)|
+		diventa DONE
+```
+
+#### Message Complexity
+
+Su ogni link ci saranno esattamente $2$ messaggi : 
+
+Questo : ![[Pasted image 20250326140212.png|center|400]]
+Oppure questo :
+![[Pasted image 20250326140236.png|center|400]]
+
+Di conseguenza, $$M(SHOUT+)=2m$$
+Che risulta essere **migliore** di $4m-2n+2$
+
+**Terminazione locale** : Ogni nodo sa quando può smettere di lavorare
+**Terminazione globale** : Può un qualunque nodo decidere **quando** tutti gli altri devono terminare??
+- Possibile solo sotto l'assunzione UI, pagando un prezzo per la message complexity pari a $n-1$ in più
+
+## Costruzione ST usando Broadcast
+
+>[!teorem]- Teorema
+>L'esecuzione di ogni protocollo di Boradcast costruisce uno ST
+
+**idea della dimostrazione**
+
+Definiamo il *father* di un nodo $x$
+
+>[!definition]- Father(x)
+>Il Father di un nodo $x$ è definito come : 
+>$$Father(x)=[\text{il nodo che per primo invia il messaggio Init a x}]$$
+
+**Fatto** : **l'ordine parziale** $Father(x)\gt x$ definisce uno ST con radice nell'Initiator
+
+**oss** : Solo un Broadcast non è sufficiente (Non abbiamo la conoscenza locale dello ST)
+
+## SPT : Considerazioni Finali
+
+Diamo $2$ considerazioni finali : 
+
+1. Lo ST calcolat (costruito) **dipende** dal Protocollo
+2. Lo ST calcolat (costruito) **dipende** dall'*esecuzione* del Protocollo
+
+Prendiamo per esempio il protocollo SHOUT+
+
+Ogni possibile ST del grafo $G$ può essere l'output di SHOUT -> "basta gestire i delay dei msg"
+
+Di conseguenza : $diam(ST)\gt\gt diam(G)$ (Problema)
+
+E quindi sorge un nuovo problema, ovvero costrutire uno ST $T^*$ tale che $diam(T^{*})\simeq diam(G)$
+
+## Costruzione ST usando Multiple Initiator
+
+Le domande che ci poniamo in questa situazione sono :
+1. Possiamo costrutire lo ST usando più Initiator?
+2. E se usassimo il protocollo SHOUT+ per questo?
+3. Possiamo creare un protocollo **deterministico** per questo problema?
+
+La risposta a tutte e $3$ le domande è NO.
+
+Vediamo un esempio più teorema dopo
+
+![[Pasted image 20250326141410.png|center|500]]
+
+>[!teorem]- Teorema
+>Il problema del costruire lo ST è ***deterministicamente*** irrisolvibile sotto le assunzioni $R$
+
+**dim**
+
+Mettiamoci nel caso più semplice, ovvero $3$ nodi $x,y,z$ che formano un triangolo, che hanno gli stessi **stati iniziali**.
+- tutti iniziano la computazione a tempo $t=0$
+- Eseguzioni sincrone
+
+**Fatto** : Ad ogni istante di tempo $t\gt0$, i $3$ nodi devono : 
+- trovarsi nello **stesso stato**
+- fare le **stesse cose**
+
+Quindi, sarà **impossibile** per loro selezionare $2$ links su $3$
+
+![[Pasted image 20250326141750.png|center|600]]
+
