@@ -196,3 +196,8 @@ Due casi:
 - $x\in New(i)$. Allora tutti i messaggi stanno in fase $i$
 	- Ancora $$\text{num. msg(i)} \geq |New(i)| = |Active(i-1)|$$
 - Combinando otteniamo $$M(i)\geq \underbrace{2M(i-1)}_{\text{Fase 1}}+\underbrace{|Active(i-1)|}_{\text{Fase 2}}$$
+Abbiamo quindi che $$|Active(i)|=\begin{cases}1&i=0\\2|Active(i-1)|&i\geq1\end{cases}$$
+Di conseguenza,per un $i$ generico vale che $|Active(i)|=2^i$
+
+E quindi : $$M(i)\geq2M(i-1)+2^{i-1}\geq i\cdot2^{i-1}\underbracket{=}_{\text{Num. Stage=}\log(n)}\Omega(n\log(n))\quad\quad\blacksquare$$
+Abbiamo quindi dimostrato che il lower-bound della message complexity per il protocollo *WFLOOD* su *clique (K)* con etichettamento dei nodi (ID) è pari a $\Omega(n\log(n))$
