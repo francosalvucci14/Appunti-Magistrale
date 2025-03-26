@@ -116,20 +116,6 @@
             }
           },
           {
-            "id": "4619b9927b3ba29f",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Appunti I Anno/Appunti PROB/Indice delle lezioni PROB (Calcolo delle Probabilità).md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "Outgoing links from Indice delle lezioni PROB (Calcolo delle Probabilità)"
-            }
-          },
-          {
             "id": "70b381f188c2f55b",
             "type": "leaf",
             "state": {
@@ -196,8 +182,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "517fcc174d45e93e",
+  "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326103700.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326103600.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326103408.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326103321.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326103239.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326101635.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326101033.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250324145010.png",
     "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
