@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+"
+              "title": "Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+"
+              "title": "Outline of Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
             }
           },
           {
@@ -121,12 +121,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+"
+              "title": "Outgoing links from Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
             }
           }
         ]
@@ -164,6 +164,11 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326141750.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326141410.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326140236.png",
@@ -174,19 +179,14 @@
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326103321.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326103239.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326101635.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326101033.png",
-    "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
     "Appunti I Anno/Appunti ADRC/img",
-    "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
     "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
     "Appunti I Anno/Appunti PROB/Indice delle lezioni PROB.md",
     "Appunti I Anno/Appunti PROB/Lezione 6 PROB - Ancora su Cap 3 Disuguaglianze di Chernoff & Hoeffding.md",
     "Appunti I Anno/Appunti PROB/Lezione 5 PROB - Cap 3 Ancora su Momenti e Devianza, Disuguaglianza di Chebychev.md",
     "Appunti I Anno/Appunti PROB/Lezione 4 PROB - Cap 3 Momenti e Devianza.md",
     "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
     "Appunti I Anno/Appunti PCD/Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 1 PCD - Byzantine Broadcast Problem.md",
@@ -199,7 +199,6 @@
     "Appunti I Anno/Appunti PCD/img",
     "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti PMLJ/Indice delle lezioni PMLJ.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
     "Appunti I Anno/Appunti SSD/Indice delle lezioni SSD (Sistemi di Simulazione Distribuiti).md",
     "Appunti I Anno/Appunti SSD",
     "Appunti I Anno/Appunti PCD/Test git.md",
