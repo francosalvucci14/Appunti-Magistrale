@@ -88,3 +88,6 @@ Se il sistema è sincrono :
 Totale $$Time(DFT+)=4n-2$$
 Il tempo è **lineare** in $n$ e non in $m$ (TOP)
 
+---
+# Computazioni in Alberi
+
