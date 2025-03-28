@@ -169,3 +169,35 @@ Ricevo(M)
 	divento SATURATED
 ```
 
+Vediamo ora un teorema molto importante
+
+>[!teorem]- Teorema
+>Esattamente due nodi in stato PROCESSING diventeranno SATURATED, e loro sono vicini
+
+![[Pasted image 20250328122949.png|center|500]]
+
+**Dim** : 
+Un nodo PROCESSING solo **dopo** aver inviato il messaggio "saturato" al proprio parent
+
+![[Pasted image 20250328123034.png|center|500]]
+
+Un nodo diventa SATURATED solo dopo aver ricevuto un messaggio nello stato PROCESSING dal suo parent
+
+Ora, scegliamo un nodo $x$ e consideriamo il percorso $M$-path che va indietro verso il suo parent, parent del parent, etc...
+
+![[Pasted image 20250328123235.png|center|600]]
+
+Perchè esattamente due nodi (adiacenti)?
+
+Assumiamo che ce ne siano $3:x,y,z$ 
+Allora, in un ALBERO, $2$ di loro devono essere **non collegati**. Quindi, consideriamo il percorso fra questi due
+
+![[Pasted image 20250328123359.png|center|400]]
+
+Non è possibile che $w$ invii il messaggio $M$ indietro **sia** al nodo $x$ che al nodo $y$ $\blacksquare$
+
+Per concludere, quali nodi diventeranno **saturati** dipende solo dai ritardi imprevedibili
+
+### Message Complexity (Alberi)
+
+![[Pasted image 20250328123619.png|center|600]]

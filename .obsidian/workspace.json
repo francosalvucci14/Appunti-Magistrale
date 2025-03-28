@@ -116,20 +116,6 @@
             }
           },
           {
-            "id": "dd39d81d3802c983",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "Outgoing links from Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
-            }
-          },
-          {
             "id": "7ebfe9caa49968c2",
             "type": "leaf",
             "state": {
@@ -163,8 +149,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -199,22 +184,22 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123619.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123359.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123235.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123034.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328122949.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328121828.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115525.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115507.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115453.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115352.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115233.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115209.png",
     "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
     "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
     "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
     "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
     "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326141750.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326141410.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326140236.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250326140212.png",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti ADRC/img",
     "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
