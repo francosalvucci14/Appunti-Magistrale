@@ -91,3 +91,81 @@ Il tempo è **lineare** in $n$ e non in $m$ (TOP)
 ---
 # Computazioni in Alberi
 
+Di seguito elencate alcune tra le tecniche più imporanti quando si parla di computazioni su alberi.
+- Saturazione
+- Minimum Finding
+- Eccentricità
+- Center
+- Ranking (non faremo)
+
+Vediamo ora la Saturation Technique
+
+## Saturation Technique
+
+Le assunzioni sono : $R=\{BL,OM,TR,KT\}$, dove $OM$ = Ordered Message e $KT$ = Knowledge of the Topology
+
+L'ultima assunzione ci afferma che i nodi sanno di essere **foglie**, oppure **nodi interni**
+
+Vediamo ora la tecnica in questione.
+
+Gli stati disponibili sono $S=\{Availble,Awake,Processing\}$
+- All'inizio, tutte le entità stanno in stato **Availble**
+- Entità arbitrarie possono iniziare la computazione (**Multiple Initiator**)
+
+**Goal** : 
+- Tutti i nodi devono stare in stato **Awake**
+- Due nodi adiacenti devono essere selezionati (**link election**)
+- I due nodi **selezionati** sono pronti per iniziare una qualunque computazioni
+
+Le fasi della tecnica sono : 
+- **Activation Phase** : Iniziata dagli **initiators** : Tutti i nodi sono attivati (questo non è altro che è il WakeUP)
+- **Saturation Phase** : Inizia dalle **foglie** : Una coppia ***univoca*** di vicini viene indentificata (Anche detti nodi saturati)
+- **Resolution Phase** : Una generica computazione iniziata dai **nodi saturati**
+
+![[Pasted image 20250328121828.png|center|500]]
+
+Vediamo ora il protocollo
+
+Gli stati sono 
+- $S=\{Availbale,Active,Processing,Saturated\}$
+- $S_{init}=Available$
+
+```
+AVAILABLE (Non sono stato ancora attivato)
+Spontaneamente
+	Invia (Activate) a N(x)
+	Vicini = N(x)
+	if |Vicini| = 1 : /*questo if è caso speciale se il nodo è FOGLIA*/
+		M = ("Saturation")
+		parent = Vicini
+		invia (M) a parent
+		diventa PROCESSING(saturation)
+	else:
+		diventa ACTIVE
+
+AVAILABLE (Non sono stato ancora attivato)
+Ricevo(Activate)
+	invio (Activate) a N(x)-{sender}
+	Vicini = N(x)
+	if |Vicini| = 1 : /*sono FOGLIA*/ 
+		M = ("Saturation")
+		parent = Vicini
+		invia (M) a parent
+		diventa PROCESSING /*Saturation Phase*/
+	else:
+		diventa ACTIVE
+
+ACTIVE (Non ho ancora iniziato la fase di saturazione)
+Ricevo(M)
+	Vicini = Vicini - {sender}
+	if |Vicini| = 1 :
+		M = ("Saturation")
+		parent = Vicini
+		invia (M) a parent
+		diventa PROCESSING
+
+PROCESSING (Ho già iniziato la fase di saturazione e sto ricevento M dal mio parent)
+Ricevo(M)
+	divento SATURATED
+```
+
