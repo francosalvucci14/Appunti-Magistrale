@@ -200,4 +200,16 @@ Per concludere, quali nodi diventeranno **saturati** dipende solo dai ritardi im
 
 ### Message Complexity (Alberi)
 
+Caso con $n$ initiator
+
 ![[Pasted image 20250328123619.png|center|600]]
+
+In generale, con $k^*$ initiator
+
+- Activation : $n+k^*-2$
+- Saturation : $n$
+- Notification : $n-2$
+- Totale $$2n+k^*-2$$
+--- 
+# Mettere informazioni nel messaggio di saturazione - Problema Minimum Finding
+
