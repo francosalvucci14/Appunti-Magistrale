@@ -120,3 +120,47 @@ Ricevo(M)
 
 ---
 # Center Finding
+
+Qui quello che ci chiediamo è trovare il **centro** dell'albero, ovvero quel nodo $x$ tale che $r(x)\leq r(y),\forall y\in V-\{x\}$. Per fare ciò, dobbiamo prendere, tra tutte le distanze massime, quella minimizzata
+
+Introduciamo quindi il concetto di **percorso diametrale**, che in qualche modo può essere associato al longest path
+
+![[Pasted image 20250331115242.png|center|400]]
+
+Il centro è il nodo con eccentricità minima
+
+![[Pasted image 20250331115319.png|center|400]]
+
+Un'idea potrebbe essere : 
+1. Trovare tutte le eccentricità -> $4n-4$
+2. Trovare la più piccola -> $2n-2$
+3. Totale $6n-6$
+
+Una strategia migliore può essere trovata studianto le proprietà che il nodo centro ha.
+
+>[!definition]- Proprietà 1
+>In un albero c'è un unico centro, oppure due centri che sono però vicini
+
+![[Pasted image 20250331115635.png|center|500]]
+
+Come vediamo, se ci sono un numero **pari** di nodi sul diametro allora abbiamo 2 centri, altrimenti un centro solo.
+
+>[!definition]- Proprietà 2
+>I centri si trovano sui percorsi diametrali
+
+Prima di definire la terza proprietà, definiamo : $$d_1[x]=\text{max distance},\quad d_2[x]=\text{seconda max distance}\quad\text{(attraverso vicini differenti)}$$
+>[!definition]- Proprietà 3
+>Un nodo $x$ è il centro $\iff d_1[x]-d_2[x]\leq1$
+>(se $d_1[x]=d_2[x]$ allora c'è un solo centro)
+
+A questo punto, l'idea per il Center Finding diventa : 
+1. Trova tutte le eccentricità
+2. Ogni nodo può capire localmente se è il centro o no
+3. Totale : $4n-4$
+
+**Un'altra idea migliore** : 
+1. Trova l'eccentricità dei nodi saturati -> $3n-2$
+2. Localmente controllo se sono il centro
+3. Se non lo sono, propago l'informazione relativa alla distanza **solo** in direzione del centro -> $\leq\frac{n}{2}$
+4. Totale : $\leq 3.5n-2$
+
