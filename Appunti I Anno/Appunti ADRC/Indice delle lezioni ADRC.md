@@ -4,4 +4,6 @@
 - [[Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD]]
 - [[Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+]]
 - [[Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding]]
+- [[Lezione 7 ADRC - Finding Eccentricities & Center Finding]]
+- [[Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh]]
 - 
