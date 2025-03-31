@@ -48,3 +48,75 @@ E così via
 
 Vediamo ora il protocollo
 ### Protocollo
+
+Gli stati sono : 
+- $S=\{Available, Active, Processing, Saturated\}$
+- $S_{init}=Available$
+
+L'idea del protocollo è : 
+- Definisci una variabile locale **maxdist(y)** che prende la ***Depth*** del sottoalbero radicato in $y$
+- Quando calcolata, $y$ invia $maxdist(y)$ al suo parent
+- Quando un nodo $x$, in stato PROCESSING, riceve dal suo parent il messaggio $M=("Saturation",maxdist)$ (quindi $x$ diventa saturato) allora :
+	- $x$ potrà calcolare la sua **eccentricità**
+	- $x$ potrà inviare le **informazioni corrette** ad ognuno dei sui figli :
+		- $x$ invia a $y$ -> $\max\{maxdist(z)|\text{z\#y è figlio di x}\}$ 
+
+Il protocollo è : 
+
+**definisci Distance[]**  
+
+```
+AVAILABLE
+Spontaneamente
+	Invia (Activate) a N(x)
+	Distance[x]=0
+	Vicini = N(x)
+	If |Vicini| = 1 :
+		maxdist = 1 + Max{Distance[*]}
+		M=("Saturation",maxdist)
+		parent = Vicini
+		Invia (M) a parent
+		diventa PROCESSING
+	Else : 
+		diventa ACTIVE
+
+Invia (Activate) a N(x) - {sender}
+	Distance[x]=0
+	Vicini = N(x)
+	If |Vicini| = 1 :
+		maxdist = 1 + Max{Distance[*]}
+		M=("Saturation",maxdist)
+		parent = Vicini
+		Invia (M) a parent
+		diventa PROCESSING
+	Else : 
+		diventa ACTIVE
+```
+
+```
+ACTIVE
+Ricevo(M)
+	Distance[{sender}] = Distanza_Ricevuta
+	Vicini = Vicini - {sender}
+	If |Vicini| = 1 :
+		maxdist = 1 + Max{Distance[*]}
+		M=("Saturation",maxdist)
+		parent = Vicini
+		Invia (M) a parent
+		diventa PROCESSING
+```
+
+```
+PROCESSING
+Ricevo(M)
+	Distance[{sender}] = Distanza_Ricevuta
+	r(x) = Max{Distance[z]:z appartiene a N(x)}
+	For all y appartenente a N(x)-{parent} do :
+		maxdist = 1 + Max{Distance[z] : z appartiene a N(x)-{y}}
+		invia ("Resolution",maxdist) a y
+	EndFor
+	diventa DONE
+```
+
+---
+# Center Finding

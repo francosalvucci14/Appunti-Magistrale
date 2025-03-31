@@ -129,7 +129,8 @@
               "title": "Outgoing links from Lezione 7 ADRC - Finding Eccentricities & Center Finding"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -162,7 +163,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "5d16911c615aabb1",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331102513.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331102437.png",
