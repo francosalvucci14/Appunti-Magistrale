@@ -213,3 +213,104 @@ In generale, con $k^*$ initiator
 --- 
 # Mettere informazioni nel messaggio di saturazione - Problema Minimum Finding
 
+## Minimum Finding
+
+![[Pasted image 20250331094156.png|center|400]]
+
+**Inizio** : Ogni entità $x$ ha in input un valore $val(x)$
+**Fine** : Alla fine, ogni entitò deve sapere se è il minimo oppure no
+
+**oss** : 
+In un albero radicato, il problema Min-Find è di facile risoluzione
+Usiamo le assunzioni :
+- figlio->parent (**Convergecast**)
+- parent->figlio (**Broadcast**)
+Gli step sono : 
+1. Broadcast (Da root=initiator=leader alle foglie)
+2. Convergecast (da foglie a root)
+3. Broadcast (notifica del minimo globale)
+
+In un albero normale invece, usiamo la tecnica della Saturazione
+1. Il ruolo della root è sostituito dai due nodi saturati (**co-leader**)
+2. Le foglie iniziano mandando il messaggio di saturazione $M$ contenente il loro valore $val(x)$
+3. Quando un nodo interno riceve ***tutti*** i messaggi $M$ dai figli, calcola il valore del minimo e lo invia sopra al proprio parent
+4. I due co-leader a questo punto sapranno chi è il minimo. Quindi lo inviano a tutti tramite Broadcast
+
+Vediamo ora il protocollo
+
+Gli stati sono :
+- $S=\{Available,Active,Processing,Saturated\}$
+- $S_{init}=Available$
+
+```
+AVAILABLE
+Spontaneamente(Initators)
+	invia (Activate) a N(x)
+	min = val(x)
+	Vicini = N(x)
+	If |Vicini| = 1 :
+		M=("Saturation",min) /*Sono foglia*/
+		parent = Vicini
+		invia (M) a parent
+		diventa PROCESSING
+	Else:
+		diventa ACTIVE
+
+AVAILABLE
+Ricevo(Activate)
+	invio (Activate) a N(x)-{sender}
+	min = val(x)
+	Vicini = N(x)
+	If |Vicini| = 1 :
+		M=("Saturation",min) /*Sono foglia*/
+		parent = Vicini
+		invia (M) a parent
+		diventa PROCESSING
+	Else:
+		diventa ACTIVE
+```
+
+```
+/*fase bottom-up : Saturazione verso i co-leaders*/
+ACTIVE
+Ricevo(M)
+	min = MIN{min,M}
+	Vicini = Vicini-{sender}
+	If |Vicini| = 1 :
+		M = ("Saturation",min)
+		parent = Vicini
+		invia (M) a parent
+		diventa PROCESSING
+```
+
+```
+PROCESSING
+Ricevo(M) /*Sono co-leader*/
+	min=MIN{min,M}
+	Notifica = ("Resolution",min)
+	invia (Notifica) a N(x)-parent
+	If val(x)=min :
+		diventa MINIMUM
+	Else :
+		diventa LARGE
+
+PROCESSING
+Ricevo(Notifica) /*Broadcast e Update*/
+	invia (Notifica) a N(x)-parent
+	If val(x)=Valore_Ricevuto : 
+		diventa MINIMUM
+	Else :
+		diventa LARGE
+```
+
+Abbiamo visto come la Saturazione può essere applicata al calcolo del minimo, ma non serve solo a questo.
+
+Infatti la Saturazione può essere usata per calcolare una classe generale di funzioni in alberi distribuiti.
+
+Quale però? La risposta è la seguente : 
+
+La classe di funzioni $F$ deve essere un **semi-gruppo**, che rispetta le seguenti proprietà : 
+1. Associativa -> $F(a,b,c)=F(F(a,b),c)$
+2. Commutativa -> $F(a,b,c)=F(b,c,a)$
+
+Infatti, per queste operazioni la Saturazione funziona correttamente : $$Minimo,Massimo,Somma,Prodotto,PredicatiLogici$$

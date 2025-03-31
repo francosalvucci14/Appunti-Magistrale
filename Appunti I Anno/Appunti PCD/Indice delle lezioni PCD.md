@@ -4,4 +4,4 @@
 - [[Lezione 4 PCD - Protocollo "randomizzato" per BB]]
 - [[Lezione 5 PCD - State Machine Replication]]
 - [[Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility]]
-- 
+- [[Lezione 7 PCD - Ultimo lemma del teorema FLP]]
