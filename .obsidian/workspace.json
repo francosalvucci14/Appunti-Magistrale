@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
+              "title": "Lezione 7 ADRC - Finding Eccentricities & Center Finding"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
+              "title": "Outline of Lezione 7 ADRC - Finding Eccentricities & Center Finding"
             }
           },
           {
@@ -121,12 +121,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
+              "title": "Outgoing links from Lezione 7 ADRC - Finding Eccentricities & Center Finding"
             }
           }
         ]
@@ -164,21 +164,22 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331102513.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331102437.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331101840.png",
+    "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331101659.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331100610.png",
+    "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331094156.png",
     "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123619.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123359.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123235.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123034.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328122949.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328121828.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115525.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115507.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115453.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328115352.png",
     "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
     "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
     "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
@@ -201,7 +202,6 @@
     "Appunti I Anno/Appunti PCD/img",
     "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti PMLJ/Indice delle lezioni PMLJ.md",
-    "Appunti I Anno/Appunti SSD/Indice delle lezioni SSD (Sistemi di Simulazione Distribuiti).md",
     "Appunti I Anno/Appunti SSD",
     "Appunti I Anno/Appunti PMLJ",
     "Appunti I Anno/Appunti PROB",
