@@ -9,7 +9,9 @@ Fare Leader Election significa "Rompere" la simmetria
 ![[Pasted image 20250401120511.png|center|500]]
 
 La configurazione iniziale è : $\forall x\in V,state(x)=asleep$
-La configurazione finale è : $\exists!x\in V:state(x)=leader\land\forall y\in V-\{x\}:state(y)=follower$ 
+- quante sono le possibili configurazioni iniziali? -> $2^{n-1}$
+La configurazione finale è : $\exists!x\in V:state(x)=leader\land\forall y\in V-\{x\}:state(y)=follower$
+- quante sono le possibili configurazioni finali? -> $n$
 
 Le restrizioni che usiamo sono $R=\{TR,BL,CN\}$
 
@@ -35,4 +37,14 @@ Un semplice algoritmo per fare leader election è :
 2. Scegli il nodo saturato che ha il valore minimo
 
 ## Elezione in grafi ad anello
+
+Cos'è un grafo ad anello? Un grafo ad anello è un grafo in cui : 
+- $n$ entità
+- $m=n$ links
+- Topologia simmetrica
+- Ogni entità ha esattamente due vicini
+- C'è il senso della direzione (sx,dx)
+
+Ad esempio 
+![[Pasted image 20250401121153.png|center|400]]
 
