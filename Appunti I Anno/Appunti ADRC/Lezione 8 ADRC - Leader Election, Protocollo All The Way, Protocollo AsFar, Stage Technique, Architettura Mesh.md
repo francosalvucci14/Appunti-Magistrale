@@ -48,3 +48,4 @@ Cos'è un grafo ad anello? Un grafo ad anello è un grafo in cui :
 Ad esempio 
 ![[Pasted image 20250401121153.png|center|400]]
 
+Notiamo che gli ID dei nodi non sono necessariamente **consistenti**, cioè non è detto che $id(x_i)=i$ o $id(x_i)=k\implies id(x_{i+1})=k+1$
