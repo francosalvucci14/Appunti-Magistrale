@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Indice delle lezioni ADRC"
+              "title": "Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Indice delle lezioni ADRC"
+              "title": "Outline of Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh"
             }
           },
           {
@@ -116,17 +116,37 @@
             }
           },
           {
-            "id": "141c4f429624550b",
+            "id": "10af73bc82fd0a5f",
             "type": "leaf",
             "state": {
-              "type": "outgoing-link",
+              "type": "backlink",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
-                "linksCollapsed": false,
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
               },
-              "icon": "links-going-out",
-              "title": "Outgoing links from Indice delle lezioni ADRC"
+              "icon": "links-coming-in",
+              "title": "Backlinks for Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh"
+            }
+          },
+          {
+            "id": "e322ae6e143f9e5b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           }
         ],
@@ -163,8 +183,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "5d16911c615aabb1",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401120736.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401120511.png",
+    "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
     "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331115635.png",
@@ -177,10 +200,8 @@
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331100610.png",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331094156.png",
-    "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250328123619.png",
     "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
     "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
     "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
@@ -202,7 +223,6 @@
     "Appunti I Anno/Appunti PCD/Lezione 4 PCD - Protocollo \"randomizzato\" per BB.md",
     "Appunti I Anno/Appunti PCD/img",
     "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
-    "Appunti I Anno/Appunti PMLJ/Indice delle lezioni PMLJ.md",
     "Appunti I Anno/Appunti SSD",
     "Appunti I Anno/Appunti PMLJ",
     "Appunti I Anno/Appunti PROB",
