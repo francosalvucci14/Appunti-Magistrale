@@ -133,24 +133,8 @@
               "icon": "links-coming-in",
               "title": "Backlinks for Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh"
             }
-          },
-          {
-            "id": "e322ae6e143f9e5b",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "Tags"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -185,6 +169,11 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250407110957.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250407110936.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250407110509.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250407105722.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250407105544.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401121153.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401120736.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401120511.png",
@@ -194,11 +183,6 @@
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331115635.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331115319.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331115242.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331102513.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331102437.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331101840.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331101659.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331100610.png",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
