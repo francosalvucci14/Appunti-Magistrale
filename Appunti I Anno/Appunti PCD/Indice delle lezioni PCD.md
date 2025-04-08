@@ -5,3 +5,5 @@
 - [[Lezione 5 PCD - State Machine Replication]]
 - [[Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility]]
 - [[Lezione 7 PCD - Ultimo lemma del teorema FLP]]
+- [[Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work]]
+- 

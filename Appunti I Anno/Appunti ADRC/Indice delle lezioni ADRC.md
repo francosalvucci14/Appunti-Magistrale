@@ -6,4 +6,6 @@
 - [[Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding]]
 - [[Lezione 7 ADRC - Finding Eccentricities & Center Finding]]
 - [[Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh]]
+- [[Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP]]
+- [[Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta e Rand-Delta-Plus]]
 - 
