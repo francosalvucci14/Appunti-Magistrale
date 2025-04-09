@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Indice delle lezioni ADRC"
+              "title": "Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta e Rand-Delta-Plus.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta e Rand-Delta-Plus"
+              "title": "Outline of Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh"
             }
           },
           {
@@ -197,8 +197,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "5d16911c615aabb1",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250409142315.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250409142227.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250409141925.png",
+    "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
     "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
@@ -214,10 +218,7 @@
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401121153.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401120736.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250401120511.png",
-    "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331115635.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250331115319.png",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
     "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
@@ -235,7 +236,6 @@
     "Appunti I Anno/Appunti PROB/Lezione 2 PROB - Cap 2.md",
     "Appunti I Anno/Appunti PROB/Lezione 3 PROB - Cap 2, V.A importanti.md",
     "Appunti I Anno/Appunti PCD/Lezione 5 PCD - State Machine Replication.md",
-    "Appunti I Anno/Appunti PMLJ/Lezione 1 PMLJ.md",
     "Appunti I Anno/Appunti PCD/img",
     "Appunti I Anno/Appunti SSD",
     "Appunti I Anno/Appunti PMLJ",

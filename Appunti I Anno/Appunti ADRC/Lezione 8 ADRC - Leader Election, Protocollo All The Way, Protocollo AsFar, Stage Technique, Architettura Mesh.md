@@ -250,3 +250,59 @@ $$M(AsFar)_{best-case}=n+(n-1)+\underbracket{n}_{\text{notifica}}=O(n)$$
 
 # Leader Election : Stage Technique
 
+Il protocollo lavora in *Stages* -> Ogni nodo sa in quale Stage lui sta performando
+
+**Analisi del protocollo** : Alla fine di ogni Stage, alcune **proprietà globali** vengono mantenute
+
+## Controlled Distance
+
+**Idea base** : Si lavora in Stages. Un'entità mantiene il controllo sul suo messaggio
+
+Assunzioni : $\{BL,ID,LO\}$ 
+
+Il senso della direzione è mantenuto solo per semplicità, non serve
+
+Cosa ci serve?
+1. Distanza limitata (per evitare che messaggi grandi viaggino troppo a lungo) -> stage $i$ distanza $2^{i-1}$
+2. Messaggi di ritorno (se viene visto qualcosa più piccolo non si continua)
+3. Controllo su ambo i lati
+4. Il più piccolo vince sempre
+
+Il protocollo lavora così -> I *candidati* iniziano l'algoritmo
+
+Vediamo lo Stage $i$, per qualche $i$
+
+1. Ogni candidato invia un messaggio con il proprio ID in entrambe le direzioni
+2. Il messaggio viaggerà finchè non incontrerà un ID più piccollo o finchè non raggiungerà una certa distanza $(2^{i-1})$
+3. Se il messaggio non incontra un ID più piccolo, allora tornerà indietro al proprietario. (chiamati **messaggi di feedback**) ![[Pasted image 20250409141925.png|center|500]]
+4. Un candidato che **riceve il proprio messaggio di feedback da ambo le direzioni** sopravvive ed inizia il prossimo stage
+
+Le entità incontrate lungo il percorso leggono il msg e : 
+- Ogni entità $i$ con un ID **più grande** diventa **sconfitto** (passivo)
+- Un entità **sconfitta** inoltra i messaggi originati da altre entità; se il messaggio è la **notifica** di terminazione, allora termina
+
+![[Pasted image 20250409142227.png|center|500]]
+
+Vediamo un piccolo riassunto
+
+![[Pasted image 20250409142315.png|center|500]]
+
+### Correttezza e Terminazione
+
+Se un candidato riceve uno (sinistra/destra) dei suoi messaggi dal lato opposto (destra/sinistra) lo invia, diventa il ***leader*** e lo notifica
+
+Alcune proprietà : 
+- L'ID più piccolo percorrerà sempre la distanza massima sconfiggendo ogni entità che incontra
+- La distanza aumenta monotonicamente diventando infine maggiore di $n$
+- Il Leader eventualmente riceverà il suo messaggio dalla direzione opposta
+
+**Problema** : Che succede se un'entità riceve il messaggio da uno stage maggiore del suo attuale?
+
+Possibile situazione cattiva : Un nodo è sconfitto da un qualche messaggio allo stage $8$ e, dopo questo, riceve il suo messaggio di feedback dello stage $7$
+
+**Soluzione** : L'aproccio greedy funziona sempre!
+
+***Se a qualunque istante di tempo un nodo riceve un ID più piccolo (di qualunque stage), diventerà sconfitto e non aspetterà più per il suo messaggio di feedback***
+
+### Message Complexity
+
