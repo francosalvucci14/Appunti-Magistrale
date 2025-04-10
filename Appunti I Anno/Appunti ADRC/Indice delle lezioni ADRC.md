@@ -8,4 +8,6 @@
 - [[Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh]]
 - [[Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP]]
 - [[Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta e Rand-Delta-Plus]]
+- [[Lezione 11 ADRC - Ancora su Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito]]
+- [[Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics]]
 - 
