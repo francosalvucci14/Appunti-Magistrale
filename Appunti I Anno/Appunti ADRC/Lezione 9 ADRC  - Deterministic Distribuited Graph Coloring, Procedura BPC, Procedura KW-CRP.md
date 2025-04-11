@@ -1,0 +1,70 @@
+# Deterministic Distribuited Graph Coloring
+
+In questa sezione, studieremo vari metodi per risolvere il problema del coloramento su sistemi distribuiti.
+
+Più nello specifico, vogliamo cercare di ottenere una colorazione del sistema come se stessimo risolvendo il problema COL su grafi centralizzati.
+
+Prima di vedere le due procedure fondamentali, diamo la definizione formale del problema.
+
+**Problema Distribuited Coloring (DCP)**
+- Modello del sistema
+	- Il sistema distribuito è formalizzato come un grafo etichettato $G(V,E,Id)$, con $\Delta$ il grado max. del grafo $G$
+	- Ci mettiamo nel modello *LOCAL*, sotto le assunzioni Standard, e con l'utilizzo di un clock globale che scandisce il tempo in round sincroni $t=1,2,\dots$ (notiamo quindi che stiamo nel sistema **sincrono** e non più asincrono)
+- Definizione del problema DCP
+	- **Configurazione iniziale** : un coloramento (iniziale) *legale* $C:V\to[n]$ t. c. $C:=ID$, dove ogni nodo $v$ conosce il suo coloramento $C(v)$  
+	- **Configurazione finale** : un coloramento legale $\hat{C}:V\to[\Delta+1]$, dove ogni nodo $v$ conosce il suo coloramento finale $\hat{C}$
+
+Ricordiamo che per coloramento legale intendiamo un coloramento dove $$\forall x,y\in V,(x,y)\in E|C(x)\neq C(y)$$
+>[!teorem]- Teorema
+>Ogni grafo $G(V,E)$ con grado massimo $\Delta$ **ammette un coloramento legale** che usa al più $\Delta+1$ colori
+
+Il nostro goal è quindi quello di trovare un $(\Delta+1)$-coloramento nel modo distribuito.
+
+>[!info]- Remark + Oss
+>Piccolo remark sul coloramento, si ha che $3-COL\in NPC$ 
+>Osservazione : Non è detto che il $(\Delta+1)-COL$ sia quello ottimale, infatti possono esserci topologie di sistema distributo tale che il coloramento ottimale sia ad es. il $2-COL$
+
+Vediamo ora la prima procedura per questo problema
+## The Basic Color Reduction Procedure (BCP)
+
+**BCP Task su G** : 
+- **Configurazione iniziale** : un coloramento (iniziale) $C:V\to[a]$ t. c. $a\gt\Delta+1$, dove ogni nodo $v$ conosce il suo coloramento $C(v)$  
+- **Configurazione finale** : un $(\Delta+1)$-coloramento $\hat{C}:V\to[\Delta+1]$, dove ogni nodo $v$ conosce il suo coloramento finale $\hat{C}$
+
+La procedura è la seguente : 
+- for each $k=a,a-1,\dots,\Delta+2$ do (in modo sequenziale)
+	- each node $v$ do in parallelo
+		- $v$ invia il suo colore $C(v)$ a tutto $N(v)$ ; $v$ riceve da tutti i suoi vicini i colori da loro usati $C(N(v))$
+		- $(**)$ If $C(v)=k$ then
+			- $v$ sceglie un qualunque $\underbrace{\hat{j}\in[k-1]-N(C(v))}_{\text{Esiste sempre per (*)}}$ e imposta $C(v)=\hat{j}$ (sostanzialmente sceglie un nuovo colore dalla tavolozza di colori disponibili, togliendo però i colori usati dal suo vicinato)
+	- Ogni nodo $v$ imposta il suo colore finale $\hat{C}(v)=C(v)$ e si ferma
+
+$(*)$ : questo vale perchè $k\geq\Delta+2\land deg(v)\leq\Delta$
+### BCP : Analisi I (Correttezza)
+
+- **Fatto 1** : Ad ogni fase $k$, per ogni nodo $v$, il colore $\hat{j}$ esiste sempre. 
+- **Fatto 2** : Alla fine di ogni fase $k\gt\Delta+1$, il coloramento $C:V\to[a-k]$ è legale
+- **Corollario** : BCP ritorna un $(\Delta+1)$-coloramento $\hat{C}:V\to[\Delta+1]$ legale.
+
+Dimostriamo : 
+
+Il fatto $1$ è trivia, il fatto $2$ è conseguenza del fatto che i nodi con colore $k$ non sono ***mai adiacenti*** per definizione di coloramento e per lo step $(**)$ di BCP
+
+### BCP : Analisi 2 (Time/Message Complexity)
+
+Vediamo la **time complexity**
+
+Abbiamo che il numero di fasi che la procedura BCP eseguirà sono $\Theta(n-\Delta)$, ma $1\leq\Delta\leq n-1$, di conseguenza il worst-case si ha quando $\Delta=O(1)\implies$ numero di fasi risulta essere $\Theta(n)$ (non efficiente)
+
+Vediamo invece la **message complexity**
+
+Per ogni arco passano $2$ messaggi -> $2m$
+La procedura lavora in $\Theta(n-\Delta)$ round, quindi otteniamo che : $$M(BCP)=\Theta(m(n-\Delta))$$
+In generale, vale il seguente teorema : 
+
+>[!teorem]- Teorema generale
+>Su un grafo $G(V,E,Id)$, con coloramento iniziale $C:=ID$ (e con $a=n$), la procedura BCP converge entro $O(n-\Delta)$ round a un $(\Delta+1)$-coloramento, e ha messagge complexity pari a $O((n-\Delta)m)$ 
+
+Vediamo adesso l'altra procedura, quella che sfrutta la parellizzazione in modo molto più efficiente
+## Khun-Wattenhofen Color Reduction Procedure (KW-CRP)
+
