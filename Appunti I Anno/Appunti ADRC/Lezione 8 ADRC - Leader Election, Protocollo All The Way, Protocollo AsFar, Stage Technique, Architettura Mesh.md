@@ -427,11 +427,13 @@ Questo protocollo lavora in $3$ fasi :
 3. Fase di **Notifica** (Broadcast)
 
 Vediamo nel dettaglio
+### Fase di Wake-Up + Message Complexity
 
 **Fase di WakeUp** ($k=$ num. initiators)
 - Ogni Initiator invia un messaggio di **wake-up** a tutti i suoi vicini
 - Ogni non-initiator che riceve un messaggio di **wake-up**, lo invia agli altri vicini
 - In totale $$M(Wake-Up)=3n+k=O(n)$$
+### Fase di Election
 
 **Fase di Election**
 - L'elezione avviene sul bordo dell'anello, iniziata dai Corners
@@ -448,3 +450,22 @@ Per rispondere a questa domanda dobbiamo ricordarci che stiamo in una topologia 
 **Fatti cruciali**
 - Ogni nodo sa che si trova in una Mesh
 - Ogni nodo sa che ci sono esattamente $4$ messaggi che provengono dai Corners
+
+Quindi, per rispondere alla domanda di prima, un nodo può fermarsi e decidere dopo aver ricevuto i $4$ messaggi dai Corners
+
+#### Message Complexity (Fase election)
+
+In ogni link dell'anello passano $4$ messaggi, quindi in totale : $O(a+b)=O(\sqrt{n})$
+
+In ogni link interno, adiacente al bordo passano $4$ messaggi. Anche qui il totale è $O(a+b)=O(\sqrt{n})$
+
+Quindi $$M(Election)=O(\sqrt {n})=o(n)$$
+Che è ottimale perchè **sub-lineare**
+
+### Fase di Notifica
+
+Il Leader $x$ invia, tramite Broadcast, il suo $ID(x)$ su tutta la Mesh
+
+Quindi, la message complexity è (considerando che ora stiamo nella condizione Unique Initiator) : $$M(Flooding|RI)=O(m)=O(n)$$
+**oss** : Notiamo che le fasi che costano di più sono la fase di Wake-Up e Notifica
+
