@@ -427,3 +427,24 @@ Questo protocollo lavora in $3$ fasi :
 3. Fase di **Notifica** (Broadcast)
 
 Vediamo nel dettaglio
+
+**Fase di WakeUp** ($k=$ num. initiators)
+- Ogni Initiator invia un messaggio di **wake-up** a tutti i suoi vicini
+- Ogni non-initiator che riceve un messaggio di **wake-up**, lo invia agli altri vicini
+- In totale $$M(Wake-Up)=3n+k=O(n)$$
+
+**Fase di Election**
+- L'elezione avviene sul bordo dell'anello, iniziata dai Corners
+- I Corners sono gli unici **idonei**
+- Ogni corners $x$ invia il suo $ID(x)$ a **tutti**
+- Ogni border inoltra ogni **nuovo** messaggio a tutti
+- Ogni corners inoltra ogni nuovo messaggio agli **altri**
+- Ogni interior non fa nulla
+
+Quando un nodo può fermarsi? 
+
+Per rispondere a questa domanda dobbiamo ricordarci che stiamo in una topologia **speciale**
+
+**Fatti cruciali**
+- Ogni nodo sa che si trova in una Mesh
+- Ogni nodo sa che ci sono esattamente $4$ messaggi che provengono dai Corners
