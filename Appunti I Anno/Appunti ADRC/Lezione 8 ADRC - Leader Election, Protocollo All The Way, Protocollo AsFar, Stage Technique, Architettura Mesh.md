@@ -306,3 +306,124 @@ Possibile situazione cattiva : Un nodo è sconfitto da un qualche messaggio allo
 
 ### Message Complexity
 
+Diamo una definizione importante : $n_i$ numero di nodi che iniziano lo stage $i$
+
+>[!teorem]- Lemma
+>Se $x$ inizia lo stage $i$ (ovvero sopravvive allo stage $i-1$) l'ID di $x$ deve essere più piccolo dell'ID dei vicini a distanza fino a $2^{i-2}$ su ogni lato
+
+![[Pasted image 20250411131505.png|center|600]]
+
+In un gruppo di $2^{i-2}+1$ entità consecutive **al più una** può sopravvivere allo stage $i-1$
+
+Quindi : $$n_i\leq\frac{n}{2^{i-2}+1}$$
+![[Pasted image 20250411131635.png|center|500]]
+
+![[Pasted image 20250411131652.png|center|500]]
+
+Vediamo ora il num di messaggi.
+
+Abbiamo due tipo di messaggi -> "Forth" e "Feedback"
+
+**Stage** $i\gt1$
+- "Forth" : ognuno di essi viaggerà al più $2^{i-1}$ in entrambe le direzioni
+	- Tot : $2n_i2^{i-1}$
+- "Feedback" : 
+	- ogni sopravvissuto ne riceverà uno da ogni lato
+		- $2n_{i+1}2^{i-1}$
+	- ogni entità che ha iniziato lo stage ma non è riuscita a sopravvivere ne riceverà uno o nessuno
+		- $\leq\underbrace{(n_i-n_{i+1})}_{\text{Nodi che non superano lo stage i}}2^{i-1}$
+	- Tot : $2n_{i+1}2^{i-1}+(n_{i+1}-n_i)2^{i-1}$
+
+Quindi, mettendo le due cose insieme otteniamo 
+$$\begin{align}M(Fase-i)&=2n_i2^{i-1}+2n_{i+1}2^{i-1}+(n_{i+1}-n_i)2^{i-1}=\\&=(3n_i+n_{i+1})2^{i-1}\\\left[n_i\leq\frac{n}{2^{i-2}+1}\right]\to&\leq\left(3\left\lfloor\frac{n}{2^{i-2}+1}\right\rfloor+\left\lfloor\frac{n}{2^{i-1}+1}\right\rfloor\right)2^{i-1}\\&\lt\frac{3n2^{i-1}}{2^{i-2}}+\frac{n2^{i-1}}{2^{i-1}}\\&=6n+n=7n\end{align}$$
+Per lo stage $1$ la situazione è leggermente differente
+
+**Stage** $1$
+- Se tutti iniziano : 
+	- I sopravvisuti mandano $4n_22^0$ messaggi -> 2 "Forth", 2 "Feedback"
+	- Gli altri $3(n-n_2)2^0$ -> 2 "Forth", 1 "Feedback"
+
+In totale abbiamo $$4n_2+3n-3n_2=n_2+3n\underbrace{\lt}_{\text{Ricordando }n_2\leq\frac{n}{2^0+1}}4n$$
+**Numero di stage totali**
+
+L'anello è attraversato completamente fintanto che $2^{i-1}$ è maggiore/uguale a $n$
+$$2^{i-1}\gt n\iff i\geq\log(n)+1$$
+Quindi abbiamo in totale $\log(n)+1$ stage
+
+A questo punto, la message complexity totale sarà $$M(StageTechnique)\leq\sum\limits_{i=1}^{\log(n)}7n+\underbrace{O(n)}_{\text{primo stage}}=n\sum\limits_{i=1}^{\log(n)}7=7n\log(n)+O(n)\implies O(n\log(n))$$
+## Congettura
+
+>[!teorem]- Congettura
+>In anelli non direzionati, la complessità nel caso peggiore è $n^2$; per avere una complessità di $O(n\log(n))$ messaggi, la bidirezionalità è necessaria
+
+Questa congettura però non è vera
+
+### Stages
+
+**Idea base** : 
+- Un messaggio viaggerà finhè non raggiungerà un'altro candidato.
+- Un candidato riceverà un messaggio da ambo i lati
+
+Le assunzioni sono le stesse della Stage Technique, aggiungendo il Message Ordering
+
+Come funziona questa tecnica : 
+- Ogni candidato invia il suo ID in entrambe le direzioni![[Pasted image 20250411134533.png|center]]
+- Quando un candidato $i$ riceve due messaggi $ID_j$ (da dx) e $ID_k$ (da sx), determina se può diventare *passivo* (ovvero lui non è il valore più piccolo), oppure se deve rimanere *candidato* (ovvero è il più piccolo) ![[Pasted image 20250411134700.png|center|600]]
+Dopo aver ricevuto il primo messaggio, l'entità effettua l'operazione **close-port** (ovvero accoda tutti i messaggi in arrivo dopo il primo)
+
+Dopo aver ricevuto il secondo messaggio, l'entità effettua l'operazione **re-open-port**
+
+#### Correttezza e Terminazione
+
+L'entità con ID minimo non smetterà mai di inviare messaggi
+
+Quando poi unìentità sa di essere Leader, invia un messaggio di Notifica che viaggerà su tutto l'anello
+
+#### Complessità - Worst Case
+
+**Ad ogni step** : Almeno la metà delle entità diventa passiva, quindi $n_{i+1}\leq\frac{n_i}{2}$
+
+Quindi abbiamo che : 
+$$n_0=n,n_1\leq\frac{n}{2},\dots,n_i\leq\frac{n}{2^i}$$
+Ora, $$\frac{n}{2^k}\leq1\iff k\geq\log(n)$$
+Quindi abbiamo **#step** al più $\log(n)$
+Ogni entità invia o reinvia $2$ messaggi, quindi : 
+- **#mess** : $2n$
+- **#bits** : $2n\log(n)$
+
+**L'ultima entità** invia $2n$ messaggi per capite che è l'ultima entità attiva, poi $n$ messaggi per notificare
+
+In totale quindi : 
+$$M(Stages)=2n\log(n)+3n=O(n\log(n))$$
+---
+# Architettura Mesh
+
+Vediamo ora il problema della Leader Election all'interno dell'architettura Mesh
+
+Una Mesh $M$ di dimensione $a\times b$ ha : 
+- $n=a\times b$
+- $m=a(b-1)+b(a-1)=O(n)$
+
+All'interno della Mesh esistono tre tipologie di nodo : 
+1. **Corner** : nodo che sta ai 4 angoli della Mesh
+2. **Border** . nodo che sta sul perimetro della Mesh (bordo)
+3. **Interior** : nodo interno alla Mesh
+
+![[Pasted image 20250411135602.png|center|600]]
+
+Alcuni fatti importanti : 
+
+1. Fatto $1$ : Topologia **asimmetrica**
+2. Fatto $2$ : Il sottografo indotto dai Corners+Borders è un **ANELLO**
+
+Vediamo quindi Il protocollo per l'elezione nelle Mesh
+## Protocollo per Leader Election
+
+**Idea** : si elegge un Leader come uno dei $4$ Corner
+
+Questo protocollo lavora in $3$ fasi : 
+1. Fase di **Wake Up**
+2. Fase di **Elezione** (sui bordi) solo tra i Corners
+3. Fase di **Notifica** (Broadcast)
+
+Vediamo nel dettaglio
