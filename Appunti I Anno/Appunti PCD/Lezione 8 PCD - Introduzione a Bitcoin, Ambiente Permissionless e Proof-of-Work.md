@@ -44,12 +44,26 @@ qualche parte deve aver fatto miliardi di hash per trovarne uno che soddisfacess
 
 Inoltre, se qualcuno volesse trovare un **nonce** per una stringa iniziale diversa dal nome "Francesco" e cognome "Pasquale", non avrebbe nessun modo di avvantaggiarsi del lavoro già svolto per per la mia stringa.
 
+## Remark su Funzioni Hash Crittografiche
+
+Ricordiamo brevemente cos'è una funzione hash crittografica
+
+>[!definition]- Funzione Hash Crittografica
+>Una f.h.c $H$ è una funzione $$H:\{0,1\}^\star\to\{0,1\}^\lambda$$ che si comporta come un "Random Oracle", ovvero $$x\to H(x)\text{ scelto u.a.r. su }\{0,1\}^\lambda$$
+
+Ci sono 3 proprietà fondamentali che una funzione hash crittografica $H$ deve rispettare : 
+
+1. **Preimage Resistance** : Deve essere "difficile", dato $y\in\{0,1\}^\lambda$, trovare $x\in\{0,1\}^\star$ tale che $H(y)=x$
+	1. L'unico modo deve essere con algoritmo BruteForce
+2. **Second Preimage Resistance** : Deve essere "difficile", dato $x_1\in\{0,1\}^\star$, trovare $x_2\neq x_1:H(x_2)=H(x_1)$
+3. **Collision Resistance** : Deve essere "difficile" trovare $x_1\neq x_2:H(x_1)=H(x_2)$
+
 # Protocollo di Consenso : Bitcoin
 
 Nel caso di Bitcoin il protocollo vuole fare in modo che:
 
 - Ogni nodo onesto mantenga una copia locale di un vettore block a cui vengono periodicamente aggiunte nuovi elementi, che chiamiamo blocchi. Il vettore di blocchi è la cosiddetta ***blockchain***.
-- (*Eventual Consistency*): Le copie locali block dei vettori dei singoli nodi onesti concordino, eccetto al più per un numero limitato di blocchi alla fine del vettore.
+- (*Eventual Consistency*): Le copie locali **block** dei vettori dei singoli nodi onesti concordino, eccetto al più per un numero limitato di blocchi alla fine del vettore.
 - (*Liveness*): Se un nodo onesto riceve in input una transazione $tx$ (per il momento pensiamo a una transazione semplicemente come a un "dato"), questa prima o poi viene inserita in un blocco.
 - Un nodo onesto che entri a far parte della rete in qualunque momento e chieda ad altri nodi nella rete di fornirgli il vettore block condiviso dagli altri, deve avere un modo di discernere quale sia il vettore "corretto", in caso riceva informazioni discordanti da nodi diversi
 
