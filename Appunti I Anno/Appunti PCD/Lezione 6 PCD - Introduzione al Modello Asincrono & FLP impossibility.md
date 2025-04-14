@@ -97,4 +97,20 @@ Sia ora $i$ il più piccolo indice tale che $X_i$ ***non è 1-valente***
 $$\begin{align}X_i&=[1|1|\dots|\underbrace{1}_i|0|\dots|0]\\ X_{i-1}&=[1|1|\dots|\underbrace{0}_i|0|\dots|0]\end{align}$$
 La configurazione $X_i$ deve essere per forza **bivalente**, e non può essere **0-valente** : Questo perchè, essendo che $X_i,X_{i-1}$ differiscono di un solo bit, se quel bit fosse un nodo corrotto allora potrebbe far dare in output a tutti gli altri nodi il valore $0$, e questo non rispetterebbe la condizione di *validity*
 
+### Dimostrazione Lemma 1 (Prof)
 
+Per $i = 0, 1, \dots , n$, sia $X_i$ la configurazione iniziale in cui gli input dei nodi minori o uguali a $i$ sono $1$ e gli input dei nodi maggiori di $i$ sono $0$. 
+Siccome per ipotesi $\mathbb P_{ba}$ soddisfa validity la configurazione $X_0$ (in cui tutti gli input sono 0) deve essere $0$-valente e la configurazione $X_n$ (in cui tutti gli input sono 1) deve essere $1$-valente.
+
+Sia $i$ il più piccolo indice tale che $X_{i−1}$ è $0$-valente e $X_i$ non è $0$-valente.
+Mostriamo che $X_i$ non può essere $1$-valente, e quindi deve essere bivalente.
+
+Siccome per ipotesi $\mathbb P_{ba}$ **termina anche in presenza di un nodo corrotto**, deve esistere uno schedule $\sigma$ applicabile a $X_{i−1}$ tale che $\sigma$ ***non contiene messaggi*** per il nodo $i$ e $\sigma(X_{i−1})$ è una
+configurazione in cui tutti i nodi diversi da $i$ che seguono il protocollo hanno deciso il loro output.
+
+Infatti, se un tale schedule non ci fosse, nel caso in cui $i$ è un nodo corrotto che non fa nulla ogni volta che riceve un messaggio non ci sarebbe nessuno schedule che consenta agli altri $n − 1$ nodi di terminare.
+
+Siccome $X_{i−1}$ è una configurazione $0$-valente, nella configurazione $\sigma(X_{i−1})$ tutti i nodi diversi
+da $i$ devono dare in output $0$. Siccome le configurazioni $X_{i−1}$ e $X_i$ differiscono solo per l’input del nodo $i$ e lo schedule $\sigma$ non contiene messaggi per il nodo $i$, anche nella configurazione $\sigma(X_i)$ tutti i nodi diversi da i devono aver deciso che il loro output è 0. 
+
+Quindi la configurazione iniziale $X_i$ non può essere $1$-valente e siccome non è neanche $0$-valente per costruzione, deve essere bivalente. $\blacksquare$ 
