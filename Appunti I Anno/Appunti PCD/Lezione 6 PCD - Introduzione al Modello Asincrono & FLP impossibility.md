@@ -89,6 +89,9 @@ Dato un qualunque protocollo $\mathbb P_{BA}$, allora :
 1. $\exists$ un'assegnazione degli input tale che la configurazione iniziale $\mathbb C_0$ è bivalente
 2. Se $\mathbb C$ è una configurazione bivalente, allora $\exists$ uno schedule $\sigma$ applicabile tale che $\sigma(\mathbb C)$ è anche lei bivalente
 
+>[!teorem]- Lemma 1
+>Se $\mathbb P_{ba}$ è un protocollo deterministico per Byzantine Agreement che termina e soddisfa *validity* e *consistency* allora esiste un’assegnazione degli input ai nodi tale che la configurazione iniziale è bivalente.
+
 **Dimostriamo** il punto 1 (Lemma 1)
 
 Sia $X_i$= assegnazione degli input in cui tutti i nodi $\leq i$ hanno in input $0$ e tutti i nodi $\gt i$ hanno in input 1

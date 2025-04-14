@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
+                "file": "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility"
+              "title": "Lezione 7 PCD - Ultimo lemma del teorema FLP"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
+                "file": "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility"
+              "title": "Outline of Lezione 7 PCD - Ultimo lemma del teorema FLP"
             }
           },
           {
@@ -124,12 +124,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
+                "file": "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility"
+              "title": "Outgoing links from Lezione 7 PCD - Ultimo lemma del teorema FLP"
             }
           },
           {
@@ -178,8 +178,10 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
+    "Appunti I Anno/Appunti PCD/img/Pasted image 20250414105813.png",
+    "Appunti I Anno/Appunti PCD/img/Pasted image 20250414104527.png",
     "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
+    "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
     "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
     "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md",
     "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
@@ -201,7 +203,6 @@
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250409142315.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250409142227.png",
-    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250409141925.png",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
