@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin"
+              "title": "Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin"
+              "title": "Outline of Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP"
             }
           },
           {
@@ -125,6 +125,40 @@
               },
               "icon": "links-going-out",
               "title": "Outgoing links from Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin"
+            }
+          },
+          {
+            "id": "5759a00fbf93627c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin"
+            }
+          },
+          {
+            "id": "3c8439a62d9149f1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           }
         ]
@@ -160,10 +194,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta e Rand-Delta-Plus.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics.md",
     "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
+    "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250414113113.png",
     "Appunti I Anno/Appunti PCD/Lezione 7 PCD - Ultimo lemma del teorema FLP.md",
@@ -172,8 +209,6 @@
     "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
     "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md",
     "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta e Rand-Delta-Plus.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250411135602.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250411134744.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250411134700.png",
@@ -187,7 +222,6 @@
     "Appunti I Anno/Appunti PROB/Lezione 4 PROB - Cap 3 Momenti e Devianza.md",
     "Appunti I Anno/Appunti PROB/Lezione 5 PROB - Cap 3 Ancora su Momenti e Devianza, Disuguaglianza di Chebychev.md",
     "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
     "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",

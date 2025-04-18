@@ -68,3 +68,44 @@ In generale, vale il seguente teorema :
 Vediamo adesso l'altra procedura, quella che sfrutta la parellizzazione in modo molto più efficiente
 ## Khun-Wattenhofen Color Reduction Procedure (KW-CRP)
 
+Configurazione iniziale e finale come per il task $BCP$
+
+**KW-CRP** : 
+- Dato un coloramento $C:V\to[a]$, con $a\gt\Delta+1$, si partiziona l'insieme $V$ :
+	- impostiamo $k=\frac{a}{\Delta+1}$, e ogni nodo calcola la sua partizione $V_i$ nel seguente modo $$V_{i}=\{v\in V:(i-1)\cdot(\Delta+1)+1\leq C(v)\leq i\cdot(\Delta+1)\},i=1,\dots,k$$
+	- ricordiamo che $V=\{V_1,V_2,\dots,V_k\}$
+
+**Fatto 3** : Il coloramento $C:V\to[a]$ induce un $(2(\Delta+1))$-coloramento, chiamato $F_{12}$ sul ***sottografo indotto*** $G(V_1\cup V_2,E)$, infatti $$F_{12}:V_1\cup V_2\to[2(\Delta+1)]$$
+**oss** : Il coloramento $C:V\to[a]$ è un $a$-coloramento su *ogni* sottografo indotto $G$
+
+### KW-CRP : Ingredienti Chiave
+
+**Fatto 4** : Definiamo $F_{i(i+1)}:V_{i}\cup V_{i+1}\to[2(\Delta+1)]$ per ogni $i=1,\dots,k-1$ come nel fatto 3. Allora vale : 
+1. $F_{i(i+1)}:V_{i}\cup V_{i+1}\to[2(\Delta+1)]$ è un $[2(\Delta+1)]$-coloramento per il sottografo $G(V_i\cup V_{i+1},E)$
+2. L'insieme dei colori usati nei vari $F_{i(i+1)}$ **sono mutualmente disgiunti**
+
+**KW-CRP** Idea Chiave (*Fase*): Applicare BCP, **in parallelo**, su ogni sottografo indotto $G(V_i\cup V_{i+1},E)$, partendo dal $[2(\Delta+1)]$-coloramento $F_{i(i+1)}$
+- la procedura BCP trasformerà ogni $[2(\Delta+1)]$-coloramento iniziale $F_{i(i+1)}$, in un $[(\Delta+1)]$-coloramento $F_{i(i+1)}$ per il sottografo indotto $G(V_i\cup V_{i+1},E)$
+- Il numero di round paralleli di una *Fase* è pari a $\Delta$
+
+**Fatto 5** : 
+1. Dopo **una** applicazione parallela della fase BCP, la funzione globale $\langle F_{12},\dots,F_{i(i+1)},\dots,F_{(k-1)k}\rangle$ diventa un $[\frac{a}{2}]$-coloramento legale per il grafo $G$. (Conseguenza di Fatto 4 e del fatto che gli archi che collegano due classi $V_i,V_j$, detti **Ponti**, non corrompono il coloramento fra queste due classi)
+2. Dopo $t$ applicazioni parallele della fase BCP, la funzione globale $\langle F_{12},\dots,F_{i(i+1)},\dots,F_{(k-1)k}\rangle$ diventa un $[\frac{a}{2^t}]$-coloramento per il grafo $G$
+
+### KW-CRP : Time Complexity
+
+>[!teorem]- Teorema
+>Partendo da un coloramento inziale (es. $a=n$), dopo $t=\log(\frac{n}{\Delta})$ fasi parallele, la funzione globale $\langle F_{12},\dots,F_{i(i+1)},\dots,F_{(k-1)k}\rangle$ sarà trasformata in un $(\Delta+1)$-coloramento per il grafo $G$.
+>Essendo che ogni fase impiega tempo $\Delta$, si avrà che la time complexity generale sarà $O(\Delta\cdot\log(\frac{n}{\Delta}))$
+
+**dim** 
+Questo vale perchè (Fatto 5,p.2) dopo $t$ applicazioni avremo un $[\frac{a}{2^t}]$-coloramento per il grafo $G$
+
+Ora, vediamo i calcoli : $$\frac{a}{2^t}\leq\Delta+1\implies2^t\geq\frac{a}{\Delta}\underbrace{\implies}_{\text{minimo t}}t=\Theta\left(\log\left(\frac{n}{\Delta}\right)\right)$$
+Ripetendo il tutto per $\Delta$ volte otteniamo $$Time(\text{KW-CRP})=\Theta\left(\Delta\log\left(\frac{n}{\Delta}\right)\right)$$
+### KW-CRP : Message Complexity
+
+Su ogni arco passano $2$ messaggi, quindi il num. di messaggi scambiati sarà $\Theta(2m)$
+Ripetendo $\Delta\log\left(\frac{n}{\Delta}\right)$ volte otteniamo che : 
+$$M(\text{KW-CRP})=\Theta \left(m\left[\Delta\log\left(\frac{n}{\Delta}\right)\right]\right)$$
+
