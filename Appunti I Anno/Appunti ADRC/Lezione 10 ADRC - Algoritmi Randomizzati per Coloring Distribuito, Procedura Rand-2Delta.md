@@ -22,7 +22,7 @@ Dopo aver definito la Phase Technique, passiamo a definire il protocollo che sfr
 **dim** :
 Dagli Step $6-10$, quando $v$ ottiene il suo colore finale $C(v)$ allora è considerato sicuro.
 Tutti i suoi vicini sono o non ancora $F$-colorati, oppure sono colorati con altri colori. 
-Questo perchè $C(v)$ è sempre scelto nell'insieme $[2\Delta]-(F_v\cup T_v)$ 
+Questo perchè $C(v)$ è sempre scelto nell'insieme $[2\Delta]\setminus(F_v\cup T_v)$ 
 
 ### Rand-2Delta : Analisi
 
