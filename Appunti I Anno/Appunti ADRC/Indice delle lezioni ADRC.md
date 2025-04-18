@@ -10,4 +10,6 @@
 - [[Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta]]
 - [[Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito]]
 - [[Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics]]
+- [[Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari]]
+- [[Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin]]
 - 
