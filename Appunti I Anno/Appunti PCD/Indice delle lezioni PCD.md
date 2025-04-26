@@ -9,5 +9,5 @@ Lezioni 9-11 esercitazioni coding
 - [[Lezione 7 PCD - Ultimo lemma del teorema FLP]]
 - [[Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work]]
 - [[Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin]]
-- [[Lezione 12 PCD - Script,P2PK,P2PKH,P2M,P2SH]]
+- [[Lezione 12 PCD - Linguaggio Script- P2PK,P2PKH,P2M,P2SH]]
 - 
