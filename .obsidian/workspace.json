@@ -114,25 +114,6 @@
             }
           },
           {
-            "id": "5759a00fbf93627c",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "Backlinks for Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin"
-            }
-          },
-          {
             "id": "3c8439a62d9149f1",
             "type": "leaf",
             "state": {
@@ -195,7 +176,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
     "Pasted image 20250426154647.png",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250426154129.png",

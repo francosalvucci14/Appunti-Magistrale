@@ -1,3 +1,8 @@
+>[!important]- IMPORTANTE
+>I Locking_Script sono contenuti **negli output delle transaizoni**
+>Gli Unlocking_script sono contenuti **negli input delle transazioni**
+
+
 Abbiamo detto precedentemente che una transazione $tx_a$ può avere uno o più output $tx_a.output$, ogni output è costituito da un **ammontare** e da un **locking_script**.
 
 Una transazione $tx_b$ che volesse *spendere* $tx_a.output$ deve contenere, nell'input che punta a $tx_a.output$, un **unlocking_script** tale che la concatenazione di $tx_b.input.unlocking\_script$ con $tx_a.output.locking\_script$ formi uno **script** che restituisca TRUE. 
@@ -59,6 +64,7 @@ dove :
 - $EQUAL\_VERIFY$ è un'istruzione che estrae due elementi sottostanti dallo stack e se sono uguali non fa nulla, altrimenti interrompe l'esecuzione dello script dichiarando transaizone non valida
 - $CHECKSIG$ è il comando che abbiamo visto in precedenza in p2pk
 
+L'unlocking_script invece è : $$\text{Unlocking Script : }\text{<sig><pk>}$$
 ## Pay to Multisig (p2m)
 
 Con questo script si può decidere di far spendere l'output della transazione a più public key.
