@@ -48,3 +48,75 @@ Qui studiamo un'approccio probabilistico che risolve il problema della Leader El
 ---
 # Maximal Indipendent Set Distribuito
 
+- **Sytem Model e Restrizioni**
+	- Grafo etichettato $G(V,E),ID$, con $|V|=n$ nodi e $|E|=m$ archi
+	- Restrizioni Standard, Modello *Local* e Attivazioni Parallele *Sincrone* $t=1,2,\dots$
+
+**Def (MIS)**
+- *Configurazione Iniziale* : un'etichettamento (iniziale) $I:V\to\{0,1\}$ tale che $I(v)=0,\forall v\in V$
+- *Configurazione Finale* : un'etichettamento $I:V\to\{0,1\}$ tale che l'insieme $M=\{v\in V:I(v)=1\}$ forma un Indipendent Set ***Massimale***
+
+Remark Massimale : $I$ indipendent set massimale significa che $\forall z\in V\setminus I\implies I\cup\{z\}$ non è più IS
+
+## Procedura Base per MIS
+
+Qualche notazione : 
+- $N(v)^+$ = $N(v)\cup\{v\}$
+- $N^{+}(S)$ = $S\cup\left(\bigcup_{s\in S}N(s)\right)$
+
+**MIS Task** su grafo $G$ : 
+- Imposta $M=\emptyset$
+- While $V\neq\emptyset$
+	- i. Calcola un indipendent set $S\subseteq V$ per $G$ (**Step (a)**)
+	- ii. $M=M\cup S$
+	- iii. $V=V\setminus N^{+}(S)$; $E=E\setminus E(N^+(S))$ dove $E(N^+(S))=\{(u,v):v\in N^+(S)\}$
+- Per ogni nodo $v\in V$, imposta $I(v)=1\iff v\in M$
+
+>[!teorem]- Teorema
+>Sotto le ipotesi definite in precedenza, la procedura MIS-P ritorna sempre un MIS per il grafo $G$
+
+**dim**
+- (a) ogni coppia di nodi in $M$ non può essere collegata da un'arco, a causa dello step iii definito dall'algoritmo
+- (b) solo i nodi (e gli archi) che sono in $N^+(S)$ sono rimossi ad ogni round. I nodi che stanno in $N^+(S)\setminus S$ sono esattamente quelli che ***NON*** possono essere inseriti in $M$ nei prossimi rounds, e quindi $M$ è **massimale**
+
+### MIS-P : Analisi e Problemi
+
+**Problema 1** : Nello step (a) dobbiamo calcolare un Indipendent Set $S$ per $G$, ma la domanda è
+- come possiamo eseguire questo task nel mondo distribuito? I nodi devono sincronizzare le loro scelte
+
+Primo tentativo (inefficiente) : ***Facciamo Leader Election sui Vicinati***
+- Ogni nodo $v$ tira una "moneta" (sceglie un random bit $b(v)$)
+	- Ogni nodo $v$ che (i) ottiene $1$ mentre (ii) ***tutti*** i suoi vicini ottengono $0$ (in questo caso diremo che $v$ ha "vinto la lotteria") sarà inserito in $S$
+	- Questo evento può essere controllato localmente con una comunicazione one-round
+	- **Problema Tecnico Fondamentale** : Qual'è la probabilità che per un nodo fissato $v\in N^+(v)$ vinca la lotteria? Purtroppo molto piccola, infatti la probabilità è $$\frac{1}{2}\cdot\frac{1}{2^{|N^+(v)|}}\simeq\frac{1}{2^{|N^+(v)|}}$$Questo implica un tempo atteso ***esponenziale***
+
+Vediamo ora la procedura per migliorare questa situazione
+
+## Il Protocollo di Luby (LP)
+
+Il protocollo è il seguente, e sfrutta l'idea che ogni nodo scelge u.a.r un valore di priorità
+
+**MIS Task** su $G$ ; Parametro $N\in\mathbb N$ (verrà definito dopo)
+- Imposta $M=\emptyset$
+- While $V\neq\emptyset$
+	- Ogni nodo $v$ sceglie u.a.r un valore $x(v)\in[N]$
+	- Sia $S=\{v\in V:x(v)=\max\{x(w):w\in N(v)\}\}$
+	- Sia $M=M\cup S$
+	- $V=V\setminus N^{+}(S)$; $E=E\setminus E(N^+(S))$ dove $E(N^+(S))=\{(u,v):v\in N^+(S)\}$
+- Per ogni nodo $v\in V$, imposta $I(v)=1\iff v\in M$
+
+### LP : Analisi
+
+Impostiamo il parametro di LP come $N=\Theta(n^3)$
+
+Perchè lo impostiamo a questo valore? La risposta ce la da il seguente lemma : 
+
+**Lemma** : Ad ogni roud $t\geq1$ abbiamo che le priorità $x(v)$ sono **tutte mutualmente indipendenti** (e stocasticamente indipendenti), e quindi con alta probabilità vale che non esiste nessuna coppia di nodi che ha lo stesso valore di priorità
+
+**dim**
+
+La probabilità che due nodi vicini abbiano lo stesso valore di priorità è 
+$$Pr[\exists(u,v)\in E:x(u)=x(v)]=Pr\left(\bigcup_{(u,v)\in E}x(v)=x(u)\right)\leq\sum\limits_{(u,v)\in E}Pr[x(v)=x(u)]=\frac{|E|}{R}$$
+Ora, nel caso peggiore $|E|=m=n^2$. Di conseguenza, se scegliamo $R=n^c=n^{3+\varepsilon}$ otteniamo che la prob. descritta sopra è $\simeq\leq\frac{1}{n^c}$, e quindi abbiamo ottenuto che con alta probabilità il Lemma 1 vale.
+
+Ora, per proseguire consideriamo che il Lemma 1 vale con probabilità 1.
