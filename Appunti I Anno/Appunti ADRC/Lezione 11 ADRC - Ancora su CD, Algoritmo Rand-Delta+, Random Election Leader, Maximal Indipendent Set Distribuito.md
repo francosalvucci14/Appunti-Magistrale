@@ -117,6 +117,6 @@ Perchè lo impostiamo a questo valore? La risposta ce la da il seguente lemma :
 
 La probabilità che due nodi vicini abbiano lo stesso valore di priorità è 
 $$Pr[\exists(u,v)\in E:x(u)=x(v)]=Pr\left(\bigcup_{(u,v)\in E}x(v)=x(u)\right)\leq\sum\limits_{(u,v)\in E}Pr[x(v)=x(u)]=\frac{|E|}{R}$$
-Ora, nel caso peggiore $|E|=m=n^2$. Di conseguenza, se scegliamo $R=n^c=n^{3+\varepsilon}$ otteniamo che la prob. descritta sopra è $\simeq\leq\frac{1}{n^c}$, e quindi abbiamo ottenuto che con alta probabilità il Lemma 1 vale.
+Ora, nel caso peggiore $|E|=m=n^2$. Di conseguenza, se scegliamo $R=n^c=n^{3+\varepsilon}$ otteniamo che la prob. descritta sopra è $\simeq\frac{1}{n^c}$, e quindi abbiamo ottenuto che con alta probabilità il Lemma 1 vale.
 
 Ora, per proseguire consideriamo che il Lemma 1 vale con probabilità 1.

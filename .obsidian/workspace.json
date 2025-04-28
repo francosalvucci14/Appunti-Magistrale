@@ -141,6 +141,25 @@
               "icon": "links-going-out",
               "title": "Outgoing links from Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin"
             }
+          },
+          {
+            "id": "bea03e2219eee5af",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito"
+            }
           }
         ],
         "currentTab": 1
