@@ -142,7 +142,8 @@
               "title": "Outgoing links from Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -175,7 +176,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "517fcc174d45e93e",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",
     "Appunti I Anno/Appunti ADRC/Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari.md",
