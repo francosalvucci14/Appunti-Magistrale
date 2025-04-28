@@ -64,7 +64,7 @@ class Script:
     def get_type(self):
         # Determina il tipo di script
         if len(self.cmds) == 0:
-            return "Unknown"
+            return "No Script"
 
         if self.cmds[0] == "op_dup" and self.cmds[1] == "op_hash160" and self.cmds[-2] == "op_equalverify" and self.cmds[-1] == "op_checksig":
             return "P2PKH"
