@@ -120,3 +120,4 @@ $$Pr[\exists(u,v)\in E:x(u)=x(v)]=Pr\left(\bigcup_{(u,v)\in E}x(v)=x(u)\right)\l
 Ora, nel caso peggiore $|E|=m=n^2$. Di conseguenza, se scegliamo $R=n^c=n^{3+\varepsilon}$ otteniamo che la prob. descritta sopra è $\simeq\frac{1}{n^c}$, e quindi abbiamo ottenuto che con alta probabilità il Lemma 1 vale.
 
 Ora, per proseguire consideriamo che il Lemma 1 vale con probabilità 1.
+
