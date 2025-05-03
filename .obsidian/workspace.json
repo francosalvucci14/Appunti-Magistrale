@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
+                "file": "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Indice delle lezioni PCD"
+              "title": "Indice delle lezioni ADRC"
             }
           }
         ]
@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Indice delle lezioni PCD"
+              "title": "Outline of Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding"
             }
           },
           {
@@ -146,6 +146,20 @@
               "icon": "links-coming-in",
               "title": "Backlinks for Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito"
             }
+          },
+          {
+            "id": "36d30782c944099a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Indice delle lezioni ADRC"
+            }
           }
         ],
         "currentTab": 1
@@ -184,10 +198,19 @@
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti PCD/Lezione 14 PCD - Crittografia a Curve Ellittiche.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
     "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",
     "Appunti I Anno/Appunti ADRC/Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari.md",
     "Appunti I Anno/Appunti ADRC/Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
+    "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 12 PCD - Linguaggio Script- P2PK,P2PKH,P2M,P2SH.md",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/script.cpython-310.pyc",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/helpers.cpython-310.pyc",
@@ -206,10 +229,8 @@
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250426151433.png",
     "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
     "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
-    "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250418160753.png",
-    "Appunti I Anno/Appunti ADRC/Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250418153134.png",
     "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250414113113.png",
@@ -221,13 +242,6 @@
     "Appunti I Anno/Appunti PMLJ/Lezione 1 PMLJ.md",
     "Appunti I Anno/Appunti PROB/Lezione 6 PROB - Ancora su Cap 3 Disuguaglianze di Chernoff & Hoeffding.md",
     "Appunti I Anno/Appunti PROB/Lezione 3 PROB - Cap 2, V.A importanti.md",
-    "Appunti I Anno/Appunti PROB/Lezione 4 PROB - Cap 3 Momenti e Devianza.md",
-    "Appunti I Anno/Appunti PROB/Lezione 5 PROB - Cap 3 Ancora su Momenti e Devianza, Disuguaglianza di Chebychev.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md"
+    "Appunti I Anno/Appunti PROB/Lezione 4 PROB - Cap 3 Momenti e Devianza.md"
   ]
 }
