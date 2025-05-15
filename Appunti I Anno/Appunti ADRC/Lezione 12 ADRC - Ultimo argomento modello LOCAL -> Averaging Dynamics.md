@@ -42,7 +42,7 @@ $$\hat{x}=\alpha_1\hat{u_1}+\alpha_2\hat{u_2}+\dots+\alpha_n\hat{u_n}$$
 Con, $G$ è $d-$regolare,$P$ simmetrica e i vettori $\hat{u_i}$ sono mutualmente ortogonali e hanno norma $2$ pari a $||\hat{u_i}||_2=1$. Allora, applichiamo l'equazione $(2)$, ottenendo il seguente lemma
 
 **Lemma 2.4** :
-$$\begin{align}\hat{x}^{(t+1)}&=P^t\hat{x}^=\alpha_1\lambda_1\hat{u_1}+\alpha_2\lambda_2^t\hat{u_2}+\dots+\alpha_n\lambda_n^t\hat{u_n}\\\text{dato che }\lambda_1=1&=\alpha_1\hat{u_1}+\alpha_2\lambda_2^t\hat{u_2}+\dots+\alpha_n\lambda_n^t\hat{u_n}\end{align}\quad(4)$$
+$$\begin{align}\hat{x}^{(t+1)}&=P^t\hat{x}^=\alpha_1\lambda_1\hat{u_1}+\alpha_2\lambda_2^t\hat{u_2}+\dots+\alpha_n\lambda_n^t\hat{u_n}\\\text{(dato che }\lambda_1=1)&=\alpha_1\hat{u_1}+\alpha_2\lambda_2^t\hat{u_2}+\dots+\alpha_n\lambda_n^t\hat{u_n}\end{align}\quad(4)$$
 dove $\alpha_i=\langle \hat{x},\hat{u_i}\rangle$ sono le proiezioni dei vettori $\hat{x}$ originali lungo i vettori della base ortonormale. Vale anche che $|\alpha_i|=|\langle \hat{x},\hat{u_i}\rangle|\leq M=\sum\limits_jx(j)$
 
 
