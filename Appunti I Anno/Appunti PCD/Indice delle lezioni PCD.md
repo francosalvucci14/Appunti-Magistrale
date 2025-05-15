@@ -11,4 +11,5 @@ Lezioni 9-11 esercitazioni coding
 - [[Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin]]
 - [[Lezione 12 PCD - Linguaggio Script- P2PK,P2PKH,P2M,P2SH]]
 - [[Lezione 14 PCD - Crittografia a Curve Ellittiche]]
+- [[Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness]]
 - 

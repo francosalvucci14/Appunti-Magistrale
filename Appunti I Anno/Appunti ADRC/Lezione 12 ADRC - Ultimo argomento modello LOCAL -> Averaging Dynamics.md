@@ -44,5 +44,8 @@ Con, $G$ è $d-$regolare,$P$ simmetrica e i vettori $\hat{u_i}$ sono mutualmente
 **Lemma 2.4** :
 $$\begin{align}\hat{x}^{(t+1)}&=P^t\hat{x}^=\alpha_1\lambda_1\hat{u_1}+\alpha_2\lambda_2^t\hat{u_2}+\dots+\alpha_n\lambda_n^t\hat{u_n}\\\text{(dato che }\lambda_1=1)&=\alpha_1\hat{u_1}+\alpha_2\lambda_2^t\hat{u_2}+\dots+\alpha_n\lambda_n^t\hat{u_n}\end{align}\quad(4)$$
 dove $\alpha_i=\langle \hat{x},\hat{u_i}\rangle$ sono le proiezioni dei vettori $\hat{x}$ originali lungo i vettori della base ortonormale. Vale anche che $|\alpha_i|=|\langle \hat{x},\hat{u_i}\rangle|\leq M=\sum\limits_jx(j)$
+Osserivamo che, quando $t\to\infty$, dato che $|\lambda_i|\lt1\forall j\neq1$, tutti i termini del'equazione (4) tranne il primo tendono esponenzialmente velocemente a vettori aventi norma $0$. Di conseguenza, abbiamo una risposta positiva alla prima domanda.
 
+>[!teorem]- Teorema 2.5
+>Iniziando da una configurazione iniziale $\hat{x}$, il sistema converge a una configurazione $$\hat{x}^{(t)}\to\alpha_1\hat{u_1}=M\quad(5)$$
 
