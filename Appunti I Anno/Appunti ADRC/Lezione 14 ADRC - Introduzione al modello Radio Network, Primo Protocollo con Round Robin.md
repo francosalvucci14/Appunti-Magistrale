@@ -46,5 +46,61 @@ Ricordiamo che per il problema del Broadcast abbiamo :
 - **Terminazione** : Un protocollo ***termina*** se c'è un time slot $t$ tale che **ogni** nodo **interrompe** ogni sua azione ENTRO il time slot $t$
 ### Protocollo FLOOD
 
+Vediamo inizialmente il protocollo FLOOD studiato qualche tempo fa per la risoluzione del Broadcast sul modello LOCAL
 
-### Protocollo Round-Robin
+È facile vedere subito che il FLOOD non funziona, infatti basta prendere un grafo fatto in questo modo
+
+![[Pasted image 20250516153008.png|center|400]]
+
+Dove il nodo arancione è la sorgente $s$
+
+All'istante $t=t_0$ la sorgente $s$ invia il messaggio ai suoi $3$ vicini, siano essi per semplicità $u,v,w$. Subito dopo, i rispettivi nodi inviano il messaggio al loro unico vicino, sia esso $x$
+Risulta però che nello stesso istante di tempo $t=t_1$ il nodo $x$ riceve $3$ messaggi, provenienti rispettivamente da $u,v,w$, e di conseguenza avviene la collisione, causando così la perdita del messaggio per $x$ ($x$ non riceve nulla).
+
+Con questo semplice controesempio abbiamo visto che il protocollo FLOOD non soddisfa le condizioni necessarie per evitare collisioni, e di conseguenza dobbiamo pensare a un protocollo diverso.
+### Protocollo Round-Robin=
+
+Il protocollo che vedremo ora sfrutta l'idea generale del famoso algoritmo di scheduling **Round-Robin**
+
+Prima di vedere il protocollo è necessario definire le assunzioni che stiamo ponendo : 
+- I nodi conoscono una buona approssimazione di $|V|=n$
+- I nodi sono indicizzati partendo da $0,1,2,\dots$
+
+A questo punto il protocollo lavora nel modo seguente, a **fasi**
+
+- Una **fase** di RR è composta da $n$ time slot
+- A tempo $T=0,1,2,\dots$
+	- Se il nodo $i=T$, se **INFORMATO**, trasmette il messaggio $M$ ai suoi vicini
+	- Tutti gli altri nodi non inviano nulla
+
+Osserviamo che per come è fatto questo protocollo, esso non terminerà mai (problema che verrà affrontato poco più avanti)
+
+**Q.** Cosa possiamo dire dopo una singola fase di RR?
+**A** Dopo la prima fase di RR ($n$ time slot) **TUTTI** i vicini-uscenti di $s$ (sorgente) saranno informati
+
+Eseguiamo il protocollo per $L$ volte consegutive
+
+Vale quindi il seguente teorema : 
+
+>[!teorem]- Teorema
+>Dopo la fase $k$, tutti i nodi a distanza di salto (hop-distance) $k$ dalla sorgente $s$ saranno nello stato INFORMED
+
+La dimostrazione è per induzione sulla fase $k$
+
+FARE DIMOSTRAZIONE
+
+>[!teorem]- Corollario (Tempo di Completamento)
+>Sia $D$ l'**eccentricità** (sconosciuta) della sorgente $s$. Allora, $D$ fasi di RR sono *sufficienti* per INFORMARE tutti i nodi
+
+Cosa possiamo dire della terminazione?
+- Purtroppo dipende dalla conoscenza dei nodi
+
+Se loro conoscono $n$ allora posso decidere quando fermarsi.
+L'eccentricità della sorgente è al più $n-1$ quindi, dato che ogni nodo ha un clock globale, i nodi possono decidere di **fermare** la loro esecuzione dopo la $(n-1)-$esima fase di RR
+
+Infatti vale : 
+
+>[!teorem]- Tempi per protocollo RR
+>Il protocollo **completa** il task in tempo $\Theta(Dn)$
+>Il protocollo **termina** (e si parla di terminazione globale) in tempo $O(n^2)$
+

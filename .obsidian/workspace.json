@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 14 PCD - Crittografia a Curve Ellittiche.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 14 PCD - Crittografia a Curve Ellittiche"
+              "title": "Outline of Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin"
             }
           },
           {
@@ -111,21 +111,6 @@
               "state": {},
               "icon": "git-pull-request",
               "title": "Source Control"
-            }
-          },
-          {
-            "id": "214d3a704b8c4cdf",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "Tags"
             }
           },
           {
@@ -160,9 +145,23 @@
               "icon": "links-coming-in",
               "title": "Backlinks for Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin"
             }
+          },
+          {
+            "id": "41839f878499570c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -195,23 +194,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516153008.png",
+    "Appunti I Anno/Appunti ADRC/Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Ancora su PULL Protocoll per Clicque, Expanders.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",
     "Pasted image 20250516120252.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516115941.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516115744.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516115342.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516115208.png",
-    "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",
     "Appunti I Anno/Appunti ADRC/Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari,Tempo di convergenza del protocollo.md",
     "Appunti I Anno/Appunti ADRC/Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics.md",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti ADRC/Lezione 20 ADRC (I lezione Pepè) - PRAM Model, Ordinamento, Max e Prefix Sum.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Ancora su PULL Protocoll per Clicque, Expanders.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random.md",
     "Appunti I Anno/Appunti PCD/Lezione 14 PCD - Crittografia a Curve Ellittiche.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
@@ -237,7 +237,6 @@
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250426154129.png",
     "Pasted image 20250426153201.png",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250426152917.png",
-    "Appunti I Anno/Appunti PCD/img/Pasted image 20250426151433.png",
     "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
     "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
     "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md",
