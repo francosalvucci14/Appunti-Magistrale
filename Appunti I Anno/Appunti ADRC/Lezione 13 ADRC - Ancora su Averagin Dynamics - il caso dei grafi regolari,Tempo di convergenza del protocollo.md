@@ -31,3 +31,54 @@ Quindi vale il seguente teorema
 >Se il grafo $G$ è connesso, non-bipartito e $d-$regolare, allora il protocollo **AVG-PROTOCOL** converge (in norma 2) a una configurazione stabile in cui ogni nodo ottiene, come suo valore, la media $\frac{\sum_jx(j)}{n}$ del vettore iniziale $\hat{x}$
 
 # Tempo di convergenza del protocollo
+
+Prima di entrare nel dettaglio dell'analisi, dobbiamo chiarire quale nozione di convergenza per il processo di averaging e quale nozione di output locale dobbiamo considerare. 
+
+Come si può osservare, nel codice di **AVG-PROTOCOL** non c'è nessuna regola di stop, nessun valore di output ritornato, e nessun criterio di stop.
+
+Ricordiamo che stiamo assumendo che i nodi del sistema distribuito possono eseguire computazioni algebriche con precisione infinita.
+Questo ovviamente non è realistico
+
+Per ovviare a questo problema, aggiungiamo un nuovo paramentro di confidenza in input e un criterio di stop che ci permette di avere un piccolo errore nei valori calcolati-
+
+Il nuovo protocollo è quindi : 
+**AVG-PROTOCOL1**
+- **Input** : Ogni nodo $i$ ha un valore iniziale, chiamato stato, $x(i)\in\mathbb R^{+}$ (Sia $\hat{x}=\langle x(1),\dots,x(n)=\rangle^T$) e un parametro di confidenza $\varepsilon\gt0$
+- **Ad ogni round** $t\geq1$ ogni nodo $i$ **fa**:
+	- **Pull** : il valore corrente $x(j)$ da ogni vicino $j\in N(i)$
+	- **Update** : del proprio valore come $x^{'}(i)=\frac{1}{d_i}\sum\limits_{j\in N(i)}x(j)$
+	- **Se** $x'(i)-x(i)\leq\varepsilon$ allora **return** $x'(i)$ e si **ferma**
+
+Iniziamo ad analizzare il protocollo in un qualunque nodo fissato del sistema come segue.
+
+Osserviamo che, dato che stiamo guardando al valore *locale* mantenuto da ogni nodo, dovremmo considerare la norma $||\cdot||_\infty$ che limita il valore **massimale** tra tutti i nodi
+
+Per ogni istante di tempo $t\geq1$ vale che : 
+$$\begin{align}\hat{x}^{(t+1)}-\hat{x}^{(t)}&=P^{t+1}\hat{x}-P^t\hat{x}\\&=\alpha_1\hat{u}_1-\alpha_1\hat{u}_1+(1+\lambda_2)\lambda_2^t\alpha_2\hat{u}_2+\dots+(1+\lambda_n)\lambda_n^t\alpha_n\hat{u}_n\\&=(1+\lambda_2)\lambda_2^t\alpha_2\hat{u}_2+\dots+(1+\lambda_n)\lambda_n^t\alpha_n\hat{u}_n\end{align}\quad(10)$$
+Definiamo quindi $$\lambda=\max\{|\lambda_j|:j\geq2\},\lambda_\min=\{|\lambda_j|:j\geq2\}$$
+e ricordiamo che dato che $G$ è connesso e non-bipartito allora vale che $$0\lt\lambda_\min\leq\lambda\lt1$$
+Quindi, l'eq (10) implica che 
+$$\begin{align}||\hat{x}^{(t+1)}-\hat{x}^{(t)}||_\infty&=||P^{t+1}\hat{x}-P^{t}\hat{x}||_\infty\\&\leq n(1-\lambda_\min)\lambda^{t}\alpha_n||\hat{u}_n||_\infty=n(1-\lambda_\min)\lambda^tM\end{align}\quad(11)$$
+con $M=\sum\limits_jx(j)$ e osserviamo che, per ogni $i\in[n],\alpha_i\leq M$ 
+Quindi ora possiamo vedere quanto grande deve essere $t$ in modo da ottenere l'ultimo "incremento" sufficientemente piccolo del valore di ogni nodo, ovvero : 
+$$||\hat{x}^{(t+1)}-\hat{x}^{(t)}||_\infty\leq\varepsilon\quad(12)$$
+Dall'eq. (11) sappiamo che il processo indotto dal protocollo **AVG-PROTOCOL1** fermerà ogni nodo entro $T$ rounds, tale che $T$ soddisfa : 
+$$n(1-\lambda_\min)\lambda^TM\leq\varepsilon$$
+e quindi $$\lambda^T\leq\frac{\varepsilon}{nM(1-\lambda_\min)}$$
+Dato che $|\lambda|\lt1$, possiamo riscrivere l'equazione come : $$T\geq\log\left(\frac{nM(1-\lambda_\min)}{\varepsilon}\right)/\log\left(\frac{1}{\lambda}\right)$$
+e dato che $|\lambda_\min|\lt1$, abbiamo che per ogni $$T\geq\log\left(\frac{nM}{\varepsilon}\right)/\log\left(\frac{1}{\lambda}\right)$$
+vale l'eq. (12)
+
+Abbiamo quindi dimostrato il seguente lemma
+
+**Lemma 2.9** : 
+Il processo indotto dal protocollo **AVG-PROTOCOL1** termina dopo $$T=\log\left(\frac{nM}{\varepsilon}\right)/\log\left(\frac{1}{\lambda}\right)$$
+e quindi, il valore $x'(i)$ al round $T$ di ogni nodo $i$ sarà $\varepsilon-$vicina al valore $x(i)$ del round precedente.
+
+>[!teorem]- Teorema 2.10
+>Con input un grafo connesso,non-bipartito e $d-$regolare e un parametro di confidenza $\varepsilon\gt0$, il protocollo **AVG-PROTOCOL1** termina dopo $T=\log\left(\frac{nM}{\varepsilon}\right)/\log\left(\frac{1}{\lambda}\right)$ round. Inoltre, ogni nodo $i\in[n]$ ritorna un valore $x^{(T)}$ tale che $$\left|x^{(T)}(i)-\frac{\sum_jx(j)}{n}\right|\leq\varepsilon$$
+
+**dim**
+Dall'equazione $(11)$ sappiamo che $$\begin{align}||\hat{x}^{(t+1)}-\hat{x}^{(t)}||_\infty&=||P^{t+1}\hat{x}-P^{t}\hat{x}||_\infty\\&\leq n(1-\lambda_\min)\lambda^{t}\alpha_n||\hat{u}_n||_\infty\\&\leq n(1-\lambda_\min)\lambda^tM\\&\leq n\lambda^tM\end{align}\quad(13)$$
+D'altra parte $$\begin{align}||\hat{x}^{(t)}-\alpha_1\hat{u}_1||_\infty&=||P^{t}\hat{x}-\alpha_1\hat{u}_1||_\infty\\&= \lambda_2^t\alpha_2\hat{u}_2+\dots+\lambda_n^t\alpha_n\hat{u}_n\\&\leq n\lambda^tM||\hat{u}_n||_\infty=n\lambda^tM\end{align}\quad(14)$$
+Grazie al Lemma 2.9, e comparando le equazioni (13) e (14) possiamo affermare che quando il nodo $i$ ferma la sua computazione, dopo $T$ round, ottiene un valore tale che $$\left|x^{(T)}(i)-\alpha_{1}\hat{u}_{1}\right|=\left|x^{(t)}(i)-M/n\right|\leq n\lambda^tM\leq\varepsilon\quad\blacksquare$$
