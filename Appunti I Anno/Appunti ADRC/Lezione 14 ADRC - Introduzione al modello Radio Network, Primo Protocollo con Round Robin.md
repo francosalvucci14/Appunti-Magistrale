@@ -44,6 +44,7 @@ Il problema lo modelliamo in questo modo :
 Ricordiamo che per il problema del Broadcast abbiamo : 
 - **Correttezza** : Un protocollo ***completa*** il Broadcast dalla sorgente $s$ a tutto il grafo $G$ se **c'è un time slot** tale che ogni nodo si trova nello stato INFORMED
 - **Terminazione** : Un protocollo ***termina*** se c'è un time slot $t$ tale che **ogni** nodo **interrompe** ogni sua azione ENTRO il time slot $t$
+### Protocollo FLOOD
 
 
 ### Protocollo Round-Robin
