@@ -46,3 +46,11 @@ For $K=1,2,\dots$ (stages)
 - For $j=1,2,\dots,c\log(n)$
 	- If nodo $x$ è ***stato informato*** nello stage $K-1$ allora trasmette con probabilità $\frac{1}{d}$
 
+Analizziamo il protocollo 
+
+Vale il seguente teorema : 
+
+>[!teorem]- Teorema
+>Il protocollo BGI completa il Broadcast entro $O(D)$ stages, e quindi il tempo di completamento è $O(D\log(n))\space w.h.p$
+
+**dim** Per induzione sui livelli $L=1,\dots,D$
