@@ -86,8 +86,18 @@ Vale quindi il seguente teorema :
 >Dopo la fase $k$, tutti i nodi a distanza di salto (hop-distance) $k$ dalla sorgente $s$ saranno nello stato INFORMED
 
 La dimostrazione è per induzione sulla fase $k$
+**dim**
 
-FARE DIMOSTRAZIONE
+*Caso base* : nella prima fase, il primo nodo a trasmettere sarà la sorgente $s$ nel rime slot $T=s$, inoltre in quel time slot $s$ è l'unico nodo a trasmettere (in quanto è l'unico nodo a possedere il messaggio ed essere nello stato INFORMED). 
+Allora, per costruzione del grafo di comunicazione, tutti i nodi a distanza $1$ da $s$ entro la fine della prima fase saranno nello stato INFORMED
+
+*Caso induttivo*: ipotizziamo che la tesi sia vera per i nodi dell'insieme $L(k-1)$, ovvero tutti i nodi a distanza $(k-1)$ da $s$.
+Sia $w\in L(k)$, per definizione stessa di $L(k)$ deve esistere almeno un nodo, sia esso $j$, che appartiene a $L(k-1)$, quindi $j\in L(k-1)$, tale per cui esiste l'arco diretto $(j,w)$
+Per ipotesi induttiva, al time slot $j\space(\text{mod n})$ (ovvero la fine della fase $k-1$) il nodo $j$ trasmetterà il messaggio al nodo $w$, e per definizione del protocollo RR il nodo $j$ sarà l'unico a trasmettere in quell'istante di tempo, quindi il nodo $w$ riceverà correttamente il messaggio senza subire interferenze, entro la fine della fase $k$
+
+![[Pasted image 20250517094556.png|center|300]]
+
+Questa assunzione vale $\forall j\in L(k-1)$, quindi tutti i nodi $w\in L(k)$ verranno informati entro la fine della fase $k$ $\quad\blacksquare$
 
 >[!teorem]- Corollario (Tempo di Completamento)
 >Sia $D$ l'**eccentricità** (sconosciuta) della sorgente $s$. Allora, $D$ fasi di RR sono *sufficienti* per INFORMARE tutti i nodi
