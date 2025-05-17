@@ -54,3 +54,5 @@ Vale il seguente teorema :
 >Il protocollo BGI completa il Broadcast entro $O(D)$ stages, e quindi il tempo di completamento è $O(D\log(n))\space w.h.p$
 
 **dim** Per induzione sui livelli $L=1,\dots,D$
+
+FARE DIMOSTRAZIONE
