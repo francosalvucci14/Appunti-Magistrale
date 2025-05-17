@@ -147,8 +147,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -181,7 +180,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
     "Appunti I Anno/Appunti ADRC/Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random.md",
