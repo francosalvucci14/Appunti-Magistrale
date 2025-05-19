@@ -67,7 +67,24 @@ Per definizione di $d-$regular layered, $y$ ha esattamente $d$ vicini nel livell
 Il nodo $y$ viene informato se e solo se, tra tutti i suoi vicini $d$ solo un trasmette e gli altri no.
 
 Prendiamo in considerazione l'evento $$\mathcal E=\text{"y viene informato in un timeslot"}$$
-Allora, la probabilità che $y$ venga informato è $$Pr[\mathcal E]=d\frac{1}{d}\left(1-\frac{1}{d}\right)^{d-1}$$
+Allora, la probabilità che $y$ venga informato è $$\begin{align}Pr[\mathcal E]&=\binom{d}{1}\frac{1}{d}\left(1-\frac{1}{d}\right)^{d-1}\\&=\left(1-\frac{1}{d}\right)^{d-1}\geq\frac{1}{8}\quad\forall d\geq2\end{align}$$
+Notiamo che $\frac{1}{8}$ è una costante assoluta che non dipende da $n,D,d$
 
+Sia ora $\mathcal E'=\text{"y non viene informato dopo }c\log(n)\text{"}$
+
+La probabilità questo evento accada è (**ricordando che i timeslot sono tutti indipendenti**)
+$$Pr[\mathcal E']\lt\left(1-\frac{1}{8}\right)^{c\log(n)}\lt e^{-\frac{c\log(n)}{8}}\lt\frac{1}{n^{\frac{c}{8}}}$$
+la seconda disuguaglianza è vera perchè $(1-x)\lt e^{-x}$
+
+Però questa è la probabilità che **un nodo** non venga informato. Per vedere la probabilità che **tutti** i nodi in $L_{j+1}$ vengano informati, dobbiamo usare lo **UnionBound**
+
+Quindi vale che $$Pr[\exists x\in L_{j+1}:\text{x non viene informato entro lo stage j+1}]\leq n\left(\frac{1}{n^{\frac{c}{8}}}\right)\leq\frac{1}{n^{\frac{c}{8}-1}}$$
+A questo punto, dobbiamo far vedere che per ogni livello $k=D\lt n$, tutti i nodi in $L_k$ sono informati entro lo stage $k$ con altra probabilità.
+
+Per fare ciò, si calcola la probabilità dell'evento $\mathcal B=\exists\text{BAD STAGE}$, cioè l'evento tale per cui esiste uno stage in cui non tutti i nodi del relativo livello vengono informati.
+
+Anche qui applichiamo lo UnionBound su tutti i livelli.
+
+$$Pr[\mathcal B]\lt\sum\limits_{j=1}^{n}Pr[\exists x\in L_j:\text{x non viene informato entro lo stage j}]\lt n\left(\frac{1}{n^{\frac{c}{8}-1}}\right)=\frac{1}{n^{\frac{c}{8}-2}}$$
 
 
