@@ -1,8 +1,8 @@
 from io import BytesIO
 import json
-import helpers # type: ignore
+import helpers 
 
-class TX:
+class TX():
     def __init__(self,version, inputs, outputs,locktime):
         self.version = version      # primi 4 bytes, int
         self.inputs = inputs        # var len, array
@@ -35,19 +35,10 @@ class TX:
         # 5. Create the transaction object
         transaction = cls(version, inputs, outputs, locktime)
         return transaction
-
-    @classmethod
-    def isSegWit(cls,bs):
-        bs.seek(4) # Skip the version
-        # Check if the first byte of the transaction is 0x00
-        # If it is, then it's a SegWit transaction
-        # Otherwise, it's a non-SegWit transaction
-        marker = bs.read(1)
-        flag = bs.read(1)
-        bs.seek(0)
-        if marker == b'\x00' and flag == b'\x01':
+    
+    def isCoinbase(self,bs):
+        if (len(self.inputs) == 1 and self.inputs[0].prevtx == bytes(32) and self.inputs[0].prevtxidx == 0xffffffff):
             return True
-        
         return False
     
 class TxIN:
@@ -108,22 +99,52 @@ class TxOUT:
         out = {"value": helpers.satoshi_to_btc(self.value), "scriptpk": self.scriptpk.hex()}
         return json.dumps(out,indent=4)
 
+class SegWitTx(TX): ##sottoclasse di TX
+    
+    def __init__(self, version, marker, flag, inputs, outputs, locktime):
+        super().__init__( version, inputs, outputs, locktime)
+        self.marker = marker      # 1 byte
+        self.flag = flag    
+          # 1 byte
+    @classmethod
+    def parse(cls, r):
+        version = int.from_bytes(r.read(4), 'little')
+        marker = r.read(1)
+        flag = r.read(1)
+        numin = helpers.varint2int(r)
+        inputs = [TxIN.parse(r) for _ in range(numin)]
+        numout = helpers.varint2int(r)
+        outputs = [TxOUT.parse(r) for _ in range(numout)]
+        locktime = int.from_bytes(r.read(4), 'little')
+        # aggiungere parsing del Witness
+        return cls( version, marker, flag, inputs, outputs, locktime)
+    
+    @classmethod
+    def isSegWit(cls,bs):
+        bs.seek(4) # Skip the version
+        # Check if the first byte of the transaction is 0x00
+        # If it is, then it's a SegWit transaction
+        # Otherwise, it's a non-SegWit transaction
+        marker = bs.read(1)
+        flag = bs.read(1)
+        bs.seek(0)
+        if marker == b'\x00' and flag == b'\x01':
+            return True
+        
+        return False
+
 if __name__ == '__main__':
     # Example usage
     with open('tx_seg.txt', 'r') as f:
         txhex = f.read()
     
     bs = BytesIO(bytes.fromhex(txhex))
-    tx = TX.parse(bs)
-    print(tx)
-
-    print("Is SegWit:", TX.isSegWit(bs))
-    
-    #with open('transaction_2.txt', 'r') as f2:
-    #    txhex2 = f2.read()
-    #bs2 = BytesIO(bytes.fromhex(txhex2))
-    #tx2 = TX.parse(bs2)
-    #print(tx2)
-
-# scrivere programma che prende una transazione e torna a ritroso fino alla coinbase transaction
-
+    if SegWitTx.isSegWit(bs):
+        print("SegWit transaction")
+        tx = SegWitTx.parse(bs)
+        print(tx)
+    else:
+        print("Non-SegWit transaction")
+        tx = TX.parse(bs)
+        print(tx)
+    print("Is coinbase: ", tx.isCoinbase(bs))
