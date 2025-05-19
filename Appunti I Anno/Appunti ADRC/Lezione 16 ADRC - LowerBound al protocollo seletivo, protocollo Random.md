@@ -51,8 +51,23 @@ Analizziamo il protocollo
 Vale il seguente teorema : 
 
 >[!teorem]- Teorema
->Il protocollo BGI completa il Broadcast entro $O(D)$ stages, e quindi il tempo di completamento è $O(D\log(n))\space w.h.p$
+>Il protocollo BGI completa il Broadcast entro $O(D)$ stages, e dato che ogni stage richiede tempo $\O(\log(n))$ , il tempo di completamento è $O(D\log(n))\space w.h.p$
 
 **dim** Per induzione sui livelli $L=1,\dots,D$
 
-FARE DIMOSTRAZIONE
+*Caso base* : Come sempre, la sorgente è l'unico nodo informato. Possiamo assumere che essa trasmetta con probabilità $1$
+
+*Caso induttivo* : Per ipotesi induttiva, assumiamo che entro lo stage $j\gt1$ tutti i nodi in $L_j$ siano informati. Mostriamo che è vero anche per $j+1$
+
+![[Pasted image 20250519102529.png|center|250]]
+
+Sia $y\in L_{j+1}$, vediamo la probabilità che $y$ venga informato nel time slot della fase $j+1$.
+Per definizione di $d-$regular layered, $y$ ha esattamente $d$ vicini nel livello $L_j$, i quali sono tutti informati per ipotesi induttiva
+
+Il nodo $y$ viene informato se e solo se, tra tutti i suoi vicini $d$ solo un trasmette e gli altri no.
+
+Prendiamo in considerazione l'evento $$\mathcal E=\text{"y viene informato in un timeslot"}$$
+Allora, la probabilità che $y$ venga informato è $$Pr[\mathcal E]=d\frac{1}{d}\left(1-\frac{1}{d}\right)^{d-1}$$
+
+
+
