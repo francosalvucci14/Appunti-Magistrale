@@ -94,13 +94,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness"
+              "title": "Outline of Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP"
             }
           },
           {
@@ -128,25 +128,6 @@
             }
           },
           {
-            "id": "db3d966c0e549588",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "Backlinks for Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP"
-            }
-          },
-          {
             "id": "6e01c17028e7d438",
             "type": "leaf",
             "state": {
@@ -161,8 +142,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -197,9 +177,10 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Ancora su PULL Protocoll per Clicque, Expanders.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Expanders.md",
     "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random.md",
     "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250519102529.png",
     "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
@@ -212,7 +193,6 @@
     "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250517094556.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516153008.png",
-    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
     "Pasted image 20250516120252.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516115941.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250516115744.png",
