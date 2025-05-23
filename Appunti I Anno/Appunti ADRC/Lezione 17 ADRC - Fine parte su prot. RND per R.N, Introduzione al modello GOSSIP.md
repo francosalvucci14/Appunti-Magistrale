@@ -120,3 +120,11 @@ Vale quindi la seguente disuguaglianza : $$\mathbb E[Y^{(\tau_1)}]=\mathbb E\lef
 Inoltre, dato che le v.a $Y_u^{(\tau_1)}$ sono **mutualmente indipendenti**, possiamo applicare il **Chernoff bound moltiplicativo** per una costante $\gamma=\gamma(\alpha)\gt0$ suff. grande, in modo da ottenere che, dopo $\tau_1=\gamma\log(n)$ round vale che $m_{\tau_1}\geq\alpha\log(n)$ w.h.p $\blacksquare$
 
 ##### SottoFase 1.2 : $\alpha\log(n)\leq m_t\leq\frac{n}{2}$
+
+La seconda fase, che inizia subito dopo la fase di Bootstrap, si riferisce al periodo in cui $\alpha\log(n)\leq m_t\leq\frac{n}{2}$
+
+in questa fase dimostreremo il seguente lemma
+
+>[!teorem]- Claim 3.5
+$\exists\beta$ suff. grande t.c dopo altri $\tau_2=\beta\log(n)$ round vale che $m_{t}\geq\frac{n}{2}$ w.h.p
+
