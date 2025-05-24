@@ -13,7 +13,7 @@ Per analizzare le due proprietà di cui sopra, dobbiamo introdurre un **concetto
 Il nostro interesse nel grafi $\Omega(1)$-expander è ben motivato dal seguente teorema
 
 >[!teorem]- Teorema 4.2
->COnsideriamo una famiglia di grafi infinita di dimensione crescente, ovvero 
+>Consideriamo una famiglia di grafi infinita di dimensione crescente, ovvero 
 >$$\{G_n(V_n,E_n):|V_n|=[n],n\geq1\}$$
 >Se esiste una costante assoluta $\alpha\gt0$ tale che, per un $n$ suff. grande, il grafo $G_n$ è un $\alpha$-expander allora il suo **diametro** è $O(\log(n))$. 
 >Inoltre, sotto le assunzioni di cui sopra, per **scollegare completamente** ogni sottoinsieme $S$ dal resto del grafo, il numero di **fault links** deve essere almeno lineare nella size di $S$
@@ -45,4 +45,11 @@ Dato che entrambe le visite (quella che parte da $s$ e quella che parte da $w$) 
 
 Allora data una qualsiasi coppia di nodi $u, v \in V$ esiste sempre un cammino di lunghezza $O(\log n)$ tra $u$ e $v$. 
 Ne segue quindi che il diametro di $G$ è $O(\log n),\quad\blacksquare$
+
+Dalla dimostrazione del teorema segue il seguente corollario : 
+
+>[!teorem]- Corollario 4.3
+>Consideriamo una famiglia di grafi infinita di dimensione crescente, ovvero 
+>$$\{G_n(V_n,E_n):|V_n|=[n],n\geq1\}$$
+>Se esiste una costante assoluta $\alpha\gt0$ tale che, per un $n$ suff. grande, il grafo $G_n$ è un $\alpha$-expander allora il **tempo di completamento** del protocollo FLOOD è pari a $O(\log(n))$
 
