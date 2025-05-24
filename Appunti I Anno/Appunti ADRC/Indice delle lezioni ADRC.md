@@ -15,7 +15,7 @@
 - [[Lezione 15 ADRC - Ancora su Radio Networks, protocollo "selettivo" per Broadcast]]
 - [[Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random]]
 - [[Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP]]
-- [[Lezione 18 ADRC - Expanders]]
+- [[Lezione 18 ADRC - Expanders e le loro Proprietà]]
 - [[Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus]]
 - [[Lezione 20 ADRC (I lezione Pepè) - PRAM Model, Ordinamento, Max e Prefix Sum]]
 - 
