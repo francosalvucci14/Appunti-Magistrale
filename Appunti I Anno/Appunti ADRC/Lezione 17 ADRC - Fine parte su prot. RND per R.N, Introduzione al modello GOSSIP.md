@@ -89,7 +89,7 @@ A questo punto, la dimostrazione si divide in due parti :
 
 #### Prima Fase : $m_t\leq\frac{n}{2}$
 
-Fintanto che $m_t\leq\frac{n}{2}$ abbiamo che $$\mathbb E[m_{t+1}|I_{t}=m_{t}]=m_{t}+\sum\limits_{u\in V\setminus I_{t}}\frac{m_{t}}{n}\geq m_{t}+(n-m_{t})\frac{m_{t}}{n}\geq\frac{3}{2}m_t$$
+Fintanto che $m_t\leq\frac{n}{2}$ abbiamo che $$\mathbb E[m_{t+1}|I_{t}=m_{t}]=m_{t}+\sum\limits_{u\in V\setminus I_{t}}\frac{m_{t}}{n}\geq m_{t}+(n-m_{t})\frac{m_{t}}{n}\geq\frac{3}{2}m_t\quad(2)$$
 Questa disuguaglianza ci dice che, ad ogni round, il numero di nodi informati cresce almeno di un **fattore costante** in media.
 
 In particolare, srotolando l'espressione si ottiene che $$m_{t}\geq\frac{3}{2}m_{t-1}\geq\left(\frac{3}{2}\right)^2m_{t-2}\geq\dots\geq\left(\frac{3}{2}\right)^t$$
@@ -128,3 +128,31 @@ in questa fase dimostreremo il seguente lemma
 >[!teorem]- Claim 3.5
 $\exists\beta$ suff. grande t.c dopo altri $\tau_2=\beta\log(n)$ round vale che $m_{t}\geq\frac{n}{2}$ w.h.p
 
+**dim**
+
+Dobbiamo procedere round-per-round.
+
+Fissiamo un round $t\geq\tau_1$, e sia $m_t=I_t$ (notiamo che $I_t$ non è una v.a).
+Allora, per ogni $u\in V\setminus I_t$, consideriamo la v.a $$Y_u^{(\tau_1)}=1\iff\text{u è informato al round }\tau_1+1$$
+Grazie all'equazione $(2)$ sappiamo che $$\mathbb E[m_{t+1}]\geq\frac{3}{2}m_t\geq\alpha\log(n)$$
+Inoltre, le v.a $Y_u^{(\tau_1)}$ sono mutualmente indipendenti, e quindi possiamo applicare il Chernoff Bound nel seguente modo $$Pr\left(m_{t+1}\leq(1-\delta)\frac{3}{2}m_t\right)\leq e^{-\frac{\delta^{2}}{2}\frac{3}{2}m_{t}}\leq e^{-\frac{\delta^{2}}{2}\alpha\log(n)}= n^{-\frac{\delta^2}{2}\alpha}=n^{-c}$$
+Ponendo $\delta\geq\frac{1}{3}$ si ottiene che $$Pr(m_{t+1}\leq m_t)\leq n^{-c}$$
+E di conseguenza si ottiene che $$Pr(m_{t+1}\gt m_t)\geq 1-n^{-c}\quad(3)$$
+A questo punto, per ottenere il claim consideriamo l'evento : 
+$$\mathcal E=\exists\space\tau_1 \leq t \leq \tau_2:m_{t+1} \lt (1.5 -\delta)m_t$$
+A questo punto applichiamo lo UnionBound, e otteniamo che la probabilità che questo evento $\mathcal E$ avvenga è : $$\sum\limits_{t=\tau_1}^{\tau_2}n^{-c}\leq\sum\limits_{t=\tau_1}^{\tau_2}n^{-2}\lt(\tau_2-\tau_1)n^{-2}\lt\frac{1}{n}$$
+### Seconda Fase : da $\frac{n}{2}$ a $n$
+
+La seconda fase è del tutto analoga alla prima, con la differenza che si dimostra che la decrescita dei nodi non informati è esponenziale nel tempo.
+
+Si fissi un round $t \geq \tau_2= \beta \log (n)$. Essendo che dalla prima fase si ha che $m_{\tau_2}\geq\frac{n}{2}$ , si ha che un nodo NOT-INFORMED al tempo $t$ fa pull del messaggio e diventa INFORMED al tempo $t + 1$ con probabilità almeno $\frac{1}{2}$
+
+Sia $z_t = n − m_t$ il numero di nodi ancora non informati al tempo $t$, e sia per ogni nodo $v \in V \setminus I_t$ non informato $X^{(t)}_v$ la variabile aleatoria che vale $1$ se $v$ rimane non informato al round $t + 1$ e $0$ altrimenti. Allora, dato che $z_t \leq\frac{n}{2}$
+
+$$\mathbb E\left[X^{(t)}_v|z_t\right]=Pr\left(X^{(t)}_v=1\right)=\frac{z_t}{n}\leq\frac{1}{2}$$
+Sia $z_{t+1}$ il numero di nodi non informati al round $t + 1$.
+Vale che
+$$z_{t+1}\sum\limits_{v\in V\setminus I_t}X_v^{(t)}$$
+Allora, mediamente, si ha che il numero di nodi ancora non informati al round $t + 1$ è pari a
+$$E[z_{t+1} |z_t ] \leq\frac{z_t}{2}\leq\frac{n}{4}$$
+Da qui in poi applichiamo il Chernoff Bound per ottenere i risultati in concentrazione.
