@@ -146,6 +146,20 @@
               "icon": "links-coming-in",
               "title": "Backlinks for Lezione 18 ADRC - Expanders e le loro Proprietà"
             }
+          },
+          {
+            "id": "dd5827899be0cc1f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Expanders e le loro Proprietà.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Lezione 18 ADRC - Expanders e le loro Proprietà"
+            }
           }
         ],
         "currentTab": 1
@@ -183,6 +197,8 @@
   },
   "active": "be8400b7d3a19748",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250524150259.png",
+    "Appunti I Anno/Appunti ADRC/img/Pasted image 20250524145530.png",
     "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
     "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Expanders e le loro Proprietà.md",
     "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
@@ -224,7 +240,6 @@
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/script_es1.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/script.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/opcodes.cfg",
-    "Pasted image 20250426154647.png",
     "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
     "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
     "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md"
