@@ -13,6 +13,6 @@ Lezioni 9-11 esercitazioni coding
 - [[Lezione 14 PCD - Crittografia a Curve Ellittiche]]
 - [[Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness]]
 - [[Lezione 17 PCD - La scalabilità di Bitcoin, Payment Channels e Lightnin Network]]
-- [[Lezione 18 PCD - Routing dei pagamenti in una L.N]]
-- [[Lezione 19 PCD -]]
+- [[Lezione 18 PCD - Routing dei pagamenti in una L.N, Hash Time-Locked Contracts]]
+- [[Lezione 19 PCD - Reti Bitcoin]]
 - 
