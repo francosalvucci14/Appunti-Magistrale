@@ -15,7 +15,8 @@
               "state": {
                 "file": "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus"
@@ -112,54 +113,6 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
-          },
-          {
-            "id": "6e01c17028e7d438",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "Tags"
-            }
-          },
-          {
-            "id": "9aad5b598ad85c9d",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Expanders e le loro Proprietà.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "Backlinks for Lezione 18 ADRC - Expanders e le loro Proprietà"
-            }
-          },
-          {
-            "id": "dd5827899be0cc1f",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "Outgoing links from Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus"
-            }
           }
         ],
         "currentTab": 1
@@ -195,7 +148,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250526111241.png",
     "Pasted image 20250526111238.png",

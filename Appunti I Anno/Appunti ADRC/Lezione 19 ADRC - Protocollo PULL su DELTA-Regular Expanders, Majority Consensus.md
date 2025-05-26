@@ -45,5 +45,50 @@ Il problema di trovare un *agreement* tra i nodi di una rete distribuita è uno 
 
 Qui studieremo questo problema, noto con il nome di **Majority Consensus Problem**, e vedremo un protocollo per tale problema, chiamato $k$-MAJ
 
+Vediamo il problema in modo formale.
+
+Sia $G=([n],E)$ un grafo, $C=\{0,1\}$ l'insieme binario di colori e sia $\hat{x}:[n]\to C$ un *coloramento* iniziale dei nodi di $G$.
+Il goal algoritmico qui è progettare un protocollo semplice ed efficiente per il *Majority Consensus*.
+
+in questo task, assumiamo che il coloramento iniziale abba un certo *bias* $s$ verso un qualche colore di maggioranza. Il goal è far si che il sistema **converga** ad una configurazione **monocromatica** dove tutti i nodi ottengono il colore di maggioranza.
+
+Chiariamo il concetto di bias di una configurazione.
+Data una configurazione $\hat{x}$, per ogni colore $j\in C$ definiamo $x(j)$ come la dimensione del $j$-esimo colore, ovvero il numero di nodi aventi colore $j$.
+
+Assumendo che $x(1)\geq x(2)$, il bias di $\hat{x}$ è definito come $$x(1)=\frac{n}{2}+s\implies s=x(1)-\frac{n}{2}$$
+Definiamo ora, in modo formale, il problema del $l$-Majority-Consensus : 
+
+>[!definition]- $l$-Majority-Consensus
+>Dato un sistema distribuito $G=([n],E)$, il problema $l$-Majority-Consensus è definito dalla seguente proprietà.
+>Partendo da un qualunque coloramento iniziale $\hat{x}:[n]\to C$ avente bias $s(\hat{x})\geq l$, il sistema **deve convergere** a una configurazione stabilein cui tutti i nodi **supportano** (hanno) il colore di maggioranza.
+
+Definiamo ora il protocollo $k$-MAJ
+
+**Protocollo** $k$-MAJ
+- Ad ogni round $t$, ogni nodo sceglie indipendentemente $k$ vicini (incluso se stesso e con ripetizioni) u.a.r e ricolora se stesso in accordo alla maggioranza calcolata tra i nodi scelti.
+
+Possiamo dimostrare che $k$-MAJ non produce alcuna deriva verso il colore di maggioranza, non importa quale sia il bias attuale del sistema: tradotto, il bias non aumenta **in media!** 
+
+Questo fatto ha due conseguenze principali. 
+In primo luogo vale la regola che
+$$Pr(\text{il sistema converge al colore di magg.})=\frac{x_0(1)}{n},x_0(1)=\text{majority size al tempo }t=0$$
+Questo implica che, anche partendo da un bias $s = \Omega(n)$, la probabilità di errore delle due dinamiche è ancora maggiore di una costante assoluta.
+
+La seconda cattiva notizia è che le dinamiche di cui sopra sono molto lente a convergere: richiedono un numero **polinomiale** di passi! 
+Questo fatto è piuttosto difficile da dimostrare ma è essenzialmente dovuto al fatto che, come osservato in precedenza, la dinamica non ha una deriva attesa e la sua convergenza è dovuta solo alla casualità (imprevedibile) del processo.
+
+Per i fatti di cui sopra, ci concentreremo sul $3$-MAJ.
 
 ## Unbalanced $2$-coloring with $3$-MAJ
+
+Analizziamo il $k$-MAJ nel caso del $2$-coloramento, con $k=3$
+
+>[!definition]- Definizione 6.3
+>Per un $2$-coloramento $\hat{x}:[n]\to\{r,b\}$, diciamo che $\hat{x}$ è $\omega$-sbilanciato se il suo bias è tale da avere $s(\hat{x})\geq\omega$
+
+Nel prossimo lemma dimostreremo che, se la config. inziale è sufficientemente sbilanciata, allora il $3$-MAJ risolve il problema del Majority Consensus entro $O(\log(n))$ round w.h.p
+
+>[!teorem]- Lemma 6.4
+>Se $G\equiv K_n$ e il $2$-coloramento inziale è $\Omega(\sqrt{n\log(n)})$-sbilanciato, allora il $3$-MAJ converge al colore di maggioranza dopo $O(\log(n))$ round w.h.p
+
+
