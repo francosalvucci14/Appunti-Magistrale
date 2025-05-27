@@ -91,4 +91,35 @@ Nel prossimo lemma dimostreremo che, se la config. inziale è sufficientemente s
 >[!teorem]- Lemma 6.4
 >Se $G\equiv K_n$ e il $2$-coloramento inziale è $\Omega(\sqrt{n\log(n)})$-sbilanciato, allora il $3$-MAJ converge al colore di maggioranza dopo $O(\log(n))$ round w.h.p
 
+**dim**
 
+Sia $X_t$ la v.a. che conta il numero di nodi **rossi** al tempo $t$.
+Per ogni nodo $i$ si $Y_i$ la v.a indicatrice dell'evento "nodo $i$ è **rosso** al prossimo step".
+Per ogni $a=0,1,\dots,n$ vale che $$Pr(Y_i=1|X_t=a)=\underbrace{\left(\frac{a}{n}\right)^{3}}_{\text{se 3 nodi scelgono rosso}}+\underbrace{\overbrace{\binom{3}{2}\left(\frac{a}{n}\right)^{2}}^{\text{2 su 3 scelgono rosso}}\overbrace{\left(\frac{n-a}{n}\right)}^{\text{l'altro sceglie blu}}}_{\text{restanti}}$$
+Quindi, il numero atteso di nodi colorati di **rosso** al prossimo time step è : $$\mathbb E[X_{t+1}|X_t=a]=\left(\frac{a}{n}\right)^2(3n-2a)\quad(5)$$
+W.l.o.g assumiamo che il **rosso** sia il colore di minoranza. Dividiamo l'analisi in tre fasi in accordo al range i minoranza in cui cade il valore $a$
+
+### Analisi : Fase 1 - $a$ sta nel range da $\frac{n}{2}-\Theta(\sqrt{n\log(n)})$ a $\frac{n}{4}$
+
+Supponiamo che il numero di nodi colorati di rosso sia $X_t=a$ per qualche $a=n/2-s$, dove $c\sqrt{n\log(n)}\leq s\leq n/4$ per una qualche costante positiva $c$.
+
+Dimostreremo che $X_{t+1}\leq n/2-(9/8)s$ w.h.p
+
+Osserviamo che la funzione $$f(a)=a^2(3n-2a)$$è *crescente* per ogni $0\lt a\lt n$
+Quindi, per ogni valore $a\leq n/2-s$ abbiamo che : $$\begin{align}\mathbb E[X_{t+1}|X_t=a]&=\left(\frac{a}{n}\right)^2(3n-2a)\leq\left(\frac{n}{2}-s\right)^2(3n-2(n/2-s))\\&=\frac{n}{2}-\frac{3}{2}s+2\frac{s^3}{n^2}\leq\frac{n}{2}-\frac{5}{4}s\end{align}$$dove l'ultima disuguaglianza vale perchè $s\leq n/4$
+
+Ora andrebbe applicato il Chernoff bound (forma additiva) dato che le $Y_i$ sono tutte indipendenti condizionate a $X_t$, usando come variabili $$\mu=\frac{n}{2}-\frac{5}{4}s,\lambda=\frac{s}{8}$$ma questa parte viene omessa.
+
+### Analisi : Fase 2 - $a$ sta nel range da $n/4$ a $O(\log(n))$
+
+Se $X_t=a$ con $a\leq(1/4)n$, da $(5)$ otteniamo $$\begin{align}\mathbb E[X_{t+1}|X_t=a]&=\left(\frac{a}{n}\right)^{2}(3n-2a)\\&\leq a\left(\frac{n/4}{n^2}\right)(3n)\leq\frac{3}{4}a\end{align}$$
+Anche qui applichiamo il Chernoff Bound (forma moltiplicativa) con $$\mu=\frac{3}{4}a,\delta=\frac{1}{20}$$(anche qui però è omesso)
+
+Quindi fintanto che $a=\Omega(\log(n))$ allora il numero di nodi **rossi** ***decresce esponenzialmente*** w.h.p.
+Ragionando come nella fase precedente otteniamo che dopo ulteriori $O(\log(n))$ time steps il numero di nodi **rossi** sarà $O(\log(n))$
+
+### Analisi : Fase 3 - $a$ sta nel range da $O(\log(n))$ a $0$
+
+Osserviamo che $a=O(\log(n))$, in eq. $(5)$ otteniamo che $$\mathbb E[X_{t+1}|X_t=a]\leq\frac{c}{n}$$per una qualunque costante positiva $c\gt0$.
+Quindi, usando la Markov Inequality con $$t=1,\mu=\frac{c}{n}$$
+otteniamo che $$Pr(X_{t+1}\geq1|X_t=a)\leq\frac{c}{n}$$e poiché $X_{t+1}$ è a valori interi ne consegue che tutti i nodi sono colorati di **blu** w.h.p $\blacksquare$
