@@ -45,6 +45,47 @@ Qui studiamo un'approccio probabilistico che risolve il problema della Leader El
 
 ## RLE in Grafi non etichettati
 
+L'idea del protocollo è la seguente : ogni nodo sceglie u.a.r un numero in $[m]$, tale numero diventerà l'ID del nodo. 
+Dopo questa fase di *labeling*, si procede esattamente come la controparte deterministica.
+
+Descriviamo ora, e in modo formale il protocollo randomizzato, su un modello sincrono : 
+
+**Randomize Protocol RLE** $G(V,E),|V|=n,|E|=m$
+- Fase $0$ : Wake-Up : tutti i nodi vengono attivati
+- Fase $1$ : Ogni nodo $v$ sceglie u.a.r un intero $j_v\in[m]$
+- Fase $2$ : Ogni nodo esegue un protocollo deterministico fissato per il $LE$ assumendo il labeling dei nodi come $\{j_v:v\in V\}$
+
+### Analisi del Protocollo
+
+Analizziamo la correttezza del protocollo $RLE$.
+
+Per la prima volta, non possiamo dimostrare che il protocollo è sempre corretto, ovvero *converge* sempre a uno stato finale.
+Infatti, si può facilmente verificare che, nel possibile scenario in cui ogni nodo dopo la fase $2$, sceglie la stessa etichetta $m$, il protocollo fallisce! 
+
+Chiaramente, questo evento è estremamente improbabile, ma è possibile!
+
+Il nostro primo passo è quello di ricavare una condizione specifica, cioè un evento, che sia sufficiente a sostenere che, assumendo che quell'evento si verifichi, il protocollo funzioni correttamente. Nel nostro caso, osserviamo che una condizione sufficiente (non necessaria) è il seguente evento : 
+
+$$\mathbb B=\text{"non esiste nessuna coppia di nodi differenti }v,w\in V,v\neq w:j_v=j_w\text{"}$$
+
+Infatti, come già osservato, se tutte le etichette $j_v$ sono mutualmente differenti, allora il protocollo nella fase $3$ funziona come un protocollo deterministico standard di Leader Election, sotto l'ipotesi $UniqueIdentifier(UI)$
+
+Possiamo vedere la Fase $2$ del protocollo come un classico processo *Balls-into-Bins* in cui ci sono $n$ palline (cioè le scelte casuali $j_v$) che vengono lanciate indipendentemente e u.a.r in $m$ bins (i possibili valori assunti dalle etichette). 
+
+La domanda che ci interessa è quanto è grande la probabilità che due palline diverse cadano nello stesso contenitore. 
+A tal fine, consideriamo un bin fisso $i \in [m]$. 
+
+Allora la probabilità dell'evento $$\mathbb B_{i}=\text{"Almeno due palle entrano nel bin i-esimo"}$$
+è 
+$$\begin{align}Pr(\mathbb B_{i})&=Pr\left(\bigcup_{k=2}^{n}\{\text{esattamente k palle finiscono nel bin i-esimo}\}\right)\\&=\sum\limits_{k=2}^{n}\binom{n}{k}\left(\frac{1}{m}\right)^{k}\underbrace{\left(1-\frac{1}{m}\right)^{n-k}}_{\leq1}\space\text{(eventi disgiunti)}\\&\leq\sum\limits_{k=2}^{n}\binom{n}{k}\left(\frac{1}{m}\right)^{k}\\&\leq\sum\limits_{k=2}^{n}\left(\frac{en}{k}\right)^{k}\left(\frac{1}{m}\right)^{k}\space\text{(Appx di Stirling)}\\&\leq\left(\frac{en}{2m}\right)^{2}+n\left(\frac{en}{3m}\right)^{3}=O\left(\frac{n^2}{m^2}+\frac{n^4}{m^3}\right)\end{align}$$
+Osserviamo che il bound di cui sopra si riferisce a un bin $i$-esimo fissato.
+Il protocollo va fallisce quando **almeno** uno dei bin ottiene l'evento $\mathbb B_i$ 
+
+Sia ora l'evento $\mathbb B$ l'unione degli eventi $\mathbb B_i$ al variare $i\in[m]$, quindi applicando lo Union Bound abbiamo che : $$\begin{align}Pr(\mathbb B)&\leq Pr\left(\bigcup_{i=1}^{m}\mathbb B_i\right)\\&\leq\sum\limits_{i=1}^{m}Pr(\mathbb B_{i})\\&\leq m\cdot Pr(\mathbb B_{i})\\&=m\cdot O\left(\frac{n^2}{m^2}+\frac{n^4}{m^3}\right)\\&=O\left(\frac{n^2}{m}+\frac{n^4}{m^2}\right)\end{align}$$
+A questo punto, fissando il parametro $m$ come $m\geq n^3$ otteniamo che 
+$$Pr(\mathbb B)=O\left(\frac{1}{n}\right)$$
+Abbiamo quindi dimostrato che il protocollo RLE con input $(G,n,n^3=m)$ esegue una corretta Leader Election su un anello di dimensione $n$, w.h.p $\blacksquare$
+
 ---
 # Maximal Indipendent Set Distribuito
 
