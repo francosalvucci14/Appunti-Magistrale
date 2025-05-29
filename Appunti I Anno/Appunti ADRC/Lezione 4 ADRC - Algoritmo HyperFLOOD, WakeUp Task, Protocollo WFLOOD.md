@@ -1,7 +1,7 @@
 # Ancora su Hypercube
 
 >[!definition]- Hypercube scalabile
->L'architettura Hypercube si dice **scalabile** se vale che $$deg(\mathcal H)=Diam(\mathcal H)=\text{ploy-log}$$
+>L'architettura Hypercube si dice **scalabile** se vale che $$deg(\mathcal H)=Diam(\mathcal H)=\text{poly-log}$$
 
 Ricordiamo che in $\mathcal H$ abbiamo che : 
 - $|V|=n=2^d$
