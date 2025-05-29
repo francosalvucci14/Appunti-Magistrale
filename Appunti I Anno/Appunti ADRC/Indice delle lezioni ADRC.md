@@ -18,4 +18,6 @@
 - [[Lezione 18 ADRC - Expanders e le loro Proprietà]]
 - [[Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus]]
 - [[Lezione 20 ADRC (I lezione Pepè) - PRAM Model, Ordinamento, Max e Prefix Sum]]
+- [[Lezione 21 ADRC (II lezione Pepè) - Map Reduce]]
+- [[Lezione 22 ADRC (III lezione Pepè) - Continuo algo. Sort, Grafi, MST e Maximal Matching]]
 - 

@@ -4,19 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "db54b8a887c8b76d",
+        "id": "43c5e5af9a5feab3",
         "type": "tabs",
         "children": [
           {
-            "id": "be8400b7d3a19748",
+            "id": "64bc8fa6ca4c6aa6",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf"
+                "file": "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "lucide-file-text",
-              "title": "ADRC-Merge"
+              "icon": "lucide-file",
+              "title": "Indice delle lezioni ADRC"
             }
           }
         ]
@@ -160,10 +163,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "64bc8fa6ca4c6aa6",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 22 ADRC (III lezione Pepè) - Continuo algo. Sort, Grafi, MST e Maximal Matching.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 21 ADRC (II lezione Pepè) - Map Reduce.md",
+    "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
+    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
     "Appunti I Anno/Appunti ADRC/testmerge1.md",
     "Appunti I Anno/Appunti ADRC/testmerge2.md",
     "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Expanders e le loro Proprietà.md",
@@ -183,11 +190,8 @@
     "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
     "Appunti I Anno/Appunti ADRC/Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube.md",
     "Appunti I Anno/Appunti ADRC/Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
     "Appunti I Anno/Appunti PCD/Lezione 19 PCD - Reti Bitcoin.md",
     "Appunti I Anno/Appunti PCD/Lezione 18 PCD - Routing dei pagamenti in una L.N, Hash Time-Locked Contracts.md",
-    "README.md",
-    "Appunti I Anno/Appunti PCD/Lezione 17 PCD - La scalabilità di Bitcoin, Payment Channels e Lightnin Network.md",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250527152439.png",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250527151636.png",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250527151134.png",
