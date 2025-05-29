@@ -11,15 +11,12 @@
             "id": "be8400b7d3a19748",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+                "file": "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf"
               },
-              "icon": "lucide-file",
-              "title": "Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus"
+              "icon": "lucide-file-text",
+              "title": "ADRC-Merge"
             }
           }
         ]
@@ -163,11 +160,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "be8400b7d3a19748",
+  "active": "2f460895308e6293",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
+    "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti I Anno/Appunti ADRC/testmerge1.md",
     "Appunti I Anno/Appunti ADRC/testmerge2.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
     "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Expanders e le loro Proprietà.md",
     "Appunti I Anno/Appunti ADRC/Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP.md",
     "Appunti I Anno/Appunti ADRC/Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random.md",
@@ -194,7 +192,6 @@
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250527151636.png",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250527151134.png",
     "Appunti I Anno/Appunti PCD/img/Pasted image 20250527151015.png",
-    "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250526111241.png",
     "Pasted image 20250526111238.png",
     "Appunti I Anno/Appunti ADRC/img/Pasted image 20250524150259.png",
@@ -209,7 +206,6 @@
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/transaction_script.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/script_es2.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/script_es1.py",
-    "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/script.py",
-    "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/opcodes.cfg"
+    "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/script.py"
   ]
 }
