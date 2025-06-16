@@ -54,8 +54,8 @@ Il **flag** DEVE essere un valore non nullo a 1 byte. Attualmente si DEVE usare 
 
 Il **witness** è una serializzazione di tutti i campi witness della transazione. A ogni input della transazione (TxIN) è associato un campo witness. Un campo witness inizia con un **var_int** per indicare il numero di elementi in pila per la TxIN. 
 È seguito da elementi di pila, e ogni elemento inizia con una **var_int** per indicare la lunghezza. 
-I dati del **testimone** NON sono script.
-$
+I dati del **witness** NON sono script.
+
 Dopo l'upgrade SegWit sono stati cambiati anche i tipi di Scritp, infatti vale : 
 - $\text{p2pk}\to None$ : infatti lo script $\text{p2pk}$ è stato rimosso
 - $\text{p2pkh}\to \text{p2wpkh}$ : **pay-to-witness-public-key-hash**
