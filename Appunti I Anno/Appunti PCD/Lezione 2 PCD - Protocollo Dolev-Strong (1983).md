@@ -16,7 +16,7 @@ Il protocollo in questione è **Dolev-Strong**, e funziona così :
 	- Se nel round $r-1$ ha ricevuto $\langle \hat{b}\rangle_{1,j_1,j_2,\dots,j_{r-1}}$ (con $r$ firme distinte, inclusa quella della sorgente)
 		- Se $\hat{b}\not\in\mathcal E_i$:
 			- Aggiungi $\hat{b}$ in $\mathcal E_i$
-			- Spedisci a tutti $\langle \hat{b}\rangle_{1,j_1,j_2,\dots,j_{r-1},i}$
+			- Invia a tutti $\langle \hat{b}\rangle_{1,j_1,j_2,\dots,j_{r-1},i}$ firmato da $i$
 
 **AL ROUND** $f+1$
 - Ogni nodo $i$:
