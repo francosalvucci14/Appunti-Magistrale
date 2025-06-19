@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali.md",
+                "file": "Appunti I Anno/Appunti PCD/Lezione 4 PCD - Protocollo \"randomizzato\" per BB.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali"
+              "title": "Lezione 4 PCD - Protocollo \"randomizzato\" per BB"
             }
           }
         ]
@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -164,9 +165,10 @@
   },
   "active": "64bc8fa6ca4c6aa6",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti PCD/Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI.md",
+    "Appunti I Anno/Appunti PCD/Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali.md",
     "Appunti I Anno/Appunti PCD/Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr.md",
     "Appunti I Anno/Appunti PCD/Lezione 20 PCD - Path Finding su LN.md",
-    "Appunti I Anno/Appunti PCD/Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 18 PCD - Routing dei pagamenti in una L.N, Hash Time-Locked Contracts.md",
     "Appunti I Anno/Appunti PCD/Lezione 17 PCD - La scalabilità di Bitcoin, Payment Channels e Lightnin Network.md",
@@ -179,7 +181,6 @@
     "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
     "Appunti I Anno/Appunti PCD/Lezione 5 PCD - State Machine Replication.md",
     "Appunti I Anno/Appunti PCD/Lezione 4 PCD - Protocollo \"randomizzato\" per BB.md",
-    "Appunti I Anno/Appunti PCD/Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI.md",
     "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti PCD/Lezione 1 PCD - Byzantine Broadcast Problem.md",
     "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",

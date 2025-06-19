@@ -34,9 +34,10 @@ Per ogni $r=0,\dots,k-1$:
 			- imposta $sb_i=\hat{b}$
 		- altrimenti
 			- imposta $sb_i=\bot$
+
 END FOR
 ROUND $3k$:
-	Ogni nodo $i$ ritorna in output $sb_i$
+- Ogni nodo $i$ ritorna in output $sb_i$
 
 Ora, per dimostrare la correttezza di tale protocollo, diamo l'enunciato di $4$ lemmi.
 
