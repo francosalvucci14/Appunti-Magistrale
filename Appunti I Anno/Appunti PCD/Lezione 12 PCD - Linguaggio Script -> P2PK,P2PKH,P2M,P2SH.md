@@ -71,8 +71,7 @@ Con questo script si può decidere di far spendere l'output della transazione a 
 
 Come detto in precedenza, questo script non viene molto usato perchè tutte le public key si trovano nel locking script.
 
-Il formato del locking_script è il seguente : 
-$$\text{Locking Script : } \underbrace{t}_{\text{soglia da rispettare}} <pk_1>\dots<pk_n>n\space CHECKMULTISIG$$
+Il formato del locking\_script è il seguente : $$\text{Locking Script : } \underbrace{t}_{\text{soglia da rispettare}} <pk_1>\dots<pk_n>n\space \text{CHECKMULTISIG}$$
 
 Mentre l'unlocking_script è
 $$\text{Unlocking Script : } <sig_1>\dots<sig_n>$$
