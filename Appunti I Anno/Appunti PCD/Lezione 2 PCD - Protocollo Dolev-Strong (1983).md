@@ -86,3 +86,4 @@ Diamo ora il teorema generale :
 
 **oss**
 Da notare che abbiamo usato le assunzioni PKI e Sincronia.
+
