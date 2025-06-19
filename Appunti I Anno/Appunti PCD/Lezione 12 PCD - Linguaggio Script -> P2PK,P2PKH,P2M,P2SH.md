@@ -73,6 +73,7 @@ Come detto in precedenza, questo script non viene molto usato perchè tutte le p
 
 Il formato del locking_script è il seguente : 
 $$\text{Locking Script : } \underbrace{t}_{\text{soglia da rispettare}} <pk_1>\dots<pk_n>n\space CHECKMULTISIG$$
+
 Mentre l'unlocking_script è
 $$\text{Unlocking Script : } <sig_1>\dots<sig_n>$$
 Esempio : Se voglio che su $3$ persone $2$ possano spendere l'output di una transizione, deve valere che :
