@@ -42,14 +42,14 @@ ROUND $3k$:
 Ora, per dimostrare la correttezza di tale protocollo, diamo l'enunciato di $4$ lemmi.
 
 >[!teorem]- Lemma 1
->Alla fine di ogni iterazione non possono esserci $2$ nodi onesti $i$ e $j$ tale che $i$ ah ricevuto $\leq\frac{2n}{3}$ voti per $0$ e $j$ ha ricevuto $\leq\frac{2n}{3}$ voti per $1$
+>Alla fine di ogni iterazione non possono esserci $2$ nodi onesti $i$ e $j$ tale che $i$ ha ricevuto $\geq\frac{2n}{3}$ voti per $0$ e $j$ ha ricevuto $\geq\frac{2n}{3}$ voti per $1$
 
 **Dimostrazione lemma 1**
 
 Sia $S_i$=insieme dei nodi che hanno inviato $0$ a $i$
 Sia $S_j=$ insieme dei nodi che hanno inviato $1$ a $j$
 
-Sappiamo che $$n\geq|S_i\cup S_j|=\underbrace{=}_{\text{I.-E.}}|S_i|+|S_j|-|S_{i}\cap S_j|\leq\frac{4n}{3}-|S_{i}\cap S_j|\implies|S_{i}\cap S_j|\geq\frac{n}{3}$$ e questo è **assurdo** $\blacksquare$
+Sappiamo che $$n\geq|S_i\cup S_j|\underbrace{=}_{\text{I.-E.}}|S_i|+|S_j|-|S_{i}\cap S_j|\geq\frac{4n}{3}-|S_{i}\cap S_j|\implies|S_{i}\cap S_j|\geq\frac{n}{3}$$ e questo è **assurdo** $\blacksquare$
 
 Ora, prima di passare al secondo Lemma, diamo un'importante definizione.
 
