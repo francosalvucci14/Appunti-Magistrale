@@ -66,16 +66,17 @@ Se un nodo onesto $i$ ha un bit $\hat{b}$ nel suo insieme $\mathcal E_i$ al roun
 
 ***dimostrazione lemma 2***
 
-Sia $i$ un nodo onesto che ha $\hat{b}$ in $\mathcal E_i$ al round $f+1$. Si identificano due casistiche :
-- *Caso (1)* :
+Sia $i$ un nodo onesto che ha $\hat{b}$ in $\mathcal E_i$ al round $f+1$.
+Si identificano due casistiche :
+- **Caso (1)** :
 	- Se $i$ ha inserito $\hat{b}$ in $\mathcal E_i$ in uno dei round precedenti, il lemma 1 implica che tutti i nodi onesti hanno $\hat{b}$ nel loro insieme $\mathcal E$ al round $f+1$
-- *Caso (2)* :
+- **Caso (2)** :
 	- Se $i$ ha inserito $\hat{b}$ in $\mathcal E_i$ nel round $f+1$, allora nel round $f$ deve essergli arrivato per forza $\langle \hat{b}\rangle_{1,j_1,j_2,\dots,j_{f}}$ con $f+1$ firme valide
 	- Una di queste firme deve essere er forza di un nodo onesto.
 	- Questo nodo onesto deve aver ricevuto $\hat{b}$ in un round precedente $t\lt f+1$. 
 	- Allora : 
 		- Tutti i nodi onesti, per il lemma 1 devono aver ricevuto $\hat{b}$ al round $t+1$
-$\square$
+- $\square$
 
 Diamo ora il teorema generale :
 

@@ -37,6 +37,6 @@ Il nuovo schema è quindi il seguente :
 	2. Alice, se la Blockchain ha almeno $x$ blocchi, dove $x$ è un numero sufficientemente maggiore del valore corrente del numero di blocchi della Blockchain
 3. Bob a sua volta costruisce una transazione con un output che può essere speso da :
 	1. Carol, se Carol esibisce una preimmagine di $h$
-	2. Bob, se la BLockchain ha almeno $x-\Delta$ blocchi, dove $\Delta$ è un numero piccolo (es. $6$)
+	2. Bob, se la BLockchain ha almeno $x-\Delta$ blocchi, dove $\Delta$ è un numero piccolo
 
 
