@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Appunti I Anno/Appunti PCD/Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr"
             }
           }
         ]
@@ -165,8 +165,11 @@
   },
   "active": "64bc8fa6ca4c6aa6",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti PROB/test.md",
+    "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
+    "Appunti I Anno/Appunti PCD/Lezione 14 PCD - Crittografia a Curve Ellittiche.md",
+    "Appunti I Anno/Appunti PCD/Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI.md",
     "README.md",
+    "Appunti I Anno/Appunti PROB/test.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
@@ -193,8 +196,6 @@
     "Appunti I Anno/Appunti PCD/Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali.md",
     "Appunti I Anno/Appunti PCD/Lezione 18 PCD - Routing dei pagamenti in una L.N, Hash Time-Locked Contracts.md",
     "Appunti I Anno/Appunti PCD/Lezione 17 PCD - La scalabilità di Bitcoin, Payment Channels e Lightnin Network.md",
-    "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
-    "Appunti I Anno/Appunti PCD/Lezione 14 PCD - Crittografia a Curve Ellittiche.md",
     "Appunti I Anno/Appunti PCD/Lezione 12 PCD - Linguaggio Script -> P2PK,P2PKH,P2M,P2SH.md",
     "Appunti I Anno/Appunti PCD/Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin.md",
     "Appunti I Anno/Appunti PCD/Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work.md",
@@ -202,7 +203,6 @@
     "Appunti I Anno/Appunti PCD/Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility.md",
     "Appunti I Anno/Appunti PCD/Lezione 5 PCD - State Machine Replication.md",
     "Appunti I Anno/Appunti PCD/Lezione 4 PCD - Protocollo \"randomizzato\" per BB.md",
-    "Appunti I Anno/Appunti PCD/Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI.md",
     "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding-Bitcoin-2/transaction_segwit.py",
