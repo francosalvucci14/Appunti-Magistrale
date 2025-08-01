@@ -208,3 +208,38 @@ Il teorema può essere generalizzato in questo modo :
 In conclusione, la presenza di componenti giganti dipende dal prodotto $p(n-1)$, ma cosa rapprensenta effettivamente $p(n-1)$?
 ## Erdos-Renyi : Grado dei nodi
 
+Per $i\in[n]$, se indichiamo con $\delta_i$ la v.a **che esprime il grado del nodo $i$**, abbiamo che il valore atteso del grado di un nodo è: $$\mathbb E[\delta_i]=\sum\limits_{j\in [n]\setminus\{i\}}[1p+0(1-p)]=\sum\limits_{j\in[n]\setminus\{i\}}p=(n-1)p$$
+Questo significa che, se $p$ è costante, il grado dei nodi cresce (in media) linearmente con il numero di nodi.
+
+Cerchiamo ora di capire se $G_{n,p}$ ben si presta a descrivere una rete sociale, costituita da tantissimi individui
+
+Se il grado medio di un nodo è $(n-1)p$, e $p$ è un valore costante, allora mediamente il numero di contatti di un individuo in una rete è proporzionale agli individui che costituiscono una rete sociale, il che non è propriamente ragionevole
+
+Per questa ragione, al fine di modellare significativamente reti reali di grandi dimensioni è opportuno che $p$ sia una funzione decrescente di $n$, del tipo $p=p(n)=\frac{\lambda}{n}$ per qualche costante positiva $\lambda$
+
+Fissato un intero $k\lt n$, vogliamo ora calcolare con quale probabilità un nodo in $G_{n,p}$ ha grado $k$
+
+Sia $i\in[n]$: la prob. che un nodo $i$ abbia grado $k$ è la probabilità che *esattamente* $k$ altri nodi siano adiacenti a $i$:
+- il numero di possibili $k$-uple di nodi scelti nell'insieme $[n]\setminus\{i\}$ è $\binom {n-1}{k}$ 
+- la prob che vi sia un arco fra $i$ e *ciascuno* dei nodi della $k$-upla è $p^k$
+- la prob che **non** vi sia un arco fra $i$ e *ciascuno* dei nodi non contenuto nella $k$-upla è $(1-p)^{n-k-1}$
+
+Mettendo tutto insieme quindi otteniamo che: 
+$$Pr(\delta_i=k)=\binom{n-1}{k}p^k(1-p)^{n-k-1}$$
+Sviluppando, otteniamo che:
+$$\begin{align}Pr(\delta_{i}=k)&=\binom{n-1}{k}p^{k}(1-p)^{n-k-1}\\\text{sostituiamo }\left(p=\frac{\lambda}{n}\right)\to&=\binom{n-1}{k}\left(\frac{\lambda}{n}\right)^{k}\left(1-\frac{\lambda}{n}\right)^{n-k-1}\\&=\frac{(n-1)(n-2)\dots(n-k)}{k!}\cdot\frac{\lambda^{k}}{n^{k}}\left(1-\frac{\lambda}{n}\right)^{n-k-1}\\\text{dato che }(1-x)\lt e^{-x}\to&\lt\frac{(n-1)(n-2)\dots(n-k)}{k!}\cdot\frac{\lambda^{k}}{n^{k}}\cdot e^{\frac{-\lambda(n-k-1)}{n}}\\&\lt\frac{n^{k}}{k!}\cdot\frac{\lambda^{k}}{n^{k}}\cdot e^{\frac{-\lambda(n-k-1)}{n}}\\\text{per n suff. grande}\to&\approx\frac{n^{k}}{k!}\cdot\frac{\lambda^{k}}{n^{k}}\cdot e^{-\lambda}\end{align}$$
+Quindi, per riassumere abbiamo che 
+$$Pr(\delta_i=k)\lt\frac{\lambda^{k}}{k!}\cdot e^{-\lambda}$$
+E dato che $k!\approx\sqrt{2\pi k}\cdot\left(\frac{k}{e}\right)^k$ (Approx. di Stirling), otteniamo che 
+$$Pr(\delta_i=k)\lt\frac{(\lambda\cdot e)^k}{\sqrt{2\pi k}\cdot k^k}\cdot e^{-\lambda}=\frac{e^{-\lambda}}{\sqrt{2\pi k}}\left(\frac{\lambda\cdot e}{k}\right)^k$$
+Dunque possiamo concludere che **la prob. che un generico nodo abbia grado $k$** decresce *molto velocemente* al crescere di $k$
+- Più precisamente, decresce come $k^{-k}$, ossia **decresce esponenzialmente in $k$**
+
+Adesso, ci chiediamo quale sia la frazione del numero di nodi che hanno grado $k$
+
+Per rispondere a questa nuova domanda, indichiamo con $F_k$ la v.a che esprime tale frazione, e indichiamo con $\delta_{i,k}$ la v.a composta in questo modo: 
+$$\delta_{i,k}=\begin{cases}1&\delta_i=k\\0&\text{altrimenti}\end{cases}$$
+Allora, per costruzione vale che $$F_k=\frac{1}{n}\sum\limits_{i\in[n]}\delta_{i,k}$$
+
+
+
