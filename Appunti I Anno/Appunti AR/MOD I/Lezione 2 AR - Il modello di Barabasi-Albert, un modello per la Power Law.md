@@ -187,3 +187,20 @@ Quindi
 $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)=f(k)\approx-\frac{dF(k)}{dk}=-\frac{1-p}{p}\left[-\frac{1}{1-p}\right]\left[\frac{1-p}{p}k+1\right]^{-\frac{1}{1-p}-1}$$che è proprio una **Power Law** con esponente $1+\frac{1}{1-p}$
 
 Quindi, abbiamo dimostrato effettivamente che il modello per il fenomeno Rich-Get-Richer esibisce effettivamente una Power Law $\blacksquare$ 
+
+## Conclusioni sull'analisi del modello
+
+Per analizzare il nostro modello Rich-Get-Richer, abbiamo approssimato mediante una funzione (deterministica e) continua la legge probabilistica che esprime la variazione del grado di un nodo fra due passi consecutivi, ma non abbiamo idea di quanto tale approssimazione si avvicini al modello disclreto e aleatorio
+
+È stato dimostrato che, nel modello Rich-Get-Richer che abbiamo proposto, **con alta probabilità la frazione del numero di nodi di grado $k$ è proporzionale a** $k^{-\frac{1}{1-p}-1}$, esattamente come nell'approssimazione che abbiamo discusso.
+
+## Impredicibilità della popolarità
+
+Nel tempo sono stati fatti vari esperimenti per mostrare l'**impredicibilità** (unpredictability) degli effetti Rich-Get-Richer.
+
+Nell'esperimento più famoso, sono riusciti a dimostrare che la fase iniziale del processo, ovvero quella di diventare popolari, **è molto fragile**.
+
+Il processo che conduce alla popolarità è **pesantemente sensibile alle condizioni iniziali**
+(ovvero dipende fortemente dalle condizioni iniziali)
+# La "Long Tail"
+
