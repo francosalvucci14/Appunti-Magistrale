@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -164,10 +165,11 @@
   },
   "active": "64bc8fa6ca4c6aa6",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
     "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250801094932.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250801094851.png",
     "Appunti I Anno/Appunti AR/MOD I/img",
@@ -180,7 +182,6 @@
     "Appunti I Anno/Appunti PCD/Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI.md",
     "README.md",
     "Appunti I Anno/Appunti PROB/test.md",
-    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
     "Appunti I Anno/Appunti CNS",
