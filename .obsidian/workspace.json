@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -163,10 +162,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "64bc8fa6ca4c6aa6",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
+    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
     "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",

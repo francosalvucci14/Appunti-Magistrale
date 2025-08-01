@@ -118,7 +118,6 @@ In generale vale che $G_{n,p}$ conterrà, **mediamente**, tanti più archi quant
 In particolare, **mediamente**, un nodo avrà tanti più vicini quanto più $p$ si avvicina a 1
 
 Non ci resta quindi che quantificare.
-
 ## Erdos-Renyi : Componenti Giganti
 
 Diamo una definizione. 
@@ -197,4 +196,15 @@ Ora, poichè vale che $$\lim_{n\to\infty}\left(1-\frac{\ln(64)}{n}\right)^{-\fra
 Allora, per $n$ suff. grande otteniamo che $$\left(1-\frac{\ln(64)}{n}\right)^{-\frac{n}{\ln(64)}(-\ln(64))}\approx e^{-\ln(64)}=64^{-1}$$
 E quindi otteniamo che $$Pr\left(X\lt\frac{n}{2}\right)\lt2^{n}[64^{-1}]^{\frac{3n}{16}}=2^{n}2^{-\frac{18n}{16}}=2^{-\frac{n}{8}}$$
 Da cui segue il teorema. $\blacksquare$
+
+Il teorema può essere generalizzato in questo modo : 
+
+1) Se $p(n-1)\lt1$ allora **quasi sicuramente** tutte le componenti connesse di $G_{n,p}$ hanno $O(\log(n))$ nodi
+2) Se $p(n-1)=1$ allora **quasi sicuramente** $G_{n,p}$ ha una componente connessa di $\approx n^{\frac{2}{3}}$ nodi
+3) Se $p(n-1)\gt1$ allora **quasi sicuramente** $G_{n,p}$ ha una componente connessa di $\Omega(n)$ nodi e tutte le altre hanno $O(\log(n))$ nodi
+
+"quasi sicuramente" significa che, al tendenre di $n$ all'infinito la prob. dell'evento tende a $1$
+
+In conclusione, la presenza di componenti giganti dipende dal prodotto $p(n-1)$, ma cosa rapprensenta effettivamente $p(n-1)$?
+## Erdos-Renyi : Grado dei nodi
 
