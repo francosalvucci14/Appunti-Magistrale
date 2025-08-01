@@ -173,3 +173,17 @@ Dato che al passo $t$ l'insieme dei nodi p $[t]=\{1,2,\dots,t\}$, sia allora $A_
 Vogliamo quindi calcolare $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)$$
 Per defizione $j\in A_{t}(k)\iff j\leq t,x_j(t)\geq k$, ma $x_j(t)=\frac{p}{1-p}\left[\left(\frac{t}{j}\right)^{1-p}-1\right]$ e quindi $x_j(t)\geq k$ quando: 
 $$\begin{align}&\frac{p}{1-p}\left[\left(\frac{t}{j}\right)^{1-p}-1\right]\geq k\\&\left(\frac{t}{j}\right)^{1-p}\geq\frac{(1-p)}{p}k+1\\&\frac{t}{j}\geq\left[\frac{(1-p)}{p}k+1\right]^{\frac{1}{1-p}}\\&j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\end{align}$$
+Quindi, $j\in A_{t}(k)\iff j\leq t,j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$, ma poichè $\frac{1-p}{p}k+1\gt1$ e $-\frac{1}{1-p}\lt0$ allora $\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\lt1$ , e quindi $t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\leq t$
+
+Abbiamo visto che $j\in A_{t}(k)\iff j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$ , di conseguenza $$A_t(k)=\left\{j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\right\}$$e di conseguenza $$
+|A_t(k)|=t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}
+$$
+Ritornando alla richiesta principale, vogliamo calcolare $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)$$
+Sia $F(k)=\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$
+
+Allora $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)=F(k)-F(k+1)=f(k)$$
+Possiamo approssiamare $f(k)$ con $-\frac{dF(k)}{dk}$, infatti $$F(k)-F(k+1)=-\left[-\frac{F(k)-F(k+1)}{1}\right]=-\left[\frac{F(k+1)-F(k)}{1}\right]\approx-\frac{dF(k)}{dk}$$
+Quindi 
+$$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)=f(k)\approx-\frac{dF(k)}{dk}=-\frac{1-p}{p}\left[-\frac{1}{1-p}\right]\left[\frac{1-p}{p}k+1\right]^{-\frac{1}{1-p}-1}$$che è proprio una **Power Law** con esponente $1+\frac{1}{1-p}$
+
+Quindi, abbiamo dimostrato effettivamente che il modello per il fenomeno Rich-Get-Richer esibisce effettivamente una Power Law $\blacksquare$ 
