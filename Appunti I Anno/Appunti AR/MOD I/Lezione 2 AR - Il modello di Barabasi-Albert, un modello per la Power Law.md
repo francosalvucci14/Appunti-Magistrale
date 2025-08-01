@@ -103,3 +103,73 @@ Il modello generativo che abbiamo appena descritto prende il nome di **modello d
 Resta quindi da verificare se i grafi generati in accordo a questo modello esibiscono una Power Law, ovvero che la funzione che descrive il numero atteso di nodi di grado $k$ si comporta come l'inverso di un polinomio
 
 Per falro, occorre formalizzare: per ogni coppia di interi $i,j:i\gt j,i\geq2$ introduciamo la v.a $$d_{ij}=\begin{cases}1&(i,j)\in E\\0&\text{altrimenti}\end{cases}$$
+Allora, in accordo alle regole che abbiamo descritto in precedenza, vale che: 
+$$\begin{align}Pr(d_{ij}=1)&=p\cdot\text{"prob di scegliere nodo j"}+(1-p)\cdot\text{"prob scelgo h t.c }d_{hj}=1\text{"}\\&=\frac{p}{i-1}+(1-p)Pr\left(\bigcup_{h\lt i:(h,j)\in E}\{\text{scelgo h}\}\right)\\&=\frac{p}{i-1}+(1-p)\sum_{1\leq h\lt i:(h,j)\in E}Pr(\text{viene scelto h})\quad\text{(perchè sono eventi disgiunti)}\\&=\frac{p}{i-1}+\frac{1-p}{i-1}\sum_{1\leq h\lt i:(h,j)\in E}1\\&=\frac{p}{i-1}+\frac{1-p}{i-1}\sum_{1\leq h\lt i}d_{hj}\end{align}$$
+Valgono alcune osservazioni chiave: 
+1) **Oss.1**: Ha senso calcolare $Pr((i,j)\in E)$ per $i\gt1$ (questo perchè il nodo $1$ non ha archi uscenti)
+2) **Oss.2**: Ogni nodo $i\gt1$ ha esattamente un arco uscente. Quindi deve valere che $$Pr(\exists j\lt i:(i,j)\in E)=1$$Infatti abbiamo che:
+	1) $Pr(\exists j\lt i:(i,j)\in E)=\sum_{1\leq j\lt i}Pr((i,j)\in E)$, e procedendo per induzione otteniamo che:
+		1) caso base $i=2$: $\sum_{1\leq j\lt 2}Pr((2,j)\in E)=1$ per costruzione
+		2) caso induttivo: assumendo che $\sum_{1\leq j\lt a}Pr((a,j)\in E)=1,\forall a\leq i-1$ abbiamo che: $$\begin{align}\sum_{1\leq j\lt i}Pr((i,j)\in E)&=\sum_{1\leq j\lt i}\left[\frac{p}{i-1}+\frac{1-p}{i-1}\sum_{1\leq h\lt i}d_{hj}\right]\\&=\sum_{i\leq j\lt i}\frac{p}{i-1}+\sum_{i\leq j\lt i}\left[\frac{1-p}{i-1}\sum_{1\leq h\lt i}d_{hj}\right]\\&=\frac{(i-1)p}{i-1}+\frac{1-p}{i-1}\sum_{1\leq h\lt i}\sum_{1\leq j\lt i}d_{hj}\quad(1)\\&=p+\frac{1-p}{i-1}\sum_{1\leq h\lt i}1=p+(1-p)=1\end{align}$$dove $(1)$ vale perchè, per ogni $h\lt i$ ha esattamente un arco uscente e $\substack\sum_{i\leq j\lt i}d_{hj}=1$
+3) **Oss.3**; Possiamo così interpretare la regola per costruire il grafo: 
+	1) **Il nodo $j$ a cui connettere $i$ è scelto u.a.r con prob. $p$, e con prob. proporzionale al grado di $j$ con prob. $(1-p)$**
+	2) che esprire chiaramente il fenomeno **Rich-Get-Richer**
+
+## Dimostriamo la Power Law
+
+Siamo pronti a dimostrare che il modello che abbiamo definito esibisce una Power Law
+
+La dimostrazione procederà attraverso i seguenti $4$ passaggi:
+1) Definizione della legge aleatoria che esprime la variazione del grado di un nodo nel tempo
+2) *Approssimazione* deterministica e continua della legge al punto $1)$, che porterà ad una equazione differenziale (\*bestemmiando\*)
+3) Risoluzione dell'equazione differenziale: la soluzione costituirà un'approssimazione della funzione che esprime il grado di un nodo nel tempo
+4) Individuazione della Power Law
+
+### 1) Legge aleatoria per la variazione del grado
+
+Sia $D_j(t)$ la v.a che esprime il numero di archi entranti nel nodo $j$ al passo $t$ di generazione del grafo, ovviamente $D_j(t)$ è definita per $t\geq j$ e $\forall j\geq1$
+
+Al passo $t=j$, il grado entrante di $j$ è $0:D_j(j)=0$ (**condizione iniziale**)
+
+Esprimiamo ora la **variazione attesa** nel tempo della v.a $D_j(t)$:
+- Al passo $t+1$, il grado di $j$ può essere inviariato rispetto al passo $t$ oppure può essere aumentato di una unità, e $D_j(t+1)=D_j(t)+1\iff(t+1,j)\in E$ 
+- Quindi vale che: $$Pr(D_j(t+1)-D_j(t)=1)=Pr(d_{hj}=1)=\frac{p}{t}+\frac{1-p}{t}\sum_{1\leq h\lt t+1}d_{hj}=\frac{p}{t}+\frac{1-p}{t}D_j(t)$$
+### 2) Approssimazione deterministica e continua
+
+Abbiamo calcolato prima che $$Pr(D_j(t+1)-D_j(t)=1)=\frac{p}{t}+\frac{1-p}{t}D_j(t)$$con condizione iniziale $D_j(j)=0$
+
+Per ogni $j\geq1$ definiamo una funzione *discreta deterministica* $X_j(t)$ che "assomiglia" a $D_j(t)$: 
+- la funzione $X_j(t)$ è definita per $t\geq j$
+- $X_j(j)=0$
+- $X_j(t+1)-X_j(t)=\frac{p}{t}+\frac{1-p}{t}X_j(t)$
+
+A questo punto, approssimiamo il comportamento di $X_j(t)$ con una funzione $x_j(t)$, definita su un dominio continuo e ancora definita per $t\geq j$:
+- $x_j(j)=0$
+- $\frac{d}{dt}x_j(t)=\frac{p}{t}+\frac{1-p}{t}x_j(t)$, che è una equazione differenziale
+
+**Oss** : non è detto che l'andamento della funzione $x_j(t)$ sia effettivamente vicino al comportamento della variabile aleatoria $D_j(t)$
+
+### 3) Risoluzione dell'equazione differenziale
+
+Dobbiamo quindi risolvere l'equazione differenziale $$\frac{d}{dt}x_j(t)=\frac{p}{t}+\frac{1-p}{t}x_j(t)$$
+Svolgiamo i calcoli: 
+$$\frac{d}{dt}x_j(t)=\frac{p}{t}+\frac{1-p}{t}x_j(t)\implies\frac{d}{dt}x_j(t)=\frac{1}{t}\left[p+(1-p)x_j(t)\right]$$
+E quindi 
+$$\frac{1}{p+(1-p)x_j(t)}\cdot\frac{dx_j(t)}{dt}=\frac{1}{t}$$
+Integrando otteniamo che 
+$$\int\frac{1}{p+(1-p)x_j(t)}\cdot\frac{dx_j(t)}{dt}dt=\int\frac{1}{t}dt$$
+Svolgendo i calcoli dell'integrale otteniamo che: 
+$$\begin{align}&\int\frac{dx_j(t)}{p+(1-p)x_j(t)}dt=\int\frac{1}{t}dt\\\text{molt. a sx e dx per 1-p}\\&\int\frac{(1-p)dx_j(t)}{p+(1-p)x_j(t)}dt=(1-p)\int\frac{1}{t}dt\\\text{sostituiamo }y=p+(1-p)x_j(t)\\\text{da cui otteniamo che }dy=(1-p)dx_j(t)\\&\int\frac{dy}{y}=(1-p)\int\frac{1}{t}dt\end{align}$$
+Da cui si ottiene come risultato $$\begin{align}&\ln[p+(1-p)x_j(t)]=(1-p)\ln(t)+c\\&\ln[p+(1-p)x_j(t)]=\ln(t)^{1-p}+c\\\text{esponenziando}\\&p+(1-p)x_j(t)=t^{1-p}e^c\end{align}$$
+Prendendo $H=e^c$, e sfruttando la condizione iniziale $x_j(j)=0$, otteniamo $$p=Hj^{1-p}\implies H=\frac{p}{j^{1-p}}$$
+E per concludere otteniamo che: 
+$$x_j(t)=\frac{p}{1-p}\left[\left(\frac{t}{j}\right)^{1-p}-1\right]$$
+### 4) Individuazione della Power Law
+
+Calcoliamo infine, nel modello deterministico continuo, dati $k,t$ quale frazione dei nodi, al passo $t$ ha "grado" $k$
+
+Dato che al passo $t$ l'insieme dei nodi p $[t]=\{1,2,\dots,t\}$, sia allora $A_t(k)=\{j\leq t:x_j(t)\geq k\}$
+
+Vogliamo quindi calcolare $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)$$
+Per defizione $j\in A_{t}(k)\iff j\leq t,x_j(t)\geq k$, ma $x_j(t)=\frac{p}{1-p}\left[\left(\frac{t}{j}\right)^{1-p}-1\right]$ e quindi $x_j(t)\geq k$ quando: 
+$$\begin{align}&\frac{p}{1-p}\left[\left(\frac{t}{j}\right)^{1-p}-1\right]\geq k\\&\left(\frac{t}{j}\right)^{1-p}\geq\frac{(1-p)}{p}k+1\\&\frac{t}{j}\geq\left[\frac{(1-p)}{p}k+1\right]^{\frac{1}{1-p}}\\&j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\end{align}$$
