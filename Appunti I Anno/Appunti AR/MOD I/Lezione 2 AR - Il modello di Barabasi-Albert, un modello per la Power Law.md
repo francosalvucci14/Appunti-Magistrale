@@ -187,13 +187,11 @@ Quindi
 $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)=f(k)\approx-\frac{dF(k)}{dk}=-\frac{1-p}{p}\left[-\frac{1}{1-p}\right]\left[\frac{1-p}{p}k+1\right]^{-\frac{1}{1-p}-1}$$che è proprio una **Power Law** con esponente $1+\frac{1}{1-p}$
 
 Quindi, abbiamo dimostrato effettivamente che il modello per il fenomeno Rich-Get-Richer esibisce effettivamente una Power Law $\blacksquare$ 
-
 ## Conclusioni sull'analisi del modello
 
 Per analizzare il nostro modello Rich-Get-Richer, abbiamo approssimato mediante una funzione (deterministica e) continua la legge probabilistica che esprime la variazione del grado di un nodo fra due passi consecutivi, ma non abbiamo idea di quanto tale approssimazione si avvicini al modello disclreto e aleatorio
 
 È stato dimostrato che, nel modello Rich-Get-Richer che abbiamo proposto, **con alta probabilità la frazione del numero di nodi di grado $k$ è proporzionale a** $k^{-\frac{1}{1-p}-1}$, esattamente come nell'approssimazione che abbiamo discusso.
-
 ## Impredicibilità della popolarità
 
 Nel tempo sono stati fatti vari esperimenti per mostrare l'**impredicibilità** (unpredictability) degli effetti Rich-Get-Richer.
@@ -204,3 +202,36 @@ Il processo che conduce alla popolarità è **pesantemente sensibile alle condiz
 (ovvero dipende fortemente dalle condizioni iniziali)
 # La "Long Tail"
 
+Analizziamo la questione della popolarità da un'altro punto di vista, il punto **economico**
+
+La distribuzione della popolarità può avere importanti effetti sulle attività commerciali, in particolar modo sui "magazzini virtuali", ovvero quelle società che commercializzano elevate quantità di prodotti che non potrebbero essere gestite da magazzini fisici
+
+Il punto qui è: uno di detti venditori guadagna di più vendendo **tante copie di pochi libri molto popolari** oppure vendendo **poche copie di tantissimi libri poco popolari**?
+
+Invece che interessarci a quanti sono i nodi di grado $k$, ci interessa ora sapere se, complessivamente, il volume di affari derivante dai nodi poco popolari (quelli di grado "basso") equivale al volume di affari dei nodi molto popolari (quelli di grado "alto").
+
+Per gestire questa questione, quello che possiamo fare è ordinare i nodi per popolarità non crescente.
+
+Andiamo quindi a creare un grafico, dove:
+- lungo l'**asse delle ascisse** elenchiamo i nodi, ordinati per popolarità non crescente: il primo sarà il più popolare, seguito dal secondo più popolare e così via
+- lungo l'**asse delle ordinate** elenchiamo le popolarità dei nodi: in corrispondenza al nodo $i$ indicheremo il grado del nodo $i$
+
+I nodi poco popolari formeranno quindi la cosidetta **coda** del grafico appena costruito.
+
+Il volume di affari che ci interessa è, grosso modo, l'area della regione compresa fra la coda del grafico e l'asse delle $x$
+
+Ma com'è fatto questo grafico? Possiamo, in qualche modo, riutilizzare quanto studiato circa la distribuzione dei gradi dei nodi per ottenere questo grafico?
+
+Per rispondere alle domande, quello che possiamo fare è la cosa seguente: invece che elencare lungo l'asse delle ascisse, uno per uno, tutti i nodi, elenchiamo con un solo punto tutti i nodi che hanno la stessa popolarità: l'ascissa di tale punto sarà quindi il num. di nodi aventi quella popolarità
+
+La situazione è la seguente
+
+![[Pasted image 20250801182825.png|center|500]]
+
+Piccola osservazione chiave: **naturalmente**, per compiere questa modifica dobbiamo assumere che **a gradi di popolarità diversi corrispondano numeri di nodi diversi che hanno quelle popolarità**
+
+Pensandoci bene, questo grafico è, grosso modo, ottenuto dal grafico che esprime il num. di nodi $n$ che hanno grado $k$, scambiando gli assi.
+
+Se $d(k)$ è la funzione che esprime il num. di nodi aventi grado $k$, allora il grafico che ci occorre rappresenta, grosso modo, la funzione $f=d^{-1}(n)$ (ammesso che $d$ sia invertibile)
+
+È possibile dimostrare che, se la funzione $f$ che esprime la frazione del numero di nodi aventi grado $k$ è una Power Law (come appare dai dati sperimentali), ovvero per qualche costante $c\gt0,f(k)\approx k^{-c}$, allora **anche $d$ esprime una Power Law**, anche qui $\exists a\gt0:d(k)\approx k^{-a}$, e dunque se $$n=d(k)\approx k^{-a}\implies k\approx n^{-\frac{1}{a}}$$ Questa quantità decresce *molto lentamente*, di conseguenza va a formare la **lunga coda**
