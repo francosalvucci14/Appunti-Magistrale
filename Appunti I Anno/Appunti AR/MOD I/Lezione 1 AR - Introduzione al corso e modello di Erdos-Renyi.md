@@ -240,6 +240,8 @@ Adesso, ci chiediamo quale sia la frazione del numero di nodi che hanno grado $k
 Per rispondere a questa nuova domanda, indichiamo con $F_k$ la v.a che esprime tale frazione, e indichiamo con $\delta_{i,k}$ la v.a composta in questo modo: 
 $$\delta_{i,k}=\begin{cases}1&\delta_i=k\\0&\text{altrimenti}\end{cases}$$
 Allora, per costruzione vale che $$F_k=\frac{1}{n}\sum\limits_{i\in[n]}\delta_{i,k}$$
+Calcoliamo quindi il valore atteso di $F_k$
 
-
-
+Vale che 
+$$\begin{align}\mathbb E[F_k]&=\mathbb E\left[\frac{1}{n}\sum\limits_{i\in[n]}\delta_{i,k}\right]\\&=\frac{1}{n}\sum\limits_{i\in[n]}\mathbb E[\delta_{i,k}]\quad\text{per linearità}\\&=\frac{1}{n}\sum\limits_{i\in[n]}Pr(\delta_i=k)\\\text{dal conto precedente}\to&\lt\frac{e^{-\lambda}}{\sqrt{2\pi k}}\left(\frac{\lambda\cdot e}{k}\right)^k\end{align}$$
+Quindi, in media, la frazione del numero di nodi che hanno grado $k$ decresce come $k^{-k}$, ovvero **decresce esponenzialmente in $k$**
