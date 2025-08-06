@@ -235,3 +235,18 @@ Pensandoci bene, questo grafico è, grosso modo, ottenuto dal grafico che esprim
 Se $d(k)$ è la funzione che esprime il num. di nodi aventi grado $k$, allora il grafico che ci occorre rappresenta, grosso modo, la funzione $f=d^{-1}(n)$ (ammesso che $d$ sia invertibile)
 
 È possibile dimostrare che, se la funzione $f$ che esprime la frazione del numero di nodi aventi grado $k$ è una Power Law (come appare dai dati sperimentali), ovvero per qualche costante $c\gt0,f(k)\approx k^{-c}$, allora **anche $d$ esprime una Power Law**, anche qui $\exists a\gt0:d(k)\approx k^{-a}$, e dunque se $$n=d(k)\approx k^{-a}\implies k\approx n^{-\frac{1}{a}}$$ Questa quantità decresce *molto lentamente*, di conseguenza va a formare la **lunga coda**
+
+![[Pasted image 20250806110128.png|center|500]]
+
+## Gli effetti della web-search
+
+La domanda che ci poniamo ora è: l'utilizzo dei motori di ricerca, per la ricerca su internet, ha impatto sul fenomeno **rich-get-richer**?
+
+Da un lato, il fenomeno rich-get-richer è **amplificato** in virtù dell'utilizzo di motori di ricerca basati sul ranking (ossia, che elencano le pagine risultanti dalla ricerca in un ordine derivante dall'assegnazione di un punteggio a sua volta derivante, ad esempio, dal numero di link-entranti delle pagine).
+
+D'altra parte, le richieste ad un motore di ricerca possono essere sottoposte in una enorme varietà di forme, dipendentemente dalle parole chiave scelte per effettuare una ricerca, e questo aumenta la possibilità di essere indirizzati a pagine che non sono nella "top list" (usando, ad esempio, parole chiavi inusuali), e tutto ciò non fa altro che **mitigare gli effetti** rich-get-richer.
+
+Per sfruttare la lunga coda, ovvero per vendere i prodotti di "nicchia", i venditori online provano ad indirizzare gli utenti, ad esempio ricorrendo all'utilizzo di ***recommendation systems***, ovvero quando i motori di ricerca invitano gli utenti ad esplorare pagine poco popolari sulla base delle loro ricerche pregresse.
+
+In conclusione, il progetto di strumenti di **web-search** è un esempio di utilizzo degli effetti feedback, volto ad indirizzare gli utenti nell'elaborare le loro richieste, in alcuni casi **amplificando** l'effetto rich-get-richer, in altri **attenuandolo**
+
