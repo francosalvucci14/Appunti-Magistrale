@@ -166,3 +166,4 @@ E quindi, $G(n,r(n))$ è connesso con alta probabilità. $\blacksquare$
 
 #### Delimitazione Inferiore
 
+TODO
