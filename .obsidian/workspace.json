@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -163,10 +162,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "90edc667964d2b31",
+  "active": "64bc8fa6ca4c6aa6",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250806171342.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250806170606.png",
+    "Caparra Confirmatoria Citroën C1.md",
+    "README.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250806110128.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250806110027.png",
@@ -182,14 +185,12 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250801094932.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250801094851.png",
     "Appunti I Anno/Appunti AR/MOD I/img",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250801094553.png",
     "Appunti I Anno/Appunti AR/MOD II",
     "Appunti I Anno/Appunti AR/MOD I",
     "Appunti I Anno/Appunti PCD/Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr.md",
     "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
     "Appunti I Anno/Appunti PCD/Lezione 14 PCD - Crittografia a Curve Ellittiche.md",
     "Appunti I Anno/Appunti PCD/Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI.md",
-    "README.md",
     "Appunti I Anno/Appunti PROB/test.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
@@ -205,7 +206,6 @@
     "Appunti I Anno/Appunti PCD/Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali.md",
     "Appunti I Anno/Appunti PCD/Lezione 18 PCD - Routing dei pagamenti in una L.N, Hash Time-Locked Contracts.md",
     "Appunti I Anno/Appunti PCD/Lezione 17 PCD - La scalabilità di Bitcoin, Payment Channels e Lightnin Network.md",
-    "Appunti I Anno/Appunti PCD/Lezione 12 PCD - Linguaggio Script -> P2PK,P2PKH,P2M,P2SH.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding-Bitcoin-2/transaction_segwit.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/script.cpython-310.pyc",
