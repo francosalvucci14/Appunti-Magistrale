@@ -93,7 +93,7 @@ Valgono quindi i seguenti teoremi, di cui daremo le dimostrazioni
 >Esiste una costante $\gamma_1\gt0$ tale che se $r(n)\geq\gamma_1\left(\sqrt{\frac{\ln(n)}{n}}\right)$ allora $G(n,r(n))$ è connesso ***con alta probabilità***
 
 >[!teorem]- Teorema 2 (Delimitazione inferiore al minimo raggio di connessione)
->Per ogni costante $c\gt0$ se $r(n)\leq\left(\sqrt{\frac{\ln(n)+c}{n}}\right)$ allora la probabilità che $G(n,r(n))$ sia non connesso è $gt0$
+>Per ogni costante $c\gt0$ se $r(n)\leq\left(\sqrt{\frac{\ln(n)+c}{n}}\right)$ allora la probabilità che $G(n,r(n))$ sia non connesso è $\gt0$, ovvero $$\lim_{n\to\infty}Pr(\text{G(n,r(n)) è non connesso})\gt0$$
 
 #### Delimitazione Superiore
 
@@ -145,4 +145,24 @@ A questo punto ci serve un risultato tecnico, dato dal seguente lemma:
 >[!teorem]- Lemma
 >Per ogni $x\in\mathbb R:1-x\leq e^{-x}$.
 >Inoltre, se $x\neq0\implies 1-x\lt e^{-x}$
+
+**dim lemma**:
+1) Definiamo la funzione $G(x)=1-x-e^{-x}$
+2) Calcoliamo la derivata prima di $G(x):G'(x)=e^{-x}-1$
+3) Studiamo il segno di $G'(x):e^{-x}-1\geq0\to e^{-x}\geq e^{0}\to x\leq0$
+4) $G'(x)\geq0$ per $x\leq0$: allora $G(x)$ ha un massimo relativo in $x=0$
+	1) Inoltre, essendo l'unico punto in cui la derivata si annulla, $x=0$ è anche massimo assoluto
+5) Poichè $G(0)=1-0-e^{-0}=0$ questo implica che:
+	1) $G(x)\leq G(0)=0$ per ogni $x\in\mathbb R$, ossia $1-x\leq e^{-x}\space\forall x\in\mathbb R$
+	2) $G(x)\lt G(0)$
+
+In virtù del lemma appena dimostrato, poichè $\frac{\gamma_{1}^{2}\ln(n)}{5n}\neq0\space\forall n\in\mathbb N$ allora vale che $$\left(1-\frac{\gamma_{1}^{2}\ln(n)}{5n}\right)^{n}\lt e^{-\frac{\gamma_{1}^{2}\ln(n)}{5n}}$$
+Quindi:
+$$\begin{align}Pr(\exists C:C=\emptyset)&\lt\frac{5n}{\gamma_{1}^{2}\ln(n)}e^{-n\frac{\gamma_{1}^{2}\ln(n)}{5n}}=\frac{5n}{\gamma_{1}^{2}\ln(n)}e^{-\frac{\gamma_{1}^{2}\ln(n)}{5}}\\&\lt\frac{5n}{\gamma_{1}^{2}}e^{-\frac{\gamma_{1}^{2}\ln(n)}{5}}=\frac{5n}{\gamma_{1}^{2}}n^{-\frac{\gamma_{1}^{2}}{5}}\\&=\frac{5}{\gamma_{1}^{2}}n^{1-\frac{\gamma_{1}^{2}}{5}}\end{align}$$
+Infine, essendo che $1-\frac{\gamma_{1}^{2}}{5}\lt0$ per $\gamma_1\gt\sqrt{5}$, se poniamo $b=\frac{5}{\gamma_1^2}$ e $c=\frac{\gamma_1^2}{5}-1$ otteniamo che: $$Pr(\exists C:C=\emptyset)\lt\frac{b}{n^c},c\gt0$$
+Quindi, nelle ipotesi del teorema, la prob. che $G(n,r(n))$ sia connesso sarà:
+$$Pr(\text{G(n,r(n)) è connesso})\geq Pr(\not\exists C=\emptyset)=1-Pr(\exists C:C=\emptyset)\gt1-\frac{b}{n^c}$$
+E quindi, $G(n,r(n))$ è connesso con alta probabilità. $\blacksquare$
+
+#### Delimitazione Inferiore
 
