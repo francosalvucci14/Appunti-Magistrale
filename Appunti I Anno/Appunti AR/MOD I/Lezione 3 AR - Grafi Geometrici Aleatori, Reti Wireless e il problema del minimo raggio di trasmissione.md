@@ -195,3 +195,21 @@ L'evento $\mathcal E_{i}$ si verifica $\iff$ una volta fissato $t_i$, nessun nod
 - fissato quindi $t_i$ e fissato $j\neq i$ si ha che $$Pr(t_{j}\not\in C_{r}(t_i))=\frac{\text{area di }(Q-C_r(t_i))}{\text{area di Q}}\geq 1-\pi r^2$$
 	- Il tutto maggiore o uguale perchè $C_r(t_i)$ potrebbe non essere completamente contenuto in $Q$
 - Di conseguenza, fissato $t_i$ vale che $$Pr(\forall j\neq i:t_j\not\in C_r(t_i))\geq(1-\pi r^2)^{n-1}$$
+Il punto $t_i$, nel quale posizionare $i$, è scelto u.a.r in $Q$:
+- che è un insieme continuo
+- e la funzione di densità corrispondente alla scelta u.a.r di un punto in $Q$ è $f(t)=\frac{1}{\text{area di Q}}=1$
+
+Di conseguenza, vale che: 
+$$Pr(\mathcal E_{i})\geq\int_{t_i\in Q}f(t_{i})(1-\pi r^{2})^{n-1}dt_{i}=\int_{t_i\in Q}(1-\pi r^{2})^{n-1}dt_{i}=(1-\pi r^{2})^{n-1}$$
+
+##### Maggioriamo $Pr(\mathcal E_{ij})$
+
+Si verifica l'evento $\mathcal E_{ij}\iff$, una volta fissato $t_i,j$ è posizionato in un nodo $t_j\not\in C_r(t_i)$ e nessun nodo $h\in[n]-\{i,j\}$ è posizionato in $C_r(t_i)\cup C_r(t_j)$
+
+Possiamo quindi esprimere questo evento come unione di due eventi mutulamente esclusivi, nel seguente modo: 
+- $\mathcal E_{ij}^{1}=t_{j}\not\in C_{2r}(t_{i})\land\space\forall h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$. Ovvero, $t_j$ si trova nella regione gialla della figura
+- $\mathcal E_{ij}^{2}=t_{j}\in C_{2r}(t_{i})-C_{r}(t_{i})\land\space\forall h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$. Ovvero, $t_j$ si trova nella regione azzurra della figura
+- Allora possiamo riscrivere $$Pr(\mathcal E_{ij})=Pr(\mathcal E_{ij}^1\cup\mathcal E_{ij}^2)=Pr(\mathcal E_{ij}^1 )+Pr(\mathcal E_{ij}^2)$$
+
+![[Pasted image 20250807110301.png|center|250]]
+
