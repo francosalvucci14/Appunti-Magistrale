@@ -213,3 +213,67 @@ Possiamo quindi esprimere questo evento come unione di due eventi mutulamente es
 
 ![[Pasted image 20250807110301.png|center|250]]
 
+**Calcoliamo** quindi $Pr(\mathcal E_{ij}^1)$: 
+
+Fissiamo $t_i$, fissiamo $t_j$ nella zona gialla e fissiamo $h\in[n]-\{i,j\}$.
+Allora, la probabilità di scegliere un $t_h$ nella regione rimanente (gialla+azzurra) è pari al rapporto dell'area della regione con l'area del quadrato, che è equivalente a $1-2\pi r^2$
+- questa quantità è $\geq (1-2\pi r^2)$ se $t_i,t_j$ non sono troppo vicino al bordo del quadrato
+
+![[Pasted image 20250807112303.png|center|500]]
+
+Fissati invece solamente $t_i$ e $t_j$ nella zona gialla, abbiamo che la probabilità che $\forall h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$ è in questo caso (con $t_j$ cselto nella zona gialla) pari a $(1-2\pi r^2)^{n-2}$
+- anche qui questa quantità è $\geq (1-2\pi r^2)^{n-2}$ se $t_i,t_j$ non sono troppo vicino al bordo del quadrato
+- in realtà, complicando leggermente la prova è possibile giungere agli stessi risultati considerando anche gli **effetti ai bordi**, cosa che non non faremo
+
+FIssato solamente $t_i$, la probabilità che, **scegliendo $t_j$ nella zona gialla**, $\forall h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$ è  $$\int_{t_j\in Q-C_{2r}(t_i)}f(t_j)(1-2\pi r^2)^{n-2}dt_j$$
+Mettendo tutto insieme quindi, otteniamo che:
+
+$$\begin{align}Pr(\mathcal E_{ij}^1)&=\int_{t_i\in Q}f(t_i)\int_{t_j\in Q-C_{2r}(t_i)}f(t_j)(1-2\pi r^2)^{n-2}dt_j\space dt_i\\&=\int_{t_i\in Q}f(t_i)\int_{t_j\in Q-C_{2r}(t_i)}(1-2\pi r^2)^{n-2}dt_j\space dt_i\\&=\int_{t_i\in Q}(1-4\pi r^2)(1-2\pi r^2)^{n-2}dt_i\\&=(1-4\pi r^2)(1-2\pi r^2)^{n-2}\end{align}$$
+
+**Maggioriamo** ora $Pr(\mathcal E_{ij}^2)$:
+
+Fissiamo $t_i$, fissiamo $t_j$ nella zona azzurra e fissiamo $h\in[n]-\{i,j\}$.
+Allora, la probabilità di scegliere un $t_h$ nella regione rimanente (gialla+azzurra) è pari al rapporto dell'area della regione con l'area del quadrato, e questa volta dipende dalla posizione di $t_j$ nella zona azzurra
+
+![[Pasted image 20250807115313.png|center|500]]
+
+La probabilità di scegliere $t_h$ nella regione rimanente è **massima** quando è massima l'intersezione di $C_r(t_i)$ con $C_r(t_j)$, ossia quando $t_j$ si trova sulla circonferenza che delimita $C_r(t_i)$
+
+Così facendo, l'area di $C_r(t_i)\cup C_r(t_j)=2\pi r^2-\text{area}(C_r(t_i)\cap C_r(t_j))$
+
+![[Pasted image 20250807121023.png|center|250]]
+
+Calcoliamo quanto vale $\text{area}(C_r(t_i)\cap C_r(t_j))$, fissando $t_i$, $t_j$ su $C_r(t_i)$ e $h\in[n]-\{i,j\}$
+
+Vale che
+$$\text{area}(C_r(t_i)\cap C_r(t_j))=2\cdot\text{area col. viola}=2\cdot[\text{area col. (rosa e viola)-area }t_jAB]$$
+
+Abbiamo che $t_jAt_i$ è un triangolo equilatero di lato $r$, allora la sua area è $\frac{1}{2}r\frac{r\sqrt{3}}{2}=\frac{r^2\sqrt{3}}{4}$ 
+
+Calcoliamo le altre aree:
+- area triangolo $t_jAB$= area triangolo $t_jAt_i=\frac{r^2\sqrt{3}}{4}$ 
+- la regione rosa e viola è un settore circolare di $C_r(t_j)$, e il suo angolo al centro $At_jB$ è il doppio di $At_jt_i$ che misura $\frac{\pi}{3}$
+	- allora, l'area della regione rosa e viola è $\frac{1}{2}r^2\frac{2\pi}{3}=r^2\frac{\pi}{3}$ 
+	- l'area della regione viola è $r^2\frac{\pi}{3}-\frac{r^2\sqrt{3}}{4}$
+	- allora, mettendo tutto insieme vale che: $$\text{area}(C_r(t_i)\cap C_r(t_j))=2r^2\left(\frac{\pi}{3}-\frac{\sqrt{3}}{4}\right)$$
+
+![[Pasted image 20250807122915.png|center|250]]
+
+Infine, calcoliamo $\text{area}(C_r(t_i)\cup C_r(t_j))$
+
+Vale che 
+$$\begin{align}\text{area}(C_r(t_i)\cup C_r(t_j))&=2\pi r^2-\text{area}(C_r(t_i)\cap C_r(t_j))\\&=2\pi r^2-2r^2\left(\frac{\pi}{3}-\frac{\sqrt{3}}{4}\right)\\&=\frac{4\pi}{3}r^2+\frac{\sqrt{3}\pi}{2\pi}r^2\\&=\pi r^2\left(\frac{4}{3}+\frac{\sqrt{3}}{2\pi}\right)\\&\gt\frac{8}{5}\pi r^2\end{align}$$
+Quindi, la probabilità di scegliere $t_h$ nella regione gialla+azzurra è:
+$$1-\text{area}(C_r(t_i)\cup C_r(t_j))\lt1-\frac{8}{5}\pi r^2$$
+E quindi la probabilità di scegliere tutti gli $n-2$ punti $t_h$ nella regione gialla+azzurra è $\lt\left(1-\frac{8}{5}\pi r^2\right)^{n-2}$
+- sempre trascurando gli effetti di bordo
+
+![[Pasted image 20250807121023.png|center|250]]
+
+Quindi, alla fine, fissato $t_i$ otteniamo che la probabilità, scegliendo $t_j$ nella zona azzura, per ogni $h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$ è $$\int_{t_j\in C_{2r}(t_i)-C_{r}(t_i)}f(t_j)\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_j$$
+Di conseguenza, abbiamo che:
+
+$$\begin{align}Pr(\mathcal E_{ij}^2)&\lt\int_{t_i\in Q}\int_{t_j\in C_{2r}(t_i)-C_{r}(t_i)}f(t_i)f(t_j)\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_j\space dt_i\\&=\int_{t_i\in Q}\int_{t_j\in C_{2r}(t_i)-C_{r}(t_i)}\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_j\space dt_i\\&=\int_{t_i\in Q}(4\pi r^2-\pi r^2)\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_i\\&=3\pi r^2\left(1-\frac{8}{5}\pi r^2\right)^{n-2}\end{align}$$
+
+Sostituiamo ora $r=\sqrt{\frac{\ln(n)+c}{n\pi}}$, ottenendo che:
+$$\begin{align}Pr(\mathcal E_{ij}^2)&\lt\left(1-2\frac{\ln(n)+c}{n}\right)^{n-2}+3\frac{\ln(n)+c}{n}\left(1-\frac{8}{5}\frac{\ln(n)+c}{n}\right)^{n-2}\\&\lt e^{-2\frac{\ln(n)+c}{n}(n-2)}+3\frac{\ln(n)+c}{n}e^{-\frac{8}{5}\frac{\ln(n)+c}{n}(n-2)}\\&= e^{-2\frac{\ln(n)+c}{n}(n-2)}+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}n^{\frac{-2}{5}}e^{-\frac{8}{5}\frac{\ln(n)+c}{n}(n-2)}\end{align}$$
