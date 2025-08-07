@@ -74,9 +74,7 @@ Tale problema prende il nome di **Minimo Raggio di Trasmissione (MTR)**
 
 Piccola osservazione, perchè vogliamo il raggio di trasmissione *minimo*?
 A noi basta che il grafo di comunicazione sia **fortemente connesso**, e per fare ciò basta che ad ogni nodo assegniamo un raggio di trasmissione abbastanza grande, ovvero detto $V$ l'insieme dei nodi e indicata con $d(u,v)$ la distanza fra i due nodi $u,v,\forall u\in V$ poniamo $$r_u=\max\{d(u,v):v\in V\setminus\{u\}\}$$
-Così facendo, il grafo risulterà fortemente connesso.
-
-C'è un problema però, le batterie illimitate.
+Così facendo, il grafo ne risulterà fortemente connesso, ma questa soluzione presenta un problema non da poco, ovvero la ***limitatezza delle batterie***
 
 Infatti così facendo, l'energia che serve ad un nodo per trasmettere risulterà essere tanto maggiore quanto più è grande il raggio di trasmissione, e di conseguenza il dispendio di energia sarà molto elevato.
 
@@ -93,7 +91,7 @@ Valgono quindi i seguenti teoremi, di cui daremo le dimostrazioni
 >Esiste una costante $\gamma_1\gt0$ tale che se $r(n)\geq\gamma_1\left(\sqrt{\frac{\ln(n)}{n}}\right)$ allora $G(n,r(n))$ è connesso ***con alta probabilità***
 
 >[!teorem]- Teorema 2 (Delimitazione inferiore al minimo raggio di connessione)
->Per ogni costante $c\gt0$ se $r(n)\leq\left(\sqrt{\frac{\ln(n)+c}{n}}\right)$ allora la probabilità che $G(n,r(n))$ sia non connesso è $\gt0$, ovvero $$\lim_{n\to\infty}Pr(\text{G(n,r(n)) è non connesso})\gt0$$
+>Per ogni costante $c\gt0$ se $r(n)=\left(\sqrt{\frac{\ln(n)+c}{\pi n}}\right)$ allora si ha che $$\lim_{n\to\infty}Pr(\text{G(n,r(n)) è non connesso})\gt0$$
 
 #### Delimitazione Superiore
 
@@ -166,4 +164,34 @@ E quindi, $G(n,r(n))$ è connesso con alta probabilità. $\blacksquare$
 
 #### Delimitazione Inferiore
 
-TODO
+Dimostriamo il secondo teorema
+
+Introduciamo i seguenti eventi: 
+- $\mathcal E_{\geq1}=G$ contiene almeno un nodo isolato
+- $\mathcal E_{i_1,i_2,\dots,i_h}=$ tutti i nodi $i_1,i_2,\dots,i_h$ sono isolati in $G$ con $i_1,i_2,\dots,i_h\in[n]$
+- $\mathcal E_{i!}=i$ è l'unico nodo isolato in $G$, con $i\in[n]$
+
+Esprimiamo in loro funzione la probabilità che $G$ sia non connesso, nel seguente modo:
+- Ovviamente, se $G$ contiene almeno un nodo isolato allora $G$ è non connesso, dunque vale che $$Pr(\text{G è non connesso})\geq Pr(\mathcal E_{\geq1})$$
+- Poi, se accade che $1$ è l'unico nodo isolato, oppure $2$ è l'unico isolato, oppure $\dots\space n$ è l'unico isolato allora accade anche che $G$ contiene almeno un nodo isolato (ovviamente). Dunque vale che $$Pr(\mathcal E_{\geq1})\geq Pr\left(\bigcup_{i\in[n]}\mathcal E_{i!}\right)$$
+- Infine, dato che gli eventi $\mathcal E_{1!},\mathcal E_{2!},\dots,\mathcal E_{n!}$ sono eventi **disgiunti** allora vale che $$Pr(\text{G è non connesso})\geq\sum\limits_{i\in[n]}Pr(\mathcal E_{i!})$$
+
+Calcolare direttamente $Pr(\mathcal E_{i!})$ non è semplice, lavoriamo allora per *minorarla* con espressioni che sappaimo calcolare.
+
+A questo scopo, osserviamo quanto segue:
+- $i$ è l'unico isolato in $G\iff i$ è isolato e inoltre, comunque scegliamo un altro nodo $j$, si ha che $i,j$ non sono entrambi isolati in $G$, dunque $$\mathcal E_{i!}=\mathcal E_{i}\bigcap_{j\in[n]-\{i\}}\mathcal E_{ij}^{C}=\mathcal E_{i}-\bigcup_{j\in[n]-\{i\}}\mathcal E_{ij}$$
+- Da cui si ottiene che: $$Pr(\mathcal E_{ij})=Pr\left(\mathcal E_{i}-\bigcup_{j\in[n]-\{i\}}\mathcal E_{ij}\right)\geq Pr(\mathcal E_{i})-Pr\left(\bigcup_{j\in[n]-\{i\}}\mathcal E_{ij}\right)\geq Pr(\mathcal E_{i})-\sum\limits_{j\in[n]-\{i\}}Pr(\mathcal E_{ij})$$
+- **oss**: l'evento $\mathcal E_{ij}^C=i,j$ non sono entrambi isolati
+
+Non ci resta che trovare una **minorazione per $Pr(\mathcal E_{i})$** e una **maggiorazione per $Pr(\mathcal E_{ij})$**
+
+Prima di procedere, indichiamo: 
+- per un punto $t\in Q,C_r(t)$ come il cerchi di raggio $r$ e centro $t$
+- per $i\in[n],t_i\in Q$ come il punto del quadrato nel quale è posizionato il nodo $i$
+
+##### Minoriamo $Pr(\mathcal E_{i})$
+
+L'evento $\mathcal E_{i}$ si verifica $\iff$ una volta fissato $t_i$, nessun nodo $j\neq i$ è posizioanto in $C_r(t_i)$
+- fissato quindi $t_i$ e fissato $j\neq i$ si ha che $$Pr(t_{j}\not\in C_{r}(t_i))=\frac{\text{area di }(Q-C_r(t_i))}{\text{area di Q}}\geq 1-\pi r^2$$
+	- Il tutto maggiore o uguale perchè $C_r(t_i)$ potrebbe non essere completamente contenuto in $Q$
+- Di conseguenza, fissato $t_i$ vale che $$Pr(\forall j\neq i:t_j\not\in C_r(t_i))\geq(1-\pi r^2)^{n-1}$$
