@@ -300,3 +300,49 @@ Che possiamo riscrivere come:
 $$Pr(\text{G non connesso})\gt n(1-\pi r^2)^{n-1}-(1+\varepsilon)e^{-2c}$$
 
 Allora, per dimostrare il th del limite inferiore, ovvero dimostrare che $\lim_{n\to\infty}Pr(\text{G non connesso})\gt0$ è sufficiente dimostrare che, da *un certo $n$ in poi*, vale che $$n(1-\pi r^2)^{n-1}-(1+\varepsilon)e^{-2c}\gt0$$
+Dobbiamo quindi calcolare $$n(1-\pi r^2)^{n-1}\gt (1+\varepsilon)e^{-2c}$$
+Calcoliamo il logaritmo della parte sinistra dell'equazione
+$$\begin{align}\ln(n(1-\pi r^2)^{n-1})&=\ln(n)+(n-1)\ln(1-\pi r^2)\\(x\lt1\to\ln(n)=-\sum\limits_{k=1}^\infty\frac{(\pi r^2)^k}{k})&=\ln(n)-(n-1)\sum\limits_{k=1}^\infty\frac{(\pi r^2)^k}{k}\\\left(r=\sqrt{\frac{\ln(n)+c}{n}}\to\pi r^2=\frac{\ln(n)+c}{n}\right)&=\ln(n)-(n-1)\sum\limits_{k=1}^\infty\frac{(\ln(n)+c)^k}{kn^k}\end{align}$$
+
+A questo punto, poniamo $\delta(n)=\sum\limits_{k=3}^\infty\frac{(\ln(n)+c)^k}{kn^k}$ così da avere: 
+$$\begin{align}\ln(n(1-\pi r^2)^{n-1})&=\ln(n)-(n-1)\left[\sum\limits_{k=1}^2\frac{(\ln(n)+c)^k}{kn^k}+\delta(n)\right]\\&=\ln(n)-(n-1)\left[\frac{(\ln(n)+c)}{n}+\frac{(\ln(n)+c)^2}{2n^2}+\delta(n)\right]\end{align}$$
+
+A questo punto, non resta che maggiorare $\delta(n)$
+
+Vale che:
+$$
+\begin{align*}
+\delta(n)&=\sum\limits_{k=3}^\infty\frac{(\ln(n)+c)^k}{kn^k}\leq \frac{1}{3}\sum\limits_{k=3}^\infty\frac{(\ln(n)+c)^k}{n^k}\leq \frac{1}{3}\int_{2}^\infty\left(\frac{(\ln(n)+c)}{n}\right)^xdx\\&=\lim_{n\to\infty}\frac{1}{3}\int_{2}^h\left(\frac{(\ln(n)+c)}{n}\right)^xdx=\lim_{n\to\infty}\frac{1}{3}\int_{2}^he^{x\ln\left(\frac{(\ln(n)+c)}{n}\right)}dx\\&=\lim_{n\to\infty}\left[\frac{1}{3}\frac{1}{\ln\left(\frac{\ln(n)+c}{n}\right)}\left(\frac{\ln(n)+c}{n}\right)^x\right]^h_2\\&=-\frac{1}{3}\frac{1}{\ln\left(\frac{\ln(n)+c}{n}\right)}\frac{(\ln(n)+c)^2}{n^2}=\frac{1}{3}\frac{1}{\ln\left(\frac{n}{\ln(n)+c}\right)}\frac{(\ln(n)+c)^2}{n^2}
+\end{align*}
+$$
+
+E, poichè $\lim_{n\to\infty}\frac{1}{\ln\left(\frac{n}{\ln(n)+c}\right)}=0$ allora n$\frac{1}{\ln\left(\frac{n}{\ln(n)+c}\right)}\lt1$ **per $n$ sufficientemente grande** 
+
+Concludendo, otteniamo che $\delta(n)\lt\frac{1}{3}\frac{(\ln(n)+c)^2}{n^2}$ 
+
+Siamo in conclusione di questa dimostrazione interminabile infinta dio cristo sparatemi fanculo
+
+**Ricapitolando**: 
+- Abbiamo $Pr(\text{G non connesso})\gt n(1-\pi r^2)^{n-1}-(1+\varepsilon)e^{-2c}$
+- Inoltre $\ln(n(1-\pi r^2)^{n-1})=\ln(n)-(n-1)\left[\frac{(\ln(n)+c)}{n}+\frac{(\ln(n)+c)^2}{2n^2}+\delta(n)\right]$
+- E infine $\delta(n)\lt\frac{1}{3}\frac{(\ln(n)+c)^2}{n^2}$ 
+
+Allora, vale che: 
+
+$$
+\begin{align*}
+\ln(n(1-\pi r^2)^{n-1})&\gt\ln(n)-(n-1)\left[\frac{(\ln(n)+c)}{n}+\frac{(\ln(n)+c)^2}{2n^2}+\frac{1}{3}\frac{(\ln(n)+c)^2}{n^2}\right]\\&=\ln(n)-(n-1)\left[\frac{(\ln(n)+c)}{n}+\frac{(\ln(n)+c)^2}{2n^2}+\frac{5(\ln(n)+c)^2}{6n^2}\right]\\&=\ln(n)-\frac{n-1}{n}(\ln(n)+c)-\frac{5(n-1)(\ln(n)+c)^2}{6n^2}\\&\gt\ln(n)-(\ln(n)+c)-\frac{5(n-1)(\ln(n)+c)^2}{6n^2}\\&=-c-\frac{5(n-1)(\ln(n)+c)^2}{6n^2}
+\end{align*}
+$$
+
+Prendendo il limite all'ultimo membro notiamo che $$\lim_{n\to\infty}\frac{5(n-1)(\ln(n)+c)^2}{6n^2}=0$$
+Allora $$\forall\omega\gt0\space\exists\space n_\omega\geq n_\varepsilon:\forall n\geq n_\omega:\frac{5(n-1)(\ln(n)+c)^2}{6n^2}\lt\omega$$
+E quindi, per $n$ suff. grande possiamo affermare che $$\begin{align}\ln(n(1-\pi r^2)^{n-1})&\gt-c-\omega\\&\downarrow\\n(1-\pi r^2)^{n-1}&\gt e^{-c-\omega}\end{align}$$
+Scegliendo quindi $\omega\lt c-\ln(1+\varepsilon)$ otteniamo che
+
+$$n(1-\pi r^2)^{n-1}\gt e^{-c-c+\ln(1+\varepsilon)}=e^{-2c}e^{\ln(1+\varepsilon)}=(1+\varepsilon)e^{-2c}$$
+
+E quindi (DIO PORCO FINALMENTE CRISTO DIO SIGNORE DEL CIELO DEL PORCO DIO DEI GRAFI GEOMETRICI) otteniamo che:
+
+$$Pr(\text{G è non connesso})\gt n(1-\pi r^2)^{n-1}-(1+\varepsilon)e^{-2c}\gt(1+\varepsilon)e^{-2c}-(1+\varepsilon)e^{-2c}=0$$
+**come volevasi dimostrare**
