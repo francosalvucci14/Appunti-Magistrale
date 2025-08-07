@@ -276,4 +276,27 @@ Di conseguenza, abbiamo che:
 $$\begin{align}Pr(\mathcal E_{ij}^2)&\lt\int_{t_i\in Q}\int_{t_j\in C_{2r}(t_i)-C_{r}(t_i)}f(t_i)f(t_j)\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_j\space dt_i\\&=\int_{t_i\in Q}\int_{t_j\in C_{2r}(t_i)-C_{r}(t_i)}\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_j\space dt_i\\&=\int_{t_i\in Q}(4\pi r^2-\pi r^2)\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_i\\&=3\pi r^2\left(1-\frac{8}{5}\pi r^2\right)^{n-2}\end{align}$$
 
 Sostituiamo ora $r=\sqrt{\frac{\ln(n)+c}{n\pi}}$, ottenendo che:
-$$\begin{align}Pr(\mathcal E_{ij}^2)&\lt\left(1-2\frac{\ln(n)+c}{n}\right)^{n-2}+3\frac{\ln(n)+c}{n}\left(1-\frac{8}{5}\frac{\ln(n)+c}{n}\right)^{n-2}\\&\lt e^{-2\frac{\ln(n)+c}{n}(n-2)}+3\frac{\ln(n)+c}{n}e^{-\frac{8}{5}\frac{\ln(n)+c}{n}(n-2)}\\&= e^{-2\frac{\ln(n)+c}{n}(n-2)}+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}n^{\frac{-2}{5}}e^{-\frac{8}{5}\frac{\ln(n)+c}{n}(n-2)}\end{align}$$
+$$\begin{align}Pr(\mathcal E_{ij}^2)&\lt\left(1-2\frac{\ln(n)+c}{n}\right)^{n-2}+3\frac{\ln(n)+c}{n}\left(1-\frac{8}{5}\frac{\ln(n)+c}{n}\right)^{n-2}\\&\lt e^{-2\frac{\ln(n)+c}{n}(n-2)}+3\frac{\ln(n)+c}{n}e^{-\frac{8}{5}\frac{\ln(n)+c}{n}(n-2)}\\&= e^{-2\frac{\ln(n)+c}{n}(n-2)}+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}n^{\frac{-2}{5}}e^{-\frac{8}{5}\frac{\ln(n)+c}{n}(n-2)}\\&= e^{-2\frac{n-2}{n}\ln(n)}e^{-2\frac{c(n-2)}{n}}+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}n^{\frac{-2}{5}}e^{-\frac{8}{5}\frac{n-2}{n}\ln(n)}e^{-\frac{8}{5}\frac{c(n-2)}{n}}\\&=e^{-2\frac{n-2}{n}\ln(n)}e^{-2\frac{c(n-2)}{n}}+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{-\frac{2}{5}\ln(n)}e^{-\frac{8}{5}\frac{n-2}{n}\ln(n)}e^{-\frac{8}{5}\frac{c(n-2)}{n}}\\&\lt e^{-2\frac{n-2}{n}\ln(n)}e^{-2\frac{c(n-2)}{n}}+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{-\frac{2}{5}\frac{n-2}{n}\ln(n)}e^{-\frac{8}{5}\frac{n-2}{n}\ln(n)}e^{-\frac{8}{5}\frac{c(n-2)}{n}}\\&=n^{-2\frac{n-2}{n}}e^{-2\frac{c(n-2)}{n}}\left[1+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{\frac{2}{5}\frac{c(n-2)}{n}}\right]\end{align}$$
+
+**Riassumiamo quanto detto fin'ora**: 
+
+Abbiamo detto che 
+$$Pr(\text{G non connesso})\geq\sum\limits_{i\in[n]}Pr(\mathcal E_{i!})\geq\sum\limits_{i\in[n]}\left[Pr(\mathcal E_{i})-\sum\limits_{j\in[n]-\{i\}}Pr(\mathcal E_{ij})\right]$$
+E abbiamo detto che:
+- $Pr(\mathcal E_i)\geq(1-\pi r^2)^{n-1}$
+- $Pr(\mathcal E_{ij})\lt n^{-2\frac{n-2}{n}}e^{-2\frac{c(n-2)}{n}}\left[1+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{\frac{2}{5}\frac{c(n-2)}{n}}\right]$
+
+Quindi, abbiamo che: 
+$$Pr(\text{G non connesso})\gt n(1-\pi r^2)^{n-1}-n(n-1)n^{-2\frac{n-2}{n}}e^{-2\frac{c(n-2)}{n}}\left[1+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{\frac{2}{5}\frac{c(n-2)}{n}}\right]$$
+
+Passiamo ora al limite, notiamo che $$\lim_{n\to\infty}n(n-1)n^{-2\frac{n-2}{n}}e^{-2\frac{c(n-2)}{n}}\left[1+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{\frac{2}{5}\frac{c(n-2)}{n}}\right]=e^{-2c}\quad(1)$$
+Questo perchè (informalmente): 
+- $\lim_{n\to\infty}n(n-1)n^{-2\frac{n-2}{n}}=1$
+- $\lim_{n\to\infty}e^{-2\frac{c(n-2)}{n}}=e^{-2c}$
+- $\lim_{n\to\infty}3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{\frac{2}{5}\frac{c(n-2)}{n}}=0$ 
+
+Quindi, dato che il limite in $(1)$ vale $e^{-2c}$, allora significa che $\forall\varepsilon\gt0\exists n_\varepsilon\gt0:\forall n\geq n_\varepsilon$ vale che $$n(n-1)n^{-2\frac{n-2}{n}}e^{-2\frac{c(n-2)}{n}}\left[1+3\frac{\ln(n)+c}{n^{\frac{3}{5}}}e^{\frac{2}{5}\frac{c(n-2)}{n}}\right]\lt(1+\varepsilon)e^{-2c}$$
+Che possiamo riscrivere come: 
+$$Pr(\text{G non connesso})\gt n(1-\pi r^2)^{n-1}-(1+\varepsilon)e^{-2c}$$
+
+Allora, per dimostrare il th del limite inferiore, ovvero dimostrare che $\lim_{n\to\infty}Pr(\text{G non connesso})\gt0$ è sufficiente dimostrare che, da *un certo $n$ in poi*, vale che $$n(1-\pi r^2)^{n-1}-(1+\varepsilon)e^{-2c}\gt0$$
