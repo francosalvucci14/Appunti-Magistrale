@@ -247,7 +247,7 @@ Formalmente, consideriamo un grafo $G$ dove:
 - $\{(i,i+1):1\leq i\lt n\}\cup\{(n,1)\}\subseteq E$ 
 
 Al quale vengono aggiunti archi random: $$\forall u,v\in V: Pr((u,v)\in E)=\frac{1}{Z} \frac{1}{d(u,v)}$$
-Osserviamo che, in questa casistica, per ogni $u\in V$ abbiamo che:
+Osserviamo che, in questa casistica, per ogni $u\in V$ abbiamo che:[^2]
 $$Z=\sum\limits_{v\in V\setminus\{u\}} \frac{1}{d(u,v)}=2\sum\limits_{1\leq h\leq \frac{n}{2}} \frac{1}{h}\leq2\sum\limits_{h=1}^\infty \frac{1}{h}=2\ln(n)$$
 Scegliamo poi, u.a.r, due nodi $s,t\in G$, e utilizziamo l'algoritmo di ricerca decentralizzata per calcolare un percorso da $s$ a $t$
 
@@ -256,6 +256,39 @@ Indichiamo con $X$ la v.a che denota la lunghezza di tale percorso, allora vale 
 >[!teorem]- Teorema
 >$$\mathbb E[X]\in O(\ln^2(n))$$
 
+Per fissare le idee, visualizziamo l'esecuzione dell'algoritmo di ricerca decentralizzata che costruisce in $G$ un percorso $s,t$ come segue:
+- inizialmente $s$ possiede una copia della lettera
+- al passo $1$ la trasmette ad un suo vicino (ovvero il più prossimo alla destinazione)
+- al passo $2$ il nodo che ha ricevuto la copia al passo $1$ ri-esegue la stessa identica operazione di prima, e così via fino a che la lettera non raggiunge il nodo $t$
+
+Suddividiamo in fasi il processo di trasmissione della lettera da un nodo ad un'altro
+
+Durante la fase $j$ la lettera è in possesso di un nodo $u$ tale che $$\frac{d(s,t)}{2^{j+1}}\lt d(u,t)\leq \frac{d(s,t)}{2^j}$$
+
+in modo da far iniziale il processo con la fase $0$
+
+Dato che $d(s,t)\leq\frac{n}{2}$ e ad ogni fase si dimezza la distanza fra il nodo che possiede la lettera e $t$, allora **il numero di fasi risulterà essere $\leq\log_2(n)$**
+
+Indichiamo ora con $X_j$ la durata della $j$-esima fase ($X_j$ è il num. di nodi che entrano in possesso della lettere durante la fase $j$)
+
+Allora vale che $X=\sum\limits_{1\leq j\leq\log_2(n)}X_j$ e $\mathbb E[X]=\sum\limits_{1\leq j\leq\log_2(n)}\mathbb[X_j]$
+
+Per dimostrare il teorema, è quindi sufficiente dimostrare che $$\forall j,\mathbb[X_j]\in O(\ln(n))$$
+Ovviamente dimostriamolo:
+
+Supponiamo di trovarci nel nodo $v$ durante la fase $j$: allora vale che $\frac{d(s,t)}{2^{j+1}}\lt d(v,t)\leq \frac{d(s,t)}{2^j}$
+
+La fase $j$ termina sicuramente se esiste un nodo $z$ tale che:
+- $(v,z)\in E$
+- $d(z,t)\leq\frac{d(v,t)}{2}$, perchè $d(z,t)\leq\frac{d(v,t)}{2}\leq \frac{1}{2}\frac{d(s,t)}{2^j}$
+
+Quindi abbiamo che:
+$$\begin{align}Pr(\text{termina fase j})&=Pr\left(\exists z\in V:(v,z)\in E\land d(z,t)\leq\frac{d(s,t)}{2^{j+1}}\right)\\&\geq Pr\left(\exists z\in V:(v,z)\in E\land d(z,t)\leq\frac{d(v,t)}{2}\right)\end{align}$$[^3]
 
 
 [^1]: perchè gli archi random che si incontrano fanno allontanare dall'obiettivo, e dunque ognuno di questi ci si avvicina solo di un'inezia all'obiettivo
+
+[^2]: perchè in un anello $u$ ha due vicini a distanza $1$, due a distanza $3$ e così via
+
+[^3]: $\geq$: perchè potrebbe essere $d(v,t)=\frac{d(s,t)}{2^j}$, in tal caso esisterebbe arco $(v,z)$ dell'anello tale che $d(z,t)=d(v,t)-1\lt\frac{d(s,t)}{2^j}$, e tale arco farebbe sicuramente terminare la fase $j$
+
