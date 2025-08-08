@@ -20,7 +20,7 @@ Gli arhci del grafo individuato da $V$ e $r$ sono tutte e sole le coppie di punt
 $$E=\{(A,B):A\in V\land B\in V\land\sqrt{(x_A-x_B)^2-(y_A-y_B)^2}\leq r\}$$
 Generalmente, si **normalizza** rispetto a $r$, ossia:
 - si riportano i punti in scala $1:r$ (si pone pari ad $r$ l'unità sugli assi copordinati), in modo da avere che due punti sono adiacenti $\iff$ la loro distanza è $\leq1$
-In questo caso, quando $r=1$, il grafo prende il nome di **Unit Disk Graph**, che noi non tratteremo, ci concentreremo quindi solo sul caso **non normalizzato**
+In questo caso, quando $r=1$, il grafo prende il nome di **Unit Disk Graph**, che noi non tratteremo, ci concentreremo quindi solo sul caso **non normalizzato** ^8b5ecc
 
 Analizziamo ora la variante aleatoria di questi grafi
 
