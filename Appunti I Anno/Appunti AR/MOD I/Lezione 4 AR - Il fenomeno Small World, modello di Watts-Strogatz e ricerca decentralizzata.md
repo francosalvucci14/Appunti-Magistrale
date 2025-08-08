@@ -1,0 +1,261 @@
+# Esperimento di Milgram
+
+Lo psicologo sociale Stanley Milgram nel $1967$ condusse il seguente esperimento:
+1) scelse una persona, un *destinatario*, alla quale doveva essere recapitata una lettere della quale lo stesso Milgram era il mittente
+	1) l'obiettivo e Milgram erano molto distanti fra loro, immaginiamo come se fossero sulle coste opposte degli Stati Uniti
+2) Milgram ha poi scelto a caso un insieme di **iniziatori** e ha consegnato ad ognuno di essi una copia della lettera
+	1) ha anche fornito ad ogni iniziatore informazioni sul destinatario come: nome,cognome, indirizzo, occupazione, passatempi, etc..
+3) Milgram ha quindi chiesto ad ogni **iniziatore** di fare in modo di far giungere la copia dela lettera in suo possesso al destinatario, senza però inviargliela direttamente con mezzi postali
+4) Ogni iniziatore doveva scrivere il suo nome sulla lettera e , con l'obiettivo di giungere la lettera al destinatario **nel minor numero di passi possibile**, consegnarla a un suo ***diretto*** conoscente chiedendogli di ripetere le medesime azioni
+
+Cosa ha osservato Milgram con questo esperimento?
+1) il numero di lettere che hanno raggiunto il destinatario erano circa un terzo delle totali
+2) le lettere che hanno raggiunto il destinatario lo hanno fatto, **in media**, in $6$ pasi
+	1) I "famosi" **$6$ gradi di separazione**
+
+In base all'esito dell'esperimento di Milgram, possiamo trarre due conclusioni:
+1) In una rete sociale è presente una moltidudine di percorsi molto brevi, che connettono qualunque coppia di nodi - il così detto **fenomeno Small World**
+2) Che i percorsi brevi non solo esistono, ma *possono essere trovati con facilità*
+	1) ovvero, da nodi che non conoscono altro della struttura della rete se non i propri immediati vicini
+
+Analizziamo queste due conclusioni
+
+## 1) Una moltidudine di percorsi brevi
+
+La domanda che ci poniamo è: quale spiegazione intuitiva possiamo trovare al fatto che in una rete sociale esistano tanti **shortest paths** fra una coppia di nodi?
+
+Intuitivamente, possiamo vederla così:
+- Io ho 100 amici
+- ciascuno dei quali ha 100 amici
+- ciascuno dei quali ha 100 amici, e così via
+- Questo significa che il grafo delle relazioni di questo gruppo di persone contiene $10000$ percorsi di lunghezza $2$ da me ad altre persone, e $100000$ percorsi di lunghezza $3$ da me ad altre persone della rete
+	- cioè, io sono collegato a mezzo di percorsi molto brevi a un sacco di gente
+- E poichè posso ripetere questo ragionamento per qualunque altro individuo che popola la rete,ecco la spiegazione dell'esistenza di tanti percorsi brevi in una rete sociale
+
+Bene, intuitivo, ma ovviamente non funzionale...
+
+Infatti questo ragionamento non tiene conto della così detta **chiusura triadica** (della quale avremo modo di parare in seguito)
+- ovvero, il ragionamento non tiene conto del fatto che in una rete sociale esistono tanti triangoli
+- se una persona $A$ conosce $B,C$ allora è probabile che prima o poi anche $B,C$ si consceranno
+
+Quindi, ritornando a prima, fra i 100 amici dei miei amici, si troveranno anche alcuni dei miei amici
+
+E invece che avere una situazione tipo questa (che rappresenta la pure crescita **esponenziale** che produce una small world)
+
+![[Pasted image 20250808101518.png|center|500]]
+
+Avremo più una situazione simile a questa (che rappresenta il fatto che la chiusura triadica riduce la frequenza di crescita (**growth rate**))
+
+![[Pasted image 20250808101632.png|center|500]]
+
+Ciò premesso, ci proponiamo quindi di studiare un modello generativo di grafi aleatori che generi:
+1) Small Worlds
+2) Contenenti molte chiusure triadiche
+### Il Modello Watts-Strogatz
+
+Il modello proposto da **Watts-Strogatz** consiste in un grafo fissato deterministicamente ed un insieme di archi casuali
+
+Il grafo fissato lo possiamo vedere come una griglia "arricchita", che corrisponde sostanzialmente ad un **Unit Disk Graph** (vedi [[Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione#^8b5ecc|Lezione 3]])
+
+**Informalmente**: 
+- I nodi sono punti di uno spazio metrico bidimensionale
+- I nodi sono disposti sui punti a coordinate intere di un quadrato centrato nell'origine degli assi cartesiani
+- Ogni nodo è collegato a ciascuno dei nodi vicini in orizzontale, verticale e diagonale
+
+**Formalmente**:
+
+Fissato $n\in\mathbb N$ abbiamo che $$V=\{(i,j):0\leq i\leq n\land0\leq j\leq n\}$$
+e ciascun nodo $(i,j)$ con $0\lt i\lt n$ e $0\lt j\lt n$ è collegato ai nodi $$\{i,j-1\},\{i+1,j-1\},\{i+1,j\},\{i+1,j+1\},\{i,j+1\},\{i-1,j+1\},\{i-1,j\},\{i-1,j-1\}$$
+
+Poi, fissando un valore $k$, ogni nodo sceglierà u.a.r $k$ nodi che diventeranno i suoi vicini
+
+C'è da notare che più che una griglia su una superficie piana, dobbiamo pensare a una **griglia "appoggiata" su una superficie sferica**, che si "richiude" su se stessa e che chiamereo ***wrapped***
+
+![[Pasted image 20250808103214.png|center|300]]
+
+Analizziamo ora questo grafo generato dal modello di Watss-Strogatz
+
+1) Possiamo individuare una sorta di dicotomia relazioni locali / relazioni a distanza soggiacente fra gli archi deterministici e quelli random
+	1) gli archi della griglia, che costituiscono "l'ossatura fissa" del grafo, rappresentano le relazioni fra nodi "fisicamente" vicini - ovvero quelli le cui coordinate differiscono di poco
+	2) gli archi random esprimono relazioni fra nodi "fisicamente" lontani
+2) Possiamo ben immaginare che i nodi "fisicamente" vicini abbiano **più probabilità** di incontrarsi rispetto ai nodi "fisicamente" lontani
+	1) È più probabile che i nodi "fisicamente" vicini abbiano più frequentazioni assidue, quelli lontani no
+	2) Possiamo allora pensare agli archi della griglia come archi che rappresentano **relazioni forti (strong ties)**
+	3) E gli archi random come archi che rappresentano **relazioni deboli (weak ties)**
+3) I triangoli sono sempre presenti a livello locale e sono poco probabili fra gli archi random
+	1) Confermando l'idea di cui al punto $2)$: infatti i triangoli si formano quando individui che hanno un amico comune si incontrano, e per due amici di uno stesso individuo, che vivono ai due capi opposti della Terra, è improbabile che abbiano molte occasioni di incontrarsi
+
+Dunque il modello di Watts-Strogetz ha molti triangoli, come si riscontra nelle reti sociali
+
+Rimane un'altra questione: sarà vero che coppie di nodi qualunque sono collegati da numerosi percorsi brevi?
+
+A tal proposito, Watts e Strogatz hanno osservato che: se partiamo da un nodo $u$ e a partire da $u$ ci muoviamo, per un certo numero di passi, lungo gli archi random, poichè gli archi random sono distribuiti u.a.r nel grafo è molto improbabile che, in questo procedimento, tocchiamo due volte lo stesso nodo.
+
+Ovvero, molto probabilmente, in $h$ passi abbiamo la possibilità di raggiungere $k^h$ nodi
+
+Il ragionamento di Watts-Strogatz è basato su considerazioni intuitive, successivamente Bollobas-Chung (1988) hanno formalmente dimostrato questo punto, e hanno anche individuato la lunghezza media degli shortest paths nei grafi generati in accordo al modello Watts-Strogatz
+
+Il ragiuìonamento intuitivo di Watts-Strogatz può essere ripetuto su un modello in cui è presente di gran lunga meno casualità: infatti, è sufficiente che **soltanto da un nodo su $k$ partano archi random** e che, inoltre, **da tale nodo parta un solo arco random**
+
+Vediamolo con un esempio:
+- raggruppiamo quadrati di $k\times k$ nodi della griglia in "città", dove una città ha uno e uno solo arco random uscente
+- ripetiamo il ragionamento di cui sopra a livello di "città" (non più di singolo individuo): in $h$ passi possiamo giungere in $k^h$ città
+- Una volta dentro la città, ci muoviamo attraverso gli archi della griglia
+
+Possiamo quindi concludere che **poca casualità è sufficiente per avere tanti shortest paths**
+
+## 2) Percorsi brevi facili da trovare
+
+Consideriamo ora la seconda questione che abbiamo riscontrato con l'esperimento di Milgram
+
+Mettiamoci nella casistica di essere il nodo $u$ in un grafo di Watts-Strogatz.
+
+Vogliamo inviare un messaggio ad una certa destinazione $v$ , di cui però **conosciamo solo le coordinate** (e da esse sappiamo che $u$ e $v$ sono molto distanti)
+Naturalmente, vorremo che il messaggio arrivi il più velocemente possibile, ovvero cerchiamo di fare in modo che il messaggio venga consegnato attraverso uno shortest path che collega $u$ (noi) a $v$
+
+Il problema è che $u$ conosce solo i suoi contatti, ovvero i suoi vicini nella rete (tutti i nodi $x:x\in N(u),N(u)=\text{vicinato di u}$)
+
+Cosa facciamo? Semplice, facciamo tante copie del messaggio quanti sono i nostri vicini e mandiamo una copia a ciascuno dei vicini
+
+Pur volendo non possiamo fare altro, dato che **conoscere l'indirizzo dela destinazione non ci aiuta**
+- si potrebbe pensare di scegliere, fra tutti i nostri vicini quello le cui coordinate sono più prossime a quelle di $v$, ma la casualità dei *weak ties* potrebbe far sì che, invece, un vicino che al momento appare peggiore ha un arco random che lo collega direttamente a $v$...
+
+Vediamo un esempio di questa situazione
+
+![[Pasted image 20250808113714.png|center|350]]
+
+In figura abbiamo che:
+- $s$ deve inviare un messaggio a $d$
+	- fra i vicini di $s$, il più vicino a $d$ *sulla griglia* è $a$
+		- perchè $b$, sempre *sulla griglia*, è più lontano di $a$ da $d$
+	- questo è tutto ciò che $s$ sa
+- quindi, $s$ inoltra il messaggio ad $a$, che dovrà seguire i nodi della griglia per giungere a $d$
+- se $s$ avesse inoltrato il messaggio a $b$, allontanandosi momentaneamente da $d$, avrebbe raggiunto $d$ in soli $3$ passi !
+
+Ritornando al discorso di prima, abbiamo detto quindi che generiamo una copia del messaggio per ogni vicino di $u$ ($|N(u)|$ è la max. $8-9$ non so perchè) e le mandiamo ai rispettimi destinatari, i quali sono costretti ad eseguire la nostra stessa operazione, in quanto anche loro non conoscono nulla della rete.
+
+Così facendo, dopo $h$ passi circoleranno nel grafo $\approx 7^h$ copie del messaggio
+
+Tecnicamente parlando, per spedire un messaggio da un nodo $u$ ad un nodo $v$, è stato utilizzato un **flooding**
+
+Però cosa c'è di diverso dall'esperimento di Milgram? Li non circolavano $\approx 7^h$ copie del messaggio, ma solo tanti messaggi quanti ne aveva creati Milgram (ovvero i messaggi **non aumentavano** ad ogni passo). 
+
+Eppure anche i partecipanti all'esperimento di Milgram erano a conoscenza solo dei propri vicini e dell'indirizzo del destinatario, esattamente le stesse informazioni del modello di Watts-Strogatz, ma allora cosa manca a noi?
+
+Evidentemente, il modello di Watts-Strogatz non ***riesce a descrivere*** qualche caratteristica di una rete sociale che rende possibile la ricerca di Milgram
+
+La risposta a questo quesito è che sostanzialmente, i partecipanti all'esperimento di Milgram, hanno applicato un algoritmo di ricerca specifico, chiamato **algoritmo di ricerca decentralizzata** (o **ricerca miope**)
+
+Un algoritmo di **ricerca decentralizzata** (o ricerca miope) è tale che:
+- ciascun nodo non conosce della rete altro che i propri vicini (oltre al target)
+- i nodi non comunicano in alcun modo se non nell'invio del messaggio da consegnare
+
+Osserviamo: probabilmente, ad ogni passo, un individuo inoltrata la copia della lettera in suo possesso a quello fra i suoi contatti che stimava essere "più vicini possibile" al destinatario:
+- dove con "più vicino" intendiamo vicino secondo metriche diverse quali: più vicino geograficamente, rispetto alla posizione lavorativa, rispetto agli interessi culturali, etc..
+
+Allora, la struttura della rete ha qualche caratteristica che fa sì che "inoltrare al più vicino" funziona bene:
+- in qualche modo, la struttura della rete garantisce che, se ad un passo sono nel nodo $u$ e invio al nodo $v$, allora fra gli amici di $v$ c'è (probabilmente) qualcuno **molto** più vicino di $u$ alla destinazione
+- la struttura quindi garantisce che ad ogni passo mi avvicino alla destinazione,e che probabilmente ci sono ***tanti passi*** in cui la distanza della estinazione ***diminusice drasticamente***
+
+Riconsideriamo quindi il modello di Watts-Strogatz
+- certamente, ciascun nodo ha un vicino sulla griglia più vicino di se alla destinazione
+- d'altra parte, se seguiamo un percorso costituito di soli archi della griglia, impieghiamo un sacco di passi per giungere a destinazione - $O(\sqrt{n})$ passi
+- allora, se vogliamo trovare un percorso breve dobbiamo usare archi random
+
+C'è un piccolo problema, ovvero non c'è garanzia che, in un grafo di Watts-Strogatz, usando la regola "invia al tuo vicino che è il più vicino alla destinazione" incontreremo una seria di archi random in modo tale che in un piccolo numero di passi giungeremo a destinazione.
+
+In effetti, è stato dimostrato che nel modello Watts-Strogatz la ricerca decentralizzata, di un percorso da $s$ a $t$, individua mediamente un percorso più lungo di uno shortest path
+
+Questo perchè nel modello Watts-Strogatz l'estremo di un arco random uscente da un nodo è scelto u.a.r fra tutti gli altri nodi.
+
+Gli archi random non tengono conto in alcun modo di quanto sono "vicini" i nodi che congiungono, detto altrimenti, **gli archi random sono troppo random**
+
+Analizziamo quindi un modello *corretto* per la ricerca decentralizzata
+
+### Un modello per la ricerca decentralizzata
+
+Vogliamo definire un modello generativo a cui corrispondano grafi che:
+- contengono molti triangoli
+- nei quali esistono molti shortest paths fra le coppie di nodi
+- e nei quali **trovare gli shortest paths mediante ricerca decentralizzata sia possibile**
+
+Danl nostro ragionamento precedente, possiamo ben pensare che, per soddisfare l'ultimo punto, è necesario che gli archi random siano scelti in modo da tener conto di quanto sono "vicini" i nodi che congiungono
+
+Il nostro nuovo modello è ancora basato su un'ossatura deterministica, ovvero la stessa griglia arricchita e wrapper di Watss-Strongatz, e da ogni nodo esce un arco random.
+
+La cosa che cambia è che ora, la probabilità che l'arco uscente dal nodo $u$ sia $(u,v)$ è inversamente proporzionale alla distanza, *sulla griglia*, dei nodi $u,v$, quindi avremo che:
+$$Pr((u,v)\in E)=\frac{1}{Z_u}\cdot \frac{1}{d(u,v)^q}$$
+dove:
+- $d(u,v)$ indica la distanza di uno shortest path fra $u$ e $v$ **sulla griglia** (ovvero percorso che non contiene archi random)
+- $Z_u$ indica un fattore di **normalizzazione**
+	- dato che da ogni nodo deve uscire un solo arco random, deve valere che: $$\sum\limits_{v\in V\setminus\{u\}}Pr((u,v)\in E)=1\implies\sum\limits_{v\in V\setminus\{u\}}\frac{1}{Z_u} \frac{1}{d(u,v)^q}=1\implies Z_u=\sum\limits_{v\in V\setminus\{u\}}\frac{1}{d(u,v)^q}$$
+	- Poichè la griglia wrapped è simmetrica, vale che il fattore $Z_u$ ha lo stesso valore per ogni nodo $u$, quindi indicheremo come fattore di normalizzazione il valore $Z$
+- $q$ indica il parametro chiamato **esponente di clustering**
+	- per ogni valore di $q$ otteniamo un modello diverso, con $q=0$ ri-otteniamo Watts-Strogatz
+	- In generale, gli archi random sono "troppo random" quando $q$ è piccolo, viceversa quando $q$ è grande
+
+Naturalmente abbiamo visto che con alcuni valori di $q$ la ricerca decentralizzata funziona meglio, e con altri peggio
+- ad esempio con $q=0$ abbiamo visto poc'anzi che non funziona per niente.
+
+Quello che vogliamo provare è che esiste una scelta di $q$ che rende efficiente la ricerca decentralizzata, ovvero permette di trovare percorsi la cui lunghezza non è troppo lontanta da quella degli shortest paths.
+
+Anzi, quello che cerceremo è che esiste **un valore di $q$ ottimale** per la ricerca decentralizzata
+
+**Nel caso in cui la componente deterministica del grafo è una griglia (wrapped) bidimensionale** allora l'esponente di clustering ottimale è $q=2$
+
+In generale, se la componente deterministica del grafo è una griglia (wrapped) $d$-dimensionale, ovvero i nodi sono immersi nello spazio $\mathbb R^d$, allora l'esponente di clustering ottimale è $q=d$
+
+Ripensiamo all'esperimento di Milgram:
+- se il destinatario della lettera che Milgram consegna al newyorkese Pippo vive all'altro capo del mondo rispetto a Pippo, diciamo a Roma Garbatella, Pippo cerca fra i suoi amici qualcuno che vive in Europa
+- Pippo questo amico ce l'ha, si chiama Pluto e vive a Mosca
+- Pluto cerca qualcuno che viva in Europa Occidentale, e così la lettera finisce a Parigi
+- Poi a Milano (Italia), Perugia (Italia Centrale), Latina (Lazio), Roma Centocelle, Roma Garbatella (Destinazione)
+
+Il tragitto della lettera quindi segue, grosso modo, uno schema a "scale di riduzione"
+- prima viaggia da un continente all'altro, poi all'interno del continente, poi all'interno della nazione,della regione e infine della città
+
+Formalizziamo ora quello che abbiamo osservato in questo momento
+#### Casistica $q=2$
+
+Fissiamo un nodo $u$ e partizioniamo i nodi rimanenti per blocchi definiti in base alla distanza da $u$: i nodi a distanza compresa fra $2,4$, i nodi a distanza $4,8$,$\dots$, i nodi compresi a distanza $2^{h},2^{h+1}$
+
+Il numero di nodi nel blocco $2^{h-1}-2^h$ è $$\approx\pi(2^{h+1})^2-\pi2^{2h}=\pi 2^{2h}(4-1)=3\pi 2^{2h}$$
+è quindi **proporzionale a $2^{2h}$** 
+
+Scelto ora $v$ nel blocco $2^{h-1}-2^h$ , la probabilità che l'arco random uscente da $u$ sia $(u,v)$ **è proporzionale a $\frac{1}{2^{2h}}$**
+
+Allora, la probabilità che l'arco random uscente da $u$ cada nel blocco $2^{h-1}-2^h$ è **indipendente da $h$**, e quindi indipendente da quale blocco si stia considerando.
+
+Di conseguenza, la probabilità di raggiungere un nodo a distanza $2,4,64,1024,\text{etc..}$ è la stessa
+
+Questo significa che i **weak ties** sono distribuiti uniformemente su tutte le scale di risoluzione, e questo fa si che, anche se per un certo numero di passi occorre utilizzare gli archi della griglia [^1], non occorreranno molti passi prima di arrivare ad un nodo il cui arco random diminuisce ***drasticamente*** la distanza dall'obiettivo
+
+E ora, dopo l'intuizione, l'ottimalità di $q=d$ nel caso della $d$-dimensionalità non ci resta che dimostrarla formalmente
+#### Prestazioni della ricerca miope nel modello (caso grafi ad anello)
+
+Analizziamo formalmente le prestazioni della ricerca miope nel modello descritto solo nella casistica $d=1$
+- perchè ovviamente è più facile, anche se la generalizzazione ad altre dimensione è basata sugli stessi argomenti
+
+La topologia di grafo che stiamo considerando è: grafo ad anello, il quale sono aggiunti archi random, in accordo al modello descritto in precedenza
+
+Così facendo il coefficiente di clustering risulterà essere $q=1$
+
+![[Pasted image 20250808172452.png|center|250]]
+
+Formalmente, consideriamo un grafo $G$ dove:
+- $V=[n]$
+- $\{(i,i+1):1\leq i\lt n\}\cup\{(n,1)\}\subseteq E$ 
+
+Al quale vengono aggiunti archi random: $$\forall u,v\in V: Pr((u,v)\in E)=\frac{1}{Z} \frac{1}{d(u,v)}$$
+Osserviamo che, in questa casistica, per ogni $u\in V$ abbiamo che:
+$$Z=\sum\limits_{v\in V\setminus\{u\}} \frac{1}{d(u,v)}=2\sum\limits_{1\leq h\leq \frac{n}{2}} \frac{1}{h}\leq2\sum\limits_{h=1}^\infty \frac{1}{h}=2\ln(n)$$
+Scegliamo poi, u.a.r, due nodi $s,t\in G$, e utilizziamo l'algoritmo di ricerca decentralizzata per calcolare un percorso da $s$ a $t$
+
+Indichiamo con $X$ la v.a che denota la lunghezza di tale percorso, allora vale il seguente teorema
+
+>[!teorem]- Teorema
+>$$\mathbb E[X]\in O(\ln^2(n))$$
+
+
+
+[^1]: perchè gli archi random che si incontrano fanno allontanare dall'obiettivo, e dunque ognuno di questi ci si avvicina solo di un'inezia all'obiettivo
