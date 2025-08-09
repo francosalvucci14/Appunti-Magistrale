@@ -1,5 +1,6 @@
 Lezioni 9-11 esercitazioni coding
 
+- [[Lezione 1 PCD - Byzantine Broadcast Problem]]
 - [[Lezione 2 PCD - Protocollo Dolev-Strong (1983)]] 
 - [[Lezione 2 PCD - Protocollo Dolev-Strong (1983)]]
 - [[Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI]]
