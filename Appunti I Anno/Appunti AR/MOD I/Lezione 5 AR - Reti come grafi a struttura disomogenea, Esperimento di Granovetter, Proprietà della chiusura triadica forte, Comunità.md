@@ -204,7 +204,7 @@ Se riprendiamo la figura dell'esempio, abbiamo che $C=\{u_0\}$ è una cut-commun
 
 ## Partizionare un grafo in comunità
 
-
+Prima di questo argomento ci sarebbe una piccola introduzione alla teoria della **NP-Completezza**, ma darò per scontato che chi leggerà questi appunti sappia bene di cosa stiamo parlando (anche perchè per leggere questi appunti bisogna essere iscritti in Magistrale, e in Triennale c'è un intero corso tenuto, sempre dalla cara Di Ianni, sulla NP-Completezza)
 
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"
 
