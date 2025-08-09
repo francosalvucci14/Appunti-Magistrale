@@ -395,4 +395,4 @@ Ovver, quando si raggiunge una distanza dall'obiettivo dell'ordine di $\sqrt{n}$
 
 [^5]: ovvero, quando si esegue la ricerca decen. di un percorso in un anello con archi random generati secondo il modello con $q=0$, si trova mediamente un percorso di lungh. parecchio elevata
 
-[^6]: $\gt$ sia perchè $\frac{1}{n-1}\gt\frac{1}{n}$, sia perchè $\frac{1}{n-1}$ è la prob. di esistenza aroc random, ma $u,v$ potrebbero essere vicini nell'anello
+[^6]: "$\gt$" sia perchè $\frac{1}{n-1}\gt\frac{1}{n}$, sia perchè $\frac{1}{n-1}$ è la prob. di esistenza aroc random, ma $u,v$ potrebbero essere vicini nell'anello
