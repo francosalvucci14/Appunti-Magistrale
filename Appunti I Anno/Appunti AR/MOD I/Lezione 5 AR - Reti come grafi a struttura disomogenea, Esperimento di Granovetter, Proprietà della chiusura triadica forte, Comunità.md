@@ -1,3 +1,14 @@
+```table-of-contents
+title: 
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+include: 
+exclude: 
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
 # Introduzione
 
 Il materiale descritto qui si può trovare anche nel capitolo $3$ del libro e nella dispensa Communities (che useremo più avanti come appoggio)
@@ -170,10 +181,31 @@ Definizione semplice e intuitivamente ragionevole (se col cazzo), che può esser
 
 #### Cut e weak Web-Communities
 
-Le definizioni di cut e web community non sono del tutto scorrelate
+Le definizioni di cut e web community non sono del tutto scorrelate, vale infatti il seguente teorema:
+
+>[!teorem]- Teorema
+>Sia $G=(V,E)$ un grafo, se $C\subset V$ è una cut-community per $G$ tale che $|C|\gt1$ allora $C$ è una weak web-community
+
+**dimostrazione**
+
+Supponiamo **per assurdo** che $C$ non sia una weak web-community, allora esiste un nodo $u\in C:|N(u)\cap C|\gt|N(u)\setminus C|$.
+Poichè $|C|\gt1$, allora esiste in $C$ un nodo $v$ distinto da $u$: ovvero $C\setminus\{u\}\neq\emptyset$.
+Inoltre vale che:
+$$\begin{align*}
+&|\{(x,y)\in E:x\in C\setminus\{u\}\land y\in (V\setminus C)\cup\{u\}\}|=\\&=|\{(x,y)\in E:x\in C\land y\in (V\setminus C)\}|-|\{(u,z):z\in N(u)\setminus C\}|+|\{(u,z):z\in N(u)\cap C\}|=\\&=|\{(x,y)\in E:x\in C\land y\in (V\setminus C)\}|-|N(u)\setminus C|+|N(u)\cap C|\\&\lt|\{(x,y)\in E:x\in C\land y\in (V\setminus C)\}|
+\end{align*}$$
+E dunque, $C'=C\setminus\{u\}$ è un sottoinsieme proprio e non vuoto di $V$ e il numero di archi del taglio indotto da $C'$ è minore del numero di archi del taglio indotto da $C$, contradicendo così l'ipotesi che $C$ è una cut-community $\blacksquare$
+
+Okay, cut e weak web community sono correlate, ma abbiamo già cisto che c'è un problema che rimane tale, ovvero che nel calcolare la cut-community è difficile controllarne la cardinalità, e gli algoritmi che calcolano cut-communities possono restituire comunità contenenti un solo nodo (come nell'esempio), e quindi poco significative
+
+Inoltre, non è detto che una cut-community di un solo nodo sia anche una web-community.
+
+Se riprendiamo la figura dell'esempio, abbiamo che $C=\{u_0\}$ è una cut-community, ma l'insieme $C=\{u_0\}$ non può essere una web-community, perchè $u_0$ ha ovviamente più vicini in $V\setminus C$ che in $C$
+
+## Partizionare un grafo in comunità
+
 
 
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"
 
 [^2]: grafo dinamico: grafo che evolve nel tempo
-
