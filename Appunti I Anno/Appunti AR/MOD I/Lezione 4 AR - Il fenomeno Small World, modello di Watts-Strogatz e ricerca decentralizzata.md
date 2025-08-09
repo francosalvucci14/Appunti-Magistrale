@@ -384,6 +384,18 @@ Questo significa che, una volta entranti nella regione $R$, per entrare nella re
 
 Ovver, quando si raggiunge una distanza dall'obiettivo dell'ordine di $\sqrt{n}$ glia rchi random non sembrano giocare più alcun ruolo, e la ragione di ciò è il fatto cbhe gli archi random sono troppo random (come visto con Watts-Strogatz)
 
+In effetti, quel che abbiamo visto per il caso "anello e $q=0$" può essere generalizzato a tutti i casi "anello e $0\lt q\lt 1$"
+
+Di contro, nel caso "anello e $e\gt1$" gli archi random sono troppo corti, e quindi è "difficile" imbattersi in archi random che coprano grandi distanze, e che permettano di avvicinarsi alla destinazione in pochi passi
+
+Di conseguenza, la ricerca decentralizzata nel caso "anello e $q\gt1$" riesce a fare poco meglio che utilizzare soltatno archi dell'anello.
+
+È possibile dimostrare il seguente teorema (di cui non faremo la dimostrazione)
+
+>[!teorem]- Teorema
+>Comunque si scelga $q\neq 1,\exists \alpha_q,c_q$ costanti positive tali che, detta $X$ la v.a che esprime la lunghezza del percorso trovato con la ric. decentralizzata, in un anello di $n$ nodi, cui sono aggiunti archi ranom, vale che $$\mathbb E[X]\geq\alpha_qn^{c_q}$$
+
+
 
 [^1]: perchè gli archi random che si incontrano fanno allontanare dall'obiettivo, e dunque ognuno di questi ci si avvicina solo di un'inezia all'obiettivo
 
