@@ -104,6 +104,73 @@ La domanda ora è, quand'è che possiamo dire che un gruppo di nodi è *abbastan
 
 ## Comunità e coefficiente di clustering
 
+Intanto, per misurare il grado di coesione di un nodo $u$ all'interno di un gruppo di nodi è stato definito il **coefficiente di clustering $c(u)$** come il rapporto fra il numero di relazioni fra vicini di $u$ rispetto a tutte le coppie possibili di vicini di $u$, ovvero: $$c(u)=\frac{|\{(x,y)\in E:x\in N(u)\land y\in N(u)\}|}{\frac{|N(u)|\left[|N(u)-1\right]}{2}}$$
+Informalmente, il coefficiente di clustering misura quanto un nodo è "ben inserito" all'interno della rete costituita dai suoi vicini
+- un nodo con coefficiente di clustering **basso** è "mal" inserito nel suo gruppo di amici, si trova infatti in una posizione "periferica" secondo quel gruppo di persone
+- un nodo con coefficiente di clustering **alto** è "molto" inserito nel suo gruppo di amici, possiamo dire che è un elemento *centrale* di quel gruppo di amici
+- per queste motivazioni, il coefficiente di clustering è anche detto **indice di centralità** di un nodo
+
+Sia $C$ un sottoinsieme di nodi: definiamo per ogni nodo $u\in C$ il **coefficiente di clustering di $u$ relativo a $C$** come $$c_C(u)=\frac{|\{(x,y)\in E:x\in N(u)\cap C\land y\in N(u)\cap C\}|}{\frac{|N(u)\cap C|\left[|N(u)\cap C|-1\right]}{2}}$$
+Se tutti i nodi contenuti in $C$ hanno coefficiente di clustering relativo a $C$ **elevato**, possiamo ben pensare che $C$ sia una comunità.
+
+La domanda però sorge spontanea: ***quanto elevato*** deve essere il coefficiente di clustering relativo a $C$ per poter definire $C$ una comunità? 
+In aggiunta a questa domanda ne sorge un'altra: le comunità non potrebbero essere definite sulla base di altri concetti oltre che al coefficiente di clustering?
+
+Per rispondere a queste due domande dovremo introdurre di *alcuni tipi di comunità* e *determinati concetti* relativi alle comunità stesse, che sono:
+- **Cut-Communities**
+- **Web-Communities**
+- Metodi agglomerativi e partitivi per l'individuazione di comunità
+	- qui, sopratutto, descriveremo un metodo partitivo che porterà all'individuazione di comunità basate su un'altro concetto di centralità, ovvero il concetto di **betweenness di un arco**
+
+### Cut-Communities
+
+Iniziamo subito a definire cos'è una **cut-communities** formalmente
+
+>[!definition]- Cut-Community
+>Una **cut-community** per un grafo $G=(V,E)$ è un sottoinsieme *proprio e non vuoto* $C$ dei nodi di $G$ che minimizza gli **archi del taglio**, ossia gli archi che collegano nodi in $C$ a nodi in $V\setminus C$
+>Formalmente, dato un grafo $G=(V,E),C\subset V$ è una cut-communities se $C\neq\emptyset$ e $$|\{(u,v):u\in C\land v\in V\setminus C\}|=\min_{C'\subset V:C'\neq\emptyset}\left(|\{(u,v):u\in C'\land v\in V\setminus C'\}|\right)$$
+
+Dati un grafo $G=(V,E)$ e una coppia di nodi $s,t$, un *taglio minimo rispetto alla coppia $(s,t)$* è un sottoinsieme *proprio e non vuoto* $C\subset V$ dei nodi di $G$ che contiene $s$ e non contiene $t$, e che minimizza gli archi del taglio
+
+Calcolare il taglio minimo rispetto ad una data coppia di nodi è facile, si può usare l'algoritmo di **Ford-Fulkerson**, ovvero dati due nodi $s,t$ l'algoritmo calcola un sottoinsieme $C$ tale che $s\in C,t\in V\setminus C$ e $$|\{(u,v):u\in C\land v\in V\setminus C\}|=\min_{C'\subset V:s\in C'\land t\in V\setminus C'}\left(|\{(u,v):u\in C'\land v\in V\setminus C'\}|\right)$$
+
+Quindi, per calcolare una cut-community di un grafo possiamo procedere così:
+- per ogni coppia di nodi distinti $s,t\in V$: calcoliamo l'insieme $C_{s,t}$ tale che $s\in C_{s,t},t\in V\setminus C_{s,t}$ e che minimizza il taglio
+- la cut-community cercata è il sottoinsieme $C_{x,y}$ tale che: $$|\{(u,v):u\in C_{x,y}\land v\in V\setminus C_{x,y}\}|=\min_{s,t\in V:s\neq t}\left(|\{(u,v):u\in C'_{s,t}\land v\in V\setminus C'_{s,t}\}|\right)$$
+Il problema è che tutti questi algoritmi non permettono di "controllare" i due insiemi che costituiscono il taglio.
+
+Per capire meglio facciamo un'esempio
+
+La situazione è la seguente 
+
+![[Pasted image 20250809160924.png|center|200]]
+
+Il grafo $G$ è l'unione di due clicque:
+- Clicque $A$ sui nodi $u_0,u_1,u_2,u_3,u_4$ (nodi rossi)
+- Clicque $B$ sui nodi $v_0,v_1,v_2,v_3,v_4$ (nodi blu)
+- Ed è completato dagli archi che collegano $A$ e $B$ (archi verdi): il nodo $u_i$ è adiacente a $v_{i-1},v_i,v_{i+1}$ (somme e diff. modulo $5$)
+- Ogni nodo del grafo ha grado $7$
+
+Se applichiamo l'algoritmo per il calcolo della cut-community ci ritorna che la cut-community di questo grafo è solamente il nodo $u_0$, il che non è proprio ragionevole 
+(vi direte voi, che cazzo lo abbiamo scritto a fare allora? non si sa, **quarto mistero della fede**)
+
+### Web-Communities
+
+Definiamo ora il concetto di **web-communities**
+
+>[!definition]- Web-Community
+>Una **web-community** è un sottoinsieme dei nodi di un grafo, ciascuno dei quali ha più vicini fra i nodi del sottoinsieme che fra quelli esterni ad esso.
+>Formalmente, dato un grafo $G=(V,E),C\subset V$ è una (**strong**) web-community se $C\neq\emptyset$ e $$\forall u\in C:|N(u)\cap C|\gt|N(u)\setminus C|=|N(u)\cap (V\setminus C)|$$
+>- equivalentemente, dato che $|N(u)\cap C|+|N(u)\setminus C|=|N(u)|,\frac{|N(u)\cap C|}{|N(u)|}\gt \frac{1}{2}$
+>
+>Analogamente, dato un grafo $G=(V,E),C\subset V$ è una (**weak**) web-community se $C\neq\emptyset$ e $$\forall u\in C:|N(u)\cap C|\geq|N(u)\setminus C|$$
+>- equivalentemente $\frac{|N(u)\cap C|}{|N(u)|}\geq \frac{1}{2}$
+
+Definizione semplice e intuitivamente ragionevole (se col cazzo), che può essere generalizzata richiedendo $$\frac{|N(u)\cap C|}{|N(u)|}\gt \alpha(\geq\alpha)$$per qualche $\alpha\in[0,1]$
+
+#### Cut e weak Web-Communities
+
+Le definizioni di cut e web community non sono del tutto scorrelate
 
 
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"

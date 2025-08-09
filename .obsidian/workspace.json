@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
+                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità"
+              "title": "Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
+                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità"
+              "title": "Outline of Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law"
             }
           },
           {
@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "9fbd6ada8f550472",
@@ -163,18 +162,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "90edc667964d2b31",
+  "active": "64bc8fa6ca4c6aa6",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 4 AR - Il fenomeno Small World, modello di Watts-Strogatz e ricerca decentralizzata.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250809160924.png",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 4 AR - Il fenomeno Small World, modello di Watts-Strogatz e ricerca decentralizzata.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250809100827.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250808172452.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250808113714.png",
@@ -184,7 +184,6 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250807122915.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250807121023.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250807115313.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250807112303.png",
     "Caparra Confirmatoria Citroën C1.md",
     "README.md",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
@@ -206,7 +205,6 @@
     "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
     "Appunti I Anno/Appunti ADRC/Lezione 18 ADRC - Expanders e le loro Proprietà.md",
     "Appunti I Anno/Appunti PCD/Lezione 20 PCD - Path Finding su LN.md",
-    "Appunti I Anno/Appunti PCD/Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding-Bitcoin-2/transaction_segwit.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/script.cpython-310.pyc",

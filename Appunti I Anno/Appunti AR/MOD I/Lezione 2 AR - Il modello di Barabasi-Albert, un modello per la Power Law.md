@@ -1,3 +1,14 @@
+```table-of-contents
+title: 
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+include: 
+exclude: 
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
 # Questioni di popolarità
 
 Nella lezione scorsa abbiamo introdotto un modello di grafi aleatori, ovvero il modello di Erdos-Renyi, e abbiamo visto che, in un grafo generato in accordo al tale modello, al crescere di $k$ il numero di nodi aventi grado $k$ decresce esponenzialmente in $k$
@@ -125,7 +136,7 @@ La dimostrazione procederà attraverso i seguenti $4$ passaggi:
 3) Risoluzione dell'equazione differenziale: la soluzione costituirà un'approssimazione della funzione che esprime il grado di un nodo nel tempo
 4) Individuazione della Power Law
 
-### 1) Legge aleatoria per la variazione del grado
+### Legge aleatoria per la variazione del grado
 
 Sia $D_j(t)$ la v.a che esprime il numero di archi entranti nel nodo $j$ al passo $t$ di generazione del grafo, ovviamente $D_j(t)$ è definita per $t\geq j$ e $\forall j\geq1$
 
@@ -134,7 +145,7 @@ Al passo $t=j$, il grado entrante di $j$ è $0:D_j(j)=0$ (**condizione iniziale*
 Esprimiamo ora la **variazione attesa** nel tempo della v.a $D_j(t)$:
 - Al passo $t+1$, il grado di $j$ può essere inviariato rispetto al passo $t$ oppure può essere aumentato di una unità, e $D_j(t+1)=D_j(t)+1\iff(t+1,j)\in E$ 
 - Quindi vale che: $$Pr(D_j(t+1)-D_j(t)=1)=Pr(d_{hj}=1)=\frac{p}{t}+\frac{1-p}{t}\sum_{1\leq h\lt t+1}d_{hj}=\frac{p}{t}+\frac{1-p}{t}D_j(t)$$
-### 2) Approssimazione deterministica e continua
+### Approssimazione deterministica e continua
 
 Abbiamo calcolato prima che $$Pr(D_j(t+1)-D_j(t)=1)=\frac{p}{t}+\frac{1-p}{t}D_j(t)$$con condizione iniziale $D_j(j)=0$
 
@@ -149,7 +160,7 @@ A questo punto, approssimiamo il comportamento di $X_j(t)$ con una funzione $x_j
 
 **Oss** : non è detto che l'andamento della funzione $x_j(t)$ sia effettivamente vicino al comportamento della variabile aleatoria $D_j(t)$
 
-### 3) Risoluzione dell'equazione differenziale
+### Risoluzione dell'equazione differenziale
 
 Dobbiamo quindi risolvere l'equazione differenziale $$\frac{d}{dt}x_j(t)=\frac{p}{t}+\frac{1-p}{t}x_j(t)$$
 Svolgiamo i calcoli: 
@@ -164,7 +175,7 @@ Da cui si ottiene come risultato $$\begin{align}&\ln[p+(1-p)x_j(t)]=(1-p)\ln(t)+
 Prendendo $H=e^c$, e sfruttando la condizione iniziale $x_j(j)=0$, otteniamo $$p=Hj^{1-p}\implies H=\frac{p}{j^{1-p}}$$
 E per concludere otteniamo che: 
 $$x_j(t)=\frac{p}{1-p}\left[\left(\frac{t}{j}\right)^{1-p}-1\right]$$
-### 4) Individuazione della Power Law
+### Individuazione della Power Law
 
 Calcoliamo infine, nel modello deterministico continuo, dati $k,t$ quale frazione dei nodi, al passo $t$ ha "grado" $k$
 
@@ -175,9 +186,7 @@ Per defizione $j\in A_{t}(k)\iff j\leq t,x_j(t)\geq k$, ma $x_j(t)=\frac{p}{1-p}
 $$\begin{align}&\frac{p}{1-p}\left[\left(\frac{t}{j}\right)^{1-p}-1\right]\geq k\\&\left(\frac{t}{j}\right)^{1-p}\geq\frac{(1-p)}{p}k+1\\&\frac{t}{j}\geq\left[\frac{(1-p)}{p}k+1\right]^{\frac{1}{1-p}}\\&j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\end{align}$$
 Quindi, $j\in A_{t}(k)\iff j\leq t,j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$, ma poichè $\frac{1-p}{p}k+1\gt1$ e $-\frac{1}{1-p}\lt0$ allora $\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\lt1$ , e quindi $t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\leq t$
 
-Abbiamo visto che $j\in A_{t}(k)\iff j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$ , di conseguenza $$A_t(k)=\left\{j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\right\}$$e di conseguenza $$
-|A_t(k)|=t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}
-$$
+Abbiamo visto che $j\in A_{t}(k)\iff j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$ , di conseguenza $$A_t(k)=\left\{j\leq t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}\right\}$$e di conseguenza $$|A_t(k)|=t\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$$
 Ritornando alla richiesta principale, vogliamo calcolare $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)$$
 Sia $F(k)=\left[\frac{(1-p)}{p}k+1\right]^{-\frac{1}{1-p}}$
 
@@ -187,6 +196,7 @@ Quindi
 $$\frac{1}{t}\left(|A_t(k)|-|A_t(k+1)|\right)=f(k)\approx-\frac{dF(k)}{dk}=-\frac{1-p}{p}\left[-\frac{1}{1-p}\right]\left[\frac{1-p}{p}k+1\right]^{-\frac{1}{1-p}-1}$$che è proprio una **Power Law** con esponente $1+\frac{1}{1-p}$
 
 Quindi, abbiamo dimostrato effettivamente che il modello per il fenomeno Rich-Get-Richer esibisce effettivamente una Power Law $\blacksquare$ 
+
 ## Conclusioni sull'analisi del modello
 
 Per analizzare il nostro modello Rich-Get-Richer, abbiamo approssimato mediante una funzione (deterministica e) continua la legge probabilistica che esprime la variazione del grado di un nodo fra due passi consecutivi, ma non abbiamo idea di quanto tale approssimazione si avvicini al modello disclreto e aleatorio
