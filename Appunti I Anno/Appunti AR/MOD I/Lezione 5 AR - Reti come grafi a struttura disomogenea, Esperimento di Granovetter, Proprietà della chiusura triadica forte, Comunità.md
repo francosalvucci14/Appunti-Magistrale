@@ -449,7 +449,73 @@ Calcoliamo $T(s)$ come insieme di archi e, contemporaneamente, una partizione in
 
 ##### 2) Visita top-down di $T(s)$
 
+Mediante visita top-down di $T(s)$, per ogni $v\in V$ calcola $\sigma_{sv}$
+- il numero di shortest paths dalla radice $s$ a un nodo $v\in L_{h}$ è pari alla somma dei numeri percorsi da $s$ a qualunque "padre" di $v$
+- dopo aver inizializzato $\sigma_{su}=1,\forall u\in L_{1}$, una volta calcolato $\sigma_{su}\forall u\in L_{h-1}$, possiamo calcolare $$\sigma_{sv}=\substack\sum_{(u,v)\in E:u\in L_{h-1}}\sigma_{su},\forall v\in L_{h}$$
+![[Pasted image 20250811151256.png|center|400]]
+
 ##### 3) Visita bottom-up di $T(s)$
+
+Per ogni $(u,v)\in T(s)$ calcola $b_{s}(u,v)=\sum\limits_{t\in V\setminus\{s\}}b_{st}(u,v)$
+Sia $d$ il numero di livelli di $T(s)$
+SIa $(y,x)\in T(s)$ con $x\in L_{d}$: gli unici shortest paths uscenti da $s$ che passano attraverso $(y,x)$ sono gli shortest paths da $s\to y$, e ciò implica anche che $b_{sz}(y,x)=b_{sx}(y,x)=\frac{\sigma_{sx}(y,x)}{\sigma_{sx}}=\frac{\sigma_{sy}}{\sigma_{sx}}$
+- $\sigma_{sx}(y,x)=\sigma_{sy}$ perchè il numero di shortest paths da $s\to x$ che attraversano $(x,y)$ è uguale al numero di shortest paths da $s\to y$
+
+![[Pasted image 20250811152356.png|center|500]]
+
+Sia ora $(z,y)\in T(s)$ con $y\not\in L_{d}$: gli shortest paths che passano attraverso $(z,y)$ sono:
+- *alcuni* shortest paths da $s\to y$ - più precisamente quelli che passano attraverso $z$
+- e, per ogni discendente $x$ di $y$, *alcuni* shortest path da $s\to x$ - più precisamente quelli che passano attraverso $z$ e $y$
+
+Perciò, $b_{s}(z,y)$ è la somma dei seguenti termini:
+- $\frac{\sigma_{sz}}{\sigma_{sy}}$, ovvero la frazione degli shortest path da $s\to y$ che passa attraverso $(z,y)$
+- per ogni discendente $x$ di $y$, una frazione $\frac{\sigma_{sz}}{\sigma_{sy}}$ della frazione di shortest paths $s\to x$ che passano attraverso $(y,x)$, ovvero $$\frac{\sigma_{sz}}{\sigma_{sy}}\times\frac{\sigma_{sy}}{\sigma_{sx}}$$
+
+![[Pasted image 20250811153000.png|center|250]]
+
+
+**Esempio**: 
+i $\frac{3}{5}$ degli shortest paths da $s\to x$ passano per $(y,x)$:
+- di questi, $\frac{1}{3}$ passa per $(z,y)$,$\frac{1}{3}$ passa per $(a,y)$ e $\frac{1}{3}$ passa per $(b,y)$
+- perciò, per $(z,y)$ passano $\frac{1}{3}$ degli shortest paths da $s\to y$ e $\frac{1}{3}(\frac{3}{5})$degli shortest paths da $s\to x$, quindi vale che $$b_{s}(z,y)=\frac{1}{3}+ \frac{1}{3}\left(\frac{3}{5}\right)=\frac{8}{15}$$
+
+**Esempio**
+
+Consideriamo ora l'arco $(a,c)$:
+- una frazione pari a $\frac{\sigma_{sa}}{\sigma_{sc}}=\frac{1}{2}$ degli shortest paths da $s\to c$ passano per $(a,c)$
+- per ogni discentende di $c$, una frazione pari a $\frac{\sigma_{sa}}{\sigma_{sc}}=\frac{1}{2}$ della frazione di shortest paths da $s$ a quel discendente che passano attraverso $(a,c)$
+	- nell'esempio, i discendenti di $c$ sono $x,w$
+	- dei $\frac{2}{5}$ di shortest paths da $s\to x$ che passano per $(c,x)$, $\frac{1}{2}$ passano per $(b,c)$ e $\frac{1}{2}$ passano per $(a,c)$
+	- dei $\frac{2}{4}$ di shortest paths da $s\to w$ che passano per $(c,x)$, $\frac{1}{2}$ passano per $(b,c)$ e $\frac{1}{2}$ passano per $(a,c)$
+	- perciò, per $(a,c)$ passano:
+		- $\frac{1}{2}$ degli shortest paths da $s\to c$
+		- $\frac{1}{2}(\frac{2}{5})$ degli shortest paths da $s\to x$
+		- $\frac{1}{2}(\frac{2}{4})$ degli shortest paths da $s\to w$
+	- quindi, vale che $$b_{s}(a,c)=\frac{1}{2}+ \frac{1}{2}\left(\frac{2}{5}\right)+ \frac{1}{2}\left(\frac{2}{4}\right)=\frac{19}{20}$$
+
+Più in dettaglio, vale che:
+
+$$\begin{align}\forall h\gets d;h\gt0;h\gets h-1&\text{ calcola }b_{s}(u,v),\forall(u,v)\in T(s):v\in L_{h}:b_{s}(u,v)=\\&=\frac{\sigma_{su}}{\sigma_{sv}}+\frac{\sigma_{su}}{\sigma_{sv}}\sum\limits_{(v,x)\in T(s)}b_{s}(v,x)\end{align}$$
+è una visita bottom-up: dai livelli più in basso a salire
+
+**Oss1** : $T(s)$ è un insieme di archi orientati: se $v\in L_{h}$ e $(v,x)\in T(s)$ allora $x\in L_{h+1}$
+
+**Oss2**: Abbiamo assunto $\sigma_{ss}=1$ (vedi figura)
+
+![[Pasted image 20250811155047.png|center]]
+
+# Rilassare il modello
+
+Strong/weak ties, bridge/non bridge: queste distinzioni sembrano un pò troppo nette
+
+Proviamo allora a **rilassare il modello**.
+
+Invece che considerare un grafo $G=(V,S\cup W)$, nel quale gli archi modellano relazioni forti e deboli, consideriamo un grafo con archi pesati $G=(V,E,w)$, con $w:E\to \mathbb N$, nel quale il peso di un arco è tanto maggiore quanto più forte è la relazione che essa modella
+
+
+
+
+
 
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"
 
