@@ -206,6 +206,75 @@ Se riprendiamo la figura dell'esempio, abbiamo che $C=\{u_0\}$ è una cut-commun
 
 Prima di questo argomento ci sarebbe una piccola introduzione alla teoria della **NP-Completezza**, ma darò per scontato che chi leggerà questi appunti sappia bene di cosa stiamo parlando (anche perchè per leggere questi appunti bisogna essere iscritti in Magistrale, e in Triennale c'è un intero corso tenuto, sempre dalla cara Di Ianni, sulla NP-Completezza)
 
+Più che individuare una singola comunità in un grafo quello che ci interessa è partizionare il grafo in comunità
+
+Le motivazioni per questo interesse sono molteplici:
+- esempio, conoscere le comunità può aiutarci a capire come fluisce l'informazione nella rete (in linea con l'esperimento di Granovetter)
+- possiamo vedere come si diffondono idee, innovazioni, epidemie in quella rete (ci torneremo poi)
+- serve anche a studiare reti di dimensioni molto molto grandi, riducendone la granularità (ossia, considerando le comunictà come se fossero dei **macro-nodi** e studiando il grafo dei macro-nodi)
+
+**Oss**: Se $C$ è una cut-community, allora anche $V\setminus C$ è una cut-community, questo perchè $V\setminus C\neq V,V\setminus C\neq\emptyset$ e il taglio indotto da $V\setminus C$ è lo stesso di quello indotto da $C$
+
+Perciò, un algoritmo che calcola un taglio minimo individua una partizione di un grafo in due comunità.
+
+Inoltre, se C è una cut-community con $|C|\gt1\land|V\setminus C|\gt1$ allora $\langle C,V\setminus C\rangle$ è una partizione del grafo in due waek web-community
+- semplice generalizzazione del teorema precedente
+
+Detto questo quindi, possiamo affermare che è possibile calcolare una partizione di un grafo $G$ in due cut-communities in **tempo polinomiale in $|G|$**, ma ***non possiamo garantire che $|C|\gt1,|V\setminus C|\gt1$***
+
+In effetti, calcolare una partizione di un grafo in due web-communities è un compito molto più complesso
+
+Effettivamente, mentre esiste sempre una partizione di un grafo in due cut-communities (perchè un taglio minimo esiste sempre!), non è detto che sia sempre possibile partizionare in due web-communities
+
+Vale quindi che, **decidere se un grafo è partizionabile in due web-communities è un problema NP-Hard**
+
+Analizziamo quindi il problema in questione, dimostrando un teorema fondamentale
+
+#### Partizionare un grafo in due web-communities
+
+>[!definition]- Problema Strong Web-Communities Partitioning (SWCP)
+>Il problema **Strong Web-Communities Partitioning (SWCP)** è così definito.
+>Dato un grafo $G=(V,E)$, ***decidere se esiste*** un sottoinsieme (proprio e non vuoto) $C$ di $V$ tale che $C$ e $V\setminus C$ sono due strong web-communities
+
+Per risolvere il problema in questione, diamo l'enunciato e la dimostrazione del seguente teorema:
+
+>[!teorem]- Teorema
+>Il problema SWCP è NP-Completo
+
+**dimostrazione teorema**
+
+Prima di dimostrare il teorema, dimostriamo un lemma di appoggio
+
+>[!teorem]- Lemma
+>Se $G=(V,E)$ è partizionabile in due strong web-community ed esistono $x,y,z\in V$ tale che $N(x)=\{y,z\}$ (quindi $x$ ha grado $2$) ***allora*** $\forall C\subset V$ tale che $C$ e $V\setminus C$ sono due strong web-communities vale che $x,y,z\in C$ oppure $x,y,z\in V\setminus C$
+
+**dimostrazione lemma**
+
+Sia $C\subset V$ tale che $C$ e $V\setminus C$ sono due strong web-communities, w.l.o.g assumiamo che $x\in C$.
+Vediamo i valori che $y,z$ possono assumere:
+- $y\in V\setminus C,z\in V\setminus C\implies|N(x)\cap C|=0\lt|N(x)\cap(V\setminus C)|=2$
+- $y\in C,z\in V\setminus C\implies|N(x)\cap C|=1=|N(x)\cap(V\setminus C)|$
+	- analogamente se $y\in V\setminus C,z\in C$
+
+In tutte e due i casi verrebbe contraddetta lìipotesi che $C$ e $V\setminus C$ sono due strong web-communities $\blacksquare$
+
+Torniamo alla dimostrazione del teorema.
+
+Il problema è in NP: un certificato valido per il problema è un sottoinsieme $C\subset V$, e verificare che $C$ e $V\setminus C$ sono strong web-communities richiede tempo **polinomiale** in $|G|$
+
+Per dimostrare che il problema SWCP è NP-Completo, riduciamo ad esso il famoso problema $3$-SAT.
+
+Siano $X=\{x_1,\dots,x_n\}$ e $f=c_1\land c_2\land\dots\land c_m$, con $c_j=l_{j1}\lor l_{j2}\lor l_{j3}$ e $l_{jh}\in X$ oppure $\lnot l_{jh}\in X$, per $j=1,\dots,m$ e $h=1,2,3$
+
+Da qui, costruiamo un grafo costituito da:
+- due nodi "specializzati" $T,F$ che potranno appartenere alla stessa comunità $C\iff C=V$[^3]
+- un **gadget** per ogni variabile
+- un **gadget** per ogni clausola
+
+
+
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"
 
 [^2]: grafo dinamico: grafo che evolve nel tempo
+
+[^3]: Così facendo risulta che C non è una comunità, poichè non è contenuta propriamente in $V$
