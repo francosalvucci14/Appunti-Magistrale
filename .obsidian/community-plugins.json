@@ -3,5 +3,6 @@
   "better-export-pdf",
   "quick-latex",
   "automatic-table-of-contents",
-  "obsidian-latex-environments"
+  "obsidian-latex-environments",
+  "auto-braces"
 ]

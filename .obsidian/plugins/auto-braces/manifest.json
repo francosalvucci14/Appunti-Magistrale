@@ -1,0 +1,10 @@
+{
+	"id": "auto-braces",
+	"name": "Auto Braces for _ and ^",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Inserisce automaticamente {} dopo _ o ^ e posiziona il cursore dentro.",
+	"author": "Franco",
+	"authorUrl": "",
+	"isDesktopOnly": false
+}

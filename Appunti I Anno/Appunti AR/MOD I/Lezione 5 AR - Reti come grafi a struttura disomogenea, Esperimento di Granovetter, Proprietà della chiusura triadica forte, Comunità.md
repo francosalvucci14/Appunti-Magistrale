@@ -357,6 +357,100 @@ La dimostrazione segue poi dal fatto che costruire $G$ richiede tempo polinomial
 >[!info]
 >Una dimostrazione alternativa di questo teorema può essere trovata nella Dispensa $2$ sulla pagina del corso
 
+### Partizionare un grafo in comunità: approccio euristico
+
+Sono stati proposti numerosi metodi "euristici" per partizionare un grafo in comunità, dove adesso con comunità intendiamo un insieme coeso di nodi
+
+Per grandi linee, possiamo classificare le tecniche per il partizionamento di grafi in metodi partitivi (o divisivi) e metodi agglomerativi
+
+In un **metodo partitivo** si inizia considerando l'intero grafo come un'unica grande comunità e poi, man mano, si rimuovono gli archi fino a quando il grafo risulta partizionato in componenti connesse
+- il processo viene poi iterato su ciascuna componente, fino a quando si ottiene un livello di granularità ritenuto adeguato o un insieme di comunità di dimensioni ritenute adeguate
+
+In un **metodo agglomerativo** si inizia considerando ciascun nodo come una piccola comunità e poi, man mano, si aggiungono gli archi del grafo fino a quando si ottengono un numero di comunità ritenuto adeguato o comunità di dimensioni adeguate
+
+Sia i metodi partitivi che agglomerativi permettono di ottenere partizionamenti nidificati:
+- in un metodo partitivo: ad ogni passo otteniamo comunità contenute in quelle ottenute al passo precedente
+- in un metodo agglomerativo: ad ogni passo otteniamo comunità che contengono quelle ottenute al passo precedente
+
+Così facendo otteniamo uno schema di partizionamento ad albero, come si vede dalla figura 
+
+![[Pasted image 20250811142504.png|center|300]]
+
+I diversi metodi partitivi/agglomerativi proposti si distinguono per il criterio utilizzato per scegliere ad ogni passo:
+- quale arco rimuovere (partitivo)
+- quale arco aggiungere (agglomerativo)
+
+#### Betweenness di un arco
+
+Vediamo ora un particolare criterio per rimuovere gli archi in un metodo partitivo
+
+Il critero è basato sul concetto di **betweenness di un arco**, a sua volta basato sui concetti di bridge e local bridge:
+- un bridge (per definizione) collega due regioni del grafo altrimenti non connesse
+- un local bridge connette due regioni che, senza di esso, sarebbero connesse in modo meno efficiente
+- perciò, possiamo dire che sia i bridge che i local brisge connettono regioni che, senza di loro, avrebbero difficoltà ad interagire
+
+Inoltre, abbiamo visto che i brisge e local bridge sono **weak ties**, e gli archi che rimangono dopo la loro rimozione sono gli **strong ties** - quelli delle relazioni forti
+
+Da queste considerazioni nasce l'idea: rimuovendo bridge e local brisge il grafo viene partizionato in componenti che bene possono essere considerate comunità
+
+Ma la domanda sorge spontanea: cosa succede se la rete appare come in figura? quindi senza local bridge ma con due regione dense?
+
+![[Pasted image 20250811143351.png|center|250]]
+
+Per rispondere a questa domanda, dobbiamo utilizzare una proprietà diversa da quella di (local) bridge [^5]
+
+Questa proprietà è basata sulla nozione di traffico: gli archi che possiamo considerare i "nuovi ponti" sono quelli attraverso i quali passa **più traffico**, il che sembra ragionevole, e il traffico lo possiamo misurare con una sorta di flusso di un qualche fluido:
+- per ogni coppia di nodi $s,t$ assumiamo che $s$ voglia inviare a $t$ un'unità di flussp che, viaggiando nella rete, si suddivide equamente fra tutti gli shortest paths che collegano $s,t$
+
+La **betweenness di un arco** è quindi la quantità totale di fluido che lo attraversa, ottenuta sommando le frazioni di fluido per tutte le coppie $(s,t)$
+
+Un'arco è tanto più "nuovo ponte" quanto maggiore è la sua betweenness
+
+Descriviamola formalmente:
+
+>[!definition]- Betweenness di un arco
+>Dato un grafo $G=(V,E)$ (non orientato), per ogni coppia di nodi $(s,t)\in V$ e per ogni arco $(u,v)\in E$ definiamo $$\sigma_{st}(u,v)=\text{num. shortest paths fra s e t che attraversano (u,v)}$$
+>La betweenness **relativa** di $(u,v)$ rispetto alla coppia $(s,t)$ è la frazione degli shortest paths fra $s,t$ che attraversano $(u,v)$, ovvero:
+>$$b_{st}(u,v)= \frac{\sigma_{st}(u,v)}{\sigma_{st}}$$
+>Infine, la **betweenness di un arco** $(u,v)\in E$ è la semi-somma delle betweenness relative ad ogni coppia di nodi, quindi: 
+>$$b(u,v)=\frac{1}{2}\sum\limits_{s,t\in V}(b_{st}(u,v))$$[^6]
+
+
+#### Il metodo di Girvan-Newman
+
+Il metodo di Girvan-Newman è un metodo partitivo basato sulla betweenness:
+- si inizia considerando l'itero grafo come una grande comunità
+- poi si calcola l'arco di betweenness massima e si rimuove; se il grafo residuo è non connesso allora è stata ottenuta una prima partizione in comunità
+- il procedimento viene poi iterato calcolando gli archi di betweenness massima e rimuovendoli
+- si termina quando si raggiunge un livello di granularità ritenuto adeguato
+
+Come facciamo però per calcolare la betweenness di un arco? Provare a calcolare tutti gli shortest paths di un grafo è una cosa impensabile, dato che il loro numero è esponenziale nelle dimensioni del grafo (dovreste già saperla questa cosa)
+
+Vediamo allora uno schema algoritmico per calcolare la betweenness di un arco.
+
+Per ogni $s\in V$ si eseguono i seguenti passaggi:
+1) calcola il sottografo $T(s)$ degli shortest paths uscenti da $s$ mediante una BFS
+2) mediante visita top-down di $T(s)$, per ogni $v\in V$ calcola $\sigma_{sv}$
+3) mediante visita bottom-up di $T(s)$, e usando quanto calcolato al punto 2, per ogni $(u,v)\in T(s)$ calcola $b_{s}(u,v)=\sum\limits_{t\in V\setminus\{s\}}b_{st}(u,v)$[^7]
+
+Infine, per ogni $(u,v)\in E$ calcola $b(u,v)=\frac{1}{2}\sum\limits_{s\in V}b_{s}(u,v)$
+
+Vediamo nel dettaglio i singoli punti
+
+##### 1) BFS da $s\in V$
+
+Calcoliamo $T(s)$ come insieme di archi e, contemporaneamente, una partizione in livelli di $V$:
+- $L_{0}\gets\{s\},T(s)\gets\emptyset$
+- per $h\geq0$  e finchè $L_{h}\neq\emptyset$ calcola $$\begin{align*}
+&L_{h+1}\gets\left\{u\in V\setminus\bigcup_{0\leq i\leq h}L_{i}:\exists v\in L_{h}:(v,u)\in E\right\}\\&T(s)\gets\left\{(u,v)\in E:v\in L_{h}\land u\in L_{h+1}\right\}
+\end{align*}$$
+![[Pasted image 20250811150601.png|center|400]]
+
+
+##### 2) Visita top-down di $T(s)$
+
+##### 3) Visita bottom-up di $T(s)$
+
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"
 
 [^2]: grafo dinamico: grafo che evolve nel tempo
@@ -364,3 +458,9 @@ La dimostrazione segue poi dal fatto che costruire $G$ richiede tempo polinomial
 [^3]: Così facendo risulta che C non è una comunità, poichè non è contenuta propriamente in $V$
 
 [^4]: nell'esempio in figura almeno uno fra $x_1,w_2,x_3$ deve essere contenuto in $C$
+
+[^5]: anche se, come il (local) bridge, vuole ancora descrivere una crescente difficoltà di collegamento indotta dalla rimozione di un arco che la soddisfa
+
+[^6]: NB: quella che abbiamo definito è la ***edge***-betweenness; analogamente si può definire la node-betweenness
+
+[^7]: qui calcoliamo $b_{s}(u,v)$ per i soli archi $(u,v)\in T(s)$. Infatti, gli archi che non sono in $T(s)$ non fanno parte di alcuno shortest paths uscente da $s$
