@@ -348,9 +348,14 @@ Costruiamo $C$: inseriamo in $C$
 - per $i\in[n]$, i nodi $x_i,y_i,t_i$ e i senza nome adiacenti a $x_i$ tali che $a(x_i)$=vero
 - per $i\in[n]$, i nodi $w_i,y_i,t_i$ e i senza nome adiacenti a $w_i$ tali che $a(x_i)$=falso
 
-Sia $C$ che $V\setminus C$ sono comunità, e quindi la dimostrazione segue poi dal fatto che costruire $G$ richiede tempo polinomiale in $|f|$ e $X$, quindi abbiamo dimostrato con successo che il problema SWCP è NP-Completo $\blacksquare$
+$C$ è una comunità, infatti dato che $a$ soddisfa tutte le clausole in $f$ , allora, per ogni $j = 1,\dots , m$, il nodo $c_j$ ha 4 dei suoi 7 vicini nella stessa comunità di $T$ (i tre nodi $l_{j1},l_{j2},l_{j3}$, oltre al nodo corrispondente al suo letterale vero): dunque, per ogni $j = 1,\dots , m$, il nodo $c_j$ può essere effettivamente inserito nella stessa comunità di $T$
 
+Ragionamento simile per $V\setminus C$
 
+La dimostrazione segue poi dal fatto che costruire $G$ richiede tempo polinomiale in $|f|$ e $X$, quindi abbiamo dimostrato con successo che il problema SWCP è NP-Completo $\blacksquare$
+
+>[!info]
+>Una dimostrazione alternativa di questo teorema può essere trovata nella Dispensa $2$ sulla pagina del corso
 
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"
 
