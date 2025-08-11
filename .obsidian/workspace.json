@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -162,8 +163,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "64bc8fa6ca4c6aa6",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811110657.png",
+    "Pasted image 20250811110046.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811104931.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811104217.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811103416.png",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 4 AR - Il fenomeno Small World, modello di Watts-Strogatz e ricerca decentralizzata.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
@@ -180,10 +186,6 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250808113714.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250808103214.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250808101632.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250808101518.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250807122915.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250807121023.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250807115313.png",
     "Caparra Confirmatoria Citroën C1.md",
     "README.md",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",

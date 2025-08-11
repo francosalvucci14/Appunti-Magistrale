@@ -113,7 +113,7 @@ Questo gruppo coeso prende nome di **cluster/comunità**
 
 La domanda ora è, quand'è che possiamo dire che un gruppo di nodi è *abbastanza* coeso per poterlo definire una comunità?
 
-## Comunità e coefficiente di clustering
+# Comunità e coefficiente di clustering
 
 Intanto, per misurare il grado di coesione di un nodo $u$ all'interno di un gruppo di nodi è stato definito il **coefficiente di clustering $c(u)$** come il rapporto fra il numero di relazioni fra vicini di $u$ rispetto a tutte le coppie possibili di vicini di $u$, ovvero: $$c(u)=\frac{|\{(x,y)\in E:x\in N(u)\land y\in N(u)\}|}{\frac{|N(u)|\left[|N(u)-1\right]}{2}}$$
 Informalmente, il coefficiente di clustering misura quanto un nodo è "ben inserito" all'interno della rete costituita dai suoi vicini
@@ -133,7 +133,7 @@ Per rispondere a queste due domande dovremo introdurre di *alcuni tipi di comuni
 - Metodi agglomerativi e partitivi per l'individuazione di comunità
 	- qui, sopratutto, descriveremo un metodo partitivo che porterà all'individuazione di comunità basate su un'altro concetto di centralità, ovvero il concetto di **betweenness di un arco**
 
-### Cut-Communities
+## Cut-Communities
 
 Iniziamo subito a definire cos'è una **cut-communities** formalmente
 
@@ -165,7 +165,7 @@ Il grafo $G$ è l'unione di due clicque:
 Se applichiamo l'algoritmo per il calcolo della cut-community ci ritorna che la cut-community di questo grafo è solamente il nodo $u_0$, il che non è proprio ragionevole 
 (vi direte voi, che cazzo lo abbiamo scritto a fare allora? non si sa, **quarto mistero della fede**)
 
-### Web-Communities
+## Web-Communities
 
 Definiamo ora il concetto di **web-communities**
 
@@ -179,7 +179,7 @@ Definiamo ora il concetto di **web-communities**
 
 Definizione semplice e intuitivamente ragionevole (se col cazzo), che può essere generalizzata richiedendo $$\frac{|N(u)\cap C|}{|N(u)|}\gt \alpha(\geq\alpha)$$per qualche $\alpha\in[0,1]$
 
-#### Cut e weak Web-Communities
+### Cut e weak Web-Communities
 
 Le definizioni di cut e web community non sono del tutto scorrelate, vale infatti il seguente teorema:
 
@@ -188,7 +188,7 @@ Le definizioni di cut e web community non sono del tutto scorrelate, vale infatt
 
 **dimostrazione**
 
-Supponiamo **per assurdo** che $C$ non sia una weak web-community, allora esiste un nodo $u\in C:|N(u)\cap C|\gt|N(u)\setminus C|$.
+Supponiamo **per assurdo** che $C$ non sia una weak web-community, allora esiste un nodo $u\in C:|N(u)\cap C|\lt|N(u)\setminus C|$.
 Poichè $|C|\gt1$, allora esiste in $C$ un nodo $v$ distinto da $u$: ovvero $C\setminus\{u\}\neq\emptyset$.
 Inoltre vale che:
 $$\begin{align*}
@@ -230,7 +230,7 @@ Vale quindi che, **decidere se un grafo è partizionabile in due web-communities
 
 Analizziamo quindi il problema in questione, dimostrando un teorema fondamentale
 
-#### Partizionare un grafo in due web-communities
+### Partizionare un grafo in due web-communities
 
 >[!definition]- Problema Strong Web-Communities Partitioning (SWCP)
 >Il problema **Strong Web-Communities Partitioning (SWCP)** è così definito.
@@ -265,11 +265,90 @@ Il problema è in NP: un certificato valido per il problema è un sottoinsieme $
 Per dimostrare che il problema SWCP è NP-Completo, riduciamo ad esso il famoso problema $3$-SAT.
 
 Siano $X=\{x_1,\dots,x_n\}$ e $f=c_1\land c_2\land\dots\land c_m$, con $c_j=l_{j1}\lor l_{j2}\lor l_{j3}$ e $l_{jh}\in X$ oppure $\lnot l_{jh}\in X$, per $j=1,\dots,m$ e $h=1,2,3$
+- $f$ è un'istanza di $3$-SAT
 
 Da qui, costruiamo un grafo costituito da:
 - due nodi "specializzati" $T,F$ che potranno appartenere alla stessa comunità $C\iff C=V$[^3]
 - un **gadget** per ogni variabile
 - un **gadget** per ogni clausola
+
+![[Pasted image 20250811103416.png|center|150]]
+
+In figura i due nodi "specializzati" $T,F$ e il gadget per la variabile $x_i$:
+- il gadget contiene i nodi $x_i,w_i,z_i,t_i,f_i$, e tanti nodi senza nome (quelli neri in figura): al nodo $x_i(w_i)$ sono collegati tanti nodi senza nome quante sono le clausole contenenti la variabile $x_i(\lnot x_i)$ più uno
+	- nell'esempio la variabile $x_i$ è contenuta in due clausole e $\lnot x_i$ in una
+
+Se $T,F$ sono in due comunità distinte, diciamo $T\in C$ e $F\in V\setminus C$, poichè $t_i,f_i$ hanno grado $2$ allora $T,t_i,y_i$ devono essere contenuti in $C$, e $F,f_i,z_i$ devono essere contenuti in $V\setminus C$
+
+Per far sì che questo sia possibile, **è necessario che esattamente uno** dei nodi $x_i,w_i$ sia contenuto in $C$ ed **esattamente uno** dei nodi $x_i,w_i$ sia contenuto in $V\setminus C$, e ovviamente, ciascun nodo senza nome deve essere contenuto nella stessa comunità che contiene il padre.
+
+![[Pasted image 20250811104217.png|center|350]]
+
+In figura i due nodi "specializzati" $T,F$ e il gadget per la variabile $c_j$ e i suoi collegamenti con i gadget variabile:
+- il gadget per la variabile $c_j$ contiene i nodi $c_j,l_{j1},l_{j2},l_{j3}$
+- il nodo $c_j$ è collegato ai letterali contenuti nella clausola $c_j$: al nodo $x_i$ se $c_j$ contiene il letterarle $x_i$, al nodo $w_i$ se $c_j$ contiene il letterale $\lnot x_i$
+	- nell'esempio in figura $c_j=x_1\lor\lnot x_2\lor x_3$
+
+Se $T,F$ sono in due comunità distinte, diciamo $T\in C$ e $F\in V\setminus C$, poichè $l_{j1},l_{j2},l_{j3}$ hanno grado $2$ allora $T,c_j$ devono essere contenuti in $C$
+
+Per far sì che questo sia possibile, **è necessario che almeno uno** dei nodi nei gadget variabile collegato a $c_j$ sia contenuto in $C$ [^4], altrimenti $c_j$ avrebbe tanti vicini in $C$ quanti in $V\setminus C$
+
+![[Pasted image 20250811104931.png|center|500]]
+
+Una visione di insieme: in figura abbiamo la funzione $$f(x_1,x_2,x_3)=c_1\land c_2,\quad c_1=x_1\lor\lnot x_2\lor x_3,c_2=\lnot x_1\lor\lnot x_2\lor\lnot x_3$$
+Se $T,F$ sono **nella stessa comunità** $C$, allora tutti i nodi sono in $C$:
+- per ogni $1\leq j\leq m$: poichè $l_{j1},l_{j2},l_{j3}$ hanno grado $2$ allora $l_{j1},l_{j2},l_{j3},c_j$ devono essere contenuti in $C$
+- per ogni $1\leq i\leq n$: poichè $t_i,f_i$ hanno grado $2$ allora $t_i,y_i,f_i,z_i$ devono essere contenuti in $C$
+- Allora, per ogni $1\leq i\leq n$: se il letterale $x_i$ è contenuto in $k$ clausole allora il nodo $x_i$ ha $k+2$ vicini con nome in $C$
+	- perciò, per poter essere inserito in $V\setminus C$ il nodo $x_i$ dovrebbe avere almeno $k+2$ vicini in $V\setminus C$, ma gli altri vicini di $x_i$ sono $k+1$ nodi senza nome, e non sono abbastanza per permettere a $x_i$ di non far parte di $C$ !
+	- Perciò, se $x_i$ e i $k+1$ nodi senza nome ad esso collegati devono essere in $C$
+- Analogamente il tutto può essere fatto per il letterale $\lnot x_i$ e il nodo $w_i$
+
+![[Pasted image 20250811110657.png|center|500]]
+
+Una visione d'insieme: Se $T,F$ sono due comunità diverse allora:
+- per ogni clausola $c_j$ i nodi $l_{j1},l_{j2},l_{j3},c_j$ sono con $T$ (rossi)
+- per ogni variabile $x_i$ i nodi $t_i,y_i$ sono con $T$ (rossi) e i nodi $f_i,z_i$ sono con $F$ (blu)
+- Allora, dobbiamo 'colorare' i nodi $x_i,w_i$ per ogni variaible $x_i$, in modo che l'insieme dei nodi rossi e l'insieme dei nodi blu siano due strong web-communities
+
+Vale quindi che $G$ è partizionabile in due strong web-communites $C,V\setminus C$ se e solo se $T,F$ **non** sono entrambi in $C$ e **non** sono entrambi in $V\setminus C$ 
+
+Affinchè $T\in C,F\in V\setminus C$ devono valere due punti:
+1) Per ogni variabile $x_i\in X$, **esattamente uno dei nodi** $x_i,w_i$ deve essere contenuto in $C$ ed **esattamente uno dei nodi** $x_i,w_i$ deve essere contenuto in $V\setminus C$
+	1) allora, ogni partizione di $G$ in due strong web-communites corrisponde ad una assegnazione di verità di $a$ per $X$: possiamo decidere, per ogni $i\in[n]$, che se $x_i\in C$ (insieme con $T$) e $w_i\in V\setminus C$ allora $a(x_i)=$vero, mentre se $x_i\in V\setminus C$ e $w_i\in C$ allora $a(x_i)$=falso, e anche viceversa ovviamente
+	2) ma in base a quale criterio scegliamo? in base all'insieme dove collochiamo i nodi $c_j$ (vedi poi)
+2) Per ogni clausola $c_j$, il nodo $c_j$ **deve** appartenere a $C$ (che contiene $T$)
+	1) e perchè questo sia possibile, è necessario che almeno uno dei nodi nei gadget variabile collegato a $c_j$ sia contenuto in $C$, ovvero uno dei nodi corrispondenti a un letterale nella clausola $c_j$ deve essere contenuto in $C$
+
+Non ci resta che concludere la prova: mostriamo che $G$ è partizionabile in due strong web-communities se e solo se $f$ è soddisfacibile
+
+**dimostrazione parte $\implies$**
+
+Se $G$ è partizionabile in due strong web-communities $C,V\setminus C$ allora $T,F$ ***non*** sono nella stessa comunità; sia $T\in C,F\in V\setminus C$
+Allora, per ogni variabile $x_i\in X$, esattamente uno dei nodi $x_i,w_i$ deve essere contenuto in $C$ ed esattamente uno dei nodi $x_i,w_i$ deve essere contenuto in $V\setminus C$
+
+Allora poniamo 
+$$\begin{align*}
+&a(x_i)=\text{vero }\forall x_i\in X:x_i\in C\\&a(x_i)=\text{falso }\forall x_i\in X:x_i\in V\setminus C
+\end{align*}
+$$
+Inoltre, per ogni clausola $c_j$, il nodo $c_j$ deve appartenere a $C$, e perchè questo sia possibile, è necessario che almeno uno dei nodi nei gadget variabile collegato a $c_j$ sia contenuto in $C$, ovvero uno dei nodi corrispondenti a un letterale nella clausola $c_j$ deve essere contenuto in $C$: sia $l_{jh}$ tale letterale, allora se 
+$$\begin{align*}
+&l_{jh}=x_i\implies x_i\in C\land a(x_i)=\text{vero}\\&l_{jh}=\lnot x_i\implies w_i\in C\land a(x_i)=\text{falso}
+\end{align*}
+$$
+Quindi, $a(\cdot)$ è un **assegnazione di verità** che soddisfa ogni clausola di $f$, quindi $f$ è soddisfacibile
+
+**dimostrazione parte $\Leftarrow$**
+
+Se $f$ è soddisfacibile, sia $a(\cdot)$ una assegnazione di verità per $X$ che soddisfa ogni clausola $c_j\in f$ 
+
+Costruiamo $C$: inseriamo in $C$
+- il nodo $T$, e $\forall j\in[m]$ i nodi $c_j$ e $l_{j1},l_{j2},l_{j3}$
+- per $i\in[n]$, i nodi $x_i,y_i,t_i$ e i senza nome adiacenti a $x_i$ tali che $a(x_i)$=vero
+- per $i\in[n]$, i nodi $w_i,y_i,t_i$ e i senza nome adiacenti a $w_i$ tali che $a(x_i)$=falso
+
+Sia $C$ che $V\setminus C$ sono comunità, e quindi la dimostrazione segue poi dal fatto che costruire $G$ richiede tempo polinomiale in $|f|$ e $X$, quindi abbiamo dimostrato con successo che il problema SWCP è NP-Completo $\blacksquare$
 
 
 
@@ -278,3 +357,5 @@ Da qui, costruiamo un grafo costituito da:
 [^2]: grafo dinamico: grafo che evolve nel tempo
 
 [^3]: Così facendo risulta che C non è una comunità, poichè non è contenuta propriamente in $V$
+
+[^4]: nell'esempio in figura almeno uno fra $x_1,w_2,x_3$ deve essere contenuto in $C$
