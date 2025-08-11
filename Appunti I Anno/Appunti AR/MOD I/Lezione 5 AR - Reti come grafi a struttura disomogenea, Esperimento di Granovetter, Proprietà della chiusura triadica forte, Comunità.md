@@ -512,9 +512,43 @@ Proviamo allora a **rilassare il modello**.
 
 Invece che considerare un grafo $G=(V,S\cup W)$, nel quale gli archi modellano relazioni forti e deboli, consideriamo un grafo con archi pesati $G=(V,E,w)$, con $w:E\to \mathbb N$, nel quale il peso di un arco è tanto maggiore quanto più forte è la relazione che essa modella
 
+Analogamente, invece che usare i concetti di bridge e local bridge, consideriamo il concetto di **neighborhood overlap**: dato un arco $(u,v)$ il neighborhood overlap di $(u,v)$ è $$NO(u,v)=\frac{|N(u)\cap N(v)|}{|N(u)\cup N(v)\setminus\{u,v\}|}$$
+Un local bridge è un arco $(u,v)$ tale che $NO(u,v)=0$
 
+Rilassare il modello va più che bene, ma nel modello dal quale siamo partiti si individuava una sorta di coincidenza fra archi deboli (proprietà locale) e local bridges (proprietà globali)
 
+Possiamo affermare che qualcosa di analogo valga anche nel modello rilassato? Ovvero che il N.O di un arco è tanto più piccolo quanto minore è il suo peso?
 
+Esiste un'evidenza sperimentale, fatta da Onnela nel 2007, che dimostra che tale corrispondenza vale anche nel modello rilassato [^8], allora la domanda precente diventa una affermazione, ovvero ***il N.O di un arco è tanto più piccolo quanto minore è il suo peso***
+
+## Disomogeneità
+
+La discussione condotta finora ci restituisce l’immagine di una rete costituita da agglomerati di nuclei fortemente connessi collegati da weak ties
+- in questa immagine gli archi non sono distribuiti uniformemente fra i nodi
+
+Alcuni nodi sono centrali all’interno dei gruppi coesi cui appartengono, come il nodo A in figura, altri nodi hanno posizioni periferiche 
+- ossia, hanno un ruolo di interfaccia con altri gruppi
+- come il nodo B in figura
+
+Le posizioni di A e di B sono **strutturalmente diverse** all’interno della rete
+
+![[Pasted image 20250811162652.png|center|300]]
+
+Definiamo l’**embeddedness** di un arco come il numero di vicini che gli estremi di quell’arco hanno in comune: $$Emb(u,v) = |N(u) \cap N(v)|$$
+- se (u,v) è un local bridge allora Emb(u,v) = 0
+
+Tutti gli archi incidenti sul nodo A hanno embeddedness elevata 
+- possiamo interpretare questa caratteristica come una situazione in cui tutti i vicini di A si fidano di A e viceversa
+
+Le cose per il nodo B sono parecchio diverse, tuttavia, anche la posizione di B ha i suoi vantaggi
+
+Su B incidono numerosi local bridges ossia, B si trova al centro di un **buco strutturale** e questo, come sappiamo, gli permette di avere accesso a fonti di informazione inaccessibili ai
+nodi centrati nelle rispettive comunità.
+
+In conclusione: gli individui derivano benefici dalla struttura della rete nella quale sono immersi, che sono ad esempio:
+- benefici che dipendono dalla loro posizione all’interno della rete
+- benefici in termini di affidabilità del tessuto sociale
+- benefici in termini di contenuti informativi
 
 
 [^1]: segue dall'esperimento Granovetter che i bridge sono gli archi che hanno maggiore "valore informativo"
@@ -530,3 +564,5 @@ Invece che considerare un grafo $G=(V,S\cup W)$, nel quale gli archi modellano r
 [^6]: NB: quella che abbiamo definito è la ***edge***-betweenness; analogamente si può definire la node-betweenness
 
 [^7]: qui calcoliamo $b_{s}(u,v)$ per i soli archi $(u,v)\in T(s)$. Infatti, gli archi che non sono in $T(s)$ non fanno parte di alcuno shortest paths uscente da $s$
+
+[^8]: poichè è ragionevole assumere che gli archi con neighborhood overlap più basso sono quelli la cui rimozione sconnette la rete
