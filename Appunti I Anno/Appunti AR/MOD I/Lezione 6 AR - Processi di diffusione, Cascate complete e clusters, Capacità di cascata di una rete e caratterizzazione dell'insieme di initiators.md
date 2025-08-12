@@ -201,6 +201,18 @@ Allora:
 E quindi, dato che $V'\cap C=\emptyset$, allora abbiamo che: 
 $$1=\frac{|N(u)|}{|N(u)|}\geq\frac{|N(u)\cap (C\cup V')|}{|N(u)|}=\frac{|N(u)\cap C|}{|N(u)|}+\frac{|N(u)\cap V'|}{|N(u)|}\gt1$$Assurdo $\blacksquare$
 
+#### Il ruolo dei weak ties
+
+Il teorema appena dimostrato mette in luce un nuovo aspetto della dicotomia strong/weak ties:
+- le innovazioni si diffondono con relativa facilità all'interno dei cluster
+	- ovvero, quando viaggia lungo strong ties l'innvazione ha un impatto significativo sui nodi che raggiunge
+- invece, incontrano difficoltà nell'uscire dai cluster
+	- ovvero, quando viaggia su weak ties l'innovazione ha un impatto debole sui nodi che raggiunge
+
+Possiamo quindi concludere che, mentre l'esperimento di Granovetter ha permesso di mettere in luce la forza dei weak ties (in quanto fonte di vantaggi informativi), lo studio dei processi di diffusione ne evidenzia la debolezza (in quanto ostacolo alla diffusione)
+
+#### Cluster e Marketing virale
+
 
 
 
