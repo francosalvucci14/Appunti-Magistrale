@@ -57,6 +57,7 @@ SIa $(u,v)$ un arco della rete, assumiamo che il beneficio reciproco di adottare
 | ----- | ----- | ----- |
 | $A$   | $a,a$ | $0,0$ |
 | $B$   | $0,0$ | $b,b$ |
+
 Vale quindi che:
 - Se $u,v$ adottano entrambi $A$ allora entrambi hanno un beneficio pari ad $a$
 - Se $u,v$ adottano entrambi $B$ allora entrambi hanno un beneficio pari ad $b$
@@ -87,7 +88,44 @@ Si distinguono $3$ casistiche:
 
 ## Game e configurazioni di equilibrio
 
+Cerchiamo ora di capire se e quali **configurazioni di equilibrio** ha il network coordination game che abbiamo appena introdotto.
+- configurazioni in cui nessun nodo cambia stato da $B\to A$
 
+Osserviamo che esistono sempre $2$ configurazioni di equilibrio banali, ovvero:
+1) la configurazione che si ottiene quando $A$ non viene introdotto nella rete, e quindi tutti i nodi hanno stato $B$
+2) la configurazione che si ottiene quando $A$ viene inserito nella rete, e tutti i nodi assumono stato $A$
+
+La seconda sopratutto può accadere perchè, una volta inserito nella rete, lo stato $A$ inizierà a diffondersi
+
+Le domande però a cui dobbiamo dare una risposta sono:
+- Quando termina il processo di diffusione?
+- Riesce sempre a toccare tutti i nodi? Oppure talvolta la diffusione si blocca prima di raggiungere tutti i nodi, andando a finire quindi in configurazioni intermedie?
+	- In questo caso, *perchè* si blocca?
+
+Capiamo, innanzi tutto, con un esempio
+
+![[Pasted image 20250812110103.png|center|450]]
+
+In questo esempio, vediamo come lo stato $A$ viene forzato all'inizio sui noid $v,w$
+In questo esempio, vale che $a=3,b=2$ quindi $A$ migliore di $B$, e di conseguenza, usando la formula della soglia, otteniamo che $q=\frac{2}{3+2}=\frac{2}{5}$
+
+Quindi, per adottare $A$, un nodo deve avere i $\frac{2}{5}$ dei vicini nello stato $A$.
+
+Come si vede alla fine, un nodo dopo l'altro, tutti adotteranno $A$
+
+Altro esempio
+
+![[Pasted image 20250812110533.png|center|350]]
+
+Caso $1)$: $a=3,b=2,q=\frac{2}{5}$
+- caso illustrato in figura, $A$ non riesce a raggiungere i nodi fuori l'esagono, quindi non tutti i nodi adottano $A$
+
+![[Pasted image 20250812110643.png|center|350]]
+
+Caso $2)$: $a=4,b=2,q=\frac{2}{6}=\frac{1}{3}$
+- caso illustrato in figura, dopo aver raggiunto tutti i nodi dell'esagono, $A$ viene adottato da $2,11,14$, poi da $1,3,12,13,17$ e infine da $15,16$
+- Tutti i nodi hanno adottato $A$
+## Diffusione e cascate complete
 
 
 
