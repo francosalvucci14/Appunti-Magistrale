@@ -201,7 +201,7 @@ Allora:
 E quindi, dato che $V'\cap C=\emptyset$, allora abbiamo che: 
 $$1=\frac{|N(u)|}{|N(u)|}\geq\frac{|N(u)\cap (C\cup V')|}{|N(u)|}=\frac{|N(u)\cap C|}{|N(u)|}+\frac{|N(u)\cap V'|}{|N(u)|}\gt1$$Assurdo $\blacksquare$
 
-#### Il ruolo dei weak ties
+##### Il ruolo dei weak ties
 
 Il teorema appena dimostrato mette in luce un nuovo aspetto della dicotomia strong/weak ties:
 - le innovazioni si diffondono con relativa facilità all'interno dei cluster
@@ -211,11 +211,154 @@ Il teorema appena dimostrato mette in luce un nuovo aspetto della dicotomia stro
 
 Possiamo quindi concludere che, mentre l'esperimento di Granovetter ha permesso di mettere in luce la forza dei weak ties (in quanto fonte di vantaggi informativi), lo studio dei processi di diffusione ne evidenzia la debolezza (in quanto ostacolo alla diffusione)
 
-#### Cluster e Marketing virale
+##### Cluster e Marketing virale
 
+La domanda che ci facciamo adesso è: è possibile superare lo stallo nel quale, a causa di cluster sufficientenmente dansi, uno stato $A$ smette di diffondersi? Se sì, come facciamo?
 
+Abbiamo due risposte banali a questo problema.
+1) Possiamo scegliere gli iniziatori in posizioni tali che ciascun cluster contenga almeno un iniziatore
+2) Possiamo aumentare l'appetibilità di $A$ (per esempio, abbassandone il prezzo di vendita)
+
+La seconda opzione però, dal punto di vista di un venditore, non è una strategia molto ben vista.
+
+Allora ci domandiamo, quanto alto può essere mantenuto il prezzo di $A$ perchè la diffusione sia ancora virale? 
+O meglio, quanto alta può essere tenuta la soglia di adozione perchè si generi una cascata completa?
+###### Capacità di Cascata
+
+Quindi, quanto alta può essere tenuta la soglia di adozione $q$ per far sì che si generi una cascata completa? Naturalmente, $q=\frac{b}{a+b}\leq1$
+
+Innanzi tutto, per rispondere alla domanda di prima, il tutto dipende dalla struttura della rete: alcune strutture ostacolano maggiormente di altre la generazione di cascate complete
+
+Vale quindi il seguente problema:
+
+>[!definition]- Problema
+>Dato un grafo $G=(V,E)$, qual'è la soglia di adozione *massima* $q_{\max}$ in $G$ affinchè un "piccolo" insieme $V_0$ di iniziatori di un nuovo stato $A$ generi una cascata completa?
+
+Il valore $q_{\max}$ prende il nome di **capacità di cascata di $G$**
+
+Nel descriverlo però siamo stati un po imprecisi, infatti la domanda sorge spontanea: quanto "piccolo" deve essere questo insieme $V_0$? e sopratutto, cosa significa "piccolo"?
+
+**oss** : se prendiamo $V_0=V$ allora la soglia $q=1$ genera una cascata completa, tutti i nodi sono forzati nello stato $A$ (ma questo non ha molto senso)
+
+Richiedendo che $V_0$ sia "piccolo", vogliamo che $$|V_{0}|\lt\lt|V|$$
+
+Ipotesi di lavoro: 
+- $G$ è un grafo infinito, ovvero con **infiniti nodi**
+	- noi ci concentraremo su grafi *regolari* [^3]
+- l'insieme $V_0$ degli iniziatori può essere un qualisasi insieme **finito**
+
+Il problema ora diventa: 
+Dato un grafo (regolare) infinito, qual'è la soglia di adozione *massima* $q_{\max}$ in $G$ affinchè **esista un insieme finito $V_0$ di iniziatori** di un nuovo stato $A$, che generi una cascata completa?
+
+**Esempio 1 (catena)**
+
+Se $|V_0|=1$ allora occorre $q=\frac{1}{2}$ per generare una cascata completa
+
+![[Pasted image 20250812152510.png|center]]
+
+Ma la domanda è, scegliendo un insieme più grande (come quello in figura sotto), è possibile generare una cascata con $q\lt \frac{1}{2}$?
+
+![[Pasted image 20250812152744.png|center]]
+
+La risposta è no, perchè i nodi "al confine" con $V_0$ (ovvero i nodi $x,y$ in figura), hanno comunque bisogno di $q=\frac{1}{2}$ per passare ad $A$
+
+Allora, in una **catena infinita** abbiamo che $$q_{\max}=\frac{1}{2}$$
+**Esempio 2 (griglia)**
+
+Se $|V_0|=1$ allora occorre $q=\frac{1}{8}$ per generare una cascata completa
+
+![[Pasted image 20250812153017.png|center|300]]
+
+Se $|V_0|=2$ allora, scegliendo i due nodi in $V_{0}$ come nodi adiacenti, con $q=\frac{1}{4}$ si riescono ad influenzare i nodi $u,v,x,y$, per poi generare una cascata completa (come si evince in figura)
+
+![[Pasted image 20250812153100.png|center|300]]
+
+Se $|V_0|=3$ allora, scegliendo i tre nodi in $V_{0}$ come nodi adiacenti, con $q=\frac{3}{8}$ si riescono ad influenzare i nodi $v,y$ , poi i nodi $u,w,x,z$ e così via fino a generare una cascata completa 
+
+![[Pasted image 20250812153238.png|center|300]]
+
+Aumentando $|V_0|$ non si riesce ad aumentare la soglia di adozione: una volta influenzati tutti i nodi nel rettagnolo (giallo) che contiene gli iniziatori, occorre uscre da esso, e per farlo è necessario $q=\frac{3}{8}$
+
+![[Pasted image 20250812153454.png|center|300]]
+
+Quindi, in una **griglia infinita** si ha che $$q_\max=\frac{3}{8}$$
+Da questi due esempi possiamo concludere quanto segue:
+- la soglia di adozione massima è più bassa nella griglia (che ha una topologia più ricca) che non nella catena (che ha una topologia più povera)
+- in entrambi i casi, essa non supera il valore $\frac{1}{2}$, e quindi, per generare una cascata completa, $A$ deve essere appetibile almeno quanto $B$
+
+Essendo che **la soglia di adozione massima è una caratteristica della rete**, ovvero della sua topologia, la domanda sorge spontanea: esistono topologie nelle quali la soglia di adozione massima è maggiore di $\frac{1}{2}$?
+
+Quindi, esistono topologie di rete nelle quale innovazioni di qualità mediocre soppiantino uno status quo di qualità maggiore?
+
+Essendo che la soglia di adozione max abbiamo detto essere una caratteristica di rete, indichiamo con $q_{G}$ **la soglia di adozione massima di un grafo $G$**
+
+Vale quindi il seguente teorema:
+
+>[!teorem]- Teorema
+>Per ogni grafo infinito $G=(V,E)$ i cui nodi hanno grado finito, vale che $$q_{G}\leq \frac{1}{2}$$
+
+**dimostrazione**
+
+Supponiamo per assurdo che esista un insieme finito di iniziatori $V_0$ che, con soglia di adozione $q\gt \frac{1}{2}$ generi una cascata completa (nel grafo $G$)
+
+Come al solito, indichiamo con $V_t$ l'insieme dei nodi che adottano $A$ nel passo $t$, e sia per ogni $t\geq0,S_t=\bigcup_{0\leq i\leq t}V_i$ l'insieme dei nodi che, al passo $t$, sono nello stato $A$
+
+Definiamo l'**interfaccia di passo $t$**, ovvero l'insieme $I_t$ degli archi che, al tempo $t$ hanno un estremo in $S_{t}$ e l'altro in $V\setminus S_{t}$, formalmente si ha che:
+$$I_{t}=\{(u,v)\in E:u\in S_t\land v\in (V\setminus S_{t})\}$$
+e dimostriamo che, $$\forall t\geq0,|I_{t}|\gt|I_{t+1}|\lor I_t=I_{t+1}$$
+Per dimostrare ciò dobbiamo mostrare che se $$I_t\neq I_{t+1}\implies|I_t|\gt|I_{t+1}|$$
+Se $I_{t}\neq I_{t+1}$ allora esiste un nodo $v$ che adotta $A$ al passo $t+1$, e quindi $V_{t+1}\neq\emptyset$
+- e per far si che un nodo $v$ appartenga a $V_{t+1}$ deve esistere $u\in N(v):u\in S_{t}$
+
+E quindi, per ogni $v\in V_{t+1}$ esiste (almeno) un arco $(u,v)\in I_{t}$ tale che $u\in S_t$
+
+Di conseguenza, per ogni nodo $v\in V_{t+1}$ abbiamo che:
+- gli archi incidenti su $v$ il cui altro estremo è in $S_t$ sono $I_{t}$ e non $I_{t+1}$
+- gli archi incidenti su $v$ il cui altro estremo non è in $S_{t+1}$ sono $I_{t+1}$ e non $I_{t}$
+
+E quindi vale che: 
+$$I_{t+1}=I_{t}\setminus\left[\bigcup_{v\in V_{t+1}}\{(u,v)\in E:u\in S_{t}\}\right]\cup\left[\bigcup_{v\in V_{t+1}}\{(z,v)\in E:z\in (V\setminus S_{t+1})\}\right]$$
+
+![[Pasted image 20250812160807.png|center|350]]
+
+Ora, se $v\neq z$ con $v,z\in S_t$ allora vale che $$\{(u,v)\in E:u\in S_{t}\}\cap\{(u,z)\in E:u\in S_{t}\}=\emptyset$$
+e se $v\neq z$, con $v,z\in V_{t+1}$ allora vale che $$\{(u,v)\in E:u\in (V\setminus S_{t+1})\}\cap\{(u,z)\in E:u\in (V\setminus S_{t+1})\}=\emptyset$$
+Allora, vale che 
+$$
+\begin{align*}
+&\left|\bigcup_{v\in V_{t+1}}\{(u,v)\in E:u\in S_{t}\}\right|=\sum\limits_{v\in V_{t+1}}\left|\{(u,v)\in E:u\in S_{t}\}\right|\\&\left|\bigcup_{v\in V_{t+1}}\{(u,v)\in E:u\in (V\setminus S_{t+1})\}\right|=\sum\limits_{v\in V_{t+1}}\left|\{(u,v)\in E:u\in V\setminus S_{t+1}\}\right|\\
+\end{align*}
+$$
+E quindi, vale che $$|I_{t+1}|=|I_t|-\sum\limits_{v\in V_{t+1}}\left|\{(u,v)\in E:u\in S_{t}\}\right|+\sum\limits_{v\in V_{t+1}}\left|\{(u,v)\in E:u\in V\setminus S_{t+1}\}\right|$$
+Però vale che $$\begin{align*}
+&\left|\{(u,v)\in E:u\in S_{t}\}\right|=|N(v)\cap S_t|\\&\left|\{(u,v)\in E:u\in V\setminus S_{t+1}\}\right|=|N(v)\setminus S_{t+1}|
+\end{align*}$$[^4]
+
+E quindi, rimodifichiamo ancora (dio porco un'altra dimostrazione infinita)
+$$|I_{t+1}|=|I_t|-\sum\limits_{v\in V_{t+1}}\left|N(v)\cap S_{t}\right|+\sum\limits_{v\in V_{t+1}}\left|N(v)\setminus S_{t+1}\right|$$
+
+Per ogni $v\in V_{t+1}$ deve valere che $$\begin{align*}
+\frac{|N(v)\cap S_{t}|}{|N(v)|}&\geq q\gt \frac{1}{2}\\&\Downarrow\\|N(v)\cap S_{t}|&\gt|N(v)\setminus S_t|\\&\Downarrow\\|N(v)\setminus S_t|&\gt|N(v)\setminus S_{t+1}|\space(S_t\subset S_{t+1})\\&\Downarrow\\|N(v)\cap S_{t}|&\gt|N(v)\setminus S_{t+1}|
+\end{align*}$$
+Allora vale che: 
+$$|I_{t+1}|=|I_t|-\sum\limits_{v\in V_{t+1}}\left(\left|N(v)\cap S_{t}\right|-\left|N(v) \setminus S_{t+1}\right|\right)\underbrace{\lt}_{\text{questo perchè }V_{t+1}\neq\emptyset\land S_t\subset S_{t+1}}|I_{t}|$$
+
+Essendo che $V_{0}$ è un insieme finito e i nodi di $G$ hanno grado finito, allora l'interfaccia iniziale ha dimensione finita, e quindi $|I_0|=k$ per qualche $k\in\mathbb N$
+
+Di conseguenza, l'eventualità $I_{t}\neq I_{t+1}$ non può verificarsi per più di $k$ passi [^5], e allora $$\exists T:\forall t\geq T\to I_{t}=I_{t+1}$$
+- ovvero, al passo $T$ la diffusione termina
+
+Ma in un grafo infinito una cascata completa può verificarsi solo in seguito a un processo di diffusione finito, allora $V_0$ non genera nessuna cascata completa, come volevasi dimostrare $\blacksquare$
+
+## Nodi eterogenei
 
 
 [^1]: talvolta modificandone il comportamento, come visto nell'esperimento di Ganovetter
 
 [^2]: non c'è coalizione di gruppi di nodi per prendere collettivamente la stessa decisione
+
+[^3]: grafo regolare: un grafo in cui ogni nodo ha lo stesso numero di vicini di ogni altro nodo. Es: $3$-regolare $\to$ tutti i nodi hanno grado $3$
+
+[^4]: questo perchè $\forall v\in V_{t+1},(u,v)\in I_{t}\iff u\in N(v)\cap S_t$, e $(u,v)\in I_{t+1}\iff u\in N(v)\setminus S_t$
+
+[^5]: perchè ogni volta che $I_{t}\neq I_{t+1}$ è anche $|I_{t}|\gt|I_{t+1}|$, e la dimensione dell'interfaccia non può essere $lt0$

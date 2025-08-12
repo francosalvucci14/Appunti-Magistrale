@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
+                "file": "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators"
+              "title": "Indice degli appunti AR"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
+                "file": "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators"
+              "title": "Outline of Indice degli appunti AR"
             }
           },
           {
@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -162,26 +163,25 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "517fcc174d45e93e",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 4 AR - Il fenomeno Small World, modello di Watts-Strogatz e ricerca decentralizzata.md",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812160807.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812153454.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812153238.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812153100.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812153017.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812152744.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812152510.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812110643.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812110533.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250812110103.png",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811162652.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811155047.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811153000.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811152356.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811151256.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811150601.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811143351.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250811142504.png",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 4 AR - Il fenomeno Small World, modello di Watts-Strogatz e ricerca decentralizzata.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
