@@ -352,6 +352,92 @@ Ma in un grafo infinito una cascata completa può verificarsi solo in seguito a 
 
 ## Nodi eterogenei
 
+Il modello di diffusione considerato fino ad ora è un modello uniforme, ovvero tutti i nodi associano lo stesso beneficio reciproco nell'adottare $A$ o $B$, che è rispettivamente $a,b$
+
+Tuttavia questo modello è poco realistico: ciascun individuo nella rete ha un proprio beneficio nell'adottare $A$ o $B$
+
+Allora, per ogni nodo $u$ nella rete, $a_{u},b_u$ sono il beneficio che $u$ ottiene nel relazionarsi, rispettivamente, con un nodo che adotta $A$ o con un nodo che adotta $B$
+
+Assumiamo che il beneficio sia quello illustrato in tabella
+
+| $u/v$ | A           | B           |
+| ----- | ----------- | ----------- |
+| $A$   | $a_{u},a_v$ | $0,0$       |
+| $B$   | $0,0$       | $b_{u},b_v$ |
+Seguendo quindi la tabella, vale che un nodo $v\in V$ nello stato $B$ passa allo stato $A$ sulla base del valore $$q_{v}=\frac{b_v}{a_{v}+b_v}$$
+Come vediamo in figura, accanto ad ogni nodo $v$ viene riportata la sua soglia di adesione $q_{v}$
+
+![[Pasted image 20250813095703.png|center|300]]
+
+**Oss**: Notiamo che, anche se il nodo $1$ è in posizione centrale, non riuscirebbe a portare nessun in $A$ a meno che $q_v=0.1$
+
+Allora, **non è sufficiente scegliere gli iniziatori in base alla loro centralità nella rete**, ma occorre considerare anche la **loro possibilità di avere accesso a nodi facilmente influenzabili**
+
+Quindi, come nel caso lineare precedente, definiamo la struttura che impedisce la generazione di una cascata completa
+
+>[!definition]- Blocking Cluster
+>$V\subseteq V'$ è detto **blocking cluster** se, per ogni $v\in V'$ vale che $$\frac{|N(v)\cap V'|}{|N(v)|}\geq1-q$$
+
+Vale quindi il seguente teorema, di cui non daremo dimostrazione:
+
+>[!teorem]- Teorema
+>Sia $G=(V,E)$ un grafo.
+>Nel modello a nodi eterogenei, l'insieme di iniziatori $V_{0}\subseteq V$ non genera una cascata completa se e solo se $G\setminus V_0$ contiene un blocking cluster
+
+## Azione collettiva
+
+Vogliamo ora mostrare come modellare, mediante processi di diffusione, situazioni nelle quali è richiesto che un'azione abbia luogo *collettivamente*
+
+Supponiamo che si voglia organizzare una protesta contro un regime dittatoriale.
+
+Ciascun individuo, ragionevolmente, decide di aderire alla protesta solo se sa con certezza che un numero sufficientemente elevato i individui aderirà alla protesta.
+
+Poichè l'ambientazione è quella di una dittatura, possiamo ben pensare che la libertà di stampa sia ostacolata, e che in generale le comunicazioni siano rese difficoltose
+
+La domanda è: perchè i regimi totalitari sono, generalmente, così interessati ad ostacolare le comunicazioni?
+
+Analizziamo quindi il modello:
+
+Ogni nodo $v$ sceglie una "soglia di confidenza" $k_v$ : aderirà alla protesta solo se almeno $k_{v}$ individui aderiranno alla protesta
+- ovvero, se oltre a lui, aderiranno altri $k_v-1$ individui
+
+Essendo che le comunicazioni circolano con difficoltà nella rete, le uniche informazioni che $v$ può ottenere sono circa l'adesione o meno alla protesta da parte degli individui con i quali ha una relazione personale, ovvero i suoi vicini nel grafo e, da ciascun nodo $u\in N(v),v$ può sapere quale sia la soglia di adesione di $u$ (assumendo che i collegamenti siano strong ties)
+
+$v$ però non può sapere se $u$ ha o meno dei vicini che non siano anche suoi vicini, e non può neanche sapere se $u$ aderirà alla protesta
+
+In base alle informazioni che $v$ possiede, può solamente provare a dedurre cosa faranno i suoi vicini
+
+Vediamo qualche esempio
+
+**Esempio 1**
+
+![[Pasted image 20250813101448.png|center|250]]
+
+- Il nodo $x$ non aderisce, non ha abbastanza vicini
+- Il nodo $v$ ha bisogno di due vicini che aderiscono: ma vede che $x$ vuole almeno $3$ vicini aderiscano per aderire a sua volta, e poichè $v$ vede di $x$ i soli vicini che hanno in comune, non può sapere se $x$ aderirà o meno, e quindi non aderirà neanche lui
+- Il nodo $u$ sarebbe sufficiente che uno solo dei suoi vicini aderisse. Per lo stesso ragionamento fatto da $v,u$ non può sapere se $x$ aderirà o meno. Inoltre, $u$ sa che $v$ ha bisogno di almeno due vicini che aderiscano per aderire, ma non può sapere se $v$ dispone di informazioni supplementari circa l'adesione di $x$: perciò non può dedurre che $v$ parteciperà. Di conseguenza, neanche $u$ aderisce 
+
+**Esempio 2**
+
+![[Pasted image 20250813102243.png|center|250]]
+
+Questo caso è leggeremente più complicato.
+
+Il nodo $u$ vede che $k_v=k_x=3$ e capisce che loro tre $(u,v,x)$ potrebbero aderire, ma $u$ non vede $y$, non sa se $v$ ha o meno altri vicini oltre a se stesso, e quindi non sa se $v$ può dedurre che almeno due dei suoi vicini aderiranno, e poichè $u$ ha bisogno di certezze, $u$ non aderisce
+
+Essendo che il grafo è perfettamente simmetrico, nesuno aderisce alla protesta anche se, qualora avessero avuto accesso a informazioni complete, la protesta avrebbe avuto luogo
+
+**Esempio 3**
+
+
+![[Pasted image 20250813102718.png|center|250]]
+
+I nodi $u,v,x$ si vedono l'un l'altro, così $u$ sa che $v,x$, per partecipare, hanno bisogno che altri due partecipino
+Ma $u$ sa che anche $v,x$ sanno le stesse cose che sa lui, siamo quindi in una situazione "io so che tu sai che io so" (dio porco)
+
+Essendo che si fidano l'un l'altro (strong ties) allora partecipano tutti e tre alla protesta, senza aver bisogno di conoscere altro della rete (sono quindi indipendenti da $y$)
+
+
 
 [^1]: talvolta modificandone il comportamento, come visto nell'esperimento di Ganovetter
 
