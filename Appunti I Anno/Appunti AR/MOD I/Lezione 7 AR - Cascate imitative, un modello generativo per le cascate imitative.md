@@ -78,6 +78,3 @@ Per fare ciò, abbiamo bisogno del **teorema di Bayes**
 
 Vediamo poi come ciò sia utile per analizzare il gioco delle urne
 
-
-
-
