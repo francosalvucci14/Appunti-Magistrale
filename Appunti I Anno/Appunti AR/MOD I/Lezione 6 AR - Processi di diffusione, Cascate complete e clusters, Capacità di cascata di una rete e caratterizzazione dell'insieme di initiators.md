@@ -476,6 +476,7 @@ Assodato questo, ci proponiamo di studiare la capacità di cascata di una rete i
 - analizzando l'esempio particolare in cui $G$ è una catena infinita
 - descrivendo i risultati di uno studio qualitativo nel caso bidimensionale ($G$ griglia)
 - dimostrando che, nel caso unidimensionale l'andamento del processo di diffusione conferma quanto osservato dall'analisi qualitativa
+- indicheremo con $p_{A}(u),p_{B}(u),p_{AB}(u)$ il beneficio del nodo $u$ nell'adottare, rispettivamente, $A,B,AB$
 
 Vediamo quindi questa catena: $a=5,b=3,c=1$
 
@@ -483,13 +484,62 @@ Per simmetria, è sufficiente considerare una catena infinita solo a destra (sem
 
 ![[Pasted image 20250813111920.png|center]]
 
+Al primo passo, $u$ adotta $AB$ (verde): infatti $p_{A}(u)=5,p_{B}(u)=3,p_{AB}(u)=5+3-1=7$
+
 ![[Pasted image 20250813112103.png|center]]
+
+Al secondo passo, $v$ adotta $AB$ (verde): infatti $p_{A}(v)=5,p_{B}(v)=3+3=6,p_{AB}(v)=5+3-1=7$
 
 ![[Pasted image 20250813112118.png|center]]
 
+Al terzo passo, $z$ adotta $AB$ (verde) per le stesse motivazioni di $v$, ma ora ad $u$ conviene abbandonare $AB$ e tornare ad $A$ perchè: $p_{A}(u)=10,p_{B}(u)=0,p_{AB}(u)=5+5-1=9$
+
 ![[Pasted image 20250813112132.png|center]]
 
+A questo punto, il fenomeno si ripete
+
 ![[Pasted image 20250813112145.png|center]]
+
+E quindi, dopo un periodo transitorio durante il quale un nodo adotta lo stato misto, esso passerà ad adottare definitivamente il nuovo stato, e quindi si genera una cascata completa nella quale il vecchio stato viene completamente soppiantanto dal nuovo
+
+Ricordiamo che, nel caso di esclusività fra $A$ e $B$, la soglia di adozione $q$ era definita come $q=\frac{b}{a+b}$
+- esso rappresenta la frazione minima dei vicini di un nodo che deve essere nello stato $A$ per convincere quel nodo a passare allo stato $A$
+- dalla definizione possiamo dividere numeratore e denominatore per $b$ ed ottenere che $$q=\frac{1}{\frac{a}{b}+1}$$
+
+Sempre nel caso di esclusività, avevamo dimostrato che **non si può generare una cascata completa (in un grafo infinito) se $q\gt \frac{1}{2}$**
+
+Cosa possiamo dire nel caso di compatibilità fra $A$ e $B$?
+
+Intanto, osserviamo che l'operazione di dividere per $b$ che abbiamo poc'anzi effettuato ha permesso di risursi a studiare i processi di diffusione in funzione del solo parametro $\frac{a}{b}$ invece che dei due parametri $a,b$, e questo è equivalente a fissare $b=1$ e studiare i processi in funzione di $a$
+
+Analogamente, nel caso della compatibilità fra $A$ e $B$, possiamo fissare $b=1$ e studiare i processi in funzione di $a,c$
+
+Uno studio qualitativo `[Kleinberg et al. 2007]` ha evidenziato uno "strano" comportamento:
+- lo stato $A$ si impone quando $a\gt\gt c$ - ed è ovvio
+- lo stato $A$ fa fatica ad imporsi quando $c\gt\gt a$ - e anche questo è ragionevole
+- lo stato $A$ **fa fatica ad imporsi anche quando** $c$ non è né troppo grande né troppo piccolo rispetto ad $a$ - e questo è strano
+
+Torniamo a considerare la catena
+
+![[Pasted image 20250813121331.png|center]]
+
+Se $x$ è nello stato $A$ (giallo) e $v$ nello stato $B$ (blu), al nodo $u$ quale stato converrà adottare?
+Dato che $$p_{A}(u)=a,p_{B}(u)=1,p_{AB}(u)=a+1-c$$
+possono accadere $3$ situazioni:
+- se $p_{A}(u)\geq p_{B}(u)$ e $p_{A}(u)\geq p_{AB}(u)$ allora $u$ adotterà $A$
+	- questo accade quando $a\geq1$ e $a\geq a+1-c$
+		- quindi quando $a\geq1\land c\geq1$
+- se $p_{B}(u)\gt p_{A}(u)$ e $p_{B}(u)\gt p_{AB}(u)$ allora $u$ rimarrà in $B$
+	- questo accade quando $1\gt a$ e $1\gt a+1-c$
+		- quindi quando $a\lt1\land a\lt c$
+- se $p_{AB}(u)\gt p_{A}(u)$ e $p_{AB}(u)\gt p_{B}(u)$ allora $u$ adotterà $AB$
+	- questo accade quando $a+1-c\gt a$ e $a+1-c\geq 1$
+		- quindi quando $c\lt1\land a\geq c$
+
+Riassumiamo tutto ciò in un grafico nel piano $ac$
+
+
+
 
 
 
