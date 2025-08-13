@@ -538,10 +538,84 @@ possono accadere $3$ situazioni:
 
 Riassumiamo tutto ciò in un grafico nel piano $ac$
 
+![[Pasted image 20250813144825.png|center|350]]
 
 
+Abbiamo detto che
+- se $a \geq 1$ e $c \ge 1$, $u$ adotterà $A$ – regione gialla
+- se $a \lt 1$ e $a \lt c$, $u$ rimarrà in $B$ – regione blu
+- se $c \lt 1$ e $a \ge c$, $u$ adotterà $AB$ – regione verde
+
+A questo punto possiamo già trarre qualche conclusione
+- se $u$ è rimasto nello stato $B$, allora la diffusione dello stato $A$ è stata bloccata sul nascere: il processo di diffusione non ha avuto nemmeno inizio
+- se $u$ è passato allo stato $A$, allora, al passo successivo il nodo $v$ (adiacente a $u$) passerà allo stato $A$, e così via: si è innescato il processo di diffusione di $A$, che genererà una diffusione completa senza mai passare per lo stato misto $AB$.
+- Perciò, per coppie di parametri che cadono nelle regioni blu e gialla l’andamento del processo è chiaro
+
+Resta da studiare cosa accade quando i parametri cadono nella regione verde
+
+Quando i parametri cadono nella regione verde, ovvero $c\lt 1$ e $a\ge c$, significa che $u$ ha adottato $AB$, siamo quindi nella situazione seguente
+
+![[Pasted image 20250813145558.png|center]]
+
+Quale stato conviene adottare al nodo $v$?
+- adesso vale che $p_A(v)=a,p_{B}(v)=2,p_{AB}(v)=\max\{a,1\}+1-c$
+	- se $a\lt 1\implies p_{AB}=2-c$, quindi $(a,c)$ si trova nel triangolo $T$
+	- se $a\gt1\implies p_{AB}=a+1-c$, quindi $(a,c)$ si trova nel rettangolo $R$ (infinito)
+
+![[Pasted image 20250813145904.png|center|300]]
+
+Dunque:
+- se $(a,c)\in T$ allora $a\lt1$ e quindi $p_{A}(v)\lt p_{B}(v)$ e $p_{AB}(v)\lt p_{B}(v)$ e quindi $v$ adotta $B$
+- se $(a,c)\in R$ allora $a\gt1$
+	- quando $a\gt2\implies p_{B}(v)\lt p_{A}(v)\lt p_{AB}(v)$ e quindi $v$ adotta $AB$
+	- quando $a\lt 2\implies p_{B}(v)\gt p_{A}(v)$; inoltre $p_{B}(v)\gt p_{AB}(v)$ quando $2>a+1-c$
+		- allora: $v$ adotta $B$ quando $a\lt c+1$, adotta $AB$ quando $a\gt c+1$
 
 
+Seconda serie di conclusioni: se $(a,c) \in R$
+- al passo $2$, $v$ non passa allo stato $A$ in nessun caso
+- se $v$ al passo $2$ rimane nello stato $B$, allora la diffusione dello stato $A$ si blocca al passo $2$
+- perciò, le coppie $(a,c)\in R$ che possono dar luogo a una cascata completa sono quelle nella regione $P$
+
+![[Pasted image 20250813150658.png|center]]
+
+
+Quando $(a,c)\in P$, al passo $2$, la situazione è la seguente
+
+![[Pasted image 20250813150732.png|center]]
+
+
+Dato che $(a,c)\in P$, al passo $3$ il nodo $z$ sceglie di adottare $AB$
+- in seguito alle stesse considerazioni che ci hanno portato a concludere che, al passo $2$ il nodo $v$ adotta $AB$
+
+E sempre al passo $3$ il nodo $u$ rivede la sua posizione:
+- dato che $(a,c) \in P$ , allora $a \gt 1$
+- quindi, $$p_{AB}(u) = a + \max\{a,1\} - c = 2a - c \lt 2a = p_A(u)$$
+- e quindi, $u$ non ha più interesse a continuare ad adottare anche lo stato $B$ e di conseguenza sceglie di adottare lo stato $A$
+
+![[Pasted image 20250813150926.png|center]]
+
+
+Conclusioni finali
+
+![[Pasted image 20250813150658.png|center|350]]
+
+Se $(a,c)$ è contenuto nella regione azzurra ($a \lt 1$ oppure $a \gt 1$ e $c \lt 1$ e $c \gt a - 1$) lo stato $A$ non si diffonde (la sua diffusione si blocca immediatamente o al passo $2$)
+
+Se $(a,c)$ è contenuto nella regione gialla ($a \gt 1$ e $c \gt 1$) lo stato $A$ si diffonde immediatamente, senza che alcun nodo passi nello stato $AB$
+
+Se $(a,c)$ è contenuto nella zona verde ($a \gt 1$ e $c \lt 1$ e $c \lt a - 1$) dopo una fase transitoria in cui i nodi adottano lo stato $AB$, prende piede definitivamente lo stato $A$
+
+Riassumendo
+
+- lo stato $A$ non si diffonde se $A$ è peggiore di $B$, oppure se $A$ è migliore di $B$ ma il costo di $AB$ è elevato quando rapportato al beneficio di poter usare $A$
+	- se $a \lt 1$ oppure $a \gt 1$ e $c \lt 1$ e $c \gt a - 1$
+- Lo stato $A$ si diffonde immediatamente, senza che alcun nodo passi nello stato $AB$ se $A$ è migliore di $B$ e, inoltre, il costo di $AB$ è elevato 
+	- se $a \gt 1$ e $c \gt 1$
+- Dopo una fase transitoria, in cui i nodi adottano lo stato $AB$, prende piede definitivamente lo stato $A$ se $B$ è peggiore di $A$ e, inoltre, il costo di $AB$ è basso sia in assoluto che in relazione al beneficio di poter usare $A$
+	- se $a \gt 1$ e $c \lt 1$ e $c \lt a - 1$
+
+E questo conferma il risultato dello studio qualitativo in `[Kleinberg et al. 2007]`
 
 
 [^1]: talvolta modificandone il comportamento, come visto nell'esperimento di Ganovetter
