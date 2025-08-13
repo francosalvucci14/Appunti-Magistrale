@@ -78,3 +78,17 @@ Per fare ciò, abbiamo bisogno del **teorema di Bayes**
 
 Vediamo poi come ciò sia utile per analizzare il gioco delle urne
 
+Siano MR l'evento "l'urna è a maggioranza rossa" e MB = "l'urna è a maggioranza blu", r = "estratta rossa" e b = "estratta blu"
+
+Dobbiamo quindi calcolare $$Pr(MB|b),Pr(MB|r),Pr(MR|r),Pr(MR|b)$$
+sapendo che:
+- $Pr(MB)=Pr(MR)=\frac{1}{2}$
+- $Pr(r|MR)=\frac{2}{3}$ e $Pr(b|MR)=\frac{1}{3}$
+- $Pr(b|MB)=\frac{2}{3}$ e $Pr(r|MB)=\frac{1}{3}$
+- e ovviamente $MB^{c}=MR$ e $MR^{c}=MB$
+
+Il GIOCATORE 1 estrae una blu, allora per il teorema di Bayes vale che 
+
+$$\begin{align*}
+&Pr(MB|b)=\frac{\frac{2}{3} \frac{1}{2}}{\frac{2}{3} \frac{1}{2}+ \frac{1}{3} \frac{1}{2}}= \frac{2}{3}\\&Pr(MR|b)=\frac{\frac{1}{3} \frac{1}{2}}{\frac{1}{3} \frac{1}{2}+ \frac{2}{3} \frac{1}{2}}=\frac{1}{3}\quad(1-Pr(MB|b))\\
+\end{align*}$$
