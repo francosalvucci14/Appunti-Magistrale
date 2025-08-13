@@ -153,7 +153,7 @@ Ha quindi inizio un processo di diffusione che procede ***in una sequenza di pas
 Indichiamo quindi con $V_i$ l'insieme dei nodi che adottano $A$ al passo $i$
 
 Viene generata una ***cascata completa*** se ad un certo passo $t$, tutti i nodi hanno adottato $A$, ovvero se: $$\exists t\geq0:\bigcup_{0\leq i\leq t}V_i=V$$
-#### Cascate e Clusters
+### Cascate e Clusters
 
 Se ripensiamo all'esempio, sembra che l'innovazione abbia difficoltà a uscire dall'"esagono centrale, che appare come un gruppo coeso di nodi
 
@@ -174,7 +174,7 @@ Vale quindi il seguente teorema
 >[!teorem]- Teorema 1
 >Sia $G=(V,E)$ un grafo e siano $V_0\subseteq V$ l'insieme degli iniziatori e $q$ la soglia di adozione di $A$: $V_0$ **non genera** una cascata completa $\iff G\setminus V_{0}$ contiene un cluster di densità maggiore di $1-q$
 
-**dimostrazione parte $\implies$**
+**dimostrazione parte $\implies$** ^953f09
 
 Se $V_0$ non genera una cascata completa, allora esistono nodi che non adottano $A$
 Abbiamo detto che con $V_i$ indichiamo i nodi che adottano $A$ al passo $i$, sia quindi $t$ il passo tale che $V_t\neq\emptyset$ e $V_{t+1}=\emptyset$ (quindi $t+1$ è il primo passo in cui $A$ non si diffonde)
@@ -201,7 +201,7 @@ Allora:
 E quindi, dato che $V'\cap C=\emptyset$, allora abbiamo che: 
 $$1=\frac{|N(u)|}{|N(u)|}\geq\frac{|N(u)\cap (C\cup V')|}{|N(u)|}=\frac{|N(u)\cap C|}{|N(u)|}+\frac{|N(u)\cap V'|}{|N(u)|}\gt1$$Assurdo $\blacksquare$
 
-##### Il ruolo dei weak ties
+#### Il ruolo dei weak ties
 
 Il teorema appena dimostrato mette in luce un nuovo aspetto della dicotomia strong/weak ties:
 - le innovazioni si diffondono con relativa facilità all'interno dei cluster
@@ -211,7 +211,7 @@ Il teorema appena dimostrato mette in luce un nuovo aspetto della dicotomia stro
 
 Possiamo quindi concludere che, mentre l'esperimento di Granovetter ha permesso di mettere in luce la forza dei weak ties (in quanto fonte di vantaggi informativi), lo studio dei processi di diffusione ne evidenzia la debolezza (in quanto ostacolo alla diffusione)
 
-##### Cluster e Marketing virale
+#### Cluster e Marketing virale
 
 La domanda che ci facciamo adesso è: è possibile superare lo stallo nel quale, a causa di cluster sufficientenmente dansi, uno stato $A$ smette di diffondersi? Se sì, come facciamo?
 
@@ -223,7 +223,7 @@ La seconda opzione però, dal punto di vista di un venditore, non è una strateg
 
 Allora ci domandiamo, quanto alto può essere mantenuto il prezzo di $A$ perchè la diffusione sia ancora virale? 
 O meglio, quanto alta può essere tenuta la soglia di adozione perchè si generi una cascata completa?
-###### Capacità di Cascata
+##### Capacità di Cascata
 
 Quindi, quanto alta può essere tenuta la soglia di adozione $q$ per far sì che si generi una cascata completa? Naturalmente, $q=\frac{b}{a+b}\leq1$
 
@@ -350,7 +350,7 @@ Di conseguenza, l'eventualità $I_{t}\neq I_{t+1}$ non può verificarsi per più
 
 Ma in un grafo infinito una cascata completa può verificarsi solo in seguito a un processo di diffusione finito, allora $V_0$ non genera nessuna cascata completa, come volevasi dimostrare $\blacksquare$
 
-## Nodi eterogenei
+### Nodi eterogenei
 
 Il modello di diffusione considerato fino ad ora è un modello uniforme, ovvero tutti i nodi associano lo stesso beneficio reciproco nell'adottare $A$ o $B$, che è rispettivamente $a,b$
 
@@ -378,7 +378,7 @@ Quindi, come nel caso lineare precedente, definiamo la struttura che impedisce l
 >[!definition]- Blocking Cluster
 >$V\subseteq V'$ è detto **blocking cluster** se, per ogni $v\in V'$ vale che $$\frac{|N(v)\cap V'|}{|N(v)|}\geq1-q$$
 
-Vale quindi il seguente teorema, di cui non daremo dimostrazione:
+Vale quindi il seguente teorema, di cui non daremo dimostrazione (o meglio, la dimostrazione è pressochè simile a questa [[Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators#^953f09|dimostrazione]], e viene quindi lasciata come esercizio):
 
 >[!teorem]- Teorema
 >Sia $G=(V,E)$ un grafo.
@@ -436,6 +436,61 @@ I nodi $u,v,x$ si vedono l'un l'altro, così $u$ sa che $v,x$, per partecipare, 
 Ma $u$ sa che anche $v,x$ sanno le stesse cose che sa lui, siamo quindi in una situazione "io so che tu sai che io so" (dio porco)
 
 Essendo che si fidano l'un l'altro (strong ties) allora partecipano tutti e tre alla protesta, senza aver bisogno di conoscere altro della rete (sono quindi indipendenti da $y$)
+
+Possiamo trarre le nostre conclusioni.
+
+In assenza di comunicazioni adeguate che abbiano luogo nella rete, l'azione collettiva si verifica difficilmente:
+- ecco perchè i regimi dittatoriali tendono a favorire l' ***ignorranza pluralistica***, che permette di concludere erroneamente che pochi individui abbiano una certa opinione, come nell'esempio blu
+
+Invece, l'esempio rosso permette di osservare l'importanza di disporre di *una base di conoscenza comune*
+
+## Diffusione in presenza di compatibilità
+
+FIn'ora abbiamo considerato i due stati $A$ e $B$ mutualmente escusivi, ciascun nodo infatti o si trova in $A$ o in $B$. 
+
+Tuttavia, nella realtà, non è infrequente che due stati possano coesistere.
+
+D'ora in avanti, studieremo i processi di diffusione in presenza di compatibilità, ovvero quando un nodo può trovarsi in $A,B,AB$
+
+In questo modello, chiamato modello a "nodi omogenei", i benefici del trovarsi in un certo stato dipendono soltanto dallo stato, e sono gli stessi per tutti i nodi
+
+Naturalmente, un nodo adotta lo stato misto ($AB$) ogni qualvolta ne trae beneficio, ma allora la domanda sorge spontanea: perchè non adottare sempre lo stato misto?
+
+La risposta è semplice e banale, adottare sempre lo stato misto ha un costo, ovvero il costo di adottare sia $A$ che $B$
+
+In ogni caso, mentre i benefici che otteniamo dall'adottare lo stato $AB$ sono proporzionali al numero di vicini con i quali possiamo comunicare, il costo lo paghiamo una volta sola.
+
+Sia $(u,v)$ un arco della rete: assumiamo che il beneficio reciproco di adottare $A,B,AB$ sia quello illustrato in tabella: 
+
+| $u/v$ | A     | B     | AB                        |
+| ----- | ----- | ----- | ------------------------- |
+| $A$   | $a,a$ | $0,0$ | $a,a$                     |
+| $B$   | $0,0$ | $b,b$ | $b,b$                     |
+| $AB$  | $a,a$ | $b,b$ | $\max\{a,b\},\max\{a,b\}$ |
+
+Invece, per il nodo $u$, il costo di $u$ di essere nello stato $AB$ è $c$
+
+In definitiva, se $V_{A},V_{B},V_{AB}$ sono gli insiemi dei nodi che sono, rispettivamente, negli stati $A,B,AB$, con $V_{A}\cup V_{B}\cup V_{AB}=V$, allora il beneficio per un nodo $u$ di essere nello stato $AB$ è $$\sum\limits_{v\in V_{A}\cap N(u)}a+\sum\limits_{v\in V_{B}\cap N(u)}b+\sum\limits_{v\in V_{AB}\cap N(u)}\max\{a,b\}-c$$
+E quindi, i benefici di stare in $A$ e $B$ sono rispettivamente $$\sum\limits_{v\in (V_{A}\cup V_{AB})\cap N(u)}a\land\sum\limits_{v\in (V_{A}\cup V_{AB})\cap N(u)}b$$
+Assodato questo, ci proponiamo di studiare la capacità di cascata di una rete in presenza di compatibilità, e lo faremo solo:
+- analizzando l'esempio particolare in cui $G$ è una catena infinita
+- descrivendo i risultati di uno studio qualitativo nel caso bidimensionale ($G$ griglia)
+- dimostrando che, nel caso unidimensionale l'andamento del processo di diffusione conferma quanto osservato dall'analisi qualitativa
+
+Vediamo quindi questa catena: $a=5,b=3,c=1$
+
+Per simmetria, è sufficiente considerare una catena infinita solo a destra (sempre a DESTRA!!!), il cui primo nodo è nello stato $A$ (giallo) e tutti gli altri sono nello stato $B$ (blu)
+
+![[Pasted image 20250813111920.png|center]]
+
+![[Pasted image 20250813112103.png|center]]
+
+![[Pasted image 20250813112118.png|center]]
+
+![[Pasted image 20250813112132.png|center]]
+
+![[Pasted image 20250813112145.png|center]]
+
 
 
 
