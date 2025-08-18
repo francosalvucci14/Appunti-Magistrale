@@ -152,6 +152,49 @@ Definiamo ora un modello generale di decision making sequenziale, generalizzando
 4) Le decisioni vengono prese sequenzialmente: un individuo prende una decisione *dopo* aver osservato il comportamento di altri individui
 5) Ogni individuo prende le sue decisioni su una base puramente razionale
 	- Se, dopo aver ricevuto il proprio segnale privato e aver osservato le scelte di altri individui nella rete, la prob. che la scelta giusta sia accettare la proposta è diventata $p'$, allora un individuo accetta la proposta se e solo se $$v_{g}p'+v_{b}(1-p')\geq0$$e poichè $v_{g}p+v_b(1-p)=0\implies v_{b}=-\frac{p}{1-p}v_{g}\leq0$, quanto sopra accade $\iff p'\geq0$
-6) La cascata imitativa si innessa solo quando 
+6) La cascata imitativa si innessa solo quando una *massa critica* di individui ha preso la medesima decisione
+
+Cominciamo ad analizzare come varia la prob. che $Y$ sia la scelta migliore nel caso in cui venga ricevuta una sequenza $S$ di segnali
+
+Se $|S|=1$, ovvero viene ricevuto un solo segnale, vale che:
+- se viene ricevuto il segnale $A$ allora $$\begin{align*}
+&Pr(Y|A)=\frac{Pr(A|Y)Pr(Y)}{Pr(A|Y)Pr(Y)+Pr(A|N)Pr(N)}=\frac{qp}{qp+(1-q)(1-p)}\gt\frac{qp}{qp+q(1-p)}=p\\&Pr(N|A)=1-Pr(Y|A)\lt p
+\end{align*}$$
+- se viene ricevuto il segnale $R$ allora: $$\begin{align*}
+&Pr(Y|R)=\frac{(1-q)p}{(1-q)p+q(1-p)}\lt\frac{(1-q)p}{(1-q)p+(1-q)(1-p)}=p\\&Pr(N|R)=1-Pr(Y|R)\gt p
+\end{align*}$$
+Di conseguenza, quando un individuo riceve un segnale, e non ha altre informazioni derivanti dal comportamento di altri individui, "segue" il segnale: sceglie $Y$ quando riceve $A$, sceglie $N$ quando riceve $R$
+
+Se $|S|\gt1$, ovvero vengono ricevuti un certo numero di segnali, diciamo w.l.o.g che vengono ricevuto $a$ segnali di tipo $A$ e $r$ segnali di tipo $R$, allora vale che:
+$$Pr(Y|S)=\frac{Pr(S|Y)Pr(Y)}{Pr(S|Y)Pr(Y)+Pr(S|N)Pr(N)}=\frac{q^{a}(1-q)^{r}p}{q^{a}(1-q)^{r}p+(1-q)^aq^{r}(1-p)}$$
+Consideriamo ora il secondo addendo al denominatore, ovvero $(1-q)^aq^{r}(1-p)$ :
+- se $a\gt r$, essendo che $q\gt \frac{1}{2}$ allora vale che $$(1-q)^aq^{r}=(1-q)^{a-r}(1-q)^rq^{r}\lt q^{a-r}(1-q)^{r}q^{r}=q^{a}(1-q)^r$$e quindi $$Pr(Y|S)=\frac{q^{a}(1-q)^{r}p}{q^{a}(1-q)^{r}p+(1-q)^aq^{r}(1-p)}\gt\frac{q^{a}(1-q)^{r}p}{q^{a}(1-q)^{r}p+q^{a}(1-q)^{r}(1-p)}=p$$
+- se $a\lt r$ allora $$(1-q)^aq^{r}=(1-q)^{a}q^{a}q^{r-a}\gt (1-q)^{a}q^{a}(1-q)^{r-a}=q^{a}(1-q)^r$$e quindi $$Pr(Y|S)=\frac{q^{a}(1-q)^{r}p}{q^{a}(1-q)^{r}p+(1-q)^aq^{r}(1-p)}\lt\frac{q^{a}(1-q)^{r}p}{q^{a}(1-q)^{r}p+q^{a}(1-q)^{r}(1-p)}=p$$
+- se $a=r$ allora $$(1-q)^aq^r=q^a(1-q)^r$$e quindi $$Pr(Y|S)=p$$
+Ricapitolando quindi, se viene ricevuta una sequenza $S$ di segnali che contiene $a$ segnali $A$ e $r$ segnali $R$, allora:
+- se $a\gt r\implies Pr(Y|S)\gt p$
+- se $a\lt r\implies Pr(Y|S)\lt p$
+- se $a= r\implies Pr(Y|S)= p$
+
+Quindi, se un individuo conoscesse l'intera sequenza di segnali, saprebbe prendere la decisione che massimizza la sua probabilità di successo.
+
+Purtroppo però, gli individui non possono conoscere i segnali privati dei predecessori (quindi ci attacchiamo al cazzo di base)
+
+Sulla base di quel che abbiamo visto a proposito di $Pr(Y|S)$ sappiamo che:
+- il primo individuo nella sequenza segue il proprio segnale privato
+- anche il secondo lo segue
+- il terzo segue il segnale *solo se i primi due individui hanno preso decisioni differenti* mentre, se i primi due hanno preso la stessa decisione , anche il terzo individuo prende quella decisione, indipendentemente dal proprio segnale privato
+
+Consideriamo l'individuo $n$ nella sequenza e supponiamo che egli riesca a infierire i segnali privati dei suoi predecessori:
+- e questo sappiamo accadere solo quando la cascata imitativa non si è ancora innescata
+- ovvero, le decisioni fra $Y,N$, fino all'individuo $n$, si sono "grosso modo" alternate 
+
+Chiariamo ora il "grosso modo"
+
+Sia ora $\sigma_{n}$ il segnale privato ricevuto dall'individuo $n$, allora vale che:
+- se $a=r\implies Pr(Y|S)=p$: quindi $$Pr(Y|S\cup\{\sigma_{n}\})=\begin{cases}\gt p&\sigma_{n}=A\\\lt p&\sigma_{n}=R\end{cases}$$perciò, l'individuo segue il suo segnale privato, qualunque esso sia
+- se $a=r+1$, allora $$Pr(Y|S\cup\{\sigma_{n}\})=\begin{cases}\gt p&\sigma_{n}=A\\=p&\sigma_{n}=R\end{cases}$$anche qui, l'individuo segue il suo segnale qualunque esso sia
+- se $a\geq r+2\implies Pr(Y|S\cup\{\sigma_{n}\})\gt p$ qualunque sia $\sigma_n$, perciò l'individuo $n$ sceglie $Y$ qualunque sia il suo segnale privato, si è quindi innescata una cascata imitativa
+
 
 [^1]: il valore atteso del profitto in caso di accettazione o di non accettazione è lo stesso
