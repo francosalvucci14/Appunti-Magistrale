@@ -67,8 +67,6 @@ GIOCATORE $x$, con $x \geq 5$:
 
 Si è innescato un fenomeno a cascata – una **cascata imitativa** (qualunque saranno le estrazioni, ogni giocatore risponderà MB)
 
-### Tool: Il Teorema di Bayes
-
 Per capire se l'intuizione che ha guidato i giocatori sia fondata razionalmente, dobbiamo calcolare la probabilità di vittoria di ciascun giocatore
 
 Per fare ciò, abbiamo bisogno del **teorema di Bayes**
@@ -92,3 +90,68 @@ Il GIOCATORE 1 estrae una blu, allora per il teorema di Bayes vale che
 $$\begin{align*}
 &Pr(MB|b)=\frac{\frac{2}{3} \frac{1}{2}}{\frac{2}{3} \frac{1}{2}+ \frac{1}{3} \frac{1}{2}}= \frac{2}{3}\\&Pr(MR|b)=\frac{\frac{1}{3} \frac{1}{2}}{\frac{1}{3} \frac{1}{2}+ \frac{2}{3} \frac{1}{2}}=\frac{1}{3}\quad(1-Pr(MB|b))\\
 \end{align*}$$
+E quindi, seguendo la propria intuizione e rispondendo $MB$, il GIOCATORE $1$ ha risposto con l'alternativa che massimizza la sua probabilità di successo
+
+Il GIOCATORE 2
+- se estrae una rossa, vale che $$\begin{align*}
+&Pr(MB|br)=\frac{\frac{2}{3} \frac{1}{3} \frac{1}{2}}{\frac{2}{3} \frac{1}{3} \frac{1}{2}+ \frac{1}{3} \frac{2}{3} \frac{1}{2}}= \frac{1}{2}\\&Pr(MR|br)=\frac{\frac{1}{3} \frac{2}{3} \frac{1}{2}}{\frac{1}{3} \frac{2}{3} \frac{1}{2}+ \frac{2}{3} \frac{1}{3} \frac{1}{2}}=\frac{1}{2}
+\end{align*}$$Quindi, la sequenza di $2$ estrazioni non fornisce alcuna indicazione: il gicoatore risponde $MR$, coerentemente con la palla che ha estratto (il GIOCATORE 1 potrebbe aver anche mentito)
+- se estrae una blu, vale che $$\begin{align*}
+&Pr(MB|bb)=\frac{\frac{2}{3} \frac{2}{3} \frac{1}{2}}{\frac{2}{3} \frac{2}{3} \frac{1}{2}+ \frac{1}{3} \frac{1}{3} \frac{1}{2}}= \frac{4}{5}\\&Pr(MR|bb)=\frac{\frac{1}{3} \frac{1}{3} \frac{1}{2}}{\frac{1}{3} \frac{1}{3} \frac{1}{2}+ \frac{2}{3} \frac{2}{3} \frac{1}{2}}=\frac{1}{5}
+\end{align*}$$Quindi, seguendo la propria intuizione e rispondendo $MB$, il GIOCATORE 2 ha risposto con l'alternativa che massimizza la sua prob i successo.
+
+Il GIOCATORE 3, dopo che sono state estratte due blu:
+- se estrae una blu $$\begin{align*}
+&Pr(MB|bbb)=\frac{\frac{8}{27} \frac{1}{2}}{\frac{8}{27} \frac{1}{2}+ \frac{1}{27} \frac{1}{2}}= \frac{8}{9}\\&Pr(MR|bbb)=\frac{1}{9}\quad\text{vedi calcoli}
+\end{align*}$$Quindi, seguendo la propria intuizione e rispondendo $MB$, il GIOCATORE 3 ha risposto con l'alternativa che massimizza la sua prob i successo - e questo è chiaro
+- se estrae una rossa $$\begin{align*}
+&Pr(MB|bbr)=\frac{\frac{4}{9} \frac{1}{3} \frac{1}{2}}{\frac{4}{9} \frac{1}{3} \frac{1}{2}+ \frac{1}{9} \frac{2}{3} \frac{1}{2}}= \frac{2}{3}\\&Pr(MR|bbr)=\frac{1}{3}\quad\text{vedi calcoli}
+\end{align*}$$Quindi, nonostante l'estrazione di una rossa, la sequenza di estrazioni favorisce ancora l'eventualità che l'urna sia $MB$: rispondendo $MB$, il GIOCATORE 3 massimizza la sua probabilità di successo
+
+Il GIOCATORE 4, sapendo che le prime due estrazioni sono state blu, risponde sempre $MB$: calcoliamo la prob. nelle $4$ estrazioni possibili
+$$\begin{align*}
+&Pr(MB|bbbb)=\frac{16}{17}\space\land\space Pr(MR|bbbb)=\frac{1}{17}\\&Pr(MB|bbbr)=\frac{8}{9}\space\land\space Pr(MR|bbbr)=\frac{1}{9}\\&Pr(MB|bbrb)=\frac{8}{9}\space\land\space Pr(MR|bbrb)=\frac{1}{9}\\&Pr(MB|bbrr)=\frac{1}{2}\space\land\space Pr(MR|bbrr)=\frac{1}{2}
+\end{align*}$$
+Quindi, seguendo la propria intuizione e rispondendo $MB$, il GIOCATORE $4$ non incappa mai nell'alternativa che minimizza la sua prob. di successo, tuttavia, se estrae una rossa e il GIOCATORE 3 aveva anch'egli estratto una rossa (eventualità che il GIOCATORE 4 non può conoscere) si trova, nuovamente, nella situazione in cui le eventualità $MB$ e $MR$ sono equiprobabili
+
+Il GIOCATORE 5, sapendo che le prime due estrazioni sono state blu, risponde sempre $MB$: calcoliamo la prob. nelle $8$ estrazioni possibili 
+$$\begin{align*}
+&Pr(MB|bbbbb)=\frac{32}{33}\space\land\space Pr(MR|bbbbb)=\frac{1}{33}\\&Pr(MB|bbbbr)=Pr(MB|bbbrb)=Pr(MB|bbrbb)=\frac{8}{9}\space\\&\land\space Pr(MR|bbbbr)=Pr(MR|bbbrb)=Pr(MR|bbrbb)=\frac{1}{9}\\&Pr(MB|bbbrr)=Pr(MB|bbrbr)=Pr(MB|bbrrb)=\frac{2}{3}\space\\&\land\space Pr(MR|bbbrr)=Pr(MR|bbrbr)=Pr(MR|bbrrb)=\frac{1}{3}\\&Pr(MB|bbrrr)=\frac{1}{3}\space\land\space Pr(MR|bbrrr)=\frac{2}{3}
+\end{align*}$$
+Quindi, seguendo la propria intuizione e rispondendo $MB$, il GIOCATORE $5$ può anche incappare nell'alternativa che minimizza la sua prob. di successo,e per i giocatori successivi sarebbe anche peggio.
+
+Tuttavia, se le prime due estrazioni sono blu, tutti i giocatori successivi al secondo rispondono blu, perchè ***sulla base di cio che conoscono*** è la scelta migliore
+
+Sia il gioco delle urne, che i due esempi prima (che invito a leggere), hanno caratteristiche comuni, che sono: 
+1) ogni individuo deve prendere una decisione
+2) ogni individuo ha un'informazione privata
+3) ogni individuo riceve dalla rete solo un'informazione incompleta
+	1) sa *cosa* hanno deciso gli altri, ma non sa il *perchè*
+4) le decisioni vengono prese ***sequenzialmente***: un individuo prende una decisione *dopo* aver osservato il comportamento di altri individui
+5) ogni individuo prende le sue decisioni su una base puramente razionale
+	1) inferisce quale sia la decisione che, sulla base delle osservazioni dell'ambiente e del comportamento degli altri individui, sembra essere quella che gli porterà i benefici maggiori
+	2) non agisce sulla base di una pressione sociale a uniformarsi, come avviene nell'omofilia
+6) la cascata imitativa si innesca solo quando una ***massa critica*** di individui ha preeso la medesima decisione
+## Un modello generale
+
+Definiamo ora un modello generale di decision making sequenziale, generalizzando le caratteristiche appena evidenziate:
+1) ogni individuo deve prendere una decisione: accettare $(Y)$ o non accettare $(N)$ una proposta?
+	- Una delle due è la scelta "giusta", l'altra quella "sbagliata"
+	- La prob. che sia "corretto" accettare la proposta è $Pr(Y)=p$, e la prob che sia "corretto" non accettare la proposta è $Pr(N)=1-p$
+	- Se un individuo **accetta** la proposta, lui può avere un profitto oppure una perdita:
+		- se accettare è la scelta giusta, allora ha un profitto $v_{g}\gt0$
+		- se accettare è la scelta sbagliata, allora ha un profitto $v_{b}\le0$
+	- Se un individuo **non accetta** la proposta, non avrà ne profitto ne perdita
+	- Affinchè sia equivalente per un individuo accettare o non accettare la proposta, in assenza di informazioni che permettano di guadagnare evidenza in favore di una delle due alternative, deve necessariamente valere che $$v_{g}p+v_b(1-p)=0$$[^1]
+2) Ogni individuo ha un'informazione privata, che riceve nella forma di un segnale privato, che può avere uno dei due valori: $A$ (Accetta) o $R$ (Rifiuta)
+	- Se la scelta giusta è accettare la proposta, la prob. di ricevere $A$ è $q\gt \frac{1}{2}$
+	- Se la scelta giusta è non accettare la proposta, la prob. di ricevere $A$ è $1-q$
+	- Simmetricamente, se la scelta giusta è accettare la proposta allora la prob. di ricevere $R$ è $1-q$, se la scelta giusta è non accettare allora la prob. di ricevere $R$ è $q$
+	- Formalmente, vale che $$\begin{align*} &Pr(A|Y)=q\quad Pr(A|N)=1-q\\&Pr(R|Y)=1-q\quad Pr(R|N)=q\end{align*}$$
+3) Ogni individuo riceve dalla rete solo un'informazione incompleta, infatti sa *cosa* hanno deciso gli altri, ma non il *perchè*
+4) Le decisioni vengono prese sequenzialmente: un individuo prende una decisione *dopo* aver osservato il comportamento di altri individui
+5) Ogni individuo prende le sue decisioni su una base puramente razionale
+	- Se, dopo aver ricevuto il proprio segnale privato e aver osservato le scelte di altri individui nella rete, la prob. che la scelta giusta sia accettare la proposta è diventata $p'$, allora un individuo accetta la proposta se e solo se $$v_{g}p'+v_{b}(1-p')\geq0$$e poichè $v_{g}p+v_b(1-p)=0\implies v_{b}=-\frac{p}{1-p}v_{g}\leq0$, quanto sopra accade $\iff p'\geq0$
+6) La cascata imitativa si innessa solo quando 
+
+[^1]: il valore atteso del profitto in caso di accettazione o di non accettazione è lo stesso
