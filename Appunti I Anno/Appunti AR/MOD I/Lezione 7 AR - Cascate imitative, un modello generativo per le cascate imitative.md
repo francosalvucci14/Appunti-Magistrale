@@ -196,5 +196,58 @@ Sia ora $\sigma_{n}$ il segnale privato ricevuto dall'individuo $n$, allora vale
 - se $a=r+1$, allora $$Pr(Y|S\cup\{\sigma_{n}\})=\begin{cases}\gt p&\sigma_{n}=A\\=p&\sigma_{n}=R\end{cases}$$anche qui, l'individuo segue il suo segnale qualunque esso sia
 - se $a\geq r+2\implies Pr(Y|S\cup\{\sigma_{n}\})\gt p$ qualunque sia $\sigma_n$, perciò l'individuo $n$ sceglie $Y$ qualunque sia il suo segnale privato, si è quindi innescata una cascata imitativa
 
+[^2]
+
+La domanda che ci poniamo è: ma cosa significa nel dettaglio $a\geq r+2$? e soprattutto, quando si verificano?
+
+Rispondiamo.
+
+Fino a quando i segnali si alternano, come ad es. $ARARARA\dots$ vale che $$a\leq r+1 \land r\leq a+1\to |a-r|\leq1$$
+Allora, per superare la soglia "$+1$" è necessario che il segnale $A$ venga ricevuto almeno due volte di seguito, come ad es. $ARARARAA$, e a questo punto, l'individuo successivo alla doppia $A$ sceglie $Y$ qualunque sie il suo segnale privato
+
+Quindi, ***la cascata imitativa non si innesca fino a quando non vengono ricevuti due segnali consegutivi uguali***
+
+Però, ricevere due segnali consegutivi uguali non è sufficiente affinchè si inneschi la cascata, perchè se è vero che la sequenza $ARARARAA$ fa partire la cascata, con due $A$ consegutivi, nella sequenza $RARARARAA$ vale che $a-r=1$, il che sappiamo non essere sufficiente affinchè, a questo punto, l'individuo successivo alla doppia $A$ scelga $Y$ a prescindere dal segnale
+
+Invece, certamente la cascata imitativa si innescherà non appena verranno ricevuti $3$ segnali consegutivi uguali, come ad es. $RARARARAAA$
+
+Ora utilizziamo quanto sopra per calcolare la prob. di occorrenza di una cascata imitativa
+
+Indichiamo con $H_{n}$ l'evento "la cascata imitativa si innesca entro il passo $n$", allora vale che $$Pr(H_n)\geq Pr(\lor_{1\leq i\leq n-2}(\sigma_{i}=\sigma_{i+1}=\sigma_{i+2}))\geq Pr(\lor_{1\leq i\leq \frac{n}{3}}(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}))$$
+Da cui otteniamo che 
+$$Pr(\lnot H_{n})\leq Pr(\land_{1\leq i\leq \frac{n}{3}}\lnot(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}))=\Pi_{1\leq i\leq \frac{n}{3}}Pr(\lnot(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}))$$
+L'ultima uguaglianza è vera perchè sono eventi indipendenti.
+
+Allora:
+$$\begin{align*}
+Pr(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i})&=Pr(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}=A\lor\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}=R)\\&=Pr(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}=A)+Pr(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}=R)\\&=Pr(AAA)+Pr(RRR)\\&=Pr(AAA|Y)Pr(Y)+Pr(AAA|N)Pr(N)+\\&Pr(RRR|Y)Pr(Y)+Pr(RRR|N)Pr(N)\\&=q^{3}p+(1-q)^3(1-p)+(1-q)^3p+q^3(1-p)\\&=q^3+(1-q)^3=1-3q+3q^2
+\end{align*}$$
+
+E di conseguenza, vale che: $$Pr(\lnot(\sigma_{3i-2}=\sigma_{3i-1}=\sigma_{3i}))=1-(1-3q+3q^2)=3q-3q^2$$[^3]
+
+Avendo ottenuto questi risultati, possiamo dire che:
+$$\begin{align*}
+&Pr(\lnot H_{n})\leq (3q-3q^2)^{\frac{n}{3}}\\&Pr(H_n)\geq1-(3q-3q^2)^{\frac{n}{3}}\\&\lim_{n\to\infty}Pr(H_{n})=1
+\end{align*}$$
+E questo dimostra che ***la cascata imitativa si innesca quasi sicuramente***
+
+# Considerazioni finali
+
+Le cascate imitative sono fenomeni facili da innescare, perchè richiedono la condivisione di poche informazioni
+- In effetti, le sole informazioni che precedono la sua insorgenza sono quelle che hanno rilevanza in questo fenomeno
+- Le informazioni che vengono ricevute dopo che la cascata si è innescata sono inutili, perciò, se una cascata imitativa si innesca "presto", la maggior parte delle informazioni che una popolazione acquisice rimangono inutilizzate
+
+Questo tipo di fenomeno può indurre decisioni sbagliate, proprio in virtù del fatto che non viene utilizzata tutta l'informazione disponibile della rete
+
+Una cascata imitativa è facile da rompere, infatti:
+- è sufficiente che qualcuno diffonda il proprio segnale privato
+- oppure che un segnale venga diffuso pubblicamente
+- e queste eventualità sono tanto più probabili quanto più grande è la popolazione interessata dal fenomeno
+
+
 
 [^1]: il valore atteso del profitto in caso di accettazione o di non accettazione è lo stesso
+
+[^2]: i casi con $a=r-1$ e $a\leq r-2$ sono simmetrici ai corrispettivi
+
+[^3]: osserviamo che $0\lt 3q-3q^2\lt 1,\forall q\in[0,1]$
