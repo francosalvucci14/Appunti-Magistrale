@@ -105,6 +105,22 @@ In generale comunque, ci vengono presentate più alternative fra le quali esprir
 Infine, naturalmente possono essere considerate numerose regole per derivare una decisione collettiva a partire da un insieme di decisioni individuali, ed esse prendono il nome di **sistemi di voto**
 ## Voto Individuale
 
+Formalizziamo il concetto di voto individuale:
+- $A=\{a_1,a_2,\dots,a_n\}$ è un insieme di alternative
+- $V=\{v_1,v_2,\dots,v_k\}$ è un insieme di votanti
+
+Ciascun votante $v_h\in V$ esprime il suo voto in una di due forme possibili:
+1) nella forma di una **graduatoria (ranking)** $r_{h}=\langle a_{h1},a_{h2},\dots,a_{hn}\rangle$
+	1) ovvero una sequenza ordinata delle $n$ alternative, nella quale al primo posto si trova l'alternativa preferita fra tutte, al secondo posto la seconda scelta, etc..
+	2) un ranking è quindi un elemento dell'insieme $\Pi(A)$, ovvero l'elemento delle permutazioni degli elementi di $A$
+2) nella forma di **relazione binaria completa e transitiva $\gt_{h}$**
+	1) *completa*: per ogni coppia di alternative $a$ e $a'$, vale che $a\gt_{h}a'$ oppure $a'\gt_{h}a$ (ricordiamo che $a\gt_{h}a'$ significa che $a$ è preferito ad $a'$ per il votante $h$)
+	2) *transitiva*: se $a\gt_{h}a'$ e $a'\gt_{h}a''$ allora $a\gt_{h}a''$. per qualunque terna di alternative $a,a',a''$
+
+Le due forme possibili di espressione di un voto sono fra loro equivalenti
+
+
+
 ## Sistemi di voto - maggioranza
 ## Sistemi di voto - posizionali
 
