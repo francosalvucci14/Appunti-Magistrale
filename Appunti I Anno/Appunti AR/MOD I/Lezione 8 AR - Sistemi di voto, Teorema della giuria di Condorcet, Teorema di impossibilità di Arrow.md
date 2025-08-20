@@ -40,7 +40,7 @@ Vale quindi il seguente teorema
 
 Questo teorema dimostra che, qualora si dovesse prendere una ***decisione collettiva*** in favore di $X$ e $Y$ e si decidesse in accordo alla scelta della maggioranza degli individui, la decisione colletiva porterebbe a scegliere l'alternativa "giusta"
 - Il che mostra come il modello di decision making appena definito sia un esempio nel quale si manifesta "la saggezza della folla"
-## Voto non sincero
+## Voto non sincero - maggioranza
  
 Questo teorema è quindi valido nel modello appena descritto, ove è previsto che *ogni individuo sceglie in accordo al proprio segnale privato* (punto $3$), e questo è perfettamente ragionevole, poichè nel modello si assume che il segnale in favore della scelta "giusta" sia quello più probabile (punto $2$)
 
@@ -61,3 +61,60 @@ In questo caso le regole del gioco sono un pò diverse:
 - *dopo* che i $3$ giocatori hanno estratto ciascuno una pallina, *simultaneamente* dichiarano ciascuno la propria scelta: $UG$ o $UV$
 - se la maggioranza ha indovinato di quale urna si tratti, tutti e $3$ vincono un premio, altrimenti nessun vince
 
+Consideriamo la strategia di un giocatore rispetto al suo segnale privato:
+- se estrae una gialla, vale che $$Pr(UG|g)=\frac{ \frac{10}{11} \frac{1}{2}}{\frac{10}{11} \frac{1}{2}+ \frac{1}{10} \frac{1}{2}}= \frac{10}{11}$$
+- ma se estrae una verde, allora vale che $Pr(UV|v)=1$
+
+Mettiamoci ora nei panni di uno dei giocatori, per capire quale ragionamento possa fare per rispondere in modo da massimizzare la prob. di vincere:
+- io giocatore so che noi tre giocatori vinciamo se almeno due di noi indovinano
+- la domanda quindi è: quando la mia risposta è **davvero influente** ai fini della vittoria?
+- la risposta è: quando le risposte degli altri due giocatori sono discordi
+	- perchè se sono concordi, in quel caso qualunque sia la mia risposta non verrà modificata la maggioranza
+
+Però se le risposte dei due giocatori sono discordi, allora uno di essi ha risposto $UV$. [^1]
+
+Perciò, assumendo che gli altri rispondano sinceramente, la mia risposta è influente ai fini della vittoria solo quando l'urna è $UV$, e quindi, qualunque pallina estraggo, mi conviene rispondere $UV$
+## Voto non sincero - unanimità
+
+Una situazione simile si presenta nelle giurie, durante i processi
+
+Quando si deve decidere se un imputato è colpevole $(C)$ o innocente $(I)$, e a priori vale che $$Pr(C)=Pr(I)= \frac{1}{2}$$ciascun girato riceve un segnale $c$ o  $i$, come nel caso dell'herding, e quindi $$Pr(c|C)=Pr(i|I)=q\gt \frac{1}{2}$$In questo caso occorre aggregare i voti dei giurati per giungere a un verdetto di colpevolezza o di innocenza, e per condannare un imputato è necessario che l'insieme $S$ dei segnali ricevuti dai giurati siano indice di colpevolezza con prob. molto alta (è richiesto che $Pr(C|S)\gt\gt \frac{1}{2}$)
+
+Diciamo quindi che per condannare un'imputato è necessario che ***tutti*** i giurati votino in favore della condanna
+
+In questo caso, se io sono un giurato: in quale situazione la mia risposta è davvero influente ai fini del verdetto?
+- se fra gli altri giurati c'è qualcuno che è in favore dell'innocenza, che io voti per la colpevolezza o per l'innocenza non altera il verdetto
+- ma se tutti gli altri giurati sono in favore della colpevolezza, allora è proprio dal mio voto che dipende il verdetto
+
+Supponiamo che la giuria consti di $k$ giurati e che tutti (tranne me) votino in accordo ai propri segnali.
+
+Calcoliamo quindi la prob. $Pr(C|ic^{k-1})$ che l'imputato sia colpevole quando un solo giurato riceve un segnale $i$:
+$$\begin{align*}
+Pr(C|ic^{k-1})&=\frac{Pr(ic^{k-1}|C)Pr(C)}{Pr(ic^{k-1}|C)Pr(C)+Pr(ic^{k-1}|I)Pr(I)}\\&=\frac{(1-q)q^{k-1} \frac{1}{2}}{(1-q)q^{k-1} \frac{1}{2}+q(1-q)^{k-1} \frac{1}{2}}\\&=\frac{q^{k-2}}{q^{k-2}+(1-q)^{k-2}}
+\end{align*}$$
+e dunque: $$\lim_{k\to\infty}Pr(C|ic^{k-1})=\lim_{k\to\infty}\frac{1}{1+\left(\frac{1-q}{q}\right)^{k-2}}=1\quad q\gt \frac{1}{2}\implies \frac{1-q}{q}\lt 1$$
+E quindi, al crescere del numero dei giurati, *se uno solo di essi riceve il segnale $i$* allora l'imputato è colpevole quasi sicuramente.
+# Sistemi di voto
+
+Fin'ora abbiamo considerato due metodi per ottenere una decisione collettiva a partire da un insieme di decisioni individuali, nel caso in cui le alternative fra le quali scegliere fossero due:
+- la maggioranza
+- l'unanimità
+
+In generale comunque, ci vengono presentate più alternative fra le quali esprireme le nostre preferenze, e spesso più che decretare semplicemente il vincitore, viene stilata una classifica, ovvero un ***ranking***
+
+Infine, naturalmente possono essere considerate numerose regole per derivare una decisione collettiva a partire da un insieme di decisioni individuali, ed esse prendono il nome di **sistemi di voto**
+## Voto Individuale
+
+## Sistemi di voto - maggioranza
+## Sistemi di voto - posizionali
+
+## Sistemi di voto - affidabili
+
+## Due principi per i sistemi di voto
+### Il teorema di impossibilità di Arrow
+
+
+
+
+
+[^1]: Ovvero, *assumendo* che gli altri giocatori rispondano *sinceramente* (in accordo ai loro segnali privati), le risposte degli altri due giocatori sono discordi quando uno di loro estrae una pallina verde, e quindi quando l'urna è $UV$
