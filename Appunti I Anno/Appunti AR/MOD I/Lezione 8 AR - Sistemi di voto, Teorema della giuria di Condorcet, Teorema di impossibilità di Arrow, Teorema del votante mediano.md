@@ -331,9 +331,17 @@ Dimostriamo il teorema di Arrow in tre passi:
 	2) e, dunque, anche per i k profili nei quali x è polarizzante
 3) dimostriamo che il dittatore potenziale è, effettivamente, il dittatore cercato
 
+Dimostriamo al parte $1)$ 
+
+Supponiamo per assurdo che $0\lt\rho(x)\lt n-1$: allora esistono due alternative $y,z\in[n]$ tali che $\rho(z)\lt\rho(x)\lt\rho(y)$
+
+Creiamo un nuovo profilo $P'=\langle r'_{1},r'_2,\dots,r'_k\rangle$ nel modo seguente:
+1) per ogni $i\in[k]$ tale che $\rho_{i}(y)\lt\rho_i(z)$, impostiamo $r'_i=r_i$
+2) per ogni $i\in[k]$ tale che $\rho_{i}(y)\gt\rho_i(z)$, $r'_{i}$ è ottenuto da $_i$ spostando $z$ alla sinistra di $y$, in modo che $\rho'_i(z)=\rho'_{i}(y)+1$ ![[Pasted image 20250825180145.png|center]]
+
 # Single Peaked Preferences
 
-
+## Il Teorema del Votante Mediano
 
 
 [^1]: Ovvero, *assumendo* che gli altri giocatori rispondano *sinceramente* (in accordo ai loro segnali privati), le risposte degli altri due giocatori sono discordi quando uno di loro estrae una pallina verde, e quindi quando l'urna è $UV$
