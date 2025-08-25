@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "9fbd6ada8f550472",
@@ -165,6 +166,7 @@
   },
   "active": "64bc8fa6ca4c6aa6",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250825154009.png",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
@@ -206,7 +208,6 @@
     "Appunti I Anno/Appunti AR",
     "Appunti I Anno/Appunti ADRC/Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics.md",
     "Appunti I Anno/Appunti ADRC/Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari,Tempo di convergenza del protocollo.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding-Bitcoin-2/transaction_segwit.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/script.cpython-310.pyc",

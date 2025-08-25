@@ -174,17 +174,136 @@ Esistono vari tipi di sistema di voto, vediamone alcuni
 ## Sistemi di voto - maggioranza
 
 >[!warning]- Predicato del sistema di voto a maggioranza
->Supponiamo che i voti individuali dei $k$ votanti siano espressi mediante relazioni binarie $\gt_1,\gt_2,\dots,\gt_k$ e indichiamo con $\succ$
+>Supponiamo che i voti individuali dei $k$ votanti siano espressi mediante relazioni binarie $\gt_1,\gt_2,\dots,\gt_k$ e indichiamo con $\succ$ la relazione binaria $f_{n,k}(\gt_1,\gt_2,\dots,\gt_k)$
+>Il sistema di voto a maggioranza è quindi descritto dal predicato $\sigma_{M}$ tale che: $$\sigma_M(\gt_1,\gt_2,\dots,\gt_k)=\forall i,j\in[n]\left[i\succ j \iff |\{h\in[k]:i\gt_hj\}|\gt|h\in[k]:j\gt_hi|\right]$$
+>Ovvero, nella votazione finale $i$ è preferito a $j$ se eoslo se $i$ è preferito a $j$ dalla maggioranza dei votanti
 
+Il **sistema di voto a maggioranza** è un sistema molto semplice ed intuitivo, in particolar modo quando le aternative fra le quali scegliere sono due.
 
+Tuttavia, se le alternative sono più di due potrebbero esserci problemi, vediamoli con un esempio
 
+Consideriamo la situazione seguente: tre amici in vancanza, con budget limitato, devono scegliere se acquistare miele, cioccolata o marmellata
+- Mario preferisce su tutto la cioccolata, poi la marmellata e infine il miele, quindi vale che $$\text{cioccolata}\gt_{M}\text{marmellata}\gt_{M}\text{miele}$$
+- Paolo preferisce su tutto la marmellata, poi il miele e infine la cioccolata, quindi vale che  $$\text{marmellata}\gt_{P}\text{miele}\gt_{P}\text{cioccolata}$$
+- Roberto preferisce su tutto il miele, poi la cioccolata e infine la marmellata, quindi vale che $$\text{miele}\gt_{R}\text{cioccolata}\gt_{R}\text{marmellata}$$
+- Sono tutte e tre relazioni binarie complete e transitive
+
+Tuttavia, se proviamo a produrre una relazione binaria $\succ$, aggregando secondo la regola della maggioranza le tre relazioni, otteniamo che 
+- cioccolata è preferita a marmellata da due votanti $\to$ cioccolata $\succ$ marmellata
+- marmellata è preferita a miele da due votanti $\to$ marmellata $\succ$ miele
+- miele è preferito a cioccolata da due votanti $\to$ miele $\succ$ cioccolata
+
+Otteniamo quindi che $$\text{cioccolata}\succ\text{marmellata}\succ\text{miele}\succ\text{cioccolata}$$
+E in particolare, anche se cioccolata $\succ$ marmellata e marmellata $\succ$ miele **non è vero che** cioccolata $\succ$ miele, di conseguenza la relazione $\succ$ risulta **non essere transitiva**
+
+La situazione appena descritta costituisce il **paradosso di Condorcet**: anche se le relazioni binarie individuali sono transitive, la relazione binaria collettiva ottenuta dalla loro aggregazione può non essere transitiva
+
+Osserviamo quindi che la richiesta di transitività è necessaria affinchè l'aggregazione dei voti individuali sia significativa, perciò potrebbe essere problematico usare il sistema a maggioranza con **più di due alternative**
+
+Partendo dal sistema a maggioranza possiamo costruire un nuovo sistema di voto, che non soffre più del paradosso di Condorcet: ***il torneo***
 ## Sistemi di voto - il torneo
 
+I $k$ votanti esprimono ancora le proprie preferenze mediante relazioni binarie $\gt_1,\gt_2,\dots,\gt_{k}$, ma la graduatoria finale viene costruita sulla base di una successione di scontri diretti
+
+**Se** si scontrano le due alternative $a$ e $a'$, risulterà $a\succ a'$ se $$|\{i\in[k]:a\gt_{i}a'\}|\gt|\{i\in[k]:a'\gt_{i}a\}|$$
+- Ovviamente se $k$ è dispari allora per ogni coppia di alternative $a$ e $a'$ si avrà che $a\succ a'$ oppure $a'\succ a$, ovver si riuscirà sempre ad avere un vincitore nello scontro diretto
+
+![[Pasted image 20250825154009.png|center|350]]
+
+In un torneo non hanno luogo tutti gli scontri possibili, ma solo quelli fissati da una agenda.
+
+Di conseguenza, **l'agenda può avere un ruolo determinante nel decretare il vincitore**
+
+Esempio: torniamo ai tre coglioni in vacanza:
+- Mario propone l'agenda secondo la quale il primo scontro è marmellata-miele e il vincitore si scontrerà con cioccolata
+- Paolo propone l'agenda secondo la quale il primo scontro è miele-cioccolata e il vincitore si scontrerà con marmellata
+- Roberto propone l'agenda secondo la quale il primo scontro è cioccolata-marmellata e il vincitore si scontrerà con miele
+- Essendo che avevamo già osservato che cioccolata $\succ$ marmellata, marmellata $\succ$ miele e miele $\succ$ cioccolata, allora:
+	- nell'agenda di Mario vincerà la cioccolata, in quella di Paolo la marmellata e in quella di Roberto il miele
+	- quindi, ciascun amico ha proposto una agenda che portasse alla vittoria il proprio prodotto
+
+Di conseguenza, alla luce di quanto descritto, possiamo affermare che il sistema di voto "a torneo" è sensibile allo **strategic agenda setting**
 ## Sistemi di voto - posizionali
 
+Supponiamo ora che i voti individuali siano espressi mediante ranking, così che il voto del votante $h$ risulti essere $$r_{h}=\langle a_{h1},a_{h2},\dots,a_{hn}\rangle$$
+A ciascun ranking $r_{h}$ possiamo associare una funzione peso che assegna un valore numerico a ciascuna alternativa dipendentemente dalla sua posizione nel ranking:
+- ad esempio, al ranking $r_{h}=\langle a_{h1},a_{h2},\dots,a_{hn}\rangle$ possiamo associare la funzioen $w_h$ tale che $w_h(a_{hi})=100-10i$
+- tipicamente la funzione peso è **decrescente nella posizione**
+
+In un sistema posizionale quindi, dopo aver associato una funzione peso $w_h$ al ranking $r_h$, per ogni $h\in[k]$, il ranking collettivo $r$ è ottenuto:
+- calcolando il peso totale di ciascuna alternativa come somma dei pesi che quella alternativa ha negli $h$ ranking, ovvero per ogni $a\in[n],w_(a)=\sum\limits_{1\leq h\leq k}w_h(a)$
+- e poi ordinando le alternative secondo il loro peso totale
+
+Il **Borda Count** è un particolare sistema di voto posizionale nel quale:
+- per ogni $h\in[k]$, la funzione peso associata al ranking $r_{h}$ è la funzione suriettiva $$\rho_{h}:A\to\{0.1,\dots,n-1\}\text{ tale che }\rho_h(a_{hi})=n-i$$
+- e le alternative vengono **ordinate per peso finale** $\rho$ non crescente
+
+Anche nei sistemi posizionali si manifesta il paradosso di Condorcet, sotto forma di *ex aequo*
+
+Esempio: torniamo ancora una volta all'esempio dei tre coglioni, e consideriamo i tre ranking corrispondenti alle relazioni di equivalenza e applichiamo il Borda Count:
+- $r_{\text{mario}}=\langle\text{cioccolata, marmellata, miele}\rangle$ da cui otteniamo che $$\rho_{M}(\text{cioccolata})=2,\rho_{M}(\text{marmellata})=1,\rho_{M}(\text{miele})=0$$
+- $r_{\text{paolo}}=\langle\text{marmellata, miele, cioccolata}\rangle$ da cui otteniamo che $$\rho_{P}(\text{cioccolata})=0,\rho_{P}(\text{marmellata})=2,\rho_{P}(\text{miele})=1$$
+- $r_{\text{roberto}}=\langle\text{miele, cioccolata, marmellata}\rangle$ da cui otteniamo che $$\rho_{R}(\text{cioccolata})=1,\rho_{R}(\text{marmellata})=0,\rho_{R}(\text{miele})=2$$
+- e quindi, abbiamo che $$\rho(\text{cioccolata})=3,\rho(\text{marmellata})=3,\rho(\text{miele})=3$$
+
+In questi sistemi di voto, il problema degli ex aequo viene trattato in vari modi che noi non tratteremo (non ce ne frega un emerito cazzo)
+
+Ci occupiamo di un'altra caratteristica indesiderabile dei sistemi di voto posizionali che introduciamo con un esempio
+
+Esempio: cinque critici cinematografici devono scegliere se assegnare un premio al film "Il Padrino" o "Via col vento"
+- Tre critici preferiscono "Via col vento" (VV) e gli altri due "Il Padrino" (IP), e detta così il premio andrebbe a VV
+- Prima di arrivare alla votazione finale però, il comitato organizzatore decide di inserire fra le alternative anche "Pulp Fiction" (PF)
+- Ciascuno dei cinque critici ritiene che PF sia inadatto alla competizione, però i due che preferiscono IP a VV si accorgono che possono ricorrere ad un espediente: possono entrambi votare secondo il ranking $\langle\text{IP,PF,VV}\rangle$, mentre i tre che preferiscono VV votano onestamente secondo il ranking $\langle\text{VV,IP,PF}\rangle$
+- In questo modo, si avrà che $\rho(VV)=6,\rho(IP)=7,\rho(PF)=2$, facendo così vincere IP
+
+Inserendo in posizione opportuna PF, i due che preferivano IP hanno fatto in modo che esso vincesse, e per farlo hanno classificato l'**alternativa irrilevante** ai fini della vittoria in posizione intermedia che non corrispondeva al loro giudizio[^2]
+
+Riconsideriamo i ranking dei due gruppi di critici: $\langle\text{VV,IP,PF}\rangle$ e $\langle\text{IP,PF,VV}\rangle$
+
+Osserviamo che, se ci limitiamo ad osservare le posizioni relative di $VV$ e $IP$ nei due ranking, $VV$ **precede** IP nella maggioranza dei votanti, e quindi sarebbe ragionevole aspettarsi che questo ordine venga rispettato nel voto collettivo, indipendentemente da come viene posizionato PF
+
+Invece, il posizionamento opportuno di PF da parte di due votanti ha permesso di modificare le posizione relative di VV e IP nella graduatoria finale, e questo è un problema.
 ## Sistemi di voto affidabili
 
+Fino a questo momento abbiamo incontrato tre sistemi di voto, quello a maggioranza, il torneo e il sistema di voto posizionale, dei quali non possiamo fidarci completamente
+- perché non riescono sempre ad individuare una graduatoria finale
+- perché la graduatoria finale dipende dall’ordinamento iniziale delle alternative
+- perché i votanti possono “barare” per orientare la graduatoria finale
+
+Ci domandiamo, a questo punto, se sia possibile progettare sistemi di voto affidabili
+
+Ma la domanda sorge spontanea: quando un sistema di voto può essere considerato affidabile?
+Come minimo, per essere considerato affidabile, un sistema di voto dovrebbe garantire
+- la rappresentazione delle scelte di tutti i votanti nel caso in cui esse siano tutte concordi
+- di non consentire l’utilizzo di alternative irrilevanti per orientare la graduatoria finale
+
+E il paradosso di Condorcet? Non ci interessa più garantire che un sistema di voto non soffra di tale anomalia?! 
+La risposta è sì e no
+
+Nel senso che nei sistemi di voto che prenderemo in considerazione il voto aggregato (o collettivo) viene descritto mediante un ranking, e un ranking corrisponde sempre ad una relazione binaria transitiva
+- e, per inciso, per poter produrre un ranking potrebbe essere necessario introdurre anche una regola che risolva gli ex aequo
+
+Pertanto, per così dire, il paradosso di Condorcet viene eliminato alla radice
 ## Due principi per i sistemi di voto
+
+Sia $\sigma$ un sistema di voto:
+- sia $[n]$ un insieme di alternative e $[k]$ un insieme di votanti tali che, per ogni $h\in[k]$, il votante $h$ esprime il ranking $r_{h}=\langle a_{h1},a_{h2},\dots,a_{hn}\rangle$ sulle $n$ alternative
+- indichiamo con $r$ il voto collettivo corrispondente ai voti individuali $r_{1},r_2,\dots,r_k$ derivato in accordo a $\sigma$ - ovvero $\sigma(r_{1},r_2,\dots,r_k)=\text{TRUE}$
+- siano, per ogni $h\in[k],\rho_h$ la funzione peso (relativa al Borda Count) associata a $r_{h}$ e $\rho$ la funzione peso associata a $r$
+
+I due principi che un sistema di voto deve avere sono i seguenti:
+
+>[!teorem]- Principio di Unanimità (U)
+>Il sistema di voto $\sigma$ soddisfa il **principio di unanimità** se $$\forall i,j\in[n]\left[\forall h\in[k]\rho_{h}(i)\gt\rho_{h}(j)\to\rho(i)\gt\rho(j)\right]$$
+>Cioè, **ogni qualvolta *tutti* i votanti preferiscono un'alternativa $i$ a un'alternativa $j$, allora $i$ è preferita a $j$ anche nella graduatoria finale**
+
+>[!teorem]- Principio di Indipendenza dalle Alternative Irrilevanti (IIA)
+>Il sistema di voto $\sigma$ soddisfa il **principio di indipendenza dalle alternative irrilevanti** se
+>$$\begin{align*} &\forall i,j\in[n]\forall(r_1,r_{2},\dots,r_k),(r'_1,r'_{2},\dots,r'_k)\in\Pi([n])^{k}\\&\left[\forall h\in[k]\rho_{h}(i)\gt\rho_{h}(j)\iff\rho'_{h}(i)\gt\rho'_{h}(j)\right]\to\left[\rho(i)\gt\rho(j)\iff\rho'(i)\gt\rho'(j)\right]\end{align*}$$[^3]
+>Questa formula si spiega così: ogni qualvolta si considerino due insieme di $k$ votanti oer i quali due alternative $i,j$ hanno le stesse posizioni relative per ***tutte*** le coppie di votanti *omologhi*, allora $i,j$ hanno la stessa posizione relativa anche nelle graduatorie finali relative ai due gruppi di votanti.
+>Ovvero, **la posizione relativa di due alternative nella graduatoria finale dipende unicamente dalle posizioni relative delle due alternative nelle graduatorie individuali**
+
+Vediamo ora questo mostro di teorema del porco buddha
 ### Il teorema di impossibilità di Arrow
 
 
@@ -192,3 +311,7 @@ Esistono vari tipi di sistema di voto, vediamone alcuni
 
 
 [^1]: Ovvero, *assumendo* che gli altri giocatori rispondano *sinceramente* (in accordo ai loro segnali privati), le risposte degli altri due giocatori sono discordi quando uno di loro estrae una pallina verde, e quindi quando l'urna è $UV$
+
+[^2]: Se avessero votato onestamente secondo il ranking $\langle\text{IP,VV,PF}\rangle$ avrebbe vinto VV
+
+[^3]: dove $\rho'$ è la funzione peso associata al ranking collettivo corrispondente a  $(r'_1,r'_2,\dots,r'_k)$ derivata in accordo a $\sigma$
