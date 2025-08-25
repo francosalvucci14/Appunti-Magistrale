@@ -119,8 +119,34 @@ Ciascun votante $v_h\in V$ esprime il suo voto in una di due forme possibili:
 
 Le due forme possibili di espressione di un voto sono fra loro equivalenti
 
+Derivare una relazione binaria completa e transitiva $\gt_h$ da ranking $r_{h}=\langle a_{h1},a_{h2},\dots,a_{hn}\rangle$ è immediato: per ogni indice $i\in[n]$ e per ogni indice $j\in [n]$ tale che $j\gt i$, poniamo $a_{hi}\gt_h a_{hj}$ 
+
+Derivare un ranking $r_{h}=\langle a_{h1},a_{h2},\dots,a_{hn}\rangle$ da una relazione binaria completa e transitiva $\gt_h$ è invece un compito più complesso.
+Allo scopo, procediamo come segue:
+- poichè $\gt_{h}$ è completa e transitiva, allora esiste $l\in [n]$ tale che, per ogni $j\in[n]\setminus\{l\}$ vale che $$|\{i\in[n]:a_l\gt_h a_i\}|\gt|\{i\in[n]:a_{j}\gt_{h}a_i\}|$$
+	- lemma 1, dimostrato più avanti
+- allora, per ogni $j\in[n]\setminus\{l\}$ vale che $a_l\gt_h a_j$
+	- lemma 2, dimostrato più avanti
+- Quindi poniamo $a_{h1}=a_l$ e, osservando che $\gt_h$ è completa e transitiva sull'insieme $A\setminus\{a_{h1}\}$, ripetiamo il ragionamento sull'insieme $A\setminus\{a_{h1}\}$ per individuare $a_{h2}$, e così via per individuare $a_{h3},\dots,a_{hn}$
+
+Dimostriamo quindi i due lemmi appena citati
+
+>[!teorem]- Lemma 1
+>Se $\gt_h$ è una relazione binaria completa e transitiva nell'insieme $A=\{a_1,a_2,\dots,a_n\}$, allora esiste $l\in[n]$ tale che, per ogni $j\in[n]\setminus\{l\}$ vale che $$|\{i\in[n]:a_l\gt_h a_i\}|\gt|\{i\in[n]:a_{j}\gt_{h}a_i\}|$$
+
+**dimostrazione**:
+
+Per ogni alternativa $j\in[n]$, indichiamo con $p_{j}$ il numero di alternative che $j$ batte nel voto del votante $h$: $$p_j=|\{i\in[n]:a_j\gt_ha_{i}\}|$$
+
+Supponiamo che esista $m\in[n]\setminus\{l\}$ tale che $$p_l=|\{i\in[n]:a_l\gt_h a_i\}|=|\{i\in[n]:a_m\gt_h a_i\}|=p_m$$
+Poichè $\gt_h$ è completa e transitiva, allora $a_{l}\gt_h a_m$ oppure $a_{m}\gt_h a_l$
+
+Vediamo le due casistiche:
+
+1) $a_{m}\gt_h a_l$ : poichè $\gt_h$ è completa e transitiva allora, per ogni $j$ tale che $a_{l}\gt_h a_j$ si ha che $a_{m}\gt_h a_j$, ovvero $\{i\in[n]:a_l\gt_h a_i\}\cup\{a_l\}\subseteq\{i\in[n]:a_{m}\gt_h a_i\}$,e quindi poichè $a_{l}\not\in\{i\in[n]:a_l\gt_{h}a_i\}$ vale che $$p_m=\left|\{i\in[n]:a_{m}\gt_h a_i\}\right|\geq|\{i\in[n]:a_{l}\gt_h a_i\}|+1\gt|\{i\in[n]:a_{l}\gt_h a_i\}|=p_l$$che è assurdo: $p_{l}=p_m$ e $p_m\gt p_{l}$
 
 
+  
 ## Sistemi di voto - maggioranza
 ## Sistemi di voto - posizionali
 
