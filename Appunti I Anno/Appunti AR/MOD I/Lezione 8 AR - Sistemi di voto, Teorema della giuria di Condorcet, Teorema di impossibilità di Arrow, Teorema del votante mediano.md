@@ -324,7 +324,7 @@ Prima di procedere con la dimostrazione abbiamo bisogno di qualche definizione:
 	- esempio: ![[Pasted image 20250825174824.png|center|200]]
 
 Dimostriamo il teorema di Arrow in tre passi:
-1) dimostriamo che se $x$ è un'alternativa polarizzante per un profilo $P=\langle r_{1},r_2,\dots,r_k\rangle$ allora $\rho_h(x)=0$ oppure $\rho_h(x)=n-1$
+1) dimostriamo che se $x$ è un'alternativa polarizzante per un profilo $P=\langle r_{1},r_2,\dots,r_k\rangle$ allora $\rho(x)=0$ oppure $\rho(x)=n-1$
 	1) al solito, $\rho$ è la funzione peso associata al voto collettivo $r$ (che soddisfa $\sigma$) corrispondente a $P$
 2) definiamo una successione di $k+1$ profili in ciascuno dei quali una stessa $x\in[n]$ è polarizzante e, tramite essi, individuiamo un **dittatore potenziale**
 	1) $\sigma$ è un sistema di voto: allora è in grado di esprimere un voto collettivo per ogni profilo possibile per n alternative e k votanti
@@ -338,11 +338,19 @@ Supponiamo per assurdo che $0\lt\rho(x)\lt n-1$: allora esistono due alternative
 Creiamo un nuovo profilo $P'=\langle r'_{1},r'_2,\dots,r'_k\rangle$ nel modo seguente:
 1) per ogni $i\in[k]$ tale che $\rho_{i}(y)\lt\rho_i(z)$, impostiamo $r'_i=r_i$
 2) per ogni $i\in[k]$ tale che $\rho_{i}(y)\gt\rho_i(z)$, $r'_{i}$ è ottenuto da $_i$ spostando $z$ alla sinistra di $y$, in modo che $\rho'_i(z)=\rho'_{i}(y)+1$ ![[Pasted image 20250825180145.png|center]]
+
 Poichè $x$ non è stata in alcun modo coinvolta negli spostamenti, $x$ è un'alternativa polarizzante anche per $P'$
 
-Inoltre, per ogni $i \in [k]$, in $r_i$ e $r’_i$ non sono variati gli ordini relativi di $x$ e $y$ e di $x$ e $z$, inoltre, per ogni $i \in [k] \rho’_i(y) \lt\rho’_i(z)$
+Inoltre, per ogni $i \in [k]$, in $r_i$ e $r’_i$ non sono variati gli ordini relativi di $x$ e $y$ e di $x$ e $z$, inoltre, per ogni $i \in [k] \rho'_i(y) \lt\rho'_i(z)$
 
+Poiché per ogni $i \in [k]$, in $r_i$ e $r’_i$ non sono variati gli ordini relativi di $x$ e $z$, allora, per il **principio IIA** vale che $$\rho(x) \lt \rho(z) \iff \rho'(x) \lt \rho'(z)$$
+- ma abbiamo supposto $\rho(z)\lt\rho(x)\lt\rho(y)$: allora $\rho'(z) \lt \rho'(x)$
 
+Poiché per ogni $i \in [k]$, in $r_i$ e $r’_i$ non sono variati gli ordini relativi di $x$ e $y$ , allora, per il **principio IIA** vale che $$\rho(x) \lt \rho(y) \iff \rho'(x) \lt \rho'(y)$$
+- ma abbiamo supposto $\rho(z)\lt\rho(x)\lt\rho(y)$: allora $\rho'(x) \lt \rho'(y)$
+
+Inoltre, per ogni $i \in [k]\rho'_i(y) \lt \rho'_i(z)$: allora, per il **principio U** deve valere che $\rho'(y) \lt \rho'(z)$, e quindi $$\rho'(z) \lt \rho'(x)\lt\rho'(y) \lt \rho'(z)$$
+Il che **è un assurdo**, e quindi $\rho(x)=0$ oppure $\rho(x)=n-1$
 
 # Single Peaked Preferences
 
