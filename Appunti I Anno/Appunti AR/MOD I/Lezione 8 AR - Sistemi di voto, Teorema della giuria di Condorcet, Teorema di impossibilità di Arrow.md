@@ -294,18 +294,44 @@ Sia $\sigma$ un sistema di voto:
 I due principi che un sistema di voto deve avere sono i seguenti:
 
 >[!teorem]- Principio di Unanimità (U)
->Il sistema di voto $\sigma$ soddisfa il **principio di unanimità** se $$\forall i,j\in[n]\left[\forall h\in[k]\rho_{h}(i)\gt\rho_{h}(j)\to\rho(i)\gt\rho(j)\right]$$
+>Il sistema di voto $\sigma$ soddisfa il **principio di unanimità** se $$\forall i,j\in[n]\left[\forall h\in[k]\rho_{h}(i)\gt\rho_{h}(j)\implies\rho(i)\gt\rho(j)\right]$$
 >Cioè, **ogni qualvolta *tutti* i votanti preferiscono un'alternativa $i$ a un'alternativa $j$, allora $i$ è preferita a $j$ anche nella graduatoria finale**
 
 >[!teorem]- Principio di Indipendenza dalle Alternative Irrilevanti (IIA)
 >Il sistema di voto $\sigma$ soddisfa il **principio di indipendenza dalle alternative irrilevanti** se
->$$\begin{align*} &\forall i,j\in[n]\forall(r_1,r_{2},\dots,r_k),(r'_1,r'_{2},\dots,r'_k)\in\Pi([n])^{k}\\&\left[\forall h\in[k]\rho_{h}(i)\gt\rho_{h}(j)\iff\rho'_{h}(i)\gt\rho'_{h}(j)\right]\to\left[\rho(i)\gt\rho(j)\iff\rho'(i)\gt\rho'(j)\right]\end{align*}$$[^3]
->Questa formula si spiega così: ogni qualvolta si considerino due insieme di $k$ votanti oer i quali due alternative $i,j$ hanno le stesse posizioni relative per ***tutte*** le coppie di votanti *omologhi*, allora $i,j$ hanno la stessa posizione relativa anche nelle graduatorie finali relative ai due gruppi di votanti.
+>$$\begin{align*} &\forall i,j\in[n]\forall(r_1,r_{2},\dots,r_k),(r'_1,r'_{2},\dots,r'_k)\in\Pi([n])^{k}\\&\left[\forall h\in[k]:\rho_{h}(i)\gt\rho_{h}(j)\iff\rho'_{h}(i)\gt\rho'_{h}(j)\right]\implies\left[\rho(i)\gt\rho(j)\iff\rho'(i)\gt\rho'(j)\right]\end{align*}$$[^3]
+>Questa formula si spiega così: ogni qualvolta si considerino due insieme di $k$ votanti per i quali due alternative $i,j$ hanno le stesse posizioni relative per ***tutte*** le coppie di votanti *omologhi*, allora $i,j$ hanno la stessa posizione relativa anche nelle graduatorie finali relative ai due gruppi di votanti.
 >Ovvero, **la posizione relativa di due alternative nella graduatoria finale dipende unicamente dalle posizioni relative delle due alternative nelle graduatorie individuali**
 
 Vediamo ora questo mostro di teorema del porco buddha
 ### Il teorema di impossibilità di Arrow
 
+Il ***teorema di Arrow*** individua l'unico sistema di voto che rispetta i principi $U$ e $IIA$
+
+>[!teorem]- Teorema di Arrow
+>Se il sistema di voto $\sigma$ soddisfa i principi $U$ e $IIA$, allora per ogni $k\in\mathbb N$ e per ogni $n\in\mathbb N$ tale che $n\gt2$ esiste $j\in[k]$ tale che, per ogni $k-$upla $\langle r_{1},r_2,\dots,r_k\rangle$ di ranking per $n$ alternative, il voto collettivo corrispondente ai voti individuali $r_{1},r_2,\dots,r_k$ derivato in accordo a $\sigma$ è $r=r_j$
+
+Riassumiamo: *per ogni insieme* $[k]$ di votanti esiste un $j\in[k]$ tale che il voto colelttivo corrispondente ai voti individuali $r_{1},r_2,\dots,r_k$ dei $k$ votanti derivato in accordo a $\sigma$ è $r=r_j$
+
+Quindi, *per ogni insieme $[k]$ esiste $j\in[k]$ tale che $r=r_j$*, e di conseguenza, ***l'unico sistema di voto che rispetta U e IIA è la dittatura***
+
+**Dimostrazione** : 
+
+Prima di procedere con la dimostrazione abbiamo bisogno di qualche definizione:
+- **profilo** : dati un insieme $[n]$ di alternative e un insieme di $[k]$ votanti, un profilo p una $k-$upla $P=\langle r_{1},r_2,\dots,r_k\rangle$ di ranking - ciascuno espressione del voto di uno dei votanti per quelle alternative
+	- esempio: un profilo di $6$ votanti $(r_{1},r_2,\dots,r_6)$ su $4$ alternative (a,b,c,d) ![[Pasted image 20250825174521.png|center|200]]
+- **alternativa polarizzante** : dati un insieme $[n]$ di alternative, un insieme di $[k]$ votanti e un profilo $P=\langle r_{1},r_2,\dots,r_k\rangle$, una alternativa polarizzante per $P$ è un alternativa $x\in[n]$ tale che, per ogni $h\in[k],\rho_h(x)=0$ oppure $\rho_h(x)=n-1$
+	- esempio: ![[Pasted image 20250825174824.png|center|200]]
+
+Dimostriamo il teorema di Arrow in tre passi:
+1) dimostriamo che se $x$ è un'alternativa polarizzante per un profilo $P=\langle r_{1},r_2,\dots,r_k\rangle$ allora $\rho_h(x)=0$ oppure $\rho_h(x)=n-1$
+	1) al solito, $\rho$ è la funzione peso associata al voto collettivo $r$ (che soddisfa $\sigma$) corrispondente a $P$
+2) definiamo una successione di $k+1$ profili in ciascuno dei quali una stessa $x\in[n]$ è polarizzante e, tramite essi, individuiamo un **dittatore potenziale**
+	1) $\sigma$ è un sistema di voto: allora è in grado di esprimere un voto collettivo per ogni profilo possibile per n alternative e k votanti
+	2) e, dunque, anche per i k profili nei quali x è polarizzante
+3) dimostriamo che il dittatore potenziale è, effettivamente, il dittatore cercato
+
+# Single Peaked Preferences
 
 
 
