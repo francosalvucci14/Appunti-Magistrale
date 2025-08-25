@@ -515,8 +515,8 @@ Intanto, osserviamo che l'operazione di dividere per $b$ che abbiamo poc'anzi ef
 Analogamente, nel caso della compatibilità fra $A$ e $B$, possiamo fissare $b=1$ e studiare i processi in funzione di $a,c$
 
 Uno studio qualitativo `[Kleinberg et al. 2007]` ha evidenziato uno "strano" comportamento:
-- lo stato $A$ si impone quando $a\gt\gt c$ - ed è ovvio
-- lo stato $A$ fa fatica ad imporsi quando $c\gt\gt a$ - e anche questo è ragionevole
+- lo stato $A$ si impone quando $a\gg c$ - ed è ovvio
+- lo stato $A$ fa fatica ad imporsi quando $c\gg a$ - e anche questo è ragionevole
 - lo stato $A$ **fa fatica ad imporsi anche quando** $c$ non è né troppo grande né troppo piccolo rispetto ad $a$ - e questo è strano
 
 Torniamo a considerare la catena

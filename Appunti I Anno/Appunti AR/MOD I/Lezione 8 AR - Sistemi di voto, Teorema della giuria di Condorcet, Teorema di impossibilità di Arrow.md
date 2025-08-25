@@ -78,7 +78,7 @@ Perciò, assumendo che gli altri rispondano sinceramente, la mia risposta è inf
 
 Una situazione simile si presenta nelle giurie, durante i processi
 
-Quando si deve decidere se un imputato è colpevole $(C)$ o innocente $(I)$, e a priori vale che $$Pr(C)=Pr(I)= \frac{1}{2}$$ciascun girato riceve un segnale $c$ o  $i$, come nel caso dell'herding, e quindi $$Pr(c|C)=Pr(i|I)=q\gt \frac{1}{2}$$In questo caso occorre aggregare i voti dei giurati per giungere a un verdetto di colpevolezza o di innocenza, e per condannare un imputato è necessario che l'insieme $S$ dei segnali ricevuti dai giurati siano indice di colpevolezza con prob. molto alta (è richiesto che $Pr(C|S)\gt\gt \frac{1}{2}$)
+Quando si deve decidere se un imputato è colpevole $(C)$ o innocente $(I)$, e a priori vale che $$Pr(C)=Pr(I)= \frac{1}{2}$$ciascun girato riceve un segnale $c$ o  $i$, come nel caso dell'herding, e quindi $$Pr(c|C)=Pr(i|I)=q\gt \frac{1}{2}$$In questo caso occorre aggregare i voti dei giurati per giungere a un verdetto di colpevolezza o di innocenza, e per condannare un imputato è necessario che l'insieme $S$ dei segnali ricevuti dai giurati siano indice di colpevolezza con prob. molto alta (è richiesto che $Pr(C|S)\gg \frac{1}{2}$)
 
 Diciamo quindi che per condannare un'imputato è necessario che ***tutti*** i giurati votino in favore della condanna
 
@@ -137,20 +137,52 @@ Dimostriamo quindi i due lemmi appena citati
 **dimostrazione**:
 
 Per ogni alternativa $j\in[n]$, indichiamo con $p_{j}$ il numero di alternative che $j$ batte nel voto del votante $h$: $$p_j=|\{i\in[n]:a_j\gt_ha_{i}\}|$$
-
-Supponiamo che esista $m\in[n]\setminus\{l\}$ tale che $$p_l=|\{i\in[n]:a_l\gt_h a_i\}|=|\{i\in[n]:a_m\gt_h a_i\}|=p_m$$
+Certamente, esiste $l\in[n]$ tale che, per ogni $j\in[n]\setminus\{l\}$ $$p_l=|\{i\in[n]:a_l\gt_h a_i\}|\geq|\{i\in[n]:a_j\gt_h a_i\}|=p_j$$
+Supponiamo ora che esista $m\in[n]\setminus\{l\}$ tale che $$p_l=|\{i\in[n]:a_l\gt_h a_i\}|=|\{i\in[n]:a_m\gt_h a_i\}|=p_m$$
 Poichè $\gt_h$ è completa e transitiva, allora $a_{l}\gt_h a_m$ oppure $a_{m}\gt_h a_l$
 
 Vediamo le due casistiche:
 
 1) $a_{m}\gt_h a_l$ : poichè $\gt_h$ è completa e transitiva allora, per ogni $j$ tale che $a_{l}\gt_h a_j$ si ha che $a_{m}\gt_h a_j$, ovvero $\{i\in[n]:a_l\gt_h a_i\}\cup\{a_l\}\subseteq\{i\in[n]:a_{m}\gt_h a_i\}$,e quindi poichè $a_{l}\not\in\{i\in[n]:a_l\gt_{h}a_i\}$ vale che $$p_m=\left|\{i\in[n]:a_{m}\gt_h a_i\}\right|\geq|\{i\in[n]:a_{l}\gt_h a_i\}|+1\gt|\{i\in[n]:a_{l}\gt_h a_i\}|=p_l$$che è assurdo: $p_{l}=p_m$ e $p_m\gt p_{l}$
+2) $a_l\gt_h a_{m}$ : poichè $\gt_h$ è completa e transitiva allora, per ogni $j$ tale che $a_{m}\gt_h a_j$ si ha che $a_{l}\gt_h a_j$, ovvero $\{i\in[n]:a_m\gt_h a_i\}\cup\{a_m\}\subseteq\{i\in[n]:a_{l}\gt_h a_i\}$,e quindi poichè $a_{m}\not\in\{i\in[n]:a_m\gt_{h}a_i\}$ vale che $$p_l=\left|\{i\in[n]:a_{l}\gt_h a_i\}\right|\geq|\{i\in[n]:a_{m}\gt_h a_i\}\cup\{a_m\}|\gt|\{i\in[n]:a_{m}\gt_h a_i\}|=p_m$$che è assurdo: $p_{l}=p_m$ e $p_l\gt p_{m}$
 
+In entrambi i casi viene contraddetto quanto supposto circa $m$, e quindi $m$ non esiste, per ogni $j\in[n]\setminus\{l\}$ vale che $$|\{i\in[n]:a_l\gt_h a_i\}|\gt|\{i\in[n]:a_{j}\gt_{h}a_i\}|\quad\blacksquare$$
 
-  
+>[!teorem]- Lemma 2
+>Sia $\gt_h$ una relazione binaria completa e transitiva nell'insieme $A=\{a_1,a_2,\dots,a_n\}$ e sia $l\in[n]$ tale che, per ogni $j\in[n]\setminus\{l\}$ vale che $$|\{i\in[n]:a_l\gt_h a_i\}|\gt|\{i\in[n]:a_{j}\gt_{h}a_i\}|$$
+>Allora: $$\forall j\in[n]\setminus\{l\},a_l\gt_ha_j$$
+
+**dimostrazione**
+
+Osserviamo che $l\in[n]$ tale che, per ogni $j\in[n]\setminus\{l\}$ vale che $$|\{i\in[n]:a_l\gt_h a_i\}|\gt|\{i\in[n]:a_{j}\gt_{h}a_i\}|$$esiste in virtù del Lemma $1$
+
+Supponiamo che esista un $m\in[n]\setminus\{l\}$ tale che $a_m\gt_ha_l$
+
+Allora, per transitività di $\gt_h$, per ogni $j$ tale che $a_l\gt_ha_{j}$ si avrebbe che $a_m\gt_ha_j$, e quindi avremmo che $$\{i\in[n]:a_l\gt_h a_i\}\cup\{a_l\}\subseteq\{i\in[n]:a_{m}\gt_{h}a_i\}$$
+E quindi, dato che $a_l\not\in\{i\in[n]:a_l\gt_h a_i\}$, allora $$|\{i\in[n]:a_m\gt_h a_i\}|\gt|\{i\in[n]:a_{l}\gt_{h}a_i\}|$$il che è un assurdo. $\blacksquare$
+
+Abbiamo quindi detto che il sistema di voto è una *regola* che permette di associare un voto collettivo ad un insieme di voti individuali
+
+Descriviamo formalmente questo concetto:
+- poichè sono irrilevanti i nomi delle aternative e dei votanti, possiamo indentificare $A$ con l'insieme $[n]$ e $V$ con l'insieme $[k]$
+- Per fissare le idee, assumiamo che i $k$ votanti esprimano i loro voti mediante ranking
+- Un ***voto aggregato per $n$ alternative e $k$ votanti*** è quindi una funzione $$f_{n,k}:\Pi([n])^{k}\to\Pi([n])$$in modo che $$f_{n,k}(r_1,r_2,\dots,r_k)=r,\quad r_1,r_2,\dots,r_k,r\in\Pi([n])$$
+
+Un **sistema di voto** è quindi un predicato $\sigma$ che specifica, per ogni $r_1,r_2,\dots,r_k\in\Pi([n])^k$ le regole che devono essere rispettate dal voto aggregato $f_{n,k}(r_1,r_2,\dots,r_k)$
+
+Esistono vari tipi di sistema di voto, vediamone alcuni
 ## Sistemi di voto - maggioranza
+
+>[!warning]- Predicato del sistema di voto a maggioranza
+>Supponiamo che i voti individuali dei $k$ votanti siano espressi mediante relazioni binarie $\gt_1,\gt_2,\dots,\gt_k$ e indichiamo con $\succ$
+
+
+
+## Sistemi di voto - il torneo
+
 ## Sistemi di voto - posizionali
 
-## Sistemi di voto - affidabili
+## Sistemi di voto affidabili
 
 ## Due principi per i sistemi di voto
 ### Il teorema di impossibilità di Arrow
