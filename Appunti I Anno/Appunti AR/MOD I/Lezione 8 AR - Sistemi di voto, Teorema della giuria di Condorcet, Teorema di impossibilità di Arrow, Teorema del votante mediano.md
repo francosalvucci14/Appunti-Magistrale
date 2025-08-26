@@ -515,7 +515,83 @@ In figura, il votante 1 è quello blu, il votante 2 è quello rosa, il votante 3
 
 ![[Pasted image 20250826155313.png|center|350]]
 
+***Nel caso in cui le alternative sono un insieme totalmente ordinato e i ranking di tutti i votanti sono single peaked è possibile utilizzare il sistema di voto a maggioranza con la certezza di non incorrere nel paradosso di Condorcet***
+
+E questo è garantito dal teorema sotto
 ## Il Teorema del Votante Mediano
+
+Il teorema è il seguente:
+
+>[!teorem]- Teorema del Votante Mediano
+>Sia $A=\{a_1,a_{2},\dots,a_n\}$ un'insieme di alternative tali che $a_{1}\lt a_{2}\lt\dots\lt a_n$, e sia $P=\langle r_{1},r_{2},\dots,r_{2k-1}\rangle$ un profilo per $A$ nel quale ogni ranking è single peaked e tale che $M_{1}\leq M_2\leq\dots\leq M_{2k-1}$, allora $$\forall\space y\in A\setminus\{M_k\}\to\left|\{h:\rho_h(M_k)\gt\rho_h(y)\}\right|\gt\left|\{h:\rho_h(y)\gt\rho_h(M_k)\}\right|$$
+
+**oss**: Il teorema del votante mediano ci dice che, nelle ipotesi della sua validità, esiste una alternativa che batte qualunque altra alternativa, nei confronti a coppie, per il maggior numero dei votanti
+- ed essa è l’alternativa che corrisponde al picco del votante che si trova in posizione centrale nell’insieme dei picchi ordinati
+- **nel sistema di voto a maggioranza, essa è l’alternativa prima classificata**
+
+Poi, osserviamo che: rimuovendo l’alternativa prima classificata dall’insieme di alternative, i $2k - 1$ ranking sulle alternative rimanenti sono ancora single peaked
+- allora, possiamo ordinarli per picchi non decrescenti
+- e dedurre, dal teorema del votante mediano, che il picco che occupa la posizione centrale nell’ordinamento non decrescente dei picchi sulle n – 1 alternative corrisponde all’alternativa seconda classificata
+- e così via, e così via...
+
+Ma vediamo un esempio
+
+ESEMPIO: $n=8,k=2$
+1) In questo caso, $$M_{1}=M=a_2,M_2=M=a_4,M_{3}=M=a_6$$
+	1) quindi, dettao $\rho$ la funzione peso associata al ranking collettivo, vale che $\rho(a_4)=7$
+	2) ![[Pasted image 20250826163416.png|center|250]]
+2) Ora $$M_{1}=M=a_2,M_2=M=a_5,M_{3}=M=a_6$$
+	1) quindi, $\rho(a_{5})=6$
+	2) ![[Pasted image 20250826163530.png|center|250]]
+3) Ora $$M_{1}=M=a_2,M_2=M=a_3,M_{3}=M=a_6$$
+	1) quindi, $\rho(a_{3})=5$
+	2) ![[Pasted image 20250826163651.png|center|250]]
+4) Ora $$M_{1}=M=a_2,M_2=M=a_2,M_{3}=M=a_6$$
+	1) quindi, $\rho(a_{2})=4$
+	2) ![[Pasted image 20250826163821.png|center|250]]
+5) Ora $$M_{1}=M=a_1,M_2=M=a_6,M_{3}=M=a_6$$
+	1) quindi, $\rho(a_{6})=3$
+	2) ![[Pasted image 20250826164023.png|center|250]]
+6) Ora $$M_{1}=M=a_2,M_2=M=a_7,M_{3}=M=a_7$$
+	1) quindi, $\rho(a_{7})=2$
+	2) ![[Pasted image 20250826164102.png|center|250]]
+7) Ora $$M_{1}=M=a_2,M_2=M=a_8,M_{3}=M=a_8$$
+	1) quindi, $\rho(a_{8})=1$
+	2) ![[Pasted image 20250826164200.png|center|250]]
+8) Infine, $\rho(a_{1})=0$
+
+
+In conclusione, il ranking collettivo corrispondente ai voti individuali blu, rosa e verde derivato in accordo al sistema di voto a maggioranza è $$r=\langle a_4,a_5,a_{3},a_2,a_6,a_7,a_8,a_{1}\rangle$$
+
+Non resta che dimostrare il teorema
+
+**Dimostrazione del teorema**
+
+Sia $M_k=a_m$, ovvero $\rho_k(a_m)=n-1$. Allora:
+
+**Punto $1)$**
+
+Consideriamo un'alternativa $y=a_t$ con $t\gt m$
+Per ogni $h\lt k$, poichè $M_h\leq M_{k}=a_m\lt a_t$ e poichè $r_h$ è single peaked allora $$\rho_h(a_{m})\gt\rho_{h}(a_t)\quad(*)$$
+Nell’esempio in figura, $k$ = rosa, $m = 4, t = 6$ e $h$= blu, dove abbiamo assunto blu = $1$, rosa = $2$ e verde = $3$
+
+![[Pasted image 20250826164740.png|center|250]]
+
+Quindi, per ricollegarsi a $(*)$, tutti i votanti di indice $h\lt k$ preferiscono $a_{m}$ a $a_{t}$
+
+Allora, tutti i votanti che preferiscono $a_t$ ad $a_m$ possono essere solo quelli di indice $h\gt k$: $$\{h\in[2k-1]:\rho_h(a_t)\gt\rho_{h}(a_m)\}\subseteq\{h\in[2k-1]:h\gt k\}$$
+E quindi vale che: $$|\{h\in[2k-1]:\rho_h(a_t)\gt\rho_{h}(a_m)\}|\leq(2k-1)-k=k-1$$
+Cioò, per ogni $y\gt M_k$ vale che:
+$$|\{h\in[2k-1]:\rho_h(M_{k})\gt\rho_{h}(y)\}|\gt|\{h\in[2k-1]:\rho_h(y)\gt\rho_{h}(M_k)\}|$$
+
+**Punto $2)$**
+
+Consideriamo un'alternativa $y=a_t$ con $t\lt m$
+Per ogni $h\gt k$, poichè $a_t\lt a_m=M_k\lt M_h$ e poichè $r_h$ è single peaked allora $$\rho_h(a_{m})\gt\rho_{h}(a_t)\quad(*)$$
+Nell’esempio in figura, $k$ = rosa, $m = 4, t = 2$ e $h$ = verde, dove abbiamo assunto blu = $1$, rosa = $2$ e verde = $3$
+
+![[Pasted image 20250826165428.png|center|250]]
+
 
 
 [^1]: Ovvero, *assumendo* che gli altri giocatori rispondano *sinceramente* (in accordo ai loro segnali privati), le risposte degli altri due giocatori sono discordi quando uno di loro estrae una pallina verde, e quindi quando l'urna è $UV$
