@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
+                "file": "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano"
+              "title": "Indice degli appunti AR"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
+                "file": "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano"
+              "title": "Outline of Indice degli appunti AR"
             }
           },
           {
@@ -164,8 +164,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "90edc667964d2b31",
+  "active": "fc440c48f0745f72",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826165428.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164740.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164200.png",
@@ -176,9 +178,7 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826163530.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826163416.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826155313.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826154700.png",
     "$/rho^{j}(x)=n-1$.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
     "$",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",

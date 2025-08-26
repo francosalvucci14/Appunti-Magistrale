@@ -8,5 +8,10 @@
 - [[Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators]]
 - [[Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative]]
 - [[Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano]]
+- [[Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk]]
+
+>[!warning]- Osservazione
+>Ovviamente non sono solo $9$ lezioni, ma per semplicità ho preferito raggruppare gli argomenti che fanno parte della stessa famiglia in un unico file, invece che interrrompere l'argomento in due o più lezioni
+>Questi sono tutti gli argomenti principali del corso
 
 # Modulo 2
