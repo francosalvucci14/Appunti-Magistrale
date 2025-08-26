@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "43c5e5af9a5feab3",
+        "id": "57138ac8e6d9fac8",
         "type": "tabs",
         "children": [
           {
-            "id": "64bc8fa6ca4c6aa6",
+            "id": "fc440c48f0745f72",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -164,12 +164,22 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "64bc8fa6ca4c6aa6",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250825180145.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250825174824.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250825174521.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250825154009.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826155313.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826154700.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826153618.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826153156.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826151924.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826150026.png",
+    "$/rho^{j}(x)=n-1$.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
+    "$",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826145348.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826145226.png",
+    "Pasted image 20250826144034.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826143513.png",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826143232.png",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
@@ -177,17 +187,9 @@
     "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250813150926.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250813150732.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250813150658.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250813145904.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250813145558.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250813144825.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250813121331.png",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr.md",
     "Caparra Confirmatoria Citroën C1.md",
@@ -207,10 +209,8 @@
     "Appunti I Anno/Appunti ISTI",
     "Appunti I Anno/Appunti AR",
     "Appunti I Anno/Appunti ADRC/Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari,Tempo di convergenza del protocollo.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding-Bitcoin-2/transaction_segwit.py",
-    "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/script.cpython-310.pyc",
-    "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/helpers.cpython-310.pyc"
+    "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/script.cpython-310.pyc"
   ]
 }

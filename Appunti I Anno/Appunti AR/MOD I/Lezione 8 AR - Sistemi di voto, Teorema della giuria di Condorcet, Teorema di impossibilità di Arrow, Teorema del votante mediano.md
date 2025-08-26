@@ -331,7 +331,9 @@ Dimostriamo il teorema di Arrow in tre passi:
 	2) e, dunque, anche per i k profili nei quali x è polarizzante
 3) dimostriamo che il dittatore potenziale è, effettivamente, il dittatore cercato
 
-Dimostriamo al parte $1)$ 
+#### Dimostrazione parte 1
+
+Dimostriamo la parte $1)$: se $x$ è un'alternativa polarizzante per un profilo $P=\langle r_{1},r_2,\dots,r_k\rangle$ allora $\rho(x)=0$ oppure $\rho(x)=n-1$
 
 Supponiamo per assurdo che $0\lt\rho(x)\lt n-1$: allora esistono due alternative $y,z\in[n]$ tali che $\rho(z)\lt\rho(x)\lt\rho(y)$
 
@@ -352,7 +354,166 @@ Poiché per ogni $i \in [k]$, in $r_i$ e $r’_i$ non sono variati gli ordini re
 Inoltre, per ogni $i \in [k]\rho'_i(y) \lt \rho'_i(z)$: allora, per il **principio U** deve valere che $\rho'(y) \lt \rho'(z)$, e quindi $$\rho'(z) \lt \rho'(x)\lt\rho'(y) \lt \rho'(z)$$
 Il che **è un assurdo**, e quindi $\rho(x)=0$ oppure $\rho(x)=n-1$
 
+#### Dimostrazione parte 2
+
+Dimostriamo ora la parte $2)$ : definiamo una successione di $k+1$ profili in ciascuno dei quali una stessa $x \in [n]$ è polarizzante e, tramite essi, individuiamo un dittatore potenziale
+
+Scegliamo $x\in[n]$.
+
+Nel profilo $P^0=\left\langle r_1^0,r_2^0,\dots,r_k^0\right\rangle$ l'alternativa $x$ è in ultima posizione in tutti i ranking: $$\forall i\in[k],\rho_i^{0}(x)=0$$
+
+Nel profilo $P^1=\left\langle r_1^1,r_2^1,\dots,r_k^1\right\rangle$ l'alternativa $x$ è in prima posizione nel ranking $r_{1}^1$, in ultima posizione in tutti gli altri ranking: $$\begin{align*}
+&\rho_1^1(x)=n-1\\&\forall i\in[k]\setminus\{1\},\rho_i^1(x)=0
+\end{align*}$$
+
+In generale, nel profilo $P^h=\left\langle r_1^h,r_2^h,\dots,r_k^h\right\rangle$ l'alternativa $x$ è in prima posizione nei ranking $r_{1}^h$ con $i\leq h$, in ultima posizione in tutti gli altri ranking: $$\begin{align*}
+&\forall i\leq h,\rho_1^h(x)=n-1\\&\forall i\gt h,\rho_i^h(x)=0
+\end{align*}$$
+
+Per ogni $h\in\{0,1,\dots,k\}$ indichiamo con $r^h$ il ranking collettivo associato al profilo $P^{h}$, e con la funzione $\rho^{h}$ la funzione peso ad esso associata
+
+![[Pasted image 20250826143232.png|center|500]]
+
+I due profili $P^{h-1}$ e $P^{h}$ differiscono solo per il modo in cui l'$h$-esimo votante giudica $x$: nel profilo $P^{h-1}$ l'$h$-esimo votante giudica $x$ in ultima posizione ($\rho_{h}^{h-1}(x)=0$), mentre nel profilo $P^{h}$ l'$h$-esimo votante giudica $x$ in prima posizione ($\rho_{h}^{h}(x)=n-1$), e le posizioni relative delle altre alternative rimangono invariate nei due profili
+
+![[Pasted image 20250826143513.png|center|500]]
+
+In virtù del principio $U$ (unanimità) vale che $$\rho^{0}(x)=0,\rho^{k}(x)=n-1$$
+Allora $$\exists\text{ un profilo }j\in[k]:\rho^{h}(x)=0\space\forall h\lt j\space\land\space\rho^{j}(x)\gt0$$[^4]
+
+E quindi, dato che $x$ è polarizzante per $P^{j}$ e $\rho^{j}(x)=n-1$, osserviamo che il votante $j$ ha molto potere nel posizionare $x$ nella graduatoria finale: la fa passare dall'ultima alla prima posizione.
+
+**$j$ è quindi il dittatore potenziale** ^988d91
+#### Dimostrazione parte 3
+
+Dimostriamo il punto $3)$ : dimostriamo che $j$ è il dittatore cercato
+
+Sia $Q=\left\langle r_1^Q,r_2^Q,\dots,r_k^Q\right\rangle$ un profilo di $k$ votanti per $n$ alternative
+
+Per ogni $h\in[k]$ indichiamo con $\rho_h^{Q}$ la funzione peso associata a $r_h^{Q}$, e indichiamo con $r^{Q}$ il ranking collettivo (**che soddisfa $\sigma$**) corrispondente a $Q$ e con $\rho^{Q}$ la funzione peso associata a $r^{Q}$
+
+Dobbiamo mostrare che **qualunque sia $Q,r^{Q}=r_{j}^{Q}$**
+Ovvero, qualunque sia $Q$, comunque si scelgano due alternative $y,z\in[n]$, sia ha che $$\rho^{Q}(y)\gt\rho^{Q}(z)\iff\rho_j^{Q}(y)\gt\rho_j^{Q}(z)$$
+Realizziamo questo obiettivo in $2$ passi:
+- 3.1) dimostriamo che se $y\neq x$ e $z\neq x$ allora $\rho^{Q}(y)\gt\rho^{Q}(z)\iff\rho_j^{Q}(y)\gt\rho_j^{Q}(z)$
+- 3.2) dimostriamo che se $y\neq x$ alora $\rho^{Q}(y)\gt\rho^{Q}(x)\iff\rho_j^{Q}(y)\gt\rho_j^{Q}(x)$
+
+##### Dimostrazione parte 3.1
+
+Senza perdità di generalità, supponiamo che sia $$\rho_j^{Q}(y)\gt\rho_j^{Q}(z)$$
+Costruiamo da $Q$ un nuovo profilo $T$:
+- Prima di tutto, per ogni $h\leq j$, poniamo $x$ in testa di $r_h^{T}$ lasciando tutte le altre alternative nello stesso ordine nel quale si trovano in $r_{h}^{Q}$
+- Poi, per ogni $h\gt j$, poniamo $x$ in coda di $r_h^{T}$ lasciando tutte le altre alternative nello stesso ordine nel quale si trovano in $r_h^{Q}$
+- Infine, spostiamo $y$ dalla posizione in cui si trova in $r_{j}^{Q}$ ponendola in testa a $r_{j}^{T}$
+
+![[Pasted image 20250826145226.png|center|500]]
+
+$T$ è molto simile a $P^{j}$:
+
+![[Pasted image 20250826145348.png|center|500]]
+
+Dato che $\rho^{j}(x)=n-1$ (come abbiamo visto [[Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano#Dimostrazione parte 2|qui]]) allora $\rho^{j}(x)\gt\rho^{j}(z)$, ed essendo che l'ordine relativo di $x$ e $z$ è lo stesso sia in $P^{j}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\gt\rho^{T}(z)$$
+$T$ però è anche molto simile a $P^{j-1}$
+
+![[Pasted image 20250826150026.png|center|500]]
+
+Dato che $\rho^{j-1}(x)=0$ (come abbiamo visto [[Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano#Dimostrazione parte 2|qui]]) allora $\rho^{j-1}(x)\lt\rho^{j-1}(y)$, ed essendo che l'ordine relativo di $x$ e $y$ è lo stesso sia in $P^{j-1}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\lt\rho^{T}(y)$$
+
+Ricapitolando:
+
+- Abbiamo costruito da $Q$ il nuovo profilo $T$ nel quale $x$ è in testa di $r_h^{T}$ per $h \lt j$, $y$ è in testa seguito da $x$ in $r_j^{T}$ e $x$ è in coda di $r_j^{T}$ con $h \gt j$
+- Dalla stessa posizione relativa di $x$ e $z$ in $P^j$ e in $T$, dal fatto che $\rho^j(x) \gt \rho^j(z)$, e in virtù del principio $IIA$, abbiamo concluso che $$\rho^{T}(x)\gt\rho^{T}(z)$$
+- Dalla stessa posizione relativa di $x$ e $y$ in $P^{j-1}$ e in $T$, dal fatto che $\rho^j(x) \lt \rho^j(y)$, e in virtù del principio $IIA$, abbiamo concluso che $$\rho^{T}(x)\lt\rho^{T}(y)$$
+E quindi, $$\rho^{T}(y)\gt\rho^{T}(z)$$
+Osserviamo che, per tutti i votanti, l’ordine relativo di $z$ e $y$ è lo stesso in $Q$ e in $T$ e quindi, per il principio $IIA$, deve valere che $$\rho^Q(y) \gt \rho^Q(z)$$
+E naturalmente, essendo che $y,z$ sono interscambiabili (variabili mute), questo rpova anche che se $$\rho_j^{Q}(y)\lt\rho_j^{Q}(z)\implies\rho^{Q}(y)\lt\rho^{Q}(z)$$
+##### Dimostrazione parte 3.2
+
+Poichè $n\gt2$ allora esiste un $z\in[n]$ tale che $z\neq x\land z\neq y$
+
+Deriviamo da $P^{0},P^{1},\dots,P^{k}$ una nuova sequenza $T^{0},T^{1},\dots,T^{k}$ di profili spostando l'alternativa $z$:
+- indichiamo $T^{h}=\left\langle t_1^h,t_2^h,\dots,t_k^h\right\rangle$
+- $T^0$ è ottenuto spostando $z$ in ultima posizione in ciascun ranking del profilo $P^{0}$
+- per $h\gt0,T^h$ è ottenuto dal profilo $P^{h}$: l'alternativa $z$ viene spostata in prima posizione nei ranking $t_i^h$ con $i\leq h$, in ultima posizione in tutti gli altri ranking, ovvero:$$\begin{align*}&\forall\space i\leq h,\rho_{i}^{T^{h}}(z)=n-1\\&\forall\space i\gt h,\rho_{i}^{T^{h}}(z)=0\\\end{align*}$$
+
+Per ogni $h\in\{0,1,\dots,k\}$ indichiamo con $t^h$ il ranking collettivo associato a $T^{h}$, e con $\rho^{T^{h}}$ la funzione peso ad esso associata
+
+La nuova sequenza $T^{0},T^{1},\dots,T^{k}$ di profili è quindi la seguente:
+
+![[Pasted image 20250826151924.png|center|500]]
+
+Esattamente come per i profili $P^{0},P^{1},\dots,P^{k}$ vale che: $$\exists\space l\in[k]:\rho^{T^{h}}(z)=0\space\forall h\lt l\land\space\rho^{T^{l}}(z)=n-1$$
+Ed esattamente come abbiamo dimostrato per il dittatore potenziale $j$ al punto [3.1)](#^988d91), possiamo dimostrare che, **per ogni profilo $Q$, se $y\neq z\land v\neq z$ allora** $$\left[\rho^{Q}(y)\gt\rho^{Q}(v)\iff\rho_l^{Q}(y)\gt\rho_l^{Q}(v)\right]$$
+Quindi, in particolare, **per ogni profilo $Q$, se $y\neq z$ e poichè $x\neq z$ allora** $$\left[\rho^{Q}(y)\gt\rho^{Q}(x)\iff\rho_l^{Q}(y)\gt\rho_l^{Q}(x)\right]$$
+Per concludere questa dimostrazione è sufficiente mostrare che $l=j$, e lo faremo mostrando che:
+- non può essere $l\lt j$
+- non può essere $l\gt j$
+
+**non può essere $l\lt j$**:
+- per dimostralro, mostriamo che *esiste almeno un profilo* $P$ tale che $\rho^{P}\neq\rho_l^{P}$
+- ricordiamo che, poichè abbiamo scelto $j$ tale che $\rho^{h}(x)=0$ per ogni $h\lt j$ e $\rho^j(x)\gt0$, allora nel profilo $P^{j-1}$ vale che $\rho^{j-1}(x)=0$ e quindi $$\rho^{j-1}(x)\lt\rho^{j-1}(y)$$
+- ma, dato che $\rho_{i}^{h}(x)=n-1$ per ogni $i\leq h$, allora vale che $$\rho_l^{j-1}(x)=n-1$$
+- allora $$\rho_l^{j-1}(x)\gt\rho_l^{j-1}(y)\implies\rho^{j-1}\neq\rho_l^{j-1}$$
+
+E quindi, per il profilo $P=P^{j-1}$ vale che $\rho^{P}\neq\rho_l^{P}$
+
+![[Pasted image 20250826153156.png|center|250]]
+
+**non può essere $l\gt j$**
+- per dimostralro, mostriamo che *esiste almeno un profilo* $P$ tale che $\rho^{P}\neq\rho_l^{P}$
+- nel profilo $P^{j}$ vale che $\rho^{j}(x)=n-1$ e quindi $$\rho^{j}(x)\gt\rho^j(y)$$
+- ma, dato che $\rho_{i}^{h}(x)=0$ per ogni $i\gt h$, allora $$\rho_l^{j}(x)=0$$
+- allora, $$\rho_l^{j}(x)\lt\rho_l^{j}(y)\implies\rho^{j}\neq\rho_l^{j}$$
+
+E quindi, per il profilo $P=P^{j}$ vale che $\rho^{P}\neq\rho_l^{P}$
+
+E di conseguenza, $l=i\quad\quad\quad\blacksquare$ 
+
+![[Pasted image 20250826153618.png|center|250]]
+
+Il teorema di Arrow **getta un ombra scura** sui sistemi di voto perché afferma che un sistema di voto, per non essere soggetto a manipolazioni interessate (utilizzando alternative irrilevanti) ed essere in grado di rispecchiare la volontà dell’unanimità, deve **essere una dittatura**.
+
+Che non è una prospettiva proprio rassicurante.
+
+Tuttavia, se le alternative hanno certe caratteristiche, e se i ranking dei votanti soddisfano una certa proprietà (perfettamente plausibile in presenza di quelle caratteristiche delle
+alternative), allora il teorema di Arrow può essere "aggirato"
+
 # Single Peaked Preferences
+
+Supponiamo che le alternative siano un insieme totalmente ordinato, ovvero: $$A=\{a_1,a_{2},\dots,a_n\},\quad a_{i}\lt a_{i+1}\forall\space i=1,\dots,n-1$$
+Dove con "$\lt$" indichiamo una qualche relazione d'ordine
+
+>[!definition]- Single Peaked
+>Il ranking del votante $h,r^{h}=\left\langle a_{h1},a_{h2},\dots,a_{hn}\right\rangle$ è detto **single peaked** se, *comunque si scelgono tre alternative $a_i\lt a_{j}\lt a_l$, non accade che* $$\rho_{h}(a_j)\lt\rho_{h}(a_i)\land\rho_{h}(a_j)\lt\rho_{h}(a_l)$$
+>Ovvero, $$\forall a_i,a_j,a_{l}\in A:a_i\lt a_{j}\lt a_l\left[\lnot\left(\rho_{h}(a_j)\lt\rho_{h}(a_i)\land\rho_{h}(a_j)\lt\rho_{h}(a_l)\right)\right]$$
+
+Ovvero, considerando $\rho_h$ come una funzione definita su un dominio continuo $\rho_{h}$, non ha minimi relativi.
+
+In figura, tre ranking single peaked:
+
+![[Pasted image 20250826154700.png|center|350]]
+
+Un ranking single peaked è, in effetti, un’ipotesi del tutto ragionevole in questa situazione
+
+ESEMPIO 1:
+- possiamo ordinare gli schieramenti politici lungo un asse a partire da quelli di estrema sinistra a quelli di estrema destra
+- e difficilmente un elettore il cui schieramento politico preferito è di estrema sinistra avrà come seconda preferenza uno schieramento di estrema destra e come terza preferenza uno schieramento di centro
+
+ESEMPIO 2:
+- tipicamente, il livello di un college statunitense è tanto migliore quanto più elevata è la sua retta
+- un genitore che deve iscrivere il figlio, tipicamente, avrà un range di preferenze concentrate intorno alla retta che può permettersi di pagare
+- difficilmente avrà come prima preferenza il college più esclusivo, come seconda preferenza quello più popolare e come terza preferenza, di nuovo un college molto costoso
+
+Supponiamo che, oltre ad avere l'insieme $A$ ordinato, ***ogni votante*** esprima un ranking single peaked
+
+In questo caso, possiamo supporre ***senza perdità di generalità*** (ovvero, a meno di un riordinamento dei votanti) che, per ogni $h\in[k]$, il picco del votante $h$ non preceda il picco del votante $h+1$
+- ovvero: sia $P=\langle r_{1},r_{2},\dots,r_k\rangle$ un profilo nel quale ogni ranking è single peaked
+- per ogni $h\in[k]$, indichiamo con $M_h$ l'alternativa preferita dal votante $h$, cioè $$M_{h}\in A\land\rho_h(M_{h})=n-1$$
+- allora vale che $M_{1}\leq M_2\leq\dots\leq M_{k}$
+
+In figura, il votante 1 è quello blu, il votante 2 è quello rosa, il votante 3 è quello verde
+
+![[Pasted image 20250826155313.png|center|350]]
 
 ## Il Teorema del Votante Mediano
 
@@ -362,3 +523,5 @@ Il che **è un assurdo**, e quindi $\rho(x)=0$ oppure $\rho(x)=n-1$
 [^2]: Se avessero votato onestamente secondo il ranking $\langle\text{IP,VV,PF}\rangle$ avrebbe vinto VV
 
 [^3]: dove $\rho'$ è la funzione peso associata al ranking collettivo corrispondente a  $(r'_1,r'_2,\dots,r'_k)$ derivata in accordo a $\sigma$
+
+[^4]: osserviamo che $j\gt0$ perchè $\rho^{0}(x)=0$
