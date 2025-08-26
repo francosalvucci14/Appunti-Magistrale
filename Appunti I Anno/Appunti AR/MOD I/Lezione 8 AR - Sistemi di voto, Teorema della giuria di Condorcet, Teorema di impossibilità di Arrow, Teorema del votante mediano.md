@@ -587,11 +587,22 @@ $$|\{h\in[2k-1]:\rho_h(M_{k})\gt\rho_{h}(y)\}|\gt|\{h\in[2k-1]:\rho_h(y)\gt\rho_
 **Punto $2)$**
 
 Consideriamo un'alternativa $y=a_t$ con $t\lt m$
-Per ogni $h\gt k$, poichè $a_t\lt a_m=M_k\lt M_h$ e poichè $r_h$ è single peaked allora $$\rho_h(a_{m})\gt\rho_{h}(a_t)\quad(*)$$
+Per ogni $h\gt k$, poichè $a_t\lt a_m=M_k\leq M_h$ e poichè $r_h$ è single peaked allora $$\rho_h(a_{m})\gt\rho_{h}(a_t)\quad(**)$$
 Nell’esempio in figura, $k$ = rosa, $m = 4, t = 2$ e $h$ = verde, dove abbiamo assunto blu = $1$, rosa = $2$ e verde = $3$
 
 ![[Pasted image 20250826165428.png|center|250]]
 
+Quindi, per ricollegarsi a $(**)$, tutti i votanti di indice $h\gt k$ preferiscono $a_{m}$ a $a_{t}$
+
+Allora, tutti i votanti che preferiscono $a_t$ ad $a_m$ possono essere solo quelli di indice $h\lt k$: $$\{h\in[2k-1]:\rho_h(a_t)\gt\rho_{h}(a_m)\}\subseteq\{h\in[2k-1]:h\lt k\}$$
+E quindi vale che: $$|\{h\in[2k-1]:\rho_h(a_t)\gt\rho_{h}(a_m)\}|\leq(2k-1)-k=k-1$$
+Cioò, per ogni $y\gt M_k$ vale che:
+$$|\{h\in[2k-1]:\rho_h(M_{k})\gt\rho_{h}(y)\}|\gt|\{h\in[2k-1]:\rho_h(y)\gt\rho_{h}(M_k)\}|$$
+
+Quindi, abbiamo che:
+1) per ogni alternativa $y=a_t$ con $t\gt m$ vale che $$|\{h\in[2k-1]: r_h(M_{k})\gt r_{h}(y)\}|\gt|\{h\in[2k-1]:r_h(y)\gt r_{h}(M_k)\}|$$
+2) per ogni alternativa $y=a_t$ con $t\lt m$ vale che $$|\{h\in[2k-1]: r_h(M_{k})\gt r_{h}(y)\}|\gt|\{h\in[2k-1]:r_h(y)\gt r_{h}(M_k)\}|$$
+3) E quindi, per ogni alternativa $y\in A\setminus\{M_{k}\}$ vale che $$|\{h\in[2k-1]: r_h(M_{k})\gt r_{h}(y)\}|\gt|\{h\in[2k-1]:r_h(y)\gt r_{h}(M_k)\}|\quad\quad\quad\quad\blacksquare$$
 
 
 [^1]: Ovvero, *assumendo* che gli altri giocatori rispondano *sinceramente* (in accordo ai loro segnali privati), le risposte degli altri due giocatori sono discordi quando uno di loro estrae una pallina verde, e quindi quando l'urna è $UV$
