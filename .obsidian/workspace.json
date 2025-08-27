@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
+                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Indice degli appunti AR"
+              "title": "Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
+                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Indice degli appunti AR"
+              "title": "Outline of Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk"
             }
           },
           {
@@ -167,6 +167,8 @@
   "active": "fc440c48f0745f72",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250827151834.png",
+    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826165428.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164740.png",
@@ -177,7 +179,6 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826163651.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826163530.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826163416.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826155313.png",
     "$/rho^{j}(x)=n-1$.md",
     "$",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative.md",
@@ -187,7 +188,6 @@
     "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
-    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
@@ -208,7 +208,6 @@
     "Appunti I Anno/Appunti ADRC/Lezione 7 ADRC - Finding Eccentricities & Center Finding.md",
     "Appunti I Anno/Appunti ISTI",
     "Appunti I Anno/Appunti AR",
-    "Appunti I Anno/Appunti ADRC/Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding-Bitcoin-2/transaction_segwit.py",
     "Appunti I Anno/Appunti PCD/Esercitazioni-Bitcoin/Coding_Bitcoin_3/__pycache__/script.cpython-310.pyc"
