@@ -169,7 +169,7 @@ Vediamo, adesso, un paio di strumenti concernenti la relazione fra la struttura 
 Una **base** per $\mathbb R^{n}$ è un insieme di $n$ vettori $\hat z_{1},\hat z_{2},\dots,\hat z_{n}$ tali che ogni altro vettore $x\in\mathbb R^n$ può essere come combinazione lineare di $\hat z_{1},\hat z_{2},\dots,\hat z_{n}$, ossia: $$\forall x\in\mathbb R^{n}:x=\sum\limits_{1\leq i\leq n}p_iz_i$$
 **ortonormale** : detto $\hat z_i=\left(z_{i1},z_{i2},\dots,z_{in}\right)$ si ha che 
 $$\begin{align*}
-&\forall i=1,\dots,n:\hat z_{i}\cdot\hat z_{i}=\hat z_{i1}^2+\hat z_{i2}^2+\dots+\hat z_{in}^2=1\quad\text{(normalità)}\\&\forall i\neq l:\hat z_{i}\cdot\hat z_{l}=\hat z_{i1}\hat z_{l1}+\hat z_{i2}\hat z_{l2}+\dots+\hat z_{in}\hat z_{ln}=0\quad\text{(ortogonalità)}
+\forall i=1,\dots,n:\hat z_{i}\cdot\hat z_{i}=\hat z_{i1}^2+\hat z_{i2}^2+\dots+\hat z_{in}^2=1\quad&\text{(normalità)}\\\forall i\neq l:\hat z_{i}\cdot\hat z_{l}=\hat z_{i1}\hat z_{l1}+\hat z_{i2}\hat z_{l2}+\dots+\hat z_{in}\hat z_{ln}=0\quad&\text{(ortogonalità)}
 \end{align*}$$
 
 Una matrice $A$ simmetrica e reale si dice **semidefinita positiva*** se $$\forall\hat x\in\mathbb R^{n}:\hat x^{T}A\hat x\geq0$$
@@ -191,6 +191,84 @@ Allora, poichè $(MM^{T})$ è non nulla, il suo **autovalore massimo è strettam
 Cominciamo ora, finalmente, con la dimostrazione del Teorema Principale [^1]
 
 **dimostrazione**
+
+Cominciamo scrivendo in modo diverso le formule per calcolare $h^{(k)},a^{(k)}$:
+$$\begin{align*}
+&h^{(1)}=Ma^{(1)}=MM^{T}h^{(0)}\quad\text{poichè }a^{(k+1)}=M^{T}h^{(k)}\forall k\\&h^{(2)}=Ma^{(2)}=MM^{T}h^{(2)}=(MM^{T})(MM^{T})h^{(0)}=(MM^{T})^{2}h^{(0)}\\
+&h^{(3)}=Ma^{(3)}=MM^{T}h^{(3)}=(MM^{T})(MM^{T})^2h^{(0)}=(MM^{T})^{3}h^{(0)}\\
+&\vdots
+\end{align*}$$
+
+e così via, induttivamente, possiamo esprimere $h^{(k)}$ nelle due forme $$\begin{align*}
+&h^{(k)}=MM^{T}h^{(k-1)}\\
+&h^{(k)}=(MM^{T})^{k}h^{(0)}
+\end{align*}$$
+Scegliamo un vettore $h^{(0)}$ a coordinate positive.
+
+$(MM^{T})$ è una matrice simmetrica, semidefinita positiva e non nulla:
+- siano $\hat z_{1},\hat z_{2},\dots,\hat z_{n}$ i suoi autovettori reali - **base** ortonormale per $\mathbb R^{n}$
+- sia, per $i=1,\dots,n,c_i$ l'autovalore **reale e non negativo** corrispondente a $\hat z_i$, quindi $(MM^{T})\hat z_i=c_i\hat z_i$
+- w.l.o.g assumioamo che $c_{1}\geq c_2\geq\dots\geq c_n$ e $c_1\gt0$
+
+Allora, possiamo esprimere $h^{(0)}$ come combinazione lineare degli autovettori: $$h^{(0)}=\sum\limits_{1\leq i\leq n}q_i\hat z_i$$
+E dunque, 
+$$\begin{align*}
+h^{(k)}&=(MM^{T})^{k}h^{(0)}=(MM^{T})^{k}\sum\limits_{1\leq i \leq n}q_i\hat z_i\\
+&=(MM^{T})^{k-1}\sum\limits_{1\leq i \leq n}q_i(MM^{T})\hat z_i\\
+&=(MM^{T})^{k-1}\sum\limits_{1\leq i \leq n}q_i c_i\hat z_i\quad\text{per definizione di autovalore}\\
+&=(MM^{T})^{k-2}\sum\limits_{1\leq i \leq n}q_i c_i(MM^{T})\hat z_i=(MM^{T})^{k-2}\sum\limits_{1\leq i \leq n}q_i c_i^{2}\hat z_i\\
+&=\dots=\sum\limits_{1\leq i \leq n}q_i c_i^{k}\hat z_i
+\end{align*}$$
+
+Ora dividiamo ambo i membri per $c_1^{k}$ e otteniamo
+$$\frac{h^{(k)}}{c_{1^k}}=\sum\limits_{1\leq i\leq n}q_i\left(\frac{c_i}{c_1}\right)^k\hat z_i$$
+Sia $l\leq n$ tale che $c_1=c_2=\dots=c_l\gt c_{l+1}\geq c_{l+2}\geq\dots\geq c_n$
+
+Allora,
+$$\begin{align*}
+\lim_{k\to\infty}\frac{h^{(k)}}{c_1^{k}}&=\lim_{k\to\infty}\left[q_1\hat z_1+\dots+q_l\hat z_l+q_{l+1}\left(\frac{c_{l+1}}{c_{1}}\right)^k\hat z_{l+1}+\dots+q_{n}\left(\frac{c_{n}}{c_{1}}\right)^k\hat z_{n}\right]\\
+&=q_1\hat z_1+q_2\hat z_2+\dots+q_l\hat z_l
+\end{align*}$$
+
+[^2]
+
+Resta ora da mostrare che $q_1\hat z_1+q_2\hat z_2+\dots+q_l\hat z_l$ è un vettore non nullo, e lo dimostriamo solo nel caso particolare $l=1$, ovvero $c_{1}\gt c_2$
+
+Se $c_{1}\gt c_2$ allora $$\lim_{k\to\infty}\frac{h^{(k)}}{c_1^{k}}=\lim_{k\to\infty}\frac{(MM^{T})^{k}h^{(0)}}{c_1^{k}}=q_1\hat z_{1}$$
+Per completare la dimostrazione del teorema è sufficiente mostrare che, *comunque si scelga un vettore $h^{(0)}$ a coordinate positive*, $q_1\neq0$
+- infatti $\hat z_1$ è un vettore reale perchè elemento di una base di $\mathbb R^{n}$
+- $\hat z_1$ è anche un vettore non nullo perchè la base è ortonormale: $\hat z_1\cdot\hat z_{1}=\hat z_{11}^2+\hat z_{12}^2+\dots+\hat z_{1n}^2=1$
+
+Innanzi tutto, osserviamo che $q_{1}=h^{(0)}\cdot\hat z_1$
+- infatti $$h^{(0)}\cdot\hat z_{1}=\left(\sum\limits_{1\leq i\leq n}q_i\hat z_i\right)\cdot\hat z_1=\sum\limits_{1\leq i\leq n}q_i(\hat z_i\cdot\hat z_1)=q_i(\hat z_1\cdot\hat z_1)=q_1$$
+- allora, $$q_1\neq0\iff h^{(0)}\cdot\hat z_1\neq0$$
+
+Allora dobbiamo dimostrare che, *comunque si scelga un vettore $h^{(0)}$ a coordinate positive*, $$h^{(0)}\cdot\hat z_1\neq0$$
+Lo dimostreremo in due punti
+
+**Punto $1)$** : iniziamo dimostrando che ***esiste*** un vettore $\hat y$ a coordinate positive tale che $\hat y\cdot\hat z_1\neq0$
+- ricordiamo che $\hat z=(\hat z_{11},\hat z_{12},\dots,\hat z_{1n})$ nel sistema di riferimento iniziale
+- supponiamo per assurdo che per ogni $\hat x\in\mathbb R^{n}$ a coordinate positive sia $\hat x\cdot\hat z_{1}=0$
+- sia $\hat y\in\mathbb R^{n}$ tale che $\hat y=(\hat y_{1},\hat y_{2},\dots,\hat y_{n})$ con $\hat y_{i}\gt0$ per ogni $i=1,\dots,n$, e sia, per ogni $l=1,\dots,n,\hat y^{(l)}$ il vettore tale che $\hat y^{(l)}_i=\hat y_i\forall i\neq l$ e $\hat y^{(l)}_l=\hat y_l+1$ [^3] 
+- allora, per ogni $l=1,\dots,n$ vale che $$\begin{cases}
+\hat y\cdot\hat z_{1}=0\\\hat y^{(l)}\cdot\hat z_{1}=0
+\end{cases}$$ovvero $$\begin{cases}
+\hat y_1\hat z_{11}+\dots+\hat y_l\hat z_{1l}+\dots+\hat y_n\hat z_{1n}=0 \\
+\hat y_1\hat z_{11}+\dots+(\hat y_l+1)\hat z_{1l}+\dots+\hat y_n\hat z_{1n}=0
+\end{cases}$$da cui, sottraendo la prima equazione alla seconda, otteniamo che $\hat z_{1l}=0$
+
+Quindi, $$\forall l=1,\dots,n\to\hat z_{1l}=0\quad\text{ assurdo perchè }\hat z_{1}\cdot\hat z_{1}=1$$
+**Punto $2)$** : mostriamo che per ogni vettore $\hat x$ a coordinate positive vale che $\hat x\cdot\hat z_1\neq0$
+- sia $\hat y \in\mathbb R^{n}$ a coordinate positive un vettore tale che $\hat y \cdot\hat z_1 \neq 0$ ($\hat y$ esiste per punto $1$)
+- esprimiamo $\hat y$ nel sistema $$\hat z_1, \dots , \hat z_n : \hat y = p_1\hat z_1 + p_2 \hat z_2 + \dots + p_n \hat z_n$$
+- allora, come abbiamo visto, l’espressione $\frac{(MM^{T})^k\hat y}{c_{1}^k}$ converge a $p_1\hat z_1$
+- e poiché l’espressione $\frac{(MM^{T})^k\hat y}{c_{1}^{k}}$ contiene solo valori non negativi allora le coordinate di $p_1\hat z_1$ sono tutte non negative, e poiché $p_1= \hat y\cdot \hat z_1 \neq 0$, allora $p_1\hat z_1$ ha almeno una coordinata strettamente positiva
+- sia $\hat x = (\hat x_1, \hat x_2, \dots , \hat x_n)$ un qualunque vettore in $\mathbb R^n$ a coordinate positive tale che $x \neq y$
+- allora nell’espressione $$p_1 \hat z_1 \cdot \hat x = p_1 \hat z_{11}\hat x_1 + p_1 \hat z_{12}\hat x_2 + \dots + p_1 \hat z_{1n}\hat x_n$$tutti gli addendi sono non negativi e almeno uno di essi è positivo
+
+E quindi, $$\hat x \cdot \hat z_1 = \hat z_1 \cdot x = \frac{1}{p_1}\left(p_1 \hat z_{11}\hat x_1 + p_1 \hat z_{12}\hat x_2 + \dots + p_1 \hat z_{1n}\hat x_n\right) \neq 0\quad\quad\blacksquare$$
+
+
 # PageRank
 
 ## Scaled PageRank
@@ -201,3 +279,7 @@ Cominciamo ora, finalmente, con la dimostrazione del Teorema Principale [^1]
 
 
 [^1]: nota a margine, la dimostrazione viene fatta per $h^{(k)}$, e per $a^{(k)}$ è del tutto analoga
+
+[^2]: perchè $c_i\in\mathbb R^{+}\cup\{0\}\forall\space i=1,\dots,n$ e $\forall i=l+1,\dots,n\space\left[0\leq\frac{c_i}{c_1}\lt 1\right]$
+
+[^3]: esempio: $\hat y^{(2)}=(\hat y_{1},\hat y_2+1,\dots,\hat y_n)$ 

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "57138ac8e6d9fac8",
+        "id": "74cac88fbd675693",
         "type": "tabs",
         "children": [
           {
-            "id": "fc440c48f0745f72",
+            "id": "0c4be1806528ec13",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -133,11 +133,11 @@
         "currentTab": 1
       },
       {
-        "id": "9fbd6ada8f550472",
+        "id": "ff0e1df1e7da9619",
         "type": "tabs",
         "children": [
           {
-            "id": "78a781146ccae42d",
+            "id": "fc440c48f0745f72",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -164,9 +164,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fc440c48f0745f72",
+  "active": "0c4be1806528ec13",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250827151834.png",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
@@ -185,7 +186,6 @@
     "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 4 AR - Il fenomeno Small World, modello di Watts-Strogatz e ricerca decentralizzata.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 2 AR - Il modello di Barabasi-Albert, un modello per la Power Law.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
