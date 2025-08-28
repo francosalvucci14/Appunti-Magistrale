@@ -267,13 +267,133 @@ Quindi, $$\forall l=1,\dots,n\to\hat z_{1l}=0\quad\text{ assurdo perchè }\hat z
 - allora nell’espressione $$p_1 \hat z_1 \cdot \hat x = p_1 \hat z_{11}\hat x_1 + p_1 \hat z_{12}\hat x_2 + \dots + p_1 \hat z_{1n}\hat x_n$$tutti gli addendi sono non negativi e almeno uno di essi è positivo
 
 E quindi, $$\hat x \cdot \hat z_1 = \hat z_1 \cdot x = \frac{1}{p_1}\left(p_1 \hat z_{11}\hat x_1 + p_1 \hat z_{12}\hat x_2 + \dots + p_1 \hat z_{1n}\hat x_n\right) \neq 0\quad\quad\blacksquare$$
+Due osservazioni riguardo al teorema
 
+**oss $1$** : Abbiamo dimostrato che $\hat z$ è non nullo nel solo caso $c_1\gt c_2$: tecniche analoghe permettono di dimostralro nel caso generale
 
+**oss $2$** : come abbiamo visto nel caso $c_{1}\gt c_2$, qualunque sia il vettore iniziale $h^{(0)}$ a coordinate positive, $\frac{h^{(k)}}{c_1^{k}}$ converge al vettore $q_{1}\hat z_1$, dove $q_1=h^{(0)}\cdot\hat z_1$. Questo significa che a partire da qualunque valutazione dei valori di hub iniziali, se $c_1\gt c_2$, il mteodo HITS converge sempre ad un vettore parallelo all'autovettore $\hat z_1$, e quindi, la valutazione dei valori di hub delle pagine individuata da HITS è sempre la stessa, da qualunque valutazione dei valori di hub iniziali si parta, e dunque ***dipende solo dalla matrice $M$***
+
+HITS valuta ciascuna pagina rispetto a due ruoli diversi: 
+- come authority – la sua rilevanza ai fini della ricerca in atto
+- come hub – la sua attitudine ad assegnare rilevanza alle pagine alle quali punta
+
+E per ciascuna pagina, ciascuno dei due ruoli è valutato utilizzando un diverso insieme di link che coinvolgono quella pagina:
+- i link entranti nella pagina concorrono alla valutazione come authority
+- i link uscenti dalla pagina concorrono alla valutazione come hub
+
+Questo significa che una pagina può conferire rilevanza, ai fini di una ricerca, ad un’altra pagina pur essendo essa poco rilevante per quella ricerca e, dunque, il metodo HITS ben si presta a modellare situazioni nelle quali le pagine sono naturalmente partizionate in due sottoinsiemi "semanticamente" distinti, come avviene, ad esempio, in ricerche di prodotti da acquistare
 # PageRank
 
+In altre situazioni, invece, assumere un tale partizionamento delle pagine non è ragionevole
+- ad esempio, quando cerchiamo un articolo di ricerca: articoli “importanti” citano articoli “importanti” e sono citati da articoli “importanti”
+
+Il **PageRank** ben modella queste situazioni
+
+Si tratta ancora di un metodo iterativo, basato, però, sull’*analisi dei soli link entranti* in una pagina
+
+Esso assume che nella porzione di rete, attinente alla ricerca in atto, sia presente una unità di fluido inizialmente distribuita equamente fra tutti i nodi[^4] e che poi, iterativamente, ciascun nodo distribuisca equamente il fluido fra i suoi vicini – alla fine, una pagina sarà ***tanto più rilevante quanto maggiore è la quantità di fluido in suo possesso***
+
+Indichiamo quindi, $$\forall i=1,\dots,n,f_i^{(0)}= \frac{1}{n}$$
+Ad ogni iterazione, ciascun nodo distribuisce equamente il fluido fra i suoi vicini - distribuisce quindi il fluido in suo possesso, e contestualmente, riceve quello dei vicini
+
+Formalmente:
+- per ogni $j=1,\dots,n$ indichiamo con $\omega_{j}$ il numero di archi uscenti dalla pagina $j$, ovvero $$\omega_{j}=|\{i\in[n]:j\to i\}|$$
+- allora, $$\forall i=1,\dots,n,\space f_{i}^{(k+1)}=\sum\limits_{1\leq j\leq n:\space j\to i}\frac{f_{j}^{(k)}}{\omega_j}$$
+
+Analogamente a quanto fatto con HITS, indichiamo con $f^{(k)}$ il vettore $\left(f_1^{(k)},f_2^{(k)},\dots,f_n^{(k)}\right)$ 
+
+Vale quindi il seguente teorema:
+
+>[!teorem]- Teorema
+>Se il grafo delle pagine attinenti alla ricerca è fortemente connesso allora $$\exists!\lim_{k\to\infty}f^{(k)}$$
+
+Osserviamo che, ad ogni iterazione $k$, la quantità di fluido totale presente nel grafo è sempre pari ad $1$
+- al passo $k+1$, ciascun nodo redistribuisce il fluido in suo possesso al passo $k$
+- senza generarne di nuovo
+
+Allora, possiamo pensare al vettore limite degli $f^{(k)}$, chiamiamolo $f^\star$, come ad un vettore che esprime una sorta di **configurazione di equilibrio** del fluido, ovvero, redistribuendo il fluido a partire dal $f^\star$ il vettore non varia : $$\forall i=1,\dots,n,\space f_i^\star=\sum\limits_{1\leq j\leq n:\space j\to i}\frac{f^{\star}}{\omega_j}$$
+In figura è modtraro il vettore limite di un grafo, a partire da $f^{(0)}=\frac{1}{8}$ per $i=A,B,C,D,E,F,G,H$
+
+![[Pasted image 20250828152014.png|center|350]]
+
+Il teorema affermava l'unicità del limite nel caso in cui il grafo è fortemente connesso, ma se il grafo *NON* è fortemente connesso, le cose cambiano, vediamo un esempio
+
+![[Pasted image 20250828152410.png|center|650]]
+
+Il flusso, da come si può vedere, tende ad accumularsi nei nodi gialli:
+- inizialmente, i tre nodi $(C,F,G)$ possiedono $\frac{3}{8}\lt \frac{1}{2}$ del flusso totale
+- nell'ultima iterazione mostrata ne possiedono $\frac{96}{128}=\frac{3}{4}$
 ## Scaled PageRank
 
+Se il grafo non è fortemente connesso, il fluido tende a concentrarsi nelle regioni del grafo dalle quali non si può uscire, e da ciò che conosciamo riguardo la struttura del Web, di tali regioni il grafo ne contiene
+
+Allora, è necessario modificare il procedimento iterativo che aggiorna il fluido associato ai nodi:
+- ad esempio, non distribuendo tutto il fluido (d’ora in avanti, il ***rank***) contenuto in ciascun nodo equamente lungo gli archi uscenti da quel nodo
+- ma "mettendone un po’ da parte" per evitare che esso si concentri nei "vicoli ciechi" del grafo
+
+Nello **Scaled PageRank** viene fissato un parametro $s \in [0,1]$ e, ad ogni iterazione, una frazione pari a $s$ del rank contenuto in ciascun nodo è distribuito equamente lungo gli archi uscenti da quel nodo, e la parte rimanente, ossia, una frazione pari a $(1 – s)$ del rank contenuto in ciascun nodo, è distribuita uniformemente fra tutti i nodi del grafo e, poiché il rank totale presente nella rete è $1$, allora, ad ogni iterazione, ciascun nodo riceve una quantità di rank almeno pari a $\frac{1-s}{n}$
+
+Detto quindi $r_i^{(k)}$ il *rank* posseduto dal nodo $i$ all'iterazione $k$, vale che $$r_i^{(k+1)}=\left(\sum\limits_{1\leq j\leq n: j\to i}s\frac{r_j^{(k)}}{\omega_j}\right)+\frac{1-s}{n}$$
+La matrice $N$  che descrive l'evoluzione del rank è tale che, per $1\leq i,j\leq n$, 
+$$N[i,j]=\begin{cases} \frac{s}{\omega_j}+\frac{1-s}{n}&j\to i\\\frac{1-s}{n}&\text{altrimenti}\end{cases}$$
+
+Infatti, detto $r^{(k)}$ il vettore $\left(r_1^{(k)},r_2^{(k)},\dots,r_n^{(k)}\right)$, l'elemento $i$-esimo di $Nr^{(k)}$ è 
+$$
+\begin{align*}
+\sum\limits_{1\leq n\leq n}N[i,j]r_j^{(k)}&=\sum\limits_{1\leq j\leq n:\space j\to i}\left[\frac{s}{\omega_j}+\frac{1-s}{n}\right]r_j^{(k)}+\sum\limits_{1\leq j\leq n:\space j\text{ non punta a } i}\frac{1-s}{n}r_j^{(k)}\\&=\sum\limits_{1\leq j\leq n:\space j\to i}\frac{s}{\omega_j}r_j^{(k)}+\sum\limits_{1\leq j\leq n}\frac{1-s}{n}r_j^{(k)}\\&=\sum\limits_{1\leq j\leq n:\space j\to i}\frac{s}{\omega_j}r_j^{(k)}+\frac{1-s}{n}\sum\limits_{1\leq j\leq n}r_j^{(k)}=\sum\limits_{1\leq j\leq n:\space j\to i}\frac{s}{\omega_j}r_j^{(k)}+\frac{1-s}{n}r_j^{(k)}
+\end{align*}
+$$
+E quindi $$r^{(k+1)}=Nr^{(k)}$$
+Analogamente al caso del PageRank non scalato, anche in quello scalato, ad ogni iterazione $k$, la quantità di rank totale presente nel grafo è sempre pari ad $1$:
+- al passo k, ciascun nodo redistribuisce il fluido in suo possesso al passo $k$
+- senza generarne di nuovo
+- e questa caratteristica è stata usata nell’ultima uguaglianza nel calcolo precedente
+
+Allora, possiamo pensare al vettore limite degli $r^{(0)}$, chiamiamolo $r^\star$, come ad un vettore che esprime una sorta di **configurazione di equilibrio** del rank, ovvero, redistribuendo il rank a partire da $r^\star$ il vettore non varia: $$r^\star = Nr^\star$$
+
+Il vettore limite dovrebbe essere un ***autovettore della matrice*** $N$ con determinate caratteristiche, ovvero
+- il corrispondente autovalore deve essere $1$
+- gli elementi devono essere non negativi
+- la somma degli elementi deve essere pari a $1$
+- e deve essere anche l’unico autovettore con queste proprietà
+
+Ma chi ci dice che $N$ ha una coppia autovettore-autovalore con tutte queste proprietà?
+
+Semplice, il **teorema di Perron**
+
+>[!teorem]- Teorema di Perron (versione semplificata)
+>Se $A$ è una matrice reale $n\times n$ a elementi positivi, allora:
+>1) $A$ ha un autovalore $c\in\mathbb R^{+}$ tale che, $c\gt|c'|$ per ogni altro autovalore $c'$ di $A$
+>2) l'autovettore $\hat x$ di $A$ corrispondente a $c$ è unico ed è a elementi reali e positivi la cui somma è $1$
+
+La matrice $N$ da noi descritta soddisfa le ipotesi del teorema di Perron, e quindi ha un coppia autovalore-autovettore con *quasi* tutte le proprietà da noi cercate
+
+In effetti, la matrice $N$ ha tutte le proprietà tranne una: se potessimo esser certi che $c=1$ potremmo concludere che $r^\star=Nr^\star$
+
+Aiutiamoci con un'altro teorema, che segue però la definizio di **matrice stocastica**
+
+>[!definition]- Matrice Stocastica
+>Una matrice quadrata si dice **stocastica** se i suoi elementi sono non negativi e:
+>1) la somma degli elementi su ciascuna riga è $1$ (stocastica per righe)
+>2) oppure la somma degli elementi su ciascuna colonna è $1$ (stocastica per colonne)
+>
+>Se valgono sia $1)$ che $2)$ si dice che la matrice è **doppiamente stocastica**
+
+Vediamo ora il teorema:
+
+>[!teorem]- Teorema sulle matrici stocastiche
+>Se $A$ è una matrice stocastica allora $A$ ha un autovalore $\lambda$ tale che $|\lambda|=1$ e $\lambda$ è ***l'autovalore di modulo massimo*** di $A$
+
+La nostra matrice $N$ è stocastica per colonne: dato che $\sum\limits_{1\leq i\leq n:\space j\to i} \frac{1}{\omega_j}=1$ allora vale che $$\sum\limits_{1\leq i\leq n}N[i,j]=\sum\limits_{1\leq i\leq n:\space j\to i}\left[\frac{s}{\omega_j}+\frac{1-s}{n}\right]+\sum\limits_{1\leq i\leq n:\space j\text{ non punta a } i}\frac{1-s}{n}=\sum\limits_{1\leq i\leq n:\space j\to i}\frac{s}{\omega_j}+\sum\limits_{1\leq i\leq n}\frac{1-s}{n}=1$$
+Allora:
+- per il teorema di Perron $N$ ha un autovalore $c\in\mathbb R^{+}$ tale che, $c\gt|c'|$ per ogni altro autovalore $c'$ di $N$ e un unico autovettore $\hat x$ corrispondente a $c$ a elementi reali e positivi la cui somma è $1$
+- per il teorema sulle matrici stocastiche $c=1$
+
+Quindi, possiamo affermare che: 
+$$N\hat x=\hat x\space\land\space r^{\star}=\hat x$$
 ## PageRank e Random Walks
+
+
 
 ### Scaled PageRank e Random Walks
 
@@ -283,3 +403,5 @@ E quindi, $$\hat x \cdot \hat z_1 = \hat z_1 \cdot x = \frac{1}{p_1}\left(p_1 \h
 [^2]: perchè $c_i\in\mathbb R^{+}\cup\{0\}\forall\space i=1,\dots,n$ e $\forall i=l+1,\dots,n\space\left[0\leq\frac{c_i}{c_1}\lt 1\right]$
 
 [^3]: esempio: $\hat y^{(2)}=(\hat y_{1},\hat y_2+1,\dots,\hat y_n)$ 
+
+[^4]: se il numero di nodi è $n$, ciascuno di essi possiede inizialmente $\frac{1}{n}$ di fluido
