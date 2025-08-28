@@ -393,9 +393,38 @@ Quindi, possiamo affermare che:
 $$N\hat x=\hat x\space\land\space r^{\star}=\hat x$$
 ## PageRank e Random Walks
 
+Abbiamo introdotto il PageRank descrivendolo come una sorta di fluido che circola nella rete
+- che viene iterativamente redistribuito fra i nodi, senza che ne venga alterata la quantità
 
+Il PageRank ha anche un’altra interpretazione, legata al concetto di ***random walk in un grafo*** (diretto $G=(V,A)$)
+- inizialmente scegliamo **u.a.r** un nodo $u$ del grafo
+- da $u$, scegliamo **u.a.r** un arco uscente da quel nodo, che ci condurrà ad un altro nodo dal quale sceglieremo **u.a.r** un arco uscente, e continuando in tal modo, percorreremo un *percorso aleatorio* nel grafo
 
+Per individuare la relazione fra PageRank e random walk, calcoliamo la probabilità di trovarsi in un qualsiasi nodo del grafo dopo un random walk di $k$ passi
+
+Per ogni $i\in V$, indichiamo con $W_i^{k}$ la variabile aleatoria il cui valore è :
+$$W_i^{k}=\begin{cases}1&\text{se al passo k ci troviamo nel nodo i}\\0&\text{altrimenti}\end{cases}$$
+
+Allora, per ogni $i\in V$ vale che: $$Pr(W_i^{0}=1)= \frac{1}{n}= f_i^{(0)}$$
+E, per ogni $i\in V$, detto $\omega_{j}$ il numero di archi uscenti dal nodo $j$, vale che:
+$$Pr(W_i^{1}=1)=\sum\limits_{j\in V:(j,i)\in A} \frac{1}{\omega_j}Pr(W_j^{0}=1)=\sum\limits_{j\in V:(j,i)\in A}\frac{f_j^{(0)}}{\omega_j}=f_i^{(1)}$$
+Induttivamente, per ogni $k\gt0$ e per ogni $i\in V$
+
+$$Pr(W_i^{k}=1)=\sum\limits_{j\in V:(j,i)\in A} \frac{1}{\omega_j}Pr(W_j^{k-1}=1)=\sum\limits_{j\in V:(j,i)\in A}\frac{f_j^{(k-1)}}{\omega_j}=f_i^{(k)}$$
 ### Scaled PageRank e Random Walks
+
+Cosideriamo ora un random walk scalato in un grafo diretto $G = (V,A)$ eseguito in accordo alle seguenti regole: sia $s \in [0,1]$
+- inizialmente scegliamo uniformemente a caso un nodo $u$ del grafo e, da $u$
+	- con probabilità $s$ scegliamo u.a.r un arco uscente da quel nodo
+	- e con probabilità $(1 – s)$ scegliamo u.a.r un altro nodo del grafo
+
+Per ogni $i \in V$, indichiamo con $SW_{i}^{k}$ la variabile aleatoria il cui valore è
+$$SW_i^{k}=\begin{cases}1&\text{se al passo k del nuovo RW scalato ci troviamo nel nodo i}\\0&\text{altrimenti}\end{cases}$$
+
+Allora, per ogni $i \in V$ vale che:
+$$Pr(SW_i^{0}=1)= \frac{1}{n}= r_i^{(0)}$$
+E, per ogni $k\gt0$ e $i\in V$, è semplice verificare che
+$$Pr(SW_i^{k}=1)=\sum\limits_{j\in V:(j,i)\in A} \frac{s}{\omega_j}Pr(SW_j^{k-1}=1)+\frac{1-s}{n}=r_i^{(k)}$$
 
 
 [^1]: nota a margine, la dimostrazione viene fatta per $h^{(k)}$, e per $a^{(k)}$ è del tutto analoga

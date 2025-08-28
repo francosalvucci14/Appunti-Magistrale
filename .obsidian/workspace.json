@@ -96,7 +96,7 @@
               "type": "outline",
               "state": {
                 "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
-                "followCursor": false,
+                "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -164,7 +163,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c4be1806528ec13",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250828152410.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250828152014.png",
