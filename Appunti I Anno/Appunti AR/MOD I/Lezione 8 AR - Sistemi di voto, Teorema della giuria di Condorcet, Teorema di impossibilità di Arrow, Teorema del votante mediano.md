@@ -231,7 +231,7 @@ A ciascun ranking $r_{h}$ possiamo associare una funzione peso che assegna un va
 - tipicamente la funzione peso è **decrescente nella posizione**
 
 In un sistema posizionale quindi, dopo aver associato una funzione peso $w_h$ al ranking $r_h$, per ogni $h\in[k]$, il ranking collettivo $r$ è ottenuto:
-- calcolando il peso totale di ciascuna alternativa come somma dei pesi che quella alternativa ha negli $h$ ranking, ovvero per ogni $a\in[n],w_(a)=\sum\limits_{1\leq h\leq k}w_h(a)$
+- calcolando il peso totale di ciascuna alternativa come somma dei pesi che quella alternativa ha negli $h$ ranking, ovvero per ogni $a\in[n],w(a)=\sum\limits_{1\leq h\leq k}w_h(a)$
 - e poi ordinando le alternative secondo il loro peso totale
 
 Il **Borda Count** è un particolare sistema di voto posizionale nel quale:
