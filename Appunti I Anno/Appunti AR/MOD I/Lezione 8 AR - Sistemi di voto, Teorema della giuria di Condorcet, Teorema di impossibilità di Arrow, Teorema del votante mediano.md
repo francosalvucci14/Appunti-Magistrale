@@ -604,7 +604,6 @@ Quindi, abbiamo che:
 2) per ogni alternativa $y=a_t$ con $t\lt m$ vale che $$|\{h\in[2k-1]: r_h(M_{k})\gt r_{h}(y)\}|\gt|\{h\in[2k-1]:r_h(y)\gt r_{h}(M_k)\}|$$
 3) E quindi, per ogni alternativa $y\in A\setminus\{M_{k}\}$ vale che $$|\{h\in[2k-1]: r_h(M_{k})\gt r_{h}(y)\}|\gt|\{h\in[2k-1]:r_h(y)\gt r_{h}(M_k)\}|\quad\quad\quad\quad\blacksquare$$
 
-
 [^1]: Ovvero, *assumendo* che gli altri giocatori rispondano *sinceramente* (in accordo ai loro segnali privati), le risposte degli altri due giocatori sono discordi quando uno di loro estrae una pallina verde, e quindi quando l'urna è $UV$
 
 [^2]: Se avessero votato onestamente secondo il ranking $\langle\text{IP,VV,PF}\rangle$ avrebbe vinto VV
