@@ -116,7 +116,7 @@ Osserviamo intanto che, ad ogni pagina, possiamo associare due indici:
 Potremmo pensare che il valore di autorità di una pagina $i$, che indichiamo con $a_{i}$ , sia il numero di pagine nell'insieme di pagine attinenti alla ricerca che puntano ad essa, ovvero detto in termini matematici, $$a_i=|\{j:j\text{ è attinente alla ricerca}\land j\to i\}|,\quad j\to i=\text{pagina j punta alla pagina i}$$
 Ora, se indichiamo con $M$ la matrice di adiacenza del sottografo del Web attinente alla ricerca, assumendo che contenga $n$ pagine, ovvero $$1\leq i,j\leq n,M[i,j]=\begin{cases}1&j\to i\\0&\text{altrimenti}\end{cases}$$
 allora possiamo scrivere $a_i$ come $$a_i=\sum\limits_{1\leq j\leq n}M[j,i]$$
-Analogamente, il valore di hub di una pagina $i$, indicato con $h_{i}$, potrebbe essere il numero di pagine nell'insieme delle pagine attinenti alla ricerca alle quali esse punta, ovvero in termini matematici $$h_i=|\{j:j\text{ è attinente alla ricerca}\land i\to j\}|,\quad j\to i=\text{pagina i punta alla pagina j}$$
+Analogamente, il valore di hub di una pagina $i$, indicato con $h_{i}$, potrebbe essere il numero di pagine nell'insieme delle pagine attinenti alla ricerca alle quali esse punta, ovvero in termini matematici $$h_i=|\{j:j\text{ è attinente alla ricerca}\land i\to j\}|,\quad i\to j=\text{pagina i punta alla pagina j}$$
 E quindi, rifacendo il discorso della matrice anche qui otteniamo che $$h_{i}=\sum\limits_{1\leq j\leq n}M[i,j]$$
 In realtà, possiamo raffinare l'idea appena illustrata osservando che:
 - il valore di autorità di una pagina è tanto più elevato quanto più autorevoli sono le pagine che la puntano
@@ -132,7 +132,7 @@ $$\begin{align*}
 
 C'è un piccolo problema, in generale all'inizio non si hanno informazioni circa il valore di hub delle pagine che si stanno considerando.
 
-In questo caso, possiamo assumenre che tali valori siano uguali per tutte le pagine, e quindi $$h_{j}^{(0)}=1\space\forall 1\leq i\leq n$$
+In questo caso, possiamo assumenre che tali valori siano uguali per tutte le pagine, e quindi $$h_{i}^{(0)}=1\space\forall 1\leq i\leq n$$
 Le due forme $$\begin{align*}
 &a_i^{(k+1)}=\sum\limits_{1\leq j\leq n}M[j,i]h_j^{(k)}\\&h_{i}^{(k+1)}=\sum\limits_{1\leq j\leq n}M[i,j]a_j^{(k+1)}
 \end{align*}$$
