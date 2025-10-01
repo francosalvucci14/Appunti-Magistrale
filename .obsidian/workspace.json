@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code/Lista Codici ML.md",
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 2.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lista Codici ML"
+              "title": "Lezione 2"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
-                "followCursor": true,
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 2.md",
+                "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano"
+              "title": "Outline of Lezione 2"
             }
           },
           {
@@ -166,8 +166,10 @@
   },
   "active": "0c4be1806528ec13",
   "lastOpenFiles": [
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 1.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 2.md",
     "Appunti II Anno/Appunti ML/Code/Lista Codici ML.md",
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/Code",
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Appunti II Anno/Appunti IR/Indice degli appunti IR.md",
@@ -206,11 +208,9 @@
     "Caparra Confirmatoria Citroën C1.md",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti ADRC/Lezione 15 ADRC - Ancora su Radio Networks, protocollo \"selettivo\" per Broadcast.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin.md",
     "Appunti I Anno/Appunti AR/MOD I/img",
     "Appunti I Anno/Appunti AR/MOD II",
     "Appunti I Anno/Appunti AR/MOD I",
-    "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
     "Appunti I Anno/Appunti CNS"
   ]
 }
