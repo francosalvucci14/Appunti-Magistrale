@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
+                "file": "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 1 ML - Foundamentals"
+              "title": "Indice degli appunti ML"
             }
           }
         ]
@@ -163,11 +163,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "0c7272c495411cac",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
     "Appunti II Anno/Appunti ML/ML_course_intro.pdf",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
-    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
     "Appunti I Anno/Appunti CYS/Lezione 1 CYS.md",
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
@@ -209,7 +209,6 @@
     "$/rho^{j}(x)=n-1$.md",
     "$",
     "Appunti I Anno/Appunti AR/MOD I/img",
-    "Appunti I Anno/Appunti AR/MOD II",
-    "Appunti I Anno/Appunti AR/MOD I"
+    "Appunti I Anno/Appunti AR/MOD II"
   ]
 }
