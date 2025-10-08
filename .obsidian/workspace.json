@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -164,7 +163,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c7272c495411cac",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti ISTI/Lezione 2.md",
     "Appunti I Anno/Appunti ISTI/Lezione 3.md",
