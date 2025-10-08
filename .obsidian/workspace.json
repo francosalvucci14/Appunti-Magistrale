@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 3.md",
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 4.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 3"
+              "title": "Lezione 4"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 3.md",
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 4.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 3"
+              "title": "Outline of Lezione 4"
             }
           },
           {
@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -163,13 +164,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "517fcc174d45e93e",
+  "active": "0c7272c495411cac",
   "lastOpenFiles": [
-    "README.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 2.md",
     "Appunti I Anno/Appunti ISTI/Lezione 3.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 4.md",
+    "README.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 1.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 2.md",
     "Appunti II Anno/Appunti ML/Code/Lista Codici ML.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/Code",
@@ -206,7 +208,6 @@
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr.md",
     "Caparra Confirmatoria Citroën C1.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti AR/MOD I/img",
     "Appunti I Anno/Appunti AR/MOD II",
     "Appunti I Anno/Appunti AR/MOD I",
