@@ -84,7 +84,14 @@ $$\begin{align*}
 
 per dimostrazione vedi appunti Salvi
 
-vedere poi esempio di applicazione di Jensen
+Vediamo ora un esempio di applicazione della **disuguaglianza di Jenses**
+
+Vediamo il caso in cui $r_2\gt r_1$
+
+In questo caso, abbiamo che $$X_{n}\to_{r_{2}}X\implies X_{n}\to_{r_{1}}X$$
+**dimostrazione**
+
+$$\mathbb E[X_{n}-X]^{r_{1}}\to0\iff(\mathbb E[X_{n}-X]^{r_{1}})^{\frac{r_{2}}{r_{1}}}\to0\underbrace{\leq}_{\text{per Jensen}}\mathbb E\left([X_{n}-X]^{r_{1}\frac{r_{2}}{r_{1}}}\right)\to0$$
 
 
 
