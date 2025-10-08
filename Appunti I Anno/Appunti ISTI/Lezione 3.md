@@ -40,6 +40,54 @@ Prendiamo la somma di v.a
 - Se moltiplichiamo per $\frac{1}{n}$ otteniamo la **legge dei grandi numeri**, quindi il caso $(2)$
 - Se moltiplichiamo per $\frac{1}{\sqrt{n}}$ otteniamo il **teorema del limite centrale**, quindi il caso $(3)$
 
+Vediamo un'altro esempio
+## Esempio 3
+
+Prendiamo $\mathcal E_{i}\sim N[0,1]$ i.i.d e prendiamo $$X_{n}=\sum\limits_{i=1}^ni^{\alpha}\mathcal E_{i}\quad\alpha\in\mathbb R$$
+Quello che dobbiamo calcolare ora è la varianza di $X_{n}$, infatti:
+$$Var(X_n)=\sum\limits_{i=1}^{n}i^{2\alpha}\sim\frac{n^{2\alpha+1}}{2\alpha+1}$$
+Ora, consideriamo $\beta=2\alpha$, e otteniamo che:
+- per $\beta=1\implies\frac{n(n+1)}{2}\sim\frac{n^2}{2}$
+- per $\beta=2\implies\frac{n(n+1)(2n+1)}{6}\sim\frac{n^3}{3}$
+- per $\beta=3\implies(\frac{n(n+1)}{2})^2\sim\frac{n^4}{4}$
+
+In generale, per ogni $\alpha\lt -\frac{1}{2}$ otteniamo
+$$\sum\limits_{i=1}^n \frac{1}{i}\sim\log(n)$$
+Vale quindi il seguente lemma
+
+>[!teorem]- Lemma 
+>Per ogni $\alpha\gt -\frac{1}{2}$ otteniamo che $$\sum\limits_{i=1}^{n}i^{2\alpha}\sim\frac{n^{2\alpha+1}}{2\alpha+1}$$
+
+Quindi, possiamo dire che:
+$$\begin{align*}
+X_n=\sum\limits_{i=1}^ni^{\alpha}\mathcal E_i&\to O_{p}\left(n^{\alpha+ \frac{1}{2}}\right)\space\forall\alpha\gt- \frac{1}{2}\\&\to O_p(1)\space\forall\alpha\lt- \frac{1}{2}\\&\to O_p\left(\sqrt{\log(n)}\right)\space\alpha=-\frac{1}{2}
+\end{align*}$$
+---
+# Seconda Parte : Teorema di Prohorov
+
+Ricordiamo prima di tutto l'enunciato del **teorema di Prohorov**
+
+>[!teorem]- Th. Prohorov
+>Prendiamo $X_n$ come sempre, allora $$X_n=O_{p}(1)\implies\exists X_{nk}\to_{d}X$$
+
+La domanda che ci poniamo è la seguente:
+
+Se $X_n\to X$ in qualche senso (es. convergenza in prob, in distribuzione, etc..) allora **è vero che** $F(X_{n})\to F(X)$ nello stesso senso.
+
+Per alcune convergenze questa cosa vale, ma per altre no, un esempio di queste è la **convergenza in media r-esima**
+
+Per dirlo, prendiamo $$X_n=\begin{cases}0&1- \frac{1}{n^{2}}\\n& \frac{1}{n^{2}}\end{cases}$$
+Così facendo, vale che $$\begin{align*}&X_n\to_p0\\&X_{n}\to_{c.c}0\end{align*}$$
+In media $r$-esima non vale, e lo vediamo con il seguente esempio di $X_{n}^{3}$
+
+$$X_{n}^{3}=\begin{cases}0&1- \frac{1}{n^{2}}\\ n^3& \frac{1}{n^{2}}\end{cases}\implies\mathbb E[(X_{n}-0)^{3}]=n\space\text{e quindi esplode}$$
+
+Vale quindi il seguente lemma:
+
+>[!teorem]- Lemma
+>1) $X_{n}\to_pX$ e $g$ continua allora $g(X_n)\to_pg(X)$ (**Lemma di Slutzky**)
+>2) $X_{n}\to_dX$ e $g$ continua allora $g(X_n)\to_dg(X)$ (**Continuos Mapping Theorem**)
+
 
 
 

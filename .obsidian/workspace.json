@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 3.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Indice degli appunti ISTI"
+              "title": "Outline of Lezione 3"
             }
           },
           {
@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -164,18 +163,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c7272c495411cac",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
+    "README.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 3.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 1.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 3.md",
     "Appunti I Anno/Appunti ISTI/Lezione 2.md",
     "Appunti II Anno/Appunti ML/Code/Lista Codici ML.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/Code",
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Appunti II Anno/Appunti IR/Indice degli appunti IR.md",
-    "README.md",
     "Appunti II Anno/Untitled.md",
     "Appunti II Anno/Appunti KE",
     "Appunti II Anno/Appunti IR",
