@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -164,12 +163,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "90edc667964d2b31",
+  "active": "0c7272c495411cac",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/img",
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251012190730.png",
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ML2025-2025_Lab1_Working_Environments_for_ML.pdf",
+    "Appunti II Anno/Appunti ML/Code-labs/lab1/ML_Lab1_1_2025_2026_Colab_DatasetSplit.ipynb",
+    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
     "Appunti I Anno/Appunti CYS/Lezione 1 CYS.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab1",
-    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/ML_course_intro.pdf",
@@ -208,9 +210,6 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164102.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164023.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826163821.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826163651.png",
-    "$/rho^{j}(x)=n-1$.md",
-    "$",
-    "Appunti I Anno/Appunti AR/MOD I/img"
+    "$/rho^{j}(x)=n-1$.md"
   ]
 }
