@@ -175,6 +175,9 @@ w_0\\w_1\\\vdots\\w_{d}
 1\\w_1\\\vdots\\x_{d}
 \end{bmatrix}$$
 
+Si osservi che, in questo caso, l'insieme delle funzioni $\mathcal H$ è l'insieme delle funzioni lineari $d + 1-$dimensionali, parametrizzate da $w_0, \dots, w_d$
+
+I $d+1$ valori $w_0, \dots, w_d$ vengono ***appresi*** da $\mathcal A$ dall'insieme di addestramento $\mathcal T$
 
 [^1]: In realtà, nei casi avanzati gli oggetti potrebbero avere strutture più complesse, come ad esempio sequenze o grafi
 
