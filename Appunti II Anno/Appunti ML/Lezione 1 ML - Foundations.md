@@ -9,7 +9,7 @@ includeLinks: true # Make headings clickable
 hideWhenEmpty: false # Hide TOC if no headings are found
 debugInConsole: false # Print debug info in Obsidian console
 ```
-# Foundamentals
+# Foundations
 
 Le fondamenta del ***Machine Learning*** (**apprendimento automatico**) risiedono nel nostro accesso a una raccolta di punti dati, ciascuno dei quali rappresenta l'osservazione dei valori di un insieme di variabili predefinite, generate da un processo sconosciuto. 
 

@@ -18,7 +18,7 @@ Questi appunti comprendono i corsi di :
 - Prof. Croce & Prof. Gambosi : Machine Learning (**ML**)
 - Prof. Stellato : Knowledge Engineering (**KE**)
 - Prof. Talamo & Prof. Dimitri (forse Alma?) : Cybersecurity-by-Design for critical infrastructures (**CBD**) *ex Sicurezza dei Sistemi Informativi*
-- Prof. Intrigila : Metodi di Verifica dei Sistemi (**MVS**)
+- Prof. Intrigila : Metodi di Verifica dei Sistemi (**MVS**) (forse Model-Based System Engineering OPPURE Crittografia)
 
 Da capire i nuovi corsi che sono: 
 - Big Data Analysis : Prof. Vocca

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
+                "file": "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 1 ML - Foundamentals"
+              "title": "Indice degli appunti ML"
             }
           }
         ]
@@ -166,8 +166,12 @@
   },
   "active": "0c7272c495411cac",
   "lastOpenFiles": [
-    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundamentals Part II.md",
-    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
+    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
+    "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
+    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
+    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
+    "README.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ml_lab1_1_2025_2026_colab_datasetsplit.py",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251013095103.png",
@@ -177,15 +181,12 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ML_Lab1_1_2025_2026_Colab_DatasetSplit.ipynb",
     "Appunti I Anno/Appunti CYS/Lezione 1 CYS.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab1",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/ML_course_intro.pdf",
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 1 ISTI.md",
     "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
-    "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti CYS",
-    "README.md",
     "Appunti II Anno/Appunti ML/Code/Lista Codici ML.md",
     "Appunti II Anno/Appunti ML/Code-labs",
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
@@ -205,7 +206,6 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250828152410.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250828152014.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250827151834.png",
-    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826165428.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164740.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164200.png",
