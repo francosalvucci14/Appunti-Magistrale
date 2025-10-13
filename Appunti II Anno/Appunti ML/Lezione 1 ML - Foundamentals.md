@@ -168,11 +168,11 @@ In questo caso, cercare una funzione in $\mathcal H_\overline{\theta}$ equivale 
 Un semplice esempio di questo approccio è la **regressione lineare**, in cui il valore previsto per l'elemento $\overline{x}$ viene calcolato come ***combinazione lineare*** dei valori delle sue features $x_1, x_2, \dots , x_d$ ciascuno ponderato da un parametro costante adeguato $w_1, w_2,\dots , w_d$, più un ***bias*** $w_{0}$.
 In altre parole, la previsione viene calcolata come: $$y=\sum\limits_{i=1}^{d}w_ix_i+w_{0}=\overline{w}^{T}\hat{x}$$
 Dove:
-- $\overline{w}$ è il vettore [^3] $$\begin{bmatrix}
+- $\overline{w}$ è il vettore [^3] $$\overline{w}=\begin{bmatrix}
 w_0\\w_1\\\vdots\\w_{d}
 \end{bmatrix}$$
-- $\hat{x}$ è il vettore $$\begin{bmatrix}
-1\\w_1\\\vdots\\x_{d}
+- $\hat{x}$ è il vettore $$\hat{x}=\begin{bmatrix}
+1\\x_1\\\vdots\\x_{d}
 \end{bmatrix}$$
 
 Si osservi che, in questo caso, l'insieme delle funzioni $\mathcal H$ è l'insieme delle funzioni lineari $d + 1-$dimensionali, parametrizzate da $w_0, \dots, w_d$
