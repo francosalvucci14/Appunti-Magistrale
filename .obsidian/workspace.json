@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false,
                 "backlinks": false
               },
@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -165,6 +166,7 @@
   },
   "active": "0c7272c495411cac",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251013095103.png",
     "Appunti II Anno/Appunti ML/img",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251012190730.png",
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ML2025-2025_Lab1_Working_Environments_for_ML.pdf",
@@ -191,7 +193,6 @@
     "Appunti II Anno/Appunti IR",
     "Appunti II Anno/Appunti ML",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
-    "Appunti II Anno",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",

@@ -107,7 +107,7 @@ Questo approccio è particolarmente utile per definire ***modelli generativi*** 
 
 Un task di Machine Learning è definita su una coppia di domini:
 
-- **Domain Set** $\mathcal X$: Si tratta dell'insieme di oggetti che desideriamo etichettare o su cui desideriamo fare previsioni. Ogni oggetto $\overline{x}\in\mathcal X$ è solitamente **modellato come un array di feature**[^1]. Il numero di caratteristiche è indicato come **dimensionalità** del problema. Formalmente, possiamo quindi rappresentare un oggetto come $\overline{x} = [x_1, x_2, \dots, x_d]$, dove $d$ è la dimensionalità.
+- **Domain Set** $\mathcal X$: Si tratta dell'insieme di oggetti che desideriamo etichettare o su cui desideriamo fare previsioni. Ogni oggetto $\overline{x}\in\mathcal X$ è solitamente **modellato come un array di feature** [^1] . Il numero di caratteristiche è indicato come **dimensionalità** del problema. Formalmente, possiamo quindi rappresentare un oggetto come $\overline{x} = [x_1, x_2, \dots, x_d]$, dove $d$ è la dimensionalità.
 - **Label Set** $\mathcal Y$: Si tratta dell'insieme dei possibili valori delle etichette associate agli oggetti in $\mathcal X$ . La natura di $\mathcal Y$ determina il tipo di attività di apprendimento:
 	- Se $\mathcal Y$ è ***continuo***, siamo di fronte a un task di **regressione**
 	- Se $\mathcal Y$ è ***discreto***, siamo di fronte a un task di **classificazione**:
@@ -116,13 +116,13 @@ Un task di Machine Learning è definita su una coppia di domini:
 
 Il **learner** (un **algoritmo** $\mathcal A$) ha accesso a un *set di addestramento* (***Training Set***) $\mathcal T$, ovvero una collezione di coppie elementi-etichette fatto in questo modo: $$\mathcal T = \{(\overline{x}_1, t_1), \dots , (\overline{x}_n, t_n)\}$$
 Di solito indicheremo con $X$ la matrice degli elementi (***matrice delle feature***), ovvero
-$$X=\left(\begin{align*}
--&\overline{x}_{1}-\\&\vdots\\-&\overline{x}_{n}-
-\end{align*}\right)$$
+$$X=\begin{bmatrix}
+-\overline{x}_{1}-\\\vdots\\-\overline{x}_{n}-
+\end{bmatrix}$$
 e come $\overline{t}$ il vettore delle etichette (***vettore target***), ovvero
-$$\overline{t}=\left(\begin{align*}
-&t_{1}\\&\vdots\\&t_{n}
-\end{align*}\right)$$
+$$\overline{t}=\begin{bmatrix}
+t_{1}\\\vdots\\t_{n}
+\end{bmatrix}$$
 
 Al learner viene richiesto di restituire, per un dato training set $\mathcal T$, una **regola di previsione** (***classificatore, regressore***) $$\mathcal A = \mathcal A(\mathcal T) = h : \mathcal X \to \mathcal Y$$
 Il predittore dovrebbe essere in grado di generare una previsione $y$ per qualsiasi elemento $x\in \mathcal X$ : ciò può essere fatto secondo diversi approcci.
@@ -155,10 +155,29 @@ Questo metodo, spesso denominato approccio basato sul modello (***Model-Based Le
 1) Definiamo una classe di funzioni $\mathcal H : \mathcal X\to\mathcal Y$
 2) Impieghiamo un algoritmo di apprendimento $\mathcal A$ che derivi una funzione specifica $h_{T}\in\mathcal H$ dal training set $\mathcal T$ . Cioè, $\mathcal A$ implementa una funzione da $\mathcal T$ a $\mathcal H$
 
-L'idea, in questo caso, è che $\mathcal A$ trovi la funzione in $\mathcal H$ (ovvero un algoritmo $\mathcal A_{\mathcal T}$ che implementa questa funzione) che “meglio” preveda $y$ da $\overline{x}$ quando applicata agli esempi in $\mathcal T$, ovvero che preveda al meglio $t_{i}$ da $x_i$ per tutte le coppie $(x_i, t_i)\in\mathcal T$
+L'idea, in questo caso, è che $\mathcal A$ trovi la funzione in $\mathcal H$ (ovvero un algoritmo $\mathcal A_{\mathcal T}$ che implementa questa funzione) che "meglio" [^2] preveda $y$ da $\overline{x}$ quando applicata agli esempi in $\mathcal T$, ovvero che preveda al meglio $t_{i}$ da $x_i$ per tutte le coppie $(x_i, t_i)\in\mathcal T$
 
 Per ogni nuovo elemento $\overline{x}$, il valore target corrispondente viene calcolato come $h_{\mathcal T} (\overline{x})$, ovvero applicando $A_{\mathcal T}$ all'input $\overline{x}$.
 
-Come vedremo, un caso rilevante qui è quando H è un insieme di funzioni parametriche (indicato come Hθ, dove θ = (θ1, . . . , θm) è l'insieme dei parametri) con la stessa struttura e che differiscono tra loro per i valori dei parametri in θ. In questo caso, cercare una funzione in Hθ equivale a cercare un valore per (θ1, . . . , θm).
+Come vedremo, un caso rilevante qui è quando $\mathcal H$ è un insieme di funzioni parametriche (indicato come $\mathcal H_\overline{\theta}$, dove $\overline{\theta} = (\theta_1,\dots , \theta_m)$ è l'insieme dei parametri) con la stessa struttura e che differiscono tra loro per i valori dei parametri in $\overline{\theta}$.
+
+In questo caso, cercare una funzione in $\mathcal H_\overline{\theta}$ equivale a cercare un valore per $(\theta_1,\dots , \theta_m)$.
+
+![[Pasted image 20251013095103.png|center|500]]
+
+Un semplice esempio di questo approccio è la **regressione lineare**, in cui il valore previsto per l'elemento $\overline{x}$ viene calcolato come ***combinazione lineare*** dei valori delle sue features $x_1, x_2, \dots , x_d$ ciascuno ponderato da un parametro costante adeguato $w_1, w_2,\dots , w_d$, più un ***bias*** $w_{0}$.
+In altre parole, la previsione viene calcolata come: $$y=\sum\limits_{i=1}^{d}w_ix_i+w_{0}=\overline{w}^{T}\hat{x}$$
+Dove:
+- $\overline{w}$ è il vettore [^3] $$\begin{bmatrix}
+w_0\\w_1\\\vdots\\w_{d}
+\end{bmatrix}$$
+- $\hat{x}$ è il vettore $$\begin{bmatrix}
+1\\w_1\\\vdots\\x_{d}
+\end{bmatrix}$$
+
 
 [^1]: In realtà, nei casi avanzati gli oggetti potrebbero avere strutture più complesse, come ad esempio sequenze o grafi
+
+[^2]: Si noti che è necessario specificare cosa si intende per “migliore” in questo contesto, ovvero quale misura di qualità della previsione applicare.
+
+[^3]: In generale, tutti i vettori introdotti di seguito saranno considerati vettori colonna.
