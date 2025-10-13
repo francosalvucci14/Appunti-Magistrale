@@ -58,7 +58,7 @@ Per ottenere questo risultato, utilizziamo un approccio generale che prevede la 
 
 Questo modello è derivato attraverso un processo di apprendimento da una serie di esempi che illustrano la relazione tra l'insieme delle features e il target. 
 
-Gli esempi sono raccolti in un training set $\mathcal T = (X, t)$ e ciascuno di essi comprende:
+Gli esempi sono raccolti in un training set $\mathcal T = (\mathcal X, t)$ e ciascuno di essi comprende:
 - Un vettore di caratteristiche $x_i = \{x_{i_1},\dots , x_{i_m}\}$
 - Il valore target corrispondente $t_i$
 
@@ -74,7 +74,7 @@ L'approccio function-based offre previsioni dirette, mentre il modello probabili
 In entrambi i casi, il modello funge da ponte tra le features osservate e il target che intendiamo prevedere, sfruttando i modelli e le relazioni appresi dai dati di addestramento per fare previsioni informate su nuovi casi non ancora osservati.
 ## Unsupervised Learning
 
-L'obiettivo è quello di rilevare modelli e strutture intrinseche all'interno di una determinata raccolta di elementi, nota come **dataset** $X = \{x_1, \dots , x_n\}$, dove nessun valore target è associato agli elementi, al fine di estrarre informazioni sintetiche da tali dati. 
+L'obiettivo è quello di rilevare modelli e strutture intrinseche all'interno di una determinata raccolta di elementi, nota come **dataset** $\mathcal X = \{x_1, \dots , x_n\}$, dove nessun valore target è associato agli elementi, al fine di estrarre informazioni sintetiche da tali dati. 
 
 Le informazioni sintetiche che cerchiamo di estrarre possono assumere diverse forme:
 1) **Clustering**: Identificazione di sottoinsiemi di elementi simili all'interno del set di dati. Questo processo comporta il raggruppamento dei punti dati in base alle loro somiglianze intrinseche, rivelando strutture o segmenti naturali nei dati.
