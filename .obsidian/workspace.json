@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Indice degli appunti ML"
+              "title": "Lezione 2 ML - Foundations Part II"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundamentals.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 1 ML - Foundamentals"
+              "title": "Outline of Lezione 2 ML - Foundations Part II"
             }
           },
           {
@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -166,9 +165,10 @@
   },
   "active": "0c7272c495411cac",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251014102318.png",
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
     "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "README.md",
@@ -210,7 +210,6 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164740.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164200.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164102.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164023.png",
-    "$/rho^{j}(x)=n-1$.md"
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164023.png"
   ]
 }
