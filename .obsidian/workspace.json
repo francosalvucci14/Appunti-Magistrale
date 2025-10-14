@@ -95,13 +95,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 2 ML - Foundations Part II"
+              "title": "Outline"
             }
           },
           {
@@ -129,7 +128,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -163,14 +163,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c7272c495411cac",
+  "active": "fc440c48f0745f72",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251014102318.png",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
-    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "README.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ml_lab1_1_2025_2026_colab_datasetsplit.py",
@@ -209,7 +209,6 @@
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826165428.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164740.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164200.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164102.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164023.png"
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164102.png"
   ]
 }

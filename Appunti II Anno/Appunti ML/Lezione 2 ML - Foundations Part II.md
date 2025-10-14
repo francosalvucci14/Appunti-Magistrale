@@ -54,7 +54,36 @@ I tre approcci che abbiamo visto quindi si differenziano su vari aspetti, ovvero
 --- 
 # Framework Probabilistici per il ML
 
+Ci sono sostanzialmente due **framework probabilistici** per il ML, che sono:
+1) ***Training Object Generation Model***: Postuliamo che gli oggetti nel training set siano campionati da $\mathcal X$ secondo una **distribuzione di probabilità (marginale) sconosciuta** $p_M$. Formalmente, per qualsiasi $\overline{x} \in\mathcal X , p_M(\overline{x})$ rappresenta la probabilità che $\overline{x}$ sia il nuovo oggetto campionato nel training set
+2) ***Training Target Generation Model***: Nel caso generale, si presume che le etichette associate agli elementi nel training set siano generate secondo una distribuzione di probabilità $p_C$, condizionata da $\mathcal X$ . Nello specifico, per ogni $t \in\mathcal Y, p_C(t|\overline{x})$ indica la probabilità che l'etichetta osservata dell'oggetto $\overline{x}$ nel training set sia $t$: ciò equivale a ipotizzare una **distribuzione congiunta** $p(\overline{x}, t) = p_M(\overline{x})p_C(t|\overline{x})$ per la generazione di coppie elemento-target. Per semplicità, inizialmente ipotizziamo una *relazione deterministica tra oggetti ed etichette*, rappresentata da una funzione sconosciuta $f$ tale per cui $t=f(\overline{x})$
 
+Concentrandosi sull'approccio model-based descritto in precedenza, emergono diversi concetti chiave:
 
+1) La qualità di un predittore $h$, come quello restituito dall'apprenditore, viene valutata in termini di ***rischio***. Per qualsiasi elemento $\overline{x}\in\mathcal X$ , l'*errore* di $h$ quando applicato a $\overline{x}$ deriva dal confronto tra la sua previsione $h(\overline{x})$ e l'etichetta target corretta $t$. Questo confronto viene quantificato utilizzando una funzione predefinita, chiamata ***loss function***, fatta in questo modo: $$L : \mathcal Y\times\mathcal Y\to\mathbb R$$
+2) L'*errore* di una previsione $y = h(\overline{x})$ viene quindi definito in termini di **rischio di previsione**, dato dall'applicazione della funzione loss:$$\mathcal R_{f}(y,\overline{x})=L(y,f(\overline{x}))$$
+3) Nel caso più generale, in cui si ipotizza solo una relazione probabilistica $p_C(y|\overline{x})$ (anziché una funzione $f$ ) tra un elemento e la sua etichetta corrispondente, il rischio di previsione corrisponde all'aspettativa della funzione loss rispetto a questa distribuzione, ovvero:$$\mathcal R_{p_{C}}(y,\overline{x})=\mathbb E_{t\sim p_{C}(\cdot|\overline{x})}[L(y,t)]=\int_{\mathcal Y}L(y,t)\cdot p_{C}(t|\overline{x})dt$$
+4) Per i task di classificazione, questo diventa$$\mathcal R_{p_{C}}(y,\overline{x})=\mathbb E_{t\sim p_{C}(\cdot|\overline{x})}[L(y,t)]=\sum\limits_{t\in\mathcal Y}L(y,t)\cdot p_{C}(y|\overline{x})$$
+Di seguito, faremo talvolta riferimento al caso più semplice di un task di classificazione binaria, dove $\mathcal Y = \{0, 1\}$, con la funzione loss $0-1$, e quindi $$L(y,t)=\mathbb 1[y\neq t]$$che ritorna $1$ se gli argomenti differiscono, $0$ altrimenti
+
+Questo quadro probabilistico fornisce una base rigorosa per comprendere e valutare i modelli di apprendimento automatico, tenendo conto sia dell'incertezza intrinseca nella generazione dei dati sia delle prestazioni degli algoritmi predittivi.
 ## Rischio Empirico e Rischio Atteso
+
+L'*errore* di un predittore $h$ è definito in termini di loss attesta su tutti gli oggetti nell'insieme $\mathcal X$, ovvero:
+$$\mathcal R_{p_{M},f}(h)=\mathbb E_{x\sim p_{M}}[\mathcal R_{f}(h(\overline{x}),\overline{x})]=\mathbb E_{x\sim p_{M}}[L(h(\overline{x}),f(\overline{x}))]\int_{\mathcal X}L(h(\overline{x}),f(\overline{x}))\cdot p_{M}(\overline{x})d\overline{x}$$
+E nel caso generale, vale che $$\mathcal R_{p}(h)=\mathbb E_{(x,y)\sim p}[L(h(\overline{x}),t)]=\int_{\mathcal X}\int_{\mathcal Y}L(h(\overline{x}),t)\cdot p_{M}(\overline{x})\cdot p_{C}(t|\overline{x})d\overline{x}dt$$
+Nel caso della funzione loss $0-1$, questa è solo la probabilità di una previsione errata in un elemento o coppia campionati casualmente, rispettivamente, ovvero:
+$$\mathcal R_{p_{M},f}=\mathbb E_{x\sim p_{M}}[\mathbb 1[h(\overline{x})\neq f(\overline{x})]]=Pr_{x\sim p_M}[h(\overline{x})\neq f(\overline{x})]]$$
+oppure
+$$\mathcal R_{p}=\mathbb E_{(x,t)\sim p}[\mathbb 1[h(\overline{x})\neq t]]=Pr_{(x,t)\sim p}[h(\overline{x})\neq t]$$
+Dato che $p_{M}$ e $f$ (oppure $p$) sono sconosciute, il rischio può solo essere stimato partendo dai dati disponibili (ovvero il training set $\mathcal T$)
+Questo porta alla definizione di **rischio empirico** $\overline{\mathcal R}_{\mathcal T}(h)$, che prevede una stima dell'aspettazione della funzione loss, definita come la loss media sul training set, ovvero: 
+$$\overline{\mathcal R}_{\mathcal T}=\frac{1}{|\mathcal T|}\sum\limits_{(x,y)\in\mathcal T}L(h(\overline{x}),t)$$
+Nel caso della loss $0-1$, questa è la frazione degli elementi di $\mathcal T$ che sono mal classifcati da $h$, ovvero: 
+$$\overline{\mathcal R}_{\mathcal T}=\frac{1}{|\mathcal T|}\sum\limits_{(x,y)\in\mathcal T}\mathbb 1[h(\overline{x})\neq t]=\frac{|\{(\overline{x},t)\in\mathcal T:h(\overline{x})\neq t\}|}{|\mathcal T|}$$
+
+In questo modo, un problema di apprendimento viene ridotto a un ***problema di minimizzazione*** in uno spazio funzionale $\mathcal H$, l'insieme di tutti i possibili predittori $h$.
+$$h_{\mathcal T}=\min_{h\in\mathcal H}\overline{\mathcal R}_{\mathcal T}(h)$$
+Qui, $\mathcal H$ è l'insieme delle ***ipotesi*** o ***bias induttivo***
+
 ### Problemi con il Bias Induttivo
