@@ -4,4 +4,5 @@ Inferenza Statistica e Teoria dell'informazione
 - [[Lezione 2 ISTI]]
 - [[Lezione 3 ISTI]]
 - [[Lezione 4 ISTI]]
+- [[Lezione 5 ISTI]]
 - 
