@@ -40,3 +40,42 @@ $\blacksquare$
 **dimostrazione**
 
 Scegliamo $\varepsilon=1\implies\exists M=M_{\varepsilon}$ tale che $$\sup_{i}\mathbb E[|X_{i}|\mathbb 1_{[|X_{i}|\gt M]}]\leq\varepsilon$$
+Quindi, possiamo riscrivere $$\mathbb E[|X_{i}|]=\underbrace{\mathbb E[|X_i|\mathbb 1_{[|X_{i}|\leq M]}]}_{\leq M_{\varepsilon}}+\underbrace{\mathbb E[|X_i|\mathbb 1_{[|X_{i}|\gt M]}]}_{\leq\varepsilon\space\text{per ipotesi}}\leq M_{\varepsilon}+\varepsilon\space\blacksquare$$
+Passiamo ora a una variante della **Legge dei Grandi Numeri**
+
+>[!teorem]- LGN senza varianza finita
+>Sia $\{X_{i}\}_{i\in\mathbb N}$ una sequenza di v.a UI e indipendenti.
+>Per semplicità assumiamo che $\mathbb E[X_{i}]=0$
+>Allora vale la seguente:
+>$$\overline{X}_{n}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}\to_{1}0$$
+>E nello specifico, $\overline{X}_{n}\to_{p}0$
+
+**dimostrazione**
+
+Spezziamo $X_{i}$ in due parti, ottenendo $$X_i=X_{i}^{'}+X_{i}^{''},\space X_{i}^{'}=X_{i}\mathbb 1_{[|X_{i}|\leq M]}\land X_{i}^{''}=X_{i}\mathbb 1_{[|X_{i}|\gt M]}$$
+In questo modo, otteniamo che 
+$$\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}=\overbrace{\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}^{'}-\mathbb E[X_{i}^{'}])}^{(A)}+\overbrace{\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}^{''}-\mathbb E[X_{i}^{''}])}^{(B)}$$
+Ricordiamo che $\mathbb E[X_i]=0$, ma non è detto che $\mathbb E[X_{i}^{'}]=0$ oppure $\mathbb E[X_{i}^{''}]=0$, sappiamo solo che $\mathbb E[X_{i}^{'}]+\mathbb E[X_{i}^{''}]=0$ 
+
+Il punto $(A)$ è semplicemente la media aritemita di variabili aleatorie con valor medio nullo e varianzia uniformemente limitata da $M^2$, quindi va a zero in media quadratica per la legge dei grandi numeri di Chebychev.
+
+Per il punto $(B)$ possiamo riscrivere la situazione così: 
+$$\begin{align*}
+\mathbb E\left[\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}^{''}-\mathbb E[X_{i}^{''}])\right]\leq \frac{1}{n}\mathbb E\left[\sum\limits_{i=1}^{n}(X_{i}^{''}-\mathbb E[X_{i}^{''}])\right]\leq\frac{2}{n}\sum\limits_{i=1}^{n}\mathbb E[X_{i}^{''}]\leq\frac{2}{n}n\varepsilon=2\varepsilon
+\end{align*}$$
+E questo $\varepsilon$ lo possiamo rendere piccolo a piacere, così facendo otteniamo che anche $(B)\to0\quad\blacksquare$ 
+La nozione di UI può essere usata anche per invertire la freccia $(3)\implies(2)$ 
+
+Vale quindi la seguente proposizione
+
+>[!teorem]- Proposizione
+>Sia $\{X_{n}\}$ una sequenza di v.a UI con $X_{n}\to_{p}X$, allora $$X_{n}\to_{1}X$$
+
+**dimostrazione**
+
+Riscriviamo il tutto come:
+$$\mathbb E[|X_{n}-X|]\leq \mathbb E[|X_{n}|\mathbb 1_{[|X_{n}|\leq M]}-X_{n}]+\mathbb E[|X|\mathbb 1_{[|X|\leq M]}-X]+\mathbb E[|X_{n}|\mathbb 1_{[|X_{n}|\leq M]}-X\mathbb 1_{[|X|\leq M]}]$$
+Il primo elemento può essere reso piccolo a piacere, grazie alla condizione UI
+Il secondo elemento anchè però qui grazie al fatto che $X$ ha necessariamente valor medio finito
+Il terzo elemento anche perchè abbiamo a che fare con variabili limitate che convergono in probabilità
+
