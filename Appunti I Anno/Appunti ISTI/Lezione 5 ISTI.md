@@ -70,3 +70,12 @@ $$
 
 *Limite Inferiore* : vale che
 
+$$
+\begin{align*}
+Pr(Z\geq t)&=\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx\\&\geq\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}\frac{x^{4}+2x^{2}-1}{x^{4}+2x^{2}+1}e^{-\frac{x^{2}}{2}}dx\\&=\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}\frac{x^{2}(x^{2}+1)+x^{2}-1}{(x^{2}+1)^{2}}e^{-\frac{x^{2}}{2}}dx\\&=\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}\left(\frac{x^{2}}{x^{2}+1}+\frac{x^{2}-1}{(x^{2}+1)^{2}}\right)e^{-\frac{x^{2}}{2}}dx
+\end{align*}
+$$
+
+Prendiamo ora $\psi(x)=\frac{x}{x^{2}+1}e^{-\frac{x^{2}}{2}}$, e concludiamo sfruttando il **Teorema Fondamentale del Calcolo integrale** [^1] $\blacksquare$  
+
+[^1]: https://it.wikipedia.org/wiki/Teorema_fondamentale_del_calcolo_integrale
