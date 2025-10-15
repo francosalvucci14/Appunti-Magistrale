@@ -78,4 +78,6 @@ $$\mathbb E[|X_{n}-X|]\leq \mathbb E[|X_{n}|\mathbb 1_{[|X_{n}|\leq M]}-X_{n}]+\
 Il primo elemento può essere reso piccolo a piacere, grazie alla condizione UI
 Il secondo elemento anchè però qui grazie al fatto che $X$ ha necessariamente valor medio finito
 Il terzo elemento anche perchè abbiamo a che fare con variabili limitate che convergono in probabilità
+$\blacksquare$
+
 

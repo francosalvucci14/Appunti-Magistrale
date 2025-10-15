@@ -87,3 +87,43 @@ $$h_{\mathcal T}=\min_{h\in\mathcal H}\overline{\mathcal R}_{\mathcal T}(h)$$
 Qui, $\mathcal H$ è l'insieme delle ***ipotesi*** o ***bias induttivo***
 
 ### Problemi con il Bias Induttivo
+
+La scelta dell'insieme di ipotesi è una questione importante nel ML. In particolare, potremmo chiederci: 
+- qual è l'effetto della struttura e delle dimensioni di $\mathcal H$?
+- come definire H in modo tale da rendere fattibile il calcolo di $h_{\mathcal T}$? 
+
+Per quanto riguarda la scelta della classe di ipotesi $\mathcal H$, essa può essere vista come il riflesso di alcune conoscenze preliminari che l'apprenditore ha riguardo al compito, nella convinzione che uno dei membri della classe $\mathcal H$ sia un predittore a basso errore per il compito.
+
+Un modo banale per perseguire l'obiettivo di derivare predittori con un rischio minimo sarebbe quello di definire una classe molto ricca, cioè supponendo che molte funzioni possibili appartengano a $\mathcal H$: come limite, $\mathcal H$ potrebbe essere definito semplicemente come l'insieme di tutte le funzioni $f : \mathcal X \to\mathcal Y$.
+
+Questo approccio, tuttavia, può facilmente causare problemi.
+
+Supponiamo, infatti, un problema di classificazione binaria con training set $\mathcal T = (\mathcal X, t)$, con loss $0/1$, definita come segue
+$$L(y,t)=\begin{cases}
+0&y=t\\1&\text{altrimenti}
+\end{cases}$$
+Così facendo, la perdita è pari a $1$ se l'elemento è classificato erroneamente, altrimenti è pari a $0$ 
+Di conseguenza, il *rischio* è il **numero atteso di errori di classificazione**, mentre il *rischio empirico* è la **frazione di elementi nel training set che sono classificati erroneamente**.
+
+Supponiamo inoltre che $p_C(t = 1|\overline{x}) = \frac{1}{2} \forall\space\overline{x}\in\mathcal X$ , ovvero che le due classi abbiano la stessa dimensione nella popolazione.
+
+Consideriamo la funzione di classificazione definita come:
+$$h_{\mathcal T}(\overline{x})=\begin{cases}
+1&\overline{x}=\overline{x}_i\in\mathcal X,t_{i}=1\\0&\text{altrimenti}
+\end{cases}$$
+ovvero un predittore che assegna alla classe $1$ tutti gli elementi etichettati come $1$ nel training set, mentre tutti gli altri elementi vengono classificati come $0$.
+
+Chiaramente, il rischio empirico qui è $0$ per definizione, ma il rischio generale è $\approx \frac{1}{2}$ 
+
+Quando viene applicato a un set di dati campionato casualmente dalla popolazione, la qualità di $h_{\mathcal T}$ è la stessa di una funzione che assegna casualmente gli elementi alle classi.
+
+Questo fenomeno è chiamato **overfitting**: il metodo di classificazione funziona bene sul set di addestramento, ma male su altri elementi della popolazione.
+
+Tuttavia, se $\mathcal H$ è molto piccolo, può accadere che nessun predittore di questo set sia in grado di fornire un rischio accettabilmente piccolo.
+
+Riassumendo, si possono fare le seguenti considerazioni generali per quanto riguarda la dimensione di $\mathcal H$.
+1) Se $\mathcal H$ è troppo grande (complesso), può verificarsi un **overfitting**: può essere disponibile una funzione che si comporta molto bene sul training set , ma che tuttavia ha prestazioni scadenti sui nuovi dati
+2) Se $\mathcal H$ è troppo piccolo (semplice), può verificarsi un **underfitting**: in $\mathcal H$ non è disponibile alcuna funzione che si comporti in modo soddisfacente, sia sul training set che sui nuovi set di dati.
+
+Ciò è correlato al cosiddetto **compromesso tra bias e varianza**.
+
