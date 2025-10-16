@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
+                "file": "Appunti I Anno/Appunti CYS/Lezione 1 CYS.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 2 ML - Foundations Part II"
+              "title": "Lezione 1 CYS"
             }
           }
         ]
@@ -88,6 +88,7 @@
       {
         "id": "19648d604a047d14",
         "type": "tabs",
+        "dimension": 57.89473684210527,
         "children": [
           {
             "id": "517fcc174d45e93e",
@@ -95,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
+                "file": "Appunti I Anno/Appunti CYS/Lezione 1 CYS.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 5 ISTI"
+              "title": "Outline of Lezione 1 CYS"
             }
           },
           {
@@ -129,12 +130,12 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
         "type": "tabs",
+        "dimension": 42.10526315789473,
         "children": [
           {
             "id": "fc440c48f0745f72",
@@ -164,14 +165,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c7272c495411cac",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
-    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Untitled.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251014102318.png",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
