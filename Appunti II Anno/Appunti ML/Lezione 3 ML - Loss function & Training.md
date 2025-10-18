@@ -80,6 +80,9 @@ Una funzione $f (x)$ è convessa se e solo se l'insieme dei punti che giacciono 
 $$f(\lambda x_1+(1-\lambda)x_{2})\leq\lambda f(x_{1})+(1-\lambda)f(x_{2})$$
 è strettamente convessa se vale che 
 $$f(\lambda x_1+(1-\lambda)x_{2})\lt\lambda f(x_{1})+(1-\lambda)f(x_{2})$$
+
+![[Pasted image 20251018101118.png|center|400]]
+
 Supporre che la funzione di loss complessiva $\mathcal L(\theta; \mathcal T )$ sia convessa è una semplificazione rilevante: se $f (x)$ è una funzione convessa, allora qualsiasi minimo locale di $f$ è anche un minimo globale.
 Inoltre, se $f$ è una funzione strettamente convessa, esiste un solo minimo locale per $f$ (ed è globale).
 
