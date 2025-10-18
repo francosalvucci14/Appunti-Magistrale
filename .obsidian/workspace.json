@@ -96,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 5 ISTI"
+              "title": "Outline of Lezione 3 ML - Loss function & Training"
             }
           },
           {
@@ -170,18 +170,21 @@
   "lastOpenFiles": [
     "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
-    "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
+    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251018093538.png",
+    "Appunti II Anno/Appunti ML/Code-labs/lab1/ml_lab1_2_2025_2026_mnist_neuralnetwork.py",
+    "Appunti II Anno/Appunti ML/Code-labs/lab1/ML_Lab1_2_2025_2026_MNIST_NeuralNetwork.ipynb",
     "Appunti I Anno/Appunti CYS/Lezione 1 CYS.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
+    "Untitled.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
+    "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
-    "Untitled.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251014102318.png",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
-    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
     "README.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ml_lab1_1_2025_2026_colab_datasetsplit.py",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251013095103.png",
@@ -199,20 +202,16 @@
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Appunti II Anno/Appunti IR/Indice degli appunti IR.md",
     "Appunti II Anno/Untitled.md",
-    "Appunti II Anno/Appunti KE",
-    "Appunti II Anno/Appunti IR",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 5 AR - Reti come grafi a struttura disomogenea, Esperimento di Granovetter, Proprietà della chiusura triadica forte, Comunità.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 4 AR - Il fenomeno Small World, modello di Watts-Strogatz e ricerca decentralizzata.md",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250828152410.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250828152014.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250827151834.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826165428.png",
     "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164740.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164200.png",
-    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164102.png"
+    "Appunti I Anno/Appunti AR/MOD I/img/Pasted image 20250826164200.png"
   ]
 }
