@@ -1,0 +1,3 @@
+- [[Lezione 1 KE - Open Data]]
+- [[Lezione 2 KE - Semantic Web]]
+- 
