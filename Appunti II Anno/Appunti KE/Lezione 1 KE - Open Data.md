@@ -98,7 +98,7 @@ Si può riassumere con la seguente affermazione:
 
 Più succintamente:
 
-“I dati e i contenuti aperti possono essere **liberamente utilizzati, modificati e condivisi** da chiunque per qualsiasi scopo”.
+"I dati e i contenuti aperti possono essere **liberamente utilizzati, modificati e condivisi** da chiunque per qualsiasi scopo".
 
 
 [^1]: http://www.merriam-webster.com/dictionary/data
@@ -106,14 +106,67 @@ Più succintamente:
 [^2]: http://www.merriam-webster.com/dictionary/open
 
 [^3]: http://opendefinition.org/
-
-# Riutilizzo dei dati
+## Riutilizzo dei dati
 
 La Direttiva 2013/37/UE [^4] definisce il **riutilizzo** come l'uso di documenti detenuti da enti pubblici da parte di persone fisiche o giuridiche a fini commerciali o non commerciali diversi dallo scopo iniziale nell'ambito dei compiti di servizio pubblico per i quali i documenti sono stati prodotti
 
 >[!cite]- Parole Chiave: Riutilizzo
->Chi si occupa di informazione del settore pubblico parla spesso di “riutilizzo” (o “riuso”), anziché di “utilizzo” (o “uso”). La scelta del termine riutilizzo sottolinea il fatto che stiamo parlando di **usi diversi e ulteriori, rispetto all'uso istituzionale, per cui il dato è stato raccolto o generato dalla PA. Il riutilizzo va anche chiaramente distinto dal mero accesso**. Ciò che interessa non è solo la possibilità di accedere ai dati; approcci tipo “guardare, ma non toccare”, infatti, non facilitano la vita degli sviluppatori e la creazione di servizi utili ai cittadini. Poter vedere i dati è solo il primo passo per poterli acquisire e poi finalmente riutilizzare, cioè modificare, mescolare e/o trasformare per renderli più utili ed interessanti (per alcuni specifici scopi, senza togliere ad altri la possibilità di fare altrettanto, in modo diverso, per i loro differenti obiettivi)
+>Chi si occupa di informazione del settore pubblico parla spesso di "riutilizzo" (o "riuso"), anziché di "utilizzo" (o "uso"). La scelta del termine riutilizzo sottolinea il fatto che stiamo parlando di **usi diversi e ulteriori, rispetto all'uso istituzionale, per cui il dato è stato raccolto o generato dalla PA. Il riutilizzo va anche chiaramente distinto dal mero accesso**. Ciò che interessa non è solo la possibilità di accedere ai dati; approcci tipo "guardare, ma non toccare", infatti, non facilitano la vita degli sviluppatori e la creazione di servizi utili ai cittadini. Poter vedere i dati è solo il primo passo per poterli acquisire e poi finalmente riutilizzare, cioè modificare, mescolare e/o trasformare per renderli più utili ed interessanti (per alcuni specifici scopi, senza togliere ad altri la possibilità di fare altrettanto, in modo diverso, per i loro differenti obiettivi)
 
+## Il contesto normativo
+
+Definizione di "dati di tipo aperto" fornita dall’ art. 68 del Codice dell’Amministrazione Digitale(CAD):
+
+<<sono definiti come tali i dati accessibili e disponibili gratuitamente (o comunque non oltre i costi marginali di riproduzione e diffusione) attraverso le tecnologie dell'informazione e della comunicazione in formati aperti, ivi comprese le reti telematiche pubbliche e private, quando sussiste una licenza che ne permetta l'utilizzo da parte di chiunque, anche per finalità commerciali.>>
+
+L’art. 7 del c.d. Decreto Trasparenza (richiamando a sua volta l’art. 68 del CAD) stabilisce che:
+<< i dati oggetto di pubblicazione obbligatoria ai sensi della normativa vigente sono riutilizzabili
+senza ulteriori restrizioni diverse dall'obbligo di citare la fonte e di rispettarne l'integrità.>>
+### In Europa
+
+Accesso e riutilizzo delle informazione del settore pubblico [^5]
+- Iniziative di studio e discussione già a partire dalla seconda metà degli anni novanta.
+- 1999: Libro verde sull’informazione del settore pubblico nella società dell’informazione della Commissione Europea
+	- frutto di un processo di consultazione avviato nel 1996
+	- evidenziati per la prima volta, all'interno di un unico documento, i principali profili giuridici, economici e tecnici connessi alla fruizione di dati prodotti dal settore pubblico.
+- Successiva consultazione pubblica aperta a tutti gli operatori interessati su
+	- profili di diritto d'autore;
+	- tutela della sfera privata;
+	- politiche sul prezzo e relativo impatto su accessibilità ed uso dell'informazione pubblica;
+	- profili di concorrenza sleale connessi all'attività degli enti pubblici sul mercato dell'informazione;
+	- impiego di metadati per facilitare l'acceso all'informazione)
+- Direttiva 2003/98/CE del Parlamento europeo e del Consiglio, approvata il 17 novembre 2003 e pubblicata nella GUCE n. L 345 del 31 dicembre 2003 (c.d. Direttiva PSI)
+	- rappresenta a tutt’oggi il testo normativo di riferimento in tema di riutilizzo dell'informazione del settore pubblico nell’Unione Europea.
+	- Ha l’obiettivo di agevolare la "creazione di prodotti e servizi a contenuto informativo, basati su documenti del settore pubblico, estesi all'intera Comunità, nel promuovere un effettivo uso, oltre i confini nazionali, dei documenti del settore pubblico da parte delle imprese private, al fine di ricavarne prodotti e servizi a contenuto informativo a valore aggiunto e nel limitare le distorsioni della concorrenza sul mercato comunitario".
+	- Naturalmente, la Direttiva non si applica indiscriminatamente a ogni dato detenuto dalle pubbliche amministrazioni, evitando dunque di pregiudicare diritti di terzi, tutela della sicurezza nazionale, segreto statistico o tutela della privacy
+
+# Licenza (informatica)
+
+I diritti esclusivi sono una prerogativa automaticamente assegnata all'autore di un’opera dell'ingegno, senza che questo debba farne richiesta, per consentire circolazione o altri utilizzi, serve esplicita autorizzazione
+In assenza di esplicita **licenza**, quasi ogni utilizzazione è vietata dalla legge ai terzi
+
+La licenza (in informatica) è un *contratto* tra il *detentore del copyright* e l'*utente*
+## Licenza Creative Commons
+
+Le licenze CC sono un set di licenze copyright che forniscono un modo semplice e
+"standardizzato" per dare pubblicamente il permesso di condividere e usare opere d’ingegno secondo determinate condizioni.
+
+Le licenze CC permettono di introdurre diverse sfumature di openness ai termini del copyright dal default di "all rights reserved" verso "some rights reserved."
+
+Le licenze Creative Commons non sono una alternative al copyright. Sono uno strumento che affiance il copyright permettendo di modificarlo al fine di soddisfare specifiche esigenze
+
+Ci sono 3 tipi di licenze:
+- quelle per dettagliare la licenza in termini legali
+- per renderla "human understandable"
+- per renderla "machine understandable"
+
+Per scegliere che tipo di licenza usare, ci sono dei servizi online che, grazie ad una specie di questionario, ti permettono di ottenere la licenza migliore per il tuo caso d'uso
+
+![[Pasted image 20251018114730.png|center|500]]
+
+![[Pasted image 20251018114813.png|center|500]]
 
 
 [^4]: http://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:32013L0037
+
+[^5]:  http://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32003L0098
