@@ -200,7 +200,6 @@ Sensori distribuiti autenticano i dati tramite certificati generati dal cloud; l
 
 Vediamo una tabella che ci permette di comparare i vari modelli
 
-
 | **Modello**             | **Vantaggi**                        | **Limiti**                         | **Esempi**           |
 | ----------------------- | ----------------------------------- | ---------------------------------- | -------------------- |
 | *Centralizzato*         | Facilità di controllo, auditing     | Punto singolo di fallimento        | LDAP, AD             |

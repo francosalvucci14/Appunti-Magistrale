@@ -130,7 +130,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -165,7 +166,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c7272c495411cac",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
     "Appunti II Anno/Appunti KE/Lezione 2 KE - Semantic Web.md",
     "README.md",
