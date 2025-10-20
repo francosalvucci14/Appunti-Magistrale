@@ -139,14 +139,13 @@ Accesso e riutilizzo delle informazione del settore pubblico [^5]
 	- rappresenta a tutt’oggi il testo normativo di riferimento in tema di riutilizzo dell'informazione del settore pubblico nell’Unione Europea.
 	- Ha l’obiettivo di agevolare la "creazione di prodotti e servizi a contenuto informativo, basati su documenti del settore pubblico, estesi all'intera Comunità, nel promuovere un effettivo uso, oltre i confini nazionali, dei documenti del settore pubblico da parte delle imprese private, al fine di ricavarne prodotti e servizi a contenuto informativo a valore aggiunto e nel limitare le distorsioni della concorrenza sul mercato comunitario".
 	- Naturalmente, la Direttiva non si applica indiscriminatamente a ogni dato detenuto dalle pubbliche amministrazioni, evitando dunque di pregiudicare diritti di terzi, tutela della sicurezza nazionale, segreto statistico o tutela della privacy
-
-# Licenza (informatica)
+## Licenza (informatica)
 
 I diritti esclusivi sono una prerogativa automaticamente assegnata all'autore di un’opera dell'ingegno, senza che questo debba farne richiesta, per consentire circolazione o altri utilizzi, serve esplicita autorizzazione
 In assenza di esplicita **licenza**, quasi ogni utilizzazione è vietata dalla legge ai terzi
 
 La licenza (in informatica) è un *contratto* tra il *detentore del copyright* e l'*utente*
-## Licenza Creative Commons
+### Licenza Creative Commons
 
 Le licenze CC sono un set di licenze copyright che forniscono un modo semplice e
 "standardizzato" per dare pubblicamente il permesso di condividere e usare opere d’ingegno secondo determinate condizioni.
@@ -166,7 +165,102 @@ Per scegliere che tipo di licenza usare, ci sono dei servizi online che, grazie 
 
 ![[Pasted image 20251018114813.png|center|500]]
 
+Pubblico Dominio (CC$0$)
+- "no rights reserved"
+- Usando CC$0$, si rinuncia a tutti i propri diritti d'autore e diritti connessi o simili detenuti sulla propria opera, quali i diritti morali (per quanto rinunciabili), i diritti all'immagine o alla riservatezza, diritti che proteggono l'autore contro la concorrenza sleale, e diritti sulle banche di dati che limitini l'estrazione, la disseminazione ed il riuso dei dati
+
+Marchio di Pubblico Dominio (Public Domain Mark)
+- Utilizzando il Marchio di Pubblico Dominio si può contrasseganre un'opera sulla quale non risulta che operino restrizioni previste dalla legge sul diritto d'autore, così che essa suggerisca chiaramente tale status
+- Laddove applicato propriamente, il MPD permette che l'opera sia facilmente reperibile, e fornisce utili informazioni sull'opera stessa
+
+## Formati per Open Data
+
+Esistono vari formati per gli Open Data, alcuni di essi sono:
+- formati tradizionali di pubblicazione elettronica di documenti (PDF, formati per docs, spreadsheets etc...)
+- formati per il Web, tra cui:
+	- Livello sintattico: XML
+	- Livello semantico: principalmente due concorrenti
+		- Microformats [^6]
+		- Linguaggi per il Semantic Web (W3C)
+### Schema 5 stelle del Linked Open Data
+
+Vale la seguente tabella:
+
+| Stelle     | Descrizione                                                                                                         |
+| ---------- | ------------------------------------------------------------------------------------------------------------------- |
+| $1$ stella | Rendi la tua roba disponibile sul Web (qualunque formato) sotto licenza aperta                                      |
+| $2$ stella | Rendi la tua roba disponibile come Struttura Dati (es. Excel piuttosto che lo scan di un'immagine di una tabella)   |
+| $3$ stella | Usa formati non-proprietari (es. CSV piuttosto che Excel)                                                           |
+| $4$ stella | Usa gli URI (Uniform Resource Identifier) per denotare le cose, in modo che le persone possano puntare ai tuoi dati |
+| $5$ stella | Collega i tuoi dati con altri dati per fornire un contesto                                                          |
+#### Vantaggi e svantaggi della prima stella
+
+Pro: $\checkmark$ 
+Contro: $\times$ 
+
+| Consumatore                                             | Produttore                                                          |
+| ------------------------------------------------------- | ------------------------------------------------------------------- |
+| $\checkmark$ Li puoi vedere                             | $\checkmark$ Sono facili da pubblicare                              |
+| $\checkmark$ Li puoi salvare localmente                 | $\checkmark$ Non devi ripetere sempre agli altri che possono usarli |
+| $\checkmark$ Puoi inserire i dati in ogni altro sistema |                                                                     |
+| $\checkmark$ Li puoi cambiare                           |                                                                     |
+| $\checkmark$ Li puoi condividere con altri              |                                                                     |
+
+#### Vantaggi e svantaggi seconda prima stella
+
+Pro: $\checkmark$ 
+Contro: $\times$ 
+
+Tutti i benefit della prima stella, più:
+
+| Consumatore                                                                                                                            | Produttore                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| $\checkmark$ Puoi processarli direttamente con software proprietari per aggregare info, effettuare calcoli, visualizzare i dati, etc.. | $\checkmark$ È sempre facile la pubblicazione |
+| $\checkmark$ Li puoi esportare in altri formati (strutturati)                                                                          |                                               |
+#### Vantaggi e svantaggi della terza stella
+
+Pro: $\checkmark$ 
+Contro: $\times$ 
+
+Tutti i benefit della seconda stella, più:
+
+| Consumatore                                                                                                             | Produttore                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| $\checkmark$ Puoi manipolare i dati come preferisci, senza essere confinato dalle capacità di ogni software particolare | $\checkmark$ È sempre facile la pubblicazione                                              |
+|                                                                                                                         | $\times$ Ma, ti servono converters o plug-in per esportare i dati dal formato proprietario |
+#### Vantaggi e svantaggi della quarta stella
+
+Pro: $\checkmark$ 
+Contro: $\times$ 
+
+Tutti i benefit della terza stella, più:
+
+| Consumatore                                                                                              | Produttore                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| $\checkmark$ Li puoi collegare da qualsiasi altro posto                                                  | $\checkmark$ Hai un controllo granulare su tutti i dati e puoi gestirne gli accessi                                                         |
+| $\checkmark$ Li puoi aggiungere ai preferiti                                                             | $\checkmark$ Altri publisher posso ora collegarsi ai tuoi dati, promuovendoli alla quinta stella                                            |
+| $\checkmark$ Puoi riusare parti dei dati                                                                 | $\checkmark$ Potrai riusare i vocabolari, dati e metadati, e inoltre potrai riusare i design patterns URI invece che ricreare da zero tutto |
+| $\checkmark$ Potresti riusare tool e librerie esistenti                                                  | $\checkmark$ Potrai riusare i vocabolari, dati e metadati, e inoltre potrai riusare i design patterns URI invece che ricreare da zero tutto |
+| $\checkmark$ Puoi combinare i dati in maniera sicura con gli altri dati                                  | $\times$ Ma tipicamente avrai bisogno di investire tempo nell'analisi e nella suddivisione dei dati                                                                                   |
+| $\times$ Ma capire le tecnologie richiede effort, e può avere una curva di apprendimento molto complessa | $\times$ Ma capire le tecnologie richiede effort, e può avere una curva di apprendimento molto complessa                                    |
+
+#### Vantaggi e svantaggi della quinta stella
+
+
+Pro: $\checkmark$ 
+Contro: $\times$ 
+
+Tutti i benefit della quarta stella, più:
+
+| Consumatore                                                                                 | Produttore                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| $\checkmark$ Puoi scoprire altri dati (relativi) mentre consumi i dati                      | $\checkmark$ Puoi rendere i tuoi dati trovabili                                                                                                             |
+| $\checkmark$ Puoi apprendere direttamente lo schema dei dati                                | $\checkmark$ Puoi incrementare il contesto, l'espressività, la qualità e il valore dei tuoi data ( e di conseguenza dai visibilità alla tua organizzazione) |
+| $\checkmark$ Puoi combinare i dati da sorgenti differenti                                   | $\times$ Questo richiede un investimento in tempo, denaro, tencologia e competenze/skill                                                                    |
+| $\times$ Devi combattere con collegati ai dati rotti. Non tutti i publisher sono affidabili | $\times$ Devi combattere con collegati ai dati rotti. Non tutti i publisher sono affidabili                                                                 |
 
 [^4]: http://eur-lex.europa.eu/legal-content/IT/TXT/HTML/?uri=CELEX:32013L0037
 
 [^5]:  http://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32003L0098
+
+[^6]: http://microformats.org/
