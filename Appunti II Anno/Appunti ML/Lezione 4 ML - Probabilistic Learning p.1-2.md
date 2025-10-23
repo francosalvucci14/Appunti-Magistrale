@@ -104,6 +104,21 @@ Dato un dataset $\mathcal T$ e una distribuzione di probabilità $p$ con paramet
 - assumendo che tutti gli elementi in $\mathcal T$ siano i.i.d, otteniamo che $$\begin{align*}L(\theta|\mathcal T)&=p(X|\theta)=\prod_{i=1}^{n}p(x_{i}|\theta)\quad\text{primo caso,vedi sopra T=X}\\ L(\theta|\mathcal T)&=p(X,t|\theta)=\prod_{i=1}^np(x_{i},t_i|\theta)=\prod_{i=1}^np(t_{i}|x_i\theta)p(x_{i}|\theta)=p(\overline{x}|\theta)\prod_{i=1}^np(t_{i}|x_i\theta)\\&=p(\overline{x})\prod_{i=1}^np(t_{i}|x_i\theta)\propto\prod_{i=1}^np(t_{i}|x_i\theta)\quad\text{secondo caso T=(X,t),assumendo }p(\overline{x}|\theta)\text{ unif.}\end{align*}$$
 ## Maximum likelihood estimate
 
+Punto di vista **frequentista**: i parametri sono variabili deterministiche, il cui valore è sconosciuto e deve essere stimato.
+
+Quello che dobbiamo fare è determinare il valore del parametro che massimizza la verosimiglianza, in questo modo:
+$$\theta^{\star}=\underset{\theta}{\arg\max}\space L(\theta|\mathcal T)=\underset{\theta}{\arg\max}\space p(X|\theta)=\underset{\theta}{\arg\max}\prod_{i=1}^{n}p(x_{i}|\theta)$$
+oppure 
+$$\theta^{\star}=\underset{\theta}{\arg\max}\space L(\theta|\mathcal T)=\underset{\theta}{\arg\max}\space p(X,t|\theta)=\underset{\theta}{\arg\max}\space p(\overline{x})\prod_{i=1}^{n}p(t_{i}|x_{i},\theta)=\underset{\theta}{\arg\max}\prod_{i=1}^{n}p(t_{i}|x_{i},\theta)$$
+La log-verosomiglianza (log-likelihood) $$l(\theta|\mathcal T)=\ln L(\theta|\mathcal T)$$è preferibile, dato che i prodotti vengono trasformati in somme, mentre $\theta^{\star}$ rimane la stessa (dato che la funzione $\ln$ è monotona)
+Otteniamo quindi $$\underset{\theta}{\arg\max}\space l(\theta|\mathcal T)=\underset{\theta}{\arg\max}\space L(\theta|\mathcal T)$$
+Il problema di ottimizzazione risultante è quindi $$\theta_{ML}^{\star}=\underset{\theta}{\arg\max}\space p(X|\theta)=\underset{\theta}{\arg\max}\sum\limits_{i=1}^{n}\ln p(x_i|\theta)$$
+oppure 
+$$\theta_{ML}^{\star}=\underset{\theta}{\arg\max}\space p(X,t|\theta)=\underset{\theta}{\arg\max}\sum\limits_{i=1}^{n}\ln p(t_i|x_i,\theta)$$
+La soluzione viene calcolata risolvendo il set di equazioni $$\frac{\partial l(\theta|\mathcal T)}{\partial\theta_{i}}=0,\forall i=1,\dots,d$$
+Più precisamente, impostando il gradiente a $0$
+$$\nabla l(\theta|\mathcal T)=0$$
+
 
 ## Maximum a posteriori estimate
 
