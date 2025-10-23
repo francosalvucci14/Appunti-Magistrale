@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 4 ML - Probabilistic Learning p.1"
+              "title": "Lezione 4 ML - Probabilistic Learning p.1-2"
             }
           }
         ]
@@ -96,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 4 ML - Probabilistic Learning p.1"
+              "title": "Outline of Lezione 4 ML - Probabilistic Learning p.1-2"
             }
           },
           {
@@ -167,8 +167,9 @@
   },
   "active": "0c7272c495411cac",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
+    "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
-    "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251021164759.png",
     "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251021164451.png",
@@ -197,7 +198,6 @@
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251014102318.png",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ml_lab1_1_2025_2026_colab_datasetsplit.py",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251013095103.png",
