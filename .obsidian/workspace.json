@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
+                "file": "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 4 ML - Probabilistic Learning p.1-2"
+              "title": "Indice delle lezioni CYS"
             }
           }
         ]
@@ -96,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 4 ML - Probabilistic Learning p.1-2"
+              "title": "Outline of Lezione 3 ML - Loss function & Training"
             }
           },
           {
@@ -166,11 +166,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "90edc667964d2b31",
+  "active": "0c7272c495411cac",
   "lastOpenFiles": [
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
-    "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
+    "Appunti I Anno/Appunti CYS/Lezione 2.1 CYS Talamo.md",
+    "Appunti I Anno/Appunti CYS/Lezione 2.2 CYS Arcieri.md",
+    "Appunti I Anno/Appunti CYS/Lezione 1 CYS Talamo.md",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
+    "Appunti II Anno/Appunti ML/ML_course_intro.pdf",
+    "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251021164759.png",
     "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251021164451.png",
@@ -180,7 +184,6 @@
     "Appunti II Anno/Appunti KE/Lezione 1 KE - Open Data.md",
     "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
-    "Appunti I Anno/Appunti CYS/Lezione 1 CYS.md",
     "README.md",
     "Appunti II Anno/Appunti KE/img/Pasted image 20251018114813.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20251018114730.png",
@@ -205,13 +208,11 @@
     "Appunti II Anno/Appunti ML/img",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251012190730.png",
     "Appunti II Anno/Appunti ML/Code-labs/lab1/ML2025-2025_Lab1_Working_Environments_for_ML.pdf",
-    "Appunti II Anno/Appunti ML/Code-labs/lab1/ML_Lab1_1_2025_2026_Colab_DatasetSplit.ipynb",
     "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 1 ISTI.md",
     "Appunti II Anno/Appunti ML/Code/Lista Codici ML.md",
     "Appunti II Anno/Appunti IR/Indice degli appunti IR.md",
     "Appunti II Anno/Untitled.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
-    "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md"
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md"
   ]
 }
