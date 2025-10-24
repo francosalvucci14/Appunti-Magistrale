@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
+                "file": "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Gradient Descent"
+              "title": "Tecniche di ottimizzazione del Gradient Descent"
             }
           }
         ]
@@ -96,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
+                "file": "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Gradient Descent"
+              "title": "Outline of Tecniche di ottimizzazione del Gradient Descent"
             }
           },
           {
@@ -130,7 +130,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -167,6 +168,10 @@
   },
   "active": "0c7272c495411cac",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
+    "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
+    "Appunti II Anno/Appunti ML/Code-labs/lab3/ml_lab3_1_2025_2026_advanced_optimizer.py",
+    "Appunti II Anno/Appunti ML/Code-labs/lab3/ML_Lab3_1_2025_2026_Advanced_Optimizer.ipynb",
     "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/testSet.txt",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml-lab2_2_es3.ipynb",
@@ -175,8 +180,6 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml_lab2_2_2025_2026_risk_and_gradientdescent.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ML_Lab2_2_2025_2026_Risk_and_GradientDescent.ipynb",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
-    "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
-    "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3",
     "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
     "Appunti I Anno/Appunti CYS/Lezione 2.1 CYS Talamo.md",
@@ -197,8 +200,6 @@
     "README.md",
     "Appunti II Anno/Appunti KE/img/Pasted image 20251018114813.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20251018114730.png",
-    "Appunti II Anno/Appunti KE/img",
-    "Appunti II Anno/Appunti ML/Code-labs/lab2",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251018101118.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251018093538.png",
     "Untitled.md",
