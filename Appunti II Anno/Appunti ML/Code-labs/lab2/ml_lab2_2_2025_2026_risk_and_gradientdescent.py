@@ -15,7 +15,7 @@ Original file is located at
 
 ---
 
-### Obiettivi del laboratorio
+## Obiettivi del laboratorio
 - Capire cos’è una **funzione di costo (loss function)** e perché è importante.  
 - Introdurre il concetto di **rischio** ed **empirical risk**.  
 - Vedere in pratica come funziona la **discesa del gradiente (gradient descent)**.  
@@ -23,29 +23,7 @@ Original file is located at
 
 👉 Questo laboratorio è pensato per **capire le idee di base**, iniziando ad entrare nei dettagli matematici.
 
-## Caricamento delle librerie
-
-Qui importiamo alcune librerie fondamentali:
-- **NumPy, Pandas** → per la gestione e manipolazione dei dati
-- **Matplotlib** → per produrre grafici
-- **SciPy** → per funzioni matematiche avanzate
-- **time** → per misurare i tempi di esecuzione
-
-Molte di queste librerie sono già presenti in Colab, mentre in locale potrebbero dover essere installate (ad esempio con `conda install` o `pip install`).
-"""
-
-# Commented out IPython magic to ensure Python compatibility.
-# %matplotlib inline
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import numpy as np
-import scipy as scipy
-import scipy.special as sp
-import pandas as pd
-
-import time
-
-"""## Rischio e funzione di costo
+## Rischio e funzione di costo
 
 - Il nostro obiettivo è addestrare un algoritmo che faccia **previsioni corrette**.
 - Per misurare **quanto sbaglia**, usiamo una **funzione di costo (*loss function*)**.
@@ -57,8 +35,7 @@ La scelta della loss **dipende dal problema e dalle priorità** (ad esempio: meg
 ### Rischio e minimizzazione  
 
 Un qualunque algoritmo di apprendimento, dato un input $x$, produce una previsione $f(x)$.  
-La qualità di questa previsione può essere valutata tramite una **funzione di costo** (*loss function*) $L(x_1, x_2)$,  
-dove:  
+La qualità di questa previsione può essere valutata tramite una **funzione di costo** (*loss function*) $L(x_1, x_2)$, dove:  
 
 - $x_1$ è il valore predetto dal modello,  
 - $x_2$ è il valore corretto associato a $x$.  
@@ -98,7 +75,7 @@ Il rischio è calcolato assumendo che:
    p(y \mid x) = \frac{p(x,y)}{p(x)}
    $$  
 
-3. il costo sia misurato dalla funzione $L(x_1, x_2)$.
+3. il costo sia misurato dalla funzione $L(x_1, x_2)$.  
 
 👉 In altre parole, il **rischio** ci dice quanto ci aspettiamo di “pagare” in media se usiamo il modello $f(x)$ per fare previsioni:  
 
@@ -154,7 +131,7 @@ Bagnarsi è molto peggio che portare l’ombrello inutilmente:
 
 ### 3. Modelli predittivi
 
-| $x$  | $f_1(x)$ | $f_2(x)$ |
+| $x$  | $${f_1(x)}$$ | $$f_2(x)$$ |
 | :--: | :-------:| :-------: |
 |  S   |    F     |    F      |
 |  N   |    F     |    T      |
@@ -213,13 +190,13 @@ La **scelta del modello migliore** dipende da:
 
 Se cambiano i pesi o le probabilità, la decisione può ribaltarsi.
 
-### Rischio empirico
+### Rischio reale VS Rischio empirico
 
 La distribuzione reale $p(x,y)$ è sconosciuta (se la conoscessimo potremmo prevedere direttamente $p(y \mid x)$).  
 Per questo motivo, il **rischio reale** non è calcolabile, e dobbiamo stimarlo a partire dai dati disponibili.  
 
 L’approccio standard è usare la **media aritmetica sul training set** come stimatore del valore atteso.  
-Si definisce quindi il *rischio empirico*:
+Si definisce quindi il **rischio empirico**:
 
 $$
 \overline{\mathscr{R}}(f; X)=\frac{1}{n}\sum_{i=1}^n L(f(x_i),y_i)
@@ -252,7 +229,7 @@ In altre parole:
 
 ---
 
-### Minimizzazione della funzione di rischio
+### Minimizzazione della funzione di rischio e modelli lineari
 
 In generale, l’insieme $F$ delle funzioni può essere descritto in forma **parametrica**:
 
@@ -303,10 +280,9 @@ In altre parole:
 
 Il metodo per eseguire questa minimizzazione può variare a seconda del problema e della complessità del modello (es. metodi analitici, algoritmi numerici, gradient descent, ecc.).
 
-#### Ricerca analitica dell'ottimo
+### Ricerca analitica dell'ottimo
 
-Se il problema si pone come una minimizzazione **senza vincoli** (cioè all’interno di $\mathbb{R}^m$), un primo approccio classico è quello dell’**analisi matematica**:  
-cerchiamo i valori $\overline{\theta}$ di $\theta$ per cui si annullano tutte le derivate parziali del rischio empirico.  
+Se il problema si pone come una minimizzazione **senza vincoli** (cioè all’interno di $\mathbb{R}^m$), un primo approccio classico è quello dell’**analisi matematica**: cerchiamo i valori $\overline{\theta}$ di $\theta$ per cui si annullano tutte le derivate parziali del rischio empirico.  
 
 In formule:
 
@@ -315,8 +291,7 @@ $$
 \qquad i=1,\ldots,m
 $$
 
-dove $m$ è il numero di componenti del vettore $\theta$.  
-Questo porta a un sistema di $m$ equazioni con $m$ incognite.  
+dove $m$ è il numero di componenti del vettore $\theta$. Questo porta a un sistema di $m$ equazioni con $m$ incognite.  
 
 ---
 
@@ -332,82 +307,215 @@ dove $\nabla_\theta$ indica il **gradiente** (cioè il vettore delle derivate pa
 ---
 
 #### Difficoltà pratiche
-- In molti casi la **soluzione analitica** di questo sistema è troppo complessa o addirittura impossibile da calcolare.  
+- In molti casi la **soluzione analitica** di questo sistema è **troppo complessa** o addirittura impossibile da calcolare.  
 - Inoltre, il gradiente nullo può corrispondere sia a un **minimo locale**, sia a un "**punto di sella**", non necessariamente a un minimo globale.  
 
 Per questi motivi, in pratica si usano spesso **metodi numerici di ottimizzazione** (es. discesa del gradiente, vedi dopo).
 
-### Gradient Descent
+## Gradient Descent
 
-La **discesa del gradiente** (*gradient descent*) è una delle tecniche di ottimizzazione più usate nel Machine Learning, soprattutto per addestrare reti neurali.  
-
-L’idea è semplice: vogliamo minimizzare una funzione obiettivo $J(\theta)$, che misura quanto il modello sta sbagliando (ad esempio, la *loss*).  
-I parametri del modello $\theta \in \mathbb{R}^d$ vengono aggiornati passo dopo passo, a partire da un valore iniziale $\theta^{(0)}$, muovendosi nella **direzione opposta al gradiente**:
+La **discesa del gradiente** (*gradient descent*) è un metodo **numerico iterativo** per approssimare la soluzione di quel sistema.  
+Invece di cercare direttamente il punto in cui il gradiente si annulla, **aggiorniamo progressivamente i parametri nella direzione in cui il rischio empirico diminuisce più rapidamente**:
 
 $$
-\theta^{(k+1)} = \theta^{(k)} - \eta \cdot \nabla J(\theta^{(k)})
+\theta^{(k+1)} = \theta^{(k)} - \eta \cdot \nabla_\theta \overline{\mathscr{R}}(\theta^{(k)})
 $$
 
-- $\nabla J(\theta)$ = gradiente della funzione (indica la direzione di massima crescita di $J$)  
-- $\eta$ = *learning rate*, cioè la dimensione del passo  
+- $\nabla_\theta \overline{\mathscr{R}}(\theta)$ = gradiente del rischio empirico (direzione di massima crescita)  
+- $\eta$ = *learning rate*, cioè l’ampiezza del passo
 
 ---
 
 #### Intuizione
-Immagina di essere su una collina al buio e voler scendere a valle:  
-- il gradiente ti dice da che parte sale più ripido,  
-- quindi muovendoti nella **direzione opposta** scendi più velocemente.  
-- la dimensione del passo $\eta$ è come la lunghezza del tuo passo: troppo piccolo → scendi lentamente, troppo grande → rischi di saltare oltre la valle.  
+
+Immagina di essere su una collina al buio e voler scendere a valle:
+- il gradiente ti indica dove la salita è più ripida,  
+- quindi, muovendoti nella **direzione opposta**, scendi più velocemente,  
+- la lunghezza del passo $\eta$ controlla la velocità della discesa:
+  - se è troppo piccolo, scendi lentamente;  
+  - se è troppo grande, rischi di “saltare oltre” il minimo.
+
+👉 Si parla di **metodo di primo ordine**, perché utilizza solo le derivate prime (le pendenze) della funzione da minimizzare.
 
 ---
 
-👉 Questo metodo è detto di **primo ordine** perché utilizza solo le derivate prime (cioè le pendenze) della funzione da minimizzare.
+### Gradient Descent e dataset
 
-##### Varianti della discesa del gradiente
-
-Nel Machine Learning, la funzione obiettivo $J(\theta; X)$ si ottiene applicando una *loss function* (funzione di costo) a tutti gli esempi di un dataset $X = \{(\mathbf{x}_1, t_1), \ldots, (\mathbf{x}_n, t_n)\}$.
-
-- $J(\theta; X)$ misura **quanto sbaglia il modello** con i parametri $\theta$.  
-- Per semplificare, si calcola come media dei costi sui singoli esempi:
+Nel Machine Learning, il rischio empirico si calcola come media delle perdite sui dati:
 
 $$
-J(\theta;X) = \frac{1}{n}\sum_{i=1}^n J(\theta;\mathbf{x}_i)
+\overline{\mathscr{R}}(\theta) = \frac{1}{n}\sum_{i=1}^n L(f(\mathbf{x}_i; \theta), t_i)
 $$  
 
-Grazie alle proprietà della derivata, anche il gradiente risulta essere la media dei gradienti sui singoli esempi:  
+Di conseguenza, anche il gradiente è una **media dei gradienti sui singoli esempi**:
 
 $$
-\nabla J(\theta;X) = \frac{1}{n}\sum_{i=1}^n \nabla J(\theta;\mathbf{x}_i)
+\nabla_\theta \overline{\mathscr{R}}(\theta) = \frac{1}{n}\sum_{i=1}^n \nabla_\theta L(f(\mathbf{x}_i; \theta), t_i)
 $$  
+
+Questa osservazione porta a diverse **varianti pratiche** della discesa del gradiente.
 
 ---
 
 ### Tre varianti principali
-Le varianti della discesa del gradiente dipendono da **quanti esempi del dataset usiamo ad ogni passo** per aggiornare i parametri:
+
+Le varianti dipendono da **quanti esempi del dataset vengono usati** per calcolare il gradiente a ogni passo di aggiornamento:
 
 1. **Batch Gradient Descent**  
    - Usa *tutti* i dati ad ogni aggiornamento.  
-   - ✅ Aggiornamenti molto accurati  
-   - ❌ Può essere **molto lento** (soprattutto con dataset grandi).  
+   - ✅ Aggiornamenti accurati e stabili  
+   - ❌ Molto lento per dataset grandi  
 
 2. **Stochastic Gradient Descent (SGD)**  
    - Usa **un solo esempio alla volta**.  
-   - ✅ Aggiornamenti molto veloci  
-   - ❌ Molto **rumoroso** (oscilla tanto, non converge in maniera stabile).  
+   - ✅ Aggiornamenti velocissimi  
+   - ❌ Molto rumoroso: la funzione di costo oscilla molto  
 
 3. **Mini-Batch Gradient Descent**  
    - Compromesso: usa piccoli gruppi (batch) di esempi.  
    - ✅ Equilibrio tra velocità e stabilità  
-   - 👉 È lo standard oggi nel Deep Learning.  
+   - 👉 È lo **standard attuale** nel Deep Learning
+
+
+📌 **In sintesi:**  
+- Più esempi → aggiornamento accurato ma lento  
+- Meno esempi → aggiornamento veloce ma instabile  
+- Mini-batch → compromesso ideale (veloce, scalabile e stabile)
 
 ---
 
-📌 **In sintesi**:  
-- Più esempi → aggiornamento accurato ma lento  
-- Meno esempi → aggiornamento veloce ma rumoroso  
-- Mini-batch = il miglior compromesso (veloce, scalabile, e abbastanza stabile).
+### Esempio: gradiente di una parabola in un punto
 
-## Let's work
+Consideriamo la funzione:
+
+$$
+f(x, y) = x^2 + y^2
+$$
+
+Questa è una **paraboloide**: una superficie “a ciotola” che ha il suo minimo in corrispondenza dell’origine $(0,0)$.
+
+---
+
+#### 1️⃣ Calcoliamo le derivate parziali
+
+- Derivata parziale rispetto a $x$:
+
+$$
+\frac{\partial f}{\partial x} = 2x
+$$
+
+- Derivata parziale rispetto a $y$:
+
+$$
+\frac{\partial f}{\partial y} = 2y
+$$
+
+---
+
+#### 2️⃣ Formiamo il gradiente
+
+Il **gradiente** è il vettore che raccoglie tutte le derivate parziali:
+
+$$
+\nabla f(x, y) =
+\begin{bmatrix}
+2x \\
+2y
+\end{bmatrix}
+$$
+
+---
+
+#### 3️⃣ Calcolo del gradiente in un punto specifico
+
+Scegliamo, ad esempio, il punto $(x, y) = (1, 2)$:
+
+$$
+\nabla f(1, 2) =
+\begin{bmatrix}
+2(1) \\
+2(2)
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 \\
+4
+\end{bmatrix}
+$$
+
+---
+
+#### 4️⃣ Interpretazione geometrica
+
+- Il gradiente nel punto $(1,2)$ è il vettore **(2, 4)**.  
+- Questo vettore **punta nella direzione di massima crescita** della funzione $f$.  
+- La sua direzione è quella verso cui la superficie “sale” più rapidamente.  
+- Se vogliamo **scendere** (cioè trovare il minimo), dobbiamo muoverci nella direzione **opposta** al gradiente, cioè verso **(-2, -4)**.
+
+---
+
+📌 **In sintesi:**
+
+| Punto | Gradiente | Significato |
+|:------|:-----------|:-------------|
+| (0,0) | (0,0) | Minimo (nessuna pendenza) |
+| (1,2) | (2,4) | La funzione cresce di più verso (2,4) |
+| (-1,-1) | (-2,-2) | La funzione cresce di più verso (-2,-2), quindi scende verso (1,1) |
+
+---
+
+🧭 Il **gradiente** è come una freccia che indica “da che parte sale la montagna” nel punto in cui ti trovi.
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Definizione della funzione
+def f(x, y):
+    return x**2 + y**2
+
+# Calcolo del gradiente
+def grad_f(x, y):
+    df_dx = 2 * x
+    df_dy = 2 * y
+    return np.array([df_dx, df_dy])
+
+# Creiamo una griglia di punti per disegnare la superficie
+x = np.linspace(-3, 3, 50)
+y = np.linspace(-3, 3, 50)
+X, Y = np.meshgrid(x, y)
+Z = f(X, Y)
+
+# Punto in cui calcoliamo il gradiente
+x0, y0 = 1, 2
+z0 = f(x0, y0)
+grad = grad_f(x0, y0)
+
+# --- Grafico 3D della paraboloide ---
+fig = plt.figure(figsize=(10, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+# Superficie
+ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.7)
+ax.scatter(x0, y0, z0, color='red', s=50, label='Punto (1, 2)')
+
+# Vettore gradiente (freccia)
+ax.quiver(
+    x0, y0, z0,           # punto di partenza
+    grad[0], grad[1], 0,  # direzione del gradiente
+    color='r', length=1, normalize=True, label='Gradiente'
+)
+
+# Etichette e legenda
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('f(x, y)')
+ax.set_title('Paraboloide e gradiente in (1, 2)')
+ax.legend()
+plt.show()
+
+"""## Let's work
 
 Per capire meglio come funziona la discesa del gradiente, applichiamola ad un semplice problema di **classificazione binaria**.  
 Immaginiamo di avere un dataset bidimensionale: ogni punto è descritto da due caratteristiche $(x_1, x_2)$ e da un’etichetta $t \in \{0,1\}$ che indica la classe di appartenenza.  
@@ -448,43 +556,29 @@ $$
 
 👉 La cross-entropy penalizza fortemente le previsioni sicure ma sbagliate.
 
----
+## Caricamento delle librerie
 
-### Rischio empirico
+Qui importiamo alcune librerie fondamentali:
+- **NumPy, Pandas** → per la gestione e manipolazione dei dati
+- **Matplotlib** → per produrre grafici
+- **SciPy** → per funzioni matematiche avanzate
+- **time** → per misurare i tempi di esecuzione
 
-Dato un dataset $X = \{(\mathbf{x}_1, t_1), \ldots, (\mathbf{x}_n, t_n)\}$, definiamo il **rischio empirico** come la media delle perdite sui dati:
+Molte di queste librerie sono già presenti in Colab, mentre in locale potrebbero dover essere installate (ad esempio con `conda install` o `pip install`).
+"""
 
-$$
-\mathscr{R}_n(\theta) = \frac{1}{n}\sum_{i=1}^n L\big(t_i, f(\mathbf{x}_i;\theta)\big).
-$$
+# Commented out IPython magic to ensure Python compatibility.
+# %matplotlib inline
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy as scipy
+import scipy.special as sp
+import pandas as pd
 
-Il nostro obiettivo diventa quindi trovare i parametri $\theta$ che **minimizzano** questo rischio.  
+import time
 
----
-
-### Ottimizzazione: discesa del gradiente
-
-Non possiamo risolvere analiticamente il minimo della funzione, ma possiamo **iterare gli aggiornamenti** dei parametri $\theta$ usando la discesa del gradiente:
-
-$$
-\theta^{(k+1)} = \theta^{(k)} - \eta \nabla_\theta \, \mathscr{R}_n(\theta^{(k)}).
-$$
-
-- $\eta$ è il *learning rate*, che controlla l’ampiezza dei passi.  
-- $\nabla_\theta \, \mathscr{R}_n$ è il gradiente del rischio empirico rispetto ai parametri.  
-
-In pratica:  
-- ad ogni passo calcoliamo quanto la funzione di costo “spinge” i parametri in una direzione,  
-- ci muoviamo nella direzione opposta per avvicinarci al minimo.  
-
----
-
-📌 Nei prossimi paragrafi applicheremo il metodo alle tre varianti principali:  
-- **Batch Gradient Descent**  
-- **Stochastic Gradient Descent (SGD)**  
-- **Mini-batch Gradient Descent**
-
-#### Scaricare i dati
+"""#### Scaricare i dati
 
 Per lavorare su un problema pratico ci serve un **dataset**. In questo laboratorio i dati non sono già presenti dentro Colab, quindi dobbiamo **scaricarli da una sorgente esterna** (in questo caso un link fornito dal docente).
 
@@ -493,10 +587,10 @@ In Colab (e in generale nei notebook Jupyter) il simbolo `!` davanti a un comand
 - `wget` è un programma da riga di comando che serve per **scaricare file da Internet** (ad esempio dataset, script, immagini).  
 - Lo usiamo qui per recuperare il file `testSet.txt` dal link indicato.  
 
-In questo modo il file viene salvato nell’ambiente di esecuzione di Colab e possiamo poi leggerlo con Python (ad esempio con `pandas.read_csv`) ed utilizzarlo per i nostri esperimenti.
+In questo modo il file viene salvato nell’ambiente di esecuzione di Colab e possiamo poi leggerlo con Python (ad esempio con `pandas.read_csv`) ed utilizzarlo per i nostri esperimenti.  
 """
 
-!wget https://tvml.github.io/ml2425/dataset/testSet.txt
+#!wget https://tvml.github.io/ml2425/dataset/testSet.txt
 
 """Prima di procedere con la costruzione del modello, è utile dare uno sguardo al dataset su cui lavoreremo.  
 Il file `testSet.txt` contiene tre colonne:  
@@ -632,7 +726,7 @@ dove:
 - $f(\mathbf{x};\theta)$ è la **predizione del modello**, ovvero la probabilità stimata che $\mathbf{x}$ appartenga alla classe positiva.
 
 
-Di conseguenza, il **rischio empirico medio** su \(n\) osservazioni diventa:
+Di conseguenza, il **rischio empirico medio** su $n$ osservazioni diventa:
 
 $$
 \mathscr{R}_n(\theta) = \frac{1}{n}\sum_{i=1}^n L(t_i, f(\mathbf{x}_i; \theta)).
@@ -655,68 +749,226 @@ $$
 \end{bmatrix}.
 $$
 
----
-
-#### 🔹 Partiamo dalla funzione di costo media
-
-$$
-\mathscr{R}_n(\theta)
-= -\frac{1}{n}\sum_{i=1}^n \Big[t_i \log f_i + (1-t_i)\log(1-f_i)\Big],
-\qquad f_i = \sigma(z_i) = \frac{1}{1+e^{-z_i}}, \quad z_i = \theta^\top \mathbf{x}_i.
-$$
 
 ---
 
 #### 🔹 Deriviamo rispetto a $\theta_j$
 
-Applichiamo la *chain rule*:
+Partiamo dalla funzione di rischio empirico media:
+
+$$
+\mathscr{R}_n(\theta)
+= -\frac{1}{n}\sum_{i=1}^n \Big[t_i \log f_i + (1-t_i)\log(1-f_i)\Big],
+\qquad f_i = \sigma(z_i) = \frac{1}{1+e^{-z_i}}, \quad z_i = \theta^\top x_i.
+$$
+
+---
+
+Applichiamo la **chain rule** (ricordiamo che $\mathscr{R}$ dipende da $f$ che dipende da $\theta$) per derivare rispetto a un singolo parametro $\theta_j$:
 
 $$
 \frac{\partial \mathscr{R}_n}{\partial \theta_j}
 = -\frac{1}{n}\sum_{i=1}^n
 \Bigg[
-\frac{t_i}{f_i} \frac{\partial f_i}{\partial \theta_j}
-- \frac{1-t_i}{1-f_i} \frac{\partial f_i}{\partial \theta_j}
+\frac{t_i}{f_i}\frac{\partial f_i}{\partial \theta_j}
+-
+\frac{1-t_i}{1-f_i}\frac{\partial f_i}{\partial \theta_j}
 \Bigg].
 $$
 
-Poiché $\frac{\partial f_i}{\partial \theta_j} = f_i(1-f_i)x_{ij}$ (derivata della sigmoide),
-otteniamo:
+
+Poiché la funzione $f_i$ dipende da $\theta_j$ tramite $z_i = \theta^\top x_i$, possiamo scomporre la derivata come:
+
+$$
+\frac{\partial f_i}{\partial \theta_j}
+= \frac{\partial f_i}{\partial z_i} \cdot \frac{\partial z_i}{\partial \theta_j}.
+$$
+
+- Derivata della **sigmoide**. Se $f_i=\sigma(z_i)=\dfrac{1}{1+e^{-z_i}}$, allora
+
+$$
+\frac{\partial f_i}{\partial z_i}
+= \frac{e^{-z_i}}{(1+e^{-z_i})^2}
+= \Big(\frac{1}{1+e^{-z_i}}\Big)\Big(\frac{e^{-z_i}}{1+e^{-z_i}}\Big)
+= \sigma(z_i)\,\big(1-\sigma(z_i)\big)
+= f_i\,(1-f_i).
+$$
+
+
+- Derivata della parte **lineare**:  
+$$\displaystyle \frac{\partial z_i}{\partial \theta_j} = x_{ij}$$
+
+Quindi:
+
+$$
+\frac{\partial f_i}{\partial \theta_j} = f_i(1-f_i)x_{ij}.
+$$
+
+---
+
+Sostituendo nella formula precedente
+
 
 $$
 \frac{\partial \mathscr{R}_n}{\partial \theta_j}
+= -\frac{1}{n}\sum_{i=1}^n
+\Bigg[
+\frac{t_i}{f_i}\frac{\partial f_i}{\partial \theta_j}
+-
+\frac{1-t_i}{1-f_i}\frac{\partial f_i}{\partial \theta_j}
+\Bigg]
+=
+$$
+$$
+-\frac{1}{n}\sum_{i=1}^n
+\Bigg[
+\frac{t_i}{f_i}f_i(1-f_i)x_{ij}
+-
+\frac{1-t_i}{1-f_i}f_i(1-f_i)x_{ij}
+\Bigg]
+.
+$$
+
+e semplificando i termini algebricamente:
+
+$$
+\Big(-\frac{t_i}{f_i} + \frac{1-t_i}{1-f_i}\Big) f_i(1-f_i)
+= -t_i(1-f_i) + (1-t_i)f_i = f_i - t_i.
+$$
+
+Otteniamo infine:
+
+$$
+\frac{\partial \mathscr{R}_n}{\partial \theta_j}
+= \frac{1}{n}\sum_{i=1}^n (f_i - t_i)x_{ij}
 = -\frac{1}{n}\sum_{i=1}^n (t_i - f_i)x_{ij}.
 $$
 
+dove:
+- $f_i = f(\mathbf{x}_i; \theta) = \sigma(\theta^\top \mathbf{x}_i)$ è la **predizione del modello**,  
+  cioè la probabilità stimata che l’osservazione $i$ appartenga alla classe positiva;  
+  - $\sigma(z) = \dfrac{1}{1 + e^{-z}}$ è la **funzione sigmoide**;  
+- $t_i \in \{0,1\}$ è il **valore reale (target)** associato al campione $i$;  
+- $x_{ij}$ è il **valore della feature $j$** per il campione $i$.
+
 ---
 
-#### 🔹 Forma vettoriale compatta
+### 🔹 Dalla derivata alla discesa del gradiente
 
-Scrivendo tutte le derivate insieme in forma matriciale, il risultato diventa:
+Abbiamo trovato l’espressione della derivata parziale di $\mathscr{R}_n(\theta)$ rispetto a ogni parametro $\theta_j$.  
+Ora possiamo combinare tutte le componenti e scrivere il **gradiente completo**:
 
 $$
 \nabla_\theta \mathscr{R}_n(\theta)
-= -\frac{1}{n} X^\top (t - f(\theta, X)),
+= -\frac{1}{n}\sum_{i=1}^n (t_i - f_i)\mathbf{x}_i,
 $$
 
-dove:
+dove $\mathbf{x}_i$ è il vettore delle feature del campione $i$  
+e $f_i = f(\mathbf{x}_i; \theta) = \sigma(\theta^\top \mathbf{x}_i)$ è la previsione del modello.
 
-- $X$ è la matrice delle feature (con la colonna di 1 per il bias),  
-- $t$ è il vettore colonna dei valori target,  
-- $f(\theta, X)$ è il vettore delle probabilità predette $\sigma(X\theta)$.
+👉 Questa è la **media dei contributi** di tutti i dati di training:  
+ogni campione “spinge” i parametri nella direzione dell’errore $(t_i - f_i)$.
 
 ---
 
-#### 🔹 Interpretazione intuitiva
+### 🔹 Forma vettoriale compatta
 
-- $(t - f)$ è l’**errore di predizione**: quanto il modello sbaglia per ciascun esempio.  
-- Moltiplicare per $X^\top$ propaga l’effetto di ogni errore sulle rispettive feature.  
-- Il fattore $1/n$ calcola la **media** dei contributi di tutti i campioni.
+Scrivendo la somma precedente in forma matriciale, otteniamo:
 
-👉 In breve:  
-il gradiente ci dice **in che direzione** la funzione di costo cresce più rapidamente;  
-muovendoci nella direzione opposta, la funzione **diminuisce più velocemente** (discesa del gradiente).
+$$
+\nabla_\theta \mathscr{R}_n(\theta)
+= -\frac{1}{n} X^\top (t - f(\theta, X)).
+$$
 
+Qui:
+- $X$ è la **matrice dei dati** $(n \times d)$, con una riga per ogni campione e una colonna per ogni feature;  
+- $X^\top$ è la **trasposta** $(d \times n)$, che “raccoglie” i contributi di tutti i campioni e restituisce un vettore $(d \times 1)$;  
+- $(t - f(\theta, X))$ è il vettore $(n \times 1)$ degli **errori di predizione**;  
+- il prodotto $X^\top (t - f(\theta, X))$ realizza la stessa **somma ponderata** della forma con la sommatoria, ma in modo più compatto ed efficiente.
+
+---
+
+### 🔹 Dalla forma compatta all’aggiornamento iterativo
+
+Ora possiamo scrivere la **regola generale della discesa del gradiente**:
+
+$$
+\theta^{(k+1)} = \theta^{(k)} - \eta \cdot \nabla_\theta \overline{\mathscr{R}}(\theta^{(k)}),
+$$
+
+e, sostituendo il gradiente appena calcolato:
+
+$$
+\theta^{(k+1)} = \theta^{(k)} + \frac{\eta}{n} X^\top (t - f(\theta^{(k)}, X)).
+$$
+
+---
+
+### 🔹 Cosa sta succedendo?
+
+- $(t - f(\theta, X))$ misura **quanto sbaglia** il modello su ciascun campione;  
+- $X^\top$ combina questi errori in base alle feature, fornendo la **direzione complessiva** in cui aggiornare i pesi;  
+- $\frac{\eta}{n}$ controlla la **velocità** dell’aggiornamento medio.
+
+---
+
+👉 In sintesi:
+1. Calcoliamo il gradiente come media degli errori ponderati:  
+   $\displaystyle \nabla_\theta \mathscr{R}_n(\theta) = -\frac{1}{n}\sum_{i=1}^n (t_i - f_i)\mathbf{x}_i$.  
+2. Aggiorniamo $\theta$ muovendoci nella direzione opposta al gradiente.  
+3. Ripetiamo il processo per più **epoche**, fino alla convergenza.
+
+---
+
+Questa è la **discesa del gradiente batch**, la base da cui deriveranno le versioni **stocastica** e **mini-batch**.
+
+---
+
+### Un piccolo approfondimento riguardo: Binary Cross-Entropy Loss
+
+La **funzione di costo binaria** (*binary cross-entropy loss*) è:
+
+$$
+L(t, \hat{y}) = -\big[t \log(\hat{y}) + (1-t)\log(1-\hat{y})\big]
+$$
+
+dove:
+- $t \in \{0,1\}$ è il **valore target (vero)**,  
+- $\hat{y} \in [0,1]$ è la **probabilità predetta** dal modello.
+
+---
+
+#### ⚠️ Problema di log(0)
+Quando la predizione è esattamente 0 o 1, compare il termine \(\log(0)\), che è **infinito**:
+- se $t = 1$ e $\hat{y} = 0 \Rightarrow L = \infty$
+- se $t = 0$ e $\hat{y} = 1 \Rightarrow L = \infty$
+
+---
+
+#### 💡 Soluzione pratica
+In Python (e in generale nei calcoli numerici) non si usano mai 0 e 1 "puri",  
+ma si sostituiscono con valori leggermente interni all’intervallo \([0,1]\),  
+ad esempio **ε = 10⁻¹⁵**. In questo modo la funzione resta **stabile e finita**.
+
+---
+
+#### 📊 Valori della loss
+
+| Predizione $\hat{y}$ | $$L(t{=}0,\hat{y}) = -\log(1-\hat{y})$$ | $$L(t{=}1,\hat{y}) = -\log(\hat{y})$$ |
+|:-------:|:--------------------------------------------:|:-----------------------------------:|
+| 0.00 | 0.000 | ∞ |
+| 0.25 | 0.288 | 1.386 |
+| 0.50 | 0.693 | 0.693 |
+| 0.75 | 1.386 | 0.288 |
+| 1.00 | ∞ | 0.000 |
+
+---
+
+📘 **In sintesi:**
+> La *cross-entropy* misura quanto la predizione è coerente col target.  
+> È piccola quando il modello è sicuro **e ha ragione**, ed esplode quando è sicuro **ma sbaglia**.  
+>  
+> In Python si evita l’infinito introducendo un piccolo **epsilon (ε)** per stabilizzare il calcolo, e invece di $∞$ si ottiene... 34!
 """
 
 # 1️⃣ Funzione del modello (sigmoide logistica)
@@ -848,72 +1100,59 @@ print(f"Numero di feature: {nfeatures}")
 print(f"Forma di X: {X.shape}")
 print(f"Forma di t: {t.shape}")
 
-"""## Batch Gradient Descent
+"""## 🧩 Dalla teoria alla pratica: Batch Gradient Descent
 
-Il **Batch Gradient Descent (BGD)** è la forma “classica” della discesa del gradiente.  
-Ad ogni iterazione, il gradiente viene calcolato **su tutto il dataset** e utilizzato per aggiornare i parametri $\theta$.
+Abbiamo appena derivato la regola generale della discesa del gradiente:
+
+$$
+\theta^{(k+1)} = \theta^{(k)} - \eta \, \nabla_\theta \mathscr{R}_n(\theta^{(k)}),
+$$
+
+e, nel caso della **cross-entropy loss**, il gradiente risulta:
+
+$$
+\nabla_\theta \mathscr{R}_n(\theta)
+= -\frac{1}{n}\, X^\top (t - f(\theta, X)).
+$$
+
+Sostituendo nella formula di aggiornamento otteniamo la forma **batch** della discesa del gradiente:
+
+$$
+\boxed{\theta^{(k+1)} = \theta^{(k)} + \frac{\eta}{n}\, X^\top (t - f(\theta^{(k)}, X))}
+$$
 
 ---
 
-### 1️⃣ Idea di base
+### 🔹 Significato operativo
 
-Ad ogni passo $k$, aggiorniamo i parametri muovendoci **nella direzione opposta al gradiente** del rischio empirico:
-
-$$
-\theta^{(k+1)} = \theta^{(k)} - \eta \, \nabla_\theta J(\theta^{(k)}; X)
-$$
-
-dove:
-- $\eta$ è il **learning rate**, che controlla la dimensione del passo,
-- $\nabla_\theta J(\theta; X)$ è il gradiente della funzione di costo sul dataset.
-
-Poiché il gradiente viene calcolato su **tutti** gli esempi, l’aggiornamento è accurato ma **computazionalmente costoso** (immaginate avere milioni di esempi, tutti contemporaneamente in memoria).
+- L’aggiornamento è calcolato su **tutto il dataset** → gradiente “preciso” ma più lento da calcolare.  
+- $(t - f(\theta, X))$ rappresenta gli **errori di predizione**; moltiplicando per $X^\top$ si aggregano gli effetti di tutti i campioni.  
+- Il termine $\eta / n$ controlla la **dimensione media del passo**.
 
 ---
 
-### 2️⃣ Dettagli operativi
+### 🔹 Procedura tipica
 
-Nel nostro caso, la funzione di costo è la *cross-entropy*, e il gradiente è:
-
-$$
-\nabla_\theta J(\theta; X) = -\frac{1}{n} X^\top (t - f(\theta, X))
-$$
-
-Pertanto, l’aggiornamento dei parametri ad ogni iterazione è:
-
-$$
-\theta^{(k+1)} = \theta^{(k)} + \frac{\eta}{n} X^\top (t - f(\theta^{(k)}, X))
-$$
-
-**Nota 🧩**  
-Nel seguito useremo le notazioni $J(\theta)$ e $\mathscr{R}_n(\theta)$ in modo equivalente:  
-$J(\theta)$ rappresenta la **funzione obiettivo** da minimizzare,  
-mentre $\mathscr{R}_n(\theta)$ è la sua **forma esplicita** come rischio empirico  
-(media delle perdite sul dataset di training).
+1. Inizializza $\theta$ (a zero o valori casuali piccoli);  
+2. Per ogni **epoca**:
+   - Calcola $f(\theta, X) = \sigma(X\theta)$;  
+   - Calcola il gradiente medio $-\frac{1}{n} X^\top (t - f(\theta, X))$;  
+   - Aggiorna i parametri $\theta$ secondo la regola sopra;  
+   - Registra il valore della funzione di costo per monitorare la convergenza.
 
 ---
 
-### 3️⃣ Interpretazione
+### ⚙️ Pro e contro
 
-- Il termine $(t - f(\theta, X))$ rappresenta l’**errore di predizione** del modello.
-- Moltiplicando per $X^\top$ si pesano gli errori in base alle feature.
-- La divisione per $n$ garantisce che l’aggiornamento sia la **media** degli effetti dei singoli esempi.
-
----
-
-### 4️⃣ Procedura complessiva
-
-1. Inizializzare i parametri $\theta$ a zero (o piccoli valori casuali).  
-2. Ripetere per un certo numero di **epoche**:
-   - Calcolare il gradiente su tutto il dataset,
-   - Aggiornare $\theta$ muovendosi nella direzione opposta,
-   - Salvare i valori di $\theta$ e del costo per analizzare la convergenza.
+| ✅ Vantaggi | ❌ Limiti |
+|-------------|-----------|
+| Aggiornamenti stabili e regolari | Computazionalmente costoso su dataset grandi |
+| Convergenza fluida | Poco flessibile per dati in streaming |
 
 ---
 
-👉 In sintesi:
-- **Pro**: aggiornamenti stabili, andamento regolare della funzione di costo;
-- **Contro**: lento su dataset grandi, ogni iterazione richiede di scorrere tutti i dati.
+👉 In pratica, il **Batch Gradient Descent (BGD)** è la versione “completa” della discesa del gradiente:  
+usa tutti i dati a ogni passo, fornendo la base teorica da cui nasceranno le versioni **stocastica** e **mini-batch**, più efficienti nei contesti reali.
 """
 
 def batch_gd(X, t, eta=0.1, epochs=10000):
@@ -1042,56 +1281,54 @@ plot_ds(data, m_batch[-1], q_batch[-1])
 # 🔹 Visualizzazione dei valori ottimi stimati
 print(f"Valori stimati (Batch GD): m = {m_batch[-1]:4.5f}, q = {q_batch[-1]:4.5f}")
 
-"""## Considerazioni sul Batch Gradient Descent
+"""## 💭 Considerazioni sul Batch Gradient Descent
 
-L’andamento del **Batch Gradient Descent (BGD)** è caratterizzato da una discesa regolare e stabile della funzione di costo, segno di una **convergenza controllata** verso un minimo.
+Il comportamento del **Batch Gradient Descent (BGD)** è quello di una discesa regolare e stabile della funzione di costo, indice di una **convergenza controllata** verso un minimo.
 
 ---
 
 ### 🔹 Comportamento tipico
 
-Osservando il grafico della funzione di costo $J(\theta)$:
-- si nota una **decrescita monotona** fino a stabilizzarsi in prossimità del minimo locale;
+Osservando il grafico della funzione di costo $\mathscr{R}(\theta)$:
+- si nota una **decrescita monotona**, che tende a stabilizzarsi in prossimità del minimo;  
 - la traiettoria dei parametri $(m, q)$ nello spazio dei coefficienti mostra un percorso **graduale e diretto** verso la soluzione ottimale $(m^*, q^*)$.
 
-Questo riflette il fatto che, ad ogni iterazione, l’algoritmo usa **tutte le informazioni disponibili** del dataset per stimare la direzione di discesa più accurata possibile.
+Questo riflette il fatto che, a ogni iterazione, l’algoritmo utilizza **tutte le informazioni del dataset** per stimare la direzione di discesa più accurata possibile.
 
 ---
 
 ### ⚙️ Vantaggi
 
-- **Stabilità**: la funzione di costo decresce in modo regolare, senza oscillazioni improvvise.  
-- **Precisione**: ogni aggiornamento tiene conto di tutto il dataset, garantendo una direzione di discesa corretta.  
-- **Convergenza garantita** (se la funzione è convessa):  
-  - per funzioni convex $J(\theta)$ → raggiunge il minimo globale;  
-  - per funzioni non convex (es. reti neurali) → raggiunge un minimo locale stabile.
+- **Stabilità:** la funzione di costo decresce in modo regolare, senza oscillazioni improvvise.  
+- **Precisione:** ogni aggiornamento tiene conto di tutto il dataset, fornendo una direzione di discesa affidabile.  
+- **Convergenza garantita** (nelle funzioni convesse):  
+  - se $\mathscr{R}(\theta)$ è convessa → raggiunge il minimo globale;  
+  - se non è convessa (es. reti neurali) → converge a un minimo locale stabile.
 
 ---
 
 ### ⚠️ Limiti
 
-- **Costo computazionale elevato**: ad ogni passo, il gradiente viene calcolato su tutti i $n$ campioni del dataset.  
-  👉 Questo diventa proibitivo per dataset molto grandi (Deep Learning, Big Data).  
-- **Memoria**: l’intero dataset deve essere caricato in RAM per calcolare il gradiente.  
-- **Lentezza di aggiornamento**: i parametri si aggiornano solo una volta per epoca, quindi la convergenza può richiedere molto tempo.
+- **Costo computazionale elevato:** ogni aggiornamento richiede di calcolare il gradiente su tutti i $n$ campioni.  
+  👉 Diventa rapidamente inefficiente per dataset molto grandi.  
+- **Memoria:** l’intero dataset deve risiedere in RAM per ogni iterazione.  
+- **Aggiornamenti lenti:** i parametri vengono aggiornati solo una volta per epoca, rallentando la convergenza.
 
 ---
 
 ### 💡 Interpretazione pratica
 
-Il *Batch Gradient Descent* è un ottimo punto di partenza per:
-- capire **come funziona l’ottimizzazione** basata sul gradiente;
-- visualizzare il concetto di discesa “dolce” e sistematica verso il minimo;
-- confrontarlo successivamente con metodi più efficienti (*Stochastic* e *Mini-Batch*).
+Il *Batch Gradient Descent* rappresenta:
+- il modo più **intuitivo e pulito** di capire la logica dell’ottimizzazione basata sul gradiente;  
+- una **baseline teorica** utile per confrontare le versioni successive (*Stochastic* e *Mini-Batch*);  
+- una scelta valida per problemi **di piccole dimensioni** o in fase di analisi preliminare.
 
 ---
 
-📌 In sintesi:
+📌 **In sintesi:**
 - Il BGD è **preciso ma lento**.  
-- È ideale per problemi **piccoli o teorici**, ma poco adatto a dataset di grandi dimensioni.  
-- Le varianti successive (*SGD* e *Mini-Batch*) mantengono la stessa idea di fondo, ma con compromessi diversi tra **velocità**, **stabilità** e **accuratezza**.
-
----
+- È ideale per dataset piccoli o per visualizzare il processo di convergenza.  
+- Le varianti successive (*SGD* e *Mini-Batch*) mantengono la stessa idea di fondo, ma offrono un compromesso diverso tra **velocità**, **stabilità** e **accuratezza**.
 
 ## Stochastic Gradient Descent (SGD)
 
@@ -1112,7 +1349,7 @@ In pratica:
 Matematicamente:
 
 $$
-\theta^{(k+1)} = \theta^{(k)} - \eta \, \nabla_\theta J\big(\theta^{(k)}; \mathbf{x}_i\big)
+\theta^{(k+1)} = \theta^{(k)} - \eta \, \nabla_\theta \mathscr{R}\big(\theta^{(k)}; \mathbf{x}_i\big)
 $$
 
 dove $\mathbf{x}_i$ è il singolo campione scelto all’iterazione corrente.
@@ -1317,7 +1554,7 @@ A ogni iterazione, il gradiente viene calcolato **su un intero mini-batch**, e i
 Matematicamente:
 
 $$
-\theta^{(k+1)} = \theta^{(k)} - \frac{\eta}{s} \sum_{\mathbf{x}\in X_i} \nabla_\theta J(\theta^{(k)}; \mathbf{x})
+\theta^{(k+1)} = \theta^{(k)} - \frac{\eta}{s} \sum_{\mathbf{x}\in X_i} \nabla_\theta \mathscr{R}(\theta^{(k)}; \mathbf{x})
 $$
 
 dove:
