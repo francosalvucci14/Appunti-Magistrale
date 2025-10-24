@@ -96,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
+                "file": "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 3 ML - Loss function & Training"
+              "title": "Outline of Gradient Descent"
             }
           },
           {
@@ -130,8 +130,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
