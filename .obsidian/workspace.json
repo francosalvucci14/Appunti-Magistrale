@@ -130,7 +130,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -165,9 +166,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "517fcc174d45e93e",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
     "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
+    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
@@ -181,7 +183,6 @@
     "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/ml_lab3_1_2025_2026_advanced_optimizer.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/ML_Lab3_1_2025_2026_Advanced_Optimizer.ipynb",
-    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/testSet.txt",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml-lab2_2_es3.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml-lab2_2_es2.ipynb",
