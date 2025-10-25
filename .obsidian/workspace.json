@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
+                "file": "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Gradient Descent"
+              "title": "Indice degli appunti ML"
             }
           }
         ]
@@ -96,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
+                "file": "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Gradient Descent"
+              "title": "Outline of Indice degli appunti ML"
             }
           },
           {
@@ -130,7 +130,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -167,9 +168,10 @@
   },
   "active": "0c7272c495411cac",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
-    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 8 ISTI.md",
@@ -188,7 +190,6 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml-lab2_2_es1.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml_lab2_2_2025_2026_risk_and_gradientdescent.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ML_Lab2_2_2025_2026_Risk_and_GradientDescent.ipynb",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3",
     "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
     "Appunti I Anno/Appunti CYS/Lezione 2.1 CYS Talamo.md",
