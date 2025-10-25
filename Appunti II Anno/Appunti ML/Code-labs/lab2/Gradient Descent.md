@@ -894,9 +894,9 @@ ad esempio **ε = 10⁻¹⁵**. In questo modo la funzione resta **stabile e fin
 > È piccola quando il modello è sicuro **e ha ragione**, ed esplode quando è sicuro **ma sbaglia**.  
 >  
 > In Python si evita l’infinito introducendo un piccolo **epsilon (ε)** per stabilizzare il calcolo, e invece di $∞$ si ottiene... 34!
-## 1️⃣ Funzione del modello (sigmoide logistica)
 
 ```python
+## 1️⃣ Funzione del modello (sigmoide logistica)
 def f(theta, X):
     """
     Calcola le probabilità predette dal modello.
@@ -917,11 +917,8 @@ def f(theta, X):
     """
     z = np.dot(X, theta)              # combinazione lineare delle feature
     return sp.expit(z).reshape(-1, 1) # applica la sigmoide logistica
-```
 
 ## 2️⃣ Funzione di costo (cross-entropy)
-
-```python
 def cost(theta, X, t):
     """
     Calcola la *cross-entropy loss* media sul dataset.
@@ -945,11 +942,8 @@ def cost(theta, X, t):
     term1 = np.dot(np.log(v).T, t)
     term2 = np.dot(np.log(1 - v).T, (1 - t))
     return ((-term1 - term2) / len(X))[0]
-```
 
 ## 3️⃣ Gradiente della funzione di costo
-
-```python
 def gradient(theta, X, t):
     """
     Calcola il gradiente della funzione di costo rispetto ai parametri θ.
