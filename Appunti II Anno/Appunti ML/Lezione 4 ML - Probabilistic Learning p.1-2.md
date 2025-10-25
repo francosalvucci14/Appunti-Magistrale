@@ -119,10 +119,47 @@ La soluzione viene calcolata risolvendo il set di equazioni $$\frac{\partial l(\
 Più precisamente, impostando il gradiente a $0$
 $$\nabla l(\theta|\mathcal T)=0$$
 
+Si noti che la condizione di gradiente nullo è ***solo una condizione necessaria*** per la massimizzazione della funzione ML considerata, poiché in questo caso possiamo solo dire che il punto corrispondente è un punto stazionario (cioè un massimo, un minimo o un punto di sella). Anche nel caso in cui il punto sia un massimo (che potrebbe essere verificato stimando la derivata seconda o, in generale, l'Hessiano), potremmo concludere che si tratta di un massimo **locale**, mentre noi siamo interessati al massimo globale.
+
+Questi problemi vengono tipicamente affrontati considerando casi in cui, ad esempio, esiste solo un punto stazionario e tale punto è un massimo (quindi quello globale), oppure applicando strategie di ricerca del massimo più complesse.
+
+Una volta calcolato il valore ottimale $\theta^{\star}_{ML}$, è possibile effettuare previsioni stimando, per ogni nuova osservazione $\overline{x}$, la sua probabilità:
+
+$$p(\overline{x}|X)=\int_{\theta}p(x|\theta)p(\theta|X)d\theta\approx\int_{\theta}p(\overline{x}|\theta^{\star}_{ML})p(\theta|X)d\theta=p(\overline{x}|\theta^{\star}_{ML})\int_{\theta}p(\theta|X)d\theta=p(\overline{x}|\theta^{\star}_{ML})$$
+e la distribuzione condizionata $t|\overline{x}$ del valore target associato
+
+$$p(\hat{t}|\overline{x},X,t)=\int_{\theta}p(\hat{t}|x,\theta)p(\theta|X,t)d\theta\approx\int_{\theta}p(\hat{t}|\overline{x},\theta^{\star}_{ML})p(\theta|X)d\theta=p(\overline{x}|\theta^{\star}_{ML})\int_{\theta}p(\theta|X,t)d\theta=p(\hat{t}|\overline{x},\theta^{\star}_{ML})$$
+Vediamo alcuni esempi
+
+**Esempio 1**
+
+Prendiamo una collezione $X$ di $n$ eventi binari, modellati tramite una distribuzione Bernoulliana con parametro sconosciuto $\phi$ 
+$$p(x|\phi)=\phi^{x}(1-\phi)^{1-x}$$
+Allora vale che:
+- likelihood: $L(\phi|X)=\prod_{i=1}^{n}\phi^{x_{i}}(1-\phi)^{1-x_{i}}$
+- log-likelihood: $l(\phi|X)=\sum\limits_{i=1}^{n}(x_{i}\ln(\phi)+(1-x_{i})\ln(1-\phi))=n_{1}\ln(\phi)+n_{0}\ln(1-\phi)$ dove $n_{0}(n_{1})$ è il numero di eventi $x\in X$ uguali a $0(1)$
+- massimizziamo la likelihood, risolvendo il sistema delle equazioni "derivate parziali=0", ottenendo $$\frac{\partial l(\phi|X)}{\partial\phi}=\frac{n_{1}}{\phi}-\frac{n_{0}}{1-\phi}=0\implies\phi^{\star}_{ML}=\frac{n_1}{n_0+n_{1}}=\frac{n_1}{n}$$
+Altro esempio, regressione lineare (vedi slides)
+
+Massimizzare la verosimiglianza del dataset osservati tende a produrre una stima troppo sensibile ai valori del dataset, causando quindi un **overfitting**. 
+
+Le stime ottenute sono adatte a modellare i dati osservati, ma potrebbero essere troppo specializzate per essere utilizzate per modellare set di dati diversi.
+
+È possibile introdurre una funzione aggiuntiva $P (\theta)$ con l'obiettivo di limitare l'overfitting e la complessità complessiva del modello. 
+
+Ciò porta alla seguente funzione da massimizzare
+$$C(\theta|X)=l(\theta|X)-P(\theta)$$
+come caso comune, vale che $P(\theta)=\frac{\gamma}{2}||\theta||^{2}$, dove $\gamma$ è chiamato parametro di **tuning**
 
 ## Maximum a posteriori estimate
 
+L'inferenza tramite il massimo a posteriori (MAP) è simile al ML, ma $\theta$ è ora considerato come una variabile casuale (seguendo un approccio bayesiano), la cui distribuzione deve essere derivata dalle osservazioni, tenendo conto anche delle conoscenze precedenti (distribuzione a priori). 
 
+Il valore del parametro che massimizza la funzione $$p(\theta|\mathcal T)=\frac{p(\mathcal T|\theta)p(\theta)}{p(\mathcal T)}$$viene quindi calcolato come:
+$$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\space p(\theta|\mathcal T)=\underset{\theta}{\arg\max}\space p(\mathcal T|\theta)p(\theta)=\underset{\theta}{\arg\max}\space L(\theta|\mathcal T)p(\theta)=\underset{\theta}{\arg\max}\space (l(\theta|\mathcal T)+\ln p(\theta))$$
+che risulta in $$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\left(\sum\limits_{i=1}^{n}\ln p(x_{i}|\theta)+\ln p(\theta)\right)$$
+oppure 
+$$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\left(\sum\limits_{i=1}^{n}\ln p(t_i|x_{i},\theta)+\ln p(\theta)\right)$$
 
 [^1]: https://it.wikipedia.org/wiki/Funzione_sigmoidea ; funzione che trasforma $z$ in un valore compreso fra $0$ e $1$
 
