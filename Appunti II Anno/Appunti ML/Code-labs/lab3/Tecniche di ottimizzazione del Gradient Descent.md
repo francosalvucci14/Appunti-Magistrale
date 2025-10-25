@@ -87,6 +87,7 @@ I metodi elementari di discesa del gradiente presentano alcune limitazioni:
 
 `!wget https://tvml.github.io/ml2425/dataset/testSet.txt`
 
+```python
 # 📘 BLOCCO BASE — setup per i laboratori di ottimizzazione
 
 ## Ricrea tutto ciò che serve:
@@ -96,17 +97,12 @@ I metodi elementari di discesa del gradiente presentano alcune limitazioni:
  - Gradiente e rischio empirico
  - Funzioni di visualizzazione
 
-
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import time
-```
 
 ## 1️⃣ Dataset: caricamento o generazione sintetica
-
-```python
 try:
     # Se disponibile, carica il dataset originale
     data = np.loadtxt("testSet.txt")
@@ -121,32 +117,22 @@ except FileNotFoundError:
     t = np.hstack((np.zeros(n), np.ones(n)))
     data = np.hstack((X, t.reshape(-1, 1)))
     print("⚠️ File non trovato: generato dataset sintetico (200 punti).")
-```
 
 ### Separazione feature e target
-
-```python
 X = data[:, 0:2]
 t = data[:, 2].reshape(-1, 1)
-```
 
 ### Aggiunge colonna di 1 per il bias
-
-```python
 n, nfeatures = X.shape
 X = np.hstack((np.ones((n, 1)), X))
-```
-## 2️⃣ Modello: funzione sigmoide
 
-```python
+## 2️⃣ Modello: funzione sigmoide
 def f(theta, X):
     """Restituisce la probabilità stimata tramite la sigmoide."""
     z = np.dot(X, theta)
     return 1 / (1 + np.exp(-z))
-```
-## 3️⃣ Funzione di costo (cross-entropy)
 
-```python
+## 3️⃣ Funzione di costo (cross-entropy)
 def cost(theta, X, t, eps=1e-10):
     """
     Calcola la loss media (rischio empirico) per regressione logistica.
@@ -154,19 +140,15 @@ def cost(theta, X, t, eps=1e-10):
     """
     y = np.clip(f(theta, X), eps, 1 - eps)
     return -np.mean(t * np.log(y) + (1 - t) * np.log(1 - y))
-```
-## 4️⃣ Gradiente del rischio empirico
 
-```python
+## 4️⃣ Gradiente del rischio empirico
 def gradient(theta, X, t):
     """
     ∇R_n(θ) = -(1/n) * Xᵀ (t - f(X; θ))
     """
     return -np.dot(X.T, (t - f(theta, X))) / len(X)
-```
-## 5️⃣ Funzioni di visualizzazione
 
-```python
+## 5️⃣ Funzioni di visualizzazione
 def plot_ds(data, m=None, q=None):
     """
     Visualizza il dataset e, se forniti, la retta di separazione.
