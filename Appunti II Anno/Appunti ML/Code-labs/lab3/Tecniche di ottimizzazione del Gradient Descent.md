@@ -89,7 +89,7 @@ I metodi elementari di discesa del gradiente presentano alcune limitazioni:
 
 # 📘 BLOCCO BASE — setup per i laboratori di ottimizzazione
 
-# Ricrea tutto ciò che serve:
+## Ricrea tutto ciò che serve:
 
  - Dataset (X, t)
  - Funzioni di modello e costo
@@ -104,7 +104,8 @@ import matplotlib as mpl
 import time
 ```
 
-# 1️⃣ Dataset: caricamento o generazione sintetica
+## 1️⃣ Dataset: caricamento o generazione sintetica
+
 ```python
 try:
     # Se disponibile, carica il dataset originale
@@ -122,20 +123,20 @@ except FileNotFoundError:
     print("⚠️ File non trovato: generato dataset sintetico (200 punti).")
 ```
 
-# Separazione feature e target
+### Separazione feature e target
 
 ```python
 X = data[:, 0:2]
 t = data[:, 2].reshape(-1, 1)
 ```
 
-# Aggiunge colonna di 1 per il bias
+### Aggiunge colonna di 1 per il bias
 
 ```python
 n, nfeatures = X.shape
 X = np.hstack((np.ones((n, 1)), X))
 ```
-# 2️⃣ Modello: funzione sigmoide
+## 2️⃣ Modello: funzione sigmoide
 
 ```python
 def f(theta, X):
@@ -143,7 +144,8 @@ def f(theta, X):
     z = np.dot(X, theta)
     return 1 / (1 + np.exp(-z))
 ```
-# 3️⃣ Funzione di costo (cross-entropy)
+## 3️⃣ Funzione di costo (cross-entropy)
+
 ```python
 def cost(theta, X, t, eps=1e-10):
     """
@@ -153,7 +155,7 @@ def cost(theta, X, t, eps=1e-10):
     y = np.clip(f(theta, X), eps, 1 - eps)
     return -np.mean(t * np.log(y) + (1 - t) * np.log(1 - y))
 ```
-# 4️⃣ Gradiente del rischio empirico
+## 4️⃣ Gradiente del rischio empirico
 
 ```python
 def gradient(theta, X, t):
@@ -162,7 +164,7 @@ def gradient(theta, X, t):
     """
     return -np.dot(X.T, (t - f(theta, X))) / len(X)
 ```
-# 5️⃣ Funzioni di visualizzazione
+## 5️⃣ Funzioni di visualizzazione
 
 ```python
 def plot_ds(data, m=None, q=None):
@@ -268,7 +270,7 @@ Infine, il numero massimo di iterazioni viene controllato tramite la variabile g
 ```python
 epochs = 100  # Numero di epoche (iterazioni) per ogni algoritmo
 ```
-### 🌀 Metodo del Momento (Momentum)
+## 🌀 Metodo del Momento (Momentum)
 
 I metodi di discesa del gradiente visti finora possono diventare **inefficienti** quando la funzione di costo varia in modo molto diverso lungo direzioni diverse. Ad esempio, se la superficie del rischio empirico è una “vallata” allungata, gli aggiornamenti oscillano trasversalmente e convergono lentamente verso il minimo.
 
@@ -276,7 +278,7 @@ Per rendere la discesa più fluida, il **metodo del momento** introduce un conce
 
 ---
 
-#### ⚙️ Idea fisica
+### ⚙️ Idea fisica
 
 Immagina che il vettore dei parametri $\theta$ rappresenti la **posizione** di una particella.  
 Il gradiente $\nabla_\theta \mathscr{R}(\theta)$ agisce come una **forza** che la spinge verso il basso (verso il minimo).  
@@ -285,7 +287,7 @@ Il parametro $\gamma$ gioca il ruolo di **attrito**, regolando quanto della velo
 
 ---
 
-#### 🧮 Formulazione matematica
+### 🧮 Formulazione matematica
 
 Definiamo un vettore di **velocità** $v^{(k)}$, che rappresenta lo spostamento di $\theta$ al passo $k$:
 
@@ -302,7 +304,7 @@ dove:
 
 ---
 
-#### 🔍 Interpretazione
+### 🔍 Interpretazione
 
 - Se $\gamma = 0$, il metodo si riduce alla discesa del gradiente standard.  
 - Se $\gamma > 0$, parte della direzione di aggiornamento precedente viene **conservata**, creando un effetto di **accelerazione** nelle direzioni coerenti del gradiente.  
@@ -310,7 +312,7 @@ dove:
 
 ---
 
-#### 📈 In sintesi
+### 📈 In sintesi
 
 | Parametro | Significato | Effetto |
 |------------|-------------|----------|
@@ -321,7 +323,7 @@ dove:
 
 ---
 
-#### 🔹 Interpretazione vettoriale e aggiornamento ricorsivo
+### 🔹 Interpretazione vettoriale e aggiornamento ricorsivo
 
 Mentre
 $$
@@ -336,7 +338,7 @@ rappresenta la **velocità di aggiornamento** che trasporta $\theta^{(k)}$ verso
 
 ---
 
-#### 🔹 Dipendenza dai gradienti passati
+### 🔹 Dipendenza dai gradienti passati
 
 L’aggiornamento può essere riscritto in forma esplicita per mostrare come ogni passo dipenda **dai gradienti calcolati in tutte le iterazioni precedenti**,  
 con un peso che **decresce esponenzialmente** nel tempo in base a $\gamma$.  
@@ -351,7 +353,7 @@ Ogni aggiornamento di $\theta$ tiene quindi conto **della storia dei gradienti**
 
 ---
 
-#### 🔹 Applicazione alla Regressione Logistica
+### 🔹 Applicazione alla Regressione Logistica
 
 Nel caso della **regressione logistica**, il gradiente della funzione di costo è proporzionale all’errore di predizione $(t_i - f(\mathbf{x}_i; \theta))$.  
 Applicando la regola del momento, gli aggiornamenti diventano:
@@ -366,19 +368,19 @@ $$
 
 ---
 
-#### 💡 Conclusione
+### 💡 Conclusione
 
 - $v$ rappresenta la **velocità di aggiornamento**, che integra informazione storica dei gradienti.  
 - $\gamma$ controlla **quanto del passato** viene mantenuto: valori più alti implicano più inerzia.  
 - Ogni passo combina i gradienti precedenti con un effetto di **memoria esponenzialmente decrescente**, permettendo una convergenza **più rapida e stabile**.
-### ⚙️ Varianti del Metodo del Momento e Segni degli Aggiornamenti
+# ⚙️ Varianti del Metodo del Momento e Segni degli Aggiornamenti
 
 Il **metodo del momento** può essere implementato in diverse modalità, a seconda di **quanti esempi del dataset vengono usati per calcolare il gradiente ad ogni passo**.  
 Il principio rimane lo stesso: si accumula una **velocità vettoriale** `v`, che tiene memoria della direzione di discesa.
 
 ---
 
-#### 🔹 1️⃣ Batch Momentum
+## 🔹 1️⃣ Batch Momentum
 
 Nel **Batch Momentum**, ad ogni epoca si calcola il **gradiente medio** sull’intero dataset:
 
@@ -404,7 +406,7 @@ for epoch in range(n_epochs):
 
 ---
 
-#### 🔹 2️⃣ Stochastic Momentum (SGD + Momentum)
+## 🔹 2️⃣ Stochastic Momentum (SGD + Momentum)
 
 Nel caso **stocastico**, ad ogni iterazione si utilizza **un solo campione (o mini-batch)** per stimare il gradiente.  
 Il vantaggio è una maggiore velocità, ma con oscillazioni più evidenti:
@@ -420,7 +422,7 @@ for epoch in range(n_epochs):
 
 ---
 
-#### 🔹 3️⃣ Interpretazione del segno
+## 🔹 3️⃣ Interpretazione del segno
 
 Nel termine di aggiornamento:
 
@@ -433,7 +435,7 @@ $$
 
 ---
 
-#### 🔹 4️⃣ Ruolo del parametro γ (gamma)
+## 🔹 4️⃣ Ruolo del parametro γ (gamma)
 
 Il parametro $\gamma \in [0,1)$ determina **quanto del passo precedente viene mantenuto**:
 
@@ -445,7 +447,7 @@ Il parametro $\gamma \in [0,1)$ determina **quanto del passo precedente viene ma
 
 ---
 
-#### 💡 In sintesi
+## 💡 In sintesi
 
 - `v` rappresenta una **media pesata dei gradienti passati** → effetto di inerzia.  
 - Il termine `γ v` **mantiene una frazione della velocità precedente**.  
@@ -515,14 +517,14 @@ def momentum_gd(X, t, eta=0.1, gamma=0.9, epochs=1000):
     return cost_history, m, q
 ```
 
-### ⚡ Accelerazione del Gradiente di Nesterov (Nesterov Momentum)
+## ⚡ Accelerazione del Gradiente di Nesterov (Nesterov Momentum)
 
 Il metodo di **Nesterov** nasce come una raffinata estensione del **metodo del momento**.  
 L’idea chiave è introdurre un *“passo di anticipo”* (*look-ahead*): invece di calcolare il gradiente nel punto corrente, lo si valuta **in una posizione predetta** più avanti lungo la direzione di velocità attuale.
 
 ---
 
-#### 🔹 Intuizione di base
+### 🔹 Intuizione di base
 
 Nel metodo del momento, conosciamo al passo $k$:
 - la **posizione attuale** $\theta^{(k)}$  
@@ -538,7 +540,7 @@ Questa è una **posizione “predetta”** (*look-ahead*), una sorta di anteprim
 
 ---
 
-#### 🔹 Idea chiave di Nesterov
+### 🔹 Idea chiave di Nesterov
 
 Nel **Momentum classico**, il gradiente viene calcolato nel punto corrente $\theta^{(k)}$:
 
@@ -555,7 +557,7 @@ v^{(k+1)} &= \gamma v^{(k)} - \eta \, \nabla_\theta \mathscr{R}(\tilde{\theta}^{
 
 ---
 
-#### 🔹 Interpretazione geometrica
+### 🔹 Interpretazione geometrica
 
 - Invece di “muoversi alla cieca” lungo il gradiente nel punto corrente,  
   Nesterov **guarda leggermente avanti** per valutare come cambierà la funzione di costo.  
@@ -563,7 +565,7 @@ v^{(k+1)} &= \gamma v^{(k)} - \eta \, \nabla_\theta \mathscr{R}(\tilde{\theta}^{
 
 ---
 
-#### 🔹 Confronto con il Momentum classico
+### 🔹 Confronto con il Momentum classico
 
 | Metodo | Punto in cui viene calcolato il gradiente | Effetto |
 |---------|-------------------------------------------|----------|
@@ -572,7 +574,7 @@ v^{(k+1)} &= \gamma v^{(k)} - \eta \, \nabla_\theta \mathscr{R}(\tilde{\theta}^{
 
 ---
 
-#### 🔹 Forma espansa (dipendenza dai gradienti passati)
+### 🔹 Forma espansa (dipendenza dai gradienti passati)
 
 Partendo da:
 $$
@@ -583,7 +585,7 @@ ottenendo così un movimento più “intelligente” verso il minimo.
 
 ---
 
-#### 💡 In sintesi
+### 💡 In sintesi
 
 - Nesterov valuta il gradiente **in anticipo**, prevedendo dove il parametro si troverà dopo il prossimo passo.  
 - Questo migliora la **stabilità** e accelera la **convergenza** rispetto al Momentum classico.  
@@ -592,6 +594,7 @@ ottenendo così un movimento più “intelligente” verso il minimo.
 ---
 
 ![Confronto tra Momentum e Nesterov Momentum.](https://tvml.github.io/ml2425/codici/assets/nesterov.png)
+
 ```python
 v = 0
 for i in range(n_epochs):
@@ -661,14 +664,14 @@ def nesterov_gd(X, t, eta=0.1, gamma=0.97, epochs=1000):
     return cost_history, m, q
 ```
 
-### ⚙️ Adagrad — Adaptive Gradient Descent
+# ⚙️ Adagrad — Adaptive Gradient Descent
 
 Il metodo **Adagrad** (*Adaptive Gradient Descent*) introduce un’idea chiave:  
 ogni parametro del modello ottiene il **proprio learning rate**, che si **adatta nel tempo** in base alla storia dei gradienti.
 
 ---
 
-#### 🔹 Motivazione
+## 🔹 Motivazione
 
 Nella *gradient descent* standard, tutti i parametri $\theta_j$ vengono aggiornati con lo stesso learning rate $\eta$:
 
@@ -686,7 +689,7 @@ Adagrad nasce per **correggere questo squilibrio**.
 
 ---
 
-#### 🔹 Idea di base
+## 🔹 Idea di base
 
 L’algoritmo tiene traccia, per ciascun parametro $\theta_j$, della **somma cumulativa dei quadrati dei gradienti**:
 
@@ -700,7 +703,7 @@ Questa quantità misura *quanto intensamente* ogni parametro è stato aggiornato
 
 ---
 
-#### 🔹 Learning rate adattivo
+## 🔹 Learning rate adattivo
 
 Il learning rate effettivo per il parametro $\theta_j$ diventa:
 
@@ -717,7 +720,7 @@ Parametri con gradienti piccoli → $G_{j,k}$ piccolo → $\eta_j^{(k)}$ grande.
 
 ---
 
-#### 🔹 Aggiornamento dei parametri
+## 🔹 Aggiornamento dei parametri
 
 L’equazione di aggiornamento diventa:
 
@@ -736,7 +739,7 @@ $$
 
 ---
 
-#### 🔹 Interpretazione intuitiva
+## 🔹 Interpretazione intuitiva
 
 Adagrad “ricorda” i gradienti passati:
 - se un parametro ha ricevuto gradienti grandi spesso → il suo passo si **riduce**;  
@@ -747,7 +750,7 @@ rendendolo particolarmente efficace in problemi **sparsi** (es. NLP).
 
 ---
 
-#### 🔹 Limite del metodo
+## 🔹 Limite del metodo
 
 Poiché $G_{j,k}$ cresce monotonamente (è una somma di termini positivi),
 il denominatore aumenta nel tempo → il learning rate tende a **zero**.
@@ -759,15 +762,15 @@ Effetti pratici:
 
 ---
 
-#### 💡 In sintesi
+## 💡 In sintesi
 
-| Concetto | Significato |
-|-----------|-------------|
-| $G_{j,k}$ | Somma cumulativa dei quadrati dei gradienti del parametro $j$ |
-| $\eta_j^{(k)}$ | Learning rate adattivo (decrescente nel tempo) |
-| $\varepsilon$ | Costante di stabilizzazione numerica |
-| ✅ Vantaggio | Adattamento automatico del passo per ogni direzione |
-| ⚠️ Limite | Learning rate che tende a zero nel lungo periodo |
+| Concetto       | Significato                                                   |
+| -------------- | ------------------------------------------------------------- |
+| $G_{j,k}$      | Somma cumulativa dei quadrati dei gradienti del parametro $j$ |
+| $\eta_j^{(k)}$ | Learning rate adattivo (decrescente nel tempo)                |
+| $\varepsilon$  | Costante di stabilizzazione numerica                          |
+| ✅ Vantaggio    | Adattamento automatico del passo per ogni direzione           |
+| ⚠️ Limite      | Learning rate che tende a zero nel lungo periodo              |
 
 ---
 
@@ -834,8 +837,7 @@ def adagrad(X, t, eta=0.1, eps=1e-8, epochs=1000):
     return cost_history, m, q
 ```
 
-### RMSProp
-### ⚙️ RMSProp — Root Mean Square Propagation
+# ⚙️ RMSProp — Root Mean Square Propagation
 
 Il metodo **RMSProp** nasce per risolvere un limite importante di **Adagrad**:  in Adagrad, la somma cumulativa dei quadrati dei gradienti cresce continuamente, facendo sì che il learning rate diminuisca **monotonicamente fino quasi ad annullarsi**.  
 
@@ -843,7 +845,7 @@ RMSProp introduce una **media mobile esponenziale** dei gradienti al posto della
 
 ---
 
-#### 🔹 Idea principale
+## 🔹 Idea principale
 
 In Adagrad, il termine cumulativo era:
 
@@ -864,7 +866,7 @@ Valori di $\gamma$ tipici sono intorno a **0.9**.
 
 ---
 
-#### 🔹 Espansione della media mobile
+## 🔹 Espansione della media mobile
 
 Sviluppando ricorsivamente la formula si ottiene:
 
@@ -877,7 +879,7 @@ Si assume $\tilde{G}_{j,k} = 0$ per $k < 0$.
 
 ---
 
-#### 🔹 Aggiornamento dei parametri
+## 🔹 Aggiornamento dei parametri
 
 Ad ogni passo $k$, RMSProp esegue:
 
@@ -897,7 +899,7 @@ dove:
 
 ---
 
-#### 🔹 Interpretazione
+## 🔹 Interpretazione
 
 - RMSProp **adatta dinamicamente** il learning rate per ogni parametro,  ma tiene conto **solo dei gradienti recenti**, non di tutta la storia.  
 - Questo evita che $\eta$ decada troppo velocemente, come in Adagrad.  
@@ -905,21 +907,21 @@ dove:
 
 ---
 
-#### 💡 In sintesi
+## 💡 In sintesi
 
-| Concetto | Significato |
-|-----------|-------------|
-| $\tilde{G}_{j,k}$ | Media mobile dei quadrati dei gradienti (decadimento esponenziale) |
-| $\gamma$ | Fattore di smorzamento, controlla la memoria dei gradienti passati |
-| $\varepsilon$ | Evita divisioni per zero e stabilizza l’aggiornamento |
-| Vantaggio | Mantiene un learning rate efficace anche dopo molte iterazioni |
-| Differenza da Adagrad | Usa una media mobile invece di una somma cumulativa |
+| Concetto              | Significato                                                        |
+| --------------------- | ------------------------------------------------------------------ |
+| $\tilde{G}_{j,k}$     | Media mobile dei quadrati dei gradienti (decadimento esponenziale) |
+| $\gamma$              | Fattore di smorzamento, controlla la memoria dei gradienti passati |
+| $\varepsilon$         | Evita divisioni per zero e stabilizza l’aggiornamento              |
+| Vantaggio             | Mantiene un learning rate efficace anche dopo molte iterazioni     |
+| Differenza da Adagrad | Usa una media mobile invece di una somma cumulativa                |
 
 ---
 
 RMSProp è quindi una **versione “a memoria corta” di Adagrad**, che bilancia adattività e velocità di convergenza.  È ampiamente usato come base per metodi più avanzati, come **Adam** e **Adadelta**.
 
-#### 🔹 Limiti di RMSProp e motivazione di Adadelta
+## 🔹 Limiti di RMSProp e motivazione di Adadelta
 
 Nonostante RMSProp risolva il problema del *learning rate che tende a zero* di Adagrad,  
 esso **richiede ancora di scegliere manualmente un valore di $\eta$**, che può essere critico:  
@@ -998,7 +1000,7 @@ def RMSProp(X, t, eta=0.1, gamma=0.9, eps=1e-8, epochs=100):
     return cost_history, m, q
 ```
 
-### ⚙️ Adadelta — Apprendimento adattivo senza learning rate fisso
+# ⚙️ Adadelta — Apprendimento adattivo senza learning rate fisso
 
 **Adadelta** è un’evoluzione di **RMSProp** progettata per rendere l’ottimizzazione ancora più automatica e stabile.  
 Nasce con due obiettivi principali:
@@ -1010,7 +1012,7 @@ usando esclusivamente informazioni già presenti nei gradienti e negli aggiornam
 
 ---
 
-#### 🔹 Dalla logica di RMSProp all’idea di Adadelta
+## 🔹 Dalla logica di RMSProp all’idea di Adadelta
 
 RMSProp correggeva il limite di Adagrad introducendo una **media mobile dei gradienti recenti**,  
 così da evitare che il learning rate diminuisse all’infinito.  
@@ -1032,13 +1034,14 @@ Tutto accade automaticamente, senza parametri da regolare.
 
 ---
 
-#### 🔹 Come funziona (passo dopo passo)
+## 🔹 Come funziona (passo dopo passo)
 
 Ad ogni iterazione $k$, per ciascun parametro $\theta_j$:
 
 ---
 
-#### **1️⃣ Calcolo del gradiente corrente**
+### **1️⃣ Calcolo del gradiente corrente**
+
 > 👉 “Quanto spinge la funzione di costo in questo punto?”
 
 $$
@@ -1049,7 +1052,8 @@ Questo è il punto di partenza: il gradiente indica **la direzione** in cui la f
 
 ---
 
-#### **2️⃣ Media mobile dei quadrati dei gradienti**
+### **2️⃣ Media mobile dei quadrati dei gradienti**
+
 > 👉 “Quanta forza media hanno avuto i gradienti di recente?”
 
 $$
@@ -1061,7 +1065,8 @@ Serve per capire *la scala tipica* dei loro valori: se i gradienti sono grandi, 
 
 ---
 
-#### **3️⃣ Calcolo dell’aggiornamento normalizzato**
+### **3️⃣ Calcolo dell’aggiornamento normalizzato**
+
 > 👉 “Quanto devo muovermi adesso, rispetto al passato?”
 
 $$
@@ -1079,7 +1084,8 @@ Il rapporto bilancia il passo: se i gradienti sono molto grandi, il denominatore
 
 ---
 
-#### **4️⃣ Aggiornamento della memoria dei passi**
+### **4️⃣ Aggiornamento della memoria dei passi**
+
 > 👉 “Aggiorna il ricordo di quanto ti sei mosso.”
 
 $$
@@ -1088,7 +1094,8 @@ $$
 
 Ora Adadelta aggiorna la sua **seconda memoria**, che tiene conto della *dimensione effettiva* dei passi già fatti. Questa informazione servirà nel prossimo ciclo (al punto 3) per regolare di nuovo la scala del passo.
 
-#### **5️⃣ Aggiornamento del parametro**
+### **5️⃣ Aggiornamento del parametro**
+
 > 👉 “Applica il passo appena calcolato.”
 
 $$
@@ -1100,7 +1107,7 @@ Niente learning rate da scegliere: l’ampiezza del movimento è già calibrata 
 
 ---
 
-#### 🔹 Il ruolo del parametro $\gamma$
+## 🔹 Il ruolo del parametro $\gamma$
 
 Il parametro $\gamma$ (o $\rho$) decide **quanta memoria** tenere del passato:
 
@@ -1112,7 +1119,7 @@ Valori attorno a **0.9–0.95** sono un buon compromesso.
 
 ---
 
-#### 💡 In sintesi
+## 💡 In sintesi
 
 | Concetto | Significato |
 |-----------|-------------|
@@ -1197,14 +1204,14 @@ def Adadelta(X, t, gamma=0.9, eps=1e-8, epochs=10000):
     return cost_history, m, q
 ```
 
-### ⚙️ Adam — Adaptive Moment Estimation
+# ⚙️ Adam — Adaptive Moment Estimation
 
 **Adam** (*Adaptive Moment Estimation*) è uno degli ottimizzatori più usati nel Machine Learning e nel Deep Learning.  
 Unisce le idee di **Momentum** e **RMSProp**, aggiungendo una correzione iniziale per evitare stime distorte dei gradienti.
 
 ---
 
-#### 🔹 L’idea di fondo
+## 🔹 L’idea di fondo
 
 Adam tiene in memoria due informazioni sui gradienti:
 
@@ -1217,7 +1224,7 @@ In breve:
 
 ---
 
-#### 🔹 Le due medie mobili
+## 🔹 Le due medie mobili
 
 Ad ogni passo $k$, per ogni parametro $\theta_j$:
 
@@ -1235,7 +1242,7 @@ dove:
 
 ---
 
-#### 🔹 Correzione del bias iniziale
+## 🔹 Correzione del bias iniziale
 
 All’inizio, le medie $\tilde{m}$ e $\tilde{v}$ partono da zero, quindi risultano troppo piccole.  
 Adam corregge questo “bias” con un fattore che dipende dal numero di iterazioni:
@@ -1249,7 +1256,7 @@ Dopo questa correzione, le due grandezze riflettono in modo più realistico l’
 
 ---
 
-#### 🔹 Aggiornamento del parametro
+## 🔹 Aggiornamento del parametro
 
 Infine, Adam aggiorna ogni parametro con:
 
@@ -1266,7 +1273,7 @@ mentre $\sqrt{\hat{v}}$ regola **la grandezza del passo** in modo adattivo.
 
 ---
 
-#### 🔹 Come si comporta
+## 🔹 Come si comporta
 
 - Se i gradienti sono **coerenti nel tempo**, $\hat{m}$ si accumula → il passo accelera.  
 - Se i gradienti sono **molto variabili**, $\hat{v}$ cresce → il passo si riduce per stabilizzare.  
@@ -1275,7 +1282,7 @@ Così Adam combina la **velocità del Momentum** e la **stabilità di RMSProp**,
 
 ---
 
-#### 💡 In sintesi
+## 💡 In sintesi
 
 | Concetto | Significato |
 |-----------|-------------|
@@ -1367,8 +1374,8 @@ def Adam(X, t, eta=0.001, beta1=0.9, beta2=0.999, eps=1e-8, epochs=10000):
     return cost_history, m, q
 ```
 
-### Metodi del secondo ordine
-### ⚙️ Metodo di Newton-Raphson per l’Ottimizzazione
+# Metodi del secondo ordine
+## ⚙️ Metodo di Newton-Raphson per l’Ottimizzazione
 
 La ricerca di un **punto di massimo o minimo** di una funzione può essere vista come la ricerca dei punti in cui la **derivata prima** (o, in generale, il **gradiente**) si annulla.
 
@@ -1377,7 +1384,7 @@ possiamo applicare un metodo iterativo di **ricerca degli zeri** della derivata.
 
 ---
 
-#### 🔹 Il metodo di Newton-Raphson (caso univariato)
+### 🔹 Il metodo di Newton-Raphson (caso univariato)
 
 Nel caso di una funzione univariata $f(x)$, il **metodo di Newton-Raphson** aggiorna la stima del punto di radice nel modo seguente:
 
@@ -1396,7 +1403,7 @@ e il suo punto di intersezione con l’asse $x$ fornisca un miglioramento dell�
 
 ---
 
-#### 🔹 Ricerca di massimi o minimi
+### 🔹 Ricerca di massimi o minimi
 
 Quando l’obiettivo non è trovare lo zero di $f(x)$, ma piuttosto un punto di **massimo o minimo**,
 si applica lo stesso principio alla derivata della funzione.
@@ -1414,7 +1421,7 @@ In questo caso:
 
 ---
 
-#### 🔹 Estensione multivariata
+### 🔹 Estensione multivariata
 
 Per funzioni multivariate $f(\mathbf{x})$,  
 la derivata prima viene sostituita dal **gradiente** $\nabla f$,  
@@ -1432,7 +1439,7 @@ $$
 
 ---
 
-#### 🔹 Interpretazione
+### 🔹 Interpretazione
 
 - Il termine $\nabla f$ indica la **direzione di massima pendenza** (come nella discesa del gradiente).  
 - L’inverso dell’Hessiana $H^{-1}$ **adatta la scala del passo** in base alla curvatura locale della funzione.  
@@ -1440,7 +1447,7 @@ $$
 
 ---
 
-#### 💡 In sintesi
+### 💡 In sintesi
 
 | Quantità | Significato | Ruolo |
 |-----------|--------------|-------|
@@ -1544,6 +1551,7 @@ def newton(X, t, epochs=100):
 
     return cost_history, m, q
 ```
+
 # 📘 Riepilogo — Metodi di Ottimizzazione Avanzata
 
 In questo laboratorio abbiamo confrontato diverse varianti del **gradient descent**,  
@@ -1561,7 +1569,7 @@ ognuna progettata per migliorare la **velocità**, la **stabilità** o la **robu
 
 ---
 
-### 📊 Confronto qualitativo
+## 📊 Confronto qualitativo
 
 | **Metodo** | **Memoria storica** | **Adattività del passo** | **Uso del 2° ordine** | **Velocità di convergenza** |
 |-------------|---------------------|---------------------------|------------------------|------------------------------|
@@ -1576,7 +1584,7 @@ ognuna progettata per migliorare la **velocità**, la **stabilità** o la **robu
 
 ---
 
-### 💬 Conclusione
+## 💬 Conclusione
 
 - Tutti i metodi si basano sull’idea comune di **muoversi nella direzione del gradiente**, ma differiscono nel modo in cui decidono **quanto e come** compiere il passo di aggiornamento.  
 - I metodi **adattivi** (Adagrad, RMSProp, Adadelta, Adam) sono oggi i più usati nei contesti di *deep learning* e nei problemi ad alta dimensionalità.  
@@ -1588,42 +1596,4 @@ ognuna progettata per migliorare la **velocità**, la **stabilità** o la **robu
 > - *Adagrad, RMSProp, Adadelta* → introducono adattività automatica del passo.  
 > - *Adam* → unisce memoria e adattività, risultando lo standard moderno.  
 > - *Newton-Raphson* → offre precisione teorica, ma è raramente usato in pratica.
-### 🧩 Esercizio proposto: criterio di convergenza e confronto delle prestazioni
 
-Finora abbiamo eseguito gli algoritmi di ottimizzazione per un numero **fisso di epoche**.  
-Tuttavia, non sempre serve continuare ad aggiornare i parametri quando il modello è già arrivato vicino al minimo.
-
-Un’idea utile è introdurre un **criterio di arresto automatico** basato sulla **convergenza** dei parametri o del costo.
-
-#### 🔹 Obiettivo
-Modificare uno degli algoritmi implementati (ad esempio **Momentum**, **Adam** o **Newton-Raphson**) in modo che:
-- si interrompa **quando la variazione della funzione di costo tra due iterazioni successive diventa molto piccola**, oppure  
-- quando la variazione dei parametri $\theta$ è inferiore a una soglia prefissata.
-
-#### 🔹 Suggerimento
-Puoi inserire una condizione del tipo:
-
-$$
-\text{if } |\mathscr{R}^{(k)} - \mathscr{R}^{(k-1)}| < \varepsilon \text{ : interrompi l’algoritmo.}
-$$
-
-oppure
-
-$$
-\text{if } \|\theta^{(k)} - \theta^{(k-1)}\| < \varepsilon \text{ : interrompi.}
-$$
-
-dove $\varepsilon$ è una piccola soglia, ad esempio `1e-6`.
-
-#### 🔹 Attività
-1. Scegli un ottimizzatore (es. **Adam** o **Newton**).  
-2. Implementa il criterio di arresto.  
-3. Misura:
-   - il **numero di passi** effettivamente necessari alla convergenza;  
-   - il **tempo di esecuzione**;  
-   - e l’**accuratezza finale** del modello.  
-4. Confronta i risultati con la versione che esegue un numero fisso di iterazioni.
-
-Questo esperimento permette di capire:
-- **quanto velocemente** ciascun metodo converge,  
-- e **quanto è efficiente** in termini di costo computazionale e accuratezza finale.

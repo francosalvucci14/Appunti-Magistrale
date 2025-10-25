@@ -320,7 +320,7 @@ $$
 
 ---
 
-#### Intuizione
+### Intuizione
 
 Immagina di essere su una collina al buio e voler scendere a valle:
 - il gradiente ti indica dove la salita è più ripida,  
@@ -457,7 +457,7 @@ $$
 ---
 
 🧭 Il **gradiente** è come una freccia che indica “da che parte sale la montagna” nel punto in cui ti trovi.
-## Let's work
+# Let's work
 
 Per capire meglio come funziona la discesa del gradiente, applichiamola ad un semplice problema di **classificazione binaria**.  
 Immaginiamo di avere un dataset bidimensionale: ogni punto è descritto da due caratteristiche $(x_1, x_2)$ e da un’etichetta $t \in \{0,1\}$ che indica la classe di appartenenza.  
@@ -466,7 +466,7 @@ L’obiettivo è costruire un modello predittivo $f(\mathbf{x}; \theta)$ che, da
 
 ---
 
-### La scelta del modello
+## La scelta del modello
 
 Partiamo con un modello molto semplice: una **combinazione lineare** delle feature $(x_1, x_2)$ con i parametri $\theta = (\theta_0, \theta_1, \theta_2)$:
 
@@ -485,7 +485,7 @@ Solo più avanti vedremo che questa formulazione prende il nome di **logistic re
 
 ---
 
-### La funzione di costo: cross-entropy
+## La funzione di costo: cross-entropy
 
 Per valutare la bontà delle predizioni usiamo la **cross-entropy loss**, che misura quanto la probabilità stimata $f(\mathbf{x};\theta)$ si discosta dal valore vero $t$:
 
@@ -518,7 +518,7 @@ import pandas as pd
 
 import time
 ```
-#### Scaricare i dati
+### Scaricare i dati
 
 Per lavorare su un problema pratico ci serve un **dataset**. In questo laboratorio i dati non sono già presenti dentro Colab, quindi dobbiamo **scaricarli da una sorgente esterna** (in questo caso un link fornito dal docente).
 
@@ -537,7 +537,7 @@ Il file `testSet.txt` contiene tre colonne:
 - **t**: l’etichetta della classe, che può assumere valore 0 o 1.  
 
 Nelle prossime celle mostriamo alcune righe del dataset e la distribuzione delle classi, così da avere un’idea più concreta dei dati su cui applicheremo la discesa del gradiente.
-# Carichiamo il dataset (già scaricato con wget)
+## Carichiamo il dataset (già scaricato con wget)
 
 ```python
 data = pd.read_csv("testSet.txt",
@@ -546,7 +546,7 @@ data = pd.read_csv("testSet.txt",
                    names=['x1','x2','t'])
 ```
 
-#### Funzioni di Visualizzazione
+### Funzioni di Visualizzazione
 
 Per rendere il laboratorio più chiaro, definiamo alcune **funzioni di supporto** che servono a:
 - Visualizzare i dati in un grafico 2D
@@ -781,7 +781,7 @@ dove:
 
 ---
 
-### 🔹 Dalla derivata alla discesa del gradiente
+#### 🔹 Dalla derivata alla discesa del gradiente
 
 Abbiamo trovato l’espressione della derivata parziale di $\mathscr{R}_n(\theta)$ rispetto a ogni parametro $\theta_j$.  
 Ora possiamo combinare tutte le componenti e scrivere il **gradiente completo**:
@@ -799,7 +799,7 @@ ogni campione “spinge” i parametri nella direzione dell’errore $(t_i - f_i
 
 ---
 
-### 🔹 Forma vettoriale compatta
+#### 🔹 Forma vettoriale compatta
 
 Scrivendo la somma precedente in forma matriciale, otteniamo:
 
@@ -816,7 +816,7 @@ Qui:
 
 ---
 
-### 🔹 Dalla forma compatta all’aggiornamento iterativo
+#### 🔹 Dalla forma compatta all’aggiornamento iterativo
 
 Ora possiamo scrivere la **regola generale della discesa del gradiente**:
 
@@ -832,7 +832,7 @@ $$
 
 ---
 
-### 🔹 Cosa sta succedendo?
+#### 🔹 Cosa sta succedendo?
 
 - $(t - f(\theta, X))$ misura **quanto sbaglia** il modello su ciascun campione;  
 - $X^\top$ combina questi errori in base alle feature, fornendo la **direzione complessiva** in cui aggiornare i pesi;  
@@ -894,7 +894,7 @@ ad esempio **ε = 10⁻¹⁵**. In questo modo la funzione resta **stabile e fin
 > È piccola quando il modello è sicuro **e ha ragione**, ed esplode quando è sicuro **ma sbaglia**.  
 >  
 > In Python si evita l’infinito introducendo un piccolo **epsilon (ε)** per stabilizzare il calcolo, e invece di $∞$ si ottiene... 34!
-# 1️⃣ Funzione del modello (sigmoide logistica)
+## 1️⃣ Funzione del modello (sigmoide logistica)
 
 ```python
 def f(theta, X):
@@ -919,7 +919,7 @@ def f(theta, X):
     return sp.expit(z).reshape(-1, 1) # applica la sigmoide logistica
 ```
 
-# 2️⃣ Funzione di costo (cross-entropy)
+## 2️⃣ Funzione di costo (cross-entropy)
 
 ```python
 def cost(theta, X, t):
@@ -947,7 +947,7 @@ def cost(theta, X, t):
     return ((-term1 - term2) / len(X))[0]
 ```
 
-# 3️⃣ Gradiente della funzione di costo
+## 3️⃣ Gradiente della funzione di costo
 
 ```python
 def gradient(theta, X, t):
@@ -1013,7 +1013,7 @@ Al termine, otteniamo:
 - `nfeatures` → numero di feature per esempio,  
 - `X` e `t` pronti per essere utilizzati negli algoritmi di ottimizzazione.
 
-## 🧩 Dalla teoria alla pratica: Batch Gradient Descent
+# Batch Gradient Descent (BGD)
 
 Abbiamo appena derivato la regola generale della discesa del gradiente:
 
@@ -1036,7 +1036,7 @@ $$
 
 ---
 
-### 🔹 Significato operativo
+## 🔹 Significato operativo
 
 - L’aggiornamento è calcolato su **tutto il dataset** → gradiente “preciso” ma più lento da calcolare.  
 - $(t - f(\theta, X))$ rappresenta gli **errori di predizione**; moltiplicando per $X^\top$ si aggregano gli effetti di tutti i campioni.  
@@ -1044,7 +1044,7 @@ $$
 
 ---
 
-### 🔹 Procedura tipica
+## 🔹 Procedura tipica
 
 1. Inizializza $\theta$ (a zero o valori casuali piccoli);  
 2. Per ogni **epoca**:
@@ -1055,7 +1055,7 @@ $$
 
 ---
 
-### ⚙️ Pro e contro
+## ⚙️ Pro e contro
 
 | ✅ Vantaggi | ❌ Limiti |
 |-------------|-----------|
@@ -1163,21 +1163,6 @@ Dopo il training:
 - e la traiettoria dei coefficienti della retta di separazione nel piano dei parametri $(m, q)$.
 
 L’andamento regolare del costo mostra la **convergenza stabile** tipica del *Batch Gradient Descent*.
-# 🧩 1️⃣ Batch Gradient Descent
-
-In questo caso il gradiente viene calcolato su TUTTO il dataset a ogni iterazione (una sola volta per epoca).
-
-```python
-epochs = 1000  # stesso numero per tutti i metodi
-```
-
-# ⏱️ Avvio del training
-
-```python
-start_time = time.time()
-cost_history_batch, theta_history_batch, m_batch, q_batch = batch_gd(X, t, eta=0.1, epochs=epochs)
-time_batch = time.time() - start_time
-```
 
 ## 💭 Considerazioni sul Batch Gradient Descent
 
@@ -1227,13 +1212,13 @@ Il *Batch Gradient Descent* rappresenta:
 - Il BGD è **preciso ma lento**.  
 - È ideale per dataset piccoli o per visualizzare il processo di convergenza.  
 - Le varianti successive (*SGD* e *Mini-Batch*) mantengono la stessa idea di fondo, ma offrono un compromesso diverso tra **velocità**, **stabilità** e **accuratezza**.
-## Stochastic Gradient Descent (SGD)
+# Stochastic Gradient Descent (SGD)
 
 Dopo aver analizzato il *Batch Gradient Descent*, passiamo a una sua variante più “agile”: la **Stochastic Gradient Descent (SGD)**.  
 
 ---
 
-### 🔹 Idea di base
+## 🔹 Idea di base
 
 Nel *Batch Gradient Descent*, il gradiente viene calcolato ad ogni iterazione usando **tutti gli esempi** del dataset.  
 Questo garantisce stabilità, ma è computazionalmente costoso.
@@ -1253,7 +1238,7 @@ dove $\mathbf{x}_i$ è il singolo campione scelto all’iterazione corrente.
 
 ---
 
-### ⚙️ Procedura di aggiornamento
+## ⚙️ Procedura di aggiornamento
 
 Per ogni epoca:
 1. si mescola il dataset (per evitare effetti dovuti all’ordine dei dati);
@@ -1263,7 +1248,7 @@ Per ogni epoca:
 
 ---
 
-### 🧩 Effetti pratici
+## 🧩 Effetti pratici
 
 - Gli aggiornamenti frequenti rendono il metodo **molto più veloce**.  
 - Tuttavia, il gradiente stimato su un solo esempio è **rumoroso**: la traiettoria di discesa non è regolare ma “zigzagante”.
@@ -1273,7 +1258,7 @@ Questo rumore, però, può essere utile: permette al metodo di **uscire da minim
 
 ---
 
-### 🔸 Aggiornamento dei parametri nella classificazione binaria
+## 🔸 Aggiornamento dei parametri nella classificazione binaria
 
 Nel nostro caso (funzione sigmoide e loss di tipo cross-entropy):
 
@@ -1371,20 +1356,6 @@ def stochastic_gd(X, t, eta=0.01, epochs=1000):
 
     return cost_history, theta_history, m, q
 ```
-## Applicazione dello Stochastic Gradient Descent
-
-# 🧩 2️⃣ Stochastic Gradient Descent (SGD)
-
-Qui il gradiente è calcolato su un solo campione per volta.
-Ciò comporta molti più aggiornamenti dei parametri, ma più rumorosi.
-
-```python
-epochs = 10000  # stesso numero per tutti i metodi
-
-start_time = time.time()
-cost_history_sgd, theta_history_sgd, m_sgd, q_sgd = stochastic_gd(X, t, eta=0.01, epochs=epochs)
-time_sgd = time.time() - start_time
-```
 
 ## Considerazioni sullo Stochastic Gradient Descent
 
@@ -1417,11 +1388,12 @@ Il comportamento osservato è molto diverso rispetto al *Batch Gradient Descent*
 ---
 
 📘 **In sintesi:**
+
 Lo *Stochastic Gradient Descent* è un metodo **più reattivo e scalabile**, ideale per problemi di grandi dimensioni.  
 Pur introducendo rumore e oscillazioni, rappresenta un passo fondamentale verso le varianti moderne (come *Mini-Batch*, *Momentum*, e *Adam*), che mirano a combinare **efficienza** e **stabilità**.
 
 ---
-## Mini-Batch Gradient Descent
+# Mini-Batch Gradient Descent
 
 Il **Mini-Batch Gradient Descent (MBGD)** rappresenta un compromesso efficace tra i due approcci estremi:
 - il *Batch Gradient Descent* (che utilizza tutti i dati per ogni aggiornamento),  
@@ -1429,7 +1401,7 @@ Il **Mini-Batch Gradient Descent (MBGD)** rappresenta un compromesso efficace tr
 
 ---
 
-### 🔹 Idea di base
+## 🔹 Idea di base
 
 L’idea è di dividere il dataset in **sottoinsiemi (mini-batch)** di dimensione $s$.  
 A ogni iterazione, il gradiente viene calcolato **su un intero mini-batch**, e i parametri vengono aggiornati in base alla media dei gradienti calcolati sui campioni di quel gruppo.
@@ -1447,7 +1419,7 @@ dove:
 
 ---
 
-### ⚙️ Procedura operativa
+## ⚙️ Procedura operativa
 
 Per ogni epoca:
 1. si suddivide il dataset in $\lceil n/s \rceil$ mini-batch;
@@ -1457,7 +1429,7 @@ Per ogni epoca:
 
 ---
 
-### 🔸 Aggiornamento dei parametri nella classificazione binaria
+## 🔸 Aggiornamento dei parametri nella classificazione binaria
 
 Nel nostro caso (con funzione sigmoide e *cross-entropy*), gli aggiornamenti diventano:
 
@@ -1471,7 +1443,7 @@ Ogni mini-batch fornisce quindi un aggiornamento “bilanciato” dei parametri.
 
 ---
 
-### 🧩 Effetti pratici
+## 🧩 Effetti pratici
 
 - Gli aggiornamenti sono **più stabili** rispetto a quelli di SGD,  
   perché il gradiente medio sul mini-batch riduce la varianza.  
@@ -1484,7 +1456,8 @@ La scelta della dimensione $s$ influisce sul comportamento:
 
 ---
 
-### 💡 Nella pratica
+## 💡 Nella pratica
+
 Il *Mini-Batch Gradient Descent* è l’algoritmo più usato nel **Deep Learning**,  
 poiché consente di sfruttare:
 - l’efficienza del calcolo vettoriale (GPU),
@@ -1569,20 +1542,6 @@ def mb_gd(X, t, eta=0.01, epochs=1000, minibatch_size=10):
     return cost_history, theta_history, m, q
 ```
 
-# 🧩 3️⃣ Mini-Batch Gradient Descent
-
-Variante intermedia: il gradiente viene calcolato su piccoli sottoinsiemi (mini-batch) del dataset, riducendo la varianza e mantenendo efficienza. 
-La dimensione del batch è fissata a 10.
-
-
-```python
-minibatch_size = 10
-
-start_time = time.time()
-cost_history_mb, theta_history_mb, m_mb, q_mb = mb_gd(X, t, eta=0.01, epochs=epochs, minibatch_size=minibatch_size)
-time_mb = time.time() - start_time
-```
-
 ## Considerazioni sul Mini-Batch Gradient Descent
 
 ---
@@ -1633,7 +1592,7 @@ pur con leggere fluttuazioni dovute alla natura stocastica dei mini-batch.
 Il Mini-Batch Gradient Descent è oggi lo **standard de facto** per l’addestramento di modelli complessi,  
 poiché combina i vantaggi di entrambi gli approcci:  
 è **veloce, stabile e facilmente parallelizzabile**.
-### 📊 Confronto dei risultati
+# 📊 Confronto dei risultati
 
 A questo punto possiamo confrontare in modo sintetico i tre metodi:  
 - il **tempo di esecuzione**,  
@@ -1647,7 +1606,7 @@ Questo confronto ci permette di valutare **l’efficienza computazionale** e **l
 - **SGD** → molto veloce negli aggiornamenti, ma con fluttuazioni più ampie.  
 - **Mini-Batch GD** → compromesso efficace tra stabilità e rapidità.
 
-## 🔎 Dulcis in fundo: come vanno questi metodi?
+# 🔎 Dulcis in fundo: come vanno questi metodi?
 
 Abbiamo implementato e visualizzato tre varianti della **discesa del gradiente**:  
 - Batch GD  
@@ -1667,42 +1626,6 @@ Lo facciamo utilizzando i parametri $\theta$ stimati da ciascun metodo per predi
 Per ora, lo scopo è **confrontare i metodi di ottimizzazione tra loro**: vedremo se, oltre a convergere bene in termini di costo, arrivano anche a buoni risultati di classificazione.
 
 ---
-
-# 🧮 Funzione di predizione
-
-```python
-def predict(theta, X, thr=0.5):
-    """
-    Predice la classe (0/1) per ciascun campione, dati i parametri theta.
-
-    Passaggi:
-    ----------
-    1. Calcola la probabilità di appartenenza alla classe positiva (t=1)
-       usando la funzione sigmoide: f(x; θ) = σ(Xθ).
-    2. Confronta la probabilità con la soglia 'thr' (default 0.5):
-       - se >= thr → classe 1
-       - altrimenti → classe 0
-    3. Restituisce un vettore binario con le predizioni.
-
-    Parametri:
-    ----------
-    theta : ndarray (d x 1)
-        Vettore dei parametri del modello (bias + pesi).
-    X : ndarray (n x d)
-        Matrice dei dati (inclusa la colonna di 1 per il bias).
-    thr : float
-        Soglia di decisione (default = 0.5).
-
-    Ritorna:
-    --------
-    y_hat : ndarray (n x 1)
-        Predizioni binarie (0 o 1).
-    """
-    probs = f(theta, X)                  # probabilità predette
-    return (probs >= thr).astype(int)    # classi predette
-```
-
-
 # Algoritmi avanzati di ottimizzazione
 
 I metodi di discesa del gradiente visti finora (batch, stochastic e mini-batch) rappresentano la base dell’ottimizzazione in Machine Learning. Tuttavia, nella pratica presentano limiti significativi: lenta convergenza, sensibilità al valore del learning rate e difficoltà in presenza di funzioni di costo complesse e non convesse.  
