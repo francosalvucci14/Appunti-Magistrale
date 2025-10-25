@@ -6,3 +6,6 @@ Inferenza Statistica e Teoria dell'informazione
 - [[Lezione 4 ISTI]]
 - [[Lezione 5 ISTI]]
 - [[Lezione 6 ISTI]]
+- [[Lezione 7 ISTI]]
+- [[Lezione 8 ISTI]]
+- 
