@@ -30,7 +30,10 @@ Possiamo sfruttare queste disuguaglianze per dimostrare varie cose, vediamo alcu
 $$Pr(|X_{n}-\mu|\gt\varepsilon)\underbrace{\leq}_{\text{Chebychev}}\frac{Var(X_{n})}{\varepsilon^2}=\frac{Var(X_{1})}{n\varepsilon^2}\to0\quad(1)$$
 Però, **non serviva l'ipotesi i.i.d**, infatti 
 $$Var\left(\sum\limits_{i=1}^nX_i\right)=\sum\limits_{i=1}^nVar(X_{i})\quad(2)$$
-Ma con l'ipotesi $\mathbb E[X_i]=0$ abbiamo che $$Var\left(\sum\limits_{i=1}^nX_i\right)=\mathbb E\left[\left(\sum\limits_{i=1}^nX_i\right)^{2}\right]=\sum\limits_{i_{1}}\sum\limits_{i_{2}}X_{i_1}X_{i_2}=\sum\limits_{i_{1}i_{2}}Cov(X_{i_1}X_{i_2})$$
+Ma con l'ipotesi $\mathbb E[X_i]=0$ abbiamo che $$Var\left(\sum\limits_{i=1}^nX_i\right)=\mathbb E\left[\left(\sum\limits_{i=1}^nX_i\right)^{2}\right]=\sum\limits_{i_{1}}\sum\limits_{i_{2}}\mathbb E[X_{i_1}X_{i_2}]=\sum\limits_{i_{1}i_{2}}Cov(X_{i_1}X_{i_2})$$
+Dove l'ultima uguaglianza vale perchè:
+$$Cov(X_{i1},X_{i2})=\mathbb E[X_{i1}X_{i2}]-\mathbb E[X_{i1}]\mathbb E[X_{i2}]$$
+Ma per ipotesi abbiamo detto che $\mathbb E[X_i]=0$ quindi possiamo dire che $$Cov(X_{i1},X_{i2})=\mathbb E[X_{i1}X_{i2}]$$
 E quindi basta che siano **mutualmente indipendenti**
 
 **Non serve neanche che abbiano stessa varianza**, infatti la legge vale anche se $$Var(X_i)=i^{\alpha},\alpha\lt1$$
