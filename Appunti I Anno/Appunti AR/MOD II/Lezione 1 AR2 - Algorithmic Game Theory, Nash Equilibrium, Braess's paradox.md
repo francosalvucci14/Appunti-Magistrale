@@ -108,6 +108,31 @@ Analizziamo quindi la *Matrice dei Costi*
 | attraverso S | $2,2$        | $5,1$        |
 | attraverso C | $1,5$        | $4,4$        |
 Vediamo ora come rappresentare formalmente un gioco, usando la **Forma Normale**
-- $N$ player **razionali**
+- $N$ players **razionali**
 - $S_i$ = Insieme di strategie per il player $i$
-- La combinazione delle strategie $(s_{1},s_{2},\dots,s_{N})$ da risultati
+- La combinazione delle strategie $(s_{1},s_{2},\dots,s_{N})$ assegna le vincite $(p_{1},\dots,p_{N})$ agli $N$ players, generando così la matrice delle vincite $$S_{1}\times S_{2}\times\dots\times S_{N}$$
+## Dominant Strategy Equilibrium
+
+Definiamo il concetto di DSE
+
+>[!definition]- Dominatic Strategy Equilibrium (DSE)
+>È una **combinazione di strategie** $s^{\star}=(s^{\star}_{1},s^{\star}_{2},\dots,s^{\star}_{N})$ tale che $s_{i}^{\star}$ è la **strategia dominante** per ogni $i$, ovvero, *per ogni possibile profilo strategico alternativo* $s=(s_{1},s_{2},\dots,s_i,\dots,s_{N})$ vale che:
+>1. se $p_{i}$ è un'**utilità** allora $p_{i}(s_{1},s_{2},\dots, s^{\star}_i,\dots,s_{N})\geq p_{i}(s_{1},s_{2},\dots,s_i,\dots,s_{N})$
+>2. se $p_{i}$ è un **costo** allora $p_{i}(s_{1},s_{2},\dots,s^{\star}_i,\dots,s_{N})\leq p_{i}(s_{1},s_{2},\dots,s_i,\dots,s_{N})$
+
+La Dominant Strategy è quindi la **miglior risposta** ad *ogni* strategia di ogni altro player
+Se un gioco ha il DSE, allora i giocatoru convergeranno immediatamente ad esso
+
+Ovviamente, non tutti i giochi hanno un DSE (infatti, solo pochi di essi lo contengono in pratica)
+
+## Nash Equilibrium
+
+Una soluzione più flessibile al DSE è il così detto **Equilibrio di Nash** (NE)
+
+NE è definito come segue:
+
+>[!definition]- Nash Equilibrium (NE)
+>È una **combinazione di strategie** $s^{\star}=(s^{\star}_{1},s^{\star}_{2},\dots,s^{\star}_{N})$ tale che per ogni $i,s^{\star}_i$ è la **miglior risposta** a $(s^{\star}_{1},s^{\star}_{2},\dots s_{i-1}^{\star},s_{i+1}^{\star},\dots,s^{\star}_{N})$, ovvero, *per ogni possibile strategia alternativa* $s_i$ del giocatore $i$ vale che:
+>1. se $p_{i}$ è un'**utilità** allora $p_{i}(s_{1}^{\star},s_{2}^{\star},\dots, s^{\star}_i,\dots,s_{N}^{\star})\geq p_{i}(s_{1}^{\star},s_{2}^{\star},\dots,s_i,\dots,s_{N}^{\star})$
+>2. se $p_{i}$ è un **costo** allora $p_{i}(s_{1}^{\star},s_{2}^{\star},\dots,s^{\star}_i,\dots,s_{N}^{\star})\leq p_{i}(s_{1}^{\star},s_{2}^{\star},\dots,s_i,\dots,s_{N}^{\star})$
+
