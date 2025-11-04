@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "74cac88fbd675693",
+        "id": "873d8398649a5ea7",
         "type": "tabs",
         "children": [
           {
-            "id": "0c7272c495411cac",
+            "id": "60acdd5ada0d2218",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": ".md.md",
-                "bFile": ".md.md",
-                "aRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: .md"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -165,7 +161,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0c7272c495411cac",
+  "active": "2f460895308e6293",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
