@@ -10,4 +10,5 @@ Inferenza Statistica e Teoria dell'informazione
 - [Lezione 8 ISTI](Lezione%208%20ISTI.md)
 - [Lezione 9 ISTI](Lezione%209%20ISTI.md)
 - [Lezione 10 ISTI](Lezione%2010%20ISTI.md)
+- [Lezione 11 ISTI](Lezione%2011%20ISTI.md)
 - 
