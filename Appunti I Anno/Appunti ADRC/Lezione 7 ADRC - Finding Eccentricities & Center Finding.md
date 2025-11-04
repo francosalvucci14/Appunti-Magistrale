@@ -4,7 +4,7 @@ Il problema che vogliamo studiare qui è quello di trovare l'**eccentricità** d
 
 Vediamo che, l'eccentricità di un nodo $x$ è definita come : 
 $$r(x)=\max_{y\in V}\{d(x,y)\},\quad d(x,y)=\text{distanza dal nodo x a y}$$
-![[Pasted image 20250331100610.png|center|300]]
+![center|300](img/Pasted%20image%2020250331100610.png)
 
 Notiamo che nell'esempio $r(x)=4$
 
@@ -35,16 +35,16 @@ Vediamo ora qualche teorema
 
 >[!teorem]- Step 1
 >$$r(s_1)=\max\{h(T_1),1+r(s_2)\}$$
->![[Pasted image 20250331101840.png|center|500]]
+>![center|500](img/Pasted%20image%2020250331101840.png)
 
 >[!teorem]- Step 2
 >$$r(x)=F(knw(x),M'+1)$$
->![[Pasted image 20250331102437.png|center|500]]
+>![center|500](img/Pasted%20image%2020250331102437.png)
 >Ricordiamo che $knw(x)$ è il valore di eccentricità del nodo $x$ relativa al suo sottoalbero (e la conosce grazie alla prima passata di saturazione)
 
 E così via
 
-![[Pasted image 20250331102513.png|center|500]]
+![center|500](img/Pasted%20image%2020250331102513.png)
 
 Vediamo ora il protocollo
 ### Protocollo
@@ -125,11 +125,11 @@ Qui quello che ci chiediamo è trovare il **centro** dell'albero, ovvero quel no
 
 Introduciamo quindi il concetto di **percorso diametrale**, che in qualche modo può essere associato al longest path
 
-![[Pasted image 20250331115242.png|center|400]]
+![center|400](img/Pasted%20image%2020250331115242.png)
 
 Il centro è il nodo con eccentricità minima
 
-![[Pasted image 20250331115319.png|center|400]]
+![center|400](img/Pasted%20image%2020250331115319.png)
 
 Un'idea potrebbe essere : 
 1. Trovare tutte le eccentricità -> $4n-4$
@@ -141,7 +141,7 @@ Una strategia migliore può essere trovata studianto le proprietà che il nodo c
 >[!definition]- Proprietà 1
 >In un albero c'è un unico centro, oppure due centri che sono però vicini
 
-![[Pasted image 20250331115635.png|center|500]]
+![center|500](img/Pasted%20image%2020250331115635.png)
 
 Come vediamo, se ci sono un numero **pari** di nodi sul diametro allora abbiamo 2 centri, altrimenti un centro solo.
 

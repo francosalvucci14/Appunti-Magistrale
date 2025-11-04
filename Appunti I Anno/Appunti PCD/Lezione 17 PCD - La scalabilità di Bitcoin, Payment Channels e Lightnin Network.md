@@ -9,10 +9,10 @@ Quella di cui ci occuperemo noi è quella che consiste nella costruzione di una 
 
 Supponiamo che Alice abbiamo $10$btc in un output non speso di una certa transazione con id $b8ff\dots11f0$
 
-![[Pasted image 20250527151015.png|center]]
+![center](img/Pasted%20image%2020250527151015.png)
 dove **pkA0** è una chiave pubblica di cui lei ha la corrispondente chiave privata **skA0**, e decida di costruire la seguente transazione, che chiamiamo *funding transaction* per ragioni che saranno chiare (spero) a breve., che spende quei $10$btc
 
-![[Pasted image 20250527151134.png|center]]
+![center](img/Pasted%20image%2020250527151134.png)
 
 dove **pkA** è una chiave pubblica di cui Alice ha la corrispondente chiave privata **skA**, mentre **pkB** è una chiave pubblica di cui un altro soggetto,Bob,ha la corrispondente chiave segreta **skB**
 
@@ -22,7 +22,7 @@ Quindi Alice starebbe bloccando i suoi $10$btc in un output che non potrebbe pi�
 Prima di inviare la *FundingTx* in $(2)$, Alice però genera una nuova coppia di chiavi **skAr0** e
 **pkAr0** e costruisce anche la transazione seguente, che chiamiamo *refunding transaction* per ragioni che dovrebbero cominciare a chiarirsi, e chiede a Bob di firmarla con la sua **skB**
 
-![[Pasted image 20250527151636.png|center]]
+![center](img/Pasted%20image%2020250527151636.png)
 
 La transazione in $(3)$ spende l'output della transazione in $(2)$, che Alice non ha ancora inviato nella rete Bitcoin, e ha un unico output che è spendibile o da Alice,$n$ blocchi dopo che la transazione sia stata inserita nella Blockchain, oppure da chi conosce **skAr0** (che per il momento conosce solo Alice) e **skB** (che conosce solo Bob)
 
@@ -43,7 +43,7 @@ Alice e Bob generano due nuove coppie di chiavi, rispettivamente (**skAr1**, **p
 
 Entrambe le transazioni sono progettate per spendere l’output della *funding transaction* in $(2)$.
 
-![[Pasted image 20250527152439.png|center|600]]
+![center|600](img/Pasted%20image%2020250527152439.png)
 
 La transazione *CommitTx1 - Alice* è nelle mani di Alice e deve essere firmata da Bob con **skB**,la transazione *CommitTx1 - Bob* è nelle mani di Bob e deve essere firmata da Alice con **skA**.
 

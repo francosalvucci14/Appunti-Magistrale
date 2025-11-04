@@ -20,7 +20,7 @@ Perchè la decrescita è così veloce? Per rispondere alla domanda ci viene in "
 
 La situazione è la seguente : 
 
-![[Pasted image 20250801134357.png|center|500]]
+![center|500](img/Pasted%20image%2020250801134357.png)
 
 Ma cosa c'entra il Teorema del Limite Centrale con la nostra situazione?
 
@@ -49,11 +49,11 @@ Ma perchè vale questa cosa?
 Prima di cercare di capire le ragioni della power law, cerchiamo di capire come hanno fatto questi studiosi ad accorgersi di questo fenomeno, ovvero:
 - partendo da un grafico (discreto) di un grafo dove, per ogni intero $k$ in ascissa riporta in ordinata il num di nodi del grafo aventi grafo $k$, come fai ad accorgerti che quella funzione decresce come l'inverso di un polinomio invece che come l'inverso di una esponenziale??
 
-![[Pasted image 20250801135817.png|center|300]]
+![center|300](img/Pasted%20image%2020250801135817.png)
 
 La risposta è più "facile" del previsto: è sufficiente considerare il grafico log-log, ovvero un grafico in cui gli assi rappresentano $\ln(x),\ln(y)$, e quindi invece che rappresentare $y=f(k)$ rappresentiamo $y=f(\ln(k))$ ($f(k)$ indica la funzione che esprime il num di nodi con grado $k$)
 
-![[Pasted image 20250801140042.png|center|300]]
+![center|300](img/Pasted%20image%2020250801140042.png)
 
 In questo modo, se $f(k)=\frac{1}{k^c}$, il grafo sarà grosso modo una retta: $\ln(y)\approx-c\ln(k)$ e in $(a)\to y=\frac{1}{x^2+1}$
 
@@ -102,7 +102,7 @@ Intuitivamente, man mano che il numero di archi entranti in un nodo aumenta, cre
 
 Vediamo graficamente cosa accade quando il nodo $i$ viene aggiunto al grafo
 
-![[Pasted image 20250801142513.png|center|500]]
+![center|500](img/Pasted%20image%2020250801142513.png)
 
 Come possiamo vedere dall'immagine, alla creazione del nodo $i$ avvengono le seguenti operazioni: 
 1) viene scelto u.a.r il nodo $a$
@@ -236,7 +236,7 @@ Per rispondere alle domande, quello che possiamo fare è la cosa seguente: invec
 
 La situazione è la seguente
 
-![[Pasted image 20250801182825.png|center|500]]
+![center|500](img/Pasted%20image%2020250801182825.png)
 
 Piccola osservazione chiave: **naturalmente**, per compiere questa modifica dobbiamo assumere che **a gradi di popolarità diversi corrispondano numeri di nodi diversi che hanno quelle popolarità**
 
@@ -246,7 +246,7 @@ Se $d(k)$ è la funzione che esprime il num. di nodi aventi grado $k$, allora il
 
 È possibile dimostrare che, se la funzione $f$ che esprime la frazione del numero di nodi aventi grado $k$ è una Power Law (come appare dai dati sperimentali), ovvero per qualche costante $c\gt0,f(k)\approx k^{-c}$, allora **anche $d$ esprime una Power Law**, anche qui $\exists a\gt0:d(k)\approx k^{-a}$, e dunque se $$n=d(k)\approx k^{-a}\implies k\approx n^{-\frac{1}{a}}$$ Questa quantità decresce *molto lentamente*, di conseguenza va a formare la **lunga coda**
 
-![[Pasted image 20250806110128.png|center|500]]
+![center|500](img/Pasted%20image%2020250806110128.png)
 
 ## Gli effetti della web-search
 

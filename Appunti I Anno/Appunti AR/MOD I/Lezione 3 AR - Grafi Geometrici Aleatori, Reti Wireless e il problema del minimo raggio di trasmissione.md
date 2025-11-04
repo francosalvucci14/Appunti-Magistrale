@@ -114,9 +114,9 @@ Partizioniamo quindi $Q=[0,1]^2$ in $k^2(n)$ celle, ciascuna di lato $\frac{1}{k
 - due celle si dicono **adiacenti** se hanno un lato in comune
 
 Vale quindi che $$r(n)=\sqrt{\left(\frac{2}{k(n)}\right)^{2}+\left(\frac{1}{k(n)}\right)^{2}}=\frac{\sqrt{5}}{k(n)},\quad k(n)=\frac{\sqrt{5}}{r(n)}$$
-![[Pasted image 20250806170606.png|center|250]]
+![center|250](img/Pasted%20image%2020250806170606.png)
 
-![[Pasted image 20250806171342.png|center|250]]
+![center|250](img/Pasted%20image%2020250806171342.png)
 
 Ponendo $r(n)$ in questo modo, ciascun nodo in una qualsiasi cella è collegato da un arco a tutti i nodi (eventualmente) contenuti in tutte le celle adiacenti.
 
@@ -222,7 +222,7 @@ Possiamo quindi esprimere questo evento come unione di due eventi mutulamente es
 - $\mathcal E_{ij}^{2}=t_{j}\in C_{2r}(t_{i})-C_{r}(t_{i})\land\space\forall h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$. Ovvero, $t_j$ si trova nella regione azzurra della figura
 - Allora possiamo riscrivere $$Pr(\mathcal E_{ij})=Pr(\mathcal E_{ij}^1\cup\mathcal E_{ij}^2)=Pr(\mathcal E_{ij}^1 )+Pr(\mathcal E_{ij}^2)$$
 
-![[Pasted image 20250807110301.png|center|250]]
+![center|250](img/Pasted%20image%2020250807110301.png)
 
 **Calcoliamo** quindi $Pr(\mathcal E_{ij}^1)$: 
 
@@ -230,7 +230,7 @@ Fissiamo $t_i$, fissiamo $t_j$ nella zona gialla e fissiamo $h\in[n]-\{i,j\}$.
 Allora, la probabilità di scegliere un $t_h$ nella regione rimanente (gialla+azzurra) è pari al rapporto dell'area della regione con l'area del quadrato, che è equivalente a $1-2\pi r^2$
 - questa quantità è $\geq (1-2\pi r^2)$ se $t_i,t_j$ non sono troppo vicino al bordo del quadrato
 
-![[Pasted image 20250807112303.png|center|500]]
+![center|500](img/Pasted%20image%2020250807112303.png)
 
 Fissati invece solamente $t_i$ e $t_j$ nella zona gialla, abbiamo che la probabilità che $\forall h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$ è in questo caso (con $t_j$ cselto nella zona gialla) pari a $(1-2\pi r^2)^{n-2}$
 - anche qui questa quantità è $\geq (1-2\pi r^2)^{n-2}$ se $t_i,t_j$ non sono troppo vicino al bordo del quadrato
@@ -246,13 +246,13 @@ $$\begin{align}Pr(\mathcal E_{ij}^1)&=\int_{t_i\in Q}f(t_i)\int_{t_j\in Q-C_{2r}
 Fissiamo $t_i$, fissiamo $t_j$ nella zona azzurra e fissiamo $h\in[n]-\{i,j\}$.
 Allora, la probabilità di scegliere un $t_h$ nella regione rimanente (gialla+azzurra) è pari al rapporto dell'area della regione con l'area del quadrato, e questa volta dipende dalla posizione di $t_j$ nella zona azzurra
 
-![[Pasted image 20250807115313.png|center|500]]
+![center|500](img/Pasted%20image%2020250807115313.png)
 
 La probabilità di scegliere $t_h$ nella regione rimanente è **massima** quando è massima l'intersezione di $C_r(t_i)$ con $C_r(t_j)$, ossia quando $t_j$ si trova sulla circonferenza che delimita $C_r(t_i)$
 
 Così facendo, l'area di $C_r(t_i)\cup C_r(t_j)=2\pi r^2-\text{area}(C_r(t_i)\cap C_r(t_j))$
 
-![[Pasted image 20250807121023.png|center|250]]
+![center|250](img/Pasted%20image%2020250807121023.png)
 
 Calcoliamo quanto vale $\text{area}(C_r(t_i)\cap C_r(t_j))$, fissando $t_i$, $t_j$ su $C_r(t_i)$ e $h\in[n]-\{i,j\}$
 
@@ -268,7 +268,7 @@ Calcoliamo le altre aree:
 	- l'area della regione viola è $r^2\frac{\pi}{3}-\frac{r^2\sqrt{3}}{4}$
 	- allora, mettendo tutto insieme vale che: $$\text{area}(C_r(t_i)\cap C_r(t_j))=2r^2\left(\frac{\pi}{3}-\frac{\sqrt{3}}{4}\right)$$
 
-![[Pasted image 20250807122915.png|center|250]]
+![center|250](img/Pasted%20image%2020250807122915.png)
 
 Infine, calcoliamo $\text{area}(C_r(t_i)\cup C_r(t_j))$
 
@@ -279,7 +279,7 @@ $$1-\text{area}(C_r(t_i)\cup C_r(t_j))\lt1-\frac{8}{5}\pi r^2$$
 E quindi la probabilità di scegliere tutti gli $n-2$ punti $t_h$ nella regione gialla+azzurra è $\lt\left(1-\frac{8}{5}\pi r^2\right)^{n-2}$
 - sempre trascurando gli effetti di bordo
 
-![[Pasted image 20250807121023.png|center|250]]
+![center|250](img/Pasted%20image%2020250807121023.png)
 
 Quindi, alla fine, fissato $t_i$ otteniamo che la probabilità, scegliendo $t_j$ nella zona azzura, per ogni $h\in[n]-\{i,j\}[t_h\not\in C_r(t_i)\cup C_r(t_j)]$ è $$\int_{t_j\in C_{2r}(t_i)-C_{r}(t_i)}f(t_j)\left(1-\frac{8}{5}\pi r^2\right)^{n-2}dt_j$$
 Di conseguenza, abbiamo che:

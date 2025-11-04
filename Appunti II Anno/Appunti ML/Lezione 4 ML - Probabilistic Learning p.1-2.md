@@ -20,10 +20,10 @@ Ci sono due approcci che possono essere applicati:
 2. **Modelli discriminativi probabilistici**: Inferenza delle probabilità di classe $p(C_{k}|\overline{x})$ direttamente da $\mathcal T$
 
 **Caso 1**
-![[Pasted image 20251021164418.png|center|500]]
+![center|500](img/Pasted%20image%2020251021164418.png)
 
 **Caso 2**
-![[Pasted image 20251021164451.png|center|500]]
+![center|500](img/Pasted%20image%2020251021164451.png)
 
 A tal fine,
 
@@ -31,7 +31,7 @@ A tal fine,
 2. selezionare (dedurre) la distribuzione condizionata "migliore" $p^{\star}\in\mathcal P$ dalle conoscenze disponibili (ovvero il dataset), in base a una qualche misura $q$
 3. dato un nuovo elemento $\overline{x}$, applicare $p^{\star}(t|\overline{x})$ per assegnare probabilità a ciascun valore possibile del target corrispondente
 
-![[Pasted image 20251021164759.png|center|500]]
+![center|500](img/Pasted%20image%2020251021164759.png)
 
 Come definire la classe delle possibili distribuzioni condizionate $p(t|\overline{x})$?
 

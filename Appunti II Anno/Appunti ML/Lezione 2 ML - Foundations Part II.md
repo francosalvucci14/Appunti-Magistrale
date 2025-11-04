@@ -26,7 +26,7 @@ Questo metodo può essere meglio specificato come segue:
 
 Lo schema è il seguente:
 
-![[Pasted image 20251014102318.png|center|500]]
+![center|500](img/Pasted%20image%2020251014102318.png)
 
 
 Una variante importante di questo approccio è chiamata **Predizione Bayesiana Completa**, dove l'insieme dei diversi predittori è un' insieme continuo, ciascuno corrispondente a un valore diverso dell'insieme dei parametri $(w_{1},w_{2},\dots,w_{d})\in\mathbb R^{d}$ .

@@ -22,7 +22,7 @@ Un programma (uno script) è una sequenza di comandi (*istruzioni* o *dati*) che
 L'istruzione ***ADD*** nel linguaggio Script estrae due dati dalla pila e ne esegue la somma, quindi il seguente script $$\text{<2> <3> ADD}$$
 verrebbe eseguito dall'interprete Script presente sui nodi della rete Bitcoin in questo modo : viene inserito nella pila il dato $2$, poi viene inserito il dato $3$, poi viene inserito nella pila l'istruzione ADD che estrae dalla pila i due dati sottostanti, e inserisce infine il valore $5$ nella pila.
 
-![[Pasted image 20250426151433.png|center|400]]
+![center|400](img/Pasted%20image%2020250426151433.png)
 
 Ci sono tanti tipi di Script che sono : 
 - **Pay to Public Key** (p2pk) : Il più semplice
@@ -42,7 +42,7 @@ Se una transazione $tx_a$ ha output $tx_a.output$ con un locking\_script di ques
 in modo che la concatenazione di $tx_b.input.unlocking\_script$ con $tx_a.output.locking\_script$ sia $$\text{Script (p2pk) :}\text{<sig> <pk> CHECKSIG}\quad(2)$$
 e l'interprete Script che esegue lo script avrò sullo stack alla fine dell'esecuzione TRUE o FALSE a seconda che **\<sig\>** sia oppure no una firma valida per la chiave pubblica **\<pk\>** della transazione $tx_b$
 
-![[Pasted image 20250426152917.png|center|400]]
+![center|400](img/Pasted%20image%2020250426152917.png)
 
 Notiamo che **\<sig\>** non può contemporaneamente essere parte della transazione $tx_b$ ed essere una firma valida per $tx_b$.
 
@@ -58,7 +58,7 @@ In questo tipo di **locking\_script** non compare direttamente la chiave pubblic
 Complessivamente il **locking\_script** è formato da cinque comandi : 
 $$\text{Locking Script : } \text{DUP HASH160 <pkhash> EQUAL\_VERIFY CHECKSIG}$$
 dove : 
-- $DUP$ è un'istruzione che inserisce nello stack una copia dell'elemento sottostante. Per esempio lo script $\text{<1> DUP}$ verrebbe eseguito in questo modo : ![[Pasted image 20250426154129.png|center|200]]
+- $DUP$ è un'istruzione che inserisce nello stack una copia dell'elemento sottostante. Per esempio lo script $\text{<1> DUP}$ verrebbe eseguito in questo modo : ![center|200](img/Pasted%20image%2020250426154129.png)
 - $HASH160$ è un'istruzione che estrae dallo stack l'elemento sottostante e inserisce nello stack il suo hash (opportunamente calcolato)
 - **\<pkhash\>** è l'hash di una chiave pubblica
 - $EQUAL\_VERIFY$ è un'istruzione che estrae due elementi sottostanti dallo stack e se sono uguali non fa nulla, altrimenti interrompe l'esecuzione dello script dichiarando transaizone non valida

@@ -1,3 +1,3 @@
-- [[Lezione 1 KE - Open Data]]
-- [[Lezione 2 KE - Semantic Web]]
-- [[Lezione 3 KE - RDF e RDFS]]
+- [Lezione 1 KE - Open Data](Lezione%201%20KE%20-%20Open%20Data.md)
+- [Lezione 2 KE - Semantic Web](Lezione%202%20KE%20-%20Semantic%20Web.md)
+- [Lezione 3 KE - RDF e RDFS](Lezione%203%20KE%20-%20RDF%20e%20RDFS.md)

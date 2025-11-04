@@ -208,7 +208,7 @@ I $k$ votanti esprimono ancora le proprie preferenze mediante relazioni binarie 
 **Se** si scontrano le due alternative $a$ e $a'$, risulterà $a\succ a'$ se $$|\{i\in[k]:a\gt_{i}a'\}|\gt|\{i\in[k]:a'\gt_{i}a\}|$$
 - Ovviamente se $k$ è dispari allora per ogni coppia di alternative $a$ e $a'$ si avrà che $a\succ a'$ oppure $a'\succ a$, ovver si riuscirà sempre ad avere un vincitore nello scontro diretto
 
-![[Pasted image 20250825154009.png|center|350]]
+![center|350](img/Pasted%20image%2020250825154009.png)
 
 In un torneo non hanno luogo tutti gli scontri possibili, ma solo quelli fissati da una agenda.
 
@@ -319,9 +319,9 @@ Quindi, *per ogni insieme $[k]$ esiste $j\in[k]$ tale che $r=r_j$*, e di consegu
 
 Prima di procedere con la dimostrazione abbiamo bisogno di qualche definizione:
 - **profilo** : dati un insieme $[n]$ di alternative e un insieme di $[k]$ votanti, un profilo p una $k-$upla $P=\langle r_{1},r_2,\dots,r_k\rangle$ di ranking - ciascuno espressione del voto di uno dei votanti per quelle alternative
-	- esempio: un profilo di $6$ votanti $(r_{1},r_2,\dots,r_6)$ su $4$ alternative (a,b,c,d) ![[Pasted image 20250825174521.png|center|200]]
+	- esempio: un profilo di $6$ votanti $(r_{1},r_2,\dots,r_6)$ su $4$ alternative (a,b,c,d) ![center|200](img/Pasted%20image%2020250825174521.png)
 - **alternativa polarizzante** : dati un insieme $[n]$ di alternative, un insieme di $[k]$ votanti e un profilo $P=\langle r_{1},r_2,\dots,r_k\rangle$, una alternativa polarizzante per $P$ è un alternativa $x\in[n]$ tale che, per ogni $h\in[k],\rho_h(x)=0$ oppure $\rho_h(x)=n-1$
-	- esempio: ![[Pasted image 20250825174824.png|center|200]]
+	- esempio: ![center|200](img/Pasted%20image%2020250825174824.png)
 
 Dimostriamo il teorema di Arrow in tre passi:
 1) dimostriamo che se $x$ è un'alternativa polarizzante per un profilo $P=\langle r_{1},r_2,\dots,r_k\rangle$ allora $\rho(x)=0$ oppure $\rho(x)=n-1$
@@ -339,7 +339,7 @@ Supponiamo per assurdo che $0\lt\rho(x)\lt n-1$: allora esistono due alternative
 
 Creiamo un nuovo profilo $P'=\langle r'_{1},r'_2,\dots,r'_k\rangle$ nel modo seguente:
 1) per ogni $i\in[k]$ tale che $\rho_{i}(y)\lt\rho_i(z)$, impostiamo $r'_i=r_i$
-2) per ogni $i\in[k]$ tale che $\rho_{i}(y)\gt\rho_i(z)$, $r'_{i}$ è ottenuto da $_i$ spostando $z$ alla sinistra di $y$, in modo che $\rho'_i(z)=\rho'_{i}(y)+1$ ![[Pasted image 20250825180145.png|center]]
+2) per ogni $i\in[k]$ tale che $\rho_{i}(y)\gt\rho_i(z)$, $r'_{i}$ è ottenuto da $_i$ spostando $z$ alla sinistra di $y$, in modo che $\rho'_i(z)=\rho'_{i}(y)+1$ ![center](img/Pasted%20image%2020250825180145.png)
 
 Poichè $x$ non è stata in alcun modo coinvolta negli spostamenti, $x$ è un'alternativa polarizzante anche per $P'$
 
@@ -372,11 +372,11 @@ In generale, nel profilo $P^h=\left\langle r_1^h,r_2^h,\dots,r_k^h\right\rangle$
 
 Per ogni $h\in\{0,1,\dots,k\}$ indichiamo con $r^h$ il ranking collettivo associato al profilo $P^{h}$, e con la funzione $\rho^{h}$ la funzione peso ad esso associata
 
-![[Pasted image 20250826143232.png|center|500]]
+![center|500](img/Pasted%20image%2020250826143232.png)
 
 I due profili $P^{h-1}$ e $P^{h}$ differiscono solo per il modo in cui l'$h$-esimo votante giudica $x$: nel profilo $P^{h-1}$ l'$h$-esimo votante giudica $x$ in ultima posizione ($\rho_{h}^{h-1}(x)=0$), mentre nel profilo $P^{h}$ l'$h$-esimo votante giudica $x$ in prima posizione ($\rho_{h}^{h}(x)=n-1$), e le posizioni relative delle altre alternative rimangono invariate nei due profili
 
-![[Pasted image 20250826143513.png|center|500]]
+![center|500](img/Pasted%20image%2020250826143513.png)
 
 In virtù del principio $U$ (unanimità) vale che $$\rho^{0}(x)=0,\rho^{k}(x)=n-1$$
 Allora $$\exists\text{ un profilo }j\in[k]:\rho^{h}(x)=0\space\forall h\lt j\space\land\space\rho^{j}(x)\gt0$$[^4]
@@ -406,18 +406,18 @@ Costruiamo da $Q$ un nuovo profilo $T$:
 - Poi, per ogni $h\gt j$, poniamo $x$ in coda di $r_h^{T}$ lasciando tutte le altre alternative nello stesso ordine nel quale si trovano in $r_h^{Q}$
 - Infine, spostiamo $y$ dalla posizione in cui si trova in $r_{j}^{Q}$ ponendola in testa a $r_{j}^{T}$
 
-![[Pasted image 20250826145226.png|center|500]]
+![center|500](img/Pasted%20image%2020250826145226.png)
 
 $T$ è molto simile a $P^{j}$:
 
-![[Pasted image 20250826145348.png|center|500]]
+![center|500](img/Pasted%20image%2020250826145348.png)
 
-Dato che $\rho^{j}(x)=n-1$ (come abbiamo visto [[Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano#Dimostrazione parte 2|qui]]) allora $\rho^{j}(x)\gt\rho^{j}(z)$, ed essendo che l'ordine relativo di $x$ e $z$ è lo stesso sia in $P^{j}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\gt\rho^{T}(z)$$
+Dato che $\rho^{j}(x)=n-1$ (come abbiamo visto [](.md#Dimostrazione%20parte%202|qui)) allora $\rho^{j}(x)\gt\rho^{j}(z)$, ed essendo che l'ordine relativo di $x$ e $z$ è lo stesso sia in $P^{j}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\gt\rho^{T}(z)$$
 $T$ però è anche molto simile a $P^{j-1}$
 
-![[Pasted image 20250826150026.png|center|500]]
+![center|500](img/Pasted%20image%2020250826150026.png)
 
-Dato che $\rho^{j-1}(x)=0$ (come abbiamo visto [[Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano#Dimostrazione parte 2|qui]]) allora $\rho^{j-1}(x)\lt\rho^{j-1}(y)$, ed essendo che l'ordine relativo di $x$ e $y$ è lo stesso sia in $P^{j-1}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\lt\rho^{T}(y)$$
+Dato che $\rho^{j-1}(x)=0$ (come abbiamo visto [](.md#Dimostrazione%20parte%202|qui)) allora $\rho^{j-1}(x)\lt\rho^{j-1}(y)$, ed essendo che l'ordine relativo di $x$ e $y$ è lo stesso sia in $P^{j-1}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\lt\rho^{T}(y)$$
 
 Ricapitolando:
 
@@ -440,7 +440,7 @@ Per ogni $h\in\{0,1,\dots,k\}$ indichiamo con $t^h$ il ranking collettivo associ
 
 La nuova sequenza $T^{0},T^{1},\dots,T^{k}$ di profili è quindi la seguente:
 
-![[Pasted image 20250826151924.png|center|500]]
+![center|500](img/Pasted%20image%2020250826151924.png)
 
 Esattamente come per i profili $P^{0},P^{1},\dots,P^{k}$ vale che: $$\exists\space l\in[k]:\rho^{T^{h}}(z)=0\space\forall h\lt l\land\space\rho^{T^{l}}(z)=n-1$$
 Ed esattamente come abbiamo dimostrato per il dittatore potenziale $j$ al punto [3.1)](#^988d91), possiamo dimostrare che, **per ogni profilo $Q$, se $y\neq z\land v\neq z$ allora** $$\left[\rho^{Q}(y)\gt\rho^{Q}(v)\iff\rho_l^{Q}(y)\gt\rho_l^{Q}(v)\right]$$
@@ -457,7 +457,7 @@ Per concludere questa dimostrazione è sufficiente mostrare che $l=j$, e lo fare
 
 E quindi, per il profilo $P=P^{j-1}$ vale che $\rho^{P}\neq\rho_l^{P}$
 
-![[Pasted image 20250826153156.png|center|250]]
+![center|250](img/Pasted%20image%2020250826153156.png)
 
 **non può essere $l\gt j$**
 - per dimostralro, mostriamo che *esiste almeno un profilo* $P$ tale che $\rho^{P}\neq\rho_l^{P}$
@@ -469,7 +469,7 @@ E quindi, per il profilo $P=P^{j}$ vale che $\rho^{P}\neq\rho_l^{P}$
 
 E di conseguenza, $l=i\quad\quad\quad\blacksquare$ 
 
-![[Pasted image 20250826153618.png|center|250]]
+![center|250](img/Pasted%20image%2020250826153618.png)
 
 Il teorema di Arrow **getta un ombra scura** sui sistemi di voto perché afferma che un sistema di voto, per non essere soggetto a manipolazioni interessate (utilizzando alternative irrilevanti) ed essere in grado di rispecchiare la volontà dell’unanimità, deve **essere una dittatura**.
 
@@ -491,7 +491,7 @@ Ovvero, considerando $\rho_h$ come una funzione definita su un dominio continuo 
 
 In figura, tre ranking single peaked:
 
-![[Pasted image 20250826154700.png|center|350]]
+![center|350](img/Pasted%20image%2020250826154700.png)
 
 Un ranking single peaked è, in effetti, un’ipotesi del tutto ragionevole in questa situazione
 
@@ -513,7 +513,7 @@ In questo caso, possiamo supporre ***senza perdità di generalità*** (ovvero, a
 
 In figura, il votante 1 è quello blu, il votante 2 è quello rosa, il votante 3 è quello verde
 
-![[Pasted image 20250826155313.png|center|350]]
+![center|350](img/Pasted%20image%2020250826155313.png)
 
 ***Nel caso in cui le alternative sono un insieme totalmente ordinato e i ranking di tutti i votanti sono single peaked è possibile utilizzare il sistema di voto a maggioranza con la certezza di non incorrere nel paradosso di Condorcet***
 
@@ -539,25 +539,25 @@ Ma vediamo un esempio
 ESEMPIO: $n=8,k=2$
 1) In questo caso, $$M_{1}=M=a_2,M_2=M=a_4,M_{3}=M=a_6$$
 	1) quindi, dettao $\rho$ la funzione peso associata al ranking collettivo, vale che $\rho(a_4)=7$
-	2) ![[Pasted image 20250826163416.png|center|250]]
+	2) ![center|250](img/Pasted%20image%2020250826163416.png)
 2) Ora $$M_{1}=M=a_2,M_2=M=a_5,M_{3}=M=a_6$$
 	1) quindi, $\rho(a_{5})=6$
-	2) ![[Pasted image 20250826163530.png|center|250]]
+	2) ![center|250](img/Pasted%20image%2020250826163530.png)
 3) Ora $$M_{1}=M=a_2,M_2=M=a_3,M_{3}=M=a_6$$
 	1) quindi, $\rho(a_{3})=5$
-	2) ![[Pasted image 20250826163651.png|center|250]]
+	2) ![center|250](img/Pasted%20image%2020250826163651.png)
 4) Ora $$M_{1}=M=a_2,M_2=M=a_2,M_{3}=M=a_6$$
 	1) quindi, $\rho(a_{2})=4$
-	2) ![[Pasted image 20250826163821.png|center|250]]
+	2) ![center|250](img/Pasted%20image%2020250826163821.png)
 5) Ora $$M_{1}=M=a_1,M_2=M=a_6,M_{3}=M=a_6$$
 	1) quindi, $\rho(a_{6})=3$
-	2) ![[Pasted image 20250826164023.png|center|250]]
+	2) ![center|250](img/Pasted%20image%2020250826164023.png)
 6) Ora $$M_{1}=M=a_2,M_2=M=a_7,M_{3}=M=a_7$$
 	1) quindi, $\rho(a_{7})=2$
-	2) ![[Pasted image 20250826164102.png|center|250]]
+	2) ![center|250](img/Pasted%20image%2020250826164102.png)
 7) Ora $$M_{1}=M=a_2,M_2=M=a_8,M_{3}=M=a_8$$
 	1) quindi, $\rho(a_{8})=1$
-	2) ![[Pasted image 20250826164200.png|center|250]]
+	2) ![center|250](img/Pasted%20image%2020250826164200.png)
 8) Infine, $\rho(a_{1})=0$
 
 
@@ -575,7 +575,7 @@ Consideriamo un'alternativa $y=a_t$ con $t\gt m$
 Per ogni $h\lt k$, poichè $M_h\leq M_{k}=a_m\lt a_t$ e poichè $r_h$ è single peaked allora $$\rho_h(a_{m})\gt\rho_{h}(a_t)\quad(*)$$
 Nell’esempio in figura, $k$ = rosa, $m = 4, t = 6$ e $h$= blu, dove abbiamo assunto blu = $1$, rosa = $2$ e verde = $3$
 
-![[Pasted image 20250826164740.png|center|250]]
+![center|250](img/Pasted%20image%2020250826164740.png)
 
 Quindi, per ricollegarsi a $(*)$, tutti i votanti di indice $h\lt k$ preferiscono $a_{m}$ a $a_{t}$
 
@@ -590,7 +590,7 @@ Consideriamo un'alternativa $y=a_t$ con $t\lt m$
 Per ogni $h\gt k$, poichè $a_t\lt a_m=M_k\leq M_h$ e poichè $r_h$ è single peaked allora $$\rho_h(a_{m})\gt\rho_{h}(a_t)\quad(**)$$
 Nell’esempio in figura, $k$ = rosa, $m = 4, t = 2$ e $h$ = verde, dove abbiamo assunto blu = $1$, rosa = $2$ e verde = $3$
 
-![[Pasted image 20250826165428.png|center|250]]
+![center|250](img/Pasted%20image%2020250826165428.png)
 
 Quindi, per ricollegarsi a $(**)$, tutti i votanti di indice $h\gt k$ preferiscono $a_{m}$ a $a_{t}$
 

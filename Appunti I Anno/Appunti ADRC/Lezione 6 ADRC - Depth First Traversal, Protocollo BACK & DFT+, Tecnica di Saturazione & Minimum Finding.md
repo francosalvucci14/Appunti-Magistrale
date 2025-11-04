@@ -50,19 +50,19 @@ Dovremmo riuscire ad evitare l'invio di messaggi sui back-links
 
 **Idea** : Il nodo $x$ informa in parallelo $||$ tutto $N(x)$ quando viene visitato
 
-![[Pasted image 20250328115209.png|center|300]]
-![[Pasted image 20250328115233.png|center|300]]
+![center|300](img/Pasted%20image%2020250328115209.png)
+![center|300](img/Pasted%20image%2020250328115233.png)
 
 $N(x)$ invia il messaggio **ok** indietro, sempre in $||$
 - Questo è necessario quando il sistema non è sincrono
 
-![[Pasted image 20250328115352.png|center|300]]
+![center|300](img/Pasted%20image%2020250328115352.png)
 
 **Dopo** aver ricevuto **tutti gli akcs**, il nodo $x$ invia il token a uno dei suoi vicini ***non visitati*** ($x$ già li conosce tutti)
 
-![[Pasted image 20250328115453.png|center|300]]
-![[Pasted image 20250328115507.png|center|300]]
-![[Pasted image 20250328115525.png|center|300]]
+![center|300](img/Pasted%20image%2020250328115453.png)
+![center|300](img/Pasted%20image%2020250328115507.png)
+![center|300](img/Pasted%20image%2020250328115525.png)
 
 Il nodo $y$ sa che $x,w$ sono stati già visitati e che $z$ è suo padre, quindi i back-links vengono scoperti in **parallelo**
 
@@ -122,7 +122,7 @@ Le fasi della tecnica sono :
 - **Saturation Phase** : Inizia dalle **foglie** : Una coppia ***univoca*** di vicini viene indentificata (Anche detti nodi saturati)
 - **Resolution Phase** : Una generica computazione iniziata dai **nodi saturati**
 
-![[Pasted image 20250328121828.png|center|500]]
+![center|500](img/Pasted%20image%2020250328121828.png)
 
 Vediamo ora il protocollo
 
@@ -174,25 +174,25 @@ Vediamo ora un teorema molto importante
 >[!teorem]- Teorema
 >Esattamente due nodi in stato PROCESSING diventeranno SATURATED, e loro sono vicini
 
-![[Pasted image 20250328122949.png|center|500]]
+![center|500](img/Pasted%20image%2020250328122949.png)
 
 **Dim** : 
 Un nodo PROCESSING solo **dopo** aver inviato il messaggio "saturato" al proprio parent
 
-![[Pasted image 20250328123034.png|center|500]]
+![center|500](img/Pasted%20image%2020250328123034.png)
 
 Un nodo diventa SATURATED solo dopo aver ricevuto un messaggio nello stato PROCESSING dal suo parent
 
 Ora, scegliamo un nodo $x$ e consideriamo il percorso $M$-path che va indietro verso il suo parent, parent del parent, etc...
 
-![[Pasted image 20250328123235.png|center|600]]
+![center|600](img/Pasted%20image%2020250328123235.png)
 
 Perchè esattamente due nodi (adiacenti)?
 
 Assumiamo che ce ne siano $3:x,y,z$ 
 Allora, in un ALBERO, $2$ di loro devono essere **non collegati**. Quindi, consideriamo il percorso fra questi due
 
-![[Pasted image 20250328123359.png|center|400]]
+![center|400](img/Pasted%20image%2020250328123359.png)
 
 Non è possibile che $w$ invii il messaggio $M$ indietro **sia** al nodo $x$ che al nodo $y$ $\blacksquare$
 
@@ -202,7 +202,7 @@ Per concludere, quali nodi diventeranno **saturati** dipende solo dai ritardi im
 
 Caso con $n$ initiator
 
-![[Pasted image 20250328123619.png|center|600]]
+![center|600](img/Pasted%20image%2020250328123619.png)
 
 In generale, con $k^*$ initiator
 
@@ -215,7 +215,7 @@ In generale, con $k^*$ initiator
 
 ## Minimum Finding
 
-![[Pasted image 20250331094156.png|center|400]]
+![center|400](img/Pasted%20image%2020250331094156.png)
 
 **Inizio** : Ogni entità $x$ ha in input un valore $val(x)$
 **Fine** : Alla fine, ogni entitò deve sapere se è il minimo oppure no

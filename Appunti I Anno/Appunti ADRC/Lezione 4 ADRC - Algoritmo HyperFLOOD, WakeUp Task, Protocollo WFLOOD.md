@@ -52,7 +52,7 @@ Per ogni coppia di nodi $x,y$ esiste un percorso di **etichette decrescenti**. I
 
 In altre parole, gli archi usati formano un Sottografo di tip **Spanning** del Hypergrafo originale
 
-![[Pasted image 20250324144354.png|center|500]]
+![center|500](img/Pasted%20image%2020250324144354.png)
 
 
 La **message complexity** di questo algoritmo è quindi $n-1$, e di conseguenza OTTIMALE

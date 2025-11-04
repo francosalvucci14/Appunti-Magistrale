@@ -28,7 +28,7 @@ Consideriamo tutte le configurazioni raggiungibili applicando a $C$ degli schedu
 
 Indichiamo con $Y$ la prima configurazione non $0^\star$ raggiungibile applicando a $C$ uno schedule che non contiene il messaggio $m$, indichiamo con $X$ la configurazione di tipo $0^\star$ che la precede e con $m' = (p', x')$ il messaggio dello schedule che secondo il protocollo porta dalla configurazione $X$ alla configurazione $Y$
 
-![[Pasted image 20250414104527.png|center|500]]
+![center|500](img/Pasted%20image%2020250414104527.png)
 
 l nostro messaggio $m = (p, x)$ è applicabile alla configurazione $Y$, perchè stava nella message pool della configurazione $C$ e non è mai stato consegnato, quindi sta anche nella message pool di $Y$. 
 Sia allora $Z = m(Y )$ la configurazione che si ottiene applicando $m$ a $Y$. Mostriamo che $Z$ è la configurazione bivalente che stiamo cercando, concludendo così la dimostrazione del lemma.
@@ -51,7 +51,7 @@ Lo schedule $\sigma$ non contiene messaggi per il nodo $p$ quindi è applicabile
 Quindi abbiamo trovato uno schedule $\sigma$ applicabile a $Z$ tale che i nodi danno in output $0$.
 Quindi $Z$ non può essere neanche $1$-valente e pertanto deve essere bivalente.
 
-![[Pasted image 20250414105813.png|center|500]]
+![center|500](img/Pasted%20image%2020250414105813.png)
 
 Usando ora i due Lemmi, possiamo dare la dimostrazione del teorema di impossibilità FLP
 

@@ -154,7 +154,7 @@ Per capire meglio facciamo un'esempio
 
 La situazione è la seguente 
 
-![[Pasted image 20250809160924.png|center|200]]
+![center|200](img/Pasted%20image%2020250809160924.png)
 
 Il grafo $G$ è l'unione di due clicque:
 - Clicque $A$ sui nodi $u_0,u_1,u_2,u_3,u_4$ (nodi rossi)
@@ -272,7 +272,7 @@ Da qui, costruiamo un grafo costituito da:
 - un **gadget** per ogni variabile
 - un **gadget** per ogni clausola
 
-![[Pasted image 20250811103416.png|center|150]]
+![center|150](img/Pasted%20image%2020250811103416.png)
 
 In figura i due nodi "specializzati" $T,F$ e il gadget per la variabile $x_i$:
 - il gadget contiene i nodi $x_i,w_i,z_i,t_i,f_i$, e tanti nodi senza nome (quelli neri in figura): al nodo $x_i(w_i)$ sono collegati tanti nodi senza nome quante sono le clausole contenenti la variabile $x_i(\lnot x_i)$ più uno
@@ -282,7 +282,7 @@ Se $T,F$ sono in due comunità distinte, diciamo $T\in C$ e $F\in V\setminus C$,
 
 Per far sì che questo sia possibile, **è necessario che esattamente uno** dei nodi $x_i,w_i$ sia contenuto in $C$ ed **esattamente uno** dei nodi $x_i,w_i$ sia contenuto in $V\setminus C$, e ovviamente, ciascun nodo senza nome deve essere contenuto nella stessa comunità che contiene il padre.
 
-![[Pasted image 20250811104217.png|center|350]]
+![center|350](img/Pasted%20image%2020250811104217.png)
 
 In figura i due nodi "specializzati" $T,F$ e il gadget per la variabile $c_j$ e i suoi collegamenti con i gadget variabile:
 - il gadget per la variabile $c_j$ contiene i nodi $c_j,l_{j1},l_{j2},l_{j3}$
@@ -293,7 +293,7 @@ Se $T,F$ sono in due comunità distinte, diciamo $T\in C$ e $F\in V\setminus C$,
 
 Per far sì che questo sia possibile, **è necessario che almeno uno** dei nodi nei gadget variabile collegato a $c_j$ sia contenuto in $C$ [^4], altrimenti $c_j$ avrebbe tanti vicini in $C$ quanti in $V\setminus C$
 
-![[Pasted image 20250811104931.png|center|500]]
+![center|500](img/Pasted%20image%2020250811104931.png)
 
 Una visione di insieme: in figura abbiamo la funzione $$f(x_1,x_2,x_3)=c_1\land c_2,\quad c_1=x_1\lor\lnot x_2\lor x_3,c_2=\lnot x_1\lor\lnot x_2\lor\lnot x_3$$
 Se $T,F$ sono **nella stessa comunità** $C$, allora tutti i nodi sono in $C$:
@@ -304,7 +304,7 @@ Se $T,F$ sono **nella stessa comunità** $C$, allora tutti i nodi sono in $C$:
 	- Perciò, se $x_i$ e i $k+1$ nodi senza nome ad esso collegati devono essere in $C$
 - Analogamente il tutto può essere fatto per il letterale $\lnot x_i$ e il nodo $w_i$
 
-![[Pasted image 20250811110657.png|center|500]]
+![center|500](img/Pasted%20image%2020250811110657.png)
 
 Una visione d'insieme: Se $T,F$ sono due comunità diverse allora:
 - per ogni clausola $c_j$ i nodi $l_{j1},l_{j2},l_{j3},c_j$ sono con $T$ (rossi)
@@ -374,7 +374,7 @@ Sia i metodi partitivi che agglomerativi permettono di ottenere partizionamenti 
 
 Così facendo otteniamo uno schema di partizionamento ad albero, come si vede dalla figura 
 
-![[Pasted image 20250811142504.png|center|300]]
+![center|300](img/Pasted%20image%2020250811142504.png)
 
 I diversi metodi partitivi/agglomerativi proposti si distinguono per il criterio utilizzato per scegliere ad ogni passo:
 - quale arco rimuovere (partitivo)
@@ -395,7 +395,7 @@ Da queste considerazioni nasce l'idea: rimuovendo bridge e local brisge il grafo
 
 Ma la domanda sorge spontanea: cosa succede se la rete appare come in figura? quindi senza local bridge ma con due regione dense?
 
-![[Pasted image 20250811143351.png|center|250]]
+![center|250](img/Pasted%20image%2020250811143351.png)
 
 Per rispondere a questa domanda, dobbiamo utilizzare una proprietà diversa da quella di (local) bridge [^5]
 
@@ -444,7 +444,7 @@ Calcoliamo $T(s)$ come insieme di archi e, contemporaneamente, una partizione in
 - per $h\geq0$  e finchè $L_{h}\neq\emptyset$ calcola $$\begin{align*}
 &L_{h+1}\gets\left\{u\in V\setminus\bigcup_{0\leq i\leq h}L_{i}:\exists v\in L_{h}:(v,u)\in E\right\}\\&T(s)\gets\left\{(u,v)\in E:v\in L_{h}\land u\in L_{h+1}\right\}
 \end{align*}$$
-![[Pasted image 20250811150601.png|center|400]]
+![center|400](img/Pasted%20image%2020250811150601.png)
 
 
 ##### 2) Visita top-down di $T(s)$
@@ -452,7 +452,7 @@ Calcoliamo $T(s)$ come insieme di archi e, contemporaneamente, una partizione in
 Mediante visita top-down di $T(s)$, per ogni $v\in V$ calcola $\sigma_{sv}$
 - il numero di shortest paths dalla radice $s$ a un nodo $v\in L_{h}$ è pari alla somma dei numeri percorsi da $s$ a qualunque "padre" di $v$
 - dopo aver inizializzato $\sigma_{su}=1,\forall u\in L_{1}$, una volta calcolato $\sigma_{su}\forall u\in L_{h-1}$, possiamo calcolare $$\sigma_{sv}=\substack\sum_{(u,v)\in E:u\in L_{h-1}}\sigma_{su},\forall v\in L_{h}$$
-![[Pasted image 20250811151256.png|center|400]]
+![center|400](img/Pasted%20image%2020250811151256.png)
 
 ##### 3) Visita bottom-up di $T(s)$
 
@@ -461,7 +461,7 @@ Sia $d$ il numero di livelli di $T(s)$
 SIa $(y,x)\in T(s)$ con $x\in L_{d}$: gli unici shortest paths uscenti da $s$ che passano attraverso $(y,x)$ sono gli shortest paths da $s\to y$, e ciò implica anche che $b_{sz}(y,x)=b_{sx}(y,x)=\frac{\sigma_{sx}(y,x)}{\sigma_{sx}}=\frac{\sigma_{sy}}{\sigma_{sx}}$
 - $\sigma_{sx}(y,x)=\sigma_{sy}$ perchè il numero di shortest paths da $s\to x$ che attraversano $(x,y)$ è uguale al numero di shortest paths da $s\to y$
 
-![[Pasted image 20250811152356.png|center|500]]
+![center|500](img/Pasted%20image%2020250811152356.png)
 
 Sia ora $(z,y)\in T(s)$ con $y\not\in L_{d}$: gli shortest paths che passano attraverso $(z,y)$ sono:
 - *alcuni* shortest paths da $s\to y$ - più precisamente quelli che passano attraverso $z$
@@ -471,7 +471,7 @@ Perciò, $b_{s}(z,y)$ è la somma dei seguenti termini:
 - $\frac{\sigma_{sz}}{\sigma_{sy}}$, ovvero la frazione degli shortest path da $s\to y$ che passa attraverso $(z,y)$
 - per ogni discendente $x$ di $y$, una frazione $\frac{\sigma_{sz}}{\sigma_{sy}}$ della frazione di shortest paths $s\to x$ che passano attraverso $(y,x)$, ovvero $$\frac{\sigma_{sz}}{\sigma_{sy}}\times\frac{\sigma_{sy}}{\sigma_{sx}}$$
 
-![[Pasted image 20250811153000.png|center|250]]
+![center|250](img/Pasted%20image%2020250811153000.png)
 
 
 **Esempio**: 
@@ -502,7 +502,7 @@ $$\begin{align}\forall h\gets d;h\gt0;h\gets h-1&\text{ calcola }b_{s}(u,v),\for
 
 **Oss2**: Abbiamo assunto $\sigma_{ss}=1$ (vedi figura)
 
-![[Pasted image 20250811155047.png|center]]
+![center](img/Pasted%20image%2020250811155047.png)
 
 # Rilassare il modello
 
@@ -532,7 +532,7 @@ Alcuni nodi sono centrali all’interno dei gruppi coesi cui appartengono, come 
 
 Le posizioni di A e di B sono **strutturalmente diverse** all’interno della rete
 
-![[Pasted image 20250811162652.png|center|300]]
+![center|300](img/Pasted%20image%2020250811162652.png)
 
 Definiamo l’**embeddedness** di un arco come il numero di vicini che gli estremi di quell’arco hanno in comune: $$Emb(u,v) = |N(u) \cap N(v)|$$
 - se (u,v) è un local bridge allora Emb(u,v) = 0

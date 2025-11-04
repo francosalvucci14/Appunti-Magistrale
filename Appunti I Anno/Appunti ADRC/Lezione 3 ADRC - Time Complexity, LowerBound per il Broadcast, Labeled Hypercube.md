@@ -40,7 +40,7 @@ Ora ripetiamo l'algoritmo $A$ sia su $G$ che su $G'$, con la stessa sequenza di 
 
 In $G$, i nodi $x,y$ non si sono mai scambiati il messaggio, questa cosa succederà anche su $G'$, e di conseguenza il nodo $z$ rimarrà nello stato SLEEPING
 
-Così facendo, vediamo che la [[#^tesi|tesi]] non è valida, quindi $\Omega(m)$ per forza $\blacksquare$
+Così facendo, vediamo che la [tesi](#^tesi) non è valida, quindi $\Omega(m)$ per forza $\blacksquare$
 
 ---
 # Labeled Hypercube

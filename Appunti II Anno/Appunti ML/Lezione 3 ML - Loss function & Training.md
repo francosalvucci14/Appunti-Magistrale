@@ -74,14 +74,14 @@ Queste sfide rendono il processo di minimizzazione complesso, ma questa tecnica 
 Un insieme di punti $S\subset\mathbb R^{d}$ si dice **convesso** se e solo se per ogni $x_{1},x_{2}\in S$ e $\lambda\in(0,1)$ vale che $$\lambda x_{1}+(1-\lambda)x_{2}\in S$$
 cioè, se tutti i punti del segmento che connette $x_{1}$ e $x_2$ appartengono a $S$
 
-![[Pasted image 20251018093538.png|center|300]]
+![center|300](img/Pasted%20image%2020251018093538.png)
 
 Una funzione $f (x)$ è convessa se e solo se l'insieme dei punti che giacciono sopra la funzione è convesso, cioè, per ogni $x_{1},x_{2}\in S$ e $\lambda\in(0,1)$ vale che:
 $$f(\lambda x_1+(1-\lambda)x_{2})\leq\lambda f(x_{1})+(1-\lambda)f(x_{2})$$
 è strettamente convessa se vale che 
 $$f(\lambda x_1+(1-\lambda)x_{2})\lt\lambda f(x_{1})+(1-\lambda)f(x_{2})$$
 
-![[Pasted image 20251018101118.png|center|400]]
+![center|400](img/Pasted%20image%2020251018101118.png)
 
 Supporre che la funzione di loss complessiva $\mathcal L(\theta; \mathcal T )$ sia convessa è una semplificazione rilevante: se $f (x)$ è una funzione convessa, allora qualsiasi minimo locale di $f$ è anche un minimo globale.
 Inoltre, se $f$ è una funzione strettamente convessa, esiste un solo minimo locale per $f$ (ed è globale).

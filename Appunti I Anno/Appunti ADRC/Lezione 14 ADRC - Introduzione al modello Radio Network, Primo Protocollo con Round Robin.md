@@ -9,25 +9,25 @@ Ad ogni nodo $v$ viene assegnato un range di trasmissione $R(v)\gt0$
 
 Un nodo $w$ può ricevere un *messaggio* $M$ da $v$ $\iff d(v,w)\leq R(v)$
 
-![[Pasted image 20250516115208.png|center|300]]
+![center|300](img/Pasted%20image%2020250516115208.png)
 
 Quando un nodo $v$ invia un messaggio $M$, il messaggio viene inviato su **tutti** gli archi uscenti da $v$ (**Trasmissione Broadcast**) in un singolo ***Time Slot***
 
-![[Pasted image 20250516115342.png|center|300]]
+![center|300](img/Pasted%20image%2020250516115342.png)
 
 Le Radio Networks sono **Sistemi Sincroni**, infatti tutti i nodi condividono lo stesso *clock globale*.
 Di conseguenza, i nodi lavorano con Slot di Tempo, e la trasmissione dei messaggi viene completata in un singolo **time slot**
 
 L'assegnamento dei Range determina univocamente un **Grafo Diretto di Comunicazione** $G(V,E)$
 
-![[Pasted image 20250516115744.png|center|250]]
+![center|250](img/Pasted%20image%2020250516115744.png)
 
 Tutti i vicini entranti di $s$ (nodo arancione) ricevono il messaggio in $1$ salto, a meno che...
 ## Collisione dei messaggi (interferenza)
 
 Se, durante un time slot, **due** o **più vicini entranti** inviano un messaggio a $v$ allora $v$ ***non riceve nulla***
 
-![[Pasted image 20250516115941.png|center|350]]
+![center|350](img/Pasted%20image%2020250516115941.png)
 
 Quindi : 
 Un nodo $v$ riceve un messaggio durante lo slot $T\iff$c'è **esattamente** un vicino-entrante di $v$ che invia il messaggio $M$ durante lo slot $T$
@@ -50,7 +50,7 @@ Vediamo inizialmente il protocollo FLOOD studiato qualche tempo fa per la risolu
 
 È facile vedere subito che il FLOOD non funziona, infatti basta prendere un grafo fatto in questo modo
 
-![[Pasted image 20250516153008.png|center|400]]
+![center|400](img/Pasted%20image%2020250516153008.png)
 
 Dove il nodo arancione è la sorgente $s$
 
@@ -95,7 +95,7 @@ Allora, per costruzione del grafo di comunicazione, tutti i nodi a distanza $1$ 
 Sia $w\in L(k)$, per definizione stessa di $L(k)$ deve esistere almeno un nodo, sia esso $j$, che appartiene a $L(k-1)$, quindi $j\in L(k-1)$, tale per cui esiste l'arco diretto $(j,w)$
 Per ipotesi induttiva, al time slot $j\space(\text{mod n})$ (ovvero la fine della fase $k-1$) il nodo $j$ trasmetterà il messaggio al nodo $w$, e per definizione del protocollo RR il nodo $j$ sarà l'unico a trasmettere in quell'istante di tempo, quindi il nodo $w$ riceverà correttamente il messaggio senza subire interferenze, entro la fine della fase $k$
 
-![[Pasted image 20250517094556.png|center|300]]
+![center|300](img/Pasted%20image%2020250517094556.png)
 
 Questa assunzione vale $\forall j\in L(k-1)$, quindi tutti i nodi $w\in L(k)$ verranno informati entro la fine della fase $k$ $\quad\blacksquare$
 

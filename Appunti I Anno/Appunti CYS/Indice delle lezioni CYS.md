@@ -1,5 +1,5 @@
-- [[Lezione 1 CYS Talamo]]
+- [Lezione 1 CYS Talamo](Lezione%201%20CYS%20Talamo.md)
 - Lezione 2:
-	- [[Lezione 2.1 CYS Talamo]]
-	- [[Lezione 2.2 CYS Arcieri]]
+	- [Lezione 2.1 CYS Talamo](Lezione%202.1%20CYS%20Talamo.md)
+	- [Lezione 2.2 CYS Arcieri](Lezione%202.2%20CYS%20Arcieri.md)
 - 

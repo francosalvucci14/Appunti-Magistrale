@@ -1,21 +1,21 @@
 Lezioni 9-11 esercitazioni coding
 
-- [[Lezione 1 PCD - Byzantine Broadcast Problem]]
-- [[Lezione 2 PCD - Protocollo Dolev-Strong (1983)]] 
-- [[Lezione 2 PCD - Protocollo Dolev-Strong (1983)]]
-- [[Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI]]
-- [[Lezione 4 PCD - Protocollo "randomizzato" per BB]]
-- [[Lezione 5 PCD - State Machine Replication]]
-- [[Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility]]
-- [[Lezione 7 PCD - Ultimo lemma del teorema FLP]]
-- [[Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work]]
-- [[Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin]]
-- [[Lezione 12 PCD - Linguaggio Script -> P2PK,P2PKH,P2M,P2SH]]
-- [[Lezione 14 PCD - Crittografia a Curve Ellittiche]]
-- [[Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness]]
-- [[Lezione 17 PCD - La scalabilità di Bitcoin, Payment Channels e Lightnin Network]]
-- [[Lezione 18 PCD - Routing dei pagamenti in una L.N, Hash Time-Locked Contracts]]
-- [[Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali]]
-- [[Lezione 20 PCD - Path Finding su LN]]
-- [[Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr]]
+- [Lezione 1 PCD - Byzantine Broadcast Problem](Lezione%201%20PCD%20-%20Byzantine%20Broadcast%20Problem.md)
+- [Lezione 2 PCD - Protocollo Dolev-Strong (1983)](Lezione%202%20PCD%20-%20Protocollo%20Dolev-Strong%20(1983).md) 
+- [Lezione 2 PCD - Protocollo Dolev-Strong (1983)](Lezione%202%20PCD%20-%20Protocollo%20Dolev-Strong%20(1983).md)
+- [Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI](Lezione%203%20PCD%20-%20Schema%20di%20firme%20digitali,Lower%20Bound%20ai%20protocolli%20per%20BB%20senza%20PKI.md)
+- [Lezione 4 PCD - Protocollo "randomizzato" per BB](Lezione%204%20PCD%20-%20Protocollo%20"randomizzato"%20per%20BB.md)
+- [Lezione 5 PCD - State Machine Replication](Lezione%205%20PCD%20-%20State%20Machine%20Replication.md)
+- [Lezione 6 PCD - Introduzione al Modello Asincrono & FLP impossibility](Lezione%206%20PCD%20-%20Introduzione%20al%20Modello%20Asincrono%20&%20FLP%20impossibility.md)
+- [Lezione 7 PCD - Ultimo lemma del teorema FLP](Lezione%207%20PCD%20-%20Ultimo%20lemma%20del%20teorema%20FLP.md)
+- [Lezione 8 PCD - Introduzione a Bitcoin, Ambiente Permissionless e Proof-of-Work](Lezione%208%20PCD%20-%20Introduzione%20a%20Bitcoin,%20Ambiente%20Permissionless%20e%20Proof-of-Work.md)
+- [Lezione 10 PCD - Transazioni, Coinbase transaction e la generazione di nuovi Coin](Lezione%2010%20PCD%20-%20Transazioni,%20Coinbase%20transaction%20e%20la%20generazione%20di%20nuovi%20Coin.md)
+- [Lezione 12 PCD - Linguaggio Script -> P2PK,P2PKH,P2M,P2SH](Lezione%2012%20PCD%20-%20Linguaggio%20Script%20->%20P2PK,P2PKH,P2M,P2SH.md)
+- [Lezione 14 PCD - Crittografia a Curve Ellittiche](Lezione%2014%20PCD%20-%20Crittografia%20a%20Curve%20Ellittiche.md)
+- [Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness](Lezione%2016%20PCD%20-%20Schema%20di%20firme%20digitali%20ECDSA,%20Segregated%20Witness.md)
+- [Lezione 17 PCD - La scalabilità di Bitcoin, Payment Channels e Lightnin Network](Lezione%2017%20PCD%20-%20La%20scalabilità%20di%20Bitcoin,%20Payment%20Channels%20e%20Lightnin%20Network.md)
+- [Lezione 18 PCD - Routing dei pagamenti in una L.N, Hash Time-Locked Contracts](Lezione%2018%20PCD%20-%20Routing%20dei%20pagamenti%20in%20una%20L.N,%20Hash%20Time-Locked%20Contracts.md)
+- [Lezione 19 PCD - Reti Bitcoin, Onion Routing sulla rete dei canali](Lezione%2019%20PCD%20-%20Reti%20Bitcoin,%20Onion%20Routing%20sulla%20rete%20dei%20canali.md)
+- [Lezione 20 PCD - Path Finding su LN](Lezione%2020%20PCD%20-%20Path%20Finding%20su%20LN.md)
+- [Lezione 21 PCD - Zero Knowledge proof of knowledge,Protocollo di identificazione di Schnorr e firme di Schnorr](Lezione%2021%20PCD%20-%20Zero%20Knowledge%20proof%20of%20knowledge,Protocollo%20di%20identificazione%20di%20Schnorr%20e%20firme%20di%20Schnorr.md)
 

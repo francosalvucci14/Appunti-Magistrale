@@ -63,14 +63,14 @@ Cerca quindi di trovare il così detto ***equilibrio***
 
 Il gioco inizia così 
 
-![[Pasted image 20251103123127.png|center|700]]
+![center|700](img/Pasted%20image%2020251103123127.png)
 
 La decisione del Player $1$ è la seguente:
 - Se il player $2$ sceglie "Don't Implicate" allora per il player $1$ è meglio scegliere "Implicate"
 - Se il player $2$ sceglie "Implicate" allora per il player $1$ è meglio scegliere "Implicate"
 - È sempre meglio scegliere "Implicate" per il player $1$, indipendentemente da cosa sceglie il player $2$: ci troviamo quindi davanti a una ***Strategia Dominante***
 
-![[Pasted image 20251103123614.png|center|700]]
+![center|700](img/Pasted%20image%2020251103123614.png)
 
 
 La decisione del Player $2$ è la seguente:
@@ -78,7 +78,7 @@ La decisione del Player $2$ è la seguente:
 - Se il player $1$ sceglie "Implicate" allora per il player $2$ è meglio scegliere "Implicate"
 - È sempre meglio scegliere "Implicate" per il player $2$, indipendentemente da cosa sceglie il player $1$: ci troviamo quindi davanti a una ***Strategia Dominanteuindi
 
-![[Pasted image 20251103123735.png|center|700]]
+![center|700](img/Pasted%20image%2020251103123735.png)
 
 Quindi, abbiamo che:
 - Per entrambi è meglio scegliere di Implicare **indipendetemente** dalla scelta dell'altro player
@@ -87,7 +87,7 @@ Quindi, abbiamo che:
 
 Nota: se potrebbero colludere, allora è vantaggioso per entrambi **non implicarsi**, ma non si tratta di un equilibrio poiché entrambi hanno un incentivo a deviare.
 
-![[Pasted image 20251103123808.png|center|700]]
+![center|700](img/Pasted%20image%2020251103123808.png)
 ### Un gioco in rete
 
 Vediamo quest'altro esempio famoso di "gioco"
@@ -99,7 +99,7 @@ Il gioco è costruito in questo modo:
 - Gli archi del grafo hanno tutti peso $1$
 - Ogni ISP può usare due percorsi: uno che passa per $C$ e uno che passa per $S$
 
-![[Pasted image 20251103124501.png|center|300]]
+![center|300](img/Pasted%20image%2020251103124501.png)
 
 Analizziamo quindi la *Matrice dei Costi*
 

@@ -30,7 +30,7 @@ $$I_{0}=L_{0};\quad I_{t}=I_{t-1}\cup L_t,\quad t=0,1,\dots$$
 Notiamo che, per costruzione, vale che $N(I_{t-1})=L_t$ e che quindi $|I_t|=|I_{t-1}|+ |L_t|$
 Ora, dato che $G$ è $\alpha$-expander, fintanto che $|I_{t-1}|\leq\frac{n}{2}$, noi otteniamo che $$|I_t|=|I_{t-1}|+ |L_t|\geq(1+\alpha)|I_{t-1}|\geq(1+\alpha)^2|I_{t-2}|\geq\dots\geq(1+\alpha)^{t-1}$$
 Sia ora $L_\tau$ un livello tale che il numero di nodi che appartengono al livello al più $\tau$ è maggiore della metà dei nodi, quindi $$\tau=\min\left\{t\geq1:|I_t|\gt\frac{n}{2}\right\}$$
-![[Pasted image 20250524145530.png|center|500]]
+![center|500](img/Pasted%20image%2020250524145530.png)
 
 Allora $\tau$ indica la distanza entro la quale almeno la metà dei nodi del grafo sono distanti da $s$.
 Otteniamo quindi che $$|I_\tau|\geq(1+\alpha)^{\tau-1}=\frac{n}{2}\iff\tau=\log_{1+\alpha}\left(\frac{n}{2}\right)+1$$
@@ -41,7 +41,7 @@ Ora consideriamo un qualunque altro nodo $w\in V\setminus I_\tau$ e ripetiamo il
 Anche qui, grazie alla proprietà expander di $G$, dopo $\tau_1=O(\log(n))$ livelli dell'albero BFS radicato in $w$, otteniamo che il sottoinsieme corrispondente $I_{\tau_1}$ ha raggiunto dimensione almeno $\frac{n}{2}$
 Dato che entrambe le visite (quella che parte da $s$ e quella che parte da $w$) raggiungono entrambe *almeno* la metà dei nodi, significa che i due alberi costruiti dalle BFS devono condividere *almeno* un nodo
 
-![[Pasted image 20250524150259.png|center|500]]
+![center|500](img/Pasted%20image%2020250524150259.png)
 
 Allora data una qualsiasi coppia di nodi $u, v \in V$ esiste sempre un cammino di lunghezza $O(\log n)$ tra $u$ e $v$. 
 Ne segue quindi che il diametro di $G$ è $O(\log n),\quad\blacksquare$

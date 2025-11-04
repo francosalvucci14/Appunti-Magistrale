@@ -53,11 +53,11 @@ Quindi, ritornando a prima, fra i 100 amici dei miei amici, si troveranno anche 
 
 E invece che avere una situazione tipo questa (che rappresenta la pure crescita **esponenziale** che produce una small world)
 
-![[Pasted image 20250808101518.png|center|500]]
+![center|500](img/Pasted%20image%2020250808101518.png)
 
 Avremo più una situazione simile a questa (che rappresenta il fatto che la chiusura triadica riduce la frequenza di crescita (**growth rate**))
 
-![[Pasted image 20250808101632.png|center|500]]
+![center|500](img/Pasted%20image%2020250808101632.png)
 
 Ciò premesso, ci proponiamo quindi di studiare un modello generativo di grafi aleatori che generi:
 1) Small Worlds
@@ -66,7 +66,7 @@ Ciò premesso, ci proponiamo quindi di studiare un modello generativo di grafi a
 
 Il modello proposto da **Watts-Strogatz** consiste in un grafo fissato deterministicamente ed un insieme di archi casuali
 
-Il grafo fissato lo possiamo vedere come una griglia "arricchita", che corrisponde sostanzialmente ad un **Unit Disk Graph** (vedi [[Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione#^8b5ecc|Lezione 3]])
+Il grafo fissato lo possiamo vedere come una griglia "arricchita", che corrisponde sostanzialmente ad un **Unit Disk Graph** (vedi [](Lezione%203%20AR%20-%20Grafi%20Geometrici%20Aleatori,%20Reti%20Wireless%20e%20il%20problema%20del%20minimo%20raggio%20di%20trasmissione.md#^8b5ecc|Lezione%203))
 
 **Informalmente**: 
 - I nodi sono punti di uno spazio metrico bidimensionale
@@ -82,7 +82,7 @@ Poi, fissando un valore $k$, ogni nodo sceglierà u.a.r $k$ nodi che diventerann
 
 C'è da notare che più che una griglia su una superficie piana, dobbiamo pensare a una **griglia "appoggiata" su una superficie sferica**, che si "richiude" su se stessa e che chiamereo ***wrapped***
 
-![[Pasted image 20250808103214.png|center|300]]
+![center|300](img/Pasted%20image%2020250808103214.png)
 
 Analizziamo ora questo grafo generato dal modello di Watss-Strogatz
 
@@ -133,7 +133,7 @@ Pur volendo non possiamo fare altro, dato che **conoscere l'indirizzo dela desti
 
 Vediamo un esempio di questa situazione
 
-![[Pasted image 20250808113714.png|center|350]]
+![center|350](img/Pasted%20image%2020250808113714.png)
 
 In figura abbiamo che:
 - $s$ deve inviare un messaggio a $d$
@@ -251,7 +251,7 @@ La topologia di grafo che stiamo considerando è: grafo ad anello, il quale sono
 
 Così facendo il coefficiente di clustering risulterà essere $q=1$
 
-![[Pasted image 20250808172452.png|center|250]]
+![center|250](img/Pasted%20image%2020250808172452.png)
 
 Formalmente, consideriamo un grafo $G$ dove:
 - $V=[n]$
@@ -323,7 +323,7 @@ Siano poi $v_{sx1},v_{dx1}$ i due nodi adiacenti a $t$ (rispettivamente a sx e d
 - tutti i $\left\lfloor\frac{d(v,t)}{2}\right\rfloor$ nodi da $v_{sx}\to v_{sx1}$
 - tutti i $\left\lfloor\frac{d(v,t)}{2}\right\rfloor$ nodi da $v_{dx}\to v_{dx1}$
 
-![[Pasted image 20250809100827.png|center|150]]
+![center|150](img/Pasted%20image%2020250809100827.png)
 
 Di conseguenza, abbiamo che $$|\mathcal I|=1+\left\lfloor\frac{d(v,t)}{2}\right\rfloor+\left\lfloor\frac{d(v,t)}{2}\right\rfloor\geq 1+\frac{d(v,t)-1}{2}+\frac{d(v,t)-1}{2}=d(v,t)$$
 Concludendo, abbiamo che 

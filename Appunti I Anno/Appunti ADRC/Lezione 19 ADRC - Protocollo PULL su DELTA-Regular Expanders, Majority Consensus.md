@@ -25,7 +25,7 @@ Per farlo sfruttiamo **l'espansione** di $I_t$ e la ***casualità*** del protoco
 
 In dettaglio, si fissi un qualsiasi $t \geq 1$ e si consideri il sottoinsieme di nodi nella frontiera di $I_t$
 cioè $$N(I_{t})=\{v\in V\setminus I_{t}:\text{v è connesso a qualche nodo in }I_t\}$$
-![[Pasted image 20250526111241.png|center|500]]
+![center|500](img/Pasted%20image%2020250526111241.png)
 
 Definiamo inoltre la v.a $$\forall v\in N(I_{t}),\space Y_{v}=1\iff\text{v sarà informato al round t+1}$$
 Allora, per ogni $v\in N(I_t)$, vale che $$Pr(Y_v=1)=\frac{|N(v)\cap I_t|}{\Delta}\geq\frac{1}{\Delta}$$

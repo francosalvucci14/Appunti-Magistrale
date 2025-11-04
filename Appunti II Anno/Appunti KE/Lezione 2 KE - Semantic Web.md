@@ -58,7 +58,7 @@ Gli **agenti SW** sfrutteranno la conoscenza ontologica (e di base) distribuita 
 
 Lo stack del Semantic Web è il seguente:
 
-![[Pasted image 20251027113622.png|center]]
+![center](img/Pasted%20image%2020251027113622.png)
 
 # Ontologie
 
@@ -92,7 +92,7 @@ Gli spazi dei nomi si comportano, sotto tutti gli aspetti, come riferimenti ogge
 - ci si aspetta che gli esseri umani interpretino gli stessi nomi nello stesso namespace allo stesso modo, così come
 - ci si aspetta che le macchine utilizzino questi dati in modo coerente
 
-![[Pasted image 20251027123203.png|center]]
+![center](img/Pasted%20image%2020251027123203.png)
 
 **Cosa succede se non avviene un'accordo sulla semantica?**
 
@@ -108,7 +108,7 @@ Questa integrazione deve essere eseguita tramite:
 - Fusione delle ontologie (creando una risorsa globale da quelle esistenti)
 - Mappatura ontologica (realizzazione di mappature tra risorse esistenti)
 
-![[Pasted image 20251027123351.png|center|300]]
+![center|300](img/Pasted%20image%2020251027123351.png)
 
 # Possibili applicazioni del Semantic Web
 

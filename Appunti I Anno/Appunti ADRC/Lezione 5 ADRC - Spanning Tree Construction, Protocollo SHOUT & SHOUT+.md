@@ -29,13 +29,13 @@ Ogni **Spanning Tree** è lo spanner connesso avente ***minimo*** numero di link
 - Significa che all'inizio, ogni nodo ha variabile Tree-neigh vuota
 - La situazione è la seguente $\downarrow$  
 
-![[Pasted image 20250326100823.png|center|300]]
+![center|300](img/Pasted%20image%2020250326100823.png)
 
 **Configurazione finale** : $\forall x,Tree-neigh(x)=\{\text{x-links che appartengono allo ST}\}$
 - Quindi, alla fine, ogni nodo dovrà selezionare solo gli archi che fanno parte della soluzione globale, ovvero l'intero ST del sistema distribuito
 - La situazione è la seguente $\downarrow$
 
-![[Pasted image 20250326101033.png|center|300]]
+![center|300](img/Pasted%20image%2020250326101033.png)
 
 >[!warning]- Osservazione cruciale
 >I nodi possono ***non conoscere*** lo ST anche **dopo** la computazione
@@ -52,7 +52,7 @@ La risposta dei vicini sono : Rispondi sempre SI alla prima richiesta e NO alle 
 
 L'initiator inizia a chiedere e poi il protocollo procede come il **broadcast** con gli ***acks***
 
-![[Pasted image 20250326101635.png|center|600]]
+![center|600](img/Pasted%20image%2020250326101635.png)
 
 Vediamo ora il protocollo effettivo
 
@@ -131,20 +131,20 @@ Allora, lo spanning graph definito dalle relazione Tree-neigh risulta essere **c
 
 In modo informale, $$M(SHOUT)=2M(FLOOD)$$
 Nel dettaglio : 
-**Situazioni possibili** : ![[Pasted image 20250326103239.png|center|500]]
-**Situazioni impossibili** : ![[Pasted image 20250326103321.png|center|500]]
+**Situazioni possibili** : ![center|500](img/Pasted%20image%2020250326103239.png)
+**Situazioni impossibili** : ![center|500](img/Pasted%20image%2020250326103321.png)
 Nel worst-case abbiamo che : 
 
 **Numero totale di messaggi** $Q?$ 
-![[Pasted image 20250326103408.png|center|500]]
+![center|500](img/Pasted%20image%2020250326103408.png)
 
 Totale : $$2(m-(n-1))+(n-1)\implies 2m-n+1$$
 **Numero totale di NO** : 
-![[Pasted image 20250326103600.png|center|400]]
+![center|400](img/Pasted%20image%2020250326103600.png)
 - $2(m-(n-1))$
 
 **Numero totale di YES** : 
-![[Pasted image 20250326103700.png|center|400]]
+![center|400](img/Pasted%20image%2020250326103700.png)
 - Esattamente $(n-1)$
 
 In totale : $$2m-n+1+2(m-(n-1))+n-1=4m-2n+2$$
@@ -214,9 +214,9 @@ Riceve(Yes)
 
 Su ogni link ci saranno esattamente $2$ messaggi : 
 
-Questo : ![[Pasted image 20250326140212.png|center|400]]
+Questo : ![center|400](img/Pasted%20image%2020250326140212.png)
 Oppure questo :
-![[Pasted image 20250326140236.png|center|400]]
+![center|400](img/Pasted%20image%2020250326140236.png)
 
 Di conseguenza, $$M(SHOUT+)=2m$$
 Che risulta essere **migliore** di $4m-2n+2$
@@ -268,7 +268,7 @@ La risposta a tutte e $3$ le domande è NO.
 
 Vediamo un esempio più teorema dopo
 
-![[Pasted image 20250326141410.png|center|500]]
+![center|500](img/Pasted%20image%2020250326141410.png)
 
 >[!teorem]- Teorema
 >Il problema del costruire lo ST è ***deterministicamente*** irrisolvibile sotto le assunzioni $R$
@@ -285,5 +285,5 @@ Mettiamoci nel caso più semplice, ovvero $3$ nodi $x,y,z$ che formano un triang
 
 Quindi, sarà **impossibile** per loro selezionare $2$ links su $3$
 
-![[Pasted image 20250326141750.png|center|600]]
+![center|600](img/Pasted%20image%2020250326141750.png)
 

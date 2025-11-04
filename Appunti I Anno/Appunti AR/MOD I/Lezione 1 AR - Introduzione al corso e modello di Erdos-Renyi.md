@@ -65,13 +65,13 @@ E quindi, essendo la rete modellata come un grafo, per studiare i fenomeni che a
 
 Alcuni esempi di reti sono : 
 
-![[img/Pasted image 20250801094851.png|center|500]]
+![center|500](img/Pasted%20image%2020250801094851.png)
 
 **Fig 1** : Rete sociale di un gruppo di tennis universitario di 34 persone
 
 Oppure 
 
-![[img/Pasted image 20250801094932.png|center|500]]
+![center|500](img/Pasted%20image%2020250801094932.png)
 
 **Fig 2** : Rete sociale basata sulle comunicazioni tramite e-mail di 436 impiegati aziendali
 

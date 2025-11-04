@@ -161,9 +161,9 @@ Ci sono 3 tipi di licenze:
 
 Per scegliere che tipo di licenza usare, ci sono dei servizi online che, grazie ad una specie di questionario, ti permettono di ottenere la licenza migliore per il tuo caso d'uso
 
-![[Pasted image 20251018114730.png|center|500]]
+![center|500](img/Pasted%20image%2020251018114730.png)
 
-![[Pasted image 20251018114813.png|center|500]]
+![center|500](img/Pasted%20image%2020251018114813.png)
 
 Pubblico Dominio (CC$0$)
 - "no rights reserved"

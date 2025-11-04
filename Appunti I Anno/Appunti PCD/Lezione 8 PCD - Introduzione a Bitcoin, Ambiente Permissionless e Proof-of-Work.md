@@ -69,7 +69,7 @@ Nel caso di Bitcoin il protocollo vuole fare in modo che:
 
 Il protocollo di consenso di Nakamoto (aka Bitcoin), può essere sintetizzato in quest righe di codice
 
-![[Pasted image 20250414113113.png|center|600]]
+![center|600](img/Pasted%20image%2020250414113113.png)
 
 ## Blocchi della blockchain
 

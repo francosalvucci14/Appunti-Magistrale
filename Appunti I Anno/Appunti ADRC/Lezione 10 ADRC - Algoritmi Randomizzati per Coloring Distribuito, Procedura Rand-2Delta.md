@@ -15,7 +15,7 @@ While $V\neq\emptyset$ do : (**Ogni esecuzione è una fase**)
 Dopo aver definito la Phase Technique, passiamo a definire il protocollo che sfrutterà questa tecnica, chiamato Rand-$2\Delta$
 ## Protocollo Rand-2Delta
 
-![[Pasted image 20250418153134.png|center]]
+![center](img/Pasted%20image%2020250418153134.png)
 
 **Fatto 1** : Se *tutti* i nodi terminano (es. $V=0$), allora la procedura Rand-$2\Delta$ calcola un (legale) $(2\Delta)$-coloramento per il grafo $G$
 

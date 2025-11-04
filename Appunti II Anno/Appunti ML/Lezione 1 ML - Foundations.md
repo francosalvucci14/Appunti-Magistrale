@@ -141,7 +141,7 @@ Si osservi che non viene effettuato alcun apprendimento (ovvero, derivare alcune
 
 Lo schema generale di questo approccio è il seguente:
 
-![[Pasted image 20251012190730.png|center|300]]
+![center|300](img/Pasted%20image%2020251012190730.png)
 
 Esempio di questo approccio: algoritmo dei $k$ vicini più prossimi ($\text{kNN}$) per la classificazione.
 
@@ -163,7 +163,7 @@ Come vedremo, un caso rilevante qui è quando $\mathcal H$ è un insieme di funz
 
 In questo caso, cercare una funzione in $\mathcal H_\overline{\theta}$ equivale a cercare un valore per $(\theta_1,\dots , \theta_m)$.
 
-![[Pasted image 20251013095103.png|center|500]]
+![center|500](img/Pasted%20image%2020251013095103.png)
 
 Un semplice esempio di questo approccio è la **regressione lineare**, in cui il valore previsto per l'elemento $\overline{x}$ viene calcolato come ***combinazione lineare*** dei valori delle sue features $x_1, x_2, \dots , x_d$ ciascuno ponderato da un parametro costante adeguato $w_1, w_2,\dots , w_d$, più un ***bias*** $w_{0}$.
 In altre parole, la previsione viene calcolata come: $$y=\sum\limits_{i=1}^{d}w_ix_i+w_{0}=\overline{w}^{T}\hat{x}$$

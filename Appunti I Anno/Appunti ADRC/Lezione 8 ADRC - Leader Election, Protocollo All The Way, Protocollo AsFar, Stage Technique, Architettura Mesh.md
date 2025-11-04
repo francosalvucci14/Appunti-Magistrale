@@ -6,7 +6,7 @@ Tale entità prende il nome di **leader**, e trovare il leader in un insieme di 
 
 Fare Leader Election significa "Rompere" la simmetria
 
-![[Pasted image 20250401120511.png|center|500]]
+![center|500](img/Pasted%20image%2020250401120511.png)
 
 La configurazione iniziale è : $\forall x\in V,state(x)=asleep$
 - quante sono le possibili configurazioni iniziali? -> $2^{n-1}$
@@ -26,7 +26,7 @@ La dimostrazione è identica a quella del triangolo, nel problema STP
 
 **oss** : con differenti ID, il problema Minimum Finding diventa una elezione
 
-![[Pasted image 20250401120736.png|center|400]]
+![center|400](img/Pasted%20image%2020250401120736.png)
 
 ## Elezione in alberi
 
@@ -46,7 +46,7 @@ Cos'è un grafo ad anello? Un grafo ad anello è un grafo in cui :
 - C'è il senso della direzione (sx,dx)
 
 Ad esempio 
-![[Pasted image 20250401121153.png|center|400]]
+![center|400](img/Pasted%20image%2020250401121153.png)
 
 Notiamo che gli ID dei nodi non sono necessariamente **consistenti**, cioè non è detto che $id(x_i)=i$ o $id(x_i)=k\implies id(x_{i+1})=k+1$
 
@@ -150,12 +150,12 @@ Quindi abbiamo :
 
 Assunzioni le stesse dell'altro protocollo
 
-![[Pasted image 20250407105544.png|center|400]]
+![center|400](img/Pasted%20image%2020250407105544.png)
 
 Ricevo $y$ ***più piccolo*** di me : 
 - **invio(y)** agli altri vicini
 
-![[Pasted image 20250407105722.png|center|400]]
+![center|400](img/Pasted%20image%2020250407105722.png)
 
 Ricevo $y$ ***più grande*** di me : 
 - **invio(x)** agli altri vicini (se non è stato già inviato)
@@ -217,13 +217,13 @@ $$rank(id)=\text{num. id più piccoli di id}+1$$
 
 La situazione worst-case è : 
 
-![[Pasted image 20250407110509.png|center|500]]
+![center|500](img/Pasted%20image%2020250407110509.png)
 
 ##### Analisi Worst-Case
 
 Gli ID sono distribuiti in sequenza, da sx verso dx
 
-![[Pasted image 20250407110936.png|center|400]]
+![center|400](img/Pasted%20image%2020250407110936.png)
 
 
 Abbiamo che : 
@@ -239,7 +239,7 @@ Leggermente migliore del protocollo All The Way
 
 ##### Analisi Best-Case
 
-![[Pasted image 20250407110957.png|center|400]]
+![center|400](img/Pasted%20image%2020250407110957.png)
 
 - Dal nodo $1\to n$ links
 - $\forall i\neq1\to1$ link (totale $n-1$)
@@ -274,18 +274,18 @@ Vediamo lo Stage $i$, per qualche $i$
 
 1. Ogni candidato invia un messaggio con il proprio ID in entrambe le direzioni
 2. Il messaggio viaggerà finchè non incontrerà un ID più piccollo o finchè non raggiungerà una certa distanza $(2^{i-1})$
-3. Se il messaggio non incontra un ID più piccolo, allora tornerà indietro al proprietario. (chiamati **messaggi di feedback**) ![[Pasted image 20250409141925.png|center|500]]
+3. Se il messaggio non incontra un ID più piccolo, allora tornerà indietro al proprietario. (chiamati **messaggi di feedback**) ![center|500](img/Pasted%20image%2020250409141925.png)
 4. Un candidato che **riceve il proprio messaggio di feedback da ambo le direzioni** sopravvive ed inizia il prossimo stage
 
 Le entità incontrate lungo il percorso leggono il msg e : 
 - Ogni entità $i$ con un ID **più grande** diventa **sconfitto** (passivo)
 - Un entità **sconfitta** inoltra i messaggi originati da altre entità; se il messaggio è la **notifica** di terminazione, allora termina
 
-![[Pasted image 20250409142227.png|center|500]]
+![center|500](img/Pasted%20image%2020250409142227.png)
 
 Vediamo un piccolo riassunto
 
-![[Pasted image 20250409142315.png|center|500]]
+![center|500](img/Pasted%20image%2020250409142315.png)
 
 ### Correttezza e Terminazione
 
@@ -311,14 +311,14 @@ Diamo una definizione importante : $n_i$ numero di nodi che iniziano lo stage $i
 >[!teorem]- Lemma
 >Se $x$ inizia lo stage $i$ (ovvero sopravvive allo stage $i-1$) l'ID di $x$ deve essere più piccolo dell'ID dei vicini a distanza fino a $2^{i-2}$ su ogni lato
 
-![[Pasted image 20250411131505.png|center|600]]
+![center|600](img/Pasted%20image%2020250411131505.png)
 
 In un gruppo di $2^{i-2}+1$ entità consecutive **al più una** può sopravvivere allo stage $i-1$
 
 Quindi : $$n_i\leq\frac{n}{2^{i-2}+1}$$
-![[Pasted image 20250411131635.png|center|500]]
+![center|500](img/Pasted%20image%2020250411131635.png)
 
-![[Pasted image 20250411131652.png|center|500]]
+![center|500](img/Pasted%20image%2020250411131652.png)
 
 Vediamo ora il num di messaggi.
 
@@ -367,8 +367,8 @@ Questa congettura però non è vera
 Le assunzioni sono le stesse della Stage Technique, aggiungendo il Message Ordering
 
 Come funziona questa tecnica : 
-- Ogni candidato invia il suo ID in entrambe le direzioni![[Pasted image 20250411134533.png|center]]
-- Quando un candidato $i$ riceve due messaggi $ID_j$ (da dx) e $ID_k$ (da sx), determina se può diventare *passivo* (ovvero lui non è il valore più piccolo), oppure se deve rimanere *candidato* (ovvero è il più piccolo) ![[Pasted image 20250411134700.png|center|600]]
+- Ogni candidato invia il suo ID in entrambe le direzioni![center](img/Pasted%20image%2020250411134533.png)
+- Quando un candidato $i$ riceve due messaggi $ID_j$ (da dx) e $ID_k$ (da sx), determina se può diventare *passivo* (ovvero lui non è il valore più piccolo), oppure se deve rimanere *candidato* (ovvero è il più piccolo) ![center|600](img/Pasted%20image%2020250411134700.png)
 Dopo aver ricevuto il primo messaggio, l'entità effettua l'operazione **close-port** (ovvero accoda tutti i messaggi in arrivo dopo il primo)
 
 Dopo aver ricevuto il secondo messaggio, l'entità effettua l'operazione **re-open-port**
@@ -409,7 +409,7 @@ All'interno della Mesh esistono tre tipologie di nodo :
 2. **Border** . nodo che sta sul perimetro della Mesh (bordo)
 3. **Interior** : nodo interno alla Mesh
 
-![[Pasted image 20250411135602.png|center|600]]
+![center|600](img/Pasted%20image%2020250411135602.png)
 
 Alcuni fatti importanti : 
 

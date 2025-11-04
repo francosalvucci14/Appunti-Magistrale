@@ -14,7 +14,7 @@ In ogni fase :
 
 A questo punto, il protocollo procede come Rand-$2\Delta$
 
-![[Pasted image 20250418160753.png|center]]
+![center](img/Pasted%20image%2020250418160753.png)
 
 **Fatto 3** : Se *tutti* i nodi terminano (es. $V=0$) , allora il protocollo Rand-$\Delta^+$ calcola un (legale) $(\Delta+1)$-coloramento per il grafo $G$
 
@@ -166,7 +166,7 @@ Vogliamo ora vedere quati archi vengono rimossi ad ogni round del protocollo.
 
 Consideriamo il seguente esempio : 
 
-![[Pasted image 20250503153214.png|center|500]]
+![center|500](img/Pasted%20image%2020250503153214.png)
 
 **Goal** : Calcolare il numero (atteso) $e(t)$ di archi che sono ***rimossi*** da $E$ ad ogni round di LP. Per fare ciò, introduciamo l'**azione** : "nodo $u$ ***salva** $w$" 
 

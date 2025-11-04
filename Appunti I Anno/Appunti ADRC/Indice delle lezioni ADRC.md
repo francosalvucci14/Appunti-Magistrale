@@ -1,23 +1,23 @@
-- [[Lezione 1 ADRC]]
-- [[Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni]]
-- [[Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube]]
-- [[Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD]]
-- [[Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+]]
-- [[Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding]]
-- [[Lezione 7 ADRC - Finding Eccentricities & Center Finding]]
-- [[Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh]]
-- [[Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP]]
-- [[Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta]]
-- [[Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito]]
-- [[Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics]]
-- [[Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari,Tempo di convergenza del protocollo]]
-- [[Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin]]
-- [[Lezione 15 ADRC - Ancora su Radio Networks, protocollo "selettivo" per Broadcast]]
-- [[Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random]]
-- [[Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP]]
-- [[Lezione 18 ADRC - Expanders e le loro Proprietà]]
-- [[Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus]]
-- [[Lezione 20 ADRC (I lezione Pepè) - PRAM Model, Ordinamento, Max e Prefix Sum]]
-- [[Lezione 21 ADRC (II lezione Pepè) - Map Reduce]]
-- [[Lezione 22 ADRC (III lezione Pepè) - Continuo algo. Sort, Grafi, MST e Maximal Matching]]
+- [Lezione 1 ADRC](Lezione%201%20ADRC.md)
+- [Lezione 2 ADRC - Struttura del modello, Assiomi e Restrizioni](Lezione%202%20ADRC%20-%20Struttura%20del%20modello,%20Assiomi%20e%20Restrizioni.md)
+- [Lezione 3 ADRC - Time Complexity, LowerBound per il Broadcast, Labeled Hypercube](Lezione%203%20ADRC%20-%20Time%20Complexity,%20LowerBound%20per%20il%20Broadcast,%20Labeled%20Hypercube.md)
+- [Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD](Lezione%204%20ADRC%20-%20Algoritmo%20HyperFLOOD,%20WakeUp%20Task,%20Protocollo%20WFLOOD.md)
+- [Lezione 5 ADRC - Spanning Tree Construction, Protocollo SHOUT & SHOUT+](Lezione%205%20ADRC%20-%20Spanning%20Tree%20Construction,%20Protocollo%20SHOUT%20&%20SHOUT+.md)
+- [Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding](Lezione%206%20ADRC%20-%20Depth%20First%20Traversal,%20Protocollo%20BACK%20&%20DFT+,%20Tecnica%20di%20Saturazione%20&%20Minimum%20Finding.md)
+- [Lezione 7 ADRC - Finding Eccentricities & Center Finding](Lezione%207%20ADRC%20-%20Finding%20Eccentricities%20&%20Center%20Finding.md)
+- [Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh](Lezione%208%20ADRC%20-%20Leader%20Election,%20Protocollo%20All%20The%20Way,%20Protocollo%20AsFar,%20Stage%20Technique,%20Architettura%20Mesh.md)
+- [Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP](Lezione%209%20ADRC%20%20-%20Deterministic%20Distribuited%20Graph%20Coloring,%20Procedura%20BPC,%20Procedura%20KW-CRP.md)
+- [Lezione 10 ADRC - Algoritmi Randomizzati per Coloring Distribuito, Procedura Rand-2Delta](Lezione%2010%20ADRC%20-%20Algoritmi%20Randomizzati%20per%20Coloring%20Distribuito,%20Procedura%20Rand-2Delta.md)
+- [Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito](Lezione%2011%20ADRC%20-%20Ancora%20su%20CD,%20Algoritmo%20Rand-Delta+,%20Random%20Election%20Leader,%20Maximal%20Indipendent%20Set%20Distribuito.md)
+- [Lezione 12 ADRC - Ultimo argomento modello LOCAL -> Averaging Dynamics](Lezione%2012%20ADRC%20-%20Ultimo%20argomento%20modello%20LOCAL%20->%20Averaging%20Dynamics.md)
+- [Lezione 13 ADRC - Ancora su Averagin Dynamics - il caso dei grafi regolari,Tempo di convergenza del protocollo](Lezione%2013%20ADRC%20-%20Ancora%20su%20Averagin%20Dynamics%20-%20il%20caso%20dei%20grafi%20regolari,Tempo%20di%20convergenza%20del%20protocollo.md)
+- [Lezione 14 ADRC - Introduzione al modello Radio Network, Primo Protocollo con Round Robin](Lezione%2014%20ADRC%20-%20Introduzione%20al%20modello%20Radio%20Network,%20Primo%20Protocollo%20con%20Round%20Robin.md)
+- [Lezione 15 ADRC - Ancora su Radio Networks, protocollo "selettivo" per Broadcast](Lezione%2015%20ADRC%20-%20Ancora%20su%20Radio%20Networks,%20protocollo%20"selettivo"%20per%20Broadcast.md)
+- [Lezione 16 ADRC - LowerBound al protocollo seletivo, protocollo Random](Lezione%2016%20ADRC%20-%20LowerBound%20al%20protocollo%20seletivo,%20protocollo%20Random.md)
+- [Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP](Lezione%2017%20ADRC%20-%20Fine%20parte%20su%20prot.%20RND%20per%20R.N,%20Introduzione%20al%20modello%20GOSSIP.md)
+- [Lezione 18 ADRC - Expanders e le loro Proprietà](Lezione%2018%20ADRC%20-%20Expanders%20e%20le%20loro%20Proprietà.md)
+- [Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus](Lezione%2019%20ADRC%20-%20Protocollo%20PULL%20su%20DELTA-Regular%20Expanders,%20Majority%20Consensus.md)
+- [Lezione 20 ADRC (I lezione Pepè) - PRAM Model, Ordinamento, Max e Prefix Sum](Lezione%2020%20ADRC%20(I%20lezione%20Pepè)%20-%20PRAM%20Model,%20Ordinamento,%20Max%20e%20Prefix%20Sum.md)
+- [Lezione 21 ADRC (II lezione Pepè) - Map Reduce](Lezione%2021%20ADRC%20(II%20lezione%20Pepè)%20-%20Map%20Reduce.md)
+- [Lezione 22 ADRC (III lezione Pepè) - Continuo algo. Sort, Grafi, MST e Maximal Matching](Lezione%2022%20ADRC%20(III%20lezione%20Pepè)%20-%20Continuo%20algo.%20Sort,%20Grafi,%20MST%20e%20Maximal%20Matching.md)
 - 

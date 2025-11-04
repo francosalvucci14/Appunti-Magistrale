@@ -104,7 +104,7 @@ Le domande però a cui dobbiamo dare una risposta sono:
 
 Capiamo, innanzi tutto, con un esempio
 
-![[Pasted image 20250812110103.png|center|450]]
+![center|450](img/Pasted%20image%2020250812110103.png)
 
 In questo esempio, vediamo come lo stato $A$ viene forzato all'inizio sui noid $v,w$
 In questo esempio, vale che $a=3,b=2$ quindi $A$ migliore di $B$, e di conseguenza, usando la formula della soglia, otteniamo che $q=\frac{2}{3+2}=\frac{2}{5}$
@@ -115,12 +115,12 @@ Come si vede alla fine, un nodo dopo l'altro, tutti adotteranno $A$
 
 Altro esempio
 
-![[Pasted image 20250812110533.png|center|350]]
+![center|350](img/Pasted%20image%2020250812110533.png)
 
 Caso $1)$: $a=3,b=2,q=\frac{2}{5}$
 - caso illustrato in figura, $A$ non riesce a raggiungere i nodi fuori l'esagono, quindi non tutti i nodi adottano $A$
 
-![[Pasted image 20250812110643.png|center|350]]
+![center|350](img/Pasted%20image%2020250812110643.png)
 
 Caso $2)$: $a=4,b=2,q=\frac{2}{6}=\frac{1}{3}$
 - caso illustrato in figura, dopo aver raggiunto tutti i nodi dell'esagono, $A$ viene adottato da $2,11,14$, poi da $1,3,12,13,17$ e infine da $15,16$
@@ -254,11 +254,11 @@ Dato un grafo (regolare) infinito, qual'è la soglia di adozione *massima* $q_{\
 
 Se $|V_0|=1$ allora occorre $q=\frac{1}{2}$ per generare una cascata completa
 
-![[Pasted image 20250812152510.png|center]]
+![center](img/Pasted%20image%2020250812152510.png)
 
 Ma la domanda è, scegliendo un insieme più grande (come quello in figura sotto), è possibile generare una cascata con $q\lt \frac{1}{2}$?
 
-![[Pasted image 20250812152744.png|center]]
+![center](img/Pasted%20image%2020250812152744.png)
 
 La risposta è no, perchè i nodi "al confine" con $V_0$ (ovvero i nodi $x,y$ in figura), hanno comunque bisogno di $q=\frac{1}{2}$ per passare ad $A$
 
@@ -267,19 +267,19 @@ Allora, in una **catena infinita** abbiamo che $$q_{\max}=\frac{1}{2}$$
 
 Se $|V_0|=1$ allora occorre $q=\frac{1}{8}$ per generare una cascata completa
 
-![[Pasted image 20250812153017.png|center|300]]
+![center|300](img/Pasted%20image%2020250812153017.png)
 
 Se $|V_0|=2$ allora, scegliendo i due nodi in $V_{0}$ come nodi adiacenti, con $q=\frac{1}{4}$ si riescono ad influenzare i nodi $u,v,x,y$, per poi generare una cascata completa (come si evince in figura)
 
-![[Pasted image 20250812153100.png|center|300]]
+![center|300](img/Pasted%20image%2020250812153100.png)
 
 Se $|V_0|=3$ allora, scegliendo i tre nodi in $V_{0}$ come nodi adiacenti, con $q=\frac{3}{8}$ si riescono ad influenzare i nodi $v,y$ , poi i nodi $u,w,x,z$ e così via fino a generare una cascata completa 
 
-![[Pasted image 20250812153238.png|center|300]]
+![center|300](img/Pasted%20image%2020250812153238.png)
 
 Aumentando $|V_0|$ non si riesce ad aumentare la soglia di adozione: una volta influenzati tutti i nodi nel rettagnolo (giallo) che contiene gli iniziatori, occorre uscre da esso, e per farlo è necessario $q=\frac{3}{8}$
 
-![[Pasted image 20250812153454.png|center|300]]
+![center|300](img/Pasted%20image%2020250812153454.png)
 
 Quindi, in una **griglia infinita** si ha che $$q_\max=\frac{3}{8}$$
 Da questi due esempi possiamo concludere quanto segue:
@@ -319,7 +319,7 @@ Di conseguenza, per ogni nodo $v\in V_{t+1}$ abbiamo che:
 E quindi vale che: 
 $$I_{t+1}=I_{t}\setminus\left[\bigcup_{v\in V_{t+1}}\{(u,v)\in E:u\in S_{t}\}\right]\cup\left[\bigcup_{v\in V_{t+1}}\{(z,v)\in E:z\in (V\setminus S_{t+1})\}\right]$$
 
-![[Pasted image 20250812160807.png|center|350]]
+![center|350](img/Pasted%20image%2020250812160807.png)
 
 Ora, se $v\neq z$ con $v,z\in S_t$ allora vale che $$\{(u,v)\in E:u\in S_{t}\}\cap\{(u,z)\in E:u\in S_{t}\}=\emptyset$$
 e se $v\neq z$, con $v,z\in V_{t+1}$ allora vale che $$\{(u,v)\in E:u\in (V\setminus S_{t+1})\}\cap\{(u,z)\in E:u\in (V\setminus S_{t+1})\}=\emptyset$$
@@ -367,7 +367,7 @@ Assumiamo che il beneficio sia quello illustrato in tabella
 Seguendo quindi la tabella, vale che un nodo $v\in V$ nello stato $B$ passa allo stato $A$ sulla base del valore $$q_{v}=\frac{b_v}{a_{v}+b_v}$$
 Come vediamo in figura, accanto ad ogni nodo $v$ viene riportata la sua soglia di adesione $q_{v}$
 
-![[Pasted image 20250813095703.png|center|300]]
+![center|300](img/Pasted%20image%2020250813095703.png)
 
 **Oss**: Notiamo che, anche se il nodo $1$ è in posizione centrale, non riuscirebbe a portare nessun in $A$ a meno che $q_v=0.1$
 
@@ -378,7 +378,7 @@ Quindi, come nel caso lineare precedente, definiamo la struttura che impedisce l
 >[!definition]- Blocking Cluster
 >$V\subseteq V'$ è detto **blocking cluster** se, per ogni $v\in V'$ vale che $$\frac{|N(v)\cap V'|}{|N(v)|}\geq1-q$$
 
-Vale quindi il seguente teorema, di cui non daremo dimostrazione (o meglio, la dimostrazione è pressochè simile a questa [[Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators#^953f09|dimostrazione]], e viene quindi lasciata come esercizio):
+Vale quindi il seguente teorema, di cui non daremo dimostrazione (o meglio, la dimostrazione è pressochè simile a questa [](.md#^953f09|dimostrazione), e viene quindi lasciata come esercizio):
 
 >[!teorem]- Teorema
 >Sia $G=(V,E)$ un grafo.
@@ -411,7 +411,7 @@ Vediamo qualche esempio
 
 **Esempio 1**
 
-![[Pasted image 20250813101448.png|center|250]]
+![center|250](img/Pasted%20image%2020250813101448.png)
 
 - Il nodo $x$ non aderisce, non ha abbastanza vicini
 - Il nodo $v$ ha bisogno di due vicini che aderiscono: ma vede che $x$ vuole almeno $3$ vicini aderiscano per aderire a sua volta, e poichè $v$ vede di $x$ i soli vicini che hanno in comune, non può sapere se $x$ aderirà o meno, e quindi non aderirà neanche lui
@@ -419,7 +419,7 @@ Vediamo qualche esempio
 
 **Esempio 2**
 
-![[Pasted image 20250813102243.png|center|250]]
+![center|250](img/Pasted%20image%2020250813102243.png)
 
 Questo caso è leggeremente più complicato.
 
@@ -430,7 +430,7 @@ Essendo che il grafo è perfettamente simmetrico, nesuno aderisce alla protesta 
 **Esempio 3**
 
 
-![[Pasted image 20250813102718.png|center|250]]
+![center|250](img/Pasted%20image%2020250813102718.png)
 
 I nodi $u,v,x$ si vedono l'un l'altro, così $u$ sa che $v,x$, per partecipare, hanno bisogno che altri due partecipino
 Ma $u$ sa che anche $v,x$ sanno le stesse cose che sa lui, siamo quindi in una situazione "io so che tu sai che io so" (dio porco)
@@ -482,23 +482,23 @@ Vediamo quindi questa catena: $a=5,b=3,c=1$
 
 Per simmetria, è sufficiente considerare una catena infinita solo a destra (sempre a DESTRA!!!), il cui primo nodo è nello stato $A$ (giallo) e tutti gli altri sono nello stato $B$ (blu)
 
-![[Pasted image 20250813111920.png|center]]
+![center](img/Pasted%20image%2020250813111920.png)
 
 Al primo passo, $u$ adotta $AB$ (verde): infatti $p_{A}(u)=5,p_{B}(u)=3,p_{AB}(u)=5+3-1=7$
 
-![[Pasted image 20250813112103.png|center]]
+![center](img/Pasted%20image%2020250813112103.png)
 
 Al secondo passo, $v$ adotta $AB$ (verde): infatti $p_{A}(v)=5,p_{B}(v)=3+3=6,p_{AB}(v)=5+3-1=7$
 
-![[Pasted image 20250813112118.png|center]]
+![center](img/Pasted%20image%2020250813112118.png)
 
 Al terzo passo, $z$ adotta $AB$ (verde) per le stesse motivazioni di $v$, ma ora ad $u$ conviene abbandonare $AB$ e tornare ad $A$ perchè: $p_{A}(u)=10,p_{B}(u)=0,p_{AB}(u)=5+5-1=9$
 
-![[Pasted image 20250813112132.png|center]]
+![center](img/Pasted%20image%2020250813112132.png)
 
 A questo punto, il fenomeno si ripete
 
-![[Pasted image 20250813112145.png|center]]
+![center](img/Pasted%20image%2020250813112145.png)
 
 E quindi, dopo un periodo transitorio durante il quale un nodo adotta lo stato misto, esso passerà ad adottare definitivamente il nuovo stato, e quindi si genera una cascata completa nella quale il vecchio stato viene completamente soppiantanto dal nuovo
 
@@ -521,7 +521,7 @@ Uno studio qualitativo `[Kleinberg et al. 2007]` ha evidenziato uno "strano" com
 
 Torniamo a considerare la catena
 
-![[Pasted image 20250813121331.png|center]]
+![center](img/Pasted%20image%2020250813121331.png)
 
 Se $x$ è nello stato $A$ (giallo) e $v$ nello stato $B$ (blu), al nodo $u$ quale stato converrà adottare?
 Dato che $$p_{A}(u)=a,p_{B}(u)=1,p_{AB}(u)=a+1-c$$
@@ -538,7 +538,7 @@ possono accadere $3$ situazioni:
 
 Riassumiamo tutto ciò in un grafico nel piano $ac$
 
-![[Pasted image 20250813144825.png|center|350]]
+![center|350](img/Pasted%20image%2020250813144825.png)
 
 
 Abbiamo detto che
@@ -555,14 +555,14 @@ Resta da studiare cosa accade quando i parametri cadono nella regione verde
 
 Quando i parametri cadono nella regione verde, ovvero $c\lt 1$ e $a\ge c$, significa che $u$ ha adottato $AB$, siamo quindi nella situazione seguente
 
-![[Pasted image 20250813145558.png|center]]
+![center](img/Pasted%20image%2020250813145558.png)
 
 Quale stato conviene adottare al nodo $v$?
 - adesso vale che $p_A(v)=a,p_{B}(v)=2,p_{AB}(v)=\max\{a,1\}+1-c$
 	- se $a\lt 1\implies p_{AB}=2-c$, quindi $(a,c)$ si trova nel triangolo $T$
 	- se $a\gt1\implies p_{AB}=a+1-c$, quindi $(a,c)$ si trova nel rettangolo $R$ (infinito)
 
-![[Pasted image 20250813145904.png|center|300]]
+![center|300](img/Pasted%20image%2020250813145904.png)
 
 Dunque:
 - se $(a,c)\in T$ allora $a\lt1$ e quindi $p_{A}(v)\lt p_{B}(v)$ e $p_{AB}(v)\lt p_{B}(v)$ e quindi $v$ adotta $B$
@@ -577,12 +577,12 @@ Seconda serie di conclusioni: se $(a,c) \in R$
 - se $v$ al passo $2$ rimane nello stato $B$, allora la diffusione dello stato $A$ si blocca al passo $2$
 - perciò, le coppie $(a,c)\in R$ che possono dar luogo a una cascata completa sono quelle nella regione $P$
 
-![[Pasted image 20250813150658.png|center]]
+![center](img/Pasted%20image%2020250813150658.png)
 
 
 Quando $(a,c)\in P$, al passo $2$, la situazione è la seguente
 
-![[Pasted image 20250813150732.png|center]]
+![center](img/Pasted%20image%2020250813150732.png)
 
 
 Dato che $(a,c)\in P$, al passo $3$ il nodo $z$ sceglie di adottare $AB$
@@ -593,12 +593,12 @@ E sempre al passo $3$ il nodo $u$ rivede la sua posizione:
 - quindi, $$p_{AB}(u) = a + \max\{a,1\} - c = 2a - c \lt 2a = p_A(u)$$
 - e quindi, $u$ non ha più interesse a continuare ad adottare anche lo stato $B$ e di conseguenza sceglie di adottare lo stato $A$
 
-![[Pasted image 20250813150926.png|center]]
+![center](img/Pasted%20image%2020250813150926.png)
 
 
 Conclusioni finali
 
-![[Pasted image 20250813150658.png|center|350]]
+![center|350](img/Pasted%20image%2020250813150658.png)
 
 Se $(a,c)$ è contenuto nella regione azzurra ($a \lt 1$ oppure $a \gt 1$ e $c \lt 1$ e $c \gt a - 1$) lo stato $A$ non si diffonde (la sua diffusione si blocca immediatamente o al passo $2$)
 

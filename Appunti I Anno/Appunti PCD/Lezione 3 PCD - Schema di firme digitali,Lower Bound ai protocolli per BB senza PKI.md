@@ -83,7 +83,7 @@ In questo caso la situazione è tutt'altro che facile da dimostrare, dato che no
 
 **dimostrazione per assurdo**
 
-![[Pasted image 20250313101707.png|center|400]]
+![center|400](img/Pasted%20image%2020250313101707.png)
 
 Consideriamo questi due scenari.
 

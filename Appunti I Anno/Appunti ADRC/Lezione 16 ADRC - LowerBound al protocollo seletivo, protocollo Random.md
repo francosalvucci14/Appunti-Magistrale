@@ -59,7 +59,7 @@ Vale il seguente teorema :
 
 *Caso induttivo* : Per ipotesi induttiva, assumiamo che entro lo stage $j\gt1$ tutti i nodi in $L_j$ siano informati. Mostriamo che è vero anche per $j+1$
 
-![[Pasted image 20250519102529.png|center|250]]
+![center|250](img/Pasted%20image%2020250519102529.png)
 
 Sia $y\in L_{j+1}$, vediamo la probabilità che $y$ venga informato nel time slot della fase $j+1$.
 Per definizione di $d-$regular layered, $y$ ha esattamente $d$ vicini nel livello $L_j$, i quali sono tutti informati per ipotesi induttiva
