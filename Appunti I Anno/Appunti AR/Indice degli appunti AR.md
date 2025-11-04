@@ -16,5 +16,5 @@
 
 # Modulo 2
 
-- [Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox](Lezione%201%20AR2%20-%20Algorithmic%20Game%20Theory,%20Nash%20Equilibrium,%20Braess's%20paradox.md)
+- [Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox](Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox.md)
 - 
