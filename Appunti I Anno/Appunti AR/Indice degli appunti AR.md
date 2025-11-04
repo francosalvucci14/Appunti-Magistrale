@@ -16,4 +16,5 @@
 
 # Modulo 2
 
-[Lezione 1 ](obsidian://open?vault=Appunti%20Magistrale&file=Appunti%20I%20Anno%2FAppunti%20AR%2FMOD%20I%2FLezione%201%20AR%20-%20Introduzione%20al%20corso%20e%20modello%20di%20Erdos-Renyi)
+[Lezione 1 ](Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md)
+
