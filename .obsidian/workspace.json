@@ -11,10 +11,15 @@
             "id": "60acdd5ada0d2218",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox"
             }
           }
         ]
@@ -161,7 +166,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "60acdd5ada0d2218",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
