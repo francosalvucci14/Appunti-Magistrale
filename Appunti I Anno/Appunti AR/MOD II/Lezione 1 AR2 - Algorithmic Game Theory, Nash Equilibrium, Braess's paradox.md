@@ -136,3 +136,80 @@ NE è definito come segue:
 >1. se $p_{i}$ è un'**utilità** allora $p_{i}(s_{1}^{\star},s_{2}^{\star},\dots, s^{\star}_i,\dots,s_{N}^{\star})\geq p_{i}(s_{1}^{\star},s_{2}^{\star},\dots,s_i,\dots,s_{N}^{\star})$
 >2. se $p_{i}$ è un **costo** allora $p_{i}(s_{1}^{\star},s_{2}^{\star},\dots,s^{\star}_i,\dots,s_{N}^{\star})\leq p_{i}(s_{1}^{\star},s_{2}^{\star},\dots,s_i,\dots,s_{N}^{\star})$
 
+Vediamo un'esempio di NE, tramite il coordination game chiamato "La battaglia dei Sessi"
+
+La situazione è quella descritta in figura
+
+![center](Pasted%20image%2020251104121125.png)
+
+Notiamo che:
+- La coppia (Stadium_v, Stadium_b) è un NE: miglior risposta per ognugno
+- La coppia (Cinema_v, Cinema_b) è un NE: miglior risposta per ognugno
+
+Il problema è le loro non sono DSE, siamo veramente sicuri che alla fine usciranno insieme?
+
+Vedi anche esempio sulla congestione
+
+Possiamo quindi trarre alcune conclusioni, ovvero 
+
+- In un NE nessun agente può deviare unilateralmente dalla propria strategia, dato che le strategie degli altri sono fisse.
+- L'agente deve riflettere sulle strategie degli altri agenti.
+- DSE $\implies$ NE (ma non vale il contrario).
+- Se il gioco viene **ripetuto** più volte e i giocatori convergono verso una soluzione, allora deve trattarsi di un NE.
+
+### Un grande problema nella GT : l'esistenza di un NE
+
+Sfortunatamente, per giochi **puramente strategici** (come visti fin'ora), è facile vedere che non possiamo avere un risultato generale di esistenza
+
+In altre parole, possono esserci ***nessun***, ***uno***, ***molti*** NE, a seconda del gioco
+
+Vediamo un'esempio, tramite il gioco conflittuale. Matching Pennies
+
+La situazione è la seguente:
+
+![center|600](Pasted%20image%2020251104123152.png)
+
+In ogni configurazione, uno dei giocatori preferisce cambiare la sua strategia, e quindi **no NE**
+
+Tuttavia, quando un giocatore può selezionare la propria strategia **in modo casuale** utilizzando una **distribuzione di probabilità** sul proprio insieme di strategie possibili (***strategia mista***), allora vale il seguente risultato generale:
+
+>[!teorem]- Teorema (Nash, 1951)
+>Qualsiasi gioco con un insieme finito di giocatori e un insieme finito di strategie ha un NE di strategie miste (cioè, il guadagno atteso non può essere migliorato modificando unilateralmente la distribuzione di probabilità selezionata ).
+
+Ritornando al gioco matching pennis: se ogni giocatore imposta $Pr(Testa)=Pr(Croce)=\frac{1}{2}$, allora il guadagno atteso di ogni giocatore è $0$, e questo è un NE, poiché nessun giocatore può migliorare questo risultato scegliendo una distribuzione di probabilità diversa!
+
+Quando parliamo di **analisi di un gioco** emergono alcune problematiche, che sono:
+- Stabilire se un gioco ha SEMPRE un NE
+- Una volta appurato che esiste, trovare un NE
+- In un gioco ripetuto, stabilire *se* e *in quanti* passi il sistema finirà per **convergere** verso un NE
+- Stabilire la **qualità** del NE
+
+### Sulla qualità del NE
+
+Le domande che ci poniamo qui sono:
+
+1. Quanto è inefficiente un NE rispetto a una situazione ideale in cui i giocatori si sforzerebbero di collaborare con l'obiettivo comune di scegliere il risultato migliore?
+2. Il risultato migliore rispetto a cosa?
+
+Abbiamo bisogno di una **funzione di scelta sociale** $C$ che mappi i profili strategici in numeri reali.
+- $C$ misura la qualità complessiva di un risultato $s$.
+- Ad esempio, $C(s)$: somma dei costi/utilità di tutti i giocatori.
+
+#### Una prospettiva worst-case: Price of Anarchy (PoA)
+
+Definiamo la **PoA**, nel seguente modo:
+
+>[!definition]- PoA (Koutsopias & Papadimitriou, 1999)
+>Dato un gioco $G$ e una funzione di scelta sociale $C$, sia $S$ l'insieme di tutti i NE.
+>Se il payoff rappresenta un **costo** (rispettivamente un'**utilità**) per un player, sia $OPT$ il risultato del gioco $G$ che ***minimizza*** (rispettivamente ***massimizza***) $C$.
+>Allora, il **Price of Anarchy (PoA)** di $G$ in rispetto a $C$ è $$PoA_{G}(C)=\sup_{s\in S}\frac{C(s)}{C(OPT)}\quad\left(\text{rispettivamente }\inf_{s\in S}\frac{C(s)}{C(OPT)}\right)$$
+
+#### Un'altra prospettiva: Price of Stability (PoS)
+
+Definiamo ora la **PoS**, nel seguente modo:
+
+>[!definition]- PoA (Schulz & Moses, 2003)
+>Dato un gioco $G$ e una funzione di scelta sociale $C$, sia $S$ l'insieme di tutti i NE.
+>Se il payoff rappresenta un **costo** (rispettivamente un'**utilità**) per un player, sia $OPT$ il risultato del gioco $G$ che ***minimizza*** (rispettivamente ***massimizza***) $C$.
+>Allora, il **Price of Stability (PoS)** di $G$ in rispetto a $C$ è $$PoS_{G}(C)=\inf_{s\in S}\frac{C(s)}{C(OPT)}\quad\left(\text{rispettivamente }\sup_{s\in S}\frac{C(s)}{C(OPT)}\right)$$
+

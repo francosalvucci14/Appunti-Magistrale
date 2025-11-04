@@ -130,8 +130,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "ff0e1df1e7da9619",
@@ -168,6 +167,8 @@
   },
   "active": "60acdd5ada0d2218",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251104123152.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251104121125.png",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
@@ -204,7 +205,6 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.pdf",
     "Appunti I Anno/Appunti CYS/Lezione 1 CYS Talamo.md",
     "Appunti I Anno/Appunti CYS/Lezione 2.2 CYS Arcieri.md",
-    "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/ml_lab3_1_2025_2026_advanced_optimizer.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/ML_Lab3_1_2025_2026_Advanced_Optimizer.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/testSet.txt",
@@ -212,7 +212,6 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml-lab2_2_es2.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml-lab2_2_es1.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/ml_lab2_2_2025_2026_risk_and_gradientdescent.py",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251021164759.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251021164451.png"
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251021164759.png"
   ]
 }
