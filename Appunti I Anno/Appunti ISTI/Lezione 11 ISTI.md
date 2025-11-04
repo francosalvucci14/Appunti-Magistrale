@@ -38,3 +38,21 @@ Vediamo ora una carrellata di esempi
 Prendiamo un campione aleatorio di variabili Bernoulliane $X_{1},\dots,X_n\sim Ber(\theta)$, dove $$X_{i}=\begin{cases}
 1&\theta\space(p)\\0&1-\theta\space(1-p)
 \end{cases}$$ 
+La funzione di verosimiglianza sarà quindi:
+$$L(\theta;X_1,\dots,X_{n})=\theta^{\sum\limits_{i=1}^{n}X_{i}}(1-\theta)^{n-\sum\limits_{i=1}^{n}X_{i}}$$
+Sfruttiamo la $\log$-verosimiglianza, in modo tale da eliminare produttorie varie e rimanere con solamente le sommatorie
+
+La $\log L$ sarà quindi $$\log L=\left(\sum\limits_{i=1}^{n}X_{i}\right)\log(\theta)+\left(n-\sum\limits_{i=1}^{n}X_{i}\right)\log(1-\theta)$$
+Dobbiamo ora massimizzare la $\log L$, facendone la derivata e ponendola uguale a $0$; così facendo otteniamo che 
+$$\begin{align*}
+\frac{d\log L}{d\theta}&=\frac{\sum\limits_{i=1}^{n}X_{i}}{\theta}-\frac{n-\sum\limits_{i=1}^{n}X_{i}}{1-\theta}\\&=\frac{\sum\limits_{i=1}^{n}X_{i}-n\theta}{\theta(1-\theta)}
+\end{align*}$$
+Ponendo questo uguale a $0$ otteniamo che 
+$$\hat{\theta}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}$$
+Piccola osservazione, avremmo potuto scrivere la verosimiglianza come 
+$$L(\theta;X_1,\dots,X_{n})=\dbinom{n}{\sum\limits_{i=1}^nX_{i}}\theta^{\sum\limits_{i=1}^{n}X_{i}}(1-\theta)^{n-\sum\limits_{i=1}^{n}X_{i}}$$
+La cosa che cambia fra la prima equazione e la seconda è puramente "filosofica", ovvero scritta nel secondo modo noi stiamo prendendo una *qualsiasi sequenza di successi*, mentre nel primo caso stiamo prendendo *una sequenza esatta di successi*.
+Entrambe le versioni sono equivalenti
+
+**Esempio 2**
+
