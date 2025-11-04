@@ -60,7 +60,7 @@ Anche il Web "navigazionale" può essere modellato come un grafo, in particolare
 
 Osserviamo che i nodi non hanno coscienza degli archi entranti: infatti una pagina Web non ha modo di conoscere le pagine che la puntano
 
-![center|350](img/Pasted%20image%2020250827151834.png)
+![[Pasted image 20250827151834.png|center|350]]
 
 In `[Broder et al., 2000]` viene studiata la struttura del grafo del web
 - ogni nodo del grafo studiato è una **SCC** del grafo del Web, ed è stato rilevato che esso aveva una struttura bow-tie contenente una (unica) SCC gigante
@@ -180,7 +180,7 @@ Una matrice $A$ simmetrica e reale si dice **semidefinita positiva*** se $$\fora
 >2) se $A$ è non nulla allora almeno un autovalore di $A$ è strettamente positivo
 
 
-Bene, torniamo ora al [](.md#^1acb62|Teorema%20Principale), vedremo a breve il ruolo dei due teoremi appena descritti nella dimostrazione del teorema principale
+Bene, torniamo ora al [[Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk#^1acb62|Teorema Principale]], vedremo a breve il ruolo dei due teoremi appena descritti nella dimostrazione del teorema principale
 
 Intanto, osserviamo che $(MM^{T})$ è una matrice reale e simmetrica, infatti $$(MM^{T})_{ij}=\sum\limits_{1\leq k\leq n}M_{ik}M_{kj}=(MM^{T})$$
 Allora, $(MM^{T})$ ha una **base ortonormale di autovettori per $\mathbb R^{n}$ e tutti gli autovalori reali**
@@ -314,11 +314,11 @@ Osserviamo che, ad ogni iterazione $k$, la quantità di fluido totale presente n
 Allora, possiamo pensare al vettore limite degli $f^{(k)}$, chiamiamolo $f^\star$, come ad un vettore che esprime una sorta di **configurazione di equilibrio** del fluido, ovvero, redistribuendo il fluido a partire dal $f^\star$ il vettore non varia : $$\forall i=1,\dots,n,\space f_i^\star=\sum\limits_{1\leq j\leq n:\space j\to i}\frac{f^{\star}}{\omega_j}$$
 In figura è modtraro il vettore limite di un grafo, a partire da $f^{(0)}=\frac{1}{8}$ per $i=A,B,C,D,E,F,G,H$
 
-![center|350](img/Pasted%20image%2020250828152014.png)
+![[Pasted image 20250828152014.png|center|350]]
 
 Il teorema affermava l'unicità del limite nel caso in cui il grafo è fortemente connesso, ma se il grafo *NON* è fortemente connesso, le cose cambiano, vediamo un esempio
 
-![center|650](img/Pasted%20image%2020250828152410.png)
+![[Pasted image 20250828152410.png|center|650]]
 
 Il flusso, da come si può vedere, tende ad accumularsi nei nodi gialli:
 - inizialmente, i tre nodi $(C,F,G)$ possiedono $\frac{3}{8}\lt \frac{1}{2}$ del flusso totale
