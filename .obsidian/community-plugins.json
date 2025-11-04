@@ -4,5 +4,6 @@
   "quick-latex",
   "automatic-table-of-contents",
   "obsidian-latex-environments",
-  "auto-braces"
+  "auto-braces",
+  "obsidian-link-converter"
 ]
