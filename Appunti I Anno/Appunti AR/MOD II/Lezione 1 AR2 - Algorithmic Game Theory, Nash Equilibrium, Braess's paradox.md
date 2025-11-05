@@ -213,3 +213,61 @@ Definiamo ora la **PoS**, nel seguente modo:
 >Se il payoff rappresenta un **costo** (rispettivamente un'**utilità**) per un player, sia $OPT$ il risultato del gioco $G$ che ***minimizza*** (rispettivamente ***massimizza***) $C$.
 >Allora, il **Price of Stability (PoS)** di $G$ in rispetto a $C$ è $$PoS_{G}(C)=\inf_{s\in S}\frac{C(s)}{C(OPT)}\quad\left(\text{rispettivamente }\sup_{s\in S}\frac{C(s)}{C(OPT)}\right)$$
 
+Osserviamo alcune cose:
+- PoA e PoS valgono:
+	- $\geq1$ per problemi di minimizzazione
+	- $\leq 1$ per problemi di massimizzazione
+- PoA e PoS sono piccole quando sono vicine a $1$
+- PoS è vicino a $1$ almeno come PoA
+- In un gioco con equilibrio unico abbiamo che PoA=PoS
+- PoA è simile al concetto di **grado di approssimazione** di una euristica
+- Un bound su PoS fornisce una garanzia **significativamente più debole** rispetto a un bound su PoA
+- Perché studiare il PoS?
+	- A volte un limite non banale è possibile solo per il PoS.
+	- Il PoS quantifica il necessario degrado della qualità sotto il vincolo della teoria dei giochi della stabilità.
+
+# Esempio importante: Selfish Routing
+
+Possiamo modellare una grande rete usando la GT, dove:
+- players = utenti
+- strategie = percorsi dove gli utenti possono veicolare il proprio traffico
+
+Selfish Routing non atomico:
+- esiste un gran numero di utenti (egoisti)
+- ogni utente controlla una piccola frazione del traffico
+- ogni arco ha una funzione di costo che misura il tempo di percorrenza in funzione della quantità di traffico sull'arco
+- ogni utente cerca di ridurre al minimo il proprio tempo di percorrenza
+- funzione di scelta sociale (da ridurre al minimo): tempo medio di percorrenza sostenuto dai giocatori
+
+**Esempio : il gioco di Pigou**
+
+![center|500](Pasted%20image%2020251105144552.png)
+
+Cosa possiamo dire riguardo al NE di questo gioco?
+
+Trivia: tutta la frazione del flusso tende a viaggiare sull'arco superiore, quindi il costo del flusso è $1\cdot1 +0\cdot1 =1$
+
+Quanto è negativo questo NE?
+
+La soluzione ottimale è il minimo di $$C(x)=x\cdot x+(1-x)\cdot 1\implies C'(x)=2x-1$$
+Per l'ottimo invece
+
+$$OPT=\frac{1}{2}\implies C(OPT)=\frac{1}{2}\cdot \frac{1}{2}+\left(1- \frac{1}{2}\right)\cdot 1=0.75$$
+Il rapporto fra i due costi è quindi $$\frac{NE}{OPT}= \frac{1}{0.75}= \frac{4}{3}$$
+La domanda che ci poniamo è: dobbiamo tenere conto del comportamento egoistico degli utenti quando progettiamo una rete?
+
+Per rispondere usiamo il paradosso di Braess
+
+![center|500](Pasted%20image%2020251105145258.png)
+
+![center|500](Pasted%20image%2020251105145317.png)
+
+![center|500](Pasted%20image%2020251105145343.png)
+
+![center|500](Pasted%20image%2020251105145410.png)
+
+Vale quindi il seguente teorema
+
+>[!teorem]- Teorema (Roughgarden&Tardos 2000)
+>Il PoA del gioco Selfish Routing con funzione di latenza lineare è al più $\frac{4}{3}$
+

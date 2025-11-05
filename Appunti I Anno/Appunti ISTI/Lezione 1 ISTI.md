@@ -19,7 +19,7 @@ Sia $X_n:\Omega\to\mathbb R$
 
 La v.a $X_n$ si dice che ha **distribuzione in convergenza** se vale la seguente:
 
-$$X_n\to_{d}X\iff F_{X_n}(x)\to F_{X}(x)\space\forall\space x\text{ punto di continuità di }F_{X}(\cdot)$$
+$$X_n\to_{d}X\iff \lim_{n\to\infty}F_{X_n}(x)\to F_{X}(x)\space\forall\space x\text{ punto di continuità di }F_{X}(\cdot)$$
 
 Osserviamo che: $\forall x\in\mathbb R,F_{X_n}(x)=Pr(X_n\leq x)$, e ricordiamo che $F_X(\cdot)$ è la **funzione di ripartizione della v.a** $X$
 

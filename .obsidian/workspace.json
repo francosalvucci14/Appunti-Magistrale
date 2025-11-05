@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "873d8398649a5ea7",
+        "id": "1b2d679773c9f839",
         "type": "tabs",
         "children": [
           {
-            "id": "60acdd5ada0d2218",
+            "id": "4c48ca6328428991",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 11 ISTI.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Lezione 11 ISTI"
+              "title": "New tab"
             }
           }
         ]
@@ -88,7 +83,6 @@
       {
         "id": "19648d604a047d14",
         "type": "tabs",
-        "dimension": 57.89473684210527,
         "children": [
           {
             "id": "517fcc174d45e93e",
@@ -96,13 +90,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 11 ISTI.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 11 ISTI"
+              "title": "Outline"
             }
           },
           {
@@ -134,12 +127,11 @@
         "currentTab": 1
       },
       {
-        "id": "ff0e1df1e7da9619",
+        "id": "3ad3de9097274dd3",
         "type": "tabs",
-        "dimension": 42.10526315789473,
         "children": [
           {
-            "id": "fc440c48f0745f72",
+            "id": "60acdd5ada0d2218",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -157,8 +149,8 @@
   "left-ribbon": {
     "hiddenItems": {
       "bases:Create new base": false,
-      "graph:Open graph view": false,
       "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
@@ -166,32 +158,38 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "60acdd5ada0d2218",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
+    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox.md",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251105145410.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251105145343.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251105145317.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251105145258.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251105144552.png",
+    "Appunti I Anno/Appunti ISTI/Lezione 1 ISTI.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 11 ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 11 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 9 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 10 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 7 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 8 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
-    "Appunti I Anno/Appunti AR/MOD II/Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox.md",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251104123152.png",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251104121125.png",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 1 AR - Introduzione al corso e modello di Erdos-Renyi.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
-    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Lezione.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 3 AR - Grafi Geometrici Aleatori, Reti Wireless e il problema del minimo raggio di trasmissione.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251103124501.png",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251103123808.png",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251103123735.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251103123614.png",
     "Appunti I Anno/Appunti AR/MOD II/img",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251103123127.png",
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.pdf",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
@@ -199,14 +197,8 @@
     "Appunti II Anno/Appunti KE/Lezione 3 KE - RDF e RDFS.md",
     "Appunti I Anno/Appunti CYS/Lezione 2.1 CYS Talamo.md",
     "Appunti II Anno/Appunti KE/Lezione 1 KE - Open Data.md",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20251027123351.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20251027123203.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20251027113622.png",
     "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
-    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
-    "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.pdf",
-    "Appunti I Anno/Appunti CYS/Lezione 1 CYS Talamo.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/ml_lab3_1_2025_2026_advanced_optimizer.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/ML_Lab3_1_2025_2026_Advanced_Optimizer.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/testSet.txt",
