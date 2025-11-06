@@ -18,3 +18,4 @@
 
 - [Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox](MOD%20II/Lezione%201%20AR2%20-%20Algorithmic%20Game%20Theory,%20Nash%20Equilibrium,%20Braess's%20paradox.md)
 - [Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE](Lezione%202%20AR2%20-%20Network%20Formation%20Games,%20Potential%20Technique,%20Find%20good%20NE.md)
+- 
