@@ -105,3 +105,7 @@ questo implica che:
 3. se $L(\theta,x,t)$ è strettamente convessa allora esiste un solo minimo relativo al rischio empirico
 
 aggiungere Loss famose
+
+aggiungere pezzo su gradient descent (ovvero i tre modi principali) per quello vedere pdf Lab2
+aggiungere pezzo su ott gradient descent (le varie tecnche), vedere pdf lsb3
+
