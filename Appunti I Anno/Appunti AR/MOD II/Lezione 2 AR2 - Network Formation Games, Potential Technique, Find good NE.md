@@ -252,3 +252,5 @@ $$\phi(S)=\sum\limits_{e\in E}\phi_{e}(S)$$
 dove 
 $$\phi_{e}(S)=c_{e}H_{k_{e}(S)}$$
 ricordiamo che $$H_{k}=\sum\limits_{j=1}^{k} \frac{1}{j},\quad H_{0}=0$$
+Valgono quindi i seguenti lemmi
+
