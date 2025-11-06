@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "1b2d679773c9f839",
+        "id": "22e55fd17e429cc1",
         "type": "tabs",
         "children": [
           {
-            "id": "4c48ca6328428991",
+            "id": "f3c99ccd0a97ceed",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -133,11 +133,11 @@
         "currentTab": 1
       },
       {
-        "id": "3ad3de9097274dd3",
+        "id": "edde287e383ad4d6",
         "type": "tabs",
         "children": [
           {
-            "id": "60acdd5ada0d2218",
+            "id": "4c48ca6328428991",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -164,10 +164,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4c48ca6328428991",
+  "active": "f3c99ccd0a97ceed",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
+    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
     "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
     "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
