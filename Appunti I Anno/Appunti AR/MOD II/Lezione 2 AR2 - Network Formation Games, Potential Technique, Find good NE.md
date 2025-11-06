@@ -254,3 +254,38 @@ $$\phi_{e}(S)=c_{e}H_{k_{e}(S)}$$
 ricordiamo che $$H_{k}=\sum\limits_{j=1}^{k} \frac{1}{j},\quad H_{0}=0$$
 Valgono quindi i seguenti lemmi
 
+>[!teorem]- Lemma 1
+>Sia $S=(P_{1},\dots,P_{k})$, sia $P_{i}^{'}$ un percorso alternativo per un qualche giocatore $i$, e definiamo un nuovo vettore di strategie $S^{'}=(S_{-i},P_{i}^{'})$
+>Allora:
+>$$\phi(S)-\phi(S^{'})=cost_{i}(S)-cost_{i}(S^{'})$$
+
+>[!teorem]- Lemma 2
+>Per ogni vettore di strategie $S$, vale che $$cost(S)\leq\phi(S)\leq H_{k}cost(S)$$
+
+Da questi due lemmi otteniamo che il PoS del gioco è $\leq H_{k}$
+
+Dimostriamo questi due lemmi
+
+**dimostrazione lemma 1**
+
+![center|500](Pasted%20image%2020251106165529.png)
+
+per ogni $e\in P_{i}\cap P_{i}^{'}$ abbiamo che 
+- il termine $e$ del $cost_{i}()$ e il potenziale $\phi_{e}$ rimangono gli stessi
+
+![center|500](Pasted%20image%2020251106165822.png)
+
+per ogni $e\in P_{i}^{'}\setminus P_{i}$ abbiamo che 
+- il termine $e$ di $cost_{i}()$ viene incrementato di un fattore $\frac{c_{e}}{(k_{e}(S)+1)}$
+- il potenziale $\phi_{e}$ incrementa e passa da $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)})$ a $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)}+\frac{1}{k_{e}(S)+1})$
+- otteniamo quindi che $$\Delta\phi_{e}=\frac{c_{e}}{(k_{e}(S)+1)}$$
+
+![center|500](Pasted%20image%2020251106172938.png)
+
+per ogni $e\in P_{i}\setminus P_{i}^{'}$ abbiamo che
+-  il termine $e$ di $cost_{i}()$ viene decrementato di un fattore $\frac{c_{e}}{k_{e}(S)}$
+- il potenziale $\phi_{e}$ decrementa e passa da $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)-1}+\frac{1}{k_{e}(S)})$ a $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)-1})$
+- e quindi otteniamo che $$\Delta\phi_{e}=-\frac{c_{e}}{k_{e}(S)}$$
+
+$\blacksquare$
+
