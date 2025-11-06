@@ -188,11 +188,67 @@ Avevamo detto che la soluzione ottima ha costo $1+\varepsilon$, ma questo porta 
 Come prima, vediamo dei risultati più generali dati dai seguenti teoremi
 
 >[!teorem]- Teorema 1
->Qualsiasi istanza del gioco di connessione globale ha
->un equilibrio di Nash puro e una risposta dinamica migliore converge sempre
+>Qualsiasi istanza del GCG ha un equilibrio di Nash puro e la miglior dinamica di risposta converge sempre
 
 >[!teorem]- Teorema 2
->Il PoS nel GCG con $k$ giocatori è la più $H_{k}$, il $k$-esimo numero armonico
+>Il PoS nel GCG con $k$ giocatori è al più $H_{k}$, il $k$-esimo numero armonico
 
 Per dimostrare entrambi i teoremi useremo il **Potential Function Method**
 
+Prima di tutto diamo la seguente definizione:
+
+>[!definition]- Exact Potential Function
+>Per ogni gioco finito, una **funzione potenziale esatta** $\phi$ è una funzione che mappa ogni vettore di strategie $S$ in un qualche valore e che soddisfa la seguente condizione:
+>$\forall S=(S_{1},\dots,S_{k}),S^{'}_{i}\neq S_{i},\text{ sia }S^{'}=(S_{-i},S^{'}_{i})$ allora vale che $$\phi(S)-\phi(S^{'})=cost_{i}(S)-cost_{i}(S')$$
+
+Un gioco che possiedeuna funzione potenziale esatta viene chiamato **gioco potenziale**
+
+Vale quindi il seguente teorema:
+
+>[!teorem]- Teorema 3
+>Ogni gioco potenziale ha almeno un NE puro, ovvero il vettore di strategie $S$ minimizza $\phi(S)$
+
+**dimostrazione**
+
+Consideriamo una qualunque mossa del giocatore $i$ che porta a un nuovo vettore di strategie $S'$
+
+Dal teorema abbiamo quindi che 
+$$\underbrace{\phi(S)-\phi(S^{'})}_{\leq0}=cost_{i}(S)-cost_{i}(S^{'})\implies cost_{i}(S)\leq cost_{i}(S^{'})$$
+e di conseguenza, il giocatore $i$ non può decrementare il suo costo, e quindi $S$ risulta essere un NE $\blacksquare$
+
+Vale anche il teorema successivo:
+
+>[!teorem]- Teorema 4
+>In qualsiasi gioco potenziale finito, le migliori dinamiche di risposta convergono sempre verso un equilibrio di Nash
+
+**dimostrazione**
+
+La dinamica di risposta migliore simula una ricerca locale su $\phi$:
+- ogni mossa decrementa (in senso stretto) $\phi$
+- il numero di soluzioni è finito
+$\blacksquare$
+
+**oss** nel nostro gioco, una risposta migliore può essere calcolata in tempo polinomiale
+
+Vediamo ora quest' ultimo teorema
+
+>[!teorem]- Teorema 5
+>Supponiamo di avere un gioco potenziale con una funzione potenziale $\phi$, e assumiamo che per ogni output $S$ abbiamo che $$\frac{cost(S)}{A}\leq\phi(S)\leq B\cdot cost(S)$$
+>per qualche $A,B\gt0$
+>Allora, il PoS è al più $AB$
+
+**dimostrazione**
+
+Sia $S^{'}$ il vettore di strategie che minimizza $\phi$
+Sia $S^{\star}$ il vettore di strategie che minimizza il costo sociale
+
+Abbiamo quindi che 
+$$\frac{cost(S^{'})}{A}\leq\phi(S^{'})\leq\phi(S^{\star})\leq B\cdot cost(S)\quad\blacksquare$$
+
+Ritorniamo ora al GCG
+
+Sia $\phi$ la seguente funzione che mappa ogni vettore di strategie $S$ in un valore reale: 
+$$\phi(S)=\sum\limits_{e\in E}\phi_{e}(S)$$
+dove 
+$$\phi_{e}(S)=c_{e}H_{k_{e}(S)}$$
+ricordiamo che $$H_{k}=\sum\limits_{j=1}^{k} \frac{1}{j},\quad H_{0}=0$$
