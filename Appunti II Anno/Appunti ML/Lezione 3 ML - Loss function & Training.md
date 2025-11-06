@@ -104,4 +104,4 @@ questo implica che:
 2. se $L(\theta,x,t)$ è convessa allora ogni minimo locale del rischio empirico è anche minimo globale
 3. se $L(\theta,x,t)$ è strettamente convessa allora esiste un solo minimo relativo al rischio empirico
 
-
+aggiungere Loss famose

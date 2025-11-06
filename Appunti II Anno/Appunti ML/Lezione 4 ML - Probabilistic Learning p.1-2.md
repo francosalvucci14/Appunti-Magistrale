@@ -163,3 +163,4 @@ $$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\left(\sum\limits_{i=1}^{n}\ln
 
 [^1]: https://it.wikipedia.org/wiki/Funzione_sigmoidea ; funzione che trasforma $z$ in un valore compreso fra $0$ e $1$
 
+aggiungere MAP e gaussian prior con esempio
