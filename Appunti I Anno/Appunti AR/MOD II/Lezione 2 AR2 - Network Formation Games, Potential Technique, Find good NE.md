@@ -305,3 +305,101 @@ Vediamo ora il seguente teorema
 
 la dimostrazione del teorema avviene tramite riduzione polinomale dal problema $3D$-matching
 
+#### $3D$-matching problem
+
+Faremo ora una piccola digressione sul problema in questione.
+
+**Input**:
+- $3$ insiemi disgiunti $X,Y,Z$ ognuno di dimensione $n$
+- un insieme $T\subseteq X\times Y\times Z$ contenente triple ordinate
+
+**Domanda**
+- Esiste un insieme di $n$ triple in $T$ tale che ogni elemento di $X\cup Y\cup Z$ è contenuto in *esattamente* una di queste triple?
+
+![center](Pasted%20image%2020251107100736.png)
+
+![center](Pasted%20image%2020251107101041.png)
+
+
+Vediamo ora la riduzione
+
+![center|500](Pasted%20image%2020251107101107.png)
+
+Come possiamo vedere in figura, gli archi che vanno dai noi $s_{i},i=1,\dots,3n$ verso i nodi in $T$ hanno peso $0$, mentre gli archi che vanno dai nodi in $T$ al nodo pozzo hanno peso $3$
+
+Il claim è: Esiste un $3D$-matching $\iff$ esiste un NE di costo al più $C=3n$
+
+**dimostrazione** $\to$
+
+Assumiamo quindi che esista un $3D$-matching
+Prendiamo allora $S$ come il profilo di strategie dove ogni giocatore sceglie un percorso passante la tripla del matching a cui appartiene, ad esempio
+
+![center|500](Pasted%20image%2020251107101359.png)
+
+Così facendo, vale che $$cost(S)=3n\implies S\text{ è un NE}$$
+**dimostrazione** $\leftarrow$ 
+
+Assumiamo che esista un NE di costo $\leq 3n$
+Allora vale che $N(S)$ usa al più $n$ archi di costo $3$
+Ogni arco di costo $3$ può "servire al più $3$" giocatori, di conseguenza, il numero di archi di costo $3$ è esattamente $n$
+
+Quindi, l'unione di questi archi forma un insieme di triple che deve essere necessariamente un $3D$-matching
+
+$\blacksquare$
+
+## PoS del gioco in reti non-dirette
+
+**PoS per grafi non diretti** : Stato dell'arte
+
+![center](Pasted%20image%2020251107102040.png)
+
+Dove:
+- i nodi rossi sono i LowerBound
+- i nodi verdi sono gli UpperBound
+
+Vediamo un'esempio, ovverlo il gioco **Max-Cut**
+
+### Il gioco Max-Cut
+
+Il gioco è così formalizzato, abbiamo:
+- $G=(V,E)$: grafo non diretto
+- Nodi che sono i giocatori (egoisti)
+- La strategia $S_{u}$ di ogni giocatore $u$ è un colore, o rosso o verde
+- Il payoff del giocatore $u$ in $S$ (che va massimizzato) è: $$p_u(S)=|\{(u,v)\in E:S_{u}\neq S_{v}\}|$$
+- Il **welfare sociale** del vettore di strategie $S$ è $$\sum\limits_{u}p_{u}(S)=2\cdot \text{ num.archi che attraversano il taglio rosso-verde}$$
+![center|300](Pasted%20image%2020251107102943.png)
+
+Le domande che ci poniamo sono:
+1. Esiste sempre un NE?
+2. Quanto brutto può essere un NE?
+3. Se ripetiamo il gioco, esso converge sempre ad un NE?
+
+Vediamo un paio di esempi sul **Grafo di Petersen** [^1]
+Spoiler: nessuno di questi è un NE
+
+![center|300](Pasted%20image%2020251107103608.png)
+
+[^1]: https://en.wikipedia.org/wiki/Petersen_graph
+
+![center|300](image.png)
+
+![center|300](Pasted%20image%2020251107103922.png)
+
+![center|300](Pasted%20image%2020251107103951.png)
+
+![center|300](Pasted%20image%2020251107104002.png)
+
+Vedremo ora quello che in realtà è un NE
+
+![center|300](Pasted%20image%2020251107104030.png)
+
+Perchè è un NE? perchè il numero di archi che attraversano il taglio è $12$
+
+**Esercizio**
+
+Mostrare che
+- il gioco Max-Cut è potenziale (deve esistere una funzione potenziale $\phi$)
+- il PoS è $1$
+- il PoA è $\geq \frac{1}{2}$
+- esiste un'istanza del gioco avente un NE con social welfare pari ad $\frac{1}{2}$ dell'ottimo sociale
+
