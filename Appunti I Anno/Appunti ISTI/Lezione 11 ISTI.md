@@ -52,7 +52,42 @@ $$\hat{\theta}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}$$
 Piccola osservazione, avremmo potuto scrivere la verosimiglianza come 
 $$L(\theta;X_1,\dots,X_{n})=\dbinom{n}{\sum\limits_{i=1}^nX_{i}}\theta^{\sum\limits_{i=1}^{n}X_{i}}(1-\theta)^{n-\sum\limits_{i=1}^{n}X_{i}}$$
 La cosa che cambia fra la prima equazione e la seconda è puramente "filosofica", ovvero scritta nel secondo modo noi stiamo prendendo una *qualsiasi sequenza di successi*, mentre nel primo caso stiamo prendendo *una sequenza esatta di successi*.
+
 Entrambe le versioni sono equivalenti
 
 **Esempio 2**
 
+Prendiamo un campione aleatorio di variabili esponenziali $X_{1},\dots,X_n$, con densità $$\begin{align*}f(x)=&\lambda e^{-\lambda x},x\geq0\\=&\frac{1}{\theta}e^{-\frac{x}{\theta}},x\geq0\end{align*}$$
+Notiamo le che due rappresentazioni della densità sono equivalenti
+
+Risolviamo per $\lambda$, ottenendo che la verosimiglianza è pari a
+$$L(\lambda;X_{1},\dots,X_{n})=\lambda^{n}e^{-\lambda\sum\limits_{i=1}^{n}X_{i}}$$
+La log-verosimiglianza è quindi:
+$$\log L=n\log(\lambda)-\lambda\sum\limits_{i=1}^{n}X_{i}$$
+Facciamo la derivata per $\lambda$ e la poniamo $=0$ per ottenere lo stimatore $\hat{\lambda}_{ML}$
+$$\frac{d\log L}{d\lambda}=\frac{n}{\lambda}-\sum\limits_{i=1}^{n}X_{i}\underbrace{\implies}_{\text{ponendo la der. uguale a 0}}\hat{\lambda}_{ML}=\frac{n}{\sum\limits_{i=1}^{n}X_{i}}$$
+**oss**
+
+(1) Lo stimatore non dipende da come viene scritta la densità della funzione
+(2) Non si può avere uno stimatore che sia non distorto, e allo stesso tempo invariante
+
+**Esempio 3**
+
+Prendiamo $X_{1},\dots,X_{n}\sim N(\mu,\sigma^{2})$ i.id
+
+Vale allora che la verosimiglianza è
+$$L(\mu,\sigma^{2};X_1,\dots,X_{n})=\frac{1}{(2\pi)^{\frac{n}{2}}}\frac{1}{(\sigma^{2})^{\frac{n}{2}}}e^{-\frac{1}{2}\sum\limits_{i=1}^{n}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}}$$
+
+**oss**
+
+La densità di una v.a Normale (Gaussiana) cambia a seconda dei valori di $\mu,\sigma^{2}$. 
+Alcuni esempi sono:
+$$\begin{align*}&N(0,1)=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}X}\\&N(\mu,\sigma^{2})=\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{1}{2}\frac{(X-\mu)}{\sigma}}\end{align*}$$
+Ritornando all'esempio, la log-verosimiglianza è
+$$\log L=-\frac{n}{2}\log(2\pi)-\frac{n}{2}\log(\sigma^{2})-\frac{1}{2}\sum\limits_{i=1}^{n}\frac{(X_{i}-\mu)^{2}}{\sigma^{2}}$$
+A questo punto dobbiamo derivare e porre uguale a $0$, però qui non abbiamo più un solo parametro, ma ne abbiamo ben $2$ (nel mondo del Machine Learning in generale $\theta$ non è un parametro solo ma un vettore di parametri)
+
+Dobbiamo quindi fare le derivate parziali, una per $\mu$ e l'altra per $\sigma^{2}$, ottenendo 
+$$\begin{align*}&\frac{d\log L}{d\mu}=\frac{1}{\sigma^{2}}\sum\limits_{i=1}^{n}(X_{i}-\mu)\\&\frac{d\log L}{d\sigma^{2}}=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}\sum\limits_{i=1}^{n}(X_{i}-\mu)^{2}\end{align*}$$
+Ponendole $=0$ otteniamo che 
+$$\begin{align*}&\hat{\mu}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}\\&\hat{\sigma}^{2}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}-\overline{X}_{n})^{2},\quad\overline{X}_{n}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}\end{align*}$$
