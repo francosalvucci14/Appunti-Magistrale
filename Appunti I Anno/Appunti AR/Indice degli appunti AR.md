@@ -18,4 +18,6 @@
 
 - [Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox](MOD%20II/Lezione%201%20AR2%20-%20Algorithmic%20Game%20Theory,%20Nash%20Equilibrium,%20Braess's%20paradox.md)
 - [Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE](Lezione%202%20AR2%20-%20Network%20Formation%20Games,%20Potential%20Technique,%20Find%20good%20NE.md)
+- [Lezione 3 AR2 - Local Connection Game](Lezione%203%20AR2%20-%20Local%20Connection%20Game.md)
+- [Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism](Lezione%204%20AR2%20-%20Algorithmic%20Mechanism%20Design,%20utilitarian%20problems%20&%20VGC%20mechanism.md)
 - 
