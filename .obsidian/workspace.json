@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "22e55fd17e429cc1",
+        "id": "bc255e628ea1da35",
         "type": "tabs",
         "children": [
           {
-            "id": "f3c99ccd0a97ceed",
+            "id": "e8698090e317993e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -131,6 +131,22 @@
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "3f57897579f045bd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f3c99ccd0a97ceed",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -148,13 +164,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f3c99ccd0a97ceed",
+  "active": "e8698090e317993e",
   "lastOpenFiles": [
-    "README.md",
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
+    "README.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 3 AR2 - Local Connection Game.md",
-    "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
     "Appunti I Anno/Appunti ISTI/Lezione 12 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 1 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
