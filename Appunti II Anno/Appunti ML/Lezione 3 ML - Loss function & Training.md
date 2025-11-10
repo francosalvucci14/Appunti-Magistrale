@@ -104,8 +104,113 @@ questo implica che:
 2. se $L(\theta,x,t)$ è convessa allora ogni minimo locale del rischio empirico è anche minimo globale
 3. se $L(\theta,x,t)$ è strettamente convessa allora esiste un solo minimo relativo al rischio empirico
 
-aggiungere Loss famose
+## Alcune Loss famose
 
-aggiungere pezzo su gradient descent (ovvero i tre modi principali) per quello vedere pdf Lab2
-aggiungere pezzo su ott gradient descent (le varie tecnche), vedere pdf lsb3
+### Loss per regressione
 
+Consideriamo il caso della **regressione**
+- sia $y$ che $h(\overline{x})$ sono valori reali
+- la loss è legata a qualche tipo di misura di distanza fra punti
+#### Quadratic Loss
+
+La funzione loss più comune per la regressione è la **quadratic loss**
+$$L(y,t)=(y-t)^{2}$$
+![center|500](Pasted%20image%2020251110103356.png)
+
+Applicare la loss quadratica ci fa ottenere il seguente rischio empirico
+$$\overline{\mathcal R}_\mathcal T=\frac{1}{|\mathcal T|}\sum\limits_{(\overline{x},t)\in\mathcal T}(h(\overline{x})-t)^{2}$$
+Nel caso comune della regressione lineare, la previsione viene eseguita mediante una funzione lineare $h(\overline{x})=\overline{w}^{T}\overline{x} + b$: ciò si traduce in una loss complessiva da minimizzare
+$$\mathcal L(\overline{w},b;\mathcal T)=\sum\limits_{(\overline{x},t)\in\mathcal T}(\overline{w}^{T}\overline{x}+b-t)^{2}$$
+Dato che la funzione quadratica è strettamenre convessa, la loss generale avrà un solo minimo locale (che sarà anche il globale)
+
+Il gradiente è lineare, infatti:
+$$\frac{\partial}{\partial w_{i}}\mathcal L(\overline{w},b;\mathcal T)=\sum\limits_{(\overline{x},t)\in\mathcal T}(\overline{w}^{T}\overline{x}+b-t)w_{i}\quad\frac{\partial}{\partial b}\mathcal L(\overline{w},b;\mathcal T)=\sum\limits_{(\overline{x},t)\in\mathcal T}(\overline{w}^{T}\overline{x}+b-t)$$
+#### Absolute Loss
+
+La perdita quadratica è facile da gestire matematicamente, ma non è robusta nei confronti dei valori anomali, ovvero presta troppa attenzione ai valori anomali
+
+Una funzione loss differente per la regressione è la **absolute loss**
+$$L(t,y)=|t-y|$$
+![center|500](Pasted%20image%2020251110104228.png)
+
+Il gradiente ora è costante a tratti
+#### Huber Loss
+
+Un'altra loss differente per la regressione è la **Huber Loss**, che risulta quadratica per valori piccoli e lineare dopo una certa soglia data, ovvero:
+$$L(t,y)=\begin{cases} \frac{1}{2}(t-y)^{2}&|t-y|\leq\delta\\\delta(|t-y|)-\frac{\delta}{2}&|t-y|\gt\delta\end{cases}$$
+![center|500](Pasted%20image%2020251110104449.png)
+### Loss per classificazione
+
+Per quanto riguarda le loss per classificazione abbimao due approcci, che dipendono da cosa ci aspettiamo dalla predizione:
+1. se la predizione ritorna una classe specifica (funzione di predizione)
+2. se la predizione ritorna una distribuzione di probabilità su un'insieme di classi (distribuzione delle predizioni)
+
+Questo implica diverse definizioni di errore:
+1. primo caso: coincidenza tra classi previste e classi reali
+2. secondo caso: differenza cumulativa tra probabilità prevista e 0/1 per tutte le classi
+
+Consideriamo il caso binario, con due classi identificate dai valori target $-1$ e $1$.
+
+Supponiamo che venga restituito un valore reale come previsione.
+#### 0/1 Loss
+
+La loss più "naturale" nella classificazione è la $0/1$ **loss**
+$$L(t,y)=\begin{cases}1&sgn(t)\neq y\\0&sgn(t)=y\end{cases}$$
+dove $$sgn(x)=\begin{cases}1&x\gt0\\0&\text{altrimenti}\end{cases}$$
+questo può essere riscritto come $\mathbb 1[ty\lt0]$ 
+
+Usare la funzione $0/1$ è problematico, dato che:
+1. non è convessa
+2. non è regolare (derivata prima indefinita in alcuni punti o non continua)
+3. il suo gradiente è 0 quasi ovunque (indefinito a 0): non è possibile applicare la discesa del gradiente (vedi dopo)
+
+![center|500](Pasted%20image%2020251110105338.png)
+
+se assumiamo una funzione di predizione lineare otteniamo il seguente rischio empirico
+$$\overline{\mathcal R}_{\mathcal T}(h)=\frac{1}{|\mathcal T|}\sum\limits_{(\overline{x},t)\in\mathcal T}\mathbb 1[(\overline{w}^{T}\overline{x}+b)y\lt0]$$
+il problema è trovare i valori di $\overline{w},b$ che minimizzano il numero generale di errori: questo è un problema NP-Hard
+
+Seguirebbero altre funzioni di loss per la classificazione, però non le abbiamo (ancora) trattate
+(tranne la **cross-entropy**, vedi [La funzione di costo: cross-entropy](Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy))
+## Tecniche di gradient descent
+
+Il gradient descent esegue la minimizzazione di una funzione $J(\theta)$ attraverso aggiornamenti iterativi del valore corrente di $\theta$, partendo da un valore iniziale $\theta^{(0)}$, nella direzione opposta a quella specificata dal valore corrente del gradiente, ovvero $\nabla J|_{\theta^{(k)}}$
+$$\theta^{(k+1)}=\theta^{(k)}-\eta\nabla J|_{\theta^{(k)}}$$
+cioè, per ogni parametro $\theta_{i}$ otteniamo
+$$\theta_{i}^{(k+1)}=\theta_i^{(k)}-\eta\frac{\partial J(\theta)}{\partial\theta_{i}}\big|_{\theta^{(k)}}$$
+$\eta$ è il parametro di **tuning**, che controlla il numero di aggiornamenti ad ogni step
+
+Esistono sostanzialmente tre tecniche principali per il gradient descent, che sono:
+- **Batch gradient descent** [vedi qui](Gradient%20Descent.md#Batch%20Gradient%20Descent%20(BGD))
+- **Stochastic gradient descent** [vedi qui](Gradient%20Descent.md#Stochastic%20Gradient%20Descent%20(SGD))
+- **Mini-batch gradient descent** [vedi qui](Gradient%20Descent.md#Mini-Batch%20Gradient%20Descent)
+
+#### Ottimizzatori avanzati
+
+Abbiamo visto come il *gradient descent* — nelle sue varianti *batch*, *stochastic* e *mini-batch* — permetta di minimizzare il rischio empirico aggiornando iterativamente i parametri del modello nella direzione opposta al gradiente della funzione di costo.
+
+Tuttavia, questi metodi di base presentano alcune **limitazioni pratiche**:
+- convergenza lenta in presenza di superfici di costo irregolari o “vallate strette”;
+- forte dipendenza dalla scelta del **learning rate**, ovvero $\eta$;
+- difficoltà nel gestire funzioni di costo **non convesse**, tipiche delle reti neurali.
+
+Di seguito verranno quindi reportate alcune tecniche di ottimizzazione avanzate, che permetto di superare queste limitazioni
+
+Come sopra, non andrò nel dettaglio perchè il tutto è reperibile qui -> [Tecniche di ottimizzazione del Gradient Descent](Tecniche%20di%20ottimizzazione%20del%20Gradient%20Descent.md)
+
+Le varie tecniche sono:
+
+1. **Metodo del Momento**  
+   Introduce un termine di “inerzia” che tiene conto dei gradienti precedenti, riducendo le oscillazioni e accelerando la discesa.
+2. **Accelerazione di Nesterov**  
+   Variante del momento che anticipa la direzione di discesa, migliorando la stabilità e la convergenza.
+3. **Adagrad**  
+   Adatta il learning rate in modo automatico per ogni parametro, in base alla storia dei gradienti.
+4. **RMSProp**  
+   Smorza l’effetto di Adagrad mantenendo un tasso di apprendimento più stabile nel tempo.
+5. **Adadelta**  
+   Elimina la necessità di un learning rate fisso, rendendo l’adattamento completamente dinamico.
+6. **Adam**  
+   Combina momentum e adattività: è oggi l’ottimizzatore più utilizzato nel Deep Learning.
+7. **Metodi del Secondo Ordine (Newton-Raphson)**  
+   Utilizzano anche la matrice Hessiana per stimare curvature e direzioni di discesa più precise.
