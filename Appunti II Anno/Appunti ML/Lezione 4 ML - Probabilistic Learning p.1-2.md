@@ -163,4 +163,11 @@ $$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\left(\sum\limits_{i=1}^{n}\ln
 
 [^1]: https://it.wikipedia.org/wiki/Funzione_sigmoidea ; funzione che trasforma $z$ in un valore compreso fra $0$ e $1$
 
-aggiungere MAP e gaussian prior con esempio
+## MAP e Prior Gaussiano
+
+Assumiamo che $\overline{\theta}$ sia distribuito intorno all'origine come una v.a Gaussiana Multivariata con varianza uniforme e covarianza nulla, ovvero:
+$$Pr(\overline{\theta})\sim\mathcal N(\overline{\theta}|\overline{0},\sigma^{2})=\frac{1}{(2\pi)^{\frac{d}{2}}\sigma^{d}}e^{-\frac{||\overline{\theta}||^{2}}{2\sigma^{2}}}\propto e^{-\frac{||\overline{\theta}||^{2}}{2\sigma^{2}}}$$
+Partendo dalle ipotesi, otteniamo che: 
+$$\begin{align*}
+\overline{\theta}^{\star}_{MAP}&=arg\max_{\overline{\theta}}Pr(\overline{\theta}|\mathcal T)arg\max_{\overline{\theta}}(l(\overline{\theta}|\mathcal T)+\ln Pr(\overline{\theta}))\\&arg\max_{\overline{\theta}}\left(l(\overline{\theta}|\mathcal T)+\ln e^{-\frac{||\overline{\theta}||^{2}}{2\sigma^{2}}}\right)=arg\max_{\overline{\theta}}\left(l(\overline{\theta}|\mathcal T)-\frac{||\overline{\theta}||^{2}}{2\sigma^{2}}\right)
+\end{align*}$$
