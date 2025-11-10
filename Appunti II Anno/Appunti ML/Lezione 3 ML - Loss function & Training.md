@@ -181,9 +181,9 @@ $$\theta_{i}^{(k+1)}=\theta_i^{(k)}-\eta\frac{\partial J(\theta)}{\partial\theta
 $\eta$ è il parametro di **tuning**, che controlla il numero di aggiornamenti ad ogni step
 
 Esistono sostanzialmente tre tecniche principali per il gradient descent, che sono:
-- **Batch gradient descent** [](Code-labs/lab2/Gradient%20Descent.md#Batch%20Gradient%20Descent%20(BGD))
-- **Stochastic gradient descent** [](Code-labs/lab2/Gradient%20Descent.md#Stochastic%20Gradient%20Descent%20(SGD))
-- **Mini-batch gradient descent** [](Code-labs/lab2/Gradient%20Descent.md#Mini-Batch%20Gradient%20Descent)
+- **Batch gradient descent** [vedi qui](Code-labs/lab2/Gradient%20Descent.md#Batch%20Gradient%20Descent%20(BGD))
+- **Stochastic gradient descent** [vedi qui](Code-labs/lab2/Gradient%20Descent.md#Stochastic%20Gradient%20Descent%20(SGD))
+- **Mini-batch gradient descent** [vedi qui](Code-labs/lab2/Gradient%20Descent.md#Mini-Batch%20Gradient%20Descent)
 
 #### Ottimizzatori avanzati
 

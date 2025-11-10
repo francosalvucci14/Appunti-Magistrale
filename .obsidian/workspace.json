@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Indice delle lezioni PCD"
+              "title": "Lezione 3 ML - Loss function & Training"
             }
           },
           {
@@ -110,13 +110,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Indice delle lezioni PCD"
+              "title": "Outline of Lezione 3 ML - Loss function & Training"
             }
           },
           {
@@ -179,10 +179,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "90edc667964d2b31",
+  "active": "e8698090e317993e",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
+    "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
     "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
