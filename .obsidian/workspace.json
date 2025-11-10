@@ -164,16 +164,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
+    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
+    "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
+    "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ML_Lab4_2_2025_2026_Probabilistic_model_for_regression.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ML_Lab4_1_2025_2026_Linear_regression_VS_loss.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ml_lab4_2_2025_2026_probabilistic_model_for_regression.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ml_lab4_1_2025_2026_linear_regression_vs_loss.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab4",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
-    "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
-    "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.pdf",
@@ -182,7 +184,6 @@
     "Appunti II Anno/Appunti ML/img/Pasted image 20251110104228.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251110103356.png",
     "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
-    "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
     "README.md",
@@ -210,7 +211,6 @@
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251107103608.png",
     "Appunti I Anno/Appunti AR/MOD II/img",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/ml_lab3_1_2025_2026_advanced_optimizer.py",
-    "Appunti II Anno/Appunti ML/Code-labs/lab3/ML_Lab3_1_2025_2026_Advanced_Optimizer.ipynb",
-    "Appunti II Anno/Appunti ML/Code-labs/lab2/testSet.txt"
+    "Appunti II Anno/Appunti ML/Code-labs/lab3/ML_Lab3_1_2025_2026_Advanced_Optimizer.ipynb"
   ]
 }
