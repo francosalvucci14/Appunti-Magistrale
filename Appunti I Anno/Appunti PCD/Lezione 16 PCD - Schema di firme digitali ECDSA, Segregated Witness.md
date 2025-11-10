@@ -20,7 +20,7 @@ Questo non è l’unico fatto a cui bisogna fare attenzione, infatti bisogna ass
 
 Se conosciamo due messaggi distinti, $m_1$ e $m_2$, e due firme, $\sigma_1$ e $\sigma_2$ di $m_1$ e $m_2$ rispettivamente, ottenute con lo stesso valore $k$, allora possiamo ricavare la $sk$ con cui sono state generate le firme. (per soluzione vedi sotto)
 
-Per evitare tutto questo, invece che generare $k$ u.a.r lo generiamo deterministicamente ([vedi qui](https://www.rfc-editor.org/rfc/rfc6979.html#section-3.2)) a partire dal messaggio stesso e dalla chiave segreta, in modo da evitare l'accesso a uno "pseudorandom generator" sicuro ogni volta che bisogna firmare il messaggio e in modo da evitare la possibilità che ci siano due messaggi con stessa firma
+Per evitare tutto questo, invece che generare $k$ u.a.r lo generiamo deterministicamente ([](https://www.rfc-editor.org/rfc/rfc6979.html#section-3.2)) a partire dal messaggio stesso e dalla chiave segreta, in modo da evitare l'accesso a uno "pseudorandom generator" sicuro ogni volta che bisogna firmare il messaggio e in modo da evitare la possibilità che ci siano due messaggi con stessa firma
 
 Vediamo ora l'algoritmo di Verifica per ECDSA
 

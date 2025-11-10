@@ -67,13 +67,13 @@ Diremo che una rete è **ottimale** oppure **socialmente ottimale** se minimizza
 
 Vediamo un esempio
 
-![center|400](Pasted%20image%2020251105153705.png)
+![center|400](img/Pasted%20image%2020251105153705.png)
 
 Qual'è la rete socialmente ottima? Il costo dell'ottimo sociale è $13$
 
 Se prendiamo come $N(S)$ il percorso rosso nella figura sottostante
 
-![center|400](Pasted%20image%2020251105153828.png)
+![center|400](img/Pasted%20image%2020251105153828.png)
 
 otteniamo che:
 - $cost_{1}=7$ ottenuto con la formula $\sum\limits_{e\in P_{i}}\frac{c_{e}}{k_{e}(S)}=\frac{6}{2}+ \frac{4}{2}+ \frac{2}{1}=3+2+2=7$
@@ -83,7 +83,7 @@ otteniamo che:
 
 Cambiamo $N(S)$ come segue
 
-![center|400](Pasted%20image%2020251105155355.png)
+![center|400](img/Pasted%20image%2020251105155355.png)
 
 qui abbiamo che:
 - $cost_{1}=6$
@@ -93,7 +93,7 @@ qui abbiamo che:
 
 Cambiamo ulteriormente
 
-![center|400](Pasted%20image%2020251105155456.png)
+![center|400](img/Pasted%20image%2020251105155456.png)
 
 qui invece abbiamo:
 - $cost_1=6$
@@ -112,7 +112,7 @@ Analizziamo sia PoA che PoS, e poi ne daremo un bound
 Data una rete $G$, definiamo come:
 - PoA di un gioco in $G$ come $$\max_{S\space t.c\space S\text{ è un }NE}\frac{cost(S)}{cost(S^{\star}_{G})}$$dove $S^{\star}_{G}$ è l'ottimo sociale per $G$
 - PoS di un gioco in $G$ come $$\min_{S\space t.c\space S\text{ è un }NE}\frac{cost(S)}{cost(S^{\star}_{G})}$$
-![center|300](Pasted%20image%2020251105160217.png)
+![center|300](img/Pasted%20image%2020251105160217.png)
 
 Ovviamente quello che vogliamo fare è limitare PoA e PoS nel **worst-case** come:
 - PoA del gioco = $\max_{G}$ PoA in $G$
@@ -127,7 +127,7 @@ Prima di definire correttamente questi bound diamo qualche notazione:
 
 Prendiamo il seguente esempio
 
-![center|400](Pasted%20image%2020251105160833.png)
+![center|400](img/Pasted%20image%2020251105160833.png)
 
 La rete ottimale ha costo $1$
 
@@ -149,7 +149,7 @@ Sia inoltre $\pi_i$ lo shortest path in $G$ che va da $s_{i}\to t_{i}$
 
 Allora, otteniamo che 
 $$cost_{i}(S)\leq cost_{i}(S_{-i},\pi_{i})\leq d_{G}(s_{i},t_{i})\leq cost(S^\star)$$
-![200](Pasted%20image%2020251105161705.png)
+![200](img/Pasted%20image%2020251105161705.png)
 
 Prendiamo ora $\pi$ come un qualunque percorso in $N(S^{\star})$ che va da $s_i\to t_{i}$
 Allora possiamo dire che $$d_{G}(s_{i},t_{i})\leq \text{costo di }\pi\leq cost(S^{\star})$$
@@ -159,25 +159,25 @@ $$cost(S)=\sum\limits_{i}cost_{i}(S)\leq k\cdot cost(S^\star)\quad\blacksquare$$
 
 Prendiamo, come fatto prima, il seguente esempio di rete
 
-![center|500](Pasted%20image%2020251105162111.png)
+![center|500](img/Pasted%20image%2020251105162111.png)
 
 dove $\varepsilon\gt0$ piccolo a piacere
 
 Ora, la soluzioen **ottima** ha un costo di $1+\varepsilon$, ma se prendiamo $N(S)$ come sotto risulta essere stabile?
 
-![center|500](Pasted%20image%2020251105162204.png)
+![center|500](img/Pasted%20image%2020251105162204.png)
 
 La risposta è no, perchè il giocatore $k$-esimo può decrementare il suo costo
 
 Vediamo allora se nel seguente modo risulta stabile
 
-![center|500](Pasted%20image%2020251105162303.png)
+![center|500](img/Pasted%20image%2020251105162303.png)
 
 Anche qui la risposta è no, dato che il giocatore $(k-1)$-esimo può anch'esso decrementare il suo costo, e così via per ogni altro giocatore
 
 Risulta allora che **l'unica** rete stabile è la seguente:
 
-![center|500](Pasted%20image%2020251105162411.png)
+![center|500](img/Pasted%20image%2020251105162411.png)
 
 Così facendo, risulta quindi che il costo sociale è pari a 
 $$\sum\limits_{j=1}^{k} \frac{1}{j}=H_{k}\leq\ln(k)+1$$
@@ -268,19 +268,19 @@ Dimostriamo questi due lemmi
 
 **dimostrazione lemma 1**
 
-![center|500](Pasted%20image%2020251106165529.png)
+![center|500](img/Pasted%20image%2020251106165529.png)
 
 per ogni $e\in P_{i}\cap P_{i}^{'}$ abbiamo che 
 - il termine $e$ del $cost_{i}()$ e il potenziale $\phi_{e}$ rimangono gli stessi
 
-![center|500](Pasted%20image%2020251106165822.png)
+![center|500](img/Pasted%20image%2020251106165822.png)
 
 per ogni $e\in P_{i}^{'}\setminus P_{i}$ abbiamo che 
 - il termine $e$ di $cost_{i}()$ viene incrementato di un fattore $\frac{c_{e}}{(k_{e}(S)+1)}$
 - il potenziale $\phi_{e}$ incrementa e passa da $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)})$ a $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)}+\frac{1}{k_{e}(S)+1})$
 - otteniamo quindi che $$\Delta\phi_{e}=\frac{c_{e}}{(k_{e}(S)+1)}$$
 
-![center|500](Pasted%20image%2020251106172938.png)
+![center|500](img/Pasted%20image%2020251106172938.png)
 
 per ogni $e\in P_{i}\setminus P_{i}^{'}$ abbiamo che
 -  il termine $e$ di $cost_{i}()$ viene decrementato di un fattore $\frac{c_{e}}{k_{e}(S)}$
@@ -316,14 +316,14 @@ Faremo ora una piccola digressione sul problema in questione.
 **Domanda**
 - Esiste un insieme di $n$ triple in $T$ tale che ogni elemento di $X\cup Y\cup Z$ è contenuto in *esattamente* una di queste triple?
 
-![center](Pasted%20image%2020251107100736.png)
+![center](img/Pasted%20image%2020251107100736.png)
 
-![center](Pasted%20image%2020251107101041.png)
+![center](img/Pasted%20image%2020251107101041.png)
 
 
 Vediamo ora la riduzione
 
-![center|500](Pasted%20image%2020251107101107.png)
+![center|500](img/Pasted%20image%2020251107101107.png)
 
 Come possiamo vedere in figura, gli archi che vanno dai noi $s_{i},i=1,\dots,3n$ verso i nodi in $T$ hanno peso $0$, mentre gli archi che vanno dai nodi in $T$ al nodo pozzo hanno peso $3$
 
@@ -334,7 +334,7 @@ Il claim è: Esiste un $3D$-matching $\iff$ esiste un NE di costo al più $C=3n$
 Assumiamo quindi che esista un $3D$-matching
 Prendiamo allora $S$ come il profilo di strategie dove ogni giocatore sceglie un percorso passante la tripla del matching a cui appartiene, ad esempio
 
-![center|500](Pasted%20image%2020251107101359.png)
+![center|500](img/Pasted%20image%2020251107101359.png)
 
 Così facendo, vale che $$cost(S)=3n\implies S\text{ è un NE}$$
 **dimostrazione** $\leftarrow$ 
@@ -351,7 +351,7 @@ $\blacksquare$
 
 **PoS per grafi non diretti** : Stato dell'arte
 
-![center](Pasted%20image%2020251107102040.png)
+![center](img/Pasted%20image%2020251107102040.png)
 
 Dove:
 - i nodi rossi sono i LowerBound
@@ -367,7 +367,7 @@ Il gioco è così formalizzato, abbiamo:
 - La strategia $S_{u}$ di ogni giocatore $u$ è un colore, o rosso o verde
 - Il payoff del giocatore $u$ in $S$ (che va massimizzato) è: $$p_u(S)=|\{(u,v)\in E:S_{u}\neq S_{v}\}|$$
 - Il **welfare sociale** del vettore di strategie $S$ è $$\sum\limits_{u}p_{u}(S)=2\cdot \text{ num.archi che attraversano il taglio rosso-verde}$$
-![center|300](Pasted%20image%2020251107102943.png)
+![center|300](img/Pasted%20image%2020251107102943.png)
 
 Le domande che ci poniamo sono:
 1. Esiste sempre un NE?
@@ -377,21 +377,21 @@ Le domande che ci poniamo sono:
 Vediamo un paio di esempi sul **Grafo di Petersen** [^1]
 Spoiler: nessuno di questi è un NE
 
-![center|300](Pasted%20image%2020251107103608.png)
+![center|300](img/Pasted%20image%2020251107103608.png)
 
 [^1]: https://en.wikipedia.org/wiki/Petersen_graph
 
-![center|300](image.png)
+![center|300](img/image.png)
 
-![center|300](Pasted%20image%2020251107103922.png)
+![center|300](img/Pasted%20image%2020251107103922.png)
 
-![center|300](Pasted%20image%2020251107103951.png)
+![center|300](img/Pasted%20image%2020251107103951.png)
 
-![center|300](Pasted%20image%2020251107104002.png)
+![center|300](img/Pasted%20image%2020251107104002.png)
 
 Vedremo ora quello che in realtà è un NE
 
-![center|300](Pasted%20image%2020251107104030.png)
+![center|300](img/Pasted%20image%2020251107104030.png)
 
 Perchè è un NE? perchè il numero di archi che attraversano il taglio è $12$
 

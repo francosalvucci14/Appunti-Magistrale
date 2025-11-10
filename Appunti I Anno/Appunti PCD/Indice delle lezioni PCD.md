@@ -1,7 +1,6 @@
 Lezioni 9-11 esercitazioni coding
 
 - [Lezione 1 PCD - Byzantine Broadcast Problem](Lezione%201%20PCD%20-%20Byzantine%20Broadcast%20Problem.md)
-- [Lezione 2 PCD - Protocollo Dolev-Strong (1983)](Lezione%202%20PCD%20-%20Protocollo%20Dolev-Strong%20(1983).md) 
 - [Lezione 2 PCD - Protocollo Dolev-Strong (1983)](Lezione%202%20PCD%20-%20Protocollo%20Dolev-Strong%20(1983).md)
 - [Lezione 3 PCD - Schema di firme digitali,Lower Bound ai protocolli per BB senza PKI](Lezione%203%20PCD%20-%20Schema%20di%20firme%20digitali,Lower%20Bound%20ai%20protocolli%20per%20BB%20senza%20PKI.md)
 - [Lezione 4 PCD - Protocollo "randomizzato" per BB](Lezione%204%20PCD%20-%20Protocollo%20"randomizzato"%20per%20BB.md)

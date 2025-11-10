@@ -17,7 +17,5 @@
 - [Lezione 17 ADRC - Fine parte su prot. RND per R.N, Introduzione al modello GOSSIP](Lezione%2017%20ADRC%20-%20Fine%20parte%20su%20prot.%20RND%20per%20R.N,%20Introduzione%20al%20modello%20GOSSIP.md)
 - [Lezione 18 ADRC - Expanders e le loro Proprietà](Lezione%2018%20ADRC%20-%20Expanders%20e%20le%20loro%20Proprietà.md)
 - [Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus](Lezione%2019%20ADRC%20-%20Protocollo%20PULL%20su%20DELTA-Regular%20Expanders,%20Majority%20Consensus.md)
-- [Lezione 20 ADRC (I lezione Pepè) - PRAM Model, Ordinamento, Max e Prefix Sum](Lezione%2020%20ADRC%20(I%20lezione%20Pepè)%20-%20PRAM%20Model,%20Ordinamento,%20Max%20e%20Prefix%20Sum.md)
-- [Lezione 21 ADRC (II lezione Pepè) - Map Reduce](Lezione%2021%20ADRC%20(II%20lezione%20Pepè)%20-%20Map%20Reduce.md)
-- [Lezione 22 ADRC (III lezione Pepè) - Continuo algo. Sort, Grafi, MST e Maximal Matching](Lezione%2022%20ADRC%20(III%20lezione%20Pepè)%20-%20Continuo%20algo.%20Sort,%20Grafi,%20MST%20e%20Maximal%20Matching.md)
+
 - 

@@ -115,7 +115,7 @@ Consideriamo il caso della **regressione**
 
 La funzione loss più comune per la regressione è la **quadratic loss**
 $$L(y,t)=(y-t)^{2}$$
-![center|500](Pasted%20image%2020251110103356.png)
+![center|500](img/Pasted%20image%2020251110103356.png)
 
 Applicare la loss quadratica ci fa ottenere il seguente rischio empirico
 $$\overline{\mathcal R}_\mathcal T=\frac{1}{|\mathcal T|}\sum\limits_{(\overline{x},t)\in\mathcal T}(h(\overline{x})-t)^{2}$$
@@ -131,14 +131,14 @@ La perdita quadratica è facile da gestire matematicamente, ma non è robusta ne
 
 Una funzione loss differente per la regressione è la **absolute loss**
 $$L(t,y)=|t-y|$$
-![center|500](Pasted%20image%2020251110104228.png)
+![center|500](img/Pasted%20image%2020251110104228.png)
 
 Il gradiente ora è costante a tratti
 #### Huber Loss
 
 Un'altra loss differente per la regressione è la **Huber Loss**, che risulta quadratica per valori piccoli e lineare dopo una certa soglia data, ovvero:
 $$L(t,y)=\begin{cases} \frac{1}{2}(t-y)^{2}&|t-y|\leq\delta\\\delta(|t-y|)-\frac{\delta}{2}&|t-y|\gt\delta\end{cases}$$
-![center|500](Pasted%20image%2020251110104449.png)
+![center|500](img/Pasted%20image%2020251110104449.png)
 ### Loss per classificazione
 
 Per quanto riguarda le loss per classificazione abbimao due approcci, che dipendono da cosa ci aspettiamo dalla predizione:
@@ -164,14 +164,14 @@ Usare la funzione $0/1$ è problematico, dato che:
 2. non è regolare (derivata prima indefinita in alcuni punti o non continua)
 3. il suo gradiente è 0 quasi ovunque (indefinito a 0): non è possibile applicare la discesa del gradiente (vedi dopo)
 
-![center|500](Pasted%20image%2020251110105338.png)
+![center|500](img/Pasted%20image%2020251110105338.png)
 
 se assumiamo una funzione di predizione lineare otteniamo il seguente rischio empirico
 $$\overline{\mathcal R}_{\mathcal T}(h)=\frac{1}{|\mathcal T|}\sum\limits_{(\overline{x},t)\in\mathcal T}\mathbb 1[(\overline{w}^{T}\overline{x}+b)y\lt0]$$
 il problema è trovare i valori di $\overline{w},b$ che minimizzano il numero generale di errori: questo è un problema NP-Hard
 
 Seguirebbero altre funzioni di loss per la classificazione, però non le abbiamo (ancora) trattate
-(tranne la **cross-entropy**, vedi [La funzione di costo: cross-entropy](Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy))
+(tranne la **cross-entropy**, vedi [](Code-labs/lab2/Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy))
 ## Tecniche di gradient descent
 
 Il gradient descent esegue la minimizzazione di una funzione $J(\theta)$ attraverso aggiornamenti iterativi del valore corrente di $\theta$, partendo da un valore iniziale $\theta^{(0)}$, nella direzione opposta a quella specificata dal valore corrente del gradiente, ovvero $\nabla J|_{\theta^{(k)}}$
@@ -181,9 +181,9 @@ $$\theta_{i}^{(k+1)}=\theta_i^{(k)}-\eta\frac{\partial J(\theta)}{\partial\theta
 $\eta$ è il parametro di **tuning**, che controlla il numero di aggiornamenti ad ogni step
 
 Esistono sostanzialmente tre tecniche principali per il gradient descent, che sono:
-- **Batch gradient descent** [vedi qui](Gradient%20Descent.md#Batch%20Gradient%20Descent%20(BGD))
-- **Stochastic gradient descent** [vedi qui](Gradient%20Descent.md#Stochastic%20Gradient%20Descent%20(SGD))
-- **Mini-batch gradient descent** [vedi qui](Gradient%20Descent.md#Mini-Batch%20Gradient%20Descent)
+- **Batch gradient descent** [](Code-labs/lab2/Gradient%20Descent.md#Batch%20Gradient%20Descent%20(BGD))
+- **Stochastic gradient descent** [](Code-labs/lab2/Gradient%20Descent.md#Stochastic%20Gradient%20Descent%20(SGD))
+- **Mini-batch gradient descent** [](Code-labs/lab2/Gradient%20Descent.md#Mini-Batch%20Gradient%20Descent)
 
 #### Ottimizzatori avanzati
 
@@ -196,7 +196,7 @@ Tuttavia, questi metodi di base presentano alcune **limitazioni pratiche**:
 
 Di seguito verranno quindi reportate alcune tecniche di ottimizzazione avanzate, che permetto di superare queste limitazioni
 
-Come sopra, non andrò nel dettaglio perchè il tutto è reperibile qui -> [Tecniche di ottimizzazione del Gradient Descent](Tecniche%20di%20ottimizzazione%20del%20Gradient%20Descent.md)
+Come sopra, non andrò nel dettaglio perchè il tutto è reperibile qui -> [Tecniche di ottimizzazione del Gradient Descent](Code-labs/lab3/Tecniche%20di%20ottimizzazione%20del%20Gradient%20Descent.md)
 
 Le varie tecniche sono:
 

@@ -140,7 +140,7 @@ Vediamo un'esempio di NE, tramite il coordination game chiamato "La battaglia de
 
 La situazione è quella descritta in figura
 
-![center](Pasted%20image%2020251104121125.png)
+![center](img/Pasted%20image%2020251104121125.png)
 
 Notiamo che:
 - La coppia (Stadium_v, Stadium_b) è un NE: miglior risposta per ognugno
@@ -167,7 +167,7 @@ Vediamo un'esempio, tramite il gioco conflittuale. Matching Pennies
 
 La situazione è la seguente:
 
-![center|600](Pasted%20image%2020251104123152.png)
+![center|600](img/Pasted%20image%2020251104123152.png)
 
 In ogni configurazione, uno dei giocatori preferisce cambiare la sua strategia, e quindi **no NE**
 
@@ -241,7 +241,7 @@ Selfish Routing non atomico:
 
 **Esempio : il gioco di Pigou**
 
-![center|500](Pasted%20image%2020251105144552.png)
+![center|500](img/Pasted%20image%2020251105144552.png)
 
 Cosa possiamo dire riguardo al NE di questo gioco?
 
@@ -258,13 +258,13 @@ La domanda che ci poniamo è: dobbiamo tenere conto del comportamento egoistico 
 
 Per rispondere usiamo il paradosso di Braess
 
-![center|500](Pasted%20image%2020251105145258.png)
+![center|500](img/Pasted%20image%2020251105145258.png)
 
-![center|500](Pasted%20image%2020251105145317.png)
+![center|500](img/Pasted%20image%2020251105145317.png)
 
-![center|500](Pasted%20image%2020251105145343.png)
+![center|500](img/Pasted%20image%2020251105145343.png)
 
-![center|500](Pasted%20image%2020251105145410.png)
+![center|500](img/Pasted%20image%2020251105145410.png)
 
 Vale quindi il seguente teorema
 

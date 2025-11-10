@@ -339,7 +339,7 @@ Supponiamo per assurdo che $0\lt\rho(x)\lt n-1$: allora esistono due alternative
 
 Creiamo un nuovo profilo $P'=\langle r'_{1},r'_2,\dots,r'_k\rangle$ nel modo seguente:
 1) per ogni $i\in[k]$ tale che $\rho_{i}(y)\lt\rho_i(z)$, impostiamo $r'_i=r_i$
-2) per ogni $i\in[k]$ tale che $\rho_{i}(y)\gt\rho_i(z)$, $r'_{i}$ è ottenuto da $_i$ spostando $z$ alla sinistra di $y$, in modo che $\rho'_i(z)=\rho'_{i}(y)+1$ ![center](img/Pasted%20image%2020250825180145.png)
+2) per ogni $i\in[k](y)%5Cgt%5Crho_i(z)$,%20$r'_{i}$%20è%20ottenuto%20da%20$_i$%20spostando%20$z$%20alla%20sinistra%20di%20$y$,%20in%20modo%20che%20$%5Crho'_i(z)=%5Crho'_{i}(y)+1$%20![center)
 
 Poichè $x$ non è stata in alcun modo coinvolta negli spostamenti, $x$ è un'alternativa polarizzante anche per $P'$
 
