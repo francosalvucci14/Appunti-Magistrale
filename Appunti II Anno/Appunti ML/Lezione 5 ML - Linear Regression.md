@@ -91,7 +91,9 @@ dove
 $$\overline{X}=\begin{pmatrix}\overline{x}_{1}\\\overline{x}_{2}\\\vdots\\\overline{x}_{n}\end{pmatrix}=\begin{pmatrix}1&x_{11}&\dots&x_{1d}\\1&x_{21}&\dots&x_{2d}\\\vdots\\1&x_{n1}&\dots&x_{nd}\end{pmatrix}$$
 In generale, ad eccezione dei casi degenerati (dovuti a punti collineari nel dataset), questo sistema ha precisamente una sola soluzione, che può essere espressa in forma chiusa dalle **equazioni normali per i minimi quadrati**, ovvero:
 $$\boxed{\overline{w}^\star=\left(\overline{X}^{T}\overline{X}\right)^{-1}\overline{X}^{T}t}$$
-
+Il minimo di $E(\overline{w})$ può essere calcolato numericamente, usando i metodi di **discesa del gradiente** aventi la seguente struttura:
+1. Assegnazione iniziale $\overline{w}^{(0)}=\left(b^{(0)},w_1^{(0)},\dots,w_{d}^{(0)}\right)$ con errore corrispondente $$E\left(\overline{w}^{(0)}\right)= \frac{1}{2}\sum\limits_{i=1}^{n}r_{i}\left(\overline{w}^{(0)}\right)^2$$
+2. 
 ## Come limitare la complessità del modello? - Regolarizzazione
 # Modello Probabilistico per Regressione
 ## Fully Bayesian
