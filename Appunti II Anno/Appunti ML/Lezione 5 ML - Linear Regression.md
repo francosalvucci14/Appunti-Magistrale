@@ -47,7 +47,54 @@ Di seguito, per semplicità, faremo riferimento al training set originale $(\ove
 Vedere esempio su $t=\sin(2\pi x)$
 ## Regression Loss
 
+Quando applichiamo le funzioni base, otteniamo che $h(\overline{x};\overline{w},b)$ diventa una funzione non lineare di $\overline{x}$, ma rimane comunque una funzione lineare di $\overline{w},b$
+
+I valori assegnati ai coefficienti dovrebbero minimizzare il rischio empirico calcolato rispetto ad una **funzione di errore** (nota anche come **funzione di costo**), quando applicati ai dati nel training set (quindi, a $\overline{x}, t$ e $\overline{w}, b$).
+
+Una funzione di errore ampiamente adottata è la **perdita quadratica** $(h(x_i; \overline{w}, b) − t_i)^2$, che si traduce nell'approccio dei **minimi quadrati**, ovvero minimizzare la somma, per tutti gli elementi nel training set, della differenza (al quadrato) tra il valore restituito dal modello e il valore target.
+
+![center|400](Pasted%20image%2020251111111102.png)
+
+Risulta quindi che 
+$$
+E(\overline{w},b)= \frac{1}{2}\sum\limits_{i=1}^{n}r_{i}(\overline{w},b)^{2}
+$$
+dove:
+- $E(\overline{w},b)$ è l'errore dello scarto quadratico
+- $r_{i}(\overline{w},b)=h(x_{i};\overline{w},b)-t_{i}=\sum\limits_{j=1}^{d}w_{j}x_{ij}+b-t_{i}$ è il **residuo** per l'elemento $(x_{i},t_{i})$ se $\overline{w},b$ sono i valori dei parametri applicati
+
+Scrivendo $\overline{w}^{\star}=(b,w_{1},\dots,w_{d})^{T}$ possiamo riscrivere, in maniera più compatta
+$$E(\overline{w}^{\star})= \frac{1}{2}\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})^{2}$$
+con $r_i(\overline{w}^\star)=r_{i}(\overline{w},b)$
+
+Tutto questo è chiaramente equivalente a minimizzare il rischio empirico $\overline{\mathcal R}(\overline{w}^{\star})$, dato che 
+$$E(\overline{w}^{\star})=\frac{|\mathcal T|}{2}\overline{\mathcal R}(\overline{w}^{\star})$$
+
+Per minimizzare $E(\overline{w}^{\star})$, impostiamo le sue derivate rispetto ai valori $w_{1},\dots,w_{d},b$ a $\overline{0}$ [^1]
+
+Dato che la quadratic loss è una funzione convessa, è definito un singolo minimo (globale)
+
+L'errore $E(\overline{w}^{\star})=\frac{1}{2}\sum\limits_{i=1}^{n}(h(x_{i};\overline{w}^{\star})-t_{i})^{2}$ è la somma di $n$ *funzioni convesse* $(h(x_{i};\overline{w}^{\star})-t_{i})^{2}$, che implica che è definito un singolo minimo (globale)
+
+In particolare, $E(\overline{w}, b)$quadratico implica che la sua derivata è lineare, quindi che è zero in un punto $\overline{w}^{\star}$: il predittore risultante è quindi $$h(\overline{x};\overline{w}^{\star})=\sum\limits_{i=1}^{d}w_{i}^\star x_{i}+b^{\star}$$
+Il gradiente in rispetto a $\overline{w}^\star$ è quindi una collezione di derivate
+Otteniamo quindi un sistema lineare composto da
+$$\begin{align*}
+&\frac{\partial E(\overline{w}^{\star})}{\partial w_{k}}=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})\frac{\partial}{\partial w_{k}}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})x_{ik}=2\sum\limits_{i=1}^{n}\left(\sum\limits_{j=1}^{d}w_{j}x_{ij}+b-t_{i}\right)x_{ik},\forall k=1,\dots,d\\&\frac{\partial E(\overline{w}^{\star})}{\partial b}=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})\frac{\partial}{\partial b}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}\left(\sum\limits_{j=1}^{d}w_{j}x_{ij}+b-t_{i}\right)
+\end{align*}$$
+dato che $$\frac{\partial}{\partial w_{k}}r_{i}(\overline{w}^{\star})=\frac{\partial}{\partial w_{k}}h(x_{i})$$
+Ognuna delle $d+1$ equazioni è lineare rispetto ad ogni coefficiente in $\overline{w}^{\star}$
+
+Il sistema lineare risultante è quindi formato da $d+1$ equazioni e $d+1$ variabili sconosciute $w_{1},\dots,w_{d},b$, e lo scriviamo così
+$$\overline{X}\overline{w}^\star=t$$
+dove 
+$$\overline{X}=\begin{pmatrix}\overline{x}_{1}\\\overline{x}_{2}\\\vdots\\\overline{x}_{n}\end{pmatrix}=\begin{pmatrix}1&x_{11}&\dots&x_{1d}\\1&x_{21}&\dots&x_{2d}\\\vdots\\1&x_{n1}&\dots&x_{nd}\end{pmatrix}$$
+In generale, ad eccezione dei casi degenerati (dovuti a punti collineari nel dataset), questo sistema ha precisamente una sola soluzione, che può essere espressa in forma chiusa dalle **equazioni normali per i minimi quadrati**, ovvero:
+$$\boxed{\overline{w}^\star=\left(\overline{X}^{T}\overline{X}\right)^{-1}\overline{X}^{T}t}$$
+
 ## Come limitare la complessità del modello? - Regolarizzazione
 # Modello Probabilistico per Regressione
 ## Fully Bayesian
 ### FUlly Bayesian e marginalizzazione dell'iperparametro
+
+[^1]: questo è il vettore nullo, composto da tutti zeri, $\overline{0}=(0,\dots,0)^{T}$
