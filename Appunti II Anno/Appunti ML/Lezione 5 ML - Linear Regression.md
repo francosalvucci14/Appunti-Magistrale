@@ -79,8 +79,7 @@ L'errore $E(\overline{w}^{\star})=\frac{1}{2}\sum\limits_{i=1}^{n}(h(x_{i};\over
 In particolare, $E(\overline{w}, b)$quadratico implica che la sua derivata è lineare, quindi che è zero in un punto $\overline{w}^{\star}$: il predittore risultante è quindi $$h(\overline{x};\overline{w}^{\star})=\sum\limits_{i=1}^{d}w_{i}^\star x_{i}+b^{\star}$$
 Il gradiente in rispetto a $\overline{w}^\star$ è quindi una collezione di derivate
 Otteniamo quindi un sistema lineare composto da
-$$\begin{align*}
-&\frac{\partial E(\overline{w}^{\star})}{\partial w_{k}}=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})\frac{\partial}{\partial w_{k}}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})x_{ik}=2\sum\limits_{i=1}^{n}\left(\sum\limits_{j=1}^{d}w_{j}x_{ij}+b-t_{i}\right)x_{ik},\forall k=1,\dots,d\\&\frac{\partial E(\overline{w}^{\star})}{\partial b}=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})\frac{\partial}{\partial b}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}\left(\sum\limits_{j=1}^{d}w_{j}x_{ij}+b-t_{i}\right)
+$$\begin{align*}&\frac{\partial E(\overline{w}^{\star})}{\partial w_{k}}=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})\frac{\partial}{\partial w_{k}}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})x_{ik}=2\sum\limits_{i=1}^{n}\left(\sum\limits_{j=1}^{d}w_{j}x_{ij}+b-t_{i}\right)x_{ik},\forall k=1,\dots,d\\&\frac{\partial E(\overline{w}^{\star})}{\partial b}=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})\frac{\partial}{\partial b}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}r_{i}(\overline{w}^{\star})=2\sum\limits_{i=1}^{n}\left(\sum\limits_{j=1}^{d}w_{j}x_{ij}+b-t_{i}\right)
 \end{align*}$$
 dato che $$\frac{\partial}{\partial w_{k}}r_{i}(\overline{w}^{\star})=\frac{\partial}{\partial w_{k}}h(x_{i})$$
 Ognuna delle $d+1$ equazioni è lineare rispetto ad ogni coefficiente in $\overline{w}^{\star}$
