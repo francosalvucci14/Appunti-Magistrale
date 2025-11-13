@@ -7,5 +7,5 @@
 - [Lezione 4 ML - Probabilistic Learning p.1-2](Lezione%204%20ML%20-%20Probabilistic%20Learning%20p.1-2.md)
 - [Lezione 5 ML - Linear Regression](Lezione%205%20ML%20-%20Linear%20Regression.md)
 - [Lezione 6 ML - Non Parametric Regression](Lezione%206%20ML%20-%20Non%20Parametric%20Regression.md)
-- 
+- [Lezione 7 ML - Linear Classification](Lezione%207%20ML%20-%20Linear%20Classification.md)
 
