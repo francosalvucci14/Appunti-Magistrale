@@ -2,5 +2,7 @@
   "enabledCssSnippets": [
     "callouts",
     "center"
-  ]
+  ],
+  "accentColor": "",
+  "baseFontSize": 16
 }
