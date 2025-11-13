@@ -95,6 +95,6 @@ Il minimo di $E(\overline{w})$ può essere calcolato numericamente, usando i met
 ## Come limitare la complessità del modello? - Regolarizzazione
 # Modello Probabilistico per Regressione
 ## Fully Bayesian
-### FUlly Bayesian e marginalizzazione dell'iperparametro
+### Fully Bayesian e marginalizzazione dell'iperparametro
 
 [^1]: questo è il vettore nullo, composto da tutti zeri, $\overline{0}=(0,\dots,0)^{T}$
