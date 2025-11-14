@@ -67,6 +67,50 @@ Diamo anche quest'altra mini-definizione
 >La varianza della funzione punteggio è nota come **informazione di Fisher** e si indica con $I_{n}(\theta_{0})$
 >In generale, è una matrice di dimensione $p\times p$
 
+Vediamo ora il teorema che ci garantisce l'asintotica Gaussianità degli stimatori MLE
 
+>[!teorem]- Teorema
+>Sotto le condizioni di regolarità, vale che 
+>$$\sqrt{n}(\hat{\theta}_{ML}-\theta_{0})\to_{d} N(0,I_{1}^{-1}(\theta_{0}))$$
+
+**dimostrazione** (caso $p=1$)
+
+Per il **teorema del valor medio di Lagrange** [^2] , esiste $\overline{\theta}_{ML}$ intermedio fra $\hat{\theta}_{ML}$ e $\theta_{0}$ tale per cui vale l'uguaglianza: 
+$$0=\log^{'}L(\hat{\theta}_{ML})=\log L^{'}(\theta_{0})+\log L^{''}(\overline{\theta}_{ML})(\hat{\theta}_{ML}-\theta_{0})$$
+da cui otteniamo che 
+$$\sqrt{n}(\hat{\theta}_{ML}-\theta_{0})=-\frac{\log L^{'}(\theta_0)/\sqrt{n}}{\log L^{''}(\overline{\theta}_{ML})/n}$$
+Vediamo ora come si comportano numeratore e denominatore
+
+**numeratore**
+
+Per il numeratore abbiamo una somma di variabii aleatorie i.i.d con valor medio nullo e varianza finita; siamo quindi nel dominio di applicabilità del teorema del limite centrale ed otteniamo
+
+$$\log L^{'}(\theta_0)/\sqrt{n}=\frac{1}{\sqrt{n}}\sum\limits_{i=1}^{n}\frac{\partial\log f(X_{i};\theta)}{\partial\theta}\Big|_{\theta=\theta_{0}}\to_{d}N(0,I_{1}(\theta_0))$$
+
+**denominatore**
+
+Per il denominatore abbiamo una somma di variabili aleatorie i.i.d con valor medio finito, quindi per la legge dei grandi numeri su variabili uniformemente integrabili ed il teorema di Slutzky otteniamo
+
+$$\log L^{''}(\theta_0)/n=\frac{1}{n}\sum\limits_{i=1}^{n}\frac{\partial^{2}\log f(X_{i};\theta)}{\partial\theta^2}\Big|_{\theta=\theta_{0}}\to_{d}I_{1}(\theta_0))$$
+
+Combinando i due risultati ed usando di nuovo Slutzky si arriva all'enunciato del teorema $\blacksquare$
+
+Vediamo ora l'*unico* controesempio al teorema
+
+**Contro-Esempio**
+
+Siano $X_{1},\dots, X_{n}\sim U[0,\theta]$
+
+La verosimiglianza è quindi $$L(\theta;X_{1},\dots,X_n)=\prod_{i=1}^{n}\frac{1}{\theta}\mathbb 1_{[0,\theta]}(X_{i})=\frac{1}{\theta^{n}}\mathbb 1_{[0,\theta]}\left(X_{(n)}\right)$$
+dove $X_{(n)}$ indica il valore più grande fra tutte le $X_i$
+
+A questo punto, vediamo che $$\hat{\theta}_{ML}=X_{(n)}$$
+questo perchè se $\theta\lt X_{(n)}$ allora la funzione di verosimiglianza $L\to0$
+
+A questo punto vediamo che 
+$$Pr(n(\theta_0-X_{(n)})\gt\varepsilon)=Pr\left(\theta_{0}-X_{(n)}\gt\frac{\varepsilon}{n}\right)=\left(1-\frac{\varepsilon}{\theta n}\right)^{n}\to e^{-\frac{\varepsilon}{\theta}}$$
+La distribuzione limite risulta quindi esponenziale invece che Gaussiana, non vale quindi il teorema.
 
 [^1]: https://it.wikipedia.org/wiki/Matrice_hessiana
+
+[^2]: https://it.wikipedia.org/wiki/Teorema_di_Lagrange
