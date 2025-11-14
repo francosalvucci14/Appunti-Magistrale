@@ -133,6 +133,8 @@ Il caso con $q=1$ è chiamato **lasso**
 
 La regressione Lasso ha la proprietà di favorire modelli sparsi (ovvero restituire vettori di parametri con molti valori nulli).
 # Modello Probabilistico per Regressione
+
+
 ## Fully Bayesian
 ### Fully Bayesian e marginalizzazione dell'iperparametro
 
