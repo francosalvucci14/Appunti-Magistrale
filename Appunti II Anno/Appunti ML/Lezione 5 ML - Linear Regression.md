@@ -91,8 +91,47 @@ In generale, ad eccezione dei casi degenerati (dovuti a punti collineari nel dat
 $$\boxed{\overline{w}^\star=\left(\overline{X}^{T}\overline{X}\right)^{-1}\overline{X}^{T}t}$$
 Il minimo di $E(\overline{w})$ può essere calcolato numericamente, usando i metodi di **discesa del gradiente** aventi la seguente struttura:
 1. Assegnazione iniziale $\overline{w}^{(0)}=\left(b^{(0)},w_1^{(0)},\dots,w_{d}^{(0)}\right)$ con errore corrispondente $$E\left(\overline{w}^{(0)}\right)= \frac{1}{2}\sum\limits_{i=1}^{n}r_{i}\left(\overline{w}^{(0)}\right)^2$$
-2. 
+2. Iterativamente, il valore corrente $\overline{w}^{(s−1)}$ viene modificato nella direzione della **discesa più ripida** di $E(\overline{w})$, ovvero quella corrispondente al negativo del gradiente valutato in $\overline{w}^{(s−1)}$
+3. Allo step $s$, i valori $w_{k}^{(s−1)}$ e $b^{(s)}$ vengono aggiornati come segue $$w_{k}^{(s)}:=w_k^{(s-1)}-\eta\frac{\partial E(\overline{w})}{\partial w_{k}}\Big|_{\overline{w}^{(s-1)}}=w_{k}^{(s-1)}-2\eta\sum\limits_{i=1}^{n}r_{i}(w^{(s-1)})x_{ik}$$e $$b^{(s)}:=b^{(s-1)}-\eta\frac{\partial E(\overline{w})}{\partial b}\Big|_{\overline{w}^{(s-1)}}=b^{(s-1)}-2\eta\sum\limits_{i=1}^{n}r_{i}(w^{(s-1)})$$in notazione matriciale quindi otteniamo $$\overline{w}^{(s)}:=\overline{w}^{(s-1)}-\eta\nabla E(\overline{w})\Big|_{\overline{w}^{(s-1)}}$$
+4. Dalla definizione di $E(\overline{w})$ otteniamo che $$\overline{w}^{(s)}:=\overline{w}^{(s-1)}-2\eta\sum\limits_{i=1}^nr_{i}(\overline{w}^{(s-1)})\overline{x}_{i}$$
+Ricordiamo che 
+
+$$r_{i}(\overline{w}^{(s-1)})=\sum\limits_{j=1}^{d}w_{j}^{(s-1)}x_{ij}+b-t_{i}$$
+
+Come possiamo vedere, l'aggiornamento ad ogni passo è proporzionale alla combinazione lineare degli elementi (eventualmente trasformati dall'applicazione delle funzioni di base), ciascuno ponderato dal residuo corrispondente, ovvero dall'errore corrente nella sua previsione.
+
+Per una data complessità del modello (come il grado nel nostro esempio), l'***overfitting*** diminuisce all'aumentare della dimensione del training set.
+
+![center](Pasted%20image%2020251114161333.png)
+
+Più grande è il training set di addestramento, maggiore è la complessità accettabile del modello.
 ## Come limitare la complessità del modello? - Regolarizzazione
+
+Un approccio comune per limitare la complessità del modello è quello di introdurre un **termine di regolarizzazione** nella funzione costo, ovvero 
+$$E_{D}(\overline{w})+\lambda E_{W}(\overline{w})$$
+Dove:
+- $E_{D}$ è il rischio empirico, che dipende dal dataset (e dai parametri)
+- $E_{W}$ è il termine di regolarizzazione che invece dipende solamente dai parametri
+- $\lambda$ è detto **coefficiente di regolarizzazione** che controlla l'importanza relativa dei due termini
+
+Se $E_D(\overline{w})$ è definito in termini di loss quadratica, abbiamo a che fare con l'apprendimento dei minimi quadrati regolarizzati.
+
+È possibile ottenere diversi tipi di minimi quadrati regolarizzati a seconda di come viene definito il termine di regolarizzazione.
+
+La forma più comune è la somma dei valori al quadrato dei coefficienti (moltiplicati per 1/2, ma questo non è rilevante)
+$$E_{W}(\overline{w})= \frac{1}{2}\overline{w}^{T}\overline{w}=\frac{1}{2}\sum\limits_{i=1}^{n}w_{i}^{2}+\frac{b^{2}}{2}$$
+La loss generale risultante da minimizzare è quindi:
+$$E(\overline{w})=\frac{1}{2}\sum\limits_{i=1}^{n}r_{i}(\overline{w})^{2}+\frac{\lambda}{2}\overline{w}^{T}\overline{w}=\frac{1}{2}\overline{r}(\overline{w})^{T}\overline{r}(\overline{w})\frac{\lambda}{2}\overline{w}^{T}\overline{w}$$
+
+dove $\overline{r}(\overline{w})$ è il vettore dei residui, che può essere espresso in termini di $\overline{X},\overline{w},b,t$ come:
+$$\overline{r}(\overline{w})=\underbrace{\dots}_{\text{salto tutte le matrici}}=\overline{X}\overline{w}-t$$
+Questo è chiamato **ridge regression**: la sua soluzione può essere espressa in forma chiusa come 
+$$\boxed{\overline{w}=(\lambda I+\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}t}$$
+Una forma più generale è ottenuta considerando il grado dei coefficienti sommati come parametri:
+$$E(\overline{w})=\frac{1}{2}\sum\limits_{i=1}^{n}r_{i}(\overline{w})^{2}+\frac{\lambda}{2}\sum\limits_{j=1}^{d}|w_{j}|^{q}+\frac{|b|^{q}}{2}$$
+Il caso con $q=1$ è chiamato **lasso**
+
+La regressione Lasso ha la proprietà di favorire modelli sparsi (ovvero restituire vettori di parametri con molti valori nulli).
 # Modello Probabilistico per Regressione
 ## Fully Bayesian
 ### Fully Bayesian e marginalizzazione dell'iperparametro
