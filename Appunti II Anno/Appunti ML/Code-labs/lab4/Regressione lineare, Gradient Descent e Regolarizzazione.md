@@ -34,7 +34,7 @@ L’obiettivo è stimare una funzione non lineare (una sinusoide) a partire da p
 | **5. Ridge Regression** | Regolarizzazione L2 — soluzione analitica e iterativa. |
 | **6. Lasso Regression** | Regolarizzazione L1 e confronto qualitativo. |
 | **7. Regressione con scikit-learn** | Mostriamo come utilizzare la libreria `scikit-learn` per implementare in modo semplice le stesse tecniche  |
----
+
 ### 🧩 Setup e Dataset
 
 In questa prima sezione costruiamo il **dataset sintetico** su cui lavoreremo per tutto il laboratorio.
