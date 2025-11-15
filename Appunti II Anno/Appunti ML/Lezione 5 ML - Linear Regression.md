@@ -134,8 +134,93 @@ Il caso con $q=1$ è chiamato **lasso**
 La regressione Lasso ha la proprietà di favorire modelli sparsi (ovvero restituire vettori di parametri con molti valori nulli).
 # Modello Probabilistico per Regressione
 
+Come detto in precedenza, in questo caso definiamo una classe di distribuzioni di probabilità congiunte al fine di selezionare la migliore di esse rispetto al training set. 
 
+La classe che definiamo qui è una classe $p(\overline{x}, t) = p_M (\overline{x})p_C (t|\overline{x})$ dove $p(\overline{x})$ è uniforme (quindi non la prenderemo in considerazione) mentre $p_C (t|\overline{x})$ sarà assunta come gaussiana. 
+
+In particolare, ipotizziamo che, dato un elemento $\overline{x}$, il corrispondente target sconosciuto $t$ sia distribuito normalmente attorno al valore restituito dal modello $h(\overline{x}; \overline{w})$, con una data varianza $\sigma^2$ o, equivalentemente, precisione $\beta$, dove $\beta^{-1} = \sigma^{2}$
+
+Otteniamo quindi che
+
+$$p(t|\overline{x};\overline{w})=\mathcal N(t|h(\overline{x};\overline{w}),\beta^{-1})$$
+
+![center|400](Pasted%20image%2020251115154547.png)
+
+È possibile effettuare una stima $\beta_{ML}$ di $\beta$ e $w_{ML}$ dei coefficienti $\overline{w}$ sulla base della verosimiglianza del training set rispetto al modello.
+
+$$L(\overline{w},\beta|X,t)=p(t|X;\overline{w},\beta)=\prod_{i=1}^{n}\mathcal N(t_{i}|h(x_{i};\overline{w}),\beta^{-1})=\prod_{i=1}^{n}\frac{\sqrt{\beta}}{\sqrt{2\pi}}e^{-\frac{\beta}{2}r_{i}(\overline{w})^{2}}$$
+I valori dei parametri $w_{ML}$ e $\beta_{ML}$ possono essere stimati come i valori che massimizzano la verosimiglianza dei dati $L(\overline{w},\beta|X,t)$ o, equivalentemente, il suo logaritmo
+$$l(\overline{w},\beta|X,t)=\log p(t|X;\overline{w},\beta)=\sum\limits_{i=1}^{n}\log\mathcal N(t_{i}|h(x_{i};\overline{w}),\beta^{-1})$$
+ottenendo quindi:
+$$p(t|X;\overline{w},\beta)=-\frac{\beta}{2}\sum\limits_{i=1}^{n}r_{i}(\overline{w})^{2}+\frac{n}{2}\log\beta+c$$
+dove $c$ è una costante, indipendente da $\overline{w}$ e $\beta$
+
+La massimizzazione in rispetto a $\overline{w}$ è ottenuta determinando il massimo rispetto a $\overline{w}$ della funzione
+$$-\frac{1}{2}\sum\limits_{i=1}^{n}r_{i}(\overline{w})^{2}$$
+che è equivalente a **minimizzare la somma ai quadrati minimi**
+
+La massimizzazione rispetto alla **precisione** $\beta$ è fatta imponendo la derivata corrispettiva $=0$
+$$\frac{\partial l(t|X,\overline{w},\beta)}{\partial\beta}=- \frac{1}{2}\sum\limits_{i=1}^{n}r_{i}(\overline{w})^{2}+\frac{n}{2\beta}$$
+otteniamo quindi $$\beta^{-1}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}r_{i}(\overline{w})^{2}$$
+
+Ricordiamo che nel quadro della massima verosimiglianza i parametri sono considerati come valori (sconosciuti) da determinare con la massima precisione possibile (approccio frequentista). 
+Inoltre, essendo tale massimizzazione equivalente alla minimizzazione dei quadrati, è soggetta a **overfitting**, pertanto è necessario introdurre un termine di regolarizzazione $\mathcal E(\overline{w})$. 
+Ciò può essere fatto rimanendo nel quadro probabilistico applicando un approccio bayesiano.
+
+In questo quadro, i parametri sono considerati come variabili casuali, le cui distribuzioni di probabilità devono essere definite o stimate.
+In particolare, siamo interessati alla distribuzione di probabilità dei parametri, data l' osservazione del training set, ovvero dell'insieme di esempi $(x_i, t_i)$.
+Si ipotizzerà una distribuzione a priori dei parametri
+
+Nel caso qui considerato, la distribuzione a priori dei parametri sarà assunta come gaussiana con media $\overline{0}$ e matrice di covarianza diagonale, con varianza pari all'inverso dell'**iperparametro** $\alpha$
+$$p(\overline{w}|\alpha)=\mathcal N(\overline{w};\overline{0},\alpha^{-1}I)=\left(\frac{\alpha}{2\pi}\right)^{\frac{m}{2}}e^{-\frac{\alpha}{2}\overline{w}^{T}\overline{w}}$$
+
+![center|300](Pasted%20image%2020251115160353.png)
+
+Perchè un prior gaussiano? perchè la distribuzione Gaussiana è coniugata a se stessa.
+Questo significa che la distribuzione a posteriori, essendo proporzionale al prior per verosimiglianza, risulterà gaussiano se la verosimiglianza è gaussiana.
+
+$$p(t|X,\overline{w};\beta)=\prod_{i=1}^{n}\mathcal N(t_i;h(x_{i},\overline{w}),\beta^{-1})=\prod_{i=1}^{n}e^{-\frac{\beta}{2}r_{i}(\overline{w})^{2}}$$
+Dato un prior $p(\overline{w}|\alpha)$, la distribuzione a posteriori per $\overline{w}$ deriva dalla regola di Bayes in questo modo:
+$$p(\overline{w}|X,t;\alpha,\beta)=\frac{p(t|X,\overline{w};\beta)p(\overline{w};\alpha)}{p(t|X;\alpha,\beta)}\propto p(t|X,\overline{w};\beta)p(\overline{w};\alpha)$$
+Data la verosimiglianza precedente, se il priori $\overline{w}$ è gaussiano, ovvero $p(\overline{w})=\mathcal N(\overline{w};m_{0},\Sigma_{0})$, allora la distribuzione a posteriori è anch'essa gaussiana, e quindi $$p(\overline{w}|X,t)=\mathcal N(\overline{w};m_{p},\Sigma_p)$$
+con:
+- $\Sigma_{p}=(\Sigma_{0}^{-1}+\beta\overline{X}^{T}\overline{X})^{-1}$
+- $m_p=\Sigma_p(\Sigma_{0}^{-1}m_{0}+\beta\overline{X}^{T}t)$
+
+Nel caso che stiamo considerando, abbiamo che:
+$$p(\overline{w},\alpha)=\mathcal N(\overline{w},\overline{0},\alpha^{-1}I)=\prod_{j=0}^{d}\frac{\sqrt{\alpha}}{\sqrt{2\pi}}e^{-\frac{\alpha}{2}\overline{w}_{i}^{2}}$$
+La distribuzione a posteriori $p(\overline{w};X,t,\alpha,\beta)$ rimane anch'essa gaussiana, questa volta con:
+- $\Sigma_{p}=(\alpha I+\beta\overline{X}^{T}\overline{X})^{-1}$
+- $m_p=\beta\Sigma_{p}\overline{X}^{T}t$
+# Approcci alla predizione nella regressione lineare
 ## Fully Bayesian
+
+Il vero interesse non sta nel calcolare $\overline{w}$ o la sua distribuzione $p(\overline{w}|X, t; \alpha, \beta)$, ma nel ricavare la distribuzione predittiva $p(t|\overline{x})$. 
+
+Questo si può fare calcolando l'aspettativa della probabilità $p(t|\overline{x}, \overline{w}; \beta)$ prevista da un'istanza del modello rispetto alla distribuzione dell'istanza del modello $p(\overline{w}|X, t; \alpha, \beta)$, cioè
+
+$$p(t|\overline{x},\overline{t},X;\alpha,\beta)=\int p(t|\overline{x},\overline{w};\beta)p(\overline{w}|t,X;\alpha,\beta)d\overline{w}$$
+La distribuzione $p(t|\overline{x}, \overline{w}; \beta)$ è assunta gaussiana, e $p(\overline{w}|X, t; \alpha, \beta)$ è gaussiana in base all'ipotesi che la verosimiglianza $p(t|X, \overline{w}; \beta)$ e la prior $p(\overline{w}; \alpha)$ siano esse stesse gaussiane e in base al fatto che sono coniugate.
+
+$$\begin{align*}
+p(t|\overline{x}, \overline{w}; \beta)&=\mathcal N(t|\overline{w}^{T}\overline{x},\beta)\\ p(\overline{w}|X, t; \alpha, \beta)&=\mathcal N(\overline{w};\beta S_{N}\overline{X}^{T}t,S_{N})
+\end{align*}$$
+dove $S_{N}=(\alpha I+\beta\overline{X}^{T}\overline{X})^{-1}$ è una matrice di dimensione $(d+1)\times(d+1)$ 
+
+Sotto tali ipotesi, la distribuzione predittiva risulta essere gaussiana:
+$$p(t|\overline{x},\overline{t},X;\alpha,\beta)=\mathcal N(t;m(\overline{x}),\sigma^{2}(\overline{x}))$$
+con:
+- media $m(\overline{x})=\beta\overline{x}^{T}S_{N}\overline{X}^{T}t$
+- varianza $\sigma^{2}(\overline{x})=\frac{1}{\beta}+\overline{x}^{T}S_N\overline{x}$
+
+Qui possiamo denotare alcune cose su questi parametri, ovvero che:
+- $\frac{1}{\beta}$ è la **misura dell'incertezza intrinseca** ai dati osservati (rumore)
+- $\overline{x}^{T}S_N\overline{x}$ è l'**incertezza relativa ai valori derivati** per i parametri $\overline{w}$
+- poiché la distribuzione del rumore e la distribuzione di $\overline{w}$ sono gaussiane indipendenti, le loro varianze si sommano
 ### Fully Bayesian e marginalizzazione dell'iperparametro
+
+Nell'approccio fully bayesian, l'iperparametro $\alpha$ e $\beta$ vengono inoltre **marginalizzati**, ovvero
+$$p(t|\overline{x},X,\overline{t})=\int p(t|\overline{x},\overline{w};\beta)p(\overline{w}|X,\overline{t};\alpha,\beta)p(\alpha,\beta|X,\overline{t})d\overline{w}\space d\alpha\space d\beta$$
+questa marginalizzazione rispetto a $\overline{w}, \alpha, \beta$ è analiticamente intrattabile: possiamo tuttavia considerare metodi di approssimazione, che non introduciamo qui
 
 [^1]: questo è il vettore nullo, composto da tutti zeri, $\overline{0}=(0,\dots,0)^{T}$

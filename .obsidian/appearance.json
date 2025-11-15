@@ -4,6 +4,6 @@
     "center"
   ],
   "accentColor": "",
-  "baseFontSize": 16,
-  "nativeMenus": true
+  "baseFontSize": 17,
+  "nativeMenus": false
 }
