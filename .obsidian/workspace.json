@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 5 ML - Linear Regression"
+              "title": "Lezione 7 ML - Linear Classification"
             }
           }
         ]
@@ -165,12 +165,13 @@
   },
   "active": "0f10fd270a79cbf7",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
+    "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251115160353.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251115154547.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251114161333.png",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
-    "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
     "Appunti I Anno/Appunti ISTI/Lezione 14 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 13 ISTI.md",
@@ -183,7 +184,6 @@
     "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251111111102.png",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/Modelli probabilistici e Regressione Bayesiana.md",
-    "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/regression_methods.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/regression.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/naivebayes.ipynb",
@@ -209,7 +209,6 @@
     "Appunti II Anno/Appunti ML/img/Pasted image 20251110104228.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251110103356.png",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251107104030.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251107104002.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251107103951.png"
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251107104002.png"
   ]
 }
