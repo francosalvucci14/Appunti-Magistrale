@@ -412,7 +412,7 @@ $T$ è molto simile a $P^{j}$:
 
 ![center|500](img/Pasted%20image%2020250826145348.png)
 
-Dato che $\rho^{j}(x)=n-1$ (come abbiamo visto [](.md#Dimostrazione%20parte%202|qui)) allora $\rho^{j}(x)\gt\rho^{j}(z)$, ed essendo che l'ordine relativo di $x$ e $z$ è lo stesso sia in $P^{j}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\gt\rho^{T}(z)$$
+Dato che $\rho^{j}(x)=n-1$ (come abbiamo visto [qui](Lezione%208%20AR%20-%20Sistemi%20di%20voto,%20Teorema%20della%20giuria%20di%20Condorcet,%20Teorema%20di%20impossibilità%20di%20Arrow,%20Teorema%20del%20votante%20mediano.md#Dimostrazione%20parte%202)) allora $\rho^{j}(x)\gt\rho^{j}(z)$, ed essendo che l'ordine relativo di $x$ e $z$ è lo stesso sia in $P^{j}$ che in $T$, allora, per il principio $IIA$ vale che $$\rho^{T}(x)\gt\rho^{T}(z)$$
 $T$ però è anche molto simile a $P^{j-1}$
 
 ![center|500](img/Pasted%20image%2020250826150026.png)

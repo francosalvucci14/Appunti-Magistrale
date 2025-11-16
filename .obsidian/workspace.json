@@ -126,13 +126,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano"
+              "title": "Outline"
             }
           },
           {
@@ -160,7 +159,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "3f57897579f045bd",
@@ -194,8 +194,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "517fcc174d45e93e",
+  "active": "f3c99ccd0a97ceed",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD I/Lezione 8 AR - Sistemi di voto, Teorema della giuria di Condorcet, Teorema di impossibilità di Arrow, Teorema del votante mediano.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 6 AR - Processi di diffusione, Cascate complete e clusters, Capacità di cascata di una rete e caratterizzazione dell'insieme di initiators.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 9 AR - Web Search, MEMEX, metodo HITS, PageRank e Scaled PageRank, Scaled Random Walk.md",
     "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
@@ -233,7 +234,6 @@
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD I/Lezione 7 AR - Cascate imitative, un modello generativo per le cascate imitative.md",
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
-    "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ML_Lab4_2_2025_2026_Probabilistic_model_for_regression.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ML_Lab4_1_2025_2026_Linear_regression_VS_loss.ipynb",
