@@ -13,13 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab4/Modelli probabilistici e Regressione Bayesiana.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Modelli probabilistici e Regressione Bayesiana"
+              "title": "Lezione 6 ML - Non Parametric Regression"
+            }
+          },
+          {
+            "id": "7a8165283ffdd4b6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 5 ML - Linear Regression"
             }
           }
         ]
@@ -95,12 +110,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Lezione 6 ML - Non Parametric Regression"
             }
           },
           {
@@ -163,14 +179,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0f10fd270a79cbf7",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
+    "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
+    "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251116160417.png",
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251116160017.png",
+    "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
+    "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
+    "Appunti II Anno/Appunti ML/Code-labs/lab4/Modelli probabilistici e Regressione Bayesiana.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/Regressione lineare, Gradient Descent e Regolarizzazione.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/Lezione 8 ML - Probabilistic Classification (generative models).md",
-    "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
-    "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
-    "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251115160353.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251115154547.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251114161333.png",
@@ -184,7 +205,6 @@
     "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
     "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251111111102.png",
-    "Appunti II Anno/Appunti ML/Code-labs/lab4/Modelli probabilistici e Regressione Bayesiana.md",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/regression_methods.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/regression.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/naivebayes.ipynb",
@@ -199,17 +219,13 @@
     "Appunti I Anno/Appunti PCD/Indice delle lezioni PCD.md",
     "Appunti I Anno/Appunti PCD/Lezione 2 PCD - Protocollo Dolev-Strong (1983).md",
     "Appunti I Anno/Appunti PCD/Lezione 16 PCD - Schema di firme digitali ECDSA, Segregated Witness.md",
-    "Appunti I Anno/Appunti ADRC/Indice delle lezioni ADRC.md",
     "Appunti I Anno/Appunti ADRC/ADRC-Merge.pdf",
-    "Appunti I Anno/Appunti ADRC/Lezione 20 ADRC (I lezione Pepè) - PRAM Model, Ordinamento, Max e Prefix Sum.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ML_Lab4_2_2025_2026_Probabilistic_model_for_regression.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ML_Lab4_1_2025_2026_Linear_regression_VS_loss.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/ml_lab4_2_2025_2026_probabilistic_model_for_regression.py",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251110105338.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251110104449.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251110104228.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251110103356.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251107104030.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20251107104002.png"
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251110103356.png"
   ]
 }
