@@ -106,8 +106,45 @@ In questo caso, viene considerata una versione ponderata della funzione di **ent
 
 $$L(\overline{x})=\sum\limits_{i=1}^{n}\mathbf k_{h}(\overline{x}-\overline{x}_{i})(t_{i}\log p_{i}-(1-t_{i})\log(1-p_{i})),\quad p_{i}=\sigma(\overline{w}^{T}\overline{x}_{i})$$
 # Processi Gaussiani
+
+È possibile ottenere risultati identici ai precedenti in modo alternativo ed equivalente considerando l'inferenza direttamente nello spazio delle funzioni $f : \mathbb R^d\to\mathbb R$. 
+
+Utilizziamo un **processo gaussiano** (***GP***) per descrivere una distribuzione sulle funzioni. [^2]
+
+Più formalmente:
+- Un **processo stocastico** $f(\overline{x})$ è un insieme di variabili casuali (possibilmente infinite), $\{f(\overline{x}) : \overline{x}\in\chi\}$, ovvero i valori assunti dalla funzione $f$ sul dominio di $\chi$. Si osservi che $f$ è completamente descritto da tali valori.
+- Un processo stocastico è un **processo gaussiano** se per ogni sottoinsieme finito $\mathbf X = (\overline{x}_1,\dots ,\overline{x}_n)$ di $\chi$, i valori della funzione $f(\overline{x}_1), \dots , f(\overline{x}_n)$ hanno una distribuzione gaussiana multivariata congiunta.
+
+Nel caso più generale, $\chi = \mathbb R^d$, ma si possono considerare casi più semplici, ad esempio con $|\chi|$ finito. 
+
+Si noti che in questo caso, se $|\chi| = d$, ciò corrisponde ad affermare che la distribuzione multivariata congiunta $\{f(\overline{x}_i) : i = 1, \dots , d\}$ è una gaussiana, da cui, per le proprietà della distribuzione gaussiana, deriva che la distribuzione di qualsiasi sottoinsieme di punti $\{f(\overline{x}_i) : i \in\mathbf I \subset \{1,\dots, d\}\}$ è essa stessa una gaussiana.
+
+I processi gaussiani sono quindi una generalizzazione delle gaussiane multivariate congiunte $d$-dimensionali che le estendono all'infinito $d$
+
+Per specificare il processo gaussiano nel caso generale di $\chi$ infinito, dobbiamo introdurre due regole che, per qualsiasi insieme di punti $\mathbf X = (\overline{x}_1,\dots ,\overline{x}_n)$, definiscono la distribuzione $p(f(\overline{x}_1), \dots , f(\overline{x}_n))$ dei valori corrispondenti
+
+- Sappiamo già che, per ipotesi, la distribuzione $p(f(\overline{x}_1), \dots , f(\overline{x}_n))$ è una distribuzione normale multivariata $m$-dimensionale, caratterizzata quindi da un **vettore delle medie** $\mu_X$ e da una **matrice di covarianza** $\Sigma_X$ .
+- Per quanto riguarda la media, definiamo una funzione $m(\overline{x})$ che per ogni punto $\overline{x}_i$ restituisce l'aspettativa della distribuzione di $f(\overline{x}_i)$, che è gaussiana poiché qualsiasi marginale di una distribuzione gaussiana come $p(f(\overline{x}_1), \dots , f(\overline{x}_n))$ è essa stessa gaussiana. Di conseguenza, $\mu_X = (m(\overline{x}_1),\dots , m(\overline{x}_m))$. Un possibile valore per $\mu_X$ potrebbe essere semplicemente l' insieme dei valori target $t_1,\dots , t_m$, ovvero $m(\overline{x}_i) = t_i$, supponendo che il valore osservato per $f(\overline{x}_i)$ (o la sua approssimazione) fornito da $t_i$ corrisponda all'aspettativa di $p(f(\overline{x}_i))$. Tuttavia, vedremo in seguito che ipotizzare $\mu_X = \mathbf 0$ non limita le capacità di previsione dell'approccio, poiché l'effetto delle medie diverse da zero può essere preso in considerazione in un secondo momento, come fase finale.
+- La matrice di covarianza deriva dall'applicazione di una **funzione di covarianza** predefinita $\mathbf k : \chi\times\chi\to\mathbb R$ che associa un valore reale a qualsiasi coppia di punti in $\chi$ e, in particolare, a qualsiasi coppia in $X$, quindi a tutti gli elementi di $\Sigma_X$
+
+La funzione di covarianza è assunta essere un **kernel definito positivo** : questo significa che per insieme di punti distinti $\overline{x}_{1},\dots,\overline{x}_{n}$ deve valere che 
+$$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}c_{i}c_{j}\mathbf k(\overline{x}_{i},\overline{x}_{j})\gt0$$
+per ogni scelta delle costanti $c_1,\dots,c_{n}$ tali che non tutte le $c_{i}$ siano uguali a $0$
+
+In modo del tutto equivalente, anche la matrice quadrata di **Gram** $G_{X}$, definita come 
+$$G_{X}=\begin{pmatrix}\mathbf k(\overline{x}_{1},\overline{x}_{1})&\mathbf k(\overline{x}_{1},\overline{x}_{2})&\dots&\mathbf k(\overline{x}_{1},\overline{x}_{n})\\\mathbf k(\overline{x}_{2},\overline{x}_{1})&\mathbf k(\overline{x}_{2},\overline{x}_{2})&\dots&\mathbf k(\overline{x}_{2},\overline{x}_{n})\\\vdots\\\mathbf k(\overline{x}_{n},\overline{x}_{1})&\mathbf k(\overline{x}_{n},\overline{x}_{2})&\dots&\mathbf k(\overline{x}_{n},\overline{x}_{n})\end{pmatrix}$$
+deve avere autovalori positivi
+
+Una collezione di kernel definiti positivi è nota in letteratura e può essere costruita applicando regole adeguate.
+
+Pertanto, un processo gaussiano può essere interpretato come una distribuzione su funzioni la cui forma (uniformità, ...) è definita da $\mathbf k$.
+
+Se i punti $\overline{x}_i$ e $\overline{x}_j$ sono considerati simili (cioè $\mathbf k(\overline{x}_{i},\overline{x}_{j})$ è piccolo) ci si può aspettare che anche i valori della funzione in questi punti, $f(\overline{x}_i)$ e $f(\overline{x}_j)$, siano simili
+
 ## Kernels
 ## Distribuzione a posteriori
 ## Gaussian process regression : gaussian noise
 
 [^1]: vedi qua -> [La funzione di costo: cross-entropy](Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy)
+
+[^2]: Per semplicità di notazione, ci riferiamo qui ai punti originali del training set $\overline{x}_1,\dots , \overline{x}_n$ invece di utilizzare la notazione più generale $\phi{\overline{x}_1},\dots ,\phi( \overline{x}_n)$ con punti ottenuti applicando un insieme di funzioni di base. Tutte le considerazioni riportate di seguito si applicano chiaramente se $\phi(\overline{x})$ viene sostituito a $\overline{x}$
