@@ -174,7 +174,9 @@ Vale quindi il seguente teorema
 >[!teorem]- Teorema 1
 >Sia $G=(V,E)$ un grafo e siano $V_0\subseteq V$ l'insieme degli iniziatori e $q$ la soglia di adozione di $A$: $V_0$ **non genera** una cascata completa $\iff G\setminus V_{0}$ contiene un cluster di densità maggiore di $1-q$
 
-**dimostrazione parte $\implies$** ^953f09
+^bba134
+
+**dimostrazione parte $\implies$**
 
 Se $V_0$ non genera una cascata completa, allora esistono nodi che non adottano $A$
 Abbiamo detto che con $V_i$ indichiamo i nodi che adottano $A$ al passo $i$, sia quindi $t$ il passo tale che $V_t\neq\emptyset$ e $V_{t+1}=\emptyset$ (quindi $t+1$ è il primo passo in cui $A$ non si diffonde)
@@ -378,7 +380,7 @@ Quindi, come nel caso lineare precedente, definiamo la struttura che impedisce l
 >[!definition]- Blocking Cluster
 >$V\subseteq V'$ è detto **blocking cluster** se, per ogni $v\in V'$ vale che $$\frac{|N(v)\cap V'|}{|N(v)|}\geq1-q$$
 
-Vale quindi il seguente teorema, di cui non daremo dimostrazione (o meglio, la dimostrazione è pressochè simile a questa [](.md#^953f09|dimostrazione), e viene quindi lasciata come esercizio):
+Vale quindi il seguente teorema, di cui non daremo dimostrazione (o meglio, la dimostrazione è pressochè simile a questa [dimostrazione](Lezione%206%20AR%20-%20Processi%20di%20diffusione,%20Cascate%20complete%20e%20clusters,%20Capacità%20di%20cascata%20di%20una%20rete%20e%20caratterizzazione%20dell'insieme%20di%20initiators.md#^bba134) , e viene quindi lasciata come esercizio):
 
 >[!teorem]- Teorema
 >Sia $G=(V,E)$ un grafo.

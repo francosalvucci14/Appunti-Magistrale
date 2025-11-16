@@ -156,7 +156,7 @@ In effetti, vale il seguente teorema
 >[!teorem]- Teorema Principale
 >Esistono un valore $c\in\mathbb R^{+}$ e un vettore $\hat z\in\mathbb R^{n}$ non nullo tali che, comunque si scelga un vettore $h^{(0)}$ a coordinate positive, $$\lim_{k\to\infty}\frac{h^{(k)}}{c^{k}}=\lim_{k\to\infty}\frac{a^{(k)}}{c^{k}}=\hat z$$ 
 
-^1acb62
+^7a5b63
 
 Prima di dimostrare il teorema, richiamiamo qualche nozione di algebra lineare:
 
@@ -173,14 +173,12 @@ $$\begin{align*}
 \end{align*}$$
 
 Una matrice $A$ simmetrica e reale si dice **semidefinita positiva*** se $$\forall\hat x\in\mathbb R^{n}:\hat x^{T}A\hat x\geq0$$
-
 >[!teorem]- Teorema 2
 >Se $A$ è una matrice semidefinita positiva allora:
 >1) gli autovalori di $A$ sono non negativi
 >2) se $A$ è non nulla allora almeno un autovalore di $A$ è strettamente positivo
 
-
-Bene, torniamo ora al [](.md#^1acb62|Teorema%20Principale), vedremo a breve il ruolo dei due teoremi appena descritti nella dimostrazione del teorema principale
+Bene, torniamo ora al [Teorema Principale](Lezione%209%20AR%20-%20Web%20Search,%20MEMEX,%20metodo%20HITS,%20PageRank%20e%20Scaled%20PageRank,%20Scaled%20Random%20Walk.md#^7a5b63), vedremo a breve il ruolo dei due teoremi appena descritti nella dimostrazione del teorema principale
 
 Intanto, osserviamo che $(MM^{T})$ è una matrice reale e simmetrica, infatti $$(MM^{T})_{ij}=\sum\limits_{1\leq k\leq n}M_{ik}M_{kj}=(MM^{T})$$
 Allora, $(MM^{T})$ ha una **base ortonormale di autovettori per $\mathbb R^{n}$ e tutti gli autovalori reali**
