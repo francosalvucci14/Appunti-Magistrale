@@ -187,7 +187,53 @@ Desideriamo ricavare la distribuzione predittiva di $f (\mathbf z_1),\dots , f (
 Cioè, desideriamo ricavare la distribuzione condizionata $$p(f (\mathbf Z)|\mathbf Z, X, f (X))$$
 Per farlo, ricordiamo innanzitutto alcune proprietà utili delle distribuzioni gaussiane multivariate, che possiamo trovare [qui - pag.8](https://tvml.github.io/ml2526/note/6-nonparam-regr-notes.pdf)
 
+Da queste proprietà, impostando $\overline{x}_{A}=f(X)$ e $\overline{x}_{B}=f(\mathbf Z)$, otteniamo che 
+$$p(f(\mathbf Z)|\mathbf Z,X,f(X))=p(f(\mathbf z_{i}),\dots,f(\mathbf z_{r})|\mathbf z_{1},\dots,\mathbf z_{r},\overline{x}_{1},\dots,\overline{x}_{m},f(\overline{x}_{1}),\dots,f(\overline{x}_{m}))$$
+risulta essere una distribuzione gaussiana $r$-dimensionale con media e covarianza definite come:
+$$\begin{align*}
+&\mu_{pr}=\mu_{\mathbf Z}+G_{\mathbf Z,X}G_{X}^{-1}(\mathbf t-\mu_{X})\\
+&\Sigma_{pr}=G_{\mathbf Z}-G_{\mathbf Z,X}G_{X}^{-1}G_{\mathbf Z,X}^{T}
+\end{align*}$$
+
+Si osservi che anche nell'ipotesi semplificativa che $(\mu_X, \mu_{\mathbf Z} ) = \mathbf 0$, ovvero che $m(\overline{x})$ sia pari a $0$ per tutti gli $\overline{x}$ (e $\mathbf z$), la media della distribuzione predittiva può risultare diversa da zero. 
+
+Infatti, in tal caso, sarebbe
+$$\mu_{pr}=G_{\mathbf Z,X}G_{X}^{-1}\mathbf t$$
+
+Tuttavia, dalla prima equazione sopra riportata, anche nel caso generale di qualsiasi definizione di $m(\overline{x})$, possiamo supporre che $m(\overline{x}) = 0$, ottenendo $\mu_{pr}=G_{\mathbf Z,X}G_{X}^{-1}\mathbf t$, e successivamente modificare tale valore come
+$$\mu_{pr}=\mu_{pr}+\mu_{\mathbf Z}-G_{\mathbf Z,X}G_{X}^{-1}\mu_{X}$$
+per tenere conto delle aspettative presunte diverse da zero. 
+
+Ciò dimostra che avremmo potuto effettivamente considerare il caso $m(\overline{x}) = 0$ nelle considerazioni precedenti senza perdita di generalità.
+
+Il campionamento di diverse funzioni da tale distribuzione predittiva porta alla seguente situazione: ancora una volta, il grafico rosso è la funzione sconosciuta $f$ i cui valori in 5 punti sono ora noti, mentre il grafico blu sono campioni dalla distribuzione posteriore $\mathcal N (x|\mu_{pr}, \Sigma_{pr})$. 
+
+Si osservi che tutte queste funzioni hanno gli stessi valori di $f$ nei 5 punti
+
+![center|500](Pasted%20image%2020251117113053.png)
+
+Le stesse considerazioni valgono, in particolare, per la previsione di un singolo punto di test $\mathbf z$ dato il training set $X, \mathbf t$. 
+
+Secondo quanto mostrato sopra, la distribuzione predittiva di $f (\overline{x})$ è una distribuzione gaussiana con media e varianza
+$$\begin{align*}
+&\mu_{pr}=G_{\mathbf z,X}G_{X}^{-1}(\mathbf t-\mu_{X})\\
+&\sigma_{pr}^{2}=\mathbf k(\mathbf z,\mathbf z)-G_{\mathbf z,X}G_{X}^{-1}G_{\mathbf z,X}^{T}
+\end{align*}$$
+Nella figura sottostante, il valore medio della distribuzione predittiva di $f (x)$ per ciascun punto $x$, dati i 5 punti indicati sul grafico rosso, è mostrato come un grafico blu, con la varianza corrispondente riportata dall'intervallo giallo intorno a tale grafico.
+
+![center|500](Pasted%20image%2020251117113547.png)
+
+Come già osservato, in questo caso è stata eseguita un'interpolazione dei valori dati, ovvero $f (\overline{x}_i) = t_i$ per tutte le funzioni possibili, campionate da $p(f |X, \mathbf t))$.
+
+Ne risulta, infatti, per tutti gli $x_i \in X$
+$$\begin{align*}
+\mu(f(\overline{x}_{i})|X,\mathbf t)=t_{i}\\
+\sigma^{2}=0
+\end{align*}$$
+
 ## Gaussian process regression : gaussian noise
+
+
 
 [^1]: vedi qua -> [La funzione di costo: cross-entropy](Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy)
 
