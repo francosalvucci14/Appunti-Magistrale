@@ -140,9 +140,53 @@ Una collezione di kernel definiti positivi è nota in letteratura e può essere 
 Pertanto, un processo gaussiano può essere interpretato come una distribuzione su funzioni la cui forma (uniformità, ...) è definita da $\mathbf k$.
 
 Se i punti $\overline{x}_i$ e $\overline{x}_j$ sono considerati simili (cioè $\mathbf k(\overline{x}_{i},\overline{x}_{j})$ è piccolo) ci si può aspettare che anche i valori della funzione in questi punti, $f(\overline{x}_i)$ e $f(\overline{x}_j)$, siano simili
-
 ## Kernels
+
+Chiaramente, diversi kernel generano diversi processi: uno dei più applicati è il kernel RBF
+$$\mathbf k_{h}(\overline{x}_1,\overline{x}_{2})=\sigma^2e^{-\frac{||\overline{x}_{1}-\overline{x}_{2}||^{2}}{2\tau^{2}}}$$
+questa tipologia di kernel tende ad assegnare un'altra covarianza fra $f(\overline{x}_1)$ e $f(\overline{x}_{2})$ se $\overline{x}_{1},\overline{x}_2$ sono punti vicini
+
+Le funzioni ricavate da un processo gaussiano con kernel RBF tendono ad essere uniformi, poiché i valori calcolati per punti vicini tendono ad essere simili. 
+
+La uniformità è maggiore per $\tau$ più grande.
+
+Di seguito sono riportati due esempi di campioni di funzioni su $\mathbb R$ (effettivamente approssimate su una griglia di valori): si ipotizza un kernel RBF, con $\tau$ più grande nella prima immagine e $\tau$ più piccolo nella seconda.
+
+![center|500](Pasted%20image%2020251117103144.png)
+
 ## Distribuzione a posteriori
+
+Il processo gaussiano $GP\left(m(\overline{x}),\mathbf k\left(\overline{x},\overline{x}^{'}\right)\right)$ può essere visto come una distribuzione $p(f)$ di funzioni, che sono indipendenti dai punti attuali del dataset
+
+In termini bayesiani, si tratta di un prior rispetto all'osservazione dei valori effettivi $(\overline{x}_i, t_i)$, dove $t_i$ è per ipotesi il valore che si presume sia effettivamente assunto da qualsiasi funzione campionata da $p(f )$.
+
+Ciò è vero in particolare per l'insieme $X$ di $m$ punti nel dataset. 
+
+Si noti che qui non stiamo prendendo in considerazione i valori target $\mathbf t$. 
+
+Abbiamo quindi una distribuzione gaussiana di vettori $m$-dimensionali, che possono essere interpretati come funzioni che vanno da $X$ a $\mathbb R$
+$$p(f)=\mathcal N(f;\mu_{X},\Sigma_{X})$$
+
+Nella figura sottostante, il grafico rosso rappresenta la funzione sconosciuta $f (x)$ da approssimare, mentre quelli blu più sottili sono funzioni campionate da $p(f )$ ($X$ è una griglia di punti sull'asse $x$).
+
+![center|500](Pasted%20image%2020251117104042.png)
+
+Supponiamo ora che ciascun valore target corrisponda esattamente al valore associato al punto $\overline{x}_i$ restituito dalla definizione della funzione sconosciuta $f$ da approssimare, ovvero $t_i = f (\overline{x}_i)$.
+
+In altri termini, supponiamo che non vi sia alcun rumore nelle nostre osservazioni della funzione sconosciuta $f$. 
+
+Si noti che nel modello probabilistico di regressione ciò non è vero, poiché si ipotizza un errore (gaussiano).
+
+Per definizione di processo gaussiano, se ora consideriamo un insieme aggiuntivo di punti $\mathbf Z = (\mathbf z_1,\dots , \mathbf z_r)^T$ , la distribuzione congiunta di $f (\overline{x}_1),\dots , f (\overline{x}_m), f (\mathbf z_1),\dots , f (\mathbf z_r)$ è una gaussiana multivariata $(m + r)$-dimensionale con media $\mu_{(X,\mathbf Z)} = (\mu_X, \mu_{\mathbf Z} )$ e matrice di covarianza
+$$\Sigma_{(X,\mathbf Z)}=\begin{pmatrix}G_X&G_{\mathbf Z,X}\\G_{\mathbf Z,X}^{T}&G_{\mathbf Z}\end{pmatrix}$$
+dove
+$$G_{\mathbf Z,X}=\begin{pmatrix}\mathbf k(\mathbf z_{1},\overline{x}_{1})&\mathbf k(\mathbf z_{1},\overline{x}_{2})&\dots&\mathbf k(\mathbf z_{1},\overline{x}_{m})\\\mathbf k(\mathbf z_{2},\overline{x}_{1})&\mathbf k(\mathbf z_{2},\overline{x}_{2})&\dots&\mathbf k(\mathbf z_{2},\overline{x}_{m})\\\vdots\\\mathbf k(\mathbf z_{r},\overline{x}_{1})&\mathbf k(\mathbf z_{r},\overline{x}_{2})&\dots&\mathbf k(\mathbf z_{r},\overline{x}_{m})\end{pmatrix}$$
+
+Desideriamo ricavare la distribuzione predittiva di $f (\mathbf z_1),\dots , f (\mathbf z_r)$ dati $\mathbf z_1,\dots , \mathbf z_r, \overline{x}_1, \dots , \overline{x}_m$ e $t_1, \dots , t_m$, che, in base all'ipotesi di assenza di rumore, è uguale a $f (\overline{x}_1),\dots , f (\overline{x}_m)$. 
+
+Cioè, desideriamo ricavare la distribuzione condizionata $$p(f (\mathbf Z)|\mathbf Z, X, f (X))$$
+Per farlo, ricordiamo innanzitutto alcune proprietà utili delle distribuzioni gaussiane multivariate, che possiamo trovare [qui - pag.8](https://tvml.github.io/ml2526/note/6-nonparam-regr-notes.pdf)
+
 ## Gaussian process regression : gaussian noise
 
 [^1]: vedi qua -> [La funzione di costo: cross-entropy](Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy)
