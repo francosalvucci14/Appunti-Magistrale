@@ -10,6 +10,9 @@ hideWhenEmpty: false # Hide TOC if no headings are found
 debugInConsole: false # Print debug info in Obsidian console
 ```
 # Classificazione Lineare
+
+Nei problemi di classificazione abbiamo le seguenti regole:
+- 
 ## Funzioni Discriminanti
 ### Quadrati Minimi e Classificazione
 #### Funzioni di apprendimento $h_{i}$

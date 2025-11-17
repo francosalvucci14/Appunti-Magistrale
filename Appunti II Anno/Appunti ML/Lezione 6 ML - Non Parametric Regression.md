@@ -223,7 +223,7 @@ Nella figura sottostante, il valore medio della distribuzione predittiva di $f (
 
 ![center|500](Pasted%20image%2020251117113547.png)
 
-Come già osservato, in questo caso è stata eseguita un'interpolazione dei valori dati, ovvero $f (\overline{x}_i) = t_i$ per tutte le funzioni possibili, campionate da $p(f |X, \mathbf t))$.
+Come già osservato, in questo caso è stata eseguita un'**interpolazione** dei valori dati, ovvero $f (\overline{x}_i) = t_i$ per tutte le funzioni possibili, campionate da $p(f |X, \mathbf t))$.
 
 Ne risulta, infatti, per tutti gli $x_i \in X$
 $$\begin{align*}
@@ -232,6 +232,22 @@ $$\begin{align*}
 \end{align*}$$
 
 ## Gaussian process regression : gaussian noise
+
+Se formuliamo l'ipotesi più realistica che ogni valore target $t_i$ fornisca solo un'osservazione rumorosa di $f (\overline{x}_i)$, potremmo comportarci come nella definizione del modello probabilistico per la regressione lineare: in particolare, potremmo formulare l' ipotesi di un rumore gaussiano, quindi che $p(t_i|f, \overline{x}_i) = \mathcal N (f (\overline{x}_i), \sigma^2_{f} )$, mentre in precedenza avevamo ipotizzato $t_i = f (\overline{x}_i)$.
+
+Allora il valore ti osservato per la variabile xi differisce da quello ottenuto come $f (\overline{x}_i)$ da un rumore gaussiano e indipendente
+$$t_i=f(\overline{x}_{i})+\varepsilon\quad p(\varepsilon)=\mathcal N(\varepsilon;0,\sigma^{2}_{f})$$
+In base a queste ipotesi, per la distribuzione a priori sulle osservazioni rumorose abbiamo che la varianza di $f (\overline{x}_i)$ è aumentata, rispetto al caso precedente, dell'incertezza derivata dal rumore, che ha varianza $\sigma^2_f$.
+
+Di conseguenza, abbiamo che
+$$\begin{align*}
+&\Sigma_{X}[i,j]=\mathbf k(\overline{x}_{i},\overline{x}_{j})\quad i\neq j\\
+&\Sigma_{X}[i,i]=\mathbf k(\overline{x}_{i},\overline{x}_{j})+\sigma^{2}_{f}
+\end{align*}$$
+Come conseguenza, la matrice di covarianza $\Sigma_{X}$ risulta essere:
+$$\Sigma_{X}=G_{X}+\sigma_{f}^{2}$$
+
+![center|500](Pasted%20image%2020251117122735.png)
 
 
 
