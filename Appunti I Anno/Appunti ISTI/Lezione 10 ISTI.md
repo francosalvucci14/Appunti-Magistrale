@@ -32,7 +32,7 @@ Vediamo ora una guida step-by-step per determinare se il metodo dei momenti risp
 Vediamo ora nel dettaglio ogni punto
 
 1) Sotto le ipotesi $X_{1},\dots,X_{n}\sim\text{i.i.d},\theta\in\mathbb R^{p},\mathbb E[X_{1}^{p}]\lt\infty$ allora $(\hat\mu_{1,n},\dots,\hat\mu_{1,n})\to_{p}(\mu_{1},\dots,\mu_{n})$
-	1) Così facendo incontro problemi con la Varianza, se invece assumo che esistono $\mathbb E[X_{1}^{2p}]$ allora mi basta sfruttare la definizione di *Uniforme Integrabilità* (così non devo combattere con la Varianza) (vedere dimostrazione LGN sotto UI)
+	1) Così facendo incontro problemi con la Varianza e dovrei cambiare assumendo che esistano i momenti $\mathbb E[X_{1}^{2p}]$ , per evitare ciò posso sfruttare la definizione di *Uniforme Integrabilità*, così da evitare l'uso della Varianza) (vedere dimostrazione LGN sotto UI)
 2) Sotto le ipotesi $X_{1},\dots,X_{n}\sim\text{i.i.d},\theta\in\mathbb R^{p},\mathbb E[X_{1}^{p}]\lt\infty$ preso $\theta=g(\mu_{1},\dots,\mu_{p})$ allora $$\hat\theta_{n}\to_{p}\theta$$
 	1) Questo vale per il **lemma di Slutzky**
 3) Per il terzo punto,sotto l'ipotesi che $\exists$ i pirmi $2p$ momenti, allora possiamo sfruttare il **CLT Multivariato** e ottenere che $$\sqrt{n}\left(\begin{align*}

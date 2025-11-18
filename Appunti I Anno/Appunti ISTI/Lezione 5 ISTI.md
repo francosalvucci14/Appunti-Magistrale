@@ -41,13 +41,13 @@ La **disuguaglianza di Hoeffding** è così definita:
 
 Non faremo dimostrazione, ma vedremo come cambia la situazione usando Chernoff e/o Hoeffding
 
-**Confronto fra Hoeffding e Chernoff**
+**Confronto fra Hoeffding e Chebychev**
 
 Consideriamo una sequenza di v.a Bernoulliane di parametro $p=\frac{1}{2}$, con $n=100$ e $\varepsilon=0.2$
 
 Se mettiamo a confronto le due disuguaglianze otteniamo che 
 $$\begin{align*}
-\text{Chernoff}\space&Pr(|\overline{Y}_{n}-p|\gt0.2)\leq\frac{Var(\overline{Y}_{n})}{\varepsilon^{2}}=\frac{1}{4n\varepsilon^{2}}\simeq0.0625\\\text{Hoeffding}\space&Pr(|\overline{Y}_{n}-p|\gt0.2)\leq2e^{-2\cdot100\cdot(0.2)^{2}}\simeq0.00067
+\text{Chebychev}\space&Pr(|\overline{Y}_{n}-p|\gt0.2)\leq\frac{Var(\overline{Y}_{n})}{\varepsilon^{2}}=\frac{1}{4n\varepsilon^{2}}\simeq0.0625\\\text{Hoeffding}\space&Pr(|\overline{Y}_{n}-p|\gt0.2)\leq2e^{-2\cdot100\cdot(0.2)^{2}}\simeq0.00067
 \end{align*}$$
 
 ## Disuguaglianza di Gordon-Mill

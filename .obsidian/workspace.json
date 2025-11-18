@@ -13,16 +13,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab5/Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis"
+              "title": "Lezione 7 ML - Linear Classification"
+            }
+          },
+          {
+            "id": "328d64a153f31304",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 10 ISTI.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Lezione 10 ISTI"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -163,9 +179,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0f10fd270a79cbf7",
+  "active": "328d64a153f31304",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
+    "Appunti II Anno/Appunti ML/Lezione 8 ML - Probabilistic Classification (generative models).md",
     "Appunti II Anno/Appunti ML/Code-labs/lab5/Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab5/ml_lab5_2025_2026_linear_classifier.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab5/ML_Lab5_2025_2026_Linear_classifier.ipynb",
@@ -174,9 +192,7 @@
     "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 7 ISTI.md",
-    "Appunti II Anno/Appunti ML/Lezione 8 ML - Probabilistic Classification (generative models).md",
     "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251117122735.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251117113547.png",
