@@ -56,8 +56,18 @@ Confrontando un elemento con tutti i modelli, è possibile verificare quello che
 Funzioni discriminanti lineare in classificazione binaria
 - confini decisionali: *iperpiano* $(d-1)$-dimensionale di tutti i punti tali per cui $h(\mathbf x;\mathbf w, b)=\mathbf w^T\mathbf x + b=0$
 - Dati due punti sull'iperpiano $\overline{x}_{1},\overline{x}_2$, la condizione $h(\overline{x}_{1};\mathbf w, b)=h(\overline{x}_{2};\mathbf w, b)=0$ è pari a $$\mathbf w^T\overline{x}_{1}+b-(\mathbf w^T\overline{x}_2+b)=\mathbf w^T(\overline{x}_{1}-\overline{x}_{2})$$ovvero, il vettore $\overline{x}_{1}-\overline{x}_{2}$ e $\mathbf w$ sono ortogonali
-- Per ogni $\mathbf x$, il prodotto $\mathbf w\cdot\mathbf x=\mathbf w^{T}\mathbf{x}$ è la lunghezza della proiezione di $\mathbf x$ nella direzione di $\mathbf w$ (ortogonale all'iperpiano $\mathbf w^T\mathbf x + b=0$ ), nei multipli di $||\mathbf w||_{2}$
-- Normalizzando rispetto a $||\mathbf w||_{2}=\sqrt{\sum\limits_{i=1}^{d}w_{i}}$ , otteniamo la lunghezza della proiezione $\mathbf x$ nella direzione ortogonale
+- Per ogni $\mathbf x$, il prodotto scalare $\mathbf w\cdot\mathbf x=\mathbf w^{T}\mathbf{x}$ è la lunghezza della proiezione di $\mathbf x$ nella direzione di $\mathbf w$ (ortogonale all'iperpiano $\mathbf w^T\mathbf x + b=0$ ), nei multipli di $||\mathbf w||_{2}$
+- Normalizzando rispetto a $||\mathbf w||_{2}=\sqrt{\sum\limits_{i=1}^{d}w_{i}}$ , otteniamo la lunghezza della proiezione $\mathbf x$ nella direzione ortogonale all'iperpiano, assumendo che $||\mathbf w||_2=1$
+- Per ogni $\mathbf x,h(\mathbf x;\mathbf w, b) =\mathbf w^T\mathbf x + b$ è la distanza (in multipli di $||\mathbf w||$) di $\mathbf x$ dall'iperpiano $\mathbf w^T\mathbf x + b=0$
+- Il segno del valore restituito discrimina in quale delle regioni separate dall'iperpiano si trova il punto
+
+![center|400](Pasted%20image%2020251118161235.png)
+
+Funzioni discriminanti lineari in classificazione multiclasse
+- Definiamo $\mathbf K$ funzioni lineari $$h_{i}(\mathbf x;\mathbf w_{i},b_{i})=\mathbf w_{i}^{T}\mathbf x+b_i\quad 1\leq i\leq\mathbf K$$ L'elemento $\mathbf x$ è assegnato alla classe $C_{k}$ se e solo se $h_{k}(\mathbf x;\mathbf w_{k},b_{k})\gt h_{i}(\mathbf x;\mathbf w_{i},b_{i})$ per ogni $i\neq k$, ovvero $k$ è quel valore che massimizza $h$, ovvero $$k=arg\max_{j}h_{j}(\mathbf x;\mathbf w_{j},b_{j})$$
+- Confine decisionale tra $C_i$ e $C_j$ : tutti i punti $\mathbf x$ t.c $h_{i}(\mathbf x;\mathbf w_{i},b_{i})=h_{j}(\mathbf x;\mathbf w_{j},b_{j})$, un iperpiano $(d-1)$-dimensionale $$(\mathbf w_{i}-\mathbf w_{j})^{T}\mathbf x+(b_i-b_{j})=0$$
+
+Le regioni decisionali 
 ### Quadrati Minimi e Classificazione
 #### Funzioni di apprendimento $h_{i}$
 ## Percettrone
