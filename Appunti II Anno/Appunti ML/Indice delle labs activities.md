@@ -5,4 +5,5 @@ Indice delle lezioni di laboratorio, che mostrano nella pratica come applicare l
 - [Lab3 - Ottimizzazione](Code-labs/lab3/Tecniche%20di%20ottimizzazione%20del%20Gradient%20Descent.md)
 - [Lab4.1 - Regressione lineare, Gradient Descent e Regolarizzazione](Code-labs/lab4/Regressione%20lineare,%20Gradient%20Descent%20e%20Regolarizzazione.md)
 - [Lab4.2 - Modelli probabilistici e Regressione Bayesiana](Code-labs/lab4/Modelli%20probabilistici%20e%20Regressione%20Bayesiana.md)
+- [Lab5 - Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis](Code-labs/lab5/Classificatori%20Lineari%20-%20Percettrone,%20Least%20Squares%20e%20Gaussian%20Discriminant%20Analysis.md)
 - 
