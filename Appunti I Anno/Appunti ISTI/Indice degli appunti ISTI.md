@@ -14,4 +14,6 @@ Inferenza Statistica e Teoria dell'informazione
 - [Lezione 12 ISTI](Lezione%2012%20ISTI.md)
 - [Lezione 13 ISTI](Lezione%2013%20ISTI.md)
 - [Lezione 14 ISTI](Lezione%2014%20ISTI.md)
+- [Lezione 15 ISTI](Lezione%2015%20ISTI.md)
+- [Lezione 16 ISTI](Lezione%2016%20ISTI.md)
 - 
