@@ -67,8 +67,44 @@ Funzioni discriminanti lineari in classificazione multiclasse
 - Definiamo $\mathbf K$ funzioni lineari $$h_{i}(\mathbf x;\mathbf w_{i},b_{i})=\mathbf w_{i}^{T}\mathbf x+b_i\quad 1\leq i\leq\mathbf K$$ L'elemento $\mathbf x$ è assegnato alla classe $C_{k}$ se e solo se $h_{k}(\mathbf x;\mathbf w_{k},b_{k})\gt h_{i}(\mathbf x;\mathbf w_{i},b_{i})$ per ogni $i\neq k$, ovvero $k$ è quel valore che massimizza $h$, ovvero $$k=arg\max_{j}h_{j}(\mathbf x;\mathbf w_{j},b_{j})$$
 - Confine decisionale tra $C_i$ e $C_j$ : tutti i punti $\mathbf x$ t.c $h_{i}(\mathbf x;\mathbf w_{i},b_{i})=h_{j}(\mathbf x;\mathbf w_{j},b_{j})$, un iperpiano $(d-1)$-dimensionale $$(\mathbf w_{i}-\mathbf w_{j})^{T}\mathbf x+(b_i-b_{j})=0$$
 
-Le regioni decisionali 
+Le regioni decisionali risultanti sono connesse e convesse
+
+![center|450](Pasted%20image%2020251119114121.png)
+
+La definizione può essere estesa per includere termini relativi ai prodotti delle coppie di valori delle feature ( **funzioni discriminanti quadratiche**)
+
+$$h(\mathbf x;\mathbf w,b)=b+\sum\limits_{i=1}^{d}w_{i}x_{i}+\sum\limits_{i=1}^{d}\sum\limits_{j=1}^{i}w_{ij}x_{i}x_{j}$$
+Abbiamo $\frac{d(d+1)}{2}$ parametri addizionali rispetto ai $d+1$ originali: le regioni di decisione possono quindi complicarsi
 ### Quadrati Minimi e Classificazione
+
+Assumiamo la classificazione con $\mathbf K$ classi
+
+Le classi vengono rappresentate secondo lo schema $1$-of-$\mathbf K$: abbiamo un insieme di variabili $z_{1},\dots,z_{k}$, la classe $C_i$ viene codificata dai valori $z_{i}=1,z_{k}=0,\forall k\neq i$
+
+Abbiamo inoltre $\mathbf K$ funzioni discriminanti $h_i$, che sono derivate come funzioni di regressione lineare con le variabili $z_{i}$ come target
+
+Ad ogni variabile $z_{i}$ viene associata una funzione discriminante $h_{i}(\mathbf x)=\mathbf w_{i}^{T}\mathbf x+b$: l'elemento $\mathbf x$ viene assegnato alla classe $C_{k}$ tale per cui $$k=arg\max_{i}h_i(\mathbf x)$$
+A questo punto $z_{k}(\mathbf x)=1,z_{j}(\mathbf x)(j\neq k)$ se $k=arg\max_{i}h_i(\mathbf x)$
+
+In generale, una funzione di regressione fornisce una stima del valore target dato in input $\mathbb E[t|\mathbf x]$
+
+La funzione $h_{i}(\mathbf x)$ può essere vista come stima della media condizionata $\mathbb E[z_{i}|\mathbf x]$, di una variabile binomiale $z_i$ dato $\mathbf x$
+
+Se assumiamo che $z_{i}$ sia distribuito in accordo ad una Bernoulliana, allora il valor medio corrisponde alla probabilità a posteriori
+$$\begin{align*}
+h_{i}(\mathbf x)&\simeq\mathbb E[z_i|\mathbf x]\\
+&=Pr(z_{i}=1|\mathbf x)\cdot 1+Pr(z_{i}=0|\mathbf x)\cdot 0\\
+&=Pr(z_i=1|\mathbf x)\\
+&= Pr(C_i|\mathbf x)
+\end{align*}$$
+Comunque, $h_i(\mathbf x)$ non è essa stessa una probabilità (non assumeremo infatti che assuma valore solamente nell'intervallo $[0,1]$)
 #### Funzioni di apprendimento $h_{i}$
+
+Dato un training set $\mathbf X,\mathbf t$, una funzione di regressione può essere derivata usando i quadrati minimi
+
+Un elemento del training set è una coppia $(\mathbf x_{i},\mathbf t_{i}),\mathbf x_{i}\in\mathbb R^{d},\mathbf t_{i}\in\{0,1\}^{K}$
+Le predizioni corrispondenti $\mathbf h_i(\mathbf x_i)=(h_{1}(\mathbf x_{i}),\dots,h_{K}(\mathbf x_{i}))^{T}$ vengono calcolate come:
+$$\mathbf y_i=\mathbf h(\mathbf x_{i})=\mathbf W\mathbf x_{i}+\mathbf b=\begin{pmatrix}w_{11}&w_{12}&\dots&w_{1d}\\w_{21}&w_{22}&\dots&w_{2d}\\\vdots\\w_{K1}&w_{K2}&\dots&w_{Kd}\end{pmatrix}\begin{pmatrix}x_{i1}\\x_{i2}\\\vdots\\x_{id}\end{pmatrix}+\begin{pmatrix}b_{1}\\b_{2}\\\vdots\\b_{K}\end{pmatrix}$$
+
 ## Percettrone
 
