@@ -144,7 +144,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "3f57897579f045bd",
@@ -180,8 +181,12 @@
   },
   "active": "0f10fd270a79cbf7",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251119151918.png",
     "Appunti II Anno/Appunti ML/Code-labs/lab5/Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 7 ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
+    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
+    "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251119114121.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251118161235.png",
     "Appunti I Anno/Appunti ISTI/Lezione 10 ISTI.md",
@@ -194,7 +199,6 @@
     "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 7 ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251117122735.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251117113547.png",
@@ -214,10 +218,8 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab4/Regressione lineare, Gradient Descent e Regolarizzazione.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251115160353.png",
-    "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti I Anno/Appunti ISTI/Lezione 14 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/regression_methods.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/regression.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/Other Codes/naivebayes.ipynb",

@@ -105,6 +105,95 @@ Dato un training set $\mathbf X,\mathbf t$, una funzione di regressione può ess
 Un elemento del training set è una coppia $(\mathbf x_{i},\mathbf t_{i}),\mathbf x_{i}\in\mathbb R^{d},\mathbf t_{i}\in\{0,1\}^{K}$
 Le predizioni corrispondenti $\mathbf h_i(\mathbf x_i)=(h_{1}(\mathbf x_{i}),\dots,h_{K}(\mathbf x_{i}))^{T}$ vengono calcolate come:
 $$\mathbf y_i=\mathbf h(\mathbf x_{i})=\mathbf W\mathbf x_{i}+\mathbf b=\begin{pmatrix}w_{11}&w_{12}&\dots&w_{1d}\\w_{21}&w_{22}&\dots&w_{2d}\\\vdots\\w_{K1}&w_{K2}&\dots&w_{Kd}\end{pmatrix}\begin{pmatrix}x_{i1}\\x_{i2}\\\vdots\\x_{id}\end{pmatrix}+\begin{pmatrix}b_{1}\\b_{2}\\\vdots\\b_{K}\end{pmatrix}$$
+Raggruppando tutti i parametri insieme come:
+$$\overline{W}=\begin{pmatrix}w_{10}&w_{11}&\dots&w_{1d}\\w_{20}&w_{21}&\dots&w_{2d}\\\vdots\\w_{K0}&w_{K1}&\dots&w_{Kd}\end{pmatrix}$$
+dove $w_{i0}=b_i,i=1,\dots,K$, e denotando come al solito $\overline{X}\in\mathbb R^{n\times(d+1)}$ la matrice delle feature per tutti gli elementi del training set, ovvero:
+$$\overline{X}=\begin{pmatrix}1&x_{11}&\dots&x_{1d}\\1&x_{21}&\dots&x_{2d}\\\vdots\\1&x_{n1}&\dots&x_{nd}\end{pmatrix}$$
+possiamo scrivere, per l'intero training set, le previsioni di tutte le funzioni $h_i(\mathbf x)$ rispetto a tutti gli elementi $(\mathbf x_i,\mathbf t_i)$ nel training set come la seguente matrice $K \times n$, dove la $j$-esima colonna è il vettore dei risultati ottenuti applicando tutte le funzioni a $\mathbf x_j$
+$$\overline{Y}=\begin{pmatrix}h_{1}(\mathbf x_{1})&h_{1}(\mathbf x_{2})&\dots&h_{1}(\mathbf x_{n})\\h_{2}(\mathbf x_{1})&h_{2}(\mathbf x_{2})&\dots&h_{2}(\mathbf x_{n})\\\vdots\\h_{K}(\mathbf x_{1})&h_{K}(\mathbf x_{2})&\dots&h_{K}(\mathbf x_{n})\end{pmatrix}=\overline{WX}^{T}$$
+dove, come osservato prima, abbiamo che $y_{ij}=h_{j}(\mathbf x_i)$ è la stima di $p(C_{j}|\mathbf x_{i})$
 
+Tutti i target, codificati in formato $1$-of-$\mathbf K$, possono anche essere rappresentati come una matrice $K \times n\space\mathbf T$, dove $\mathbf T_{ij} = t_{ji}$, ovvero tale che la $j$-esima colonna è la codifica $1$-of-$\mathbf K$ del target $t_j$ dell'elemento $\mathbf x_j$
+$$\mathbf T=\begin{pmatrix}t_{11}&t_{12}&\dots&t_{n1}\\t_{12}&t_{22}&\dots&t_{n2}\\\vdots\\t_{1K}&t_{2K}&\dots&t_{nK}\end{pmatrix}$$
+Come di consueto, ogni $h_j (\mathbf x_i)$ viene quindi confrontato con $t_{ij}$ , fornendo il residuo $$r_{ij} = y_{ij} - t_{ij}$$
+Tutti i residui sono riportati nella matrice $K \times n$
+$$\mathbf R=\begin{pmatrix}r_{11}&r_{12}&\dots&r_{n1}\\r_{12}&r_{22}&\dots&r_{n2}\\\vdots\\r_{1K}&r_{2K}&\dots&r_{nK}\end{pmatrix}=\overline{WX}^{T}-\mathbf T$$
+Se consideriamo la matrice $K\times K$ $\mathbf R\mathbf R^{T}$, abbiamo che
+$$\mathbf {RR}^{T}=\begin{pmatrix}\sum\limits_{i=1}^{n}r_{i1}^{2}&\sum\limits_{i=1}^{n}r_{i1}r_{i2}&\dots&\sum\limits_{i=1}^{n}r_{i1}r_{iK}\\\sum\limits_{i=1}^{n}r_{i2}r_{i1}&\sum\limits_{i=1}^{n}r_{i2}^{2}&\dots&\sum\limits_{i=1}^{n}r_{i2}r_{iK}\\\vdots\\\sum\limits_{i=1}^{n}r_{iK}r_{i1}&\sum\limits_{i=1}^{n}r_{iK}r_{i2}&\dots&\sum\limits_{i=1}^{n}r_{iK}^{2}\end{pmatrix}$$
+Sommando tutti gli elementi sulla diagonale di $\mathbf R^{T}\mathbf R$ si ottiene la somma complessiva, su tutti gli elementi del training set, delle differenze al quadrato tra i valori osservati e i valori calcolati dal modello, con parametri $\mathbf W,\mathbf b$, ovvero
+$$\sum\limits_{j=1}^{K}\sum\limits_{i=1}^{n}(h_{j}(\mathbf x_i)-t_{ij})^{2}$$
+Questo corrisponde alla **traccia** della matrice $\mathbf R^{T}\mathbf R$, quindi dobbiamo minimizzare
+$$E(\overline{W})= \frac{1}{2}tr(\mathbf R^{T}\mathbf R)$$
+Applicando l'approccio standard di risoluzione, ovvero 
+$$\nabla_{W}E(\overline{W})=\mathbf 0$$
+è possibile mostrare che 
+$$\nabla_{W}E(\overline{W})=\overline{X}^{T}\overline{XW}-\overline{X}^{T}\mathbf T$$
+che è uguale a $\mathbf 0$ se 
+$$\overline{W}=(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\mathbf T$$
+L'insieme di funzioni discriminative risultate è quindi:
+$$\mathbf h(\mathbf x)=\overline{W}^{T}\overline{x}=\mathbf T^{T}\overline{X}(\overline{X}^{T}\overline{X})^{-1}\overline{x}$$
 ## Percettrone
 
+Sono stati introdotti nei primi anni $'60$, alla base dell'approccio delle reti neurali
+Il percettrone è un semplice modello per un singolo neurone (cerca di simulare il neurone umano)
+In termini probabilistici, è difficile da valutare
+Funziona solo in quei casi in cui le classi sono linearmente separabili
+
+Corrisponde a un modello di classificazione binaria dove un elemento $\mathbf x$ è classificato sulla base del segno del valore della combinazione lineare $\mathbf w^{T}\mathbf x$, cioè:
+$$h(\mathbf x)=f(\mathbf w^{T}\mathbf x+b)=f(\overline{w}^{T}\overline{x})$$
+dove $f()$ è la funzione segno, così definita
+$$f(i)=\begin{cases}-1&i\lt0\\1&i\geq0\end{cases}$$
+
+Il modello risultante è un particolare modello lineare generalizzato.
+
+Per definizione del modello, $h(\mathbf x)$ può essere solo $\pm1$: indichiamo $h(\mathbf x) = 1$ come $\mathbf x \in C_1$ e $h(\mathbf x) = -1$ come $\mathbf x \in C_2$.
+
+A ciascun elemento $\mathbf x_i$ nel training set viene quindi associato un valore target $t_i\in \{-1, 1\}$.
+
+Una definizione naturale della funzione di costo sarebbe il numero di elementi classificati erroneamente nel training set.
+
+Ciò comporterebbe una funzione costante a tratti e non sarebbe possibile applicare l'ottimizzazione del gradiente (avremmo un gradiente pari a zero quasi ovunque).
+
+Una scelta migliore è quella di utilizzare una funzione lineare a tratti come funzione di costo
+
+Vorremmo trovare un vettore di parametri $\mathbf w$ tale che, per ogni $\mathbf x_i, \overline{w}^T\overline{x}_i\gt0$ se $\mathbf x_i\in C_1$ e $\overline{w}^T\overline{x}_i\lt0$ se $\mathbf x_i\in C_2$: in breve, $\overline{w}^T\overline{x}_it_{i}\gt0$
+
+Ogni elemento $\mathbf x_{i}$ offre un contributo alla funzione di costo come segue:
+- $0$ se l'elemento viene classificato correttamente
+- $-\overline{w}^T\overline{x}_it_{i}\gt0$ se l'elemento vieni misclassificato
+
+Sia $\mathcal M$ l'insieme di elementi misclassificati, allora il costo sarà pari a 
+$$E_p(\overline{w})=-\sum\limits_{\mathbf x_{i}\in\mathcal M}\overline{w}^T\overline{x}_it_{i}$$
+Il contributo di $\mathbf x_i$ al costo sarà quindi pari a $0$ se $\mathbf x_i\not\in\mathcal M$, altrimenti è pari alla funzione lineare di $\overline{w}$
+
+Il minimo di $E_p(\overline{w})$ può essere trovato tramite discesa del gradiente:
+$$\overline{w}^{(k+1)}=\overline{w}^{(k)}-\eta\nabla_{\overline{w}}E_p(\overline{w})\big|_{\overline{w}^{(k)}}$$
+Il gradiente della funzione di costo rispetto al vettore $\overline{w}$ è quindi:
+$$\nabla_{\overline{w}}E_p(\overline{w})=-\sum\limits_{\mathbf x_i\in\mathcal M}\overline{x}_{i}t_i$$
+La discesa del gradiente può quindi essere espressa come:
+$$\overline{w}^{(k+1)}=\overline{w}^{(k)}+\eta\sum\limits_{\mathbf x_i\in\mathcal M_{k}}\overline{x}_{i}t_i$$
+dove $\mathcal M_k$ rappresenta l'insieme di punti misclassificati dal modello con parametro $\overline{w}^{(k)}$
+
+Prendiamo ora la versione SGD (Stochastic Gradient Descent): ad ogni passo, solo il gradiente rispetto al singolo elemento viene considerato
+$$\overline{w}^{(k+1)}=\overline{w}^{(k)}+\eta\overline{x}_{i}t_i$$
+dove $\mathbf x_{i}\in\mathcal M_k$ e il *fattore di scalo* $\eta\gt0$ controlla l'impatto degli elementi misclassificati nella funzione di costo
+Il metodo funziona iterando circolarmente tutti gli elementi e applicando la formula di cui sopra
+
+![center|500](Pasted%20image%2020251119151918.png)
+
+In nero, il confine decisionale e il vettore dei parametri corrispondente $\mathbf w$ (il bias non è considerato qui); in rosso il vettore dell'elemento classificato erroneamente $\mathbf x_i$, aggiunto dall'algoritmo al vettore dei parametri come $\eta\mathbf x_i$
+
+Ad ogni passo, se $\mathbf x_i$ è ben classificato allora $\mathbf w^{(k)}$ rimane invariato; altrimenti, il suo contributo al costo viene modificato come segue
+$$\begin{align*}
+-\mathbf x_{i}^{T}\mathbf w^{(k+1)}t_{i}&=-\mathbf x_{i}^{T}\mathbf w^{(k)}t_{i}-\eta(\mathbf x_it_{i})^{T}\mathbf x_it_{i}\\&=-\mathbf x_{i}^{T}\mathbf w^{(k)}t_{i}-\eta||\mathbf x_{i}||^{2}\\
+&\lt-\mathbf x_{i}^{T}\mathbf w^{(k)}t_{i}\end{align*}$$
+La stessa cosa vale anche se aggiungiamo il bias $b$, infatti otteniamo
+$$-\overline {x}_{i}^{T}\overline{w}^{(k+1)}t_{i}\lt-\overline {x}_{i}^{T}\overline{w}^{(k)}t_{i}$$
+
+Questo contributo sta diminuendo, tuttavia ciò non garantisce la convergenza del metodo, poiché la funzione di costo potrebbe aumentare a causa di un altro elemento classificato erroneamente se si utilizza $\overline{w}^{(k+1)}$
+
+È possibile dimostrare che, nel caso in cui le classi siano linearmente separabili, l'algoritmo converge alla soluzione corretta in un numero finito di passaggi.
+
+Sia $\overline{w}^{\star}$ una soluzione (ovvero, discrimina $C_{1}$ e $C_2$): se $\mathbf x_{k+1}$ è l'elemento considerato all'iterazione $(k + 1)$ ed è classificato erroneamente, allora
+$$\overline{w}^{(k+1)}-\alpha\overline{w}^\star=(\overline{w}^{(k)}-\alpha\overline{w}^{\star})+\eta\overline{x}_{k+1}t_{k+1}$$
+dove $\alpha\gt0$ è una costante
