@@ -1,4 +1,5 @@
 {
+  "baseZoomLevel": 120,
   "spellcheck": false,
   "promptDelete": false,
   "alwaysUpdateLinks": true,
