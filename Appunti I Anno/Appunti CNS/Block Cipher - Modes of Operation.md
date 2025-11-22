@@ -150,23 +150,17 @@ La modalità CTR trasforma un cifrario a blocchi in uno stream cipher. È la mod
     
     $$Keystream_i = ENC(K, Nonce || Counter_i)$$
     
-    $$C_i = P_i \oplus Keystream_i$$
-    
-    Il contatore viene incrementato per ogni blocco .
+    $$C_i = P_i \oplus Keystream_i$$ 
+Il contatore viene incrementato per ogni blocco .
     
 
 **Pro e Contro di CTR:**
 
 - **(+) Performance:** Sia cifratura che decifratura sono **completamente parallelizzabili**. Possiamo pre-calcolare il keystream prima ancora che arrivi il messaggio.
     
-- 
+- **(+) Accesso Casuale:** Possiamo decifrare l'ultimo blocco del file senza decifrare quelli prima.
     
-    **(+) Accesso Casuale:** Possiamo decifrare l'ultimo blocco del file senza decifrare quelli prima.
-    
-- 
-    
-    **(+) Niente Padding:** Poiché agisce come uno stream cipher (XOR), non serve padding; il ciphertext ha la stessa lunghezza del plaintext.
-    
+- **(+) Niente Padding:** Poiché agisce come uno stream cipher (XOR), non serve padding; il ciphertext ha la stessa lunghezza del plaintext.
 - **(!) Attenzione:** Mai riutilizzare la coppia $(Key, Nonce)$. Come per l'OTP, se il contatore si ripete, la sicurezza crolla catastroficamente.
     
 
@@ -176,9 +170,7 @@ Queste modalità trasformano il block cipher in stream cipher usando un registro
 
 - **OFB:** L'output del cifrario diventa l'input per il blocco successivo. Il keystream è indipendente dal messaggio. Genera un flusso sincrono.
     
-    - 
-        
-        _Problema:_ Se l'IV è sfortunato, si può entrare in un "ciclo corto" (short cycle), ripetendo il keystream troppo presto .
+    - _Problema:_ Se l'IV è sfortunato, si può entrare in un "ciclo corto" (short cycle), ripetendo il keystream troppo presto .
         
 - **CFB:** Il _ciphertext_ precedente diventa l'input per il blocco successivo. È "auto-sincronizzante" (se si perde un pezzo di ciphertext, l'errore si propaga solo per pochi blocchi poi si ristabilisce) .
     
@@ -200,12 +192,11 @@ Poiché i cifrari a blocchi (in modalità ECB e CBC) richiedono input di lunghez
 
 ## 6. Sintesi Comparativa
 
-| **Modalità** | **Tipo**         | **Parallelizzabile (Enc)** | **Parallelizzabile (Dec)** | **Padding Richiesto?** | **Integrità?** | **Note**                                                             |
-| ------------ | ---------------- | -------------------------- | -------------------------- | ---------------------- | -------------- | -------------------------------------------------------------------- |
-| **ECB**      | Pattern insicuro | Sì                         | Sì                         | Sì                     | No             | **NON USARE MAI**. Preserva pattern visivi.                          |
-| **CBC**      | Chaining         | No                         | Sì                         | Sì                     | No             | Standard storico. IV deve essere imprevedibile.                      |
-| **CTR**      | Stream           | **Sì**                     | **Sì**                     | **No**                 | No             | **Standard Moderno**. Veloce, random access.                         |
-| **OFB**      | Stream           | No                         | No                         | No                     | No             | Pre-computabile. Attenzione ai cicli.                                |
-| **GCM**      | Authenticated    | Sì                         | Sì                         | No                     | **Sì**         | Evoluzione di CTR che aggiunge autenticazione (trattata in seguito). |
+| **Modalità** | **Parallelismo (Enc)** | **Sicurezza Semantica?** | **Integrità?** | **Problema Principale**                                                  |
+| ------------ | ---------------------- | ------------------------ | -------------- | ------------------------------------------------------------------------ |
+| **ECB**      | Sì                     | **NO**                   | No             | Rivela pattern (Pinguino). Insicuro. **NON USARE MAI**                   |
+| **CBC**      | No                     | Sì (con IV random)       | No             | Lento (sequenziale), Padding Oracle, IV malleabile.                      |
+| **CTR**      | **Sì**                 | Sì (con Nonce unico)     | No             | Catastrofico se il Nonce si ripete. Malleabilità bit-flip.               |
+| **GCM**      | Sì                     | Sì                       | **Sì**         | (Trattato in seguito) È CTR + Autenticazione. Lo standard de-facto oggi. |
 
 **Conclusione:** Per la sola confidenzialità ad alte prestazioni, **CTR** è la scelta eccellente. Se serve compatibilità legacy, CBC è accettabile (con IV corretti). Per sistemi moderni, si preferiscono modalità autenticate come **GCM** (Galois Counter Mode) che combinano CTR con un MAC per garantire sia confidenzialità che integrità.
