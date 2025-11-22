@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
+                "file": "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Message Authentication - MAC & HMAC"
+              "title": "Indice degli appunti CNS"
             }
           },
           {
@@ -196,8 +196,8 @@
   },
   "active": "1abdd239217cad50",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti CNS/Stream Ciphers - WEP_RC4.md",
     "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
+    "Appunti I Anno/Appunti CNS/Stream Ciphers - WEP_RC4.md",
     "Appunti I Anno/Appunti CNS/img/HC_digest.png",
     "Appunti I Anno/Appunti CNS/img/HashC1.png",
     "Appunti I Anno/Appunti CNS/img/Hash1.png",
