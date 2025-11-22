@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
+                "file": "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Indice degli appunti CNS"
+              "title": "Message Authentication - MAC & HMAC"
             }
           },
           {
@@ -125,13 +125,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab6/Generalized Linear Models e Famiglia Esponenziale.md",
+                "file": "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Generalized Linear Models e Famiglia Esponenziale"
+              "title": "Outline of Message Authentication - MAC & HMAC"
             }
           },
           {
@@ -159,8 +159,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "3f57897579f045bd",
@@ -196,20 +195,21 @@
   },
   "active": "1abdd239217cad50",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti CNS/img/Pasted image 20251122152712.png",
+    "Appunti I Anno/Appunti CNS/img/Pasted image 20251122152525.png",
+    "Appunti I Anno/Appunti CNS/img/HMAC.png",
+    "Appunti I Anno/Appunti CNS/img/LEA.png",
+    "Appunti I Anno/Appunti CNS/img/LEA.png",
+    "Appunti I Anno/Appunti CNS/img/Prefix.png",
+    "Appunti I Anno/Appunti CNS/img/Suff_BrutFor.png",
+    "Appunti I Anno/Appunti CNS/img/Suffix.png",
+    "Appunti I Anno/Appunti CNS/img/HCons_Iter.png",
+    "Appunti I Anno/Appunti CNS/img/HC_SuffPref.png",
+    "Appunti I Anno/Appunti CNS/img/Ingr2.png",
+    "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
     "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
     "Appunti I Anno/Appunti CNS/Stream Ciphers - WEP_RC4.md",
-    "Appunti I Anno/Appunti CNS/img/HC_digest.png",
-    "Appunti I Anno/Appunti CNS/img/HashC1.png",
-    "Appunti I Anno/Appunti CNS/img/Hash1.png",
     "Appunti I Anno/Appunti CNS/Encryption Basics.md",
-    "Appunti I Anno/Appunti CNS/img/MAC.png",
-    "Appunti I Anno/Appunti CNS/img/MAC_NONCE.png",
-    "Appunti I Anno/Appunti CNS/img/MAC_RepAtt.png",
-    "Appunti I Anno/Appunti CNS/img/MAC_MSpoof.png",
-    "Appunti I Anno/Appunti CNS/img/MAC_MITM.png",
-    "Appunti I Anno/Appunti CNS/img/HMAC_struc.png",
-    "Appunti I Anno/Appunti CNS/img/MA_sk1.png",
-    "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
     "Appunti I Anno/Appunti CNS/img",
     "Appunti II Anno/Appunti ML/Code-labs/lab5/Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis.md",
     "Esercizi Tutorato Rossi.md",

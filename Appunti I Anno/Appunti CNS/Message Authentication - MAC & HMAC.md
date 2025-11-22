@@ -111,6 +111,8 @@ Il processo è il seguente:
 
 ### 3.2 Sicurezza del MAC
 
+^4c7369
+
 \- Gemini \-
 La sicurezza di un MAC si basa sul fatto che è computazionalmente impossibile per un attaccante (che non possiede $K$) calcolare un tag valido per un messaggio $M^*$ o modificare $M$ in $M^*$ mantenendo valido il tag originale.
 
@@ -141,131 +143,213 @@ Una funzione Hash Crittografica funziona esattamente come le Hash normali, con l
 Le H.C. però non hanno solo questa caratteristica, ma hanno altre bellissime proprietà che ci serviranno più avanti per i MAC
 
 - **Preimage resistance (one-way)**: Dato $Y$ il risultato dell'hash, deve essere difficile trovare un qualunque $X$ tale per cui $X=H(Y)$; quindi da $Y$ non devo poter essere in grado di risalire a $X$ ![center|300](HC_digest.png)
-- **Second Preimage Resistance** : Dato $X$, deve essere difficile trovare un'altro $X^{\star}$ tale che $H(X)=H(X^{\star})$
-- 
+- **Second Preimage Resistance (Weak collision resistance)** : Dato $X$, deve essere difficile trovare un'altro $X^{\star}$ tale che $H(X)=H(X^{\star})$ ![center|500](HC_digest2.png)
+- **Collision Resistance (Strong collision resistance)** Deve essere difficile trovare due $X_{1},X_{2}$ generici tali per cui $H(X_{1})=H(X_{2})$ ![center](HC_CollRes.png)
+Abbiamo parlato quindi di questo digest e della sua dimensione, ma quanto dovrebbe essere grande per garantire sicurezza?
+Vediamo alcuni esempi:
+- $32$ bits -> $4.3$ bilioni di output, ma il $50\%$ di collissione arriva dopo $2^{16}\sim60.0000$ messaggi (molto pochi)
+- $128$ bits (MD5) -> il $50\%$ di collissione arriva dopo $2^{64}=1.8\times10^{19}$ (ad oggi inutile, tant'è che MD5 è stato bucato nel 2005)
+- $256$ bits (SHA-$256$) -> il $50\%$ di collissione arriva dopo $2^{128}=3.4\times10^{38}$, ad oggi accettabile
 
->Vedi esercizio esame su registrazione a 1.15.20
-
-
+>Vedi esercizio esame su registrazione a 1.15.20 lezione 4
 ## 4. MAC basati su Funzioni Hash (HMAC)
 
-Stallings (Cap. 12.4) e le slide dedicano ampia parte all'utilizzo delle funzioni Hash per costruire MAC.
+Vediamo quindi, dopo aver brevemente elencato le proprietà delle Hash Crittografiche, come usarle all'interno dei MAC
 
-### 4.1 Perché non usare Hash semplici?
+Primo ingrediente: una buona funzione Hash
+
+![center|600](Ingr1.png)
+
+Secondo ingrediente: includere il secret nell'hash
+
+![center|600](Ingr2.png)
+
 
 Una funzione hash crittografica $H(M)$ garantisce l'impronta digitale, ma non l'autenticazione, perché chiunque può calcolare l'hash di un messaggio modificato. È necessario includere la chiave segreta $K$.
 
+Infatti la domanda che ci poniamo è: dove mettere il secret? come suffisso o come prefisso del messaggio?
+
+![center|600](HC_SuffPref.png)
+
+All'apparenza potrebbe essere una domanda stupida, ma all'atto pratico assolutamente no.
+Noi potremmo non fregarci di questa questione SOLO se la funzione Hash scelta fosse un **Random Oracle Perfetto**, ovvero una struttura che ha la seguente proprietà:
+- Per ogni $X$ distinto, $H(X)$ è un **vero** valore randomico (dove per vero valore randomico intendiamo un valore che a prescindere da tutto sia generato veramente in maniera casuale)
+	- ma con la proprietà che allo stesso $X$ deve sempre corrispondere lo stesso $H(X)$
+
+All'effettivo, nessuna funzione hash può essere un random oracle
+
 Tuttavia, le costruzioni "ingenue" sono insicure a causa della struttura iterativa (Merkle-Damgård) delle funzioni hash comuni (MD5, SHA-1, SHA-2).
 
+Vediamo quindi come avviene la costruzione Merkle-Damgard, e come case study prendiamo SHA-$256$
+
+![center|600](HCons_Iter.png)
+
+Come vediamo da questo schema, al messaggio originale di $K$ bits viene aggiunto un padding, ovvero $10000$ (il numero di zeri varia, perchè serve per riempire l'ultimo chunk) e la lunghezza del messaggio, che sarà $K\mod2^{64}$ 
+A questo punto il messaggio viene diviso in $N$ chunks, ognugno composto da $512$ bits
+Viene poi aggiunto un vettore chiamato Initialization Vector (IV), composto da $8$ valori, ovvero quelli che vediamo in foto, che sono ***COSTANTI*** (IMPORTANTE)
+
+A questo punto la funzione hash lavora nel modo seguente:
+- Prende il primo chunk (512 bits), e l'IV (256 bits), passa dentro la funzione $F$ (che viene chiamata **Compression Block**) che ritorna un valore a 256 bits
+- Procede iterativamente in questo modo fino a che non finisce i chunk
+- Alla fine, il risultato sarà proprio il digest della funzione hash
+
+Parliamo un secondo del blocco $F$
+- è una funzione che come vediamo prende in input due valori, uno da 512 bits e uno da 256 bits, e ritorna come output un valore da 256 bits
+- c'è un teorema molto importante di Merkle-Damgard che dice : fintanto che $F$ è **resistente (sicura)**, allora anche l'iterazione è sicura
+- alla prima esecuzione, il blocco $F$ prende in input il primo chunk e l'IV
+
+Vediamo ora come risolvere il problema del secret
+### Secret Suffix
+
+Vediamo ora una delle vulnerabilità critiche della costruzione **Secret Suffix** per i MAC, ovvero quando si tenta di autenticare un messaggio calcolando:
+
+$$MAC = H(Messaggio \ || \ Chiave)$$
+
+Dove "||" indica la concatenazione e la chiave segreta (Secret) viene messa **alla fine**.
+
+![center](Suffix.png)
+#### 1. Attacco Brute-Force Ottimizzato ("State Precomputation")
+
+Immaginiamo che un attaccante abbia intercettato un messaggio $M$ molto lungo e il suo $MAC$, e voglia scoprire la Chiave Segreta ($K$) facendo un attacco di forza bruta (provando tutte le possibili chiavi).
+
+![center|500](Suff_BrutFor.png)
+
+- Scenario Normale (senza ottimizzazione): Se la chiave fosse all'inizio o mescolata, per ogni tentativo di chiave ($K_1, K_2, K_3...$), l'attaccante dovrebbe ricalcolare l'hash dell'intero messaggio $M$ (che potrebbe essere lungo, e quindi richiedere molto tempo). Se il messaggio è composto da $N$ blocchi, il costo per ogni tentativo sarebbe $N$ operazioni di compressione.$$\text{Costo Totale} = \text{Numero Tentativi} \times N$$
+- Scenario Secret Suffix (con ottimizzazione): Poiché la chiave è alla fine, l'attaccante osserva che la parte del messaggio $M$ è nota e fissa.
+    
+    1. **Precomputazione (Giallo chiaro nell'immagine):** L'attaccante calcola lo stato interno della funzione hash dopo aver processato tutto il messaggio $M$. Questo calcolo viene fatto **una volta sola**. Chiamiamo questo stato intermedio $H_{stato}$.
+    2. **Attacco (Giallo scuro/Freccia):** Ora, per provare una chiave candidata $K'$, l'attaccante deve solo prendere lo stato precomputato $H_{stato}$ e processare **solo l'ultimo blocco** che contiene la chiave .
+
+**Conseguenza:** La sicurezza è drasticamente indebolita. Non importa se il messaggio è lungo 100 GB; l'attaccante "salta" tutta la computazione del messaggio e attacca solo l'ultimo blocco. Il costo per tentativo scende da $N$ operazioni a **1 sola operazione**. Questo rende l'attacco brute-force molto più veloce.
+#### 2. Vulnerabilità alle Collisioni ("Collision on MSG -> Collision on MAC")
+
+La slide menziona: _"Even worse: collision on msg $\rightarrow$ collision ALSO on MAC!"_.
+
+Questa è una debolezza strutturale ancora più grave.
+
+Se l'attaccante riesce a trovare due messaggi diversi, $M_1$ e $M_2$, che producono lo stesso hash (una collisione sull'hash, senza chiave):
+
+$$H(M_1) = H(M_2)$$
+
+Allora, a causa della natura iterativa della funzione hash, lo stato interno della funzione dopo aver processato $M_1$ sarà identico a quello dopo aver processato $M_2$.
+
+Se aggiungiamo la stessa chiave segreta $K$ alla fine di entrambi:
+
+$$H(M_1 \ || \ K) = H(M_2 \ || \ K)$$
+
+**L'Attacco Pratico:**
+
+1. L'attaccante trova offline due messaggi $M_1$ (es. "Trasferisci 10€") e $M_2$ (es. "Trasferisci 1000€") che hanno lo stesso hash (collisione). Non serve conoscere la chiave per farlo.
+    
+2. L'attaccante chiede alla vittima di autenticare/firmare $M_1$. La vittima produce il MAC valido per $M_1$.
+    
+3. L'attaccante sostituisce $M_1$ con $M_2$ e allega lo stesso MAC.
+    
+4. Poiché $H(M_1 || K) = H(M_2 || K)$, il MAC risulta valido anche per $M_2$.
+    
+#### Sintesi
+
+La costruzione **Secret Suffix** fallisce perché non isola la chiave dalle debolezze della funzione hash sottostante. Permette di velocizzare gli attacchi di forza bruta (precomputando lo stato del messaggio) e trasforma le collisioni dell'hash (che dovrebbero essere difficili ma gestibili) in falsificazioni immediate del MAC.
+
+Queste vulnerabilità sono il motivo per cui è stato inventato **HMAC**, che usa una struttura annidata ($H(K \oplus opad \ || \ H(K \oplus ipad \ || \ M))$) proprio per prevenire sia l'attacco di estensione (tipico del Secret Prefix) sia le debolezze mostrate qui del Secret Suffix.
+### Secret Prefix
+
+Vediamo invece cosa succede se mettiamo il secret come prefisso del messaggio, ovvero
+$$MAC = H(Chiave \ || \ Messaggio)$$
+
+![center](Prefix.png)
+
+A prima vista sembra sicuro perché la chiave influenza tutto il calcolo fin dall'inizio. Tuttavia, questa costruzione è vulnerabile a causa della struttura iterativa di funzioni hash come MD5, SHA-1 e SHA-2 (la costruzione Merkle-Damgård).
+
+Vediamo invece un'attacco possibile, chiamato Length Extension Attack
 #### L'Attacco di Estensione della Lunghezza (Length Extension Attack)
 
-Consideriamo la costruzione Secret Prefix: $Tag = H(K || M)$.
+![center|600](LEA.png)
 
 Le funzioni hash operano a blocchi. Lo stato interno dell'hash dopo aver processato $K || M$ è l'output finale dell'hash originale. Un attaccante può prendere l'hash legittimo e usarlo come stato iniziale per processare un blocco aggiuntivo (estensione), calcolando un nuovo hash valido per il messaggio $M || Padding || Estensione$ senza conoscere $K$ .
 
 Questo rende insicuri i MAC costruiti come $H(K || M)$ .
 
-Anche la costruzione **Secret Suffix** $H(M || K)$ è vulnerabile a collisioni sul messaggio che si riflettono sul MAC, anche se resiste all'estensione.
+Vediamolo come "gioco a 2" 
+Immaginiamo che:
 
+- **Alice** invii a Bob un messaggio $M$: "Trasferisci 100€".
+- Il sistema calcola il MAC: $Hash(Chiave \ || \ M)$.
+- **Eva** (l'attaccante) intercetta il messaggio $M$ e il suo $MAC$. Eva **non conosce** la chiave segreta.
+
+L'obiettivo di Eva è creare un nuovo messaggio valido senza conoscere la chiave. Vuole aggiungere qualcosa al messaggio originale, ad esempio "Trasferisci 100€ _...e 1000€ a Eva_".
+
+Ecco come l'immagine mostra il processo:
+
+1. **Partenza dal MAC Esistente:** Eva prende il `Previous MAC code` intercettato. Matematicamente, questo valore rappresenta lo stato della funzione hash _dopo_ aver processato $(Chiave \ || \ M \ || \ Padding)$.    
+2. **Estensione:** Eva usa questo MAC esistente come **Stato Iniziale** (o IV) per la funzione hash, invece di usare l'IV standard.
+3. **Aggiunta dell'Extra Chunk:** Eva fa processare alla funzione hash un nuovo blocco (in rosso nell'immagine: `Extra chunk` o `msg extension`) partendo da quello stato interrotto.
+4. **Risultato:** La funzione hash produce un nuovo output (in arancione: `Valid MAC for extended message`).
+
+Perché la Sicurezza è rotta?
+Eva ha calcolato correttamente:
+
+$$Nuovo \ MAC = H(Chiave \ || \ M \ || \ Padding \ || \ Estensione)$$
+
+È riuscita a farlo **senza mai conoscere la "Chiave"** . Ha semplicemente ripreso il calcolo da dove il sistema legittimo si era fermato. Per il sistema ricevente, questo nuovo MAC è perfettamente valido perché matematicamente corretto rispetto alla chiave segreta (che era stata "assorbita" nello stato precedente).
+
+#### Sintesi del Problema
+
+L'immagine dimostra che nella costruzione **Secret Prefix**, conoscere l'hash di un messaggio equivale a conoscere lo stato interno della funzione hash. Questo permette a chiunque di aggiungere dati alla fine del messaggio (estenderlo) e calcolare il nuovo MAC valido, violando completamente l' [integrità del sistema](Message%20Authentication%20-%20MAC%20&%20HMAC.md#^4c7369)
+
+Questo è il motivo principale per cui non si usano costruzioni semplici come $H(K || M)$ o $H(M || K)$, ma si utilizza **HMAC**, che con la sua doppia struttura a "sandwich" impedisce sia l'estensione che le collisioni dirette.
 ### 4.2 HMAC: La Soluzione Standard
 
-Per risolvere questi problemi, nel 1996 è stato introdotto HMAC (RFC 2104), standardizzato anche dal NIST.
+Per risolvere questi problemi, nel 1996 è stato introdotto **HMAC** (RFC 2104), standardizzato anche dal NIST.
 
 HMAC utilizza una struttura a due passaggi ("nested") che impedisce gli attacchi di estensione e isola l'uso della chiave .
 
 #### Algoritmo HMAC
 
-HMAC tratta la funzione hash $H$ come una "scatola nera". Definisce due costanti:
-
-- **ipad (inner pad):** $0x36$ ripetuto.
-    
-- **opad (outer pad):** $0x5C$ ripetuto.
-    
-
-La formula è:
-
+HMAC tratta la funzione hash $H$ come una "scatola nera". 
+La formula di HMAC è:
 $$HMAC(K, M) = H((K^+ \oplus opad) || H((K^+ \oplus ipad) || M))$$
 
-Dove $K^+$ è la chiave $K$ riempita con zeri (padding) fino alla dimensione del blocco della funzione hash .
+Dove $K^+$ è la chiave $K$ riempita con zeri (padding) fino alla dimensione del blocco della funzione hash 
+
+![center|600](Pasted%20image%2020251122152525.png)
+
+Le costanti sono:
+
+- **ipad (inner pad):** $0x36$ ripetuto (in bit sarebbe $00110110$)
+- **opad (outer pad):** $0x5C$ ripetuto (in bit sarebbe $01011100$)
+
+![center|600](Pasted%20image%2020251122152712.png)
 
 **Funzionamento Logico:**
 
 1. Si deriva una chiave interna $K_{in} = K^+ \oplus ipad$.
-    
 2. Si calcola l'hash interno: $Hash_{in} = H(K_{in} || M)$.
-    
 3. Si deriva una chiave esterna $K_{out} = K^+ \oplus opad$.
-    
 4. Si calcola l'hash finale: $Tag = H(K_{out} || Hash_{in})$ .
-    
+
+![center|600](HMAC.png)
+
+Spieghiamo la struttura di HMAC:
+- All'inizio abbiamo i chunck del messaggio, a cui attacchiamo come prefisso la InnerKey (ovvero il risultato dell'operazione $K^{+}\oplus ipad$)
+- Il valore della InnerKey viene messo come input del primo CompressionBlock $F$, insieme agli IV, formando così una sorta di IV "cifrati" per il messaggio
+- Poi parte il processo iterativo classico della struttura Merkle-Damgard, fino a che non finiscono i chunk del messaggio
+	- Ora, se la costruzione si fosse fermata qua, saremmo ritornati al problema dell'attacco ad espansione, dato che l'ultimo valore generato, ovvero l'InnerHash è espandibile. Per questo si va avanti aggiungendo roba
+- Si prende poi il risultato di tutto il processo iterativo, e all'output risultate (InnerHash) viene aggiunto un padding, e una OuterKey (che come la corrispettiva precedente, è il risultato dell'operazione $K^{+}\oplus opad$)
+- L'OuterKey viene messa in input al CompressionBlock, insieme agli IV originali
+- Come ultimo passaggio, la concatenazione di InnerHash + Padding viene passata all'ultimo compression block insieme al risultato dell'operazione precedente, ottenendo così l'HMAC per il messaggio
+
+La cosa bella è che la complessità di tutta questa mega operazione viene incrementata di un fattore $2$ rispetto alla costruzione di Merkle-Damgard, ovvero passiamo da $N\to N+2$
 
 Questa struttura "blocca" il risultato dell'hash interno all'interno di un secondo hash, rendendo impossibile l'attacco di estensione della lunghezza. La sicurezza di HMAC è dimostrabile ed è legata alla pseudocasualità della funzione hash sottostante, non necessariamente alla sua resistenza alle collisioni.
 
 ![center](HMAC_struc.png)
 
 
----
-
-## 5. MAC basati su Cifrari a Blocchi (DAA e CMAC)
-
-Stallings (Cap. 12) discute approfonditamente l'uso dei cifrari a blocchi (come AES o DES) per creare MAC. Le slide accennano a questo concetto ma il libro fornisce i dettagli algoritmici.
-
-### 5.1 DAA (Data Authentication Algorithm)
-
-Storicamente, uno dei primi standard (FIPS 113) era il DAA, basato su **DES in modalità CBC (Cipher Block Chaining)**.
-
-- Si cifra il messaggio con DES-CBC usando la chiave $K$ e un Vettore di Inizializzazione (IV) nullo.
-    
-- Il MAC è costituito dall'ultimo blocco del testo cifrato (o parte di esso).
-    
-- **Problema:** DAA ha problemi di sicurezza legati alla dimensione ridotta del blocco DES (64 bit) e limitazioni prestazionali.
-    
-
-### 5.2 CMAC (Cipher-based Message Authentication Code)
-
-Per superare i limiti del DAA e gestire messaggi di lunghezza arbitraria senza vulnerabilità, il NIST ha standardizzato **CMAC** (SP 800-38B). CMAC può essere utilizzato con AES o Triple DES.
-
-Funzionamento di CMAC:
-
-CMAC risolve il problema dell'ultimo blocco di dimensione variabile introducendo due sotto-chiavi ($K_1, K_2$) derivate dalla chiave principale $K$.
-
-1. Viene applicato l'algoritmo di cifratura (es. AES) a un blocco di zeri per generare $L$.
-    
-2. $K_1$ e $K_2$ sono derivati da $L$ tramite operazioni di shift a sinistra e XOR condizionale con una costante (dipendente dal polinomio irriducibile del campo di Galois).
-    
-3. Il messaggio viene diviso in blocchi.
-    
-    - Se l'ultimo blocco è completo, viene messo in XOR con $K_1$ prima dell'ultima cifratura.
-        
-    - Se l'ultimo blocco è incompleto, viene fatto il padding, poi XOR con $K_2$.
-        
-4. Il risultato è l'autenticazione sicura anche per messaggi di lunghezza variabile, prevenendo attacchi di estensione tipici del semplice CBC-MAC.
-    
-
----
-
-## 6. Authenticated Encryption (AE)
-
-Un'evoluzione moderna discussa sia nelle slide che in Stallings (Cap. 12.6) è l'Authenticated Encryption.
-
-Spesso si vuole sia confidenzialità che integrità. Combinare separatamente Cifratura e MAC (es. Encrypt-then-MAC, MAC-then-Encrypt) può portare a errori implementativi fatali (vedi attacchi di oracolo di padding su SSL/TLS).
-
-I modi operativi **AEAD** risolvono questo problema integrando le due funzioni:
-
-1. **CCM (Counter with CBC-MAC):** Combina la modalità CTR per la confidenzialità e CBC-MAC per l'autenticazione. Usato nel WiFi (WPA2).
-    
-2. **GCM (Galois/Counter Mode):** Combina la modalità CTR per la confidenzialità e una funzione di hash basata su campi di Galois (GHASH) per l'autenticazione. È molto efficiente in hardware e software parallelo.
-    
-
----
-
-## 8. Conclusioni e Best Practices
+## 5. Conclusioni e Best Practices
 
 1.  **Non inventare crittografia:** Mai usare funzioni Hash "così come sono" per l'autenticazione o tentare di inserire la chiave in modi creativi (es. $H(M||K)$) .
-    
 2. **Usare Standard:** Utilizzare **HMAC-SHA256** o **AES-CMAC** per l'integrità pura. Utilizzare **AES-GCM** se serve anche confidenzialità.
-    
 3. **Gestione Replay:** Implementare sempre Timestamp o Numeri di Sequenza nei protocolli di autenticazione per prevenire il riutilizzo dei messaggi validi.
-    
 4. **Verifica a Tempo Costante:** La verifica del tag deve avvenire in tempo costante per evitare attacchi laterali (timing attacks) che potrebbero rivelare il contenuto del tag byte per byte.
 
