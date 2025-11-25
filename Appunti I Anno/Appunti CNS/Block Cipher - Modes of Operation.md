@@ -169,11 +169,29 @@ Il contatore viene incrementato per ogni blocco .
 Queste modalità trasformano il block cipher in stream cipher usando un registro a scorrimento.
 
 - **OFB:** L'output del cifrario diventa l'input per il blocco successivo. Il keystream è indipendente dal messaggio. Genera un flusso sincrono.
-    
-    - _Problema:_ Se l'IV è sfortunato, si può entrare in un "ciclo corto" (short cycle), ripetendo il keystream troppo presto .
-        
-- **CFB:** Il _ciphertext_ precedente diventa l'input per il blocco successivo. È "auto-sincronizzante" (se si perde un pezzo di ciphertext, l'errore si propaga solo per pochi blocchi poi si ristabilisce) .
-    
+	- _Problema:_ Se l'IV è sfortunato, si può entrare in un "ciclo corto" (short cycle), ripetendo il keystream troppo presto .  ![center](OFB.png)
+	- La concatenazione di tutti i block cipher crea la nostra keystream, e quindi possiamo semplicemente scordarci i plaintext; infatti se rimuoviamo tutti i plaintext, possiamo prendere le chiavi e i block cipeher e creare una \textbf{catena di cose} che altro non è che una \textbf{sequenza pseudo-random}
+- **CFB:** Il _ciphertext_ precedente diventa l'input per il blocco successivo. È "auto-sincronizzante" (se si perde un pezzo di ciphertext, l'errore si propaga solo per pochi blocchi poi si ristabilisce) . ![center](CFB.png)
+CFB, così come CBC, dipende dai ciphetexts precedenti; mentre il keystream di OFB dipende solamente dagli IV
+
+Analisi CFB:
+- Così come CBC, non è paralellizabile in encryption, ma è parellalizzabile in decryption
+- Ma così come CBC; CFB dipende dai ciphertexts precedenti
+
+Analisi OFB:
+- OFB non può essere parallelizzato ne in encryption, ne in decryption ( la procedura di decryption è quindi seriale, e bisogna passare per ogni blocco, a differenza di CBC dove si può parallelizzare tutto)
+- I dati però possono essere precomputati in fase di ecnryption, accellerando di fatto la procedura
+
+Supponiamo che ogni blocco sia un pacchetto, che modalità conviene usare? CFB o OFB?
+>risposta lezione 9 minuto 1.22.13
+
+Risposta:
+- se avviene un errore, ad un certo punto della cifratura usando CFB, l'errore si propagherà per tutti i blocchi successivi, annullando di fatto l'itero messaggio
+- se invece avviene un errore usando OFB, non c'è nessun problema di propagazione - non possiamo recuperare il blocco, ma fintanto che gli IV sono corretti possiamo comuque continuare a generare tutta la cifratura restante
+
+>[!warning]- Attenzione
+>Per le modalità CBC,CFB e OFB non esiste un teorema che dimostra la sicurezza; ovvero per queste modalità non esiste una dimostrazione di sicurezza effettiva.
+
 
 ---
 
