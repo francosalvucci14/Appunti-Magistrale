@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti CNS/Encryption Basics.md",
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 15 ISTI.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Encryption Basics"
+              "title": "Lezione 15 ISTI"
             }
           }
         ],
@@ -195,14 +195,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "ffc48b493b41eaac",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ISTI/Lezione 16 ISTI.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 15 ISTI.md",
+    "Appunti I Anno/Appunti CNS/Block Cipher - Modes of Operation.md",
+    "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
     "Appunti I Anno/Appunti CNS/Encryption Basics.md",
     "Esercizio Anagrammi.md",
-    "Appunti I Anno/Appunti CNS/Block Cipher - Modes of Operation.md",
     "Appunti I Anno/Appunti CNS/img/OFB.png",
     "Appunti I Anno/Appunti CNS/img/CFB.png",
-    "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
     "Appunti I Anno/Appunti CNS/Stream Ciphers - WEP_RC4.md",
     "Esercizi Tutorato Rossi.md",
     "Appunti I Anno/Appunti CNS/Indice degli appunti CNS.md",
@@ -224,8 +226,6 @@
     "Appunti II Anno/Appunti ML/ML_course_intro.pdf",
     "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 16 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 15 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 14 ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
     "Appunti I Anno/Appunti ISTI/Lezione 7 ISTI.md",
