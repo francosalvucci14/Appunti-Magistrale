@@ -28,6 +28,17 @@ Var(T_{n}^{''})&=\alpha^{2}Var(T_{n})+(1-\alpha)^{2}Var(T_n^{'})+2\alpha Cov(T_{
 Ora, se $(\star)$ fosse $\lt1$, allora tutto il calcolo verrebbe $\lt1$, e di conseguenza risulterebbe che $T_n^{''}$ migliore sia di $T_n$ che $T_{n}^{'}$, ma questo è **assurdo** perchè per ipotesi $T_n$ è B.U.E
 ## Limite inferiore di Cramer-Rao
 
+Un risultato notevole riguarda la determinazione della varianza minima degli stimatori non-distorti, sotto condizioni di regolarità; in particolare, emerge che tale varianza minima coincide con quella degli stimatori di massima verosimiglianza, sotto condizioni di regolarità.
+
+Per tale motivo, gli stimatori di massima verosimiglianza sotto opportune ipotesi (che coprono gran parte delle distribuzioni di uso comune, almeno nei casi più semplici) risultano essere non solo consistenti ed asinotitcamente Gaussiani, ma anche efficienti in senso assoluto.
+
+Vediamo quindi questo risultato, chiamato **Teorema di Cramer-Rao**
+
+>[!teorem]- Teorema di Cramer-Rao
+>Sotto condizioni di regolarità, prendiamo $T_{n}:\mathbb E[T_{n}]=\theta_{0}$
+>Allora:
+>1. (Se stimatore non distorto) : $$Var(T_{n})\geq\frac{1}{I_{n}(\theta_{0})}\quad\text{oppure }\frac{1}{nI_{1}(\theta_{0})}$$
+
 
 
 ---
