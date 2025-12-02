@@ -39,6 +39,8 @@ $$\begin{align*}
 \end{align*}$$
 **dimostrazione risultato**
 
+>ricordiamo che vogliamo stimare $\\beta$, che è un vettore di dimensione $k\times 1$
+
 Notiamo innanzitutto che la funzione di verosimiglianza prende la forma 
 $$
 \begin{align*}
@@ -48,5 +50,86 @@ L(\beta,\sigma^2;\overline{Y},\overline{X})&=\frac{1}{(2\pi\sigma^{2})^{\frac{n}
 \end{align*}
 $$
 
-Le ultime uguaglianze valgono perchè $\sum\limits_{i=1}^{n}\varepsilon_{i}^{2}$ in termini geometrici lo possiamo rappresentare come $\langle\varepsilon,\varepsilon\rangle=||\varepsilon||^{2}\text{ oppure }\varepsilon^{T}\varepsilon,\varepsilon=\overline{Y}-\overline{X}\beta$   
+Le ultime uguaglianze valgono perchè $\sum\limits_{i=1}^{n}\varepsilon_{i}^{2}$ in termini geometrici lo possiamo rappresentare come $\langle\varepsilon,\varepsilon\rangle=||\varepsilon||^{2}\text{ oppure }\varepsilon^{T}\varepsilon,\varepsilon=\overline{Y}-\overline{X}\beta$ 
+
+Passando alla $\log L$ otteniamo:
+$$\begin{align*}
+\log L(\beta,\sigma^{2};\overline{Y},\overline{X})=- \frac{n}{2}\log(2\pi)- \frac{n}{2}\log(\sigma^{2})- \frac{1}{2\sigma^{2}}(\overline{Y}-\overline{X}\beta)^{T}(\overline{Y}-\overline{X}\beta)
+\end{align*}$$
+A questom punto, notiamo che $(\overline{Y}-\overline{X}\beta)^{T}(\overline{Y}-\overline{X}\beta)$ lo possiamo riscrivere come:
+$$
+\begin{align*}
+(\overline{Y}-\overline{X}\beta)^{T}(\overline{Y}-\overline{X}\beta)&=\overline{Y}^{T}\overline{Y}-\underbrace{\overline{Y}^{T}\overline{X}\beta-\beta^{T}\overline{X}^{T}\overline{Y}}_{\text{uguali, uno è la trasposta dell'altro}}+\beta^{T}\overline{X}^{T}\overline{X}\beta\\
+&=\overline{Y}^{T}\overline{Y}-2\overline{Y}^{T}\overline{X}\beta+\beta^{T}\overline{X}^{T}\overline{X}\beta
+\end{align*}
+$$
+A questo punto, il calcolo del gradiente (per il parametro $\beta$ con $\nabla$, per $\sigma^{2}$ con der. parziale) ci da come risultato:
+$$\begin{align*}
+\nabla_{\beta}\log L(\beta,\sigma^2;\overline{Y},\overline{X})&=\nabla_{\beta}\overline{Y}^{T}\overline{Y}-2\overline{Y}^{T}\overline{X}\beta+\beta^{T}\overline{X}^{T}\overline{X}\beta\\
+&=\overline{0}-2\overline{X}^{T}\overline{Y}+2\overline{X}^{T}\overline{X}\beta\\
+\left(\frac{\partial\log L}{\partial \sigma^{2}}\right)&=- \frac{n}{2\sigma^{2}}+ \frac{1}{2\sigma^{4}}(\overline{Y}-\overline{X}\beta)^{T}(\overline{Y}-\overline{X}\beta)
+\end{align*}$$
+Impostando poi queste quantità uguali a 0, otteniamo
+$$\begin{align*}
+&\hat{\beta}_{MLE}=(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\overline{Y}\\
+&\hat{\sigma^{2}}_{MLE}=\frac{1}{n}(\overline{Y}-\overline{X}\beta)^{T}(\overline{Y}-\overline{X}\beta)=\frac{1}{n}(\hat\varepsilon^{T}\hat\varepsilon)
+\end{align*}$$
+Che è proprio quello detto in precedenza $\blacksquare$
+
+**osservazione**:
+
+Lo stimatore $\hat\beta_{MLE}$ è anche noto come **stimatore OLS** (Ordinary Least Squares)
 ## Il rapporto con i teoremi di proiezione
+
+Lo stimatore di massima verosimiglianza nel modello lineare multivariato si presta ad una importante interpretazione usando gli strumenti dell’algebra lineare. 
+
+In particolare, notiamo che il valor medio di $\overline{Y}$ dato $\overline{X}$ è dato da $E[\overline{Y}] =\overline{X}\beta$ ; il valore di è ignoto, ma è naturale definire il valore $\hat{Y} := \overline{X}\hat{\beta}$ come il valore "previsto" per il vettore $\overline{Y}$ sulla base delle stime $\hat{\beta}$ e del valore dei regressori $\overline{X}$.
+
+Analogamente, il vettore degli "errori" $\varepsilon=\overline{Y}-\overline{X}\beta$ si può stimare come $\hat\varepsilon=\overline{Y}-\overline{X}\hat\beta$ 
+Notiamo ora che
+$$\begin{align*}
+\hat{Y}&:=\overline{X}\hat\beta=X(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\overline{Y}=P_{\overline{X}}\overline{Y}\\
+P_{\overline{X}}&:=\overline{X}(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}
+\end{align*}$$
+È immediato verificare che $P_{\overline{X}}$ è una **matrice di proiezione**, cioè simmetrica ed idempotente; infatti:
+$$P_{\overline{X}}^{2}=\overline{X}(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\overline{Y}\overline{X}(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\overline{Y}=\overline{X}(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\overline{Y}$$
+In particolare, l'azione della matrice $P_{\overline{X}}$ (che ha dimensione $n\times n$) corrisponde a proiettare il vettore $\overline{Y}$ sullo spazio vettoriale (**span**) di dimensione $k$ generato dalle colonne di $\overline{X}$ (ricordiamo che queste colonne sono linearmente indipendenti per ipotesi)
+
+Analogamente, abbiamo che :
+$$\begin{align*}
+\hat\varepsilon&=\overline{Y}-\overline{X}\hat\beta=M_{\overline{X}}\overline{Y}\\
+M_{\overline{X}}&=\overline{I}-P_{\overline{X}}=\overline{I}-\overline{X}(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}
+\end{align*}$$
+Anche $M_{\overline{X}}$ è simmetrica ed idempotente:
+$$M_{\overline{X}}=(\overline{I}-P_{\overline{X}})^{2}=\overline{I}-2P_{\overline{X}}+P_{\overline{X}}^{2}=\overline{I}-2P_{\overline{X}}+P_{\overline{X}}=M_{\overline{X}}
+$$
+
+In particolare, l'azione di $M_{\overline{X}}$ consiste nel proiettare $\overline{Y}$ nello spazio ortogonale a quello generato dalle colonne di $\overline{X}$
+Questo ha alcune conseguenze importanti;si ha infatti che 
+$$M_{\overline{X}}P_{\overline{X}}=P_{\overline{X}}M_{\overline{X}}=\textbf{0}$$
+dove con $\textbf{0}$ intendiamo la matrice $n\times n$ costituita da tutti zeri.
+Come ulteriore conseguenza notiamo che 
+$$\overline{X}^{T}\hat\varepsilon=0$$
+ed in particolare, il vettore dei residui stimati è ortogonale a qualsiasi vettore che giacca nello spazio generato dalle colonne di $\overline{X}$
+
+Possiamo ora enunciare le seguenti ulteriori proprietà delle matrici $M_{\overline{X}},P_{\overline{X}}$
+
+>[!teorem]- Lemma
+>Le matrici $P_{\overline{X}},M_{\overline{X}}$ hanno tutti autovalori pari a zero o uno e rango $k,n-k$ rispettivamente
+
+**dimostrazione**
+
+Poichè le matrici sono reali e simmetriche, possiamo diagonalizzarle come:
+$$\begin{align*}
+&P_\overline{X}=Q\Lambda Q^{T},\quad QQ^{T}=Q^{T}Q=I_{n}\\
+&\Lambda=\begin{pmatrix}\lambda_{1}&0&\dots&0\\0&\lambda_{2}&\dots&0\\\dots&0&\dots&0\\0&\dots&0&\lambda_{n}\end{pmatrix}
+\end{align*}$$
+Si ha allora che 
+$$P_\overline{X}^{2}=Q\Lambda Q^{T}Q\Lambda Q^{T}=Q\Lambda^{2}Q^{T}=Q\Lambda Q^{T}$$
+da cui segue necessariamente $\lambda_{i}=0,1$ per $i=1,2,\dots,n$; ragionamento identico si applica al $M_{\overline{X}}$
+
+Per quello che riguarda il rango, notiamo che esso eguaglia il numero di autovalori diversi da zero (con molteplicità), quindi nel caso di matrici di proiezioni la traccia  (cioè la somma di autovalori, uguale al numero di quelli che valgono $1$)
+Ricordando che $Tr(AB)=Tr(BA)$, possiamo scrivere
+$$Tr(P_\overline{X})=Tr\left(\overline{X}(\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\right)=Tr\left((\overline{X}^{T}\overline{X})^{-1}\overline{X}^{T}\overline{X}\right)=Tr(I_{k})=k=Rg(P_\overline{X})$$
+La dimostrazione per $M_{\overline{X}}$ è identica $\blacksquare$
+
