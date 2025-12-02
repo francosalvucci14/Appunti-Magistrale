@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 8 ML - Probabilistic Classification (generative models).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Indice degli appunti ISTI"
+              "title": "Lezione 8 ML - Probabilistic Classification (generative models)"
             }
           }
         ]
@@ -166,11 +166,12 @@
   },
   "active": "d59d04adfeb9705f",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251202141800.png",
+    "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 19 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 17 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 16 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 18 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 9 ISTI.md",
     "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti ML/Lezione 8 ML - Probabilistic Classification (generative models).md",
@@ -197,7 +198,6 @@
     "Appunti I Anno/Appunti ISTI/Lezione 10 ISTI.md",
     "Appunti I Anno/Appunti CNS/Encryption Basics.md",
     "Appunti I Anno/Appunti CNS/Block Cipher - Modes of Operation.md",
-    "Appunti I Anno/Appunti CNS/Message Authentication - MAC & HMAC.md",
     "Appunti I Anno/Appunti CNS/img/OFB.png",
     "Appunti I Anno/Appunti CNS/img/CFB.png",
     "Appunti I Anno/Appunti CNS/img/CBC3.png",
