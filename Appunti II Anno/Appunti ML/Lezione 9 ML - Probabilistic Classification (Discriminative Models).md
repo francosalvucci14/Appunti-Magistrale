@@ -59,6 +59,19 @@ Allora, viene derivata una regressione logistica
 $$h(\mathbf{x})=\frac{1}{1+e^{-\overline{w}^{T}\overline{x}}}$$
 Abbiamo quindi cross-entropy
 ## GLM and Categorical Distribution
+
+Vediamo i tre punti
+1. Assumiamo $t\in\{1,\dots,K\}$ e $p(t|\mathbf{x})=\prod_{i=1}^{K}\pi_{i}(\mathbf{x})^{t_i}$ (dove $t_i=1$ se $t_{i}$, $t_{i}=0$ altrimenti) è una distrubuzione Categorica con probabilità $\pi_{1}(\mathbf{x}),\dots,\pi_K(\mathbf{x})$: il parametro naturale è quindi $\theta(\mathbf{x})=(\theta_1(\mathbf{x}),\dots,\theta_{K}(\mathbf{x}))^{T}$, con $$\theta_{i}(\mathbf{x})=\log\frac{\pi_i(\mathbf{x})}{\pi_K(\mathbf{x})}=\log\frac{\pi_i(\mathbf{x})}{1-\sum\limits_{j=1}^{K-1}\pi_j(\mathbf{x})}$$e $\mathbf{u}(t)=(t_{1},\dots,t_{K})^{T}$ è la rappresentazione $1$-of-$K$ di $t$
+2. Vogliamo predirre $\mathbb E[u_{i}(t)|\mathbf{x}]=p(t=i|\mathbf{x})$ come $$h_{i}(\mathbf{x})=p(t=i|\mathbf{x})=\pi_i(\mathbf{x})=\pi_K(\mathbf{x})e^{\theta_{i}(\mathbf{x})}$$e dato che $\sum\limits_{j=1}^{K}\pi_i(\mathbf{x})=\pi_K(\mathbf{x})\sum\limits_{j=1}^{K}e^{\theta_{i}(\mathbf{x})}=1$, esce fuori che $$\pi_{K}(\mathbf{x})=\frac{1}{\sum\limits_{i=1}^{K}e^{\theta_{i}(\mathbf{x})}}\space\land\space\pi_{i}(\mathbf{x})=\frac{e^{\theta_{i}(\mathbf{x})}}{\sum\limits_{i=1}^{K}e^{\theta_{i}(\mathbf{x})}}$$
+3. Assumiamo che tutti i $\theta_i(\mathbf{x})$ siano combinazioni lineari delle feature, quindi $\theta_{i}(\mathbf{x})=\overline{w}_{i}^{T}\overline{x}$
+
+Allora, otteniamo una softmax regression
+$$\begin{align*}
+&h_{i}(\mathbf{x})=\frac{e^{\overline{w}_{i}^{T}\overline{x}}}{\sum\limits_{j=1}^{K}e^{\overline{w}_{j}^{T}\overline{x}}}\quad i=1,\dots,K-1\\
+&h_{K}(\mathbf{x})=\frac{1}{\sum\limits_{j=1}^{K}e^{\overline{w}_{j}^{T}\overline{x}}}
+\end{align*}$$
 # Discriminative Approach
+
+
 
 [^1]: it.wikipedia.org/wiki/Isosuperficie
