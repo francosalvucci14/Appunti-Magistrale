@@ -128,7 +128,10 @@ Una volta calcolato il valore ottimale $\theta^{\star}_{ML}$, è possibile effet
 $$p(\overline{x}|X)=\int_{\theta}p(x|\theta)p(\theta|X)d\theta\approx\int_{\theta}p(\overline{x}|\theta^{\star}_{ML})p(\theta|X)d\theta=p(\overline{x}|\theta^{\star}_{ML})\int_{\theta}p(\theta|X)d\theta=p(\overline{x}|\theta^{\star}_{ML})$$
 e la distribuzione condizionata $t|\overline{x}$ del valore target associato
 
-$$p(\hat{t}|\overline{x},X,t)=\int_{\theta}p(\hat{t}|x,\theta)p(\theta|X,t)d\theta\approx\int_{\theta}p(\hat{t}|\overline{x},\theta^{\star}_{ML})p(\theta|X)d\theta=p(\overline{x}|\theta^{\star}_{ML})\int_{\theta}p(\theta|X,t)d\theta=p(\hat{t}|\overline{x},\theta^{\star}_{ML})$$
+$$\begin{align*}
+p(\hat{t}|\overline{x},X,t)&=\int_{\theta}p(\hat{t}|x,\theta)p(\theta|X,t)d\theta\\
+&\approx\int_{\theta}p(\hat{t}|\overline{x},\theta^{\star}_{ML})p(\theta|X)d\theta=p(\overline{x}|\theta^{\star}_{ML})\int_{\theta}p(\theta|X,t)d\theta=p(\hat{t}|\overline{x},\theta^{\star}_{ML})
+\end{align*}$$
 Vediamo alcuni esempi
 
 **Esempio 1**
@@ -156,7 +159,11 @@ come caso comune, vale che $P(\theta)=\frac{\gamma}{2}||\theta||^{2}$, dove $\ga
 L'inferenza tramite il massimo a posteriori (MAP) è simile al ML, ma $\theta$ è ora considerato come una variabile casuale (seguendo un approccio bayesiano), la cui distribuzione deve essere derivata dalle osservazioni, tenendo conto anche delle conoscenze precedenti (distribuzione a priori). 
 
 Il valore del parametro che massimizza la funzione $$p(\theta|\mathcal T)=\frac{p(\mathcal T|\theta)p(\theta)}{p(\mathcal T)}$$viene quindi calcolato come:
-$$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\space p(\theta|\mathcal T)=\underset{\theta}{\arg\max}\space p(\mathcal T|\theta)p(\theta)=\underset{\theta}{\arg\max}\space L(\theta|\mathcal T)p(\theta)=\underset{\theta}{\arg\max}\space (l(\theta|\mathcal T)+\ln p(\theta))$$
+$$\begin{align*}
+\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\space p(\theta|\mathcal T)&=\underset{\theta}{\arg\max}\space p(\mathcal T|\theta)p(\theta)\\
+&=\underset{\theta}{\arg\max}\space L(\theta|\mathcal T)p(\theta)\\
+&=\underset{\theta}{\arg\max}\space (l(\theta|\mathcal T)+\ln p(\theta))
+\end{align*}$$
 che risulta in $$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\left(\sum\limits_{i=1}^{n}\ln p(x_{i}|\theta)+\ln p(\theta)\right)$$
 oppure 
 $$\theta^{\star}_{MAP}=\underset{\theta}{\arg\max}\left(\sum\limits_{i=1}^{n}\ln p(t_i|x_{i},\theta)+\ln p(\theta)\right)$$
