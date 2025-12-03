@@ -116,6 +116,58 @@ a(\textbf{x})&=\log\left(\frac{p(\textbf{x}|C_{1})p(C_{1})}{p(\textbf{x}|C_{2})p
 &+\frac{1}{2}\log\frac{|\Sigma_{2}|}{|\Sigma_{1}|}+\log\left(\frac{p(C_{1})}{p(C_{2})}\right)
 \end{align*}$$
 
+Applicando le stesse considerazioni fatte in precedenza, otteniamo che i confini decisionali risultano essere:
+$$\left((\textbf{x}-\mu_{2})^{T}\Sigma^{-1}_2(\textbf{x}-\mu_{2})-(\textbf{x}-\mu_{1})^{T}\Sigma^{-1}_{1}(\textbf{x}-\mu_{1})\right)\\
++\log\frac{|\Sigma_{2}|}{|\Sigma_{1}|}+2\log\left(\frac{p(C_{1})}{p(C_{2})}\right)=0$$
+
+Le classi sono quindi separate da al più una superficie quadratica
+Può essere dimostrato che le superfici decisionali sono al più quadratiche
+
+**esempio**
+
+A sx: $3$ classi, modellate da Gaussiane con matrici di covarianza differenti
+A dx: distribuzione a posteriori delle classi, con superfici decisionali
+
+![center|500](Pasted%20image%2020251203143443.png)
+
 ### GDA e ML
+
+Le distribuzioni condizionali delle classi $p(\textbf{x}|C_{k})$ possono essere derivate partendo dal training set usando la stima di massima verosimiglianza
+
+Per semplicità, assumiamo $K=2$ e stessa matrice $\Sigma$ per le classi
+Dobbiamo quindi stimare $\mu_{1},\mu_{2},\Sigma,\pi=p(C_{1})(p(C_{2})=1-\pi)$
+
+Prendiamo ora un training set $\mathcal T$: esso include $n$ elementi $(\textbf{x}_{i},t_{i})$ con 
+$$t_{i}=\begin{cases}0&\textbf{x}_{i}\in C_{2} \\
+1&\textbf{x}_{i}\in C_{1}\end{cases}$$
+Se $\textbf{x}\in C_{1}$ allora $$p(\textbf{x},C_{1})=p(\textbf{x}|C_{1})p(C_{1})=\pi\cdot\mathcal N(\textbf{x}|\mu_{1},\Sigma)$$
+In maniera del tutto analoga, se $\textbf{x}\in C_{2}$ allora $$p(\textbf{x},C_{2})=p(\textbf{x}|C_{2})p(C_{2})=(1-\pi)\cdot\mathcal N(\textbf{x}|\mu_{2},\Sigma)$$
+
+La verosimiglianza del training set $\mathcal T$ è:
+$$L(\pi,\mu_{1},\mu_{2},\Sigma|\mathcal T)=\prod_{i=1}^{n}(\pi\cdot\mathcal N(\textbf{x}_{i}|\mu_{1},\Sigma))^{t_{i}}(1-\pi)\cdot\mathcal N(\textbf{x}_{i}|\mu_{2},\Sigma)^{1-t_{i}}$$
+
+La log-verosimiglianza corrisponderte è:
+$$\begin{align*}
+l(\pi,\mu_{1},\mu_{2},\Sigma|\mathcal T)&=\sum\limits_{i=1}^n(t_{i}\log\pi+t_i\log(\mathcal N(\textbf{x}|\mu_{1},\Sigma)))\\
+&+\sum\limits_{i=1}^n((1-t_{i})\log(1-\pi)+(1-t_i)\log(\mathcal N(\textbf{x}|\mu_{2},\Sigma)))
+\end{align*}$$
+Derivando rispetto al parametro $\pi$ otteniamo che
+$$\frac{\partial l}{\partial\pi}=\frac{\partial}{\partial\pi}\sum\limits_{i=1}^{n}(t_{i}\log\pi+(1-t_{i})\log(1-\pi))=\sum\limits_{i=1}^{n}\left(\frac{t_{i}}{\pi}-\frac{(1-t_{i})}{1-\pi}\right)=\frac{n_{1}}{\pi}-\frac{n_{2}}{1-\pi}$$
+che è uguale a $0$ quando $$\pi=\frac{n_{1}}{n}$$
+Il massimo rispetto ai parametri $\mu_1(\mu_{2})$ è ottenuto calcolando il gradiente
+$$\nabla_{\mu_{1}}l=\nabla_{\mu_{1}}\sum\limits_{i=1}^{n}t_{i}\log(\mathcal N(\textbf{x}_{1}|\mu_{1},\Sigma))=\Sigma^{-1}\sum\limits_{i=1}^{n}t_{i}(\textbf{x}_{i}-\mu_{1})$$
+di conseguenza, otteniamo $\nabla_{\mu_{1}}l=\textbf{0}$ quando 
+$$\sum\limits_{i=1}^{n}t_{i}\textbf{x}_i=\sum\limits_{i=1}^{n}t_{i}\mu_{1}$$
+quindi, otteniamo che 
+$$\begin{align*}
+&\mu_{1}=\frac{1}{n_{1}}\sum\limits_{\textbf{x}_{i}\in C_{1}}\textbf{x}_{i}\\
+&\mu_{2}=\frac{1}{n_{2}}\sum\limits_{\textbf{x}_{i}\in C_{2}}\textbf{x}_{i}
+\end{align*}$$
+Massimizzare la log-verosimiglianza rispetto al parametro $\Sigma$ ci fa ottenere:
+$$\Sigma=\frac{n_1}{n}\textbf{S}_1+\frac{n_2}{n}\textbf{S}_2$$
+Dove:
+- $\textbf{S}_1=\frac{1}{n_1}\sum\limits_{\textbf{x}_{i}\in C_{1}}(\textbf{x}_i-\mu_{1})(\textbf{x}_i-\mu_{1})^{T}$
+- $\textbf{S}_2=\frac{1}{n_2}\sum\limits_{\textbf{x}_{i}\in C_{2}}(\textbf{x}_i-\mu_{2})(\textbf{x}_i-\mu_{2})^{T}$
+
 
 [^1]: notiamo che la condizione di uguaglianza delle due probabilità risulta essere la **condizione di massima incertezza del modello**
