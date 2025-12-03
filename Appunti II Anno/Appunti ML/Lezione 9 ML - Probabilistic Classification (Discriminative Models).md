@@ -53,7 +53,11 @@ Per le distribuzioni Gaussiane otteniamo quindi il MSE (Mean Square Error, ovver
 Vediamo i tre punti
 1. Assumiamo che $t\in\{0,1\}$ e $p(t|\mathbf{x})=\pi(\mathbf{x})^{t}(1-\pi(\mathbf{x}))^{1-t}$ è una distribuzione di Bernoulli con parametro $\pi(\mathbf{x})$; allora il parametro naturale $\theta(\mathbf{x})$ risulterà essere $$\theta(\mathbf{x})=\log\frac{\pi(\mathbf{x})}{1-\pi(\mathbf{x})}$$e $\mathbf{u}(t)=t$
 2. Vogliamo predirre il valore di $\mathbb E[\mathbf{u}(t)|\mathbf{x}]=\mathbb E[t|\mathbf{x}]=p(t=1|\mathbf{x})=\pi(\mathbf{x})$ come $h(\mathbf{x})$, allora $$h(\mathbf{x})=\frac{1}{1+e^{-\theta(\mathbf{x})}}$$
-3. 
+3. Assumiamo che $\theta_{1}(\mathbf{x})$ è una combinazione lineare delle feature, ovvero $\theta_{1}(\mathbf{x})=\overline{w}^{T}\overline{x}$
+
+Allora, viene derivata una regressione logistica
+$$h(\mathbf{x})=\frac{1}{1+e^{-\overline{w}^{T}\overline{x}}}$$
+Abbiamo quindi cross-entropy
 ## GLM and Categorical Distribution
 # Discriminative Approach
 

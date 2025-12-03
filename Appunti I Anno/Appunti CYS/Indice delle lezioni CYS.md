@@ -1,6 +1,6 @@
 - [Lezione 1 CYS Talamo](Lezione%201%20CYS%20Talamo.md)
 - [Lezione 2 CYS Talamo](Lezione%202%20CYS%20Talamo.md)
-- [Lezione 3 CYS Talamo](Lezione%203%20CYS%20Talamo.md)
+- [Lezione 3](lez3cyber.pdf)
 - [lezione_20_11_cybersecurity](lezione_20_11_cybersecurity.pdf)
-- [Lezione 5 CYS Talamo](Lezione%205%20CYS%20Talamo.md)
+- [Lezione 5](Lezione%205.pdf)
 - 
