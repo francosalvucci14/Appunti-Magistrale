@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 9 ML - Probabilistic Classification (Discriminative Models).md",
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 9 ML - Probabilistic Classification (Discriminative Models)"
+              "title": "Lezione 20 ISTI"
             }
           }
         ]
@@ -164,8 +164,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "d59d04adfeb9705f",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 19 ISTI.md",
+    "Appunti II Anno/Appunti ML/Lezione 9 ML - Probabilistic Classification (Discriminative Models).md",
     "Appunti I Anno/Appunti CYS/Lezione4.pdf",
     "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
     "Appunti I Anno/Appunti CYS/Certificato di Validazione e Verifica.pdf",
@@ -176,7 +181,6 @@
     "Appunti I Anno/Appunti CYS/Lezione 2 CYS Talamo.md",
     "Appunti I Anno/Appunti CYS/Lezione 3 CYS Talamo.md",
     "Appunti I Anno/Appunti CYS/Lezione4",
-    "Appunti II Anno/Appunti ML/Lezione 9 ML - Probabilistic Classification (Discriminative Models).md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti II Anno/Appunti ML/Lezione 5 ML - Linear Regression.md",
     "Appunti II Anno/Appunti ML/Lezione 6 ML - Non Parametric Regression.md",
@@ -190,7 +194,6 @@
     "Appunti II Anno/Appunti ML/img/Pasted image 20251203143443.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251202141800.png",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 19 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 17 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 16 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 18 ISTI.md",
@@ -199,11 +202,8 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab7/ml_lab7_2025_2026_decision_tree.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab7",
     "Appunti II Anno/Appunti ML/Code-labs/lab6/ML_Lab6_2_2025_2026_Logistic_Regression.ipynb",
-    "Appunti II Anno/Appunti ML/Code-labs/lab6/ml_lab6_2_2025_2026_logistic_regression.py",
     "Appunti I Anno/Appunti CYS/Lezione 2.2 CYS Arcieri.md",
     "Appunti I Anno/Appunti CYS/Lezione 1 CYS Talamo.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 15 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 14 ISTI.md",
     "Appunti I Anno/Appunti CNS/img/OFB.png",
     "Appunti I Anno/Appunti CNS/img/CFB.png",
     "Appunti I Anno/Appunti CNS/img/CBC3.png",

@@ -39,7 +39,7 @@ $$\begin{align*}
 \end{align*}$$
 **dimostrazione risultato**
 
->ricordiamo che vogliamo stimare $\\beta$, che è un vettore di dimensione $k\times 1$
+>ricordiamo che vogliamo stimare $\beta$, che è un vettore di dimensione $k\times 1$
 
 Notiamo innanzitutto che la funzione di verosimiglianza prende la forma 
 $$
