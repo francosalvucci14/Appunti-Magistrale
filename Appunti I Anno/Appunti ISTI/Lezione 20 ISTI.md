@@ -66,10 +66,10 @@ $$\begin{align*}
 \end{align*}$$
 Perchè queste uguaglianze sono verificate?
 Perchè succede la seguente cosa:
-$$X\sim N(\mu,\Sigma)\to AX\sim N(A\mu,A\Sigma A^{T})$$
+$$X\sim N(\mu,\Sigma)\overbrace{\to}^{\text{molt. X per A(matrice o vett.)}} AX\sim N(A\mu,A\Sigma A^{T})$$
 Nel nostro caso quindi otteniamo che 
 $$\varepsilon\sim N(0,I)\to Q\varepsilon\sim N(0,QIQ^{T}=I)$$
-Quindi, **se ho un vettore Gaussiano standard e lo ruoto, non succede nulla. Rioggento un'altra Gaussiana identica alla precedente**
-Dato che vale questa cosa, posso riscrivere $Q^{T}\varepsilon=u,\varepsilon^{T}Q=u^{T}$
-
+Quindi, **se ho un vettore Gaussiano standard e lo ruoto, non succede nulla. Riottengo un'altra Gaussiana identica alla precedente**
+Dato che vale questa cosa, posso riscrivere tranquillamente che $$Q^{T}\varepsilon=u,\varepsilon^{T}Q=u^{T}$$
 # Stimatore GLS (Generalized Least Square)
+
