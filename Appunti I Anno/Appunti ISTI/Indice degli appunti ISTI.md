@@ -19,4 +19,5 @@ Inferenza Statistica e Teoria dell'informazione
 - [Lezione 17 ISTI](Lezione%2017%20ISTI.md)
 - [Lezione 18 ISTI](Lezione%2018%20ISTI.md)
 - [Lezione 19 ISTI](Lezione%2019%20ISTI.md)
+- [Lezione 20 ISTI](Lezione%2020%20ISTI.md)
 - 
