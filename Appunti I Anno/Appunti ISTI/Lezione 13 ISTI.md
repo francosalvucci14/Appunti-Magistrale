@@ -48,7 +48,7 @@ Vale anche il seguente lemma
 >[!teorem]- Lemma 2
 >Sotto le condizioni di regolarità, vale che (sempre con $p=1$) $$\mathbb E\left[\left(\frac{\partial\log L}{\partial\theta}\right)^{2}\right]=-\mathbb E\left[\frac{\partial^{2}\log L}{\partial\theta^{2}}\right]$$
 >Se $p\gt1$ otteniamo che 
->$$\mathbb E[(\nabla\log L)(\nabla\log L)^{-1}]=-\mathbb E[\mathcal H\log L]$$
+>$$\mathbb E[(\nabla\log L)(\nabla\log L)^{T}]=-\mathbb E[\mathcal H\log L]$$
 >dove $\mathcal H$ è definita essere la **matrice Hessiana** [^1]
 >In qualunque caso, ovvero sia $p=1$ che $p\gt1$, sia la derivata secoda che l'Hessiana sono dette **matrice di informazione**
 
