@@ -8,4 +8,4 @@ Indice delle lezioni di laboratorio, che mostrano nella pratica come applicare l
 - [Lab5 - Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis](Code-labs/lab5/Classificatori%20Lineari%20-%20Percettrone,%20Least%20Squares%20e%20Gaussian%20Discriminant%20Analysis.md)
 - [Lab6 - Generalized Linear Models e Famiglia Esponenziale](Code-labs/lab6/Generalized%20Linear%20Models%20e%20Famiglia%20Esponenziale.md)
 - [Lab7 - Decision Trees](Code-labs/lab7/Decision%20Trees.md)
-- 
+- [Lab8 - SVM](Code-labs/lab8/SVM.md)

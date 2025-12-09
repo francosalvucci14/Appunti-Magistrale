@@ -8,21 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d59d04adfeb9705f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Appunti II Anno/Appunti ML/Code-labs/lab8/SVM.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "SVM"
-            }
-          },
-          {
             "id": "a75a0fb03614ade4",
             "type": "leaf",
             "state": {
@@ -94,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 367.5026054382324
   },
   "right": {
     "id": "770b9c2c4fc00941",
@@ -179,25 +164,31 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d59d04adfeb9705f",
+  "active": "2f460895308e6293",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti ISTI/Lezione 13 ISTI.md",
+    "Appunti I Anno/Appunti CYS/Lezione4.pdf",
+    "Appunti I Anno/Appunti CYS/lez3cyber.pdf",
+    "Appunti I Anno/Appunti CYS/Lezione 2 CYS Talamo.md",
+    "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
+    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
+    "Appunti II Anno/Appunti ML/Lezione 13 ML - NonParametric Classification.md",
+    "Appunti II Anno/Appunti ML/Lezione 12 ML - SVM.md",
+    "Appunti II Anno/Appunti ML/Lezione 11 ML - Probabilistic Learning p.3.md",
+    "Appunti II Anno/Appunti ML/Lezione 10 ML - Decision Trees.md",
+    "Appunti II Anno/Appunti ML/Lezione 9 ML - Probabilistic Classification (Discriminative Models).md",
     "Appunti II Anno/Appunti ML/Code-labs/lab8/SVM.md",
+    "Appunti I Anno/Appunti ISTI/Lezione 13 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab7/Decision Trees.md",
     "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 19 ISTI.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox.md",
-    "Appunti II Anno/Appunti ML/Lezione 9 ML - Probabilistic Classification (Discriminative Models).md",
-    "Appunti I Anno/Appunti CYS/Lezione4.pdf",
-    "Appunti I Anno/Appunti CYS/Indice delle lezioni CYS.md",
     "Appunti I Anno/Appunti CYS/Certificato di Validazione e Verifica.pdf",
     "Appunti I Anno/Appunti CYS/Lezione 5 CYS Talamo.md",
     "Appunti I Anno/Appunti CYS/Lezione 5.pdf",
-    "Appunti I Anno/Appunti CYS/lez3cyber.pdf",
     "Appunti I Anno/Appunti CYS/lezione_20_11_cybersecurity.pdf",
-    "Appunti I Anno/Appunti CYS/Lezione 2 CYS Talamo.md",
     "Appunti I Anno/Appunti CYS/Lezione 3 CYS Talamo.md",
     "Appunti I Anno/Appunti CYS/Lezione4",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
@@ -206,15 +197,8 @@
     "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md",
     "Appunti II Anno/Appunti ML/Lezione 8 ML - Probabilistic Classification (generative models).md",
-    "Appunti II Anno/Appunti ML/Lezione 7 ML - Linear Classification.md",
-    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251203143443.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251202141800.png",
-    "Appunti I Anno/Appunti ISTI/Lezione 17 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 16 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 18 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 9 ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab7/ML_Lab7_2025_2026_Decision_Tree.ipynb",
     "Appunti II Anno/Appunti ML/Code-labs/lab7/ml_lab7_2025_2026_decision_tree.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab7",

@@ -10,4 +10,8 @@
 - [Lezione 7 ML - Linear Classification](Lezione%207%20ML%20-%20Linear%20Classification.md)
 - [Lezione 8 ML - Probabilistic Classification (generative models)](Lezione%208%20ML%20-%20Probabilistic%20Classification%20(generative%20models).md)
 - [Lezione 9 ML - Probabilistic Classification (Discriminative Models)](Lezione%209%20ML%20-%20Probabilistic%20Classification%20(Discriminative%20Models).md)
+- [Lezione 10 ML - Decision Trees](Lezione%2010%20ML%20-%20Decision%20Trees.md)
+- [Lezione 11 ML - Probabilistic Learning p.3](Lezione%2011%20ML%20-%20Probabilistic%20Learning%20p.3.md)
+- [Lezione 12 ML - SVM](Lezione%2012%20ML%20-%20SVM.md)
+- [Lezione 13 ML - NonParametric Classification](Lezione%2013%20ML%20-%20NonParametric%20Classification.md)
 
