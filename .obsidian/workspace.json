@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 13 ISTI.md",
+                "file": "Appunti II Anno/Appunti ML/Code-labs/lab8/SVM.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 13 ISTI"
+              "title": "SVM"
             }
           },
           {
@@ -181,6 +181,8 @@
   },
   "active": "d59d04adfeb9705f",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti ISTI/Lezione 13 ISTI.md",
+    "Appunti II Anno/Appunti ML/Code-labs/lab8/SVM.md",
     "Appunti I Anno/Appunti ISTI/Indice degli appunti ISTI.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab7/Decision Trees.md",
     "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
@@ -217,8 +219,6 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab7/ml_lab7_2025_2026_decision_tree.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab7",
     "Appunti II Anno/Appunti ML/Code-labs/lab6/ML_Lab6_2_2025_2026_Logistic_Regression.ipynb",
-    "Appunti I Anno/Appunti CYS/Lezione 2.2 CYS Arcieri.md",
-    "Appunti I Anno/Appunti CYS/Lezione 1 CYS Talamo.md",
     "Appunti I Anno/Appunti CNS/img/OFB.png",
     "Appunti I Anno/Appunti CNS/img/CFB.png",
     "Appunti I Anno/Appunti CNS/img/CBC3.png",
