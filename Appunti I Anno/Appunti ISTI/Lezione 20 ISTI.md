@@ -73,3 +73,38 @@ Quindi, **se ho un vettore Gaussiano standard e lo ruoto, non succede nulla. Rio
 Dato che vale questa cosa, posso riscrivere tranquillamente che $$Q^{T}\varepsilon=u,\varepsilon^{T}Q=u^{T}$$
 # Stimatore GLS (Generalized Least Square)
 
+Possiamo ora generalizzare il modello che abbiamo studiato sinora, immaginando che i residui $\varepsilon$ abbiano una struttura di dipendenza molto più complessa di variabili indipendenti
+
+In particolare, ipotizziamo che $\mathbb E[\varepsilon\varepsilon^{T}]=\Omega$ con matrice positiva definita di rango (pieno) $n$
+
+La funzione di verosimiglianza prende quindi la forma 
+$$L(\beta;Y,X)=\frac{1}{(2\pi)^{n}}\frac{1}{\sqrt{det(\Omega)}}e^{-\frac{1}{2}\left[(Y-X\beta)^{T}\Omega^{-\frac{1}{2}}(Y-X\beta)^{T}\right]}$$
+Potremmo procedere come il caso ordinario, ma c'è una strategia più semplice
+
+La matrice $\Omega$ si può diagonalizzare come $\Omega=Q\Lambda_{\Omega}Q^{T}$, per qualche matrice ortonormale $Q$ che non corrisponde a quelle che abbiamo introdotto prima
+
+Possiamo definire quindi $\Omega^{-\frac{1}{2}}=Q\Lambda_{\Omega}^{-\frac{1}{2}}Q^{T}$, con la proprietà che:
+$$\begin{align*}
+\Omega^{-\frac{1}{2}}\Omega\Omega^{-\frac{1}{2}}&=Q\Lambda_{\Omega}^{-\frac{1}{2}}Q^{T}Q\Lambda_{\Omega}Q^{T}Q\Lambda_{\Omega}^{-\frac{1}{2}}Q^{T}\\
+&=Q\Lambda_{\Omega}^{-\frac{1}{2}}\Lambda_{\Omega}\Lambda_{\Omega}^{-\frac{1}{2}}Q^{T}\\
+&=QQ^{T}\\
+&=I_{n}
+\end{align*}$$
+Possiamo quindi definire il vettore $\tilde\varepsilon=\Omega^{- \frac{1}{2}}\varepsilon$, che ha matrice di varianza/covarianza pari all'identità
+Quindi, possiamo riscrivere che
+$$Y=X\beta+\varepsilon\to\Omega^{- \frac{1}{2}}Y=\Omega^{- \frac{1}{2}}X\beta+\Omega^{- \frac{1}{2}}\varepsilon\to\tilde{Y}=\tilde{X}\beta+\tilde{\varepsilon}$$
+con 
+- $\tilde{Y}=\Omega^{- \frac{1}{2}}Y$
+- $\tilde{X}=\Omega^{- \frac{1}{2}}X$
+- $\tilde\varepsilon=\Omega^{- \frac{1}{2}}\varepsilon$
+
+Lo stimatore diventa quindi 
+$$\tilde\beta_{GLS}=(\tilde{X}^{T}\tilde{X})^{-1}\tilde{X}\tilde{Y}=(X^{T}\Omega^{-1}X)^{-1}X\Omega^{-1}Y$$
+che è uno stimatore **non distorto** con legge Gaussiana e matrice di varianza e covarianza pari a 
+$$\mathbb E[(\tilde\beta_{GLS}-\beta)(\tilde\beta_{GLS}-\beta)^{T}]=\Omega^{-1}$$
+
+**osservazione** (non serve per l'esame)
+
+Lo stimatore GLS può essere visto come i coefficienti di proiezione su un sottospazioni generato dalle colonne di X quando la proiezione viene effettuata con una metrica *Riemanniana* [^1] indotta dalla matrice positiva definita $\Omega^{-1}$
+
+[^1]: https://it.wikipedia.org/wiki/Variet%C3%A0_riemanniana
