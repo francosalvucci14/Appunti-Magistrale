@@ -30,7 +30,7 @@ Otteniamo quindi:
 $$p(C_{1}|\textbf{x})=\frac{1}{1+e^{-a(\textbf{x})}}=\sigma(a(\textbf{x}))\quad p(C_{2}|\textbf{x})=1-P(C_{1}|\textbf{x})=\frac{1}{1+e^{a(\textbf{x})}}$$
 $\sigma(x)$ è la **funzione logistica** (detta anche **sigmoide**)
 
-![center|500](Pasted%20image%2020251202141800.png)
+![center|500](img/Pasted%20image%2020251202141800.png)
 
 Di seguito alcune proprietà utili della funzione sigmoide:
 1. $\sigma(-x)=1-\sigma(x)$
@@ -128,7 +128,7 @@ Può essere dimostrato che le superfici decisionali sono al più quadratiche
 A sx: $3$ classi, modellate da Gaussiane con matrici di covarianza differenti
 A dx: distribuzione a posteriori delle classi, con superfici decisionali
 
-![center|500](img/Pasted%20image%2020251203143443.png)
+![center|500](img/img/Pasted%20image%2020251203143443.png)
 
 ### GDA e ML
 

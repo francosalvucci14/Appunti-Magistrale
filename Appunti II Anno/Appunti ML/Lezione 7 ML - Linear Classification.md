@@ -61,7 +61,7 @@ Funzioni discriminanti lineare in classificazione binaria
 - Per ogni $\mathbf x,h(\mathbf x;\mathbf w, b) =\mathbf w^T\mathbf x + b$ è la distanza (in multipli di $||\mathbf w||$) di $\mathbf x$ dall'iperpiano $\mathbf w^T\mathbf x + b=0$
 - Il segno del valore restituito discrimina in quale delle regioni separate dall'iperpiano si trova il punto
 
-![center|400](Pasted%20image%2020251118161235.png)
+![center|400](img/Pasted%20image%2020251118161235.png)
 
 Funzioni discriminanti lineari in classificazione multiclasse
 - Definiamo $\mathbf K$ funzioni lineari $$h_{i}(\mathbf x;\mathbf w_{i},b_{i})=\mathbf w_{i}^{T}\mathbf x+b_i\quad 1\leq i\leq\mathbf K$$ L'elemento $\mathbf x$ è assegnato alla classe $C_{k}$ se e solo se $h_{k}(\mathbf x;\mathbf w_{k},b_{k})\gt h_{i}(\mathbf x;\mathbf w_{i},b_{i})$ per ogni $i\neq k$, ovvero $k$ è quel valore che massimizza $h$, ovvero $$k=arg\max_{j}h_{j}(\mathbf x;\mathbf w_{j},b_{j})$$
@@ -69,7 +69,7 @@ Funzioni discriminanti lineari in classificazione multiclasse
 
 Le regioni decisionali risultanti sono connesse e convesse
 
-![center|450](Pasted%20image%2020251119114121.png)
+![center|450](img/Pasted%20image%2020251119114121.png)
 
 La definizione può essere estesa per includere termini relativi ai prodotti delle coppie di valori delle feature ( **funzioni discriminanti quadratiche**)
 
@@ -179,7 +179,7 @@ $$\overline{w}^{(k+1)}=\overline{w}^{(k)}+\eta\overline{x}_{i}t_i$$
 dove $\mathbf x_{i}\in\mathcal M_k$ e il *fattore di scalo* $\eta\gt0$ controlla l'impatto degli elementi misclassificati nella funzione di costo
 Il metodo funziona iterando circolarmente tutti gli elementi e applicando la formula di cui sopra
 
-![center|500](Pasted%20image%2020251119151918.png)
+![center|500](img/Pasted%20image%2020251119151918.png)
 
 In nero, il confine decisionale e il vettore dei parametri corrispondente $\mathbf w$ (il bias non è considerato qui); in rosso il vettore dell'elemento classificato erroneamente $\mathbf x_i$, aggiunto dall'algoritmo al vettore dei parametri come $\eta\mathbf x_i$
 

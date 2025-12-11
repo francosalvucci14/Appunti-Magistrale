@@ -23,7 +23,7 @@ La sua struttura è la seguente:
 
 **esempio**
 
-![center|500](Pasted%20image%2020251210173914.png)
+![center|500](img/Pasted%20image%2020251210173914.png)
 
 ## Decision Tree: Classification
 ## Decision Tree: Construction

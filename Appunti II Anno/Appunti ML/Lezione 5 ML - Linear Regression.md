@@ -53,7 +53,7 @@ I valori assegnati ai coefficienti dovrebbero minimizzare il rischio empirico ca
 
 Una funzione di errore ampiamente adottata è la **perdita quadratica** $(h(x_i; \overline{w}, b) − t_i)^2$, che si traduce nell'approccio dei **minimi quadrati**, ovvero minimizzare la somma, per tutti gli elementi nel training set, della differenza (al quadrato) tra il valore restituito dal modello e il valore target.
 
-![center|400](Pasted%20image%2020251111111102.png)
+![center|400](img/img/Pasted%20image%2020251111111102.png)
 
 Risulta quindi che 
 $$
@@ -104,7 +104,7 @@ Come possiamo vedere, l'aggiornamento ad ogni passo è proporzionale alla combin
 
 Per una data complessità del modello (come il grado nel nostro esempio), l'***overfitting*** diminuisce all'aumentare della dimensione del training set.
 
-![center](Pasted%20image%2020251114161333.png)
+![center](img/Pasted%20image%2020251114161333.png)
 
 Più grande è il training set di addestramento, maggiore è la complessità accettabile del modello.
 ## Come limitare la complessità del modello? - Regolarizzazione
@@ -146,7 +146,7 @@ Otteniamo quindi che
 
 $$p(t|\overline{x};\overline{w})=\mathcal N(t|h(\overline{x};\overline{w}),\beta^{-1})$$
 
-![center|400](Pasted%20image%2020251115154547.png)
+![center|400](img/Pasted%20image%2020251115154547.png)
 
 È possibile effettuare una stima $\beta_{ML}$ di $\beta$ e $w_{ML}$ dei coefficienti $\overline{w}$ sulla base della verosimiglianza del training set rispetto al modello.
 
@@ -176,7 +176,7 @@ Si ipotizzerà una distribuzione a priori dei parametri
 Nel caso qui considerato, la distribuzione a priori dei parametri sarà assunta come gaussiana con media $\overline{0}$ e matrice di covarianza diagonale, con varianza pari all'inverso dell'**iperparametro** $\alpha$
 $$p(\overline{w}|\alpha)=\mathcal N(\overline{w};\overline{0},\alpha^{-1}I)=\left(\frac{\alpha}{2\pi}\right)^{\frac{m}{2}}e^{-\frac{\alpha}{2}\overline{w}^{T}\overline{w}}$$
 
-![center|300](Pasted%20image%2020251115160353.png)
+![center|300](img/Pasted%20image%2020251115160353.png)
 
 Perchè un prior gaussiano? perchè la distribuzione Gaussiana è coniugata a se stessa.
 Questo significa che la distribuzione a posteriori, essendo proporzionale al prior per verosimiglianza, risulterà gaussiano se la verosimiglianza è gaussiana.

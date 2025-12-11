@@ -46,7 +46,7 @@ Nella figura sottostante, a destra è mostrato un grafico sul piano $(\overline{
 
 A sinistra, un grafico dei valori di $\mathbf k(\overline{x},\overline{x}_i)$ come funzioni di $\overline{x}$, per tre diversi valori di $\overline{x}_i$
 
-![center|500](Pasted%20image%2020251116160017.png)
+![center|500](img/Pasted%20image%2020251116160017.png)
 
 Osserviamo infine che, invece di introdurre funzioni di base che alla fine danno luogo a un kernel equivalente, possiamo seguire lo stesso approccio di previsione mediante una combinazione lineare di valori target, con pesi calcolati da un **kernel localizzato adeguato**, definito su una coppia di elementi (cioè su $\mathbb R^d \times \mathbb R^d$) e che restituisce un valore reale
 # Kernel Regression
@@ -57,7 +57,7 @@ Ciò viene controllato facendo riferimento a una funzione kernel predefinita $\m
 
 Un kernel possibile e comune è il *kernel gaussiano* (o *RBF*), rappresentato graficamente di seguito nel caso $d = 1$ per diversi valori dell'iperparametro $h$.
 $$g(\overline{x})=e^{-\frac{||\overline{x}||^{2}}{2h^{2}}}$$
-![center|500](Pasted%20image%2020251116160417.png)
+![center|500](img/Pasted%20image%2020251116160417.png)
 
 Per ricavare la funzione di previsione $h$, ricordiamo che nella regressione il nostro obiettivo è approssimare l'aspettativa condizionata
 $$\mathbb E[t|\overline{x}]=\int t\space p(t|\overline{x})dt=\int t\frac{p(\overline{x},t)}{p(\overline{x})}ft=\frac{\int t\space p(\overline{x},t)dt}{p(\overline{x})}=\frac{\int t\space p(\overline{x},t)dt}{\int p(\overline{x},t)dt}$$
@@ -152,7 +152,7 @@ La uniformità è maggiore per $\tau$ più grande.
 
 Di seguito sono riportati due esempi di campioni di funzioni su $\mathbb R$ (effettivamente approssimate su una griglia di valori): si ipotizza un kernel RBF, con $\tau$ più grande nella prima immagine e $\tau$ più piccolo nella seconda.
 
-![center|500](Pasted%20image%2020251117103144.png)
+![center|500](img/Pasted%20image%2020251117103144.png)
 
 ## Distribuzione a posteriori
 
@@ -169,7 +169,7 @@ $$p(f)=\mathcal N(f;\mu_{X},\Sigma_{X})$$
 
 Nella figura sottostante, il grafico rosso rappresenta la funzione sconosciuta $f (x)$ da approssimare, mentre quelli blu più sottili sono funzioni campionate da $p(f )$ ($X$ è una griglia di punti sull'asse $x$).
 
-![center|500](Pasted%20image%2020251117104042.png)
+![center|500](img/Pasted%20image%2020251117104042.png)
 
 Supponiamo ora che ciascun valore target corrisponda esattamente al valore associato al punto $\overline{x}_i$ restituito dalla definizione della funzione sconosciuta $f$ da approssimare, ovvero $t_i = f (\overline{x}_i)$.
 
@@ -210,7 +210,7 @@ Il campionamento di diverse funzioni da tale distribuzione predittiva porta alla
 
 Si osservi che tutte queste funzioni hanno gli stessi valori di $f$ nei 5 punti
 
-![center|500](Pasted%20image%2020251117113053.png)
+![center|500](img/Pasted%20image%2020251117113053.png)
 
 Le stesse considerazioni valgono, in particolare, per la previsione di un singolo punto di test $\mathbf z$ dato il training set $X, \mathbf t$. 
 
@@ -221,7 +221,7 @@ $$\begin{align*}
 \end{align*}$$
 Nella figura sottostante, il valore medio della distribuzione predittiva di $f (x)$ per ciascun punto $x$, dati i 5 punti indicati sul grafico rosso, è mostrato come un grafico blu, con la varianza corrispondente riportata dall'intervallo giallo intorno a tale grafico.
 
-![center|500](Pasted%20image%2020251117113547.png)
+![center|500](img/Pasted%20image%2020251117113547.png)
 
 Come già osservato, in questo caso è stata eseguita un'**interpolazione** dei valori dati, ovvero $f (\overline{x}_i) = t_i$ per tutte le funzioni possibili, campionate da $p(f |X, \mathbf t))$.
 
@@ -247,7 +247,7 @@ $$\begin{align*}
 Come conseguenza, la matrice di covarianza $\Sigma_{X}$ risulta essere:
 $$\Sigma_{X}=G_{X}+\sigma_{f}^{2}$$
 
-![center|500](Pasted%20image%2020251117122735.png)
+![center|500](img/Pasted%20image%2020251117122735.png)
 
 
 
