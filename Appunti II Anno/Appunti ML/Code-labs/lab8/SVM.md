@@ -241,8 +241,8 @@ X_pos = np.random.randn(N, 2) + np.array([2, 2])
 X_neg = np.random.randn(N, 2) + np.array([-2, -2])
 
 # Aggiungiamo 2 punti sporchi
-outliers_pos = np.array([[0.0, 0.5]])     # punto positivo vicino ai negativi
-outliers_neg = np.array([[2.5, 2.8]])     # punto negativo vicino ai positivi
+outliers_pos = np.array([0.0, 0.5](0.0,%200.5))     # punto positivo vicino ai negativi
+outliers_neg = np.array([2.5, 2.8](2.5,%202.8))     # punto negativo vicino ai positivi
 
 X = np.vstack([X_pos, X_neg, outliers_pos, outliers_neg])
 y = np.hstack([ np.ones(N), -np.ones(N),  +1, -1 ])

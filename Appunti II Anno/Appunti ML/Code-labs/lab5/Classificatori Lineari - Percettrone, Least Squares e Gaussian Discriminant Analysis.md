@@ -105,7 +105,7 @@ print(f"\nNumero di campioni: {len(data)}")
 print(data.describe())
 
 # Estrae feature e target
-X = data[['x1', 'x2']].values
+X = data['x1', 'x2']('x1',%20'x2').values
 t = data['t'].values.reshape(-1, 1)
 
 # Normalizza le feature (media 0, varianza 1)

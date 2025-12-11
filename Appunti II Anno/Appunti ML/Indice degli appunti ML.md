@@ -14,4 +14,6 @@
 - [Lezione 11 ML - Probabilistic Learning p.3 (Language Models)](Lezione%2011%20ML%20-%20Probabilistic%20Learning%20p.3%20(Language%20Models).md)
 - [Lezione 12 ML - SVM](Lezione%2012%20ML%20-%20SVM.md)
 - [Lezione 13 ML - NonParametric Classification](Lezione%2013%20ML%20-%20NonParametric%20Classification.md)
+- [Lezione 14 ML - Ensemble Methods](Lezione%2014%20ML%20-%20Ensemble%20Methods.md)
+- 
 
