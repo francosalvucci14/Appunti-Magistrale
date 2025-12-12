@@ -128,7 +128,7 @@ Può essere dimostrato che le superfici decisionali sono al più quadratiche
 A sx: $3$ classi, modellate da Gaussiane con matrici di covarianza differenti
 A dx: distribuzione a posteriori delle classi, con superfici decisionali
 
-![center|500](img/img/Pasted%20image%2020251203143443.png)
+![center|500](img/Pasted%20image%2020251203143443.png)
 
 ### GDA e ML
 

@@ -53,7 +53,7 @@ I valori assegnati ai coefficienti dovrebbero minimizzare il rischio empirico ca
 
 Una funzione di errore ampiamente adottata è la **perdita quadratica** $(h(x_i; \overline{w}, b) − t_i)^2$, che si traduce nell'approccio dei **minimi quadrati**, ovvero minimizzare la somma, per tutti gli elementi nel training set, della differenza (al quadrato) tra il valore restituito dal modello e il valore target.
 
-![center|400](img/img/Pasted%20image%2020251111111102.png)
+![center|400](img/Pasted%20image%2020251111111102.png)
 
 Risulta quindi che 
 $$
