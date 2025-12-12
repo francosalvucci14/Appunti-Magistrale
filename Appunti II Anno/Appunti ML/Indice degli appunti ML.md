@@ -15,5 +15,6 @@
 - [Lezione 12 ML - SVM](Lezione%2012%20ML%20-%20SVM.md)
 - [Lezione 13 ML - NonParametric Classification](Lezione%2013%20ML%20-%20NonParametric%20Classification.md)
 - [Lezione 14 ML - Ensemble Methods](Lezione%2014%20ML%20-%20Ensemble%20Methods.md)
+- [Lezione 15 ML - Clustering](Lezione%2015%20ML%20-%20Clustering.md)
 - 
 
