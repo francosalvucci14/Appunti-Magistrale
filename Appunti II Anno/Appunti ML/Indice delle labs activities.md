@@ -9,3 +9,5 @@ Indice delle lezioni di laboratorio, che mostrano nella pratica come applicare l
 - [Lab6 - Generalized Linear Models e Famiglia Esponenziale](Code-labs/lab6/Generalized%20Linear%20Models%20e%20Famiglia%20Esponenziale.md)
 - [Lab7 - Decision Trees](Code-labs/lab7/Decision%20Trees.md)
 - [Lab8 - SVM](Code-labs/lab8/SVM.md)
+- [Lab9 - Clustering](Code-labs/lab9/Clustering.md)
+- 
