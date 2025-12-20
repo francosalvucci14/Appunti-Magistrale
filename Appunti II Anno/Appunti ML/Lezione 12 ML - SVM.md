@@ -234,9 +234,172 @@ $$\begin{align*}
 **Nota:** Si può dimostrare che le restanti due condizioni KKT sono sempre verificate.
 # Dual SVM problem
 
+Abbiamo modificato la definizione del problema duale applicando le condizioni KKT per eliminare le occorrenze dei coefficienti $\mathbf{w}, b$ da $L(\mathbf{w}, b, \lambda)$. 
 
-## Passing from primal to dual
+Il nuovo problema ha lo stesso ottimo del **primale originale**, dove le condizioni KKT saranno effettivamente soddisfatte, collegando i valori delle soluzioni ottime dei due problemi.
+
+$$\begin{gathered} &\max_{\lambda} L(\lambda) = \max_{\lambda} \left( \sum_{i=1}^n \lambda_i - \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j t_i t_j \mathbf{x}_i^T \mathbf{x}_j \right) \\&\lambda_{i}\geq0\quad i=1,\dots,n
+\\
+&\text{con i vincoli: } \sum_{i=1}^n \lambda_i t_i = 0, \quad i = 1, \dots, n \end{gathered}$$
+
+Tutte le considerazioni sopra esposte valgono chiaramente se ipotizziamo l'applicazione di un insieme di funzioni di base $\phi$, risultando così nel problema duale che apre la strada all'utilizzo dei kernel:
+
+$$\begin{gathered} \max_{\lambda} L(\lambda) = \max_{\lambda} \left( \sum_{i=1}^n \lambda_i - \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j t_i t_j \phi(\mathbf{x}_i)^T \phi(\mathbf{x}_j) \right) \\ \text{soggetto a: } \lambda_i \ge 0, \quad \sum_{i=1}^n \lambda_i t_i = 0 \end{gathered}$$
+
+Definendo la **funzione kernel**
+$$\mathcal k(\mathbf x_{i},\mathbf x_{j})=\phi(\mathbf x_{i})\phi(\mathbf x_{j})=\phi(\mathbf x_{i})^{T}\phi(\mathbf x_{j})$$
+la formulazione del problema duale può essere riscritta come:
+$$\begin{gathered} \max_{\lambda} L(\lambda) = \max_{\lambda} \left( \sum_{i=1}^n \lambda_i - \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j t_i t_j \mathcal k(\mathbf x_{i},\mathbf x_{j}) \right) \\ \text{soggetto a: } \lambda_i \ge 0, \quad \sum_{i=1}^n \lambda_i t_i = 0 \end{gathered}$$
+Passare da primale a duale porta con sè vantaggi e svantaggi:
+- **vantaggio** : Il numero di variabili da considerare, che sono rilevanti per la classificazione, esce fuori essere molto più piccolo di $n$
+- **svantaggio** : Il numero di variabili incrementa da $m$ a $n$ (in particolare, se $\mathbf x=\mathbf x$, da $d$ a $n$)
+
+Risolvendo il problema duale, si ottengono i valori ottimali dei moltiplicatori di Lagrange $\lambda^*$. 
+I valori ottimali dei parametri $\mathbf{w}^*$ vengono quindi derivati attraverso le relazioni:
+
+$$w_i^* = \sum_{j=1}^n \lambda_j^* t_j \phi_i(\mathbf{x}_j) \quad i = 1, \dots, m$$
+
+Il valore di $b^*$ può essere ottenuto osservando che, per ogni vettore di supporto $\mathbf{x}_k$ (caratterizzato dalla condizione $\lambda_k \ge 0$), deve essere:
+
+$$\begin{aligned} 1 &= t_k \left( \mathbf{w}^{*T} \phi(\mathbf{x}_k) + b^* \right) = t_k \left( \sum_{j=1}^n \lambda_j^* t_j \phi(\mathbf{x}_j)^T \phi(\mathbf{x}_k) + b^* \right) \\ &= t_k \left( \sum_{j=1}^n \lambda_j^* t_j \kappa(\mathbf{x}_j, \mathbf{x}_k) + b^* \right) = t_k \left( \sum_{j \in \mathcal{S}} \lambda_j^* t_j \kappa(\mathbf{x}_j, \mathbf{x}_k) + b^* \right) \end{aligned}$$
+
+dove $\mathcal{S}$ è l'insieme degli indici dei vettori di supporto. Di conseguenza, poiché $t_k = \pm 1$, per avere un prodotto unitario deve essere:
+
+$$t_k = \sum_{j \in \mathcal{S}} \lambda_j^* t_j \kappa(\mathbf{x}_j, \mathbf{x}_k) + b^*$$
+
+e:
+
+$$b^* = t_k - \sum_{j \in \mathcal{S}} \lambda_j^* t_j \kappa(\mathbf{x}_j, \mathbf{x}_k)$$
+
+Una soluzione più precisa può essere ottenuta come il valore medio ottenuto considerando tutti i vettori di supporto:
+
+$$b^* = \frac{1}{|\mathcal{S}|} \sum_{i \in \mathcal{S}} \left( t_i - \sum_{j \in \mathcal{S}} \lambda_j^* t_j \kappa(\mathbf{x}_j, \mathbf{x}_i) \right)$$
+
 ## Classification through SVM
+
+Un nuovo elemento $\mathbf{x}$ può essere classificato, dato un insieme di funzioni base $\phi$ o una funzione kernel $\kappa$, controllando il segno di
+$$h(\mathbf{x}) = \sum_{i=1}^{m} w_i^* \phi_i(\mathbf{x}) + b^* = \sum_{j=1}^{n} \lambda_j^* t_j \kappa(\mathbf{x}_j, \mathbf{x}) + b^*$$
+
+Come osservato, se $\mathbf{x}_i$ non è un vettore di supporto, allora deve essere $\lambda_i^* = 0$. Pertanto, la somma precedente può essere scritta come
+
+$$h(\mathbf{x}) = \sum_{j \in \mathcal{S}} \lambda_j^* t_j \kappa(\mathbf{x}_j, \mathbf{x}) + b^*$$
+
+La classificazione eseguita attraverso la formulazione duale, utilizzando la funzione kernel, non tiene conto di tutti gli elementi del training set, ma solo dei vettori di supporto, solitamente un sottoinsieme piuttosto piccolo del training set.
 ### Non separability in the training set
+
+L'approccio descritto in precedenza, quando applicato a insiemi non linearmente separabili, non fornisce soluzioni accettabili: è infatti impossibile soddisfare tutti i vincoli
+$$t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) \geq 1 \quad i = 1, \dots, n$$
+Questi vincoli devono quindi essere allentati per permettere loro di non valere, al costo di un certo aumento della funzione obiettivo da minimizzare   
+
+Viene introdotta una **variabile slack** $\xi_i$ per ogni vincolo, per fornire una misura di quanto il vincolo non sia verificato
+
+Questo può essere formalizzato come
+$$\begin{align*}
+&\min_{\mathbf{w},b,\boldsymbol{\xi}} \frac{1}{2} \mathbf{w}^T \mathbf{w} + C \sum_{i=1}^n \xi_i\\
+&t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) \geq 1 - \xi_i \quad i = 1, \dots, n\\
+&\xi_i \geq 0 \quad i = 1, \dots, n
+\end{align*}$$
+dove $\boldsymbol{\xi} = (\xi_1, \dots, \xi_n)$
+
+Introducendo moltiplicatori opportuni, si può ottenere la seguente Lagrangiana
+$$\begin{aligned} L(\mathbf{w},b,\boldsymbol{\xi}, \boldsymbol{\lambda}, \boldsymbol{\alpha}) &= \\ &= \frac{1}{2} \mathbf{w}^T \mathbf{w} + C \sum_{i=1}^n \xi_i - \sum_{i=1}^n \lambda_i (y_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) - 1 + \xi_i) - \sum_{i=1}^n \alpha_i \xi_i \\ &= \frac{1}{2} \sum_{i=1}^n w_i^2 + \sum_{i=1}^n (C - \alpha_i) \xi_i - \sum_{i=1}^n \lambda_i (t_i(\sum_{j=1}^m w_j \phi_j(\mathbf{x}_i)) + b) - 1 + \xi_i) \\ &= \frac{1}{2} \sum_{i=1}^n w_i^2 + \sum_{i=1}^n (C - \alpha_i - \lambda_i) \xi_i - \sum_{i=1}^n \sum_{j=1}^m \lambda_i t_i w_j \phi_j(\mathbf{x}_i) + b \sum_{i=1}^n \lambda_i t_i + \sum_{i=1}^n \lambda_i \end{aligned}$$
+
+dove $\alpha_i \geq 0$ e $\lambda_i \geq 0$, per $i = 1, \dots, n$.
+
+Le condizioni di Karush-Kuhn-Tucker sono ora:
+
+|**Equazione**|**Descrizione**|
+|---|---|
+|$\frac{\partial}{\partial \mathbf{w}} L(\mathbf{w}, b, \boldsymbol{\xi}, \lambda, \alpha) = \mathbf{0}$|gradiente nullo|
+|$\frac{\partial}{\partial b} L(\mathbf{w}, b, \boldsymbol{\xi}, \lambda, \alpha) = 0$|gradiente nullo|
+|$\frac{\partial}{\partial \boldsymbol{\xi}} L(\mathbf{w}, b, \boldsymbol{\xi}, \lambda, \alpha) = \mathbf{0}$|gradiente nullo|
+|$t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) - 1 + \xi_i \geq 0 \quad i = 1, \dots, n$|vincoli|
+|$\xi_i \geq 0 \quad i = 1, \dots, n$|vincoli|
+|$\lambda_i \geq 0 \quad i = 1, \dots, n$|moltiplicatori|
+|$\alpha_i \geq 0 \quad i = 1, \dots, n$|moltiplicatori|
+|$\lambda_i (t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) - 1 + \xi_i) = 0 \quad i = 1, \dots, n$|complementarità (slackness)|
+|$\alpha_i \xi_i = 0 \quad i = 1, \dots, n$|complementarità (slackness)|
+
+**Derivazione di una formulazione duale**
+
+Dalle condizioni di gradiente nullo rispetto a $w_i, b, \xi_j$ si ricava:
+
+$$\begin{align*}
+&w_i = \sum_{j=1}^n \lambda_j t_j \phi_i(\mathbf{x}_j) \quad i = 1, \dots, m\\
+&0 = \sum_{i=1}^n \lambda_i t_i\\
+&\lambda_i = C - \alpha_i \leq C \quad i = 1, \dots, n
+\end{align*}$$
+
+Inserendo le relazioni sopra in $L(\mathbf{\bar{w}}, \boldsymbol{\xi}, \lambda, \alpha)$, si ottiene il problema duale:
+
+$$\begin{align*}
+&\max_{\lambda} \tilde{L}(\lambda) = \max_{\lambda} \left( \sum_{i=1}^n \lambda_i - \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j t_i t_j \kappa(\mathbf{x}_i, \mathbf{x}_j) \right)\\
+&0 \leq \lambda_i \leq C \quad i = 1, \dots, n\\
+&\sum_{i=1}^n \lambda_i t_i = 0
+\end{align*}$$
+
+Si osservi che l'unica differenza rispetto al caso linearmente separabile è data dai vincoli $0 \leq \lambda_i$ trasformati in $0 \leq \lambda_i \leq C$.
+
+**Classificazione**
+
+Dalla soluzione ottimale $\lambda^{\star}$ del problema duale, i coefficienti $\mathbf w^{\star},b^\star$ possono essere derivati come nel caso linearmente separabile
+
+Un nuovo elemento $\mathbf x$ può essere classificato, ancora, tramite il suo segno
+$$y(\mathbf x)=\sum\limits_{i=1}^{m}w_{i}^{\star}\phi_{i}(\mathbf x)+b^{\star}$$
+o, in maniera equivalente
+$$y(\mathbf x)=\sum\limits_{i\in S}\lambda_{j}^{\star}t_{j}\kappa(\mathbf x_{i},\mathbf x_{j})+b^{\star}$$
+**Estensione**
+
+L'approccio può essere esteso a :
+- Più di 2 classi (classificazione multiclasse): risolvere il problema della classificazione binaria uno contro tutti per tutte le classi
+- Risultati con valori reali (regressione vettoriale di supporto)
+
+**Problemi computazionali**
+
+Il tempo di addestramento dell'SVM standard è $O(n^3)$ (risoluzione QP)
+- Può essere proibitivo per set di dati di grandi dimensioni
+
+Sono state condotte numerose ricerche per velocizzare gli SVM
+- Per velocizzare gli SVM vengono utilizzati molti risolutori QP approssimativi
+- Discesa del gradiente più veloce e con possibilità di limitare il tempo di calcolo
 # SVM and gradient descent
+
+Richiamo della formalizzazione del problema nel caso generale
+
+$$\begin{align*}
+&\min_{\mathbf{w},b,\boldsymbol{\xi}} \frac{1}{2} \mathbf{w}^T \mathbf{w} + C \sum_{i=1}^{n} \xi_i\\
+&t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) \geq 1 - \xi_i \quad i = 1, \dots, n\\
+&\xi_i \geq 0 \quad i = 1, \dots, n
+\end{align*}$$
+
+Dati $\mathbf{w}, b$, la variabile slack $\xi_i$ viene minimizzata come
+
+$$\xi_i = \begin{cases} 0 & t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) \geq 1 \\ 1 - t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b) & \text{altrimenti} \end{cases}$$
+
+Il valore ottimale di $\xi_i$ corrisponde alla **hinge loss** dell'elemento corrispondente
+
+$$L_H(\mathbf{w}, b, \mathbf{x}_i, t_i) = \max (0, 1 - t_i(\mathbf{w}^T \phi(\mathbf{x}_i) + b))$$
+
+Possiamo quindi definire la funzione di costo da minimizzare come
+
+$$\begin{align*}
+&C(\mathbf{w}) = \frac{1}{2} \mathbf{w}^T \mathbf{w} + C \sum_{i=1}^n L_H(\mathbf{w}, b, \mathbf{x}_i, t_i)\\
+&\propto \sum_{i=1}^n L_H(\mathbf{w}, b, \mathbf{x}_i, t_i) + \frac{1}{2C} \|\mathbf{w}\|^2
+\end{align*}$$
+
+Cioè, le SVM corrispondono alla hinge loss con regolarizzazione ridge
+
+Poiché la perdita della cerniera non è differenziabile a $x = 1$, come discusso sopra, è possibile applicare la discesa del sottogradiente per trovare iterativamente la soluzione ottimale, con
+$$\frac{\partial L_H}{\partial w_{i}}=w_{i}-\sum\limits_{\mathbf x_{k}\in L}t_{k}\phi_{i}(\mathbf x_{k})$$
+dove $x_{k}\in L\iff t_{k}(\mathbf w^{T}\phi(x_{k})+b)\lt1$
+
+L'iterazione risultate è:
+$$w_{i}^{(r+1)}=w_{i}^{(r)}-\eta w_{i}^{(r)}+\eta\sum\limits_{\mathbf x_{k}\in L}t_{k}\phi_{i}(\mathbf x_{k})=(1-\eta)w_{i}^{(r)}+\alpha\sum\limits_{\mathbf x_{k}\in L}t_{k}\phi_{i}(\mathbf x_{k})$$
 ## SVM and SGD
+
+Usando lo stochastic gradient descent, assumendo che ad ogni step venga aggiornato l'elemento $\mathbf x_{k}$, otteniamo che
+$$\begin{align*}
+&w_{i}^{(r+1)}=(1-\eta)w_{i}^{(r)}+\alpha\phi_{i}(\mathbf x_{k})\quad t_{k}(\mathbf w^{T}\phi(\mathbf x_{k})+b)\lt1\\
+&w_i^{(r+1)}=w_{i}^{(r)}\quad\text{altrimenti}
+\end{align*}$$
+
