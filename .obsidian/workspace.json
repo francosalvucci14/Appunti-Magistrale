@@ -111,13 +111,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/Lezione 10 ML - Decision Trees.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 12 ML - SVM.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 10 ML - Decision Trees"
+              "title": "Outline of Lezione 12 ML - SVM"
             }
           },
           {
@@ -145,8 +145,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "bd99bf3ea8e9b4e1",
@@ -180,8 +179,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "40539681fe5f6d09",
+  "active": "517fcc174d45e93e",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/ProgettoML/Documento di progetto ML (Bozza).md",
+    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
+    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
+    "Appunti II Anno/Appunti ML/Lezione 12 ML - SVM.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219162354.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219162249.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219160421.png",
@@ -191,19 +194,15 @@
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219102412.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219102343.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219102305.png",
-    "Appunti II Anno/Appunti ML/Lezione 12 ML - SVM.md",
     "Appunti II Anno/Appunti ML/Lezione 13 ML - NonParametric Classification.md",
     "Appunti II Anno/Appunti ML/Lezione 9 ML - Probabilistic Classification (Discriminative Models).md",
     "Appunti II Anno/Appunti ML/Lezione 8 ML - Probabilistic Classification (generative models).md",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
-    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab9/Clustering.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab9/ml_lab9_2025_2026_clustering.py",
     "Appunti II Anno/Appunti ML/Code-labs/lab9/ML_Lab9_2025_2026_Clustering.ipynb",
     "Pretest (fac - simile esame).md",
     "Appunti II Anno/Appunti ML/Code-labs/lab9",
     "README.md",
-    "Appunti II Anno/Appunti ML/ProgettoML/Documento di progetto ML (Bozza).md",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.pdf",
     "Appunti II Anno/Appunti ML/Code-labs/lab3/Tecniche di ottimizzazione del Gradient Descent.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab5/Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis.md",
@@ -226,7 +225,6 @@
     "Appunti I Anno/Appunti CYS/Certificato di Validazione e Verifica.pdf",
     "Appunti I Anno/Appunti CYS/lezione_20_11_cybersecurity.pdf",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251203143443.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251202141800.png",
-    "Appunti I Anno/Appunti CNS/img/OFB.png"
+    "Appunti II Anno/Appunti ML/img/Pasted image 20251202141800.png"
   ]
 }

@@ -95,3 +95,148 @@ $$t_i \frac{(\alpha\overline{\mathbf{w}})^T}{\|(\alpha\mathbf{w})\|} \overline{\
 ![center|500](img/Pasted%20image%2020251219162354.png)
 
 ## Optimal margin classifiers
+
+Dato un training set $\mathcal T$ , desideriamo trovare gli iperpiani che separano le due classi (se esistono) e hanno $\gamma$ massimo: rendendo la distanza tra gli iperpiani e l'insieme di punti corrispondenti agli elementi il più grande possibile, aumenta la confidenza nella classificazione fornita.
+
+Supponiamo che le classi siano linearmente separabili nel training set: esiste quindi un iperpiano (anzi, un'infinità di essi) che separa gli elementi in $C_1$ dagli elementi in $C_2$. 
+
+Per trovare quello tra questi iperpiani che massimizza $γ$, dobbiamo risolvere il seguente problema di ottimizzazione
+$$\begin{align*}
+&\max_{\mathbf w,b}\gamma\\
+&\text{sotto il vincolo }\gamma_{i}=\frac{t_{i}}{||\mathbf w||}(\mathbf w^{T}\mathbf x_{i}+b)\geq\gamma\quad i=1,\dots,n
+\end{align*}$$
+che massimizza il margine più piccolo sul training set $(\mathbf{x}_1, t_1)$
+Garantisce che ogni punto abbia un margine almeno pai a  $\gamma$
+Ciò corrisponde a :
+$$\begin{align*}
+&\max_{\mathbf w,b}\gamma\\
+&\text{sotto il vincolo }t_{i}(\mathbf w^{T}\mathbf x_{i}+b)\geq\gamma||\mathbf w||\quad i=1,\dots,n
+\end{align*}$$
+Come osservato, se tutti i parametri sono scalati da una costante $\alpha$, tutti i margini geometrici $\gamma_{i}$ tra gli elementi e l' iperpiano rimangono invariati: possiamo quindi sfruttare questa libertà per introdurre il vincolo
+$$\min_{i}(\mathbf w^{T}\mathbf x_{i}+b)t_{i}=1$$
+Ciò si ottiene assumendo $||\mathbf w|| = \frac{1}{\gamma}$ , che corrisponde a considerare una scala in cui il margine massimo ha larghezza $2$. 
+Ciò si traduce, per ciascun elemento $\mathbf x_i, t_i$, in un vincolo
+$$y_{i}=t_{i}(\mathbf w^{T}\mathbf x_{i}+b)\geq1$$
+Un elemento (punto) è detto **attivo** se la disuguaglianza vale, ovvero se:
+$$t_{i}(\mathbf w^{T}\mathbf x_{i}+b)=1$$
+ed è detto **inattivo** se non vale.
+
+Si osservi che, per definizione, deve esistere almeno un punto attivo.
+
+Per ogni elemento $(\mathbf x, t)$, casi diversi corrispondono al valore della combinazione lineare con segno $t(\mathbf w^{T}\mathbf x+b)$:
+
+1. $t(\mathbf w^{T}\mathbf x+b) \gt 1 \implies\mathbf x$ si trova nella regione corrispondente alla sua classe, al di fuori della fascia di margine
+2. $t(wT x + b) = 1\implies\mathbf x$ si trova nella regione corrispondente alla sua classe, sull'iperpiano di margine massimo
+3. $0 \lt t(\mathbf w^{T}\mathbf x+b) \lt 1 \implies\mathbf x$ si trova nella regione corrispondente alla sua classe, all'interno della striscia di margine
+4. $\mathbf w^{T}\mathbf x+b = 0 \implies\mathbf x$ si trova sull'iperpiano di separazione
+5. $-1 \lt t(\mathbf w^{T}\mathbf x+b) \lt 0\implies\mathbf x$ si trova nella regione corrispondente all'altra classe, all'interno della striscia di margine
+6. $t(\mathbf w^{T}\mathbf x+b)=-1\implies\mathbf x$ si trova nella regione corrispondente all'altra classe, sull'iperpiano di margine massimo
+7. $t(\mathbf w^{T}\mathbf x+b)\lt-1\implies\mathbf x$ si trova nella regione corrispondente all'altra classe, al di fuori della striscia di margine
+
+Il problema di ottimizzazione è quindi trasformato in:
+$$\begin{align*}
+&\max_{\mathbf w,b}\gamma=||\mathbf w||^{-1}\\
+&\text{sotto il vincolo }t_{i}(\mathbf w^{T}\mathbf x_{i}+b)\geq1\quad i=1,\dots,n
+\end{align*}$$
+Massimizzare $||\mathbf w||^{-1}$ è equivalente a minimizzare $||\mathbf w||^{2}$: quindi possiamo riformulare il problema come:
+$$\begin{align*}
+&\min_{\mathbf w,b}\frac{1}{2}||\mathbf w||^{2}\\
+&\text{sotto il vincolo }t_{i}(\mathbf w^{T}\mathbf x_{i}+b)\geq1\quad i=1,\dots,n
+\end{align*}$$
+Si tratta di un ***problema di ottimizzazione quadratica convessa***. 
+
+La funzione da minimizzare è infatti convessa e l'insieme dei punti che soddisfano il vincolo è un poliedro convesso (intersezione di semispazi).
+## Duality
+
+Dalla teoria dell'ottimizzazione deriva che, data la struttura del problema (vincoli lineari + convessità):
+- esiste una **formulazione duale** del problema
+- l'ottimale del problema duale è lo stesso del problema originale (primario)
+
+### Lagrangian
+
+Consideriamo il problema di ottimizzazione
+$$\min_{\mathbf x\in\Omega}f(\mathbf x)$$
+dove $\Omega$ è la regione ammissibile, definita dai vincoli
+$$g_i(\mathbf x)\leq0\quad i=1,\dots,n$$
+dove $f(\mathbf x),g_i(\mathbf x)$ sono funzioni convesse, e $\Omega$ è un insieme convesso
+
+Il **Lagrangiano** è definito come:
+$$L(\mathbf x,\lambda)=f(\mathbf x)+\sum\limits_{i=1}^{k}\lambda_ig_{i}(\mathbf x)$$
+
+Consideriamo il massimo rispetto a un $\lambda$ non negativa del Lagrangiano:
+$$\begin{align*}
+&\max_{\lambda}L(\mathbf x,\lambda)=f(\mathbf x)+\max_{\lambda}\sum\limits_{i=1}^{k}\lambda_ig_{i}(\mathbf x)\\
+&\lambda_{i}\geq0\quad i=1,\dots,n
+\end{align*}$$
+che è una funzione di $\mathbf x$
+- se $\mathbf x$ è una soluzione ammissibile, $g_{i}(\mathbf x)\geq0$ per tutti gli $i$ e il massimo viene ottenuto quando $\lambda_{i}=0$: come conseguenza, otteniamo che $$\max_{\lambda:\lambda_i\geq0}L(\mathbf x,\lambda)=f(\mathbf x)$$
+- se $\mathbf x$ è soluzione non-ammissibile, allora $g_{i}(\mathbf x)\gt0$ per alcuni $i$ e il massimo è illimitato, poiché $\lambda_i$ può essere arbitrariamente grande
+
+Di conseguenza, il massimo del lagrangiano è uguale a $f(\mathbf x)$ se $\mathbf x$ è fattibile, mentre è illimitato se $\mathbf x$ non è fattibile. 
+
+Ciò si traduce, nel caso in cui esista un minimo $\mathbf x^{\star}$, in
+$$\min_{\mathbf x\in\Omega}f(\mathbf x)=\min_{\mathbf x\in\Omega}\max_{\lambda:\lambda_{i}\geq0}L(\mathbf x,\lambda)$$
+
+In generale, vale la **proprietà di dualità debole**
+$$\max_{\lambda:\lambda_{i}\geq0}\min_{\mathbf x\in\Omega}L(\mathbf x,\lambda)\leq \min_{\mathbf x\in\Omega}\max_{\lambda:\lambda_{i}\geq0}L(\mathbf x,\lambda)=\min_{\mathbf x\in\Omega}f(\mathbf x)$$
+
+dove $\max_{\lambda:\lambda_{i}\geq0}\min_{\mathbf x\in\Omega}L(\mathbf x,\lambda)$ è il problema **duale** di $\min_{\mathbf x\in\Omega}f(\mathbf x)$
+
+Inoltre, nel caso dell'ottimizzazione convessa (il nostro caso specifico), vale la proprietà di dualità forte
+$$\max_{\lambda:\lambda_{i}\geq0}\min_{\mathbf x\in\Omega}L(\mathbf x,\lambda)= \min_{\mathbf x\in\Omega}\max_{\lambda:\lambda_{i}\geq0}L(\mathbf x,\lambda)=\min_{\mathbf x\in\Omega}f(\mathbf x)$$
+### Karus-Kuhn-Tucker conditions
+
+Le seguenti condizioni necessarie e sufficienti valgono all'ottimo $(\mathbf{x}^*, \lambda^*)$, e possono essere utilizzate per semplificare la definizione del problema duale.
+$$\nabla_{\mathbf{x}} L(\mathbf{x}, \lambda) \Big|_{\mathbf{x}^*, \lambda^*} = \mathbf{0}$$$$\frac{\partial L(\mathbf{x}, \lambda)}{\partial \lambda_i} \Big|_{\mathbf{x}^*, \lambda^*} = g_i(\mathbf{x}^*) \ge 0 \quad i = 1, \dots, k$$$$\lambda_i^* \ge 0 \quad i = 1, \dots, k$$$$\lambda_i^* g_i(\mathbf{x}^*) = 0 \quad i = 1, \dots, k$$
+Affinché l'ottimo sia un minimo, deve valere la condizione del secondo ordine per cui l'Hessiana $H_{\mathbf{x}}$ valutata in $\mathbf{x}^*$ deve essere definita positiva.
+
+**Nota:** l'ultima condizione (**complementary slackness**, o complementarità dei vincoli) afferma che un moltiplicatore lagrangiano $\lambda_i^*$ può essere diverso da zero solo se $g_i(\mathbf{x}^*) = 0$, ovvero se $\mathbf{x}^*$ si trova "al limite" per il vincolo $g_i(\mathbf{x}) \le 0$. In questo caso, il vincolo è detto **attivo**.
+## Application to SVM
+
+Nel nostro caso:
+- $f(\mathbf x)$ corrisponde a $\frac{1}{2}||\mathbf w||^{2}$
+- $g_{i}(\mathbf x)$ corrisponde a $t_{i}(\mathbf w^{T}\mathbf x_{i}+b)-1\geq0$
+- $\Omega$ è l'intersezione di un insieme di iperpiani, ovvero un poliedro, quindi convesso
+
+Il corrispondente Lagrangiano è quindi:
+$$\begin{align*}
+L(\overline{\mathbf w},\lambda)&=\frac{1}{2}||\mathbf w||^{2}-\sum\limits_{i=1}^{n}\lambda_{i}((\mathbf w^{T}\mathbf x_{i}+b)t_{i}-1)\\
+&=\frac{1}{2}\mathbf w^{T}\mathbf w-\sum\limits_{i=1}^{n}\lambda_i\mathbf w^{T}\mathbf x_{i}t_{i}-b\sum\limits_{i=1}^{n}\lambda_it_{i}+\sum\limits_{i=1}^{n}\lambda_{i}
+\end{align*}$$
+ed il problema duale (con stessa ottimizzazione) è :
+$$\begin{align*}
+&\max_{\lambda}\min_{\overline{\mathbf w}}L(\overline{\mathbf w},\lambda)\\
+&\lambda_i\geq0\quad i=1,\dots,k
+\end{align*}$$
+
+### Applying the KKT conditions
+
+Al fine di esprimere il problema duale come funzione di $\lambda$, deriviamo i valori dei coefficienti $\overline{\mathbf{w}}$ all'ottimo di $L(\overline{\mathbf{w}}, \lambda)$, applicando le condizioni di Karush-Kuhn-Tucker (KKT).
+
+Per prima cosa, calcoliamo:
+$$\frac{\partial L(\overline{\mathbf{w}}, \lambda)}{\partial w_k} \bigg|_{\mathbf{w}^*, b^*} = w_k^* - \sum_{i=1}^{n} \lambda_i t_i x_{ik} = 0$$$$\frac{\partial L(\overline{\mathbf{w}}, \lambda)}{\partial b} \bigg|_{\mathbf{w}^*, b^*} = \sum_{i=1}^{n} \lambda_i t_i = 0$$Ovvero:
+$$\nabla_{\mathbf{w}} L(\overline{\mathbf{w}}, \lambda) \bigg|_{\mathbf{w}^*, b^*} = \mathbf{w}^* - \sum_{i=1}^{n} \lambda_i t_i \mathbf{x}_i = \mathbf{0}$$$$\frac{\partial L(\overline{\mathbf{w}}, \lambda)}{\partial b} \bigg|_{\mathbf{w}^*, b^*} = \sum_{i=1}^{n} \lambda_i t_i = 0$$
+Le condizioni KKT risultanti sono
+$$\mathbf{w}^* = \sum_{i=1}^{n} \lambda_i t_i \mathbf{x}_i$$$$\sum_{i=1}^{n} \lambda_i t_i = 0$$$$t_i(\mathbf{w}^{*T} \mathbf{x}_i + b^*) - 1 \ge 0 \quad \text{per } i = 1, \dots, n$$$$\lambda_i \ge 0 \quad \text{per } i = 1, \dots, n$$$$\lambda_i \left( t_i(\mathbf{w}^{*T} \mathbf{x}_i + b^*) - 1 \right) = 0 \quad \text{per } i = 1, \dots, n$$
+Sostituendo i valori dei coefficienti $\mathbf{w}^*$ secondo le equazioni sopra riportate e osservando che $b^*$ è moltiplicato per zero, possiamo affermare che all'ottimo $\overline{\mathbf{w}}^*$ il problema duale richiede di massimizzare
+$$\begin{align*}
+L(\lambda) &= \frac{1}{2} \mathbf{w}^{*T} \mathbf{w}^* - \sum_{i=1}^n \lambda_i t_i \mathbf{w}^{*T} \mathbf{x}_i - b^* \sum_{i=1}^n \lambda_i t_i + \sum_{i=1}^n \lambda_i\\
+&= \frac{1}{2} \left( \sum_{i=1}^n \lambda_i t_i \mathbf{x}_i \right)^T \sum_{j=1}^n \lambda_j t_j \mathbf{x}_j - \sum_{i=1}^n \lambda_i t_i \mathbf{x}_i^T \sum_{j=1}^n \lambda_j t_j \mathbf{x}_j + \sum_{i=1}^n \lambda_i\\
+&= \frac{1}{2} \sum_{i=1}^n \lambda_i t_i \mathbf{x}_i^T \sum_{j=1}^n \lambda_j t_j \mathbf{x}_j - \sum_{i=1}^n \lambda_i t_i \mathbf{x}_i^T \sum_{j=1}^n \lambda_j t_j \mathbf{x}_j + \sum_{i=1}^n \lambda_i\\
+&= \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j t_i t_j \mathbf{x}_i^T \mathbf{x}_j - \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j t_i t_j \mathbf{x}_i^T \mathbf{x}_j + \sum_{i=1}^n \lambda_i\\
+&= \sum_{i=1}^n \lambda_i - \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \lambda_i \lambda_j t_i t_j \mathbf{x}_i^T \mathbf{x}_j
+\end{align*}$$
+con i seguenti vincoli su $\lambda$:
+$$\begin{align*}
+&\sum_{i=1}^n \lambda_i t_i = 0\\
+&\lambda_i \ge 0 \quad \text{per } i = 1, \dots, n
+\end{align*}$$
+**Nota:** Si può dimostrare che le restanti due condizioni KKT sono sempre verificate.
+# Dual SVM problem
+
+
+## Passing from primal to dual
+## Classification through SVM
+### Non separability in the training set
+# SVM and gradient descent
+## SVM and SGD
