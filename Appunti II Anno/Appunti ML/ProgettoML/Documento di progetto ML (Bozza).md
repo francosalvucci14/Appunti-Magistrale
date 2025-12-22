@@ -18,7 +18,6 @@ Invece del banale MNIST (cifre), si utilizza **Fashion-MNIST**:
     
 
 ---
-
 ## 2. La Pipeline di Elaborazione
 
 Il successo del progetto non risiede solo nel modello, ma nella trasformazione dei dati.
@@ -79,57 +78,6 @@ I classificatori classici (SVM, RF) non gestiscono bene i pixel grezzi ("Raw Pix
 
 ---
 
-## 4. Teoria Sottostante: Ottimizzazione e Probabilità
-
-Per l'esame teorico, ecco come collegare i concetti matematici ai modelli scelti.
-
-### A. Discesa del Gradiente (Gradient Descent)
-
-- **Dove si trova:** Le SVM classiche usano solutori analitici (SMO), non la discesa del gradiente standard.
-    
-- **Come integrarla:** Usare `SGDClassifier` di Scikit-Learn.
-    
-    - Impostando `loss='hinge'`, si ottiene una SVM lineare addestrata con **Discesa del Gradiente Stocastica (SGD)**.
-        
-    - Utile per confrontare la velocità di convergenza rispetto al solutore analitico.
-        
-
-### B. Verosimiglianza (Maximum Likelihood Estimation - MLE)
-
-- **Dove si trova:** La Regressione Logistica basa il suo addestramento sulla massimizzazione della verosimiglianza (minimizzazione della Log-Loss).
-    
-- **Confronto:**
-    
-    - **SVM:** Approccio **Geometrico** (margini).
-        
-    - **Regressione Logistica:** Approccio **Probabilistico** (verosimiglianza).
-        
-    - Il confronto dimostra che per le immagini, l'approccio geometrico (SVM + Kernel) batte spesso quello probabilistico lineare.
-
----
-# Classificatore di Volti con PCA
-
-### 1. Il "Problema" k-Means (e la soluzione)
-
-Tu hai citato **SVM** e **k-Means**.
-
-- **SVM** è un **Classificatore** (Supervisionato): Gli dai le foto con i nomi, lui impara a distinguere i nomi.
-    
-- **k-Means** è un algoritmo di **Clustering** (Non Supervisionato): Lui non conosce i nomi. Raggruppa solo le foto simili.
-    
-
-Come usarlo nel progetto?
-
-Hai due strade per inserire k-Means nel confronto:
-
-1. **L'alternativa corretta (k-NN):** Probabilmente intendevi **k-NN (k-Nearest Neighbors)**. Questo è un classificatore supervisionato ("Se assomigli ai miei 3 vicini che sono Brad Pitt, allora sei Brad Pitt"). Questo è perfetto da confrontare con SVM.
-    
-2. **L'approccio ibrido (Bag of Visual Words):** Usi k-Means per trovare dei "pattern ricorrenti" (es. un occhio, un naso) e poi usi questi cluster come feature per addestrare una SVM. (Più complesso, forse troppo per questo esame).
-    
-
-**Consiglio:** Confronta **SVM** contro **k-NN** e **Random Forest**. Usa k-Means solo se vuoi fare una sezione extra di "Analisi esplorativa non supervisionata" (es. "Vediamo se l'algoritmo raggruppa da solo le facce simili senza sapere i nomi").
-
----
 
 ### 2. Il Dataset: "Olivetti Faces" (o LFW)
 
@@ -163,87 +111,6 @@ Nel riconoscimento facciale classico, non si usano quasi mai i pixel grezzi. Si 
     - **k-NN:** Calcola la distanza Euclidea sulle 150 feature.
         
     - **Random Forest:** Cerca regole decisionali sulle feature.
-        
-
----
-
-### 4. Codice Python: SVM vs k-NN su Volti
-
-Ecco lo scheletro pronto per il copia-incolla che implementa questa logica.
-
-```python
-import matplotlib.pyplot as plt
-from sklearn.datasets import fetch_olivetti_faces
-from sklearn.model_selection import train_test_split
-from sklearn.decomposition import PCA
-from sklearn.svm import SVC
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, accuracy_score
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
-
-# 1. Caricamento Dataset Volti
-print("Caricamento Olivetti Faces...")
-faces_data = fetch_olivetti_faces(shuffle=True, random_state=42)
-X = faces_data.data  # Le immagini appiattite
-y = faces_data.target # Le etichette (ID della persona: 0, 1, ..., 39)
-images = faces_data.images # Le immagini 64x64 per visualizzazione
-
-# 2. Split Train/Test
-# Usiamo stratify=y per assicurarci che ci siano foto di tutte le persone sia in train che in test
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.25, random_state=42, stratify=y
-)
-
-# 3. Definizione della PCA (Eigenfaces)
-# Riduciamo la complessità mantenendo il 95% dell'informazione (varianza)
-pca = PCA(n_components=0.95, whiten=True, random_state=42)
-
-# 4. Definizione dei Classificatori da confrontare
-classifiers = {
-    "SVM (RBF Kernel)": SVC(kernel='rbf', class_weight='balanced', C=10, gamma=0.01),
-    "k-NN (k=5)": KNeighborsClassifier(n_neighbors=5),
-    "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42)
-}
-
-print(f"\n--- Inizio Confronto su {len(y)} immagini ---")
-
-# 5. Loop di Training e Valutazione
-results = {}
-for name, clf in classifiers.items():
-    # Pipeline: PCA -> (Scaler opzionale con PCA whiten=True) -> Classificatore
-    # Nota: La PCA va fatta DENTRO la pipeline per evitare data leakage
-    model = make_pipeline(pca, clf)
-    
-    # Training
-    model.fit(X_train, y_train)
-    
-    # Test
-    y_pred = model.predict(X_test)
-    acc = accuracy_score(y_test, y_pred)
-    results[name] = acc
-    
-    print(f"\nModello: {name}")
-    print(f"Accuracy: {acc:.2%}")
-    # print(classification_report(y_test, y_pred)) # Scommenta per dettagli
-
-# 6. Visualizzazione "Eigenfaces" (Bonus per l'esame)
-# Mostriamo quali sono le "facce fantasma" che il computer vede
-print("\nVisualizzazione delle prime Eigenfaces (Componenti Principali)...")
-pca_fitted = model.named_steps['pca']
-eigenfaces = pca_fitted.components_.reshape((pca_fitted.n_components_, 64, 64))
-
-plt.figure(figsize=(10, 5))
-for i in range(10):
-    plt.subplot(2, 5, i + 1)
-    plt.imshow(eigenfaces[i], cmap='gray')
-    plt.title(f"Eigenface {i+1}")
-    plt.axis('off')
-plt.show()
-
-print("\nVincitore:", max(results, key=results.get))
-```
 
 ### 5. Punti di Forza di questo progetto (da dire all'esame)
 
@@ -257,39 +124,3 @@ print("\nVincitore:", max(results, key=results.get))
         
 3. **Visualizzazione delle Eigenfaces:** Quando mostri l'immagine delle "facce fantasma" generate dalla PCA (vedi codice sopra), dimostri di aver capito cosa succede dentro la "scatola nera".
     
-## Parte 2
-
-Esatto, il piano è solido. Hai una pipeline logica, teoricamente valida e perfetta per un esame di Magistrale perché dimostri di saper gestire il dato (non buttandolo a caso in una black box).
-
-Ecco il riassunto definitivo della struttura del tuo progetto "chiavi in mano":
-
-### 1. Il Dataset
-
-- **Olivetti Faces:** 400 immagini, 40 persone. Ideale perché leggero e permette di vedere bene l'effetto della PCA.
-    
-
-### 2. Preprocessing & Feature Extraction (Il cuore teorico)
-
-- **PCA (Eigenfaces):** Non usi i 4096 pixel grezzi. Riduci a circa 100-150 componenti (che spiegano il 95% della varianza).
-    
-- _Per l'esame:_ Preparati a mostrare le immagini delle "Eigenfaces" (le facce fantasma). È la parte visiva che colpisce di più.
-    
-
-### 3. I Tre Moschettieri (Confronto Modelli)
-
-Confronterai tre paradigmi diversi di Machine Learning:
-
-1. **SVM (Kernel RBF):** Approccio **Geometrico**. Cerca i margini ottimi. Probabilmente sarà il più accurato.
-    
-2. **k-NN:** Approccio **Basato sulla Memoria (Instance-based)**. Non "impara", ricorda. Buono come baseline.
-    
-3. **Random Forest:** Approccio **Ensemble/Logico**. Usa alberi decisionali. Utile per vedere se un approccio non geometrico funziona sui pixel/feature.
-    
-
-### 4. Metriche di Valutazione
-
-Non limitarti all'**Accuracy**. Stampa per ognuno il `classification_report` per vedere:
-
-- **Precision/Recall:** Il modello confonde spesso la persona A con la persona B?
-    
-- **Tempi di training:** SVM vs k-NN (k-NN è istantaneo in training ma lento in predizione, SVM il contrario).
