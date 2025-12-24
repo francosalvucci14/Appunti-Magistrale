@@ -28,8 +28,10 @@ La **disuguaglianza di Minkowski** è così definita
 
 **dimostrazione**
 
-Dobbiamo calcolare $$\mathbb E[(X+Y)^{2}]=\mathbb E[X^{2}]+\mathbb E[Y^{2}]+
-2\mathbb E[XY]\overbrace{\leq}_{\text{per Cauchy-Schwartz}}||X^{2}||+||Y^{2}||+2||X||||Y||=(||X||+||Y||)^{2}$$
+Dobbiamo calcolare $$\begin{align*}
+\mathbb E[(X+Y)^{2}]&=\mathbb E[X^{2}]+\mathbb E[Y^{2}]+
+2\mathbb E[XY]\\&\overbrace{\leq}_{\text{per Cauchy-Schwartz}}||X^{2}||+||Y^{2}||+2||X||||Y||\\&=(||X||+||Y||)^{2}
+\end{align*}$$
 Prendendo la radice ambo i membri otteniamo l'enunciato. $\blacksquare$
 ## Disuguaglianza di Hoeffding
 
@@ -64,7 +66,7 @@ Dimostriamo prima il limite superiore e poi quello inferiore
 *Limite Superiore* : vale che 
 $$
 \begin{align*}
-Pr(Z\geq t)&=\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx\\&\leq\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}\frac{x}{t}e^{-\frac{x^{2}}{2}}dx\\&=\frac{1}{\sqrt{2\pi}}\int_{t}^{\infty}xe^{-\frac{x^{2}}{2}}dx\\\left(z=\frac{x^2}{2}\right)&=\frac{1}{\sqrt{2\pi}}\int_{\frac{t^{2}}{2}}^{\infty}e^{-z}dz\\&=\frac{1}{\sqrt{2\pi}}\frac{1}{t}e^{-\frac{t^{2}}{2}}
+Pr(Z\geq t)&=\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx\\&\leq\int_{t}^{\infty}\frac{1}{\sqrt{2\pi}}\frac{x}{t}e^{-\frac{x^{2}}{2}}dx\\&=\frac{1}{\sqrt{2\pi}t}\int_{t}^{\infty}xe^{-\frac{x^{2}}{2}}dx\\\left(z=\frac{x^2}{2}\right)&=\frac{1}{\sqrt{2\pi}t}\int_{\frac{t^{2}}{2}}^{\infty}e^{-z}dz\\&=\frac{1}{\sqrt{2\pi}}\frac{1}{t}e^{-\frac{t^{2}}{2}}
 \end{align*}
 $$
 

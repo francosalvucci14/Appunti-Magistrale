@@ -22,7 +22,8 @@ Possiamo sfruttare queste disuguaglianze per dimostrare varie cose, vediamo alcu
 ## Esempio 1 (Legge debole dei grandi numeri)
 
 >[!teorem]- Legge **debole** dei grandi numeri
->Sia $\{X_{i}\}_{i=1,\dots,n}\sim$ i.i.d e $X_{n}=\frac{1}{n}\sum\limits_{i=1}^{n}X_i$Ipotizziamo $\mathbb E[X_n^{2}]\lt\infty$
+>Sia $\{X_{i}\}_{i=1,\dots,n}\sim$ i.i.d e $X_{n}=\frac{1}{n}\sum\limits_{i=1}^{n}X_i$
+>Ipotizziamo $\mathbb E[X_n^{2}]\lt\infty$
 >Allora $$X_{n}\to_{p}\mu=\mathbb E[X_i]$$
 
 **dimostrazione**
@@ -69,7 +70,7 @@ Ora quello che dobbiamo dimostrare è che quella quantità deve essere $O\left(\
 Calcoliamo quindi $\mathbb E[X_n^{4}]$
 
 $$\begin{align*}
-\mathbb E[X_n^{4}]&=\mathbb E\left[\left(\frac{1}{n}\sum\limits_{i=1}^nX_i\right)^{4}\right]\\&=\frac{1}{n^4}\mathbb E\left[\left(\sum\limits_{i=1}^nX_i\right)^{4}\right]\\&=\frac{1}{n^4}\mathbb E\left[\sum\limits_{i_{1}=1}^n\sum\limits_{i_{2}=1}^n\sum\limits_{i_{3}=1}^n\sum\limits_{i_{4}=1}^nX_{i_{1}}X_{i_{3}}X_{i_{3}}X_{i_{4}}\right]\\&=\frac{1}{n^4}\left(\sum\limits_{i_{1}=1}^n\sum\limits_{i_{2}=1}^n\sum\limits_{i_{3}=1}^n\sum\limits_{i_{4}=1}^n\mathbb E[X_{i_{1}}X_{i_{3}}X_{i_{3}}X_{i_{4}}]\right)\\&=\frac{1}{n^{4}}(n\cdot\mathbb E[\underbrace{X_1^{4}}_{\text{perchè }X_i\sim\text{i.i.d}}]+\underbrace{3n(n-1)}_{\text{fisso una v.a, e posso accoppiarla con una delle 3 rimanenti, per n(n-1) volte}}(\mathbb E[X_{1}^2])^2)\\&=O\left(\frac{1}{n^{3}}+ \frac{3}{n^{2}}\right)=O\left(\frac{1}{n^{2}}\right)\quad\blacksquare\\
+\mathbb E[X_n^{4}]&=\mathbb E\left[\left(\frac{1}{n}\sum\limits_{i=1}^nX_i\right)^{4}\right]\\&=\frac{1}{n^4}\mathbb E\left[\left(\sum\limits_{i=1}^nX_i\right)^{4}\right]\\&=\frac{1}{n^4}\mathbb E\left[\sum\limits_{i_{1}=1}^n\sum\limits_{i_{2}=1}^n\sum\limits_{i_{3}=1}^n\sum\limits_{i_{4}=1}^nX_{i_{1}}X_{i_{3}}X_{i_{3}}X_{i_{4}}\right]\\&=\frac{1}{n^4}\left(\sum\limits_{i_{1}=1}^n\sum\limits_{i_{2}=1}^n\sum\limits_{i_{3}=1}^n\sum\limits_{i_{4}=1}^n\mathbb E[X_{i_{1}}X_{i_{3}}X_{i_{3}}X_{i_{4}}]\right)\\&=\frac{1}{n^{4}}(n\cdot\mathbb E[\underbrace{X_1^{4}}_{\text{perchè }X_i\sim\text{i.i.d}}]+\underbrace{3n(n-1)}_{\text{fisso una v.a, e posso accop. con una delle 3 rimanenti, per n(n-1) volte}}(\mathbb E[X_{1}^2])^2)\\&=O\left(\frac{1}{n^{3}}+ \frac{3}{n^{2}}\right)=O\left(\frac{1}{n^{2}}\right)\quad\blacksquare\\
 \end{align*}$$
 
 Abbiamo quindi dimostrato che $$\mathbb E[X_{n}^{4}]\sim \frac{3}{n^{2}}$$

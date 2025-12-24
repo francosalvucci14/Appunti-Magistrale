@@ -90,5 +90,4 @@ Vale quindi il seguente lemma:
 
 
 
-
 [^1]: $X\geq0,Pr(X\geq c)\leq\frac{\mathbb E[X]}{c}$
