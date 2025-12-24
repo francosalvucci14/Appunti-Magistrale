@@ -71,6 +71,13 @@ Nel nostro caso quindi otteniamo che
 $$\varepsilon\sim N(0,I)\to Q\varepsilon\sim N(0,QIQ^{T}=I)$$
 Quindi, **se ho un vettore Gaussiano standard e lo ruoto, non succede nulla. Riottengo un'altra Gaussiana identica alla precedente**
 Dato che vale questa cosa, posso riscrivere tranquillamente che $$Q^{T}\varepsilon=u,\varepsilon^{T}Q=u^{T}$$
+In generale, vale il seguente lemma
+
+>[!teorem]- Lemma di Cochrang
+>In generale, vale che:
+>$$(W-W_{0})^{T}\Sigma^{-1}_{W}(W-W_{0})\sim\chi^{2}_{p}$$
+
+
 # Stimatore GLS (Generalized Least Square)
 
 Possiamo ora generalizzare il modello che abbiamo studiato sinora, immaginando che i residui $\varepsilon$ abbiano una struttura di dipendenza molto più complessa di variabili indipendenti

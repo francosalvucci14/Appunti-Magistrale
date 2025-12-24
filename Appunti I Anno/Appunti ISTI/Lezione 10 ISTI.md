@@ -54,8 +54,8 @@ $$\begin{align*}
 \end{align*}$$
 Come si può vedere dall' [Appendice di probabilità](Appendice%20di%20probabilità.md) abbiamo che:
 $$\begin{align*}
-&\mathbb E[X_{1}]=\alpha\beta\\
-&\mathbb E[X_{2}]=(\alpha\beta)^{2}+\alpha\beta^{2}=\alpha\beta(\alpha+1)\\
+&\mathbb E[X_{1}]=\alpha\beta=\mu_{!}\\
+&\mathbb E[X_{1}^{2}]=(\alpha\beta)^{2}+\alpha\beta^{2}=\alpha\beta(\alpha+1)=\mu_{2}\\
 &Var(X_{1})=\alpha\beta^{2}
 \end{align*}$$
 Pertanto possiamo proseguire nel seguente modo (stiamo esplicitando dalle formule di cui sopra sia $\alpha$ che $\beta$)

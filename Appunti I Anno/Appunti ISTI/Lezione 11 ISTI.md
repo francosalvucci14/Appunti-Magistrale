@@ -48,7 +48,7 @@ $$\begin{align*}
 \frac{d\log L}{d\theta}&=\frac{\sum\limits_{i=1}^{n}X_{i}}{\theta}-\frac{n-\sum\limits_{i=1}^{n}X_{i}}{1-\theta}\\&=\frac{\sum\limits_{i=1}^{n}X_{i}-n\theta}{\theta(1-\theta)}
 \end{align*}$$
 Ponendo questo uguale a $0$ otteniamo che 
-$$\hat{\theta}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}$$
+$$\boxed{\hat{\theta}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}}$$
 Piccola osservazione, avremmo potuto scrivere la verosimiglianza come 
 $$L(\theta;X_1,\dots,X_{n})=\dbinom{n}{\sum\limits_{i=1}^nX_{i}}\theta^{\sum\limits_{i=1}^{n}X_{i}}(1-\theta)^{n-\sum\limits_{i=1}^{n}X_{i}}$$
 La cosa che cambia fra la prima equazione e la seconda è puramente "filosofica", ovvero scritta nel secondo modo noi stiamo prendendo una *qualsiasi sequenza di successi*, mentre nel primo caso stiamo prendendo *una sequenza esatta di successi*.
@@ -65,7 +65,7 @@ $$L(\lambda;X_{1},\dots,X_{n})=\lambda^{n}e^{-\lambda\sum\limits_{i=1}^{n}X_{i}}
 La log-verosimiglianza è quindi:
 $$\log L=n\log(\lambda)-\lambda\sum\limits_{i=1}^{n}X_{i}$$
 Facciamo la derivata per $\lambda$ e la poniamo $=0$ per ottenere lo stimatore $\hat{\lambda}_{ML}$
-$$\frac{d\log L}{d\lambda}=\frac{n}{\lambda}-\sum\limits_{i=1}^{n}X_{i}\underbrace{\implies}_{\text{ponendo la der. uguale a 0}}\hat{\lambda}_{ML}=\frac{n}{\sum\limits_{i=1}^{n}X_{i}}$$
+$$\frac{d\log L}{d\lambda}=\frac{n}{\lambda}-\sum\limits_{i=1}^{n}X_{i}\underbrace{\implies}_{\text{ponendo la der. uguale a 0}}\boxed{\hat{\lambda}_{ML}=\frac{n}{\sum\limits_{i=1}^{n}X_{i}}}$$
 **oss**
 
 (1) Lo stimatore non dipende da come viene scritta la densità della funzione
@@ -90,4 +90,4 @@ A questo punto dobbiamo derivare e porre uguale a $0$, però qui non abbiamo pi�
 Dobbiamo quindi fare le derivate parziali, una per $\mu$ e l'altra per $\sigma^{2}$, ottenendo 
 $$\begin{align*}&\frac{d\log L}{d\mu}=\frac{1}{\sigma^{2}}\sum\limits_{i=1}^{n}(X_{i}-\mu)\\&\frac{d\log L}{d\sigma^{2}}=-\frac{n}{2\sigma^{2}}+\frac{1}{2\sigma^{4}}\sum\limits_{i=1}^{n}(X_{i}-\mu)^{2}\end{align*}$$
 Ponendole $=0$ otteniamo che 
-$$\begin{align*}&\hat{\mu}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}\\&\hat{\sigma}^{2}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}-\overline{X}_{n})^{2},\quad\overline{X}_{n}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}\end{align*}$$
+$$\boxed{\begin{align*}&\hat{\mu}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}\\&\hat{\sigma}^{2}_{ML}=\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}-\overline{X}_{n})^{2},\quad\overline{X}_{n}=\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}\end{align*}}$$
