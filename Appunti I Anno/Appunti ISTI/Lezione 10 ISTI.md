@@ -44,3 +44,24 @@ Vediamo ora nel dettaglio ogni punto
 **oss** 
 Per i primi due punti, basta che esistano i primi $p$ momenti finiti, se vogliamo invece arrivare anche agli altri due punti, serve necessariamente la condizione che esistano anche i primi $2p$ momenti.
 
+---
+# Esempio/Esercizio 1
+
+Supponiamo di avere un campioni di variabili IID con legge Gamma di parametri $\alpha$ e $\beta$ ; cioè con densità:
+$$\begin{align*}
+&f_{X}(x)=\frac{1}{\Gamma(\alpha)\beta^{\alpha}}x^{\alpha-1}e^{-\frac{y}{\beta}}\mathbb 1_{[0,\infty)}(x)\\
+&\Gamma(\alpha)=\int_{0}^{\infty}x^{\alpha-1}e^{-x}dx
+\end{align*}$$
+Come si può vedere dall' [Appendice di probabilità](Appendice%20di%20probabilità.md) abbiamo che:
+$$\begin{align*}
+&\mathbb E[X_{1}]=\alpha\beta\\
+&\mathbb E[X_{2}]=(\alpha\beta)^{2}+\alpha\beta^{2}=\alpha\beta(\alpha+1)\\
+&Var(X_{1})=\alpha\beta^{2}
+\end{align*}$$
+Pertanto possiamo proseguire nel seguente modo (stiamo esplicitando dalle formule di cui sopra sia $\alpha$ che $\beta$)
+$$\begin{align*}
+&\alpha=\frac{\alpha^{2}\beta^{2}}{\alpha\beta^2}=\frac{\mu_{1}^{2}}{\mu_{2}-\mu_{1}^{2}}\\
+&\beta=\frac{(\alpha\beta)^{2}+\alpha\beta^{2}-(\alpha\beta)^{2}}{\alpha\beta}=\frac{\mu_{2}-\mu_{1}^{2}}{\mu_{1}}
+\end{align*}$$
+Pertanto, gli stimatori dei valori $\alpha,\beta$ usando il metodo dei momenti saranno:
+$$\begin{pmatrix}\hat\alpha_{n}\\\hat\beta_{n}\end{pmatrix}=\begin{pmatrix}\frac{\hat\mu_{1,n}^{2}}{\hat\mu_{2,n}-\hat\mu_{1,n}^{2}}\\\frac{\hat\mu_{2,n}-\hat\mu_{1,n}^{2}}{\hat\mu_{1,n}}\end{pmatrix}$$

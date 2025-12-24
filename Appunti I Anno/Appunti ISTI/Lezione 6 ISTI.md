@@ -52,7 +52,7 @@ Passiamo ora a una variante della **Legge dei Grandi Numeri**
 
 **dimostrazione**
 
-Spezziamo $X_{i}$ in due parti, ottenendo $$X_i=X_{i}^{'}+X_{i}^{''},\space X_{i}^{'}=X_{i}\mathbb 1_{[|X_{i}|\leq M]}\land X_{i}^{''}=X_{i}\mathbb 1_{[|X_{i}|\gt M]}$$
+Spezziamo $X_{i}$ in due parti, ottenendo $$X_i=X_{i}^{'}+X_{i}^{''},\space X_{i}^{'}=X_{i}\mathbb 1_{[|X_{i}|\leq M]},\space X_{i}^{''}=X_{i}\mathbb 1_{[|X_{i}|\gt M]}$$
 In questo modo, otteniamo che 
 $$\frac{1}{n}\sum\limits_{i=1}^{n}X_{i}=\overbrace{\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}^{'}-\mathbb E[X_{i}^{'}])}^{(A)}+\overbrace{\frac{1}{n}\sum\limits_{i=1}^{n}(X_{i}^{''}-\mathbb E[X_{i}^{''}])}^{(B)}$$
 Ricordiamo che $\mathbb E[X_i]=0$, ma non è detto che $\mathbb E[X_{i}^{'}]=0$ oppure $\mathbb E[X_{i}^{''}]=0$, sappiamo solo che $\mathbb E[X_{i}^{'}]+\mathbb E[X_{i}^{''}]=0$ 

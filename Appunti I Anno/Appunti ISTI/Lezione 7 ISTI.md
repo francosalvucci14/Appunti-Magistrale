@@ -17,9 +17,9 @@ Vediamo ora il th CLT - versione LL (**Lindeberg e Lévy**)
 
 Notiamo che nel teorema LL-CLT, la condizione di Lindeberg è condizione ***necessaria e sufficiente*** affinchè valga il teorema CLT
 
-Vediamo un'altra variante del CLT, ovvero la **variante di Lyapunov**
+Esiste un'altra variante del CLT, ovvero la **variante di Lyapunov**, che sfrutta proprio la **condizione di Lyapunov**, espressa di seguito
 
->[!teorem]- CLT di Lyapunov
+>[!teorem]- Condizione di Lyapunov
 >Siano $\{X_{i}\}_{i=1,\dots,n}$ con $\mathbb E[X_{i}^{2}]\lt\infty$ indipendenti
 >Allora vale che
 >$$\lim_{n\to\infty}\frac{1}{s_{n}^{2+\delta}}\sum\limits_{i=1}^{n}\mathbb E\left[|X_{i}|^{2+\delta}\right]=0,\quad s_{n}^{2}=\sum\limits_{i=1}^{n}Var(X_{i})$$per qualche $\delta\gt0$
@@ -37,10 +37,10 @@ Definiamo $$\sum\limits_{i=0}^{n}i^{\alpha}\mathcal E_{i}=\sum\limits_{i=1}^{n}w
 - $\mathbb E[w_{i}]=0$
 - $Var(w_{i})=i^{2\alpha}Var(\mathcal E_{i})$
 
-L'obiettivo è far vedere che vale il LL-CLT, ovvero che $$\frac{\sum\limits_{i=0}^{n}i^{\alpha}\mathcal E_{i}}{\sqrt{Var\left(\sum\limits_{i=0}^{n}i^{\alpha}\mathcal E_{i}\right)}}\to_{d}N(0,1)$$
+L'obiettivo è far vedere che vale il LL-CLT, ovvero che $$\frac{\sum\limits_{i=0}^{n}i^{\alpha}\mathcal E_{i}-\overbrace{\sum\limits_{i=1}^{n}\mathbb E[w_{i}]}^{=0}}{\sqrt{Var\left(\sum\limits_{i=0}^{n}i^{\alpha}\mathcal E_{i}\right)}}\to_{d}N(0,1)$$
 Vediamo però che la quantità $$s_{n}^2=Var\left(\sum\limits_{i=0}^{n}i^{\alpha}\mathcal E_{i}\right)=\sum\limits_{i=0}^{n}i^{2\alpha}=\frac{n^{2\alpha+1}}{2\alpha+1}$$se $\alpha\gt- \frac{1}{2}$, altrimenti la somma non converge e non vale il teorema
 
-Vediamo quindi la condizione di Lyapunov
+Vediamo quindi se vale la condizione di Lyapunov:
 $$\lim_{n\to\infty}\frac{1}{n^{4\alpha+2}}\sum\limits_{i=1}^{n}\mathbb E\left[|i^{4\alpha}\mathcal E_{i}^{4}|\right]=\lim_{n\to\infty}cost\cdot\frac{n^{4\alpha+1}}{n^{4\alpha+2}}=0$$
 La condizione è stat verificata, quindi vale il LL-CLT.
 

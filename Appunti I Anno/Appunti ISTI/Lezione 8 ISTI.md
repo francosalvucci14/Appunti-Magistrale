@@ -59,13 +59,12 @@ Usiamo ora quest'altro teorema
 >[!teorem]- Metodo Delta ($v1$)
 >Sia $X_{n}:\sqrt{n}\left(\frac{X_{n}-\mu}{\sigma}\right)\to_dN(0,1)$ e $g$ differenziabile, allora vale che 
 >$$(\star)\sqrt{n}\left(g(X_{n})-g(\mu)\right)\to_{d}g^{'}(\mu)Z,\quad Z\sim N(0,1)$$
->Si può anche dire che $\star$ tende a $N(0,(g^{'}(\mu))^{2})$
+>Si può anche dire che $(\star)$ tende a $N(0,(g^{'}(\mu))^{2})$
 
 Prima della dimostrazione diamo lo sketch dell'idea:
 
 Sappiamo che $$g(X_{n})\sim g(\mu)+g^{'}(\mu)(X_{n}-\mu)+\dots$$
-Se sfruttiamo l'enunciato del teorema otteniamo che:
-$$\sqrt{n}\left(g(X_{n})-g(\mu)\right)\sim g^{'}(\mu)\sqrt{n}(X_{n}-\mu)$$e questo converge in distribuzione a una $N(0,1)$ per costante
+Se sfruttiamo l'enunciato del teorema otteniamo che: $$\sqrt{n}\left(g(X_{n})-g(\mu)\right)\sim g^{'}(\mu)\sqrt{n}(X_{n}-\mu)$$e questo converge in distribuzione a una $N(0,1)$ per costante
 
 Diamo ora la definizione di un lemma, che ci servià più avanti
 
@@ -85,7 +84,7 @@ Siamo ora pronti a dimostrare il teorema Metodo Delta ($v_{1}$)
 
 **dim Metodo Delta**
 
-Prima di tutti scriviamo 
+Prima di tutti scriviamo (aggiungo e tolgo $\mu$)
 $$\sqrt{n}\left(g(X_{n})-g(\mu)\right)=\sqrt{n}\left(g(\mu+X_{n}-\mu)-g(\mu)\right)$$
 Ma questo lo posso riscrivere come $$\sqrt{n}\left(\cancel{g(\mu)}+g^{'}(X_{n}-\mu)+\rho(X_{n}-\mu)-\cancel{g(\mu)}\right)$$
 Che posso continuare a riscrivere come 
