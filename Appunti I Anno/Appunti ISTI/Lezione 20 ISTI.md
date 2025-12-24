@@ -71,13 +71,27 @@ Nel nostro caso quindi otteniamo che
 $$\varepsilon\sim N(0,I)\to Q\varepsilon\sim N(0,QIQ^{T}=I)$$
 Quindi, **se ho un vettore Gaussiano standard e lo ruoto, non succede nulla. Riottengo un'altra Gaussiana identica alla precedente**
 Dato che vale questa cosa, posso riscrivere tranquillamente che $$Q^{T}\varepsilon=u,\varepsilon^{T}Q=u^{T}$$
-In generale, vale il seguente lemma
+
+Supponiamo di avere un certo vettore Gaussiano
+$$W_{p\times 1}\sim N(W_{0_{p\times1}},\Sigma_{W_{p\times p}})$$
+con $rg(\Sigma_{W})=p$ (rango pieno), allora vale il seguente lemma
 
 >[!teorem]- Lemma di Cochrang
 >In generale, vale che:
 >$$(W-W_{0})^{T}\Sigma^{-1}_{W}(W-W_{0})\sim\chi^{2}_{p}$$
 
+**dimostrazione lemma**
 
+Possiamo riscrivere quanto sopra come:
+$$(\Sigma^{-\frac{1}{2}}_{W}(W-W_{0}))^{T}(\Sigma^{-\frac{1}{2}}_{W}(W-W_{0}))=(W-W_0)^{T}(\Sigma_{W}^{- \frac{1}{2}})^{T}(\Sigma_{W}^{- \frac{1}{2}})(W-W_{0})$$
+Per terminare la dimostrazione, dobbiamo far vedere che 
+$$\Sigma^{- \frac{1}{2}}_{W}(W-W_{0})\sim N(0,I_p)$$
+Per quanto riguarda la media la questione è semplice, infatti risulta essere nulla.
+Per la varianza, possiamo dire che
+$$\Sigma_{W}^{- \frac{1}{2}}\Sigma_{W}\Sigma_{W}^{- \frac{1}{2}}=I_{p}$$
+e quindi abbiamo confermato che $\Sigma^{- \frac{1}{2}}_{W}(W-W_{0})\sim N(0,I_p)\quad\blacksquare$
+
+Perchè abbiamo potuto dire che la varianza era quella? perchè sappiamo che $\Sigma_{W}^{- \frac{1}{2}}=Q\Lambda^{- \frac{1}{2}}Q^{T}$, da cui segue tutto il calcolo per arrivare a $I_{p}$ (vedi sotto)
 # Stimatore GLS (Generalized Least Square)
 
 Possiamo ora generalizzare il modello che abbiamo studiato sinora, immaginando che i residui $\varepsilon$ abbiano una struttura di dipendenza molto più complessa di variabili indipendenti
