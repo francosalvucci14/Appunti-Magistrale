@@ -19,16 +19,16 @@ Questa $c$ è arbitraria, quindi la posso prendere piccola quanto voglio per far
 
 Vediamo ora una carrellata di esempi riguardanti gli $O_p(\cdot)$
 
-## Esempio 1
+**esempio/lemma**
 
 Sia $X_n$ con $\mathbb E[X_n]=0$ allora è sempre vero che $$X_{n}=O_p\left(\sqrt{Var(X_n)}\right)$$
-## Esempio 2
+## Esempio 1
 
 Prendiamo $$Z_n=\begin{cases}1& \frac{1}{2}\\-1& \frac{1}{2}\end{cases},\quad X_n=\sum\limits_{i=1}^{n}Z_i$$
 Osserviamo che le $Z_i$ sono i.i.d, di conseguenza vale che $$Var(X_n)=\sum\limits_{i=1}^nVar(Z_i)$$
 Osservando che le $Z_i\sim Rad(\frac{1}{2})\implies\mathbb E[Z_i]=0,Var(Z_i)=1$ ($Z_i$ sono delle **Rademarcher**)
 
-Usando quindi precedente otteniamo che $$X_{n}=O_{p}(\sqrt{n})\quad(1)$$
+Usando quindi l'esempio precedente otteniamo che $$X_{n}=O_{p}(\sqrt{n})\quad(1)$$
 Se invece prendiamo $$\overline{X_n}=\frac{1}{n}\sum\limits_{i=1}^{n}Z_{i}$$
 Allora otteniamo che:
 $$\overline{X_n}=O_p\left(\frac{1}{\sqrt{n}}\right)\quad(2)$$
@@ -41,7 +41,7 @@ Prendiamo la somma di v.a
 - Se moltiplichiamo per $\frac{1}{\sqrt{n}}$ otteniamo il **teorema del limite centrale**, quindi il caso $(3)$
 
 Vediamo un'altro esempio
-## Esempio 3
+## Esempio 2
 
 Prendiamo $\mathcal E_{i}\sim N[0,1]$ i.i.d e prendiamo $$X_{n}=\sum\limits_{i=1}^ni^{\alpha}\mathcal E_{i}\quad\alpha\in\mathbb R$$
 Quello che dobbiamo calcolare ora è la varianza di $X_{n}$, infatti:
