@@ -165,7 +165,7 @@ $$Pr(|X_n|\gt\varepsilon g_n)=Pr\left(|X_{n}|\gt\underbrace{\left[\frac{\varepsi
 **Dimostriamo**
 1. Punto 1
 	1. Devo dimostrare che $Pr(|X_nY_n|\gt cf_ng_n)$ la posso rendere piccola quanto mi pare. Prendiamo $c=c_{1}c_2$ e da qui ottengo che $$Pr(|X_nY_n|\gt cf_ng_n)\leq Pr(|X_n|\gt c_{1}f_n)+Pr(|Y_n|\gt c_{2}g_n)$$
-	2. Devo dimostrare che $Pr(|X_n+Y_n|\gt c\max\{f_n,g_n\})$ la posso rendere piccola quanto mi pare. Prendiamo $c=c_{1}c_2$ e da qui ottengo che $$Pr(|X_n+Y_n|\gt c\max\{f_n,g_n\})\leq Pr(|X_n|\gt c_{1}\max\{f_n,g_n\})+Pr(|Y_n|\gt c_{2}\max\{f_n,g_n\})$$
+	2. Devo dimostrare che $Pr(|X_n+Y_n|\gt c\max\{f_n,g_n\})$ la posso rendere piccola quanto mi pare. Prendiamo $c=c_{1}c_2$ e da qui ottengo che $$\begin{align*}Pr(|X_n+Y_n|\gt c\max\{f_n,g_n\})&\leq Pr(|X_n|\gt c_{1}\max\{f_n,g_n\})\\&+Pr(|Y_n|\gt c_{2}\max\{f_n,g_n\})\end{align*}$$
 2. Dimostriazioni dei punti 2.1 e 2.2 identiche a sopra
 3. Devo dimostrare che $Pr(|X_nY_n|\gt \varepsilon f_ng_n)\to0$ indipendentemente da $\varepsilon$. Per farlo, moltiplico e divido per una costante $M$, quindi ottengo $$Pr\left(|X_nY_n|\gt \frac{\varepsilon}{M}M f_ng_n\right)=Pr(|X_n|\gt Mf_{n})+Pr\left(|Y_{n}|\gt\frac{\varepsilon}{M}g_{n}\right)$$
 	1. Per la prima prob. essendo che è $O_p$ allora posso scegliere $M$ tale che il valore della prob. sia $\lt \frac{\delta}{2}$

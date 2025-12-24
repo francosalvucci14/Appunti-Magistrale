@@ -1,4 +1,4 @@
-# DOCUMENTO DI PROGETTO: Classificatore e Riconoscitore di volti (classificazione multi-classe)
+# DOCUMENTO DI PROGETTO: Classificatore e Riconoscitore di volti (classificazione multi-classe - Face Detection)
 
 ## 1. Obiettivo e Strategia
 
