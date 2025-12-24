@@ -135,7 +135,7 @@ Definiamo quindi questa quantità
 Dimostriamo formalmente il punto $2)$, il punto $1)$ è banale (secondo Marinucci)
 
 Dobbiamo dimostrare che $$\forall\varepsilon\gt0\space\exists d:Pr(|X_{n}|\gt d)\lt\varepsilon$$
-Per poterlo dire, prendiamo $d=c+\delta$, in modo da ottenere che $$Pr(|X_n|\gt d)=Pr(|X_{n}-c|\gt d)\leq\varepsilon\quad\blacksquare$$
+Per poterlo dire, prendiamo $d=c+\delta$, in modo da ottenere che $$Pr(|X_n|\gt d)=Pr(|X_{n}-c|\gt \delta)\leq\varepsilon\quad\blacksquare$$
 >[!help]- Esempio
 >Un esempio di quando vale che $X_n=O_{p}(1)$ ma non vale che $X_{n}\to_p c$ è quando $X_{n}$ è uniforme su $[0,1]$
 

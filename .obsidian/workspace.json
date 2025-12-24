@@ -13,28 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/ProgettoML/Documento di progetto ML (Bozza).md",
+                "file": "Appunti I Anno/Appunti ISTI/Appendice di probabilità.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Documento di progetto ML (Bozza)"
+              "title": "Appendice di probabilità"
             }
           },
           {
-            "id": "40539681fe5f6d09",
+            "id": "3a4cf103be9b5360",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
+                "file": "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 20 ISTI"
+              "title": "Lezione 2 ISTI"
             }
           }
         ],
@@ -95,7 +95,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 367.5026054382324
+    "width": 367.5026054382324,
+    "collapsed": true
   },
   "right": {
     "id": "770b9c2c4fc00941",
@@ -111,13 +112,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
+                "file": "Appunti II Anno/Appunti ML/ProgettoML/Documento di Progetto ML.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 20 ISTI"
+              "title": "Outline of Documento di Progetto ML"
             }
           },
           {
@@ -180,8 +181,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "40539681fe5f6d09",
+  "active": "3a4cf103be9b5360",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
+    "Appunti II Anno/Appunti ML/ProgettoML/Documento di Progetto ML.md",
+    "Appunti I Anno/Appunti ISTI/Appendice di probabilità.md",
+    "Appunti II Anno/Appunti ML/ProgettoML/Documento di progetto ML (Bozza).md",
+    "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 19 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 18 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 17 ISTI.md",
@@ -192,10 +198,8 @@
     "Appunti I Anno/Appunti ISTI/Lezione 12 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 11 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 10 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Appendice di probabilità.md",
     "Appunti I Anno/Appunti ISTI/Lezione 9 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 8 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 20 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 7 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
@@ -203,10 +207,7 @@
     "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 1 ISTI.md",
-    "Appunti II Anno/Appunti ML/ProgettoML/Documento di Progetto ML.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
-    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
-    "Appunti II Anno/Appunti ML/ProgettoML/Documento di progetto ML (Bozza).md",
     "README.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219162354.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219162249.png",
