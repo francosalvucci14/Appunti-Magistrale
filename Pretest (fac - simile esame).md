@@ -190,3 +190,4 @@ Risposte:
 - [ ] La funzione richiede tempo costante e spazio supplementare costante
 - [ ] La funzione richiede tempo lineare e spazio supplementare costante
 - [ ] La funzione richiede tempo e spazio supplementare lineare in $n$
+

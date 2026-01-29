@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
+                "file": "Appunti II Anno/Appunti ML/ProgettoML/Progetto Finale.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 2 ISTI"
+              "title": "Progetto Finale"
             }
           }
         ],
@@ -95,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 367.5026054382324,
-    "collapsed": true
+    "width": 367.5026054382324
   },
   "right": {
     "id": "770b9c2c4fc00941",
@@ -183,6 +182,12 @@
   },
   "active": "3a4cf103be9b5360",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
+    "Appunti II Anno/Appunti ML/ProgettoML/Progetto Finale.md",
+    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
+    "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
+    "Pretest (fac - simile esame).md",
+    "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
     "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
     "Appunti II Anno/Appunti ML/ProgettoML/Documento di Progetto ML.md",
     "Appunti I Anno/Appunti ISTI/Appendice di probabilità.md",
@@ -203,12 +208,6 @@
     "Appunti I Anno/Appunti ISTI/Lezione 7 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 6 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 5 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 4 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 3 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 2 ISTI.md",
-    "Appunti I Anno/Appunti ISTI/Lezione 1 ISTI.md",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
-    "README.md",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219162354.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219162249.png",
     "Appunti II Anno/Appunti ML/img/Pasted image 20251219160421.png",
