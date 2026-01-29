@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/ProgettoML/Progetto Finale.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Progetto Finale"
+              "title": "Lezione 2 ML - Foundations Part II"
             }
           }
         ],
@@ -111,13 +111,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/ProgettoML/Documento di Progetto ML.md",
+                "file": "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Documento di Progetto ML"
+              "title": "Outline of Lezione 2 ML - Foundations Part II"
             }
           },
           {
@@ -145,8 +145,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "bd99bf3ea8e9b4e1",
@@ -182,8 +181,8 @@
   },
   "active": "3a4cf103be9b5360",
   "lastOpenFiles": [
-    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti II Anno/Appunti ML/ProgettoML/Progetto Finale.md",
+    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
     "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Pretest (fac - simile esame).md",
