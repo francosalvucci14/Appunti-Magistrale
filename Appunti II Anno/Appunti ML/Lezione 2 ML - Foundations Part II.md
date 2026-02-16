@@ -70,7 +70,7 @@ Questo quadro probabilistico fornisce una base rigorosa per comprendere e valuta
 ## Rischio Empirico e Rischio Atteso
 
 L'*errore* di un predittore $h$ è definito in termini di loss attesta su tutti gli oggetti nell'insieme $\mathcal X$, ovvero:
-$$\mathcal R_{p_{M},f}(h)=\mathbb E_{x\sim p_{M}}[\mathcal R_{f}(h(\overline{x}),\overline{x})]=\mathbb E_{x\sim p_{M}}[L(h(\overline{x}),f(\overline{x}))]\int_{\mathcal X}L(h(\overline{x}),f(\overline{x}))\cdot p_{M}(\overline{x})d\overline{x}$$
+$$\mathcal R_{p_{M},f}(h)=\mathbb E_{x\sim p_{M}}[\mathcal R_{f}(h(\overline{x}),\overline{x})]=\mathbb E_{x\sim p_{M}}[L(h(\overline{x}),f(\overline{x}))]=\int_{\mathcal X}L(h(\overline{x}),f(\overline{x}))\cdot p_{M}(\overline{x})d\overline{x}$$
 E nel caso generale, vale che $$\mathcal R_{p}(h)=\mathbb E_{(x,y)\sim p}[L(h(\overline{x}),t)]=\int_{\mathcal X}\int_{\mathcal Y}L(h(\overline{x}),t)\cdot p_{M}(\overline{x})\cdot p_{C}(t|\overline{x})d\overline{x}dt$$
 Nel caso della funzione loss $0-1$, questa è solo la probabilità di una previsione errata in un elemento o coppia campionati casualmente, rispettivamente, ovvero:
 $$\mathcal R_{p_{M},f}=\mathbb E_{x\sim p_{M}}[\mathbb 1[h(\overline{x})\neq f(\overline{x})]]=Pr_{x\sim p_M}[h(\overline{x})\neq f(\overline{x})]]$$

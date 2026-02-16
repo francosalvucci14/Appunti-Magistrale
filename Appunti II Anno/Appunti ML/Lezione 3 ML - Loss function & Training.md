@@ -59,7 +59,7 @@ dove $\eta$ rappresenta il ***rate di apprendimento***, che controlla la dimensi
 
 In forma matriciale, questo può essere riscritto come:
 $$\begin{align*}
-\theta^{(i)}_{j}:&=\theta^{(i-1)}_{j}-\eta\nabla\overline{\mathcal R}_\mathcal T(\theta)|_{\theta^{(i-1)}}\\&=\theta^{(i-1)}_{j}-\frac{\eta}{|\mathcal T|}\sum\limits_{(x,t)\in\mathcal T}\nabla L(h_{\theta}(\overline{x}),t)|_{\theta^{(i-1)}}
+\theta^{(i)}:&=\theta^{(i-1)}-\eta\nabla\overline{\mathcal R}_\mathcal T(\theta)|_{\theta^{(i-1)}}\\&=\theta^{(i-1)}-\frac{\eta}{|\mathcal T|}\sum\limits_{(x,t)\in\mathcal T}\nabla L(h_{\theta}(\overline{x}),t)|_{\theta^{(i-1)}}
 \end{align*}$$
 Mentre questo metodo ci permette di approssimare a un minimo locale, il risultato dipende *pesantemente* dai parametri iniziali scelti.
 
@@ -170,8 +170,7 @@ se assumiamo una funzione di predizione lineare otteniamo il seguente rischio em
 $$\overline{\mathcal R}_{\mathcal T}(h)=\frac{1}{|\mathcal T|}\sum\limits_{(\overline{x},t)\in\mathcal T}\mathbb 1[(\overline{w}^{T}\overline{x}+b)y\lt0]$$
 il problema è trovare i valori di $\overline{w},b$ che minimizzano il numero generale di errori: questo è un problema NP-Hard
 
-Seguirebbero altre funzioni di loss per la classificazione, però non le abbiamo (ancora) trattate
-(tranne la **cross-entropy**, vedi [](Code-labs/lab2/Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy))
+(tranne la **cross-entropy**, vedi [qui](Code-labs/lab2/Gradient%20Descent.md#La%20funzione%20di%20costo%20cross-entropy))
 ## Tecniche di gradient descent
 
 Il gradient descent esegue la minimizzazione di una funzione $J(\theta)$ attraverso aggiornamenti iterativi del valore corrente di $\theta$, partendo da un valore iniziale $\theta^{(0)}$, nella direzione opposta a quella specificata dal valore corrente del gradiente, ovvero $\nabla J|_{\theta^{(k)}}$
