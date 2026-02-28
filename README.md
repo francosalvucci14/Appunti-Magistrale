@@ -32,11 +32,11 @@ Da capire i nuovi corsi che sono:
 - [x] PROB
 - [ ] AR (fatto per metà)
 - [ ] CNS
-- [ ] ISTI
+- [x] ISTI
 - [ ] IR
 - [ ] ML
 - [ ] KE
 - [ ] CBD
-- [ ] MVS
+- [x] MVS
 - [ ] CYS
 

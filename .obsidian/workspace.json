@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/ProgettoML/Progetto ML.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Progetto ML"
+              "title": "README"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti ML/ProgettoML/Progetto ML.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Progetto ML"
+              "title": "Outline of README"
             }
           },
           {
@@ -164,10 +164,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "90edc667964d2b31",
   "lastOpenFiles": [
-    "Untitled.base",
+    "Pretest (fac - simile esame).md",
+    "README.md",
     "Appunti II Anno/Appunti ML/ProgettoML/Progetto ML.md",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/PerImp_SVM.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/PerImp_RF.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/NumFeat_Distr_2.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/NumFeat_Distr.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/CatFeat_Distr.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/SkewnessFeatures.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/LearningCurve_SVM.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/LearningCurve_RF_Raw.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/LearningCurve_RF_Log.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages/LearningCurve_LR.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages",
+    "Untitled.base",
     "Untitled 1.base",
     "Appunti II Anno/Appunti ML/ProgettoML/Documento di Progetto ML.md",
     "Appunti II Anno/Appunti ML/ProgettoML/Documento di progetto ML (Bozza).md",
@@ -190,7 +203,6 @@
     "Appunti II Anno/Appunti ML/Code-labs/lab5/Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis.pdf",
     "Appunti II Anno/Appunti ML/Code-labs/lab5/Classificatori Lineari - Percettrone, Least Squares e Gaussian Discriminant Analysis.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/Regressione lineare, Gradient Descent e Regolarizzazione.md",
-    "Appunti II Anno/Appunti ML/Code-labs/lab4/Regressione lineare, Gradient Descent e Regolarizzazione.pdf",
     "Appunti II Anno/Appunti ML/Code-labs/lab4/Modelli probabilistici e Regressione Bayesiana.md",
     "Appunti II Anno/Appunti ML/Code-labs/lab2/Gradient Descent.md",
     "Appunti I Anno/Appunti ISTI/Appendice di probabilità.md",
@@ -199,17 +211,6 @@
     "Appunti I Anno/Appunti ISTI/Lezione 11 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 10 ISTI.md",
     "Appunti I Anno/Appunti ISTI/Lezione 9 ISTI.md",
-    "Appunti II Anno/Appunti ML/ProgettoML/Progetto Finale.md",
-    "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251219162354.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251219162249.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251219160421.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251219155957.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251219102412.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251219102343.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251219102305.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251210173914.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251203143443.png",
-    "Appunti II Anno/Appunti ML/img/Pasted image 20251202141800.png"
+    "Appunti II Anno/Appunti ML/ProgettoML/Progetto Finale.md"
   ]
 }
