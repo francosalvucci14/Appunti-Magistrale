@@ -34,7 +34,7 @@ Da capire i nuovi corsi che sono:
 - [ ] CNS
 - [x] ISTI
 - [ ] IR
-- [ ] ML
+- [x] ML
 - [ ] KE
 - [ ] CBD
 - [x] MVS
