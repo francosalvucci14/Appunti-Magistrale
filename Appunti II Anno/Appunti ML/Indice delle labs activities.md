@@ -11,4 +11,5 @@ Indice delle lezioni di laboratorio, che mostrano nella pratica come applicare l
 - [Lab7 - Decision Trees](Code-labs/lab7/Decision%20Trees.md)
 - [Lab8 - SVM](Code-labs/lab8/SVM.md)
 - [Lab9 - Clustering](Code-labs/lab9/Clustering.md)
-- 
+- [Lab10 - MLP & Backpropagation](Code-labs/lab10/MLP%20e%20Backpropagation.md)
+
