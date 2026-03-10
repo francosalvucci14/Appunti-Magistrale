@@ -1,7 +1,8 @@
 {
   "enabledCssSnippets": [
     "callouts",
-    "center"
+    "center",
+    "zoom"
   ],
   "accentColor": "",
   "baseFontSize": 17,

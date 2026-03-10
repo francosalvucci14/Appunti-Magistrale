@@ -1,9 +1,10 @@
 [
-  "obsidian-git",
   "better-export-pdf",
   "quick-latex",
   "automatic-table-of-contents",
   "obsidian-latex-environments",
   "auto-braces",
-  "obsidian-link-converter"
+  "obsidian-link-converter",
+  "obsidian-git",
+  "cmdr"
 ]

@@ -31,7 +31,7 @@ Da capire i nuovi corsi che sono:
 - [x] PCD
 - [x] PROB
 - [ ] AR (fatto per metà)
-- [ ] CNS
+- [ ] CNS (fatto per metà)
 - [x] ISTI
 - [ ] IR
 - [x] ML
