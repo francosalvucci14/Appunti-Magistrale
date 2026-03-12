@@ -116,7 +116,8 @@
               "title": "Source Control"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "b7d5f1914b483202",
@@ -154,6 +155,8 @@
   },
   "active": "c37f78dda7fec44d",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti IR/Lezione 2 IR - Intro p.2 & Inverted Index.md",
+    "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I. & Boolean Retrieval Model.md",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260312144616.png",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260312143812.png",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260312142809.png",
@@ -165,8 +168,6 @@
     "Appunti I Anno/Appunti PROB/Indice delle lezioni PROB.md",
     "2026-03-12.md",
     "Appunti II Anno/Appunti IR/Lezione 1 IR - Intro.md",
-    "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I. & Boolean Retrieval Model.md",
-    "Appunti II Anno/Appunti IR/Lezione 2 IR - Intro p.2 & Inverted Index.md",
     "Appunti II Anno/Appunti KE/Lezione 3 KE - RDF e RDFS.md",
     "Appunti II Anno/Appunti CDCI/Indice degli appunti CDCI.md",
     "Appunti II Anno/Appunti CDCI/Lezione-1-CDCI.pdf",
@@ -185,7 +186,6 @@
     "Appunti II Anno/Appunti IR/img/Pasted image 20260307110857.png",
     "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260307105603.png",
     "Appunti II Anno/Appunti AIC",
     "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",

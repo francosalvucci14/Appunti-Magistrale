@@ -136,3 +136,8 @@ Questo modello è capace di rispondere a query di tipo Boolean, ovvero query che
 
 Per circa $3$ decenni è stato il tool di retrieval commerciale più usato, e molti sistemi attuali ancora lo usano
 
+Un'esempio di questo sistema è Westlaw[^1]
+
+
+
+[^1]: http://www.westlaw.com/
