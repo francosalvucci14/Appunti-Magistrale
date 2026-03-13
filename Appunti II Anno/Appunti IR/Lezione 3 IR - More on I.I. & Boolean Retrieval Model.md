@@ -2,7 +2,7 @@
 
 Stiamo ancora parlando dell' **Inverted Index**
 
-Nella scorsa lezione avevamo introdotto questo metodo di IR, e avevo visto gli stage iniziali del text processing, che sono:
+Nella scorsa lezione avevamo introdotto questa struttura dati di IR, e avevo visto gli stage iniziali del text processing, che sono:
 - Tokenizzazione
 - Normalizzazione
 - Stemming
@@ -137,6 +137,53 @@ Questo modello è capace di rispondere a query di tipo Boolean, ovvero query che
 Per circa $3$ decenni è stato il tool di retrieval commerciale più usato, e molti sistemi attuali ancora lo usano
 
 Un'esempio di questo sistema è Westlaw[^1]
+
+ALcuni esempi di query:
+1) Qual è il termine di prescrizione nei casi che coinvolgono la legge federale sui risarcimenti per danni?
+	- **query** -> LIMIT! /3 STATUTE ACTION /S FEDERAL /2 TORT /3 CLAIM
+		- /3 = entro 3 parole, /S = nella stessa frase
+2) Requisiti affinché le persone con disabilità possano accedere a un luogo di lavoro
+	- **query** -> disabl! /p access! /s work-site work-place (employment /3 place)
+
+**Esercizio 1** : adattare il merge per le query
+- Brutus AND NOT Caesar
+- Brutus OR NOT Caesar
+Possiamo ancora eseguire il merge in tempo $O(x+y)$
+
+**Esercizio 2** : Cosa possiamo dire di una formula Booleana arbitraria, del tipo:
+- (Brutus OR Caesar) AND NOT (Antony OR Cleopatra)
+Possiamo ancora eseguire il merge in tempo lineare? Possiamo fare di meglio?
+## Query optimization
+
+Un problema fondamentale quando si processano query è: Qual è il miglior ordine per processare una query?
+
+Prendiamo ad esempio una query fatta dell' AND fra $n$ termini, es.
+- Brutus AND Calpurnia AND Caesar
+
+Una soluzione possibile è la seguente -> per ogni termine, prendiamo la sua lista di postings e poi si fa l'AND fra loro
+
+![500](img/Pasted%20image%2020260313110557.png)
+
+Questa soluzione però non è troppo buona.
+
+La soluzione migliore è processare in base alla ***frequenza crescente***
+- si inizia con gli insiemi più piccoli, e poi si continua a tagliare ulteriormente
+
+Questo è esattamente il motivo per cui abbiamo lasciato la document frequency nel dizionario dell' Inverted Index
+
+Una volta fatto questo, si esegue la query precedente come:
+- (Calpurnia AND Brutus) AND Caesar
+
+**Esercizio 3** : Scrivere un ordine di processo per la seguente query, considerando il dizionario in foto (vedi giù):
+- (tangerine OR trees) AND (marmalade OR skies) AND (kaleidoscope OR eyes)
+
+![300](img/Pasted%20image%2020260313111203.png)
+
+Possiamo quindi definire una **ottimizzazione** generale
+- es. (madding OR crowd) AND (ignoble OR strife)
+- 1. Si prendono le document freq. di tutti i termini
+- 2. Si calcola la dimensione di ogni OR considerando la somma delle document freq.
+- 3. Si elabora la query in ordine crescente di OR
 
 
 

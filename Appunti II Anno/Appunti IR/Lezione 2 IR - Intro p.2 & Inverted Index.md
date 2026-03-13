@@ -94,7 +94,7 @@ Una migliore **rappresentazione** del problema in questione? Ci salviamo solamen
 
 ## Inverted Index
 
->[!definition]- Struttura dati Inverted Index
+>[!definition]- Struttura dati - Inverted Index
 > Per ogni termine $t$, salviamo una lista di documenti che contengono $t$
 > Ogni documento viene identificato tramite un **docID** - numero seriale del documento
 

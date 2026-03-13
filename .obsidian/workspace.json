@@ -115,6 +115,21 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "0c3852dfc0214617",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
           }
         ],
         "currentTab": 1
@@ -153,10 +168,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c37f78dda7fec44d",
+  "active": "7f4a8ee5226470a0",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260313111203.png",
     "Appunti II Anno/Appunti IR/Lezione 2 IR - Intro p.2 & Inverted Index.md",
     "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I. & Boolean Retrieval Model.md",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260313110557.png",
+    "Appunti II Anno/Appunti ML/ProgettoML/Progetto ML.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md",
+    "Appunti I Anno/Appunti ADRC/Lezione 1 ADRC.md",
+    "Appunti I Anno/Appunti CNS/Encryption Basics.md",
+    "Appunti I Anno/Appunti CNS/Block Cipher - Modes of Operation.md",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260312144616.png",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260312143812.png",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260312142809.png",
@@ -183,22 +209,12 @@
     "Appunti II Anno/Appunti IR/img/Pasted image 20260307115737.png",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260307114553.png",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260307112537.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260307110857.png",
     "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
     "Appunti II Anno/Appunti ML/Lezione 4 ML - Probabilistic Learning p.1-2.md",
     "Appunti II Anno/Appunti AIC",
     "Appunti II Anno/Appunti ML/Indice delle labs activities.md",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
-    "Appunti II Anno/Appunti ML/Code-labs/lab6/Logistic Regression.md",
-    "Appunti II Anno/Appunti ML/Lezione 2 ML - Foundations Part II.md",
-    "Appunti II Anno/Appunti ML/Lezione 1 ML - Foundations.md",
     "Appunti II Anno/Appunti IR/img",
     "Appunti II Anno/Appunti CDCI",
-    "Appunti II Anno/Appunti ML/ProgettoML/Progetto ML.md",
-    "Pretest (fac - simile esame).md",
-    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages",
-    "Appunti II Anno/Appunti ML/ProgettoML/Documento di Progetto ML.md",
-    "Appunti II Anno/Appunti ML/ProgettoML/Documento di progetto ML (Bozza).md",
-    "Appunti II Anno/Appunti ML/Lezione 3 ML - Loss function & Training.md"
+    "Appunti II Anno/Appunti ML/ProgettoML/PlotImages"
   ]
 }
