@@ -69,14 +69,13 @@ Si pongono quindi due domande fondamentali:
 
 ![500](img/Pasted%20image%2020260312143812.png)
 
----
-# Query Processing with I.I
+## Query Processing with I.I
 
 La domanda che sorge spontanea, dopo aver visto come si crea un Inverted Index è:
 
 > Come processiamo una query? e più avanti, che *tipo* di query possiamo processare?
 
-## Query Processing: AND
+### Query Processing: AND
 
 Consideriamo la query: Brutus ***AND*** Caesar
 
@@ -185,6 +184,83 @@ Possiamo quindi definire una **ottimizzazione** generale
 - 2. Si calcola la dimensione di ogni OR considerando la somma delle document freq.
 - 3. Si elabora la query in ordine crescente di OR
 
+**Altri esercizi**:
+- se la query è friends AND romans AND (NOT countrymen), come possiamo usare la frequenza di countrymen?
+- estendere il merge ad una query Booleana arbitraria. Possiamo sempre garantire che il tempo di esecuzione sia lineare nella dimensione totale dei postings?
+---
+# Phrase queries & positional indexes
 
+In questa sezione vediamo come processare query del tipo "stanford university" - ovvero query che vengono intese come *frasi*
+
+In questo caso, la sentenza "I went to university at Stanford" non è un match valido
+
+> Il concetto di ***ricerca per frasi*** si è dimostrato facilmente comprensibile per gli utenti; infatti è una delle idee di "ricerca avanzata" che funziona
+
+Per fare questo, non è più sufficiente salvare in memoria solo le coppie `<term:docs>`
+## Prima soluzione: Biword indexes
+
+Un primo approccio è quello di usare i **Biword indexes**
+
+L'idea dietro è la seguente:
+
+> Si indicizzano le coppie **consecutive** di termini nel testo come se fossero frasi
+
+Esempio: se il testo è "Friends, Roman, Countrymen" -> si generano le seguenti **biwords**:
+- friends roman
+- roman countrymen
+
+Ogniuna delle biwords create risulta quindi essere un **dizionario di termini**
+
+Così facendo, il query-processing di frasi a due parole risulta essere immediato
+
+Non ci limitiamo solamente alle frasi a due parole, ma il concetto di Biword Indexes può essere esteso anche a frasi più lunghe; infatti testi più lunghi vengono semplicemente processati **scomponendo** i termini fra loro
+
+Esempio: il testo "stanford university palo alto" può essere scomposto in query Booleane su biwords, ottenendo la seguente query: "stanford university AND university palo AND palo alto"
+
+***Attenzione***: senza i documenti, non possiamo verificare che i documenti corrispondenti alla query Booleana sopra riportata contengano effettivamente la frase
+
+> Di conseguenza otteniamo i cosi detti ***falsi positivi***
+
+Un'altra problematica relativa all'uso dei Biword indexes è che la dimensione degli indici **esplode** con dizionari più grandi
+- infatti questa tecnica è impraticabile per più di due parole, e comunque anche per loro è già troppo grande
+
+Di conseguenza affermiamo che questa tecnica non è proprio la soluzione standard, MA può essere parte di una ***strategia combinata***
+## Seconda soluzione: Positional indexes
+
+Abbiamo appena visto quindi che la soluzione con i Biword indexes non è proprio la soluzione migliore al problema delle query a frasi
+
+Il secondo approccio che vediamo prende il nome di ***positional indexes***; la logica è la seguente
+
+> Nelle liste di postings salviamo, **per ogni termine**, la sua posizione (/posizioni) in cui compaiono i suoi token
+
+Otteniamo quindi una struttura del genere:
+
+ ```
+ <term, #doc contenenti term;
+  doc1: position1, position2,...;
+  doc2: position1, position2,...;
+  etc...>
+ ```
+
+**Esempio** : per il termine "be"; quale fra questi documenti contiene la frase "to be or not to be"?
+
+```
+ <be, 993427;
+  1: 7,18,33,72,86,231;
+  2: 3,149;
+  4: 17,191,291,430,434;
+  5: 363,367,...>
+```
+
+A questo punto, per le queri su frasi utilizziamo l'algoritmo di Merge in modo ricorisivo a livello di documento
+
+Il problema però è che adesso dobbiamo gestire più della semplice uguaglianza
+
+Processiamo ora la query di prima, ovvero "**to be or not to be**"
+
+1. Estraiamo le entrate dell' inverted index per ogni termine distinto: **to,be,or,not**
+2. Uniamo le loro liste *doc:position* per enumerare tutte le posizioni contenenti **to be or not to be**
+	1. **to** : 2 : 1,17,74,222,551 ; *4 : 8,16,190,429,433* ; 7 : 13,23,191,...
+	2. **be**
 
 [^1]: http://www.westlaw.com/
