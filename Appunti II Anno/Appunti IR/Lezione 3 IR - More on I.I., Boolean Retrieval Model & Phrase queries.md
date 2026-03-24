@@ -260,7 +260,42 @@ Processiamo ora la query di prima, ovvero "**to be or not to be**"
 
 1. Estraiamo le entrate dell' inverted index per ogni termine distinto: **to,be,or,not**
 2. Uniamo le loro liste *doc:position* per enumerare tutte le posizioni contenenti **to be or not to be**
-	1. **to** : 2 : 1,17,74,222,551 ; *4 : 8,16,190,429,433* ; 7 : 13,23,191,...
-	2. **be**
+	1. **to** -> 2 : 1,17,74,222,551 ; *4 : 8,16,190,429,433* ; 7 : 13,23,191,...
+	2. **be** -> 1 : 17,19 ; *4 : 17,191,291,430,434* ; 5 : 14,19,101,...
+
+Stesso metodo generale per le ***ricerche di prossimità***
+
+C'è un piccolo problema però con gli indici posizionali, ovvero che la loro presenza aumenta **notevolmente** la dimensione dei postings, anche se gli indici possono venire compressi
+
+Ciononostante, l'indice posizionale è ormai di uso comune grazie alla potenza e all'utilità delle query basate su frasi e sulla prossimità... sia che venga utilizzato in modo esplicito o implicito in un sistema di classificazione e recupero dei risultati
+
+In un indice standard, registri solo _se_ una parola compare in un documento (es. "La parola 'cane' si trova nel Documento 4"). In un indice posizionale, bisogna registrare _ogni singola posizione_ in cui la parola compare (es. "La parola 'cane' si trova nel Documento 4 alle posizioni 12, 45 e 110").
+
+La dimensione dell'indice dipende quindi dalla dimensione media del documento
+Infatti, se un documento è molto lungo allora una stessa parola avrà più probabilità di ripetersi. Mentre l'indice standard aggiungerà sempre e solo un elemento (il documento ID), l'indice posizionale dovrà aggiungere una nuova posizione per ogni singola ripetizione.
+
+Prendiamo ad esempio un temrine con frequenza $0.1\%$ (ovvero compare una volta ogni 1000 termini):
+- In un documento di **1.000 parole**, la parola compare 1 volta. Sia l'indice standard (Postings) che quello posizionale (Positional postings) registrano 1 solo valore.
+- In un documento di **100.000 parole** (es. un libro), la parola compare 100 volte. L'indice standard continua a usare **1 solo posting** (dice semplicemente "la parola è in questo libro"). L'indice posizionale, invece, ha bisogno di **100 postings** per registrare l'esatta posizione di ogni occorrenza.
+
+Abbiamo quindi la seguente situazione:
+
+| Doc Size | Postings | Positional Postings |
+| -------- | -------- | ------------------- |
+| 1000     | 1        | 1                   |
+| 100.000  | 1        | 100                 |
+
+Di conseguenza otteniamo le seguenti **regole pratiche**:
+- - **2-4 volte più grande:** A causa di tutti i numeri extra necessari per memorizzare le posizioni esatte di ogni parola, un indice posizionale è generalmente dalle 2 alle 4 volte più pesante di un indice non posizionale.
+- **Rispetto al testo originale:** La dimensione totale dell'indice posizionale corrisponde circa al 35% - 50% del volume del testo originale. Questo significa che se bisogna indicizzare un database di testi di 1 GB, l' indice posizionale peserà tra i 350 MB e i 500 MB.
+- **L'eccezione (Caveat):** Queste stime valgono per lingue strutturate come l'inglese ("English-like"). Lingue con morfologie molto diverse, come il cinese (che non ha spazi tra le parole) o le lingue agglutinanti (come il finlandese o il turco), avranno rapporti di grandezza differenti.
+
+**Il problema dell'indice posizionale:** Se un utente cerca la frase esatta `"Michael Jackson"`, il sistema deve prendere la lista infinita di tutte le posizioni di "Michael" e la lista di tutte le posizioni di "Jackson", per poi incrociarle e vedere dove "Jackson" compare esattamente una posizione dopo "Michael". È un'operazione pesante. Diventa un incubo per query come `"The Who"`, perché "The" e "Who" sono "stop words" comunissime presenti in quasi tutti i documenti.
+
+**La soluzione (Schema Misto):** Invece di fare questo calcolo ogni volta, conviene indicizzare le frasi più comuni (es. "Michael Jackson") come se fossero una singola parola nel vocabolario, mantenendo l'indice posizionale per tutto il resto.
+
+**I risultati (Williams et al., 2004):** Questo schema ibrido crea un classico compromesso (trade-off) tra spazio e tempo:
+- **Vantaggio (Tempo):** Le query miste tipiche del web vengono eseguite in **1/4 del tempo** rispetto all'uso del solo indice posizionale (sono molto più veloci).
+- **Svantaggio (Spazio):** Richiede il **26% di spazio in più** sul disco rispetto al semplice indice posizionale, perché devi salvare nel vocabolario anche le frasi composte oltre alle singole parole.
 
 [^1]: http://www.westlaw.com/

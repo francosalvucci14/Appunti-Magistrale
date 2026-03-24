@@ -3,3 +3,6 @@ Indice degli appunti del corso di Information Retrieval
 - [Lezione 1 IR - Intro](Lezione%201%20IR%20-%20Intro.md)
 - [Lezione 2 IR - Intro p.2 & Inverted Index](Lezione%202%20IR%20-%20Intro%20p.2%20&%20Inverted%20Index.md)
 - [Lezione 3 IR - More on I.I., Boolean Retrieval Model & Phrase queries](Lezione%203%20IR%20-%20More%20on%20I.I.,%20Boolean%20Retrieval%20Model%20&%20Phrase%20queries.md)
+- [Lezione 4 IR - Basic Inverted Index Construction, SPIMI & BSBI](Lezione%204%20IR%20-%20Basic%20Inverted%20Index%20Construction,%20SPIMI%20&%20BSBI.md)
+- [Lezione 5 IR - Distributed Indexing & Dynamic Indexing](Lezione%205%20IR%20-%20Distributed%20Indexing%20&%20Dynamic%20Indexing.md)
+- 
