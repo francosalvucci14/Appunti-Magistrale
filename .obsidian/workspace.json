@@ -96,13 +96,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I., Boolean Retrieval Model & Phrase queries.md",
+                "file": "Appunti II Anno/Appunti IR/Lezione 4 IR - Basic Inverted Index Construction, SPIMI & BSBI.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 3 IR - More on I.I., Boolean Retrieval Model & Phrase queries"
+              "title": "Outline of Lezione 4 IR - Basic Inverted Index Construction, SPIMI & BSBI"
             }
           },
           {
@@ -132,8 +132,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "b7d5f1914b483202",
@@ -171,11 +170,12 @@
   },
   "active": "c37f78dda7fec44d",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260325113935.png",
+    "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I., Boolean Retrieval Model & Phrase queries.md",
+    "Appunti II Anno/Appunti IR/Lezione 4 IR - Basic Inverted Index Construction, SPIMI & BSBI.md",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260324121706.png",
     "Appunti II Anno/Appunti IR/Indice degli appunti IR.md",
     "Appunti II Anno/Appunti IR/Lezione 5 IR - Distributed Indexing & Dynamic Indexing.md",
-    "Appunti II Anno/Appunti IR/Lezione 4 IR - Basic Inverted Index Construction, SPIMI & BSBI.md",
-    "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I., Boolean Retrieval Model & Phrase queries.md",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260313111203.png",
     "Appunti II Anno/Appunti IR/Lezione 2 IR - Intro p.2 & Inverted Index.md",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260313110557.png",
@@ -211,7 +211,6 @@
     "Appunti II Anno/Appunti AIC/Lezione 2 AIC - ML Foundamentals.md",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260307120718.png",
     "Appunti II Anno/Appunti IR/img/Pasted image 20260307115737.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260307114553.png",
     "Appunti I Anno/Appunti ADRC/Lezione 4 ADRC - Algoritmo HyperFLOOD, WakeUp Task, Protocollo WFLOOD.md",
     "Appunti II Anno/Appunti AIC",
     "Appunti II Anno/Appunti IR/img",
