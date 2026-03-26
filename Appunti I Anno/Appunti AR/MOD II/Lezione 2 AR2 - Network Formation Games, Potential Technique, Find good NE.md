@@ -65,6 +65,8 @@ Diremo che una rete è **ottimale** oppure **socialmente ottimale** se minimizza
 
 **oss** : notiamo che $cost(S)=\sum\limits_{e\in N(S)}c_{e}$
 
+**oss2** : la ***rete ottimale*** è il *sottografo meno costoso* di $G$ contenente un percorso $s_i\to t_i,\forall i$
+
 Vediamo un esempio
 
 ![center|400](img/Pasted%20image%2020251105153705.png)
@@ -77,7 +79,7 @@ Se prendiamo come $N(S)$ il percorso rosso nella figura sottostante
 
 otteniamo che:
 - $cost_{1}=7$ ottenuto con la formula $\sum\limits_{e\in P_{i}}\frac{c_{e}}{k_{e}(S)}=\frac{6}{2}+ \frac{4}{2}+ \frac{2}{1}=3+2+2=7$
-- $cost_{2}=11$ sempre ottenuto con la formula precedente $\frac{6}{2}+ \frac{4}{2}+ \frac{1}{1}=3+2+1=6$
+- $cost_{2}=6$ sempre ottenuto con la formula precedente $\frac{6}{2}+ \frac{4}{2}+ \frac{1}{1}=3+2+1=6$
 - il **costo sociale** della rete è $13$, ovvero $cost_{1}+cost_{2}=7+6=13$
 - ma è stabile? la risposta è *no*
 
@@ -99,7 +101,7 @@ qui invece abbiamo:
 - $cost_1=6$
 - $cost_{2}=10$
 - **costo sociale** $16$
-- stabile? in questo caso ***si***, perchè è il minimo possibile $\implies$ NE
+- stabile? in questo caso ***si***, perchè $S$ è un NE
 
 Questioni affrontate
 - Esiste sempre una rete stabile?
@@ -132,11 +134,12 @@ Prendiamo il seguente esempio
 La rete ottimale ha costo $1$
 
 Il miglior NE : tutti i giocatori usano l'arco basso (quello con costo $1$) $\to$ PoS in $G$ è $1\space\checkmark$
-Il peggior NE : tutti i giocatori usano l'arco alto (quello con costo $k$) $\to$ PoA in $G$ è $1\space\times$
+Il peggior NE : tutti i giocatori usano l'arco alto (quello con costo $k$) $\to$ PoA in $G$ è $k\space\times$
 
 Quindi, il PoA del gioco è $\geq k$
+### PoA : Upper Bound
 
-Vediamo un risultato più generale, dato dal seguente teorema
+Vediamo un risultato più generale, dato dal seguente teorema (upper bound del PoA)
 
 >[!teorem]- Teorema 
 >Il PoA nel GCG con $k$ giocatori è **al più** $k$ ($\leq$ k)
@@ -184,6 +187,7 @@ $$\sum\limits_{j=1}^{k} \frac{1}{j}=H_{k}\leq\ln(k)+1$$
 ovvero il $k$-esimo **numero armonico**
 
 Avevamo detto che la soluzione ottima ha costo $1+\varepsilon$, ma questo porta a dire che il PoS del gioco ha costo $\leq H_{k}$
+### PoS: Upper Bound
 
 Come prima, vediamo dei risultati più generali dati dai seguenti teoremi
 
@@ -191,7 +195,7 @@ Come prima, vediamo dei risultati più generali dati dai seguenti teoremi
 >Qualsiasi istanza del GCG ha un equilibrio di Nash puro e la miglior dinamica di risposta converge sempre
 
 >[!teorem]- Teorema 2
->Il PoS nel GCG con $k$ giocatori è al più $H_{k}$, il $k$-esimo numero armonico
+>Il PoS nel GCG con $k$ giocatori è al più $H_{k} (\leq H_{k})$, il $k$-esimo numero armonico
 
 Per dimostrare entrambi i teoremi useremo il **Potential Function Method**
 
@@ -201,7 +205,7 @@ Prima di tutto diamo la seguente definizione:
 >Per ogni gioco finito, una **funzione potenziale esatta** $\phi$ è una funzione che mappa ogni vettore di strategie $S$ in un qualche valore e che soddisfa la seguente condizione:
 >$\forall S=(S_{1},\dots,S_{k}),S^{'}_{i}\neq S_{i},\text{ sia }S^{'}=(S_{-i},S^{'}_{i})$ allora vale che $$\phi(S)-\phi(S^{'})=cost_{i}(S)-cost_{i}(S')$$
 
-Un gioco che possiedeuna funzione potenziale esatta viene chiamato **gioco potenziale**
+Un gioco che possiede una funzione potenziale esatta viene chiamato **gioco potenziale**
 
 Vale quindi il seguente teorema:
 
@@ -212,7 +216,7 @@ Vale quindi il seguente teorema:
 
 Consideriamo una qualunque mossa del giocatore $i$ che porta a un nuovo vettore di strategie $S'$
 
-Dal teorema abbiamo quindi che 
+Dalla definizione di EPF (Funzione Potenziale Esatta) abbiamo quindi che 
 $$\underbrace{\phi(S)-\phi(S^{'})}_{\leq0}=cost_{i}(S)-cost_{i}(S^{'})\implies cost_{i}(S)\leq cost_{i}(S^{'})$$
 e di conseguenza, il giocatore $i$ non può decrementare il suo costo, e quindi $S$ risulta essere un NE $\blacksquare$
 
@@ -245,7 +249,7 @@ Sia $S^{\star}$ il vettore di strategie che minimizza il costo sociale
 Abbiamo quindi che 
 $$\frac{cost(S^{'})}{A}\leq\phi(S^{'})\leq\phi(S^{\star})\leq B\cdot cost(S)\quad\blacksquare$$
 
-Ritorniamo ora al GCG
+***Ritorniamo ora al GCG***
 
 Sia $\phi$ la seguente funzione che mappa ogni vettore di strategie $S$ in un valore reale: 
 $$\phi(S)=\sum\limits_{e\in E}\phi_{e}(S)$$
@@ -259,6 +263,8 @@ Valgono quindi i seguenti lemmi
 >Allora:
 >$$\phi(S)-\phi(S^{'})=cost_{i}(S)-cost_{i}(S^{'})$$
 
+Il lemma afferma che, se un singolo giocatore $i$ devia (cambia la sua strategia dal percorso $P_i$​ al percorso $P_i^{'}$​), la variazione del suo costo personale è _esattamente identica_ alla variazione della funzione di potenziale globale $\phi$.
+
 >[!teorem]- Lemma 2
 >Per ogni vettore di strategie $S$, vale che $$cost(S)\leq\phi(S)\leq H_{k}cost(S)$$
 
@@ -268,26 +274,34 @@ Dimostriamo questi due lemmi
 
 **dimostrazione lemma 1**
 
+***situazione 1*** : Insieme degli archi che il giocatore $i$ usava nel vecchio percorso $P_i$​ e che **continua ad usare** nel nuovo percorso $P_i^{'}$​.
+
 ![center|500](img/Pasted%20image%2020251106165529.png)
 
-per ogni $e\in P_{i}\cap P_{i}^{'}$ abbiamo che 
-- il termine $e$ del $cost_{i}()$ e il potenziale $\phi_{e}$ rimangono gli stessi
+per ogni $e\in P_{i}\cap P_{i}^{'}$ abbiamo che:
+- il termine $e$ del $cost_{i}(\cdot)$ e il potenziale $\phi_{e}$ rimangono gli stessi (costo del giocatore $i$, quindi il giocatore $i$ non risparmia ne paga di più)
+- detto meglio: la quota di costo che il giocatore $i$ paga per questo arco (arco $e$) non cambia, e anche il termine $\phi_e$​ della funzione di potenziale rimane identico. La variazione è zero.
+
+***situazione 2*** : Insieme degli archi che il giocatore $i$ **inizia ad usare** (fanno parte del nuovo percorso $P_i^{'}$​, ma non del vecchio $P_i$​).
 
 ![center|500](img/Pasted%20image%2020251106165822.png)
 
 per ogni $e\in P_{i}^{'}\setminus P_{i}$ abbiamo che 
-- il termine $e$ di $cost_{i}()$ viene incrementato di un fattore $\frac{c_{e}}{(k_{e}(S)+1)}$
+- il termine $e$ di $cost_{i}()$ viene incrementato di un fattore $\frac{c_{e}}{(k_{e}(S)+1)}$ (costo del giocatore $i$ diminuito di questa quota, quindi il giocatore $i$ paga di più)
 - il potenziale $\phi_{e}$ incrementa e passa da $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)})$ a $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)}+\frac{1}{k_{e}(S)+1})$
-- otteniamo quindi che $$\Delta\phi_{e}=\frac{c_{e}}{(k_{e}(S)+1)}$$
+- otteniamo quindi che $$\text{variazione del potenziale}=\Delta\phi_{e}=\frac{c_{e}}{(k_{e}(S)+1)}=\text{aumento costo player }i$$
+
+***situazione 3*** : Insieme degli archi che il giocatore $i$ **smette di usare** (fanno parte del vecchio percorso $P_i$​, ma non sono nel nuovo $P_i^{'}$​).
 
 ![center|500](img/Pasted%20image%2020251106172938.png)
 
 per ogni $e\in P_{i}\setminus P_{i}^{'}$ abbiamo che
--  il termine $e$ di $cost_{i}()$ viene decrementato di un fattore $\frac{c_{e}}{k_{e}(S)}$
+-  il termine $e$ di $cost_{i}()$ viene decrementato di un fattore $\frac{c_{e}}{k_{e}(S)}$ (costo del giocatore $i$ diminuito di questa quota, quindi il giocatore $i$ risparmia)
 - il potenziale $\phi_{e}$ decrementa e passa da $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)-1}+\frac{1}{k_{e}(S)})$ a $c_{e}(1+\frac{1}{2}+\dots+\frac{1}{k_{e}(S)-1})$
-- e quindi otteniamo che $$\Delta\phi_{e}=-\frac{c_{e}}{k_{e}(S)}$$
+- e quindi otteniamo che $$\text{variazione del potenziale}=\Delta\phi_{e}=-\frac{c_{e}}{k_{e}(S)}=\text{risparmio del player }i$$
+Se sommiamo le variazioni su tutti gli archi del grafo, vediamo che la variazione totale del potenziale $\Delta\phi_{e}$ è guidata unicamente dagli archi nuovi (dove $\phi$ aumenta del costo pagato dal giocatore $i$) e dagli archi abbandonati (dove $\phi$ diminuisce del costo risparmiato dal giocatore $i$).
 
-$\blacksquare$
+Questo dimostra il lemma: $\phi(S)-\phi(S^{'})=cost_{i}(S)-cost_{i}(S^{'})$ $\blacksquare$
 
 **dimostrazione lemma 2**
 
@@ -403,3 +417,111 @@ Mostrare che
 - il PoA è $\geq \frac{1}{2}$
 - esiste un'istanza del gioco avente un NE con social welfare pari ad $\frac{1}{2}$ dell'ottimo sociale
 
+---
+# Soluzione Esercizio Max-Cut
+## 1. Il gioco Max-Cut è un gioco a potenziale
+
+Per dimostrare che è un gioco a potenziale (esatto), dobbiamo trovare una funzione di potenziale globale $\Phi(S)$ tale per cui, se un singolo giocatore $u$ cambia la sua strategia da $S_u$ a $S_u'$, la variazione del suo payoff personale è esattamente uguale alla variazione di $\Phi$.
+
+Definiamo la nostra funzione di potenziale come il numero totale di archi che attraversano il taglio (cioè gli archi con estremi di colore diverso):
+
+$$\Phi(S) = |\{(v, w) \in E : S_v \neq S_w\}|$$
+
+Nota che il Social Welfare (SW) è esattamente il doppio del potenziale: $SW(S) = 2 \cdot \Phi(S)$, poiché ogni arco tagliato contribuisce con un $+1$ al payoff di _entrambi_ i suoi nodi estremi.
+
+**Dimostrazione:**
+
+Supponiamo che il giocatore $u$ cambi colore. Siano:
+
+- $d_{diff}(u)$: numero di vicini di $u$ con colore _diverso_ da $u$ (questo è l'attuale payoff $p_u(S)$).
+- $d_{same}(u)$: numero di vicini di $u$ con lo _stesso_ colore di $u$.
+
+Se $u$ cambia colore, i vicini che prima erano di colore diverso diventano dello stesso colore, e viceversa. Il nuovo payoff di $u$ diventa $p_u(S') = d_{same}(u)$.
+
+La variazione del suo payoff è:
+
+$$\Delta p_u = p_u(S') - p_u(S) = d_{same}(u) - d_{diff}(u)$$
+
+Cosa succede a $\Phi$? Gli archi non incidenti su $u$ non cambiano stato. Per gli archi incidenti su $u$, ne perdiamo $d_{diff}(u)$ (che prima attraversavano il taglio e ora non più) e ne guadagniamo $d_{same}(u)$ (che prima non lo attraversavano e ora sì).
+
+La variazione del potenziale è:
+
+$$\Delta\Phi = \Phi(S') - \Phi(S) = d_{same}(u) - d_{diff}(u)$$
+
+Poiché $\Delta p_u = \Delta\Phi$, il gioco ammette un potenziale esatto.
+## 2. Il Price of Stability (PoS) è 1
+
+In un gioco di massimizzazione, il Price of Stability è definito come il rapporto tra il Social Welfare del _migliore_ Equilibrio di Nash (NE) e l'Ottimo Sociale (OPT).
+
+Sappiamo che il gioco è a potenziale e che il potenziale $\Phi(S)$ è esattamente proporzionale al Social Welfare ($SW(S) = 2 \cdot \Phi(S)$).
+
+Sia $S^*$ il profilo di strategie che massimizza l'Ottimo Sociale. Poiché $SW(S)$ e $\Phi(S)$ differiscono solo per un fattore costante (il moltiplicatore 2), $S^*$ massimizza anche la funzione potenziale $\Phi(S)$.
+
+In un gioco a potenziale esatto finito, un massimo globale della funzione di potenziale è _sempre_ un Equilibrio di Nash. Nessun giocatore, infatti, può deviare per migliorare il proprio payoff, perché una deviazione strettamente migliorativa implicherebbe un aumento stretto del potenziale, il che è impossibile se siamo già nel punto di massimo globale.
+
+Pertanto, l'Ottimo Sociale $S^*$ è esso stesso un Equilibrio di Nash. Ne consegue che il miglior NE ha un Social Welfare pari a OPT.
+
+$$PoS = \frac{SW(S^*)}{OPT} = 1$$
+
+## 3. Il Price of Anarchy (PoA) è $\geq \frac{1}{2}$
+
+Il Price of Anarchy è il rapporto tra il Social Welfare del _peggiore_ NE e l'OPT. Vogliamo dimostrare che nel caso peggiore un NE produce almeno la metà del benessere sociale ottimo.
+
+Sia $S$ un qualsiasi Equilibrio di Nash. Per definizione di NE, nessun giocatore ha un incentivo a cambiare colore. Riprendendo la notazione di prima per un nodo $u$:
+
+$$p_u(S) = d_{diff}(u) \geq d_{same}(u)$$
+
+Se così non fosse ($d_{diff} < d_{same}$), il giocatore $u$ cambierebbe colore per aumentare il suo payoff, violando l'assunzione di trovarsi in un NE.
+
+Aggiungiamo $d_{diff}(u)$ a entrambi i membri della disequazione:
+
+$$2 \cdot d_{diff}(u) \geq d_{diff}(u) + d_{same}(u)$$
+
+Sappiamo che la somma dei vicini di colore diverso e uguale è il grado totale del nodo: $d_{diff}(u) + d_{same}(u) = d(u)$. Quindi:
+
+$$2 \cdot p_u(S) \geq d(u) \implies p_u(S) \geq \frac{d(u)}{2}$$
+
+Ora calcoliamo il Social Welfare di questo equilibrio $S$ sommando i payoff di tutti i giocatori $V$:
+
+$$SW(S) = \sum_{u \in V} p_u(S) \geq \sum_{u \in V} \frac{d(u)}{2} = \frac{1}{2} \sum_{u \in V} d(u)$$
+
+Per il lemma delle strette di mano, la somma dei gradi di tutti i nodi è $2|E|$:
+
+$$SW(S) \geq \frac{1}{2} (2|E|) = |E|$$
+
+Qual è il valore massimo possibile per OPT? Nel caso migliore assoluto (un grafo bipartito), tutti gli archi attraversano il taglio rosso-verde, quindi $\Phi(OPT) \leq |E|$ e di conseguenza $OPT \leq 2|E|$.
+
+Possiamo quindi concludere che:
+
+$$PoA = \frac{SW(S)}{OPT} \geq \frac{|E|}{2|E|} = \frac{1}{2}$$
+
+## 4. Esiste un'istanza con NE avente Social Welfare pari a $\frac{1}{2}$ dell'Ottimo
+
+Per mostrare che il bound del PoA è stretto (cioè che può essere esattamente $1/2$), ci basta un esempio semplice: un grafo ad anello (ciclo) con 4 nodi, chiamiamoli $v_1, v_2, v_3, v_4$ connessi in questo ordine.
+
+**L'Ottimo Sociale (OPT):**
+
+Se coloriamo i nodi in modo alternato: $v_1$(Rosso), $v_2$(Verde), $v_3$(Rosso), $v_4$(Verde).
+
+Tutti e 4 gli archi si trovano tra nodi di colore diverso.
+
+$\Phi(S^*) = 4 \implies SW(OPT) = 8$.
+
+**Il peggior Equilibrio di Nash:**
+
+Consideriamo la seguente colorazione $S'$: $v_1$(Rosso), $v_2$(Rosso), $v_3$(Verde), $v_4$(Verde).
+
+Gli unici archi tagliati sono $(v_2, v_3)$ e $(v_4, v_1)$.
+
+$\Phi(S') = 2 \implies SW(S') = 4$.
+
+Verifichiamo che $S'$ sia un NE:
+
+- Prendiamo $v_1$(Rosso): i suoi vicini sono $v_2$(Rosso) e $v_4$(Verde). Il suo payoff è 1. Se diventasse Verde, i suoi vicini sarebbero $v_2$(Rosso) e $v_4$(Verde). Il suo payoff resterebbe 1. Non ha un incentivo _stretto_ a deviare.
+- Per simmetria, la stessa cosa vale per tutti gli altri 3 nodi. Nessuno ha incentivo a deviare.
+
+Quindi $S'$ è un Equilibrio di Nash valido.
+
+Il rapporto tra questo NE e l'ottimo è esattamente $\frac{SW(S')}{OPT} = \frac{4}{8} = \frac{1}{2}$.
+
+Ti è tutto chiaro sui passaggi algebrici usati per trovare il limite inferiore del PoA, o vorresti approfondire le dinamiche di convergenza ("Best Response Dynamics") di questo specifico gioco?
