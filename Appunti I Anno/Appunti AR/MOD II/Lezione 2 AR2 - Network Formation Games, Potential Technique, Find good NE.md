@@ -321,7 +321,7 @@ la dimostrazione del teorema avviene tramite riduzione polinomale dal problema $
 
 #### $3D$-matching problem
 
-Faremo ora una piccola digressione sul problema in questione.
+Definiamo formalmente il problema in questione:
 
 **Input**:
 - $3$ insiemi disgiunti $X,Y,Z$ ognuno di dimensione $n$
@@ -334,12 +334,14 @@ Faremo ora una piccola digressione sul problema in questione.
 
 ![center](img/Pasted%20image%2020251107101041.png)
 
-
 Vediamo ora la riduzione
 
 ![center|500](img/Pasted%20image%2020251107101107.png)
 
-Come possiamo vedere in figura, gli archi che vanno dai noi $s_{i},i=1,\dots,3n$ verso i nodi in $T$ hanno peso $0$, mentre gli archi che vanno dai nodi in $T$ al nodo pozzo hanno peso $3$
+Come possiamo vedere sopra, la riduzione consta della creazione di un grafo composto come segue:
+- gli archi che vanno dai nodi $s_{i},i=1,\dots,3n$ verso i nodi in $T$ hanno peso $0$
+	- i nodi $s\in X\cup Y\cup Z$
+- mentre gli archi che vanno dai nodi in $T$ al nodo pozzo hanno peso $3$
 
 Il claim è: Esiste un $3D$-matching $\iff$ esiste un NE di costo al più $C=3n$
 
