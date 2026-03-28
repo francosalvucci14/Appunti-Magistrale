@@ -328,7 +328,7 @@ Quindi, il costo di questa parte è $\leq OPT$ (che è ovviamente assorbito in u
 
 **Blocco** $(C)$
 
-Il _numero_ di archi extra ($|E_{non-cut}​|$) è limitato da $O\left(\frac{n^{2}d}{\alpha}\right)$. ("tricky bound, vedi giù per dimostrazione")
+Il _numero_ di archi extra ($|E_{non-cut}​|$) è limitato da $O\left(\frac{n^{2}d}{\alpha}\right)$. ("***tricky bound, vedi giù per dimostrazione***; nel dettaglio [prop1](#^eb940c)+[prop2](#^17521e) ")
 Per sapere il loro _costo_, dobbiamo moltiplicare questo numero per $\alpha$:
 $$\alpha\cdot O\left(\frac{n^{2}d}{\alpha}\right)=O(n^2d)$$
 
@@ -345,7 +345,148 @@ Questa però non era la dimostrazione ufficiale per il Lemma 2; prima di dimostr
 >Sia $G$ una rete con diametro $d$, e sia $e=(u,v)$ l'arco non-cut. 
 >Allora in $G-e$, ogni nodo $w$ aumenta la sua distanza da $u$ al più di un fattore $2d$
 
+^eb940c
 
+**dimostrazione prop. 1**
+
+L'idea è: se io tolgo un arco che _non_ è vitale per la connessione (un arco non-cut), di quanto peggiorano le distanze nella rete rimanente?
+
+La dimostrazione si basa sulla costruzione di un **BFS tree** (Breadth-First Search tree, ovvero un albero dei cammini minimi) a partire dal nodo $u$.
+
+Vediamo quindi la dimostrazione passo passo
+
+**step 1: setup**
+
+Abbiamo un grafo. Il nodo in alto è $u$. L'albero disegnato con le linee continue è il BFS tree radicato in $u$. Questo albero contiene i cammini minimi da $u$ a tutti gli altri nodi.
+
+Le linee tratteggiate sono gli archi "extra" del grafo, quelli che non fanno parte dell'albero BFS.
+
+Consideriamo un arco specifico $e=(u,v)$ che fa parte del BFS tree. Se questo arco viene rimosso, l'albero si spezza in due componenti.
+
+$w$ è un nodo qualsiasi che si trova nel sottoalbero radicato in $v$ (cioè, il cammino minimo da $u$ a $w$ passava per $e$).
+
+![center|400](Pasted%20image%2020260328145026.png)
+
+**step 2: Il Taglio e l'Arco Alternativo**
+
+Rimuoviamo l'arco $e$ (indicato dalle due sbarrette rosse). Questo crea un "taglio" (cut) nel grafo, separando la componente di $u$ (a destra) dalla componente di $v$ (a sinistra).
+
+Poiché sappiamo per ipotesi che e è un "arco non-cut" del grafo _originale_ $G$ (cioè la sua rimozione non disconnette l'intero grafo), **deve esistere per forza almeno un altro arco** che collega la componente di destra con quella di sinistra.
+
+Questo arco alternativo è l'arco $(x,y)$ (la linea tratteggiata rossa), dove $x$ è nella componente di $u$ e $y$ è nella componente di $v$.
+
+![center|500](Pasted%20image%2020260328145218.png)
+
+**step 3: Il Nuovo Cammino Minimo (La Dimostrazione)**
+
+Ora dobbiamo valutare la nuova distanza tra $u$ e $w$ nel grafo senza l'arco $e$, ovvero $dist_{G-e}​(u,w)$. Visto che l'arco $(u,v)$ non c'è più, per andare da $u$ a $w$ dobbiamo usare il "ponte" alternativo $(x,y)$. Il nuovo cammino (evidenziato in rosso) sarà:
+
+1. Da $u$ a $x$.
+2. Da $x$ a $y$ (attraverso l'arco).
+3. Da $y$ a $v$.
+4. Da $v$ a $w$.
+
+La formula in basso calcola la lunghezza massima di questo nuovo cammino:
+
+$$dist_{G-e}​(u,w)\leq dist_G​(u,x)+1+dist_G​(y,v)+dist_G​(v,w)$$
+
+Analizziamo i singoli pezzi rispetto alla distanza originale $dist_G​(u,w)$:
+
+- $dist_G​(u,x)\leq d$: La distanza originale tra $u$ e $x$ non può superare il diametro della rete $d$.
+- $1$: È il costo di attraversare l'arco $(x,y)$.
+- $dist_G​(y,v)\leq d$: La distanza originale tra $y$ e $v$ non può superare il diametro della rete $d$.
+- $dist_G​(v,w)=dist_G​(u,w)-1$: Poiché $w$ è nel sottoalbero di $v$, il cammino originale da $u$ a $w$ era semplicemente l'arco $(u,v)$ (lungo 1) più il cammino da $v$ a $w$. Quindi, la distanza da $v$ a $w$ è esattamente la distanza da $u$ a $w$ meno 1.
+
+Sostituendo queste maggiorazioni nella formula, otteniamo:
+
+$$dist_{G-e}​(u,w)\leq d+1+d+(dist_G​(u,w)-1)$$
+
+I due $+1$ e $-1$ si annullano, e ci rimane:
+
+$dist_{G-e}​(u,w)\leq dist_G​(u,w)+2d$
+
+Abbiamo dimostrato che se togliamo un arco "inutile" per la connettività globale ($e$), la distanza da $u$ a qualsiasi nodo $w$ che prima usava quell'arco aumenterà al massimo di un addendo pari a $2d$. $\blacksquare$
+
+Passiamo ora alla seconda proposizione
+
+>[!teorem]- Proposizione 2
+>Sia $G$ una rete stabile, e sia $F$ l'insieme degli archi di tipo non-cut pagati da un nodo $u$
+>Allora, vale che $$|F|\leq\frac{2d(n-1)}{\alpha}$$
+
+^17521e
+
+**dimostrazione prop. 2**
+
+Questo lemma serve a calcolare **quanti "archi extra" (non-cut) un singolo giocatore $u$ è disposto a pagare** in una rete che si trova in un Equilibrio di Nash. L'intuizione è che, siccome gli archi costano $\alpha$, un giocatore ne comprerà tanti solo se servono a raggiungere velocemente un gran numero di nodi.
+
+Analizziamo la dimostrazione passo dopo passo:
+
+**step1 : Setup**
+
+Guardiamo la rete dal punto di vista del nodo $u$.
+
+- Chiamiamo $F$ l'insieme degli archi _non-cut_ che il nodo $u$ ha deciso di comprare. Il numero di questi archi è $k=|F|$.
+- Nella figura di cui sotto, questi archi vanno da $u$ ai nodi $v_1​,\dots,v_i​,\dots,v_k​$.
+- Se guardiamo l'albero dei cammini minimi (BFS tree) radicato in $u$, ogni nodo $v_i$​ è la radice di un "sottoalbero". Chiamiamo $n_i$​ il numero totale di nodi contenuti nel sottoalbero di $v_i$​. Questo significa che, per raggiungere quegli $n_i​$ nodi, il cammino più breve per $u$ passa proprio per l'arco $(u,v_i​)$.
+
+![center|500](Pasted%20image%2020260328150910.png)
+
+**step 2: La Deviazione: Cosa succede se $u$ taglia un arco?**
+
+Immaginiamo la solita dinamica da Game Theory: il giocatore egoista $u$ valuta se gli conviene smettere di pagare per un certo arco $(u,v_i​)$.
+
+- **Quanto risparmia?** Risparmia esattamente il costo di costruzione: $\alpha$.
+- **Quanto ci perde in distanze?** Qui usiamo la **Proposizione 1**. Sappiamo che rimuovendo un arco non-cut, la distanza verso un qualsiasi nodo penalizzato aumenta al massimo di $2d$. Poiché i nodi penalizzati rimuovendo $(u,v_i​$) sono gli $n_i$​ nodi del suo sottoalbero, l'aumento totale del costo di routing per $u$ sarà al massimo $2d\cdot n_i​$.
+
+**step 3: La Condizione di Stabilità**
+
+Poiché sappiamo per ipotesi che la rete $G$ è stabile (Equilibrio di Nash), la deviazione _non deve_ convenire a $u$. Il risparmio deve essere minore o uguale al danno subito. Si genera così la disequazione per un singolo arco $i$:
+$$\alpha\leq2d\cdot n_i​$$
+
+Questa regola vale per _tutti_ i $k$ archi non-cut pagati da $u$. Se sommiamo le disequazioni di tutti i $k$ sottoalberi, otteniamo:
+
+$$k\cdot\alpha\leq2d\sum\limits_{i=1}^{k}n_{i}​$$
+>[!warning]- Attenzione
+>Ora, riflettiamo su quel termine $\sum\limits_{i=1}^{k}n_{i}​$​. Rappresenta la somma dei nodi di tutti i sottoalberi. Poiché questi sottoalberi sono rami separati dell'albero BFS originato da $u$, la somma dei loro nodi non può fisicamente superare il numero totale di _tutti gli altri nodi_ della rete (escluso $u$). Quindi, sappiamo con certezza che $\sum\limits_{i=1}^{k}n_{i}​\leq n-1$.
+
+Sostituendo questo limite massimo nella disequazione otteniamo:
+
+$$k\cdot\alpha\leq2d(n-1)\implies k\leq(n-1)\frac{2d}{\alpha}\quad\blacksquare$$
+
+Abbiamo appena dimostrato che un _singolo_ nodo compra al massimo $\approx\frac{2dn}{\alpha}$​ archi extra. Se moltiplichiamo questo valore per tutti gli $n$ nodi della rete, il numero totale di archi extra nell'intera rete ($|E_{non-cut​}|$) sarà limitato da $O\left(\frac{n^{2}d}{\alpha}​\right)$, che è proprio il "tricky" bound visto prima.
+
+A questo punto, siamo pronti a finire la dimostrazione **formale** del lemma $2$
+
+**dimostrazione formale lemma 2**
+
+Prima di tutto ricordiamo quanto deve valere l'ottimo
+$$OPT\geq\alpha(n-1)+n(n-1)$$
+
+Guardiamo la prima parte della formula del Costo Sociale di G: $\sum\limits_{u,v}​dist_G​(u,v)$
+
+- Sappiamo che la distanza massima tra due nodi qualsiasi in $G$ è il diametro $d$.
+- Ci sono $n(n−1)$ coppie di nodi (considerando i percorsi in entrambe le direzioni).
+- Quindi, la somma massima di tutte le distanze è $d\cdot n(n-1)$.
+- Poiché sappiamo che il termine $n(n-1)$ fa parte dell'OPT, possiamo limitare tutto questo dicendo che il costo delle distanze è $\leq d\cdot OPT$.
+
+Ora analizziamo il costo totale degli archi costruiti: $\alpha|E|$. Dividiamo gli archi in quelli dell'albero base ($E_{cut}$​) e quelli extra ($E_{non-cut}​$):
+
+- **Costo​** $E_{cut}$: Sono al massimo $n-1$, quindi costano al massimo $\alpha(n-1)$.
+- **Costo** $E_{non-cut}​$: Qui usiamo la Prop. 2 che abbiamo appena dimostrato. Sappiamo che un _singolo_ nodo compra al massimo $\frac{(n-1)2d}{\alpha}$ archi extra. Moltiplicando per tutti gli $n$ nodi della rete, il numero totale di archi extra è $\leq \frac{n(n-1)2d}{\alpha}$. Moltiplicando per il costo unitario $\alpha$, la formula si semplifica e il costo totale degli archi extra è $n(n-1)2d$.
+
+Se sommiamo questi due costi ($\alpha(n-1)+n(n-1)2d$), vediamo che assomigliano tantissimo alla formula dell'OPT. Raccogliendo $2d$, è facile dimostrare che questa somma è abbondantemente $\leq2d\cdot OPT$.
+
+$$\alpha|E|=\alpha|E_{cut}|+\alpha|E_{non-cut}|\leq\alpha(n-1)+n(n-1)2d\leq2d\cdot OPT$$
+
+Adesso uniamo i risultati ottenuti:
+
+$$\begin{align*}
+&SC(G)=\text{Costo Distanze}+\text{Costo Archi}\\
+&SC(G)\leq(d\cdot OPT)+(2d\cdot OPT)=3d\cdot OPT
+\end{align*}$$
+
+Poiché $3d$ appartiene alla classe di complessità $O(d)$, abbiamo appena dimostrato formalmente il teorema: **il Price of Anarchy è limitato da $O(d)$**, e siccome $d\leq 2\sqrt{\alpha}+1$ (da Prop. 1) otteniamo che 
+$$PoA=O(\sqrt{\alpha})$$
 
 ---
 
