@@ -208,7 +208,7 @@ Definiamo la **PoA**, nel seguente modo:
 
 Definiamo ora la **PoS**, nel seguente modo:
 
->[!definition]- PoA (Schulz & Moses, 2003)
+>[!definition]- PoS (Schulz & Moses, 2003)
 >Dato un gioco $G$ e una funzione di scelta sociale $C$, sia $S$ l'insieme di tutti i NE.
 >Se il payoff rappresenta un **costo** (rispettivamente un'**utilità**) per un player, sia $OPT$ il risultato del gioco $G$ che ***minimizza*** (rispettivamente ***massimizza***) $C$.
 >Allora, il **Price of Stability (PoS)** di $G$ in rispetto a $C$ è $$PoS_{G}(C)=\inf_{s\in S}\frac{C(s)}{C(OPT)}\quad\left(\text{rispettivamente }\sup_{s\in S}\frac{C(s)}{C(OPT)}\right)$$
