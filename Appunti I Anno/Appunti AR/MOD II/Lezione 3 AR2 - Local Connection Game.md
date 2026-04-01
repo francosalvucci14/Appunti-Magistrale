@@ -58,7 +58,7 @@ Consideriamo il seguente grafo diretto, con nodo $u$ quello segnato in giallo
 Vediamo subito che, se la strategia del nodo $u$ prevede l'utilizzo solamente dell'arco a lui subito sotto, allora il nodo $u$ dovrò pagare
 $$cost_u(S)=\alpha\cdot 1+\sum\limits_{v\in V\setminus u}dist_{G(S)}(u,v)\equiv\alpha+13$$
 
-![center|400](Pasted%20image%2020260327160657.png)
+![center|400](img/Pasted%20image%2020260327160657.png)
 
 Se invece il nodo $u$ decide di **costruire** un'altro arco (quello con $\alpha$ in rosso), allora:
 - si riaggiornano le distanze, adesso il nodo $u$ arriva al nodo $4$ usando un solo arco, quindi la distanza da $u$ a quel nodo non sarà più $4$ ma diventerà $1$
@@ -68,7 +68,7 @@ Se invece il nodo $u$ decide di **costruire** un'altro arco (quello con $\alpha$
 Il costo per il nodo $u$ diventa quindi:
 $$cost_u(S)=2\alpha+9$$
 
-![center|400](Pasted%20image%2020260327160941.png)
+![center|400](img/Pasted%20image%2020260327160941.png)
 
 Possiamo quindi dare alcune semplici osservazioni
 1. In $SC(S)$ ogni termine $dist_G(S)(u,v)$ contribuisce **due volte** alla qualità generale
@@ -92,11 +92,11 @@ Prima di rispondere alla domanda facciamo un piccolo recap di alcune topologie d
 
 **Grafo Completo** : Si indica con $K_n$ e rappresenta un grafo dove ogni nodo $i$ è connesso ad ogni altro nodo $j$ con $j\neq i$
 
-![center|200](Pasted%20image%2020260327162710.png)
+![center|200](img/Pasted%20image%2020260327162710.png)
 
 **Grafo a Stella** : Albero (ergo grafo connesso e aciclico) la cui altezza è al più $1$
 
-![center|200](Pasted%20image%2020260327162818.png)
+![center|200](img/Pasted%20image%2020260327162818.png)
 
 Perfetto, a questo punto possiamo dare l'enunciato e la dimostrazione del seguente lemma, che ci servirà per rispondere alla domanda iniziale (insieme ad un'altro lemma)
 
@@ -132,7 +132,7 @@ Per rispondere a questa domanda introduciamo e dimostriamo il seguente lemma
 
 Prendiamo ad esempio il seguente grafo completo
 
-![center|200](Pasted%20image%2020260327165159.png)
+![center|200](img/Pasted%20image%2020260327165159.png)
 
 **Perché nessuno vuole deviare?** Immagina che un nodo $v$ decida di risparmiare sui costi di costruzione eliminando $k$ archi che aveva comprato.
 
@@ -145,7 +145,7 @@ Il bilancio totale per il nodo $v$ (variazione di costo) è: $-\alpha k+k=k(1-\a
 
 Prendiamo ad esempio il seguente grafo a stella, dove $c$ è il centro e $v$ le foglie (che comprano archi verso il centro)
 
-![center|200](Pasted%20image%2020260327165510.png)
+![center|200](img/Pasted%20image%2020260327165510.png)
 
 Le foglie comprano un solo arco verso il centro. La distanza foglia-centro è $1$, la distanza foglia-foglia è $2$ (passando per il centro).
 
@@ -208,7 +208,7 @@ Prima di tutto ricordiamo la definizione di **diametro**:
 >Il **diametro** di un grafo $G$ è definito come la massima distanza tra una qualunque coppia di nodi
 
 Alcuni esempi:
-![center|400](Pasted%20image%2020260328111714.png)
+![center|400](img/Pasted%20image%2020260328111714.png)
 
 Ricordiamo anche la definizione di **arco di taglio (cut-edge)**
 
@@ -239,14 +239,14 @@ Prendiamo $G$ una rete stabile, e consideriamo lo shortest path fra due nodi $(u
 Per semplicità di trattazione, assumiamo inoltre che
 $$2k\leq dist_{G}(u,v)\leq 2k+1\quad\text{per qualche }k$$
 
-![center|500](Pasted%20image%2020260328113553.png)
+![center|500](img/Pasted%20image%2020260328113553.png)
 
 Cosa succederebbe se il nodo $u$ decidesse di deviare dalla sua strategia attuale e **comprasse un arco diretto** verso $v$ (la freccia rossa in alto)?
 
 - **Il Costo:** Pagherebbe il prezzo di un nuovo arco, ovvero $\alpha$.
 - **Il Beneficio:** Risparmierebbe un sacco di distanza non solo per raggiungere $v$, ma per raggiungere _tutti i nodi vicini a $v$_ su quel cammino.
 
-![center|500](Pasted%20image%2020260328113327.png)
+![center|500](img/Pasted%20image%2020260328113327.png)
 
 Concentriamoci sugli **ultimi $k$ nodi** di questo cammino. 
 Guardiamo quanto risparmia $u$ per raggiungerli usando la scorciatoia diretta per $v$ e poi tornando indietro lungo il cammino
@@ -265,7 +265,7 @@ $$(2k-1)+(2k-3)+\dots+3-1$$
 Per sommarli tutti usiamo una nota proprietà matematica: la somma dei primi $k$ numeri dispari è esattamente $k^2$.
 $$\sum\limits_{i=0}^{k-1}(2i+1)=k^{2}$$
 
-![center|500](Pasted%20image%2020260328113631.png)
+![center|500](img/Pasted%20image%2020260328113631.png)
 
 A questo punto sfruttiamo il fatto che la rete sia stabile
 
@@ -365,7 +365,7 @@ Consideriamo un arco specifico $e=(u,v)$ che fa parte del BFS tree. Se questo ar
 
 $w$ è un nodo qualsiasi che si trova nel sottoalbero radicato in $v$ (cioè, il cammino minimo da $u$ a $w$ passava per $e$).
 
-![center|400](Pasted%20image%2020260328145026.png)
+![center|400](img/Pasted%20image%2020260328145026.png)
 
 **step 2: Il Taglio e l'Arco Alternativo**
 
@@ -375,7 +375,7 @@ Poiché sappiamo per ipotesi che e è un "arco non-cut" del grafo _originale_ $G
 
 Questo arco alternativo è l'arco $(x,y)$ (la linea tratteggiata rossa), dove $x$ è nella componente di $u$ e $y$ è nella componente di $v$.
 
-![center|500](Pasted%20image%2020260328145218.png)
+![center|500](img/Pasted%20image%2020260328145218.png)
 
 **step 3: Il Nuovo Cammino Minimo (La Dimostrazione)**
 
@@ -429,7 +429,7 @@ Guardiamo la rete dal punto di vista del nodo $u$.
 - Nella figura di cui sotto, questi archi vanno da $u$ ai nodi $v_1​,\dots,v_i​,\dots,v_k​$.
 - Se guardiamo l'albero dei cammini minimi (BFS tree) radicato in $u$, ogni nodo $v_i$​ è la radice di un "sottoalbero". Chiamiamo $n_i$​ il numero totale di nodi contenuti nel sottoalbero di $v_i$​. Questo significa che, per raggiungere quegli $n_i​$ nodi, il cammino più breve per $u$ passa proprio per l'arco $(u,v_i​)$.
 
-![center|500](Pasted%20image%2020260328150910.png)
+![center|500](img/Pasted%20image%2020260328150910.png)
 
 **step 2: La Deviazione: Cosa succede se $u$ taglia un arco?**
 
@@ -487,6 +487,112 @@ $$\begin{align*}
 
 Poiché $3d$ appartiene alla classe di complessità $O(d)$, abbiamo appena dimostrato formalmente il teorema: **il Price of Anarchy è limitato da $O(d)$**, e siccome $d\leq 2\sqrt{\alpha}+1$ (da Prop. 1) otteniamo che 
 $$PoA=O(\sqrt{\alpha})$$
+# Teorema sulle strategie degli agenti
+
+Vale il seguente teorema:
+
+>[!teorem]- Teorema
+>Date le strategie di tutti gli altri agenti, determinare la **miglior strategia** di un dato giocatore risulta essere **NP-Hard**
+
+**dimostrazione**
+
+La dimostrazione segue da una riduzione dal problema **Dominating Set (DS)**
+
+Prima di tutto quindi ricordiamo il formalismo del problema:
+
+- **input**
+	- un grafo $G=(V,E)$
+- **soluzione**
+	- un sottoinsieme $U\subseteq V$ tale per cui $\forall v\in V\setminus U$ esiste un $u\in U$ tale che $(u,v)\in E$
+- **misura**
+	- cardinalità di $U$
+
+![center|300](img/Pasted%20image%2020260331124844.png)
+## Riduzione: Dominating Set
+
+La riduzione è la seguente:
+- partendo dal grafo $G$ originale, si costruisce un grafo $G'=G(S_{-i})$; ovvero il grafo $G'$ è lo stesso di quello originale meno il nodo relativo al giocatore $i$-esimo
+- si considerano inoltre valori di $\alpha$ tale che $1\lt\alpha\lt2$
+
+![center|400](img/Pasted%20image%2020260331125404.png)
+
+La riduzione quindi si basa sul dimostrare questa doppia implicazione (se e solo se):
+
+> Il giocatore $i$ ha una strategia con un costo $\leq\alpha k+2n-k$ **se e solo se** nel grafo degli altri giocatori $G$ esiste un Dominating Set di dimensione $\leq k$.
+
+### La direzione "Facile" ($\leftarrow$)
+
+**Ipotesi:** Supponiamo che nel grafo $G$ esista un Dominating Set (chiamiamolo $U$) composto da $k$ nodi (i nodi rossi). 
+
+![center|400](img/Pasted%20image%2020260331125838.png)
+
+**Tesi:** Il giocatore i può ottenere un costo $\leq\alpha k+2n-k$.
+
+**Dimostrazione:** Il giocatore $i$ decide semplicemente di "comprare" gli archi diretti verso tutti i $k$ nodi che formano il Dominating Set $U$. Calcoliamo il suo costo totale:
+
+- **Costo degli archi:** Ha comprato $k$ archi, quindi spende αk.
+- **Costo delle distanze verso $U$:** I $k$ nodi di $U$ sono a distanza 1 dal nodo del giocatore $i$. Il costo è $1\cdot k=k$.
+- **Costo delle distanze verso il resto del grafo:** Poiché $U$ è un Dominating Set, tutti gli altri $n-k$ nodi del grafo sono collegati direttamente a un nodo di $U$. Quindi, per raggiungere questi $n-k$ nodi, il giocatore $i$ fa 2 passi (va in un nodo di $U$ e poi scende). Il costo per questi nodi è $2\cdot(n-k)=2n-2k.$
+
+Sommando i costi delle distanze otteniamo: $$k+2n-2k=2n-k$$
+Il costo totale è quindi: $$\alpha k+2n-k$$Questa direzione è provata.
+
+### La direzione "Impegnativa" ($\implies$)
+
+**Ipotesi:** Supponiamo che il giocatore $i$ abbia trovato una strategia $S_i$​ che gli garantisce un costo $\leq\alpha k+2n-k$. 
+**Tesi:** Nel grafo $G$ deve esistere per forza un Dominating Set di dimensione $\leq k$.
+
+**Dimostrazione:** Questa fase procede per passi successivi.
+
+**Passo A: Eliminare le distanze lunghe (L'ottimizzazione)** Prendiamo la strategia $S_i​$.
+
+Supponiamo che ci sia un nodo $v$ nel grafo che si trova a distanza 3 o superiore dal giocatore $i$. Cosa succede se il giocatore $i$ modifica la sua strategia e decide di comprare un arco diretto verso $v$?
+
+- Paga il costo del nuovo arco: $+\alpha$.
+- La distanza verso $v$ passa da $\geq3$ a $1$. Il suo risparmio sulle distanze è _almeno_ $2$.
+- La variazione netta del suo costo è $\leq\alpha-2$. Poiché siamo nell'ipotesi $\alpha\lt2$, la quantità ($\alpha-2$) è un numero negativo. Significa che comprare questo arco **diminuisce strettamente il costo totale**.
+
+Di conseguenza, una strategia ottima o comunque con un costo basso non avrà _mai_ nodi a distanza $3$ o superiore.
+
+Se ci sono, possiamo comprare archi per abbassare ulteriormente il costo della strategia $S_i$​, fino a quando tutti i nodi saranno a distanza $1$ o $2$ dal giocatore $i$.
+
+![center|400](img/Pasted%20image%2020260331131704.png)
+
+
+**Passo B: Individuare il Dominating Set** 
+
+Dopo aver applicato l'ottimizzazione del Passo A, chiamiamo $U$ l'insieme dei nodi che il giocatore $i$ ha deciso di connettere direttamente (i nodi a distanza $1$, colorati in rosso). 
+
+Tutti gli altri nodi del grafo si trovano a distanza $2$. Come fanno a essere a distanza $2$? Devono necessariamente essere collegati ad almeno uno dei nodi in $U$. Questo significa che l'insieme **$U$ è un Dominating Set** del grafo $G$.
+
+![center|400](img/Pasted%20image%2020260331131910.png)
+
+**Passo C: Dimostrare la dimensione di $U$** 
+
+Sappiamo che questa strategia modificata usa il Dominating Set $U$. 
+
+Il suo costo (applicando la formula vista nella prima parte) sarà esattamente $\alpha|U|+2n-|U|$. 
+
+Poiché le modifiche fatte nel Passo A hanno solo _diminuito o mantenuto uguale_ il costo iniziale, questo nuovo costo deve essere minore o uguale al costo della strategia di partenza:
+$$\alpha|U|+2n-|U|\leq Costo(S_i​)\leq\alpha k+2n-k$$
+
+Semplifichiamo la disequazione e otteniamo:
+
+$$\begin{align*}
+\alpha|U|-|U|+2n&\leq\alpha k-k+2n\\
+\alpha|U|-|U|&\leq\alpha k-k\\
+|U|(\alpha-1)&\leq k(\alpha-1)
+\end{align*}
+$$
+Poiché $\alpha\gt1$, la quantità ($\alpha-1$) è un numero strettamente positivo. 
+
+Possiamo dividere entrambi i lati per ($\alpha-1$) senza cambiare il verso della disequazione, ottenendo: $$|U|\leq k$$
+
+Abbiamo dimostrato che esiste un Dominating Set di dimensione al massimo $k$
+
+Trovare quindi la mossa migliore per il giocatore (che minimizza il costo in funzione di $k$) equivale matematicamente a trovare il Dominating Set minimo del grafo. 
+
+Poiché trovare il Dominating Set minimo è un problema intrattabile (***NP-Hard***), anche calcolare la Best Response nei Local Connection Games (per $1\lt\alpha\lt2$) è ***NP-Hard***
 
 ---
 
