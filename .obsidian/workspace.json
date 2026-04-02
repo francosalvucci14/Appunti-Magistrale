@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 3 AR2 - Local Connection Game.md",
+                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 3 AR2 - Local Connection Game"
+              "title": "Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 3 AR2 - Local Connection Game.md",
+                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 3 AR2 - Local Connection Game"
+              "title": "Outline of Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism"
             }
           },
           {
@@ -131,8 +131,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "b7d5f1914b483202",
@@ -170,19 +169,21 @@
   },
   "active": "4087b0f98e2f2e6e",
   "lastOpenFiles": [
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260402115518.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260402115045.png",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism.md",
-    "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260402103102.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260401124654.png",
+    "Pasted image 20260401113016.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260401112918.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260401112624.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260401111931.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260401111703.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260401111604.png",
+    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 3 AR2 - Local Connection Game.md",
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260331131910.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260331131704.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260331125838.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260331125404.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260331124844.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260328150910.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260328145218.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260328145026.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260328113631.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260328113553.png",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 1 AR2 - Algorithmic Game Theory, Nash Equilibrium, Braess's paradox.md",
     "Appunti II Anno/Appunti CDCI/Indice degli appunti CDCI.md",
     "Appunti II Anno/Appunti CDCI/Threat-Modeling-Ospedale.pdf",
@@ -195,7 +196,6 @@
     "Appunti II Anno/Appunti AIC/Lecture-3-PrivacyAttk.pdf",
     "Appunti II Anno/Appunti AIC/Lecture-3-PrivacyAttk",
     "Appunti II Anno/Appunti AIC/Lecture-2.pdf",
-    "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti II Anno/Appunti IR/Lezione 5 IR - Distributed Indexing & Dynamic Indexing.md",
     "Appunti II Anno/Appunti IR/Lezione 4 IR - Basic Inverted Index Construction, SPIMI & BSBI.md",
     "README.md",
