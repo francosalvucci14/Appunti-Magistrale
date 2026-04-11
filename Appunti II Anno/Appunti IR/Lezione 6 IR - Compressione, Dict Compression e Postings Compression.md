@@ -247,5 +247,175 @@ Per riassumere, possiamo definire la seguente tabella
 
 ---
 # Compressione dei postings
+
+Eccoci arrivati al vero "peso massimo" dell'Information Retrieval. Se prima abbiamo faticato per comprimere il dizionario (che occupa solo una frazione della memoria), ora dobbiamo affrontare il "mostro": le **liste di postings**.
+
+Vediamo la dura realtà: il file dei postings è enormemente più grande del dizionario. Parliamo di un fattore di almeno 10 volte più grande, ma spesso supera le 100 volte.
+
+- **L'obiettivo chiave:** Dobbiamo memorizzare ogni singolo posting (che per noi è un semplice numero, il `docID`) nel modo più compatto possibile.
+- **Il calcolo ingenuo:** Nel dataset Reuters ci sono 800.000 documenti. Se usassimo il formato standard dei computer (interi a 4 byte), ogni `docID` occuperebbe **32 bit**.
+- **Il limite matematico (senza compressione):** Per poter distinguere 800.000 documenti diversi, la matematica ci dice che ci servono almeno $\log_2​(800.000)\approx20$ bit per ogni `docID`.
+- **La vera sfida:** Il nostro obiettivo è abbattere questo muro e usare _molto meno_ di 20 bit per `docID`.
+
+Perché non possiamo semplicemente usare 20 bit per ogni numero e chiudere la questione? Perché le parole si comportano in due modi opposti (ricordiamo la Legge di Zipf).
+
+- **Le parole rare:** Prendi un termine assurdo come _arachnocentric_. Magari compare in un solo documento su un milione. Salvare il suo unico `docID` usando 20 bit va benissimo, non occupa quasi nulla.
+- **Le parole comuni (Stop words):** Prendi l'articolo _the_. Compare praticamente in _tutti_ i documenti. Se usassimo 20 bit per ogni singolo documento in cui compare "the", la sola lista di questa parola peserebbe circa 2 MB! È un costo inaccettabile.
+- **La curiosità del Bitmap:** Per una parola estrema come "the", sarebbe paradossalmente più efficiente usare un vettore di bit (0/1 bitmap vector) lungo 800.000 posizioni. Ogni posizione vale 1 se la parola c'è, 0 se non c'è. Un vettore del genere peserebbe solo $\approx100$ KB. Ma ovviamente, un bitmap del genere per _arachnocentric_ sarebbe uno spreco titanico di zeri.
+
+Ci serve un metodo universale. E qui entra in gioco la matematica delle distanze.
+## Gap Encoding
+
+Vediamo il trucco definitivo.
+
+- **Il Prerequisito:** Noi memorizziamo la lista dei documenti in **ordine crescente** di `docID`. Ad esempio, per la parola _computer_, la lista sarà: `33, 47, 154, 159, 202...`.
+- **L'Intuizione (Consequence):** Poiché i numeri vanno sempre a salire, non abbiamo bisogno di salvare il numero intero del documento. Ci basta salvare il **gap (la distanza, o delta)** tra un documento e l'altro!
+- **La Trasformazione:** Il primo numero rimane `33`.
+    - Il secondo non è più 47, ma la differenza $47 - 33$ = `14`.
+    - Il terzo è $154 - 47$ = `107`.
+    - Il quarto è $159 - 154$ = `5`.        
+    - La nuova lista diventa: `33, 14, 107, 5, 43...`.        
+- **La Speranza (Hope):** La speranza matematica è che questi "gaps" siano numeri molto più piccoli dei `docID` originali, e che quindi si possano codificare usando molti meno dei famosi 20 bit di cui parlavamo all'inizio. Questo funzionerà in modo spettacolare soprattutto per le parole comuni.
+
+Vediamo perché la speranza del "Gap Encoding" diventa realtà. 
+Ecco come si comportano i tre tipi di parole:
+
+1. **THE (Frequentissima):** Compare nei documenti `283042, 283043, 283044, 283045`. Facendo la sottrazione, i gap sono letteralmente `1, 1, 1`. Per salvare il numero "1" nel computer serve **un solo bit**, non 20! Abbiamo compresso una mole di dati gigantesca.
+2. **COMPUTER (Media):** Ha documenti più sparsi (`283047, 283154...`). I gap sono numeri a due o tre cifre come `107, 5, 43`. Servono circa 7 o 8 bit per salvarli, comunque un risparmio superiore al 50%.
+3. **ARACHNOCENTRIC (Rarissima):** Compare nei doc `252000, 500100`. I gap sono enormi: `252000, 248100`. Per questi ci serviranno quasi tutti i 20 bit, ma non importa: essendo parole rare, la loro lista è cortissima e non impattano sul peso totale del database.
+
+In sintesi: **il Gap Encoding "punisce" le parole rare (che pesano poco di per sé) e "premia" incredibilmente le parole comuni (che pesano tantissimo)**.
+
+Calcolare i "gap" (le distanze tra i documenti) ci regala numeri piccoli per le parole comuni. Ma come facciamo a spiegare al computer di usare pochissimo spazio per i numeri piccoli e più spazio per quelli grandi? I computer, di default, usano scatole fisse da 32 o 64 bit per _qualsiasi_ numero.
+
+Per risolvere questo problema dobbiamo scendere a livello dei singoli bit. Vediamo quindi le seguenti tecniche:
+- Variable Length Encoding
+- Gamma Codes
+- Unary Code
+## Variable Length Encoding
+
+L'obiettivo è chiarissimo: vogliamo usare pochissimi bit (circa 1 bit) per un gap piccolo come quello della parola _the_, e più bit (circa 20) per un gap enorme come quello della parola _arachnocentric_.
+
+- **La formula ideale:** Se il gap medio per un termine è $G$, matematicamente vorremmo usare circa $\log_2​G$ bit per memorizzarlo.
+- **La sfida:** Dobbiamo codificare ogni intero usando solo i bit strettamente necessari. Questo richiede una **codifica a lunghezza variabile (variable length encoding)**, che assegna codici molto corti ai numeri piccoli e codici più lunghi ai numeri grandi.
+## Unary Code
+
+Prima di arrivare alla codifica perfetta, ci serve un componente molto semplice chiamato **Codice Unario**.
+
+- La regola è banale: per rappresentare il numero $n$, scrivi una sequenza di $n$ "1" seguita da un singolo "0" finale (che fa da tappo).
+- **Esempi:** Il numero 3 diventa `1110`.
+    - Il numero 40 diventa `11111111111111111111111111111111111111110`.
+- **Il problema:** Come si può notare, per i numeri grandi questo sistema è un disastro totale. Spreca persino più spazio della codifica standard a 32 bit! Tuttavia, ci tornerà utilissimo come parte della soluzione finale.
+
+Questa tecnica è ottimale quando la distribuzione del numero è del tipo 
+$$P(n)=2^{-n}$$
 ## Gamma Code
+
+La **Codifica Gamma (Gamma code)** è la più famosa tra le codifiche a livello di bit (bit-level codes) ed è una soluzione elegantissima che unisce il meglio del mondo binario e di quello unario.
+
+Rappresenta un gap $G$ dividendolo in due parti: **length** e **offset**. Facciamo un esempio pratico con il numero **13**.
+
+1. **L'Offset:** Prendi il numero 13 e scrivilo in binario normale → `1101`. Ora **taglia via il primissimo "1" a sinistra**. Quello che rimane (`101`) è il nostro _offset_.
+2. **La Length:** Conta quanti bit compongono il tuo offset. L'offset `101` è lungo **3** bit.
+3. **L'Unario:** Prendi questo numero 3 e codificalo in Codice Unario → `1110`. Questa è la nostra _length_ codificata.
+4. **Il Risultato Finale:** Concatena la _length_ (in unario) e l'_offset_ (in binario). Il Codice Gamma per 13 è **`1110101`**.
+
+La tabella degli esempi ci mostra come questo scali magnificamente:
+
+- Il numero 2 diventa `10,0` (3 bit invece di 32).
+- Il numero 9 diventa `1110,001` (7 bit).
+- Il numero 1025 diventa `11111111110,0000000001` (21 bit).
+
+![center|500](img/Pasted%20image%2020260410145047.png)
+
+### Le proprietà vincenti del Gamma Code
+
+Perché questa codifica è così geniale per i computer?
+
+- **È Prefix-decodable in modo univoco:** Questa è la caratteristica più importante. Se un computer legge una sfilza di milioni di bit attaccati senza spazi, come sa dove finisce un numero e inizia il successivo? Semplice: legge gli "1" unari finché non sbatte contro uno "0". A quel punto sa esattamente quanti bit successivi deve leggere (l'offset) per completare il numero. Finito l'offset, sa che il bit successivo è l'inizio di una nuova parola.
+- **Le Dimensioni:** Usa $2\lfloor\log G\rfloor+1$ bit in totale, quindi tutti i codici gamma avranno sempre un numero di bit dispari.
+	- La lunghezza dell'offset è di $\lfloor\log G\rfloor$ bits
+	- La lunghezza della lunghezza è di $\lfloor\log G\rfloor+1$ bits
+- **È Parameter-free:** Funziona universalmente senza dover passare parametri esterni per decodificarlo.
+
+C'è però un a questione abbastanza fastidiosa: **il codice Gamma è usato raramente nella pratica** 
+
+Il motivo è squisitamente ingegneristico.
+
+- **I confini hardware (Word boundaries):** L'hardware dei computer è costruito per lavorare su "pacchetti" fissi di 8, 16, 32 o 64 bit.
+- **La lentezza delle operazioni sui bit:** Le operazioni che attraversano questi confini (leggere un numero di 7 bit, poi uno di 3, poi uno di 21) costringono il processore a usare continue operazioni bit a bit (shift `<<`, `>>`, bitwise `&`, illustrate nella Slide 5) per estrarre le informazioni. Comprimere e manipolare i dati a questa granularità microscopica è **computazionalmente troppo lento**.
+- **La soluzione moderna:** Oggi, tutti usano codifiche allineate ai byte o alle word (come il _Variable Byte Encoding_). Comprimono un pochino meno del Gamma Code, ma sono immensamente più facili e veloci da processare per la CPU.
+
+Il Gamma Code può essere usato con ogni tipo di distrubizione, ma è ottimale quando la distribuzione è del tipo
+$$P(n)=\frac{1}{(2n^{2})}$$
 ## Variabile Byte (VB) codes
+
+L'obiettivo è sempre lo stesso: usare il minor numero di byte possibile per memorizzare un gap $G$, avvicinandosi al limite teorico di $\log_2​G$ bit, ma senza mai spezzare i byte.
+
+Il trucco è tanto semplice quanto geniale:
+
+- Invece di usare tutti gli 8 bit di un byte per il numero, ne usiamo solo **7 per il "carico utile" (payload)**.
+- L'ottavo bit (il primissimo a sinistra) viene sacrificato per fare da **bit di continuazione (continuation bit, $c$)**. Questo bit funge da semaforo per il processore.
+
+**Le due regole d'oro:**
+
+1. **Numeri piccoli** ($G\leq127$): Se il gap è piccolo, entra comodamente in 7 bit. In questo caso, il semaforo diventa verde per fermarsi: impostiamo il bit di continuazione a 1 ($c=1$).
+2. **Numeri grandi** ($G\gt127$): Se il gap è troppo grande, lo spezzettiamo in blocchi da 7 bit. In tutti i byte iniziali il semaforo è rosso ($c=0$), che dice al processore "aspetta, il numero non è finito, leggi anche il prossimo byte!". Arrivati all'ultimo byte del numero, impostiamo $c=1$ per segnalare la fine.
+
+Vediamo ora alcuni esempi
+
+Vediamo la conversione pratica dei gap.
+
+- **Il gap 5:** In binario si scrive `101` (entra in 7 bit: `0000101`). Dato che basta un solo byte, accendiamo subito il bit di continuazione: **`10000101`**.
+    - _Nota il compromesso:_ Per un gap così piccolo (5), la codifica VB spreca un intero byte (8 bit), mentre il codice Gamma ne avrebbe usati molti meno. Questo è il prezzo da pagare per la velocità.
+- **Il gap 824:** È troppo grande per 7 bit. Viene diviso in due byte:
+    - Il primo byte contiene la parte "alta" del numero e ha il semaforo rosso (c=0): `00000110`.
+    - Il secondo byte contiene la parte "bassa" e ha il semaforo verde (c=1): `10111000`.
+- **La Decodifica Univoca (Prefix-decodable):** Quando il computer deve leggere l'intera lista di documenti, concatena tutto in un'unica enorme stringa di byte (come quella rossa mostrata in slide). Per separare i numeri, gli basta scorrere i byte uno a uno: appena vede un byte che inizia per `1`, sa di aver completato un numero e che il byte successivo apparterrà a un nuovo gap. Velocissimo!
+
+![center|500](img/Pasted%20image%2020260411110249.png)
+
+Abbiamo visto che la codifica Variable Byte (VB) è ottima e veloce, ma l'ingegneria del software non si ferma mai
+
+Vediamo prima un riassunto dei traguardi raggiunti sul dataset Reuters:
+
+- Il dizionario, partendo da 11.2 MB (versione ingenua fissa), è crollato a soli **5.9 MB** applicando tutte le tecniche (Stringa + Blocking a 4 + Front Coding).
+- Le lunghissime liste di postings, che non compresse occupavano ben 400 MB, sono state ridotte a **116 MB** con il Variable Byte e a **101 MB** con il codice Gamma.
+
+**Conclusione:** Il codice Gamma fa risparmiare 15 MB in più rispetto al Variable Byte. Tuttavia, il Variable Byte (116 MB) comprime comunque in modo eccellente ed è infinitamente più veloce da decodificare per l'hardware del server. 
+
+![center|500](img/Pasted%20image%2020260411110649.png)
+
+## Altre tecniche più avanzate
+
+Nonostante il successo, il Variable Byte ha un difetto. Siccome lavora a blocchi rigidi di 8 bit (allineamento al byte), **sprecava un sacco di spazio per i gap piccolissimi**. Se un gap vale 1, il VB usa comunque 8 bit per salvarlo, sprecandone 7.
+
+La ricerca moderna ha cambiato approccio usando queste idee chiave:
+
+- **Word Alignment:** Invece di lavorare a blocchi di 8 bit, lavora a blocchi di 32 o 64 bit (la dimensione nativa delle "word" nei processori moderni), rendendo l'elaborazione ancora più fulminea.
+- **Codifica Multipla:** Invece di codificare un gap alla volta, codifica **diversi gap contemporaneamente** dentro lo stesso blocco da 32 o 64 bit.
+
+### L'Approccio di Google: Group Variable Integer
+
+Vediamo come Google ha implementato questi concetti intorno al 2000. Il _Group Variable Integer_ prende **4 numeri alla volta** e li comprime in un blocco che va dai 5 ai 17 byte totali.
+
+- **L'Intestazione (Header):** Il primissimo byte del blocco fa da "mappa". È diviso in quattro sezioni da 2 bit ciascuna ($L_1​L_2​L_3​L_4$​). Ogni campetto da 2 bit ti dice quanti byte occuperà il rispettivo numero (può valere 1, 2, 3 o 4 byte, ovvero 8, 16, 24 o 32 bit).
+- **Il Carico Utile (Payload):** Dopo questo primo byte "mappa", seguono i byte veri e propri che contengono i 4 numeri (da 4 a 16 byte in totale).
+- **Perché è geniale:** È stimato essere **due volte più veloce del Variable Byte**! Il motivo è che la decodifica è banalissima: non serve fare noiose maschere di bit per cercare i semafori (i bit di continuazione), ma il processore legge il primo byte, usa una tabella di lookup e sa istantaneamente di quanti byte deve saltare in avanti per leggere i 4 numeri.
+### Il Capolavoro: Simple-9
+
+L'ultima parte di questa lezione introduce un algoritmo ancora più rigido ed elegante, creato da Anh e Moffat nel 2004: il **Simple-9**. La domanda di partenza è: "Come possiamo infilare il maggior numero di numeri interi dentro un singolo blocco esatto di 32 bit?".
+
+- **La Struttura:** Si prende una "word" di 4 byte (32 bit).
+- **Il Selettore (Layout):** I primi 4 bit in assoluto (il _nibble_ più significativo) fanno da "selettore di formato". Con 4 bit possiamo avere 16 combinazioni (da 0 a 15), ma il Simple-9 ne usa solo 9.
+- **Il Payload:** I restanti 28 bit sono il vero spazio di archiviazione.
+- **La Regola d'Oro:** Se vogliamo salvare $n$ numeri, ciascuno usando $b$ bit, la formula deve rispettare il limite di 28 bit, cioè deve valere che: $$n\cdot b\leq28$$
+
+**I 9 Layout Possibili (Il Menu):** In base al numero scritto nei primi 4 bit, il processore sa come "affettare" i successivi 28 bit.
+
+- Layout `0`: Usa tutti i 28 bit per salvare **1** solo numero enorme.
+- Layout `1`: Affetta lo spazio a metà: salva **2** numeri da 14 bit.
+- Layout `2`: Salva **3** numeri da 9 bit (ne avanzerebbe 1, che viene considerato "spare", uno scarto).
+- Layout `3`: Salva **4** numeri da 7 bit ($4\cdot 7=28$).
+- ...e così via, fino al Layout `8`, che spezzetta lo spazio al massimo grado per salvare ben **28** numeri da 1 bit ciascuno! (Perfetto per quelle sequenze di gap `1, 1, 1` della parola "the" che abbiamo visto prima).
+
