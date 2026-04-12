@@ -31,12 +31,12 @@ Da capire i nuovi corsi che sono:
 - [x] PCD
 - [x] PROB
 - [ ] AR (fatto per metà)
-- [ ] CNS (fatto per metà)
+- [x] CNS
 - [x] ISTI
-- [ ] IR
+- [ ] IR/AIC
 - [x] ML
 - [ ] KE
 - [ ] CBD
 - [x] MVS
-- [ ] CYS
+- [x] CYS
 

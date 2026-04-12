@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti IR/Lezione 7 IR - Wildcard Queries, Spell Correction.md",
+                "file": "Appunti II Anno/Appunti IR/Lezione 8 IR - Scoring, Term Weighting & Vector Space Model.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 7 IR - Wildcard Queries, Spell Correction"
+              "title": "Lezione 8 IR - Scoring, Term Weighting & Vector Space Model"
             }
           }
         ],
@@ -111,13 +111,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti IR/Lezione 7 IR - Wildcard Queries, Spell Correction.md",
+                "file": "Appunti II Anno/Appunti IR/Lezione 8 IR - Scoring, Term Weighting & Vector Space Model.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 7 IR - Wildcard Queries, Spell Correction"
+              "title": "Outline of Lezione 8 IR - Scoring, Term Weighting & Vector Space Model"
             }
           },
           {
@@ -147,7 +147,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "b7d5f1914b483202",
@@ -183,27 +184,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "7f4a8ee5226470a0",
   "lastOpenFiles": [
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411143401.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411143333.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411143132.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411141637.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411141118.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411134703.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411122534.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411120400.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411115404.png",
-    "Appunti II Anno/Appunti IR/Lezione 6 IR - Compressione, Dict Compression e Postings Compression.md",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412175134.png",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412174727.png",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412172716.png",
+    "Pasted image 20260412171154.png",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412171030.png",
+    "README.md",
+    "Appunti II Anno/Appunti IR/Lezione 8 IR - Scoring, Term Weighting & Vector Space Model.md",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412165038.png",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412161641.png",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412161517.png",
     "Appunti II Anno/Appunti IR/Lezione 7 IR - Wildcard Queries, Spell Correction.md",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412121650.png",
     "Appunti II Anno/Appunti IR/Lezione 4 IR - Basic Inverted Index Construction, SPIMI & BSBI.md",
     "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I., Boolean Retrieval Model & Phrase queries.md",
-    "Appunti II Anno/Appunti IR/Lezione 1 IR - Intro.md",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411110649.png",
-    "Appunti II Anno/Appunti IR/img/Pasted image 20260411110249.png",
-    "Tesi Magistrale.md",
-    "README.md",
     "Appunti II Anno/Appunti IR/Lezione 5 IR - Distributed Indexing & Dynamic Indexing.md",
+    "Appunti II Anno/Appunti IR/Lezione 6 IR - Compressione, Dict Compression e Postings Compression.md",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412120945.png",
+    "Appunti II Anno/Appunti IR/img/Pasted image 20260412120918.png",
+    "Appunti II Anno/Appunti IR/Lezione 1 IR - Intro.md",
+    "Tesi Magistrale.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 3 AR2 - Local Connection Game.md",
@@ -229,7 +231,6 @@
     "Appunti I Anno/Appunti ADRC/Lezione 19 ADRC - Protocollo PULL su DELTA-Regular Expanders, Majority Consensus.md",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "Appunti I Anno/Appunti ADRC/Lezione 6 ADRC - Depth First Traversal, Protocollo BACK & DFT+, Tecnica di Saturazione & Minimum Finding.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 9 ADRC  - Deterministic Distribuited Graph Coloring, Procedura BPC, Procedura KW-CRP.md"
+    "Appunti I Anno/Appunti ADRC/Lezione 8 ADRC - Leader Election, Protocollo All The Way, Protocollo AsFar, Stage Technique, Architettura Mesh.md"
   ]
 }
