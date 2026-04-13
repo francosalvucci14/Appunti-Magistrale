@@ -227,7 +227,7 @@ Mostriamo quindi l'ultimo stadio evolutivo di come il computer "vede" i document
 
 1. **Binary Matrix:** C'erano solo 0 e 1 (Jaccard, modello Booleano).
 2. **Count Matrix:** C'erano i numeri interi grezzi delle ripetizioni (157, 232, ecc.).
-3. **Weight Matrix (La matrice dei pesi):** I numeri al suo interno non sono più conteggi, ma i risultati decimali![](Pasted%20image%2020260412171154.png) della formula TF-IDF
+3. **Weight Matrix (La matrice dei pesi):** I numeri al suo interno non sono più conteggi, ma i risultati decimali della formula TF-IDF
 
 ![center|500](img/Pasted%20image%2020260412171030.png)
 
@@ -305,8 +305,9 @@ Questo ci porta alla seguente rivelazione: **ordinare i documenti cercando l'ang
 Ora dobbiamo risolvere il problema visivo che avevamo nel grafico precedente (quello dei vettori): i documenti lunghi erano frecce lunghissime, quelli corti freccine corte.
 La soluzione geometrica è la **Normalizzazione della lunghezza** .
 
-Prendiamo ogni vettore e lo dividiamo per la sua stessa lunghezza (chiamata norma **euclidea** $L_2$​, ovvero la radice quadrata della somma dei suoi elementi al quadrato: $||x||_2​=\sum\limits_{i}x_{i}^2$)​.
+Prendiamo ogni vettore e lo dividiamo per la sua stessa lunghezza
 
+Tale lunghezza viene chiamata norma **euclidea** $L_2$​, ovvero la radice quadrata della somma dei suoi elementi al quadrato: $$||x||_2​=\sum\limits_{i}x_{i}^2$$
 Cosa succede fisicamente? Lo vediamo perfettamente nel grafico sottostante. 
 
 ![center|500](img/Pasted%20image%2020260412175134.png)
@@ -342,19 +343,81 @@ Per prima cosa mostriamo l'algoritmo `CosineScore(q)`.
 
 Ecco come funziona passo per passo:
 
-1. **Inizializzazione:** Il sistema crea un array enorme chiamato `Scores[N]` (dove N è il numero di tutti i documenti nel database) e lo riempie di zeri. Crea anche un array `Length[N]` dove sono già salvate le lunghezze dei documenti (il denominatore della nostra formula del coseno).
-2. **Il ciclo esterno (per ogni termine della query):** Se cerchi "gatto nero", l'algoritmo parte dalla parola "gatto". Calcola il peso wt,q​ (il TF-IDF della parola "gatto" nella tua query) e va a pescare la **postings list** (la lista di tutti i documenti che contengono la parola "gatto").
-3. **Il ciclo interno (per ogni documento nella lista):** Per ogni documento in quella lista, l'algoritmo calcola la moltiplicazione wt,d​×wt,q​ (il prodotto scalare) e lo **somma** al punteggio parziale di quel documento nell'array `Scores`. Poi ripete tutto per la parola "nero".
+1. **Inizializzazione:** Il sistema crea un array enorme chiamato `Scores[N]` (dove $N$ è il numero di tutti i documenti nel database) e lo riempie di zeri. Crea anche un array `Length[N]` dove sono già salvate le lunghezze dei documenti (il denominatore della nostra formula del coseno).
+2. **Il ciclo esterno (per ogni termine della query):** Se cerchi "gatto nero", l'algoritmo parte dalla parola "gatto". Calcola il peso $w_{t,q}$​ (il TF-IDF della parola "gatto" nella tua query) e va a pescare la **postings list** (la lista di tutti i documenti che contengono la parola "gatto").
+3. **Il ciclo interno (per ogni documento nella lista):** Per ogni documento in quella lista, l'algoritmo calcola la moltiplicazione $w_{t,d}​\times w_{t,q}$​ (il prodotto scalare) e lo **somma** al punteggio parziale di quel documento nell'array `Scores`. Poi ripete tutto per la parola "nero".
 4. **La normalizzazione:** Finiti i termini della query, l'array `Scores` contiene i prodotti scalari grezzi. L'algoritmo fa un ultimo giro per dividere ogni punteggio per la sua `Length[d]`. Ecco fatto il Coseno!
-5. **Il risultato:** Invece di ordinare milioni di documenti, usa una struttura dati super veloce chiamata **Priority Queue (o Heap)** per estrarre solo i migliori K documenti (es. i classici 10 risultati della prima pagina).
+5. **Il risultato:** Invece di ordinare milioni di documenti, usa una struttura dati super veloce chiamata **Priority Queue (o Heap)** per estrarre solo i migliori $K$ documenti (es. i classici 10 risultati della prima pagina).
 
 Lo pseudocodice è il seguente:
 
-La Slide 2 fa un paio di appunti per gli sviluppatori:
+```pseudo
+\begin{algorithm}
+    \caption{CosineScore}
+    \begin{algorithmic}
+      \Procedure{CosineScore}{q}
+        \State float $Scores[N] \gets 0$
+        \State float $Length[N]$
+        \ForAll{query term $t$}
+			\State calculate $w_{t,q}$ and fetch postings list for $t$
+			\ForAll{pair$(d,tf_{t,d})\in$ postings list}
+				\State $Scores[d]+= w_{t,d}\times w_{t,q}$
+            \EndFor
+        \EndFor
+        \State Read the array $Length$
+        \ForAll{$d$}
+	        \State $Scores[d]=Scores[d]/Length[d]$
+        \EndFor
+          \Return Top $K$ components of $Scores[]$
+        \EndProcedure
+      \end{algorithmic}
+    \end{algorithm}
+```
+
+Si fanno anche un paio di appunti per gli sviluppatori:
 
 - Esiste anche un approccio **DAAT (Document-At-A-Time)**, che valuta i documenti in parallelo.
-    
-- Per risparmiare memoria sui server, invece di salvare complessi numeri decimali (wt,d​) per ogni singola parola, si salva solo la frequenza grezza (TF) accanto al documento, e l'IDF lo si calcola al volo all'inizio della lista.
+- Per risparmiare memoria sui server, invece di salvare complessi numeri decimali ($w_{t,d}$​) per ogni singola parola, si salva solo la frequenza grezza (TF) accanto al documento, e l'IDF lo si calcola al volo all'inizio della lista.
+
+# Le varianti della Term Frequency
+
+Esistono tantissime varianti matematiche per il calcolo della TF.
+
+Alcune di esse possiamo vederle nella tabella sottostante
+
+![center|500](img/Pasted%20image%2020260413121509.png)
+
+Potresti chiederti: _"Ma non avevamo appena detto che si usava il logaritmo? Perché tutte queste alternative?"_
+
+La risposta è che l'Information Retrieval è una disciplina **empirica**. La formula logaritmica ($1+\log(tf)$) è ottima per il web generale, ma se stai creando un motore di ricerca per referti medici, o per tweet di 140 caratteri, o per codici legali, la distribuzione delle parole cambia radicalmente, e ti serviranno formule di "schiacciamento" (dampening) diverse.
+
+Vediamone alcune, spiegando la loro differenza logica
+
+- $TF_{total}​$ **(Naturale):** È la frequenza pura (conta le parole e basta). Come abbiamo visto, è una pessima idea perché favorisce (biased) i documenti lunghissimi. Assume che ogni ripetizione di una parola aggiunga esattamente lo stesso valore informativo della prima.
+- $TF_{sum}$​: Prende la frequenza e la divide per la somma di tutte le parole del documento. Praticamente calcola la "percentuale" di spazio che quella parola occupa nel testo. Questo normalizza perfettamente la lunghezza, ma ha un difetto: se due documenti hanno la stessa percentuale di una parola, ma uno è un saggio di 1000 pagine e l'altro un post-it di 10 parole, avranno lo stesso punteggio. Spesso, però, un saggio approfondito è preferibile a un post-it!
+- $TF_{max}$​: È un compromesso. Divide la frequenza del termine per la frequenza del termine _più usato_ in assoluto in quel documento.
+
+Introduciamo il concetto di **Decreasing marginal gain** (Guadagno marginale decrescente).
+
+Cosa significa? Immagina di leggere un documento misterioso.
+
+- Leggi la parola "Ferrari" per la **prima** volta. Hai appena ottenuto un'informazione enorme: il testo parla di automobili.
+- Leggi "Ferrari" per la **seconda** volta. Utile, ti conferma l'argomento.
+- Leggi "Ferrari" per la **centesima** volta. Questa centesima apparizione non ti dà nessuna informazione nuova rispetto alla novantanovesima. Il suo "guadagno informativo" è quasi nullo.
+
+La formula deve riflettere questo calo. Il grafico ci mostra che:
+
+- La curva viola ($TF_{\log}$​) sale rapidamente all'inizio e poi rallenta la sua crescita, ma continua a salire all'infinito.
+- Le curve colorate sotto usano una variante chiamata $TF_{frac}​$ (Fractional TF), calcolata come $\frac{n}{n+k}$​. Questa formula è molto aggressiva: dopo un po' di ripetizioni si appiattisce del tutto (crea un asintoto). Significa che per l'algoritmo, ripetere la parola 20 volte o 200 volte darà _esattamente_ lo stesso punteggio.
+- L'ultima formula citata nella tabella precedente, la **BM25**, è l'evoluzione moderna che si basa proprio su questo concetto di saturazione frazionaria, ed è oggi lo standard de facto nei motori di ricerca più avanzati (come Elasticsearch).
+
+![center|400](img/Pasted%20image%2020260413121835.png)
+
+# Le varianti dell'IDF
+
+Si applica la stessa filosofia all'IDF (Inverse Document Frequency). 
+
+Anche qui, $\log\left(\frac{N}{df}\right)$ è solo la versione base. Ci sono varianti come l'**IDF probabilistico** che introduce concetti più statistici, o versioni "Smooth" (smussate) in cui si aggiungono dei +0.5 o dei +1 ai denominatori. Il motivo è puramente ingegneristico: servono a evitare di incappare in divisioni per zero se i dati sono "sporchi" o in probabilità negative.
 
 ---
 # Esercizi
