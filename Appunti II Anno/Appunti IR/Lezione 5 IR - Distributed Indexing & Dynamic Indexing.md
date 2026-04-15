@@ -54,7 +54,7 @@ Vediamo un'esempio pratico
 - **Fase Map (Parser):** Immagina due documenti. Il documento `d1` dice "C came, C c' ed" (Caesar came, Caesar conquered) e il `d2` dice "C died" (Caesar died). Il Parser legge e sputa fuori coppie grezze: `<C, d1>`, `<came, d1>`, un altro `<C, d1>`, e così via.    
 - **Fase Reduce (Inverter):** L'Inverter riceve queste coppie disordinate, raggruppa tutti i documenti in cui compare una parola creando una lista come `<C, (d1, d1, d2)>`, e infine calcola le frequenze esatte per ottimizzare l'indice, trasformandola in `<C, (d1:2, d2:1)>` (ovvero: la parola "C" compare 2 volte in d1 e 1 volta in d2).
 
-L'algoritm che abbiamo appena visto crea quello che si chiama un **indice partizionato per termini (term-partitioned index)**.
+L'algoritmo che abbiamo appena visto crea quello che si chiama un **indice partizionato per termini (term-partitioned index)**.
 
 - In un indice _term-partitioned_, una singola macchina gestisce un sottoinsieme specifico del vocabolario (es. tutte le parole dalla A alla F per tutto il web).
 - Tuttavia, per i motori di ricerca, la costruzione dell'indice è solo una fase. C'è un'ulteriore fase di trasformazione necessaria per convertire questo indice in un **indice partizionato per documenti (document-partitioned index)**.
@@ -62,7 +62,7 @@ L'algoritm che abbiamo appena visto crea quello che si chiama un **indice partiz
 - La maggior parte dei motori di ricerca usa quest'ultimo approccio perché garantisce un bilanciamento del carico (load balancing) di gran lunga superiore quando milioni di utenti fanno ricerche contemporaneamente.
 # MapReduce
 
-L'intero algoritmo di costruzione dell'indice distribuito che abbiamo appena definitio (con i master, i parser e gli inverter) non è altro che un'istanza classica di **MapReduce**.
+L'intero algoritmo di costruzione dell'indice distribuito che abbiamo appena definito (con i master, i parser e gli inverter) non è altro che un'istanza classica di **MapReduce**.
 
 - **Cos'è:** MapReduce (introdotto in una celebre pubblicazione da Dean e Ghemawat nel 2004) è un framework per il calcolo distribuito robusto e concettualmente molto semplice.
 - **Il vero "Superpotere":** Il punto chiave assoluto è: MapReduce permette di fare tutto questo _senza dover scrivere il codice per la parte di distribuzione_. In pratica, un programmatore deve solo scrivere due funzioni (la "Map" e la "Reduce"); il framework di Google pensa automaticamente ad assegnare i compiti ai server inattivi, gestire i guasti di rete, riavviare le macchine bloccate e trasferire i dati da un nodo all'altro!

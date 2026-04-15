@@ -133,7 +133,7 @@ Lo pseudocodice dell'algoritmo SPIMI è il seguente
           \State \Call{AddToPostingsList}{postings\_lists,docID(token)}
           \EndWhile
           \State sorted\_terms $\gets$ \Call{SortTerms}{dict}
-          \Call{WriteBlockToDisk}{sorted\_term,dict,out\_file}
+          \State \Call{WriteBlockToDisk}{sorted\_term,dict,out\_file}
           \Return out\_file
         \EndProcedure
       \end{algorithmic}
