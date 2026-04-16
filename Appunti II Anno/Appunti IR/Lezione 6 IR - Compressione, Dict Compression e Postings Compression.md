@@ -33,7 +33,7 @@ Definiamo le due grandi famiglie della compressione dei dati.
 - **Compressione Lossless (Senza perdita):** L'algoritmo riduce lo spazio occupato, ma garantisce che **tutta l'informazione originale sia preservata e ricostruibile al 100%**. È il tipo di compressione che si usa per i file ZIP o per i testi, e **quello che facciamo quasi sempre nell'Information Retrieval (IR)** per dizionari e postings.
 - **Compressione Lossy (Con perdita):** L'algoritmo scarta attivamente alcune informazioni per ottenere file molto più piccoli. Viene usato tipicamente per immagini (JPEG) o audio (MP3).
 
-**Il legame sorprendente con il pre-processing:** La slide ci fa notare una cosa molto interessante: i classici passaggi di pulizia del testo (pre-processing) - come il _case folding_ (tutto minuscolo), l'eliminazione delle _stop words_, o lo _stemming_- possono essere considerati a tutti gli effetti una forma di **compressione lossy**. 
+**Il legame sorprendente con il pre-processing:** Notiamo una cosa molto interessante: i classici passaggi di pulizia del testo (pre-processing) - come il _case folding_ (tutto minuscolo), l'eliminazione delle _stop words_, o lo _stemming_- possono essere considerati a tutti gli effetti una forma di **compressione lossy**. 
 
 Quando trasformi "Mela" in "mela", hai perso per sempre l'informazione sulla lettera maiuscola originale.
 
@@ -44,9 +44,7 @@ Questa potatura comporta quasi nessuna perdita di qualità nei risultati finali 
 
 Prima di comprimere il dizionario, dobbiamo chiederci: quanto è grande il vocabolario dei termini? Ovvero, quante parole distinte esistono?
 
-Potremmo pensare che, siccome il vocabolario di una lingua è finito, esista un limite massimo (upper bound). 
-
-Ma la slide ci dice che **non possiamo assumere un limite superiore**.
+Potremmo pensare che, siccome il vocabolario di una lingua è finito, esista un limite massimo (upper bound)., ma in realtà **non possiamo assumere un limite superiore**.
 
 - **La matematica pura:** Se consideriamo stringhe di 20 caratteri formati da 70 simboli possibili (lettere, numeri, ecc.), le combinazioni possibili sono astronomiche: almeno $70^{20}\approx 10^{37}$ "parole" diverse.
 - **La pratica:** Nel mondo reale, il vocabolario continuerà a crescere all'infinito man mano che la collezione di documenti cresce. Nuovi acronimi, nomi propri, errori di battitura e codifiche internazionali (Specialmente con l'Unicode) generano continuamente nuovi _token_ unici.
@@ -158,7 +156,7 @@ L'idea alla base è drastica: invece di assegnare una "scatola" di dimensioni fi
 
 **La Matematica del Risparmio**
 
-- **La Stringa:** Sapendo che ci sono $\approx400.000$ termini e che la lunghezza media di un termine nel dizionario è di $8$ byte, la lunghezza totale di questa mega-stringa sarà $400.000\times8 \text{ byte}=3.2 \text{ MB}$
+- **La Stringa:** Sapendo che ci sono $\approx400.000$ termini e che la lunghezza media di un termine nel dizionario è di $8$ byte, la lunghezza totale di questa mega-stringa sarà $400.000\times8\text{ byte}=3.2\text{ MB}$
 - **I Puntatori:** Dobbiamo essere in grado di puntare a qualsiasi dei $3.2$ milioni di posizioni (byte) all'interno di questa stringa. Per indirizzare $3.2$ milioni di posizioni, ci servono $\log_2​(3.2\space M)\approx22$ bit. Poiché lavoriamo in byte, arrotondiamo a **$3$ byte per ogni puntatore**.
 
 Se ricalcoliamo lo spazio totale per singolo termine con questo nuovo metodo:
@@ -180,7 +178,7 @@ Per ovviare a questo "problema" si è introdotta la tecnica **Blocking** (raggru
 
 **Calcolo dei Guadagni Netti (Blocking Net Gains):** Facciamo l'esempio con blocchi da $k=4$ (raggruppiamo le parole a 4 a 4).
 
-- **Senza Blocking (DAAS puro):** Per 4 parole ci servivano 4 puntatori. $4\times3 \text{ byte}=12 \text{ byte}$.
+- **Senza Blocking (DAAS puro):** Per 4 parole ci servivano 4 puntatori. $4\times3\text{ byte}=12\text{ byte}$.
 - **Con Blocking ($k=4$):** Per 4 parole usiamo 1 solo puntatore (3 byte) e dobbiamo aggiungere 4 "lunghezze" extra (4 parole $\times$ 1 byte = 4 byte). Totale: $3+4=7$ byte.
 - **Risparmio:** $12-7=5$ byte salvati ogni blocco da 4 parole. In pratica, risparmiamo $1.25$ byte per termine.
 
@@ -292,13 +290,13 @@ Per risolvere questo problema dobbiamo scendere a livello dei singoli bit. Vedia
 - Variable Length Encoding
 - Gamma Codes
 - Unary Code
-## Variable Length Encoding
+### Variable Length Encoding
 
 L'obiettivo è chiarissimo: vogliamo usare pochissimi bit (circa 1 bit) per un gap piccolo come quello della parola _the_, e più bit (circa 20) per un gap enorme come quello della parola _arachnocentric_.
 
 - **La formula ideale:** Se il gap medio per un termine è $G$, matematicamente vorremmo usare circa $\log_2​G$ bit per memorizzarlo.
 - **La sfida:** Dobbiamo codificare ogni intero usando solo i bit strettamente necessari. Questo richiede una **codifica a lunghezza variabile (variable length encoding)**, che assegna codici molto corti ai numeri piccoli e codici più lunghi ai numeri grandi.
-## Unary Code
+#### Unary Code
 
 Prima di arrivare alla codifica perfetta, ci serve un componente molto semplice chiamato **Codice Unario**.
 
@@ -309,7 +307,7 @@ Prima di arrivare alla codifica perfetta, ci serve un componente molto semplice 
 
 Questa tecnica è ottimale quando la distribuzione del numero è del tipo 
 $$P(n)=2^{-n}$$
-## Gamma Code
+### Gamma Code
 
 La **Codifica Gamma (Gamma code)** è la più famosa tra le codifiche a livello di bit (bit-level codes) ed è una soluzione elegantissima che unisce il meglio del mondo binario e di quello unario.
 
@@ -328,7 +326,7 @@ La tabella degli esempi ci mostra come questo scali magnificamente:
 
 ![center|500](img/Pasted%20image%2020260410145047.png)
 
-### Le proprietà vincenti del Gamma Code
+#### Le proprietà vincenti del Gamma Code
 
 Perché questa codifica è così geniale per i computer?
 
@@ -343,12 +341,12 @@ C'è però un a questione abbastanza fastidiosa: **il codice Gamma è usato rara
 Il motivo è squisitamente ingegneristico.
 
 - **I confini hardware (Word boundaries):** L'hardware dei computer è costruito per lavorare su "pacchetti" fissi di 8, 16, 32 o 64 bit.
-- **La lentezza delle operazioni sui bit:** Le operazioni che attraversano questi confini (leggere un numero di 7 bit, poi uno di 3, poi uno di 21) costringono il processore a usare continue operazioni bit a bit (shift `<<`, `>>`, bitwise `&`, illustrate nella Slide 5) per estrarre le informazioni. Comprimere e manipolare i dati a questa granularità microscopica è **computazionalmente troppo lento**.
+- **La lentezza delle operazioni sui bit:** Le operazioni che attraversano questi confini (leggere un numero di 7 bit, poi uno di 3, poi uno di 21) costringono il processore a usare continue operazioni bit a bit (shift `<<`, `>>`, bitwise `&`) per estrarre le informazioni. Comprimere e manipolare i dati a questa granularità microscopica è **computazionalmente troppo lento**.
 - **La soluzione moderna:** Oggi, tutti usano codifiche allineate ai byte o alle word (come il _Variable Byte Encoding_). Comprimono un pochino meno del Gamma Code, ma sono immensamente più facili e veloci da processare per la CPU.
 
 Il Gamma Code può essere usato con ogni tipo di distrubizione, ma è ottimale quando la distribuzione è del tipo
 $$P(n)=\frac{1}{(2n^{2})}$$
-## Variabile Byte (VB) codes
+### Variabile Byte (VB) codes
 
 L'obiettivo è sempre lo stesso: usare il minor numero di byte possibile per memorizzare un gap $G$, avvicinandosi al limite teorico di $\log_2​G$ bit, ma senza mai spezzare i byte.
 

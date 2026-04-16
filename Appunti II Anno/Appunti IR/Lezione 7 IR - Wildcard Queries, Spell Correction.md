@@ -140,7 +140,7 @@ La formula si scrive come: $$\hat{w}=arg\max_{w\in V}​P(w|x)$$
 
 Tuttavia, calcolare direttamente $P(w|x)$ è molto difficile. Qui entra in gioco il famoso **Teorema di Bayes**, che ci permette di "capovolgere" il problema:
 
-$$P(w|x)=\frac{P(x)P(x|w)}{P(w)}​$$
+$$P(w|x)=\frac{P(w)P(x|w)}{P(x)}​$$
 
 Poiché il denominatore $P(x)$ (la probabilità di scrivere quella specifica parola sbagliata) è identico per tutti i candidati che stiamo valutando, possiamo tranquillamente ignorarlo per stilare la nostra classifica.
 
@@ -176,16 +176,18 @@ Vediamo come un errore (acress) a distanza 1 da vari candidati possa originarsi 
 - Se voleva scrivere **caress**, ha scambiato _ca_ con _ac_ (Errore di **Transposition**).
 - Se voleva scrivere **access**, ha digitato una _r_ invece di una _c_ (Errore di **Substitution**).
 
-Mettendo insieme tutto questo: il sistema genera questi candidati tramite la distanza di Damerau-Levenshtein, calcola per ognuno il punteggio combinato moltiplicando P(x∣w) (basato su quanto è comune quello specifico errore di battitura) e P(w) (quanto è comune la parola), e infine suggerisce all'utente la parola con il punteggio più alto.
+Mettendo insieme tutto questo: il sistema genera questi candidati tramite la distanza di Damerau-Levenshtein, calcola per ognuno il punteggio combinato moltiplicando $P(x|w)$ (basato su quanto è comune quello specifico errore di battitura) e $P(w)$ (quanto è comune la parola), e infine suggerisce all'utente la parola con il punteggio più alto.
 
 ![center|500](img/Pasted%20image%2020260411134703.png)
 
-Come abbiamo visto, calcolare le distanze per ogni parola del vocabolario è troppo lento. Vediamo alcune euristiche basate sull'osservazione statistica degli errori umani:
+Problema: calcolare le distanze per ogni parola del vocabolario è troppo lento. 
+
+Vediamo quindi alcune euristiche basate sull'osservazione statistica degli errori umani:
 
 - **La regola della distanza 1 e 2:** L'80$\%$ degli errori di battitura si trova a una distanza di edit pari a 1 dalla parola corretta (es. manca una lettera o ce n'è una in più). Quasi _tutti_ gli errori rientrano in una distanza di edit pari a 2. Questo ci permette di limitare drasticamente la ricerca: non cerchiamo parole a distanza 3 o 4, perché statisticamente è quasi impossibile che l'utente abbia fatto un errore così grave se voleva scrivere quella specifica parola.
 - **Spazi e trattini:** Un buon sistema deve considerare anche l'inserimento accidentale o la dimenticanza di spazi e trattini. Ad esempio, "thisidea" viene corretto in "this idea", e "inlaw" in "in-law".
 - **Unione di parole (Merging):** Similmente, si valuta l'unione di parole separate, come "data base" che diventa "database". Nelle query di ricerca brevi, spesso l'intera stringa viene trattata come un unico blocco da cui generare le correzioni
-#### Come generiamo i candidati?
+#### Come generiamo in maniera efficiente?
 
 Vediamo ora cinque semplici approcci algoritmici per trovare effettivamente queste parole simili nel dizionario. Dal più ingenuo al più avanzato:
 
@@ -260,9 +262,9 @@ Abbiamo quattro matrici, una per ogni tipo di operazione:
 
 **Un dettaglio cruciale:** notiamo giustamente che _l'inserimento e la cancellazione sono condizionati dal carattere precedente_. Quando scriviamo, non cancelliamo una 't' a caso; cancelliamo una 't' che magari seguiva una 'c' (come in _actress_ → _acress_). La probabilità dell'errore dipende dalla sequenza delle dita sulla tastiera.
 
-![center|500](img/Pasted%20image%2020260411141637.png)
-
 Qui vediamo uno spaccato della matrice di **Sostituzione**. 
+
+![center|500](img/Pasted%20image%2020260411141637.png)
 
 Se notiamo attentamente i numeri, noteremo che non sono distribuiti a caso. Le persone sostituiscono molto più frequentemente lettere che sono **vicine sulla tastiera QWERTY** (es. 'a' con 's') o che hanno un **suono simile** (es. vocali scambiate tra loro), mentre è rarissimo scambiare una 'a' con una 'z' se non si è del tutto distratti.
 ### Channel Model : Formula finale
