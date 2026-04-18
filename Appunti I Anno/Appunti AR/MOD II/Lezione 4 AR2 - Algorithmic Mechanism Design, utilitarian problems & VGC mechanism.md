@@ -327,6 +327,91 @@ Vediamo ora il seguente teorema:
 
 **dimostrazione**
 
-Fissiamo $i,r_{-i},t_i$
+L'obiettivo della dimostrazione è far vedere che l'utilità del giocatore $i$ quando dice la verità ($t_i$​) è sempre maggiore o uguale all'utilità che avrebbe se dicesse una bugia ($r_i$​).
+
+Fissiamo un giocatore $i$. Supponiamo che il suo vero costo sia $t_i$​. Tutti gli altri giocatori dichiarano le loro offerte, che chiamiamo $r_{-i}$​ (non importa se dicono il vero o il falso, le prendiamo come un dato di fatto).
+
+Definiamo due possibili scenari per il giocatore $i$:
+
+- **Lo scenario sincero** ($\hat{r}$): Il giocatore dichiara il suo vero costo $t_i$​. Il vettore di tutte le offerte diventa $\hat{r}=(r_{-i}​,t_i​)$. L'algoritmo di allocazione $g()$ elabora queste offerte e sceglie la soluzione ottima $x$.
+	- $x=g(\hat{r})$
+- **Lo scenario bugiardo:** Il giocatore dichiara un costo falso $r_i​\neq t_i$​. L'algoritmo elabora le nuove offerte e sceglie una soluzione (potenzialmente diversa) $x'$.
+	- $x'=g(r_{-i},r_i)$
+
+Ora calcoliamo l'utilità del giocatore $i$ nei due scenari. 
+
+Ricordiamo che Utilità = Pagamento Ricevuto - Costo Vero.
+La formula del pagamento VCG è fatta da una costante $h_i​(r_{-i}​)$ meno la somma dei costi dichiarati dagli _altri_ giocatori.
+
+- **Utilità dicendo la verità:** L'equazione è: $$u_i​(t_i​,(r_{-i}​,t_i​))=\left[h_i​(r_{-i}​)-\sum\limits_{j\neq i}​v_j​(r_j​,x)\right]-v_i​(t_i​,x)$$La parte tra parentesi quadre è il pagamento VCG. La parte fuori è il vero costo per il giocatore $i$. Ora guardiamo cosa succede: poiché abbiamo definito $\hat{r}_j$​ come il vettore in cui tutti dicono $r_j$​ e il giocatore $i$ dice $t_i$​, possiamo "fondere" l'ultimo termine dentro la sommatoria. Otteniamo: $$h_i​(r_{-i}​)-\sum\limits_{j\neq i}​v_j​(\hat{r}_{j}​,x)$$
+- **Utilità dicendo una bugia:** Facciamo la stessa identica cosa, ma valutata sulla soluzione $x'$ (quella uscita per colpa della bugia). Otteniamo quindi che: $$u_i​(t_i​,(r_{-i}​,r_i​))=h_i​(r_{-i}​)-\sum\limits_{j\neq i}v_j​(\hat{r}_j​,x')$$
+
+**Il punto chiave fin qui:** L'utilità del giocatore in entrambi i casi è pari a una costante $h_i$​ (che dipende solo dagli altri e che lui non può influenzare) _MENO la somma totale dei costi reali_ di tutti i giocatori.
+
+Ora entra in gioco l'ipotesi che l'algoritmo $g()$ sia "utilitaristico". Questo significa che l'algoritmo è progettato per scegliere sempre la soluzione che **minimizza la somma totale dei costi** basandosi sulle offerte ricevute.
+
+Quando il giocatore $i$ dice la verità (vettore $\hat{r}$), l'algoritmo sceglie $x$. Quindi $x$ è per definizione la soluzione che minimizza la somma:
+$$x=arg\min_{y\in F}\sum\limits_{i}​v_i​(\hat{r},y)$$
+
+Cosa comporta questo? Che la somma dei costi calcolata su $x$ sarà **sempre minore o uguale** alla somma dei costi calcolata su _qualsiasi altra soluzione possibile_, inclusa la soluzione $x'$. 
+Di conseguenza vale che:
+$$\sum\limits_{j}​v_j​(\hat{r},x)\leq \sum\limits_{j}​v_j​(\hat{r},x')$$
+
+E quindi, matematicamente, l'utilità del giocatore $i$ quando dice la verità sarà sempre maggiore o uguale alla sua utilità quando dice una bugia: 
+$$\boxed{u_i​(t_i​,(r_{-i}​,t_i​))\geq u_i​(t_i​,(r_{-i}​,r_i​))}$$
+
+Il teorema è dimostrato: in un meccanismo VCG applicato a problemi utilitaristici, mentire non potrà mai aumentare il tuo profitto. Dire la verità è una **strategia dominante** $\blacksquare$
 #### I Pagamenti di Clarke
+
+Nella dimostrazione precedente abbiamo visto che la formula di VCG funziona grazie a un "trucco" matematico: la presenza di una funzione misteriosa chiamata $h_i​(r_{-i}​)$.
+
+Quella funzione, matematicamente, poteva essere qualsiasi cosa, purché non dipendesse da ciò che dichiara il giocatore $i$. Ma nel mondo reale, non possiamo scegliere una $h_i$​ a caso. Qui spieghiamo proprio **come scegliere quella funzione per rendere il meccanismo utilizzabile nella realtà**
+
+**Il collegamento col teorema precedente:** Il teorema ci diceva che l'utilità di un giocatore in un meccanismo VCG è: $u_i​=h_i​(r_{-i}​)-\sum\limits_{j}​v_j​(r_j​,x)$ 
+Ma cosa succede se scegliamo male $h_i​$? Se ad esempio mettessimo $h_i​=0$, il pagamento diventerebbe negativo per il banditore.
+
+Inoltre, i giocatori potrebbero avere un'utilità negativa e rifiutarsi di partecipare al gioco.
+
+**La soluzione: Il Meccanismo Pivot di Clarke** La genialità di Clarke è stata inventare la definizione perfetta per $h_i$​:
+$$h_i​(r_{-i}​)=\sum\limits_{j\neq i}​v_j​(r_j​,g(r_{-i}​))$$
+
+In parole povere: $h_i$​ **è il costo totale che la società avrebbe sostenuto se il giocatore $i$ NON fosse mai esistito** (o non avesse mai partecipato al gioco). L'algoritmo $g(r_{-i})$ è infatti la soluzione ottima calcolata ignorando l'esistenza del giocatore $i$.
+
+**La formula finale del pagamento di Clarke:** Inserendo questa $h_i$​ nella formula dei pagamenti, otteniamo:
+$$p_{i}(r)=\underbrace{\sum\limits_{j\neq i}​v_j​(r_j​,g(r_{-i}​))}_{\text{costo per gli altri SENZA i}=h_{i}(r_{-i})}-\underbrace{\sum\limits_{j\neq i}​v_j​(r_j​,g(r​))}_{\text{costo per gli altri CON i}}$$
+
+Questo concetto si chiama **Esternalità**. Il giocatore i paga esattamente il "danno" (o l'aumento di costo) che la sua presenza causa al resto della società. 
+
+_Il grande vantaggio:_ Con i pagamenti di Clarke si dimostra matematicamente che l'utilità di ogni agente è **sempre** $\geq0$.
+Questa proprietà si chiama _Individual Rationality_: significa che gli agenti non ci rimetteranno mai a partecipare, quindi saranno ben felici di "giocare".
+
+Chiudiamo il cerchio dimostrando che l'Asta di Vickrey che abbiamo visto in modo intuitivo all'inizio è, di fatto, **un caso speciale del meccanismo di Clarke**. Se applichiamo l'esternalità all'asta per comprare un servizio (minimizzazione):
+
+- Qual è il costo per la società se la Macchina Vincente non partecipa? Il lavoro andrà alla seconda macchina più economica (il _secondo miglior prezzo_).
+- Qual è il costo per gli altri se la Macchina Vincente partecipa? Zero, perché il lavoro lo fa lei.
+- Differenza (il pagamento): La Macchina Vincente riceve esattamente il secondo miglior prezzo. I perdenti ricevono 0. La teoria generale di VCG/Clarke combacia perfettamente con l'esempio pratico!
+
+---
 # Mechanism Desing: Problemi Algoritmici
+
+Finora abbiamo parlato come economisti. Ma un informatico guarda la formula di VCG e sbianca. Perché?
+
+- Per trovare la soluzione ottima $g(r)$ serve eseguire un algoritmo.
+- Ma per calcolare i pagamenti di Clarke per N giocatori, dobbiamo calcolare g(r−i​) per ogni singolo giocatore! Significa che **dobbiamo eseguire l'algoritmo di ottimizzazione $N+1$ volte** (una volta con tutti, e $N$ volte togliendo un giocatore alla volta).
+- Se l'algoritmo di base è già lento (o peggio, ***NP-hard***, come nel problema del Commesso Viaggiatore), ripetere il calcolo $N$ volte renderebbe il meccanismo impossibile da usare nella realtà 
+
+**L'applicazione ai Grafi:** Il campo dell'Algorithmic Mechanism Design (AMD) studia proprio questo.
+
+Immaginiamo Internet: un grafo $G=(V,E)$ dove ogni arco (cavo di rete) è posseduto da un giocatore egoista. Il costo reale di quel cavo è il "tipo privato". Vogliamo risolvere problemi classici come lo **Shortest Path (SP)** o il **Minimum Spanning Tree (MST)** pagando i router per fargli dire la verità sui loro costi.
+
+Come ultima parte vediam0o una tabella riassuntiva che rappresenta un vero trionfo dell'Informatica. Essa compara due cose:
+
+1. **Centralized algorithm:** Il tempo necessario per risolvere il problema classicamente, se tutti dicessero la verità gratis (es. usare l'algoritmo di Dijkstra per il cammino minimo costa $O(m+n\log(n))$).
+2. **Selfish-edge mechanism:** Il tempo necessario per risolvere il problema **E IN PIÙ** calcolare tutti gli $N$ pagamenti di Clarke per far dire loro la verità.
+
+**Il risultato? Il tempo di calcolo è asintoticamente IDENTICO!** Nonostante sembri necessario ricalcolare tutto l'algoritmo $N$ volte (il che moltiplicherebbe il tempo per $N$), scienziati informatici hanno scoperto strutture dati e algoritmi super-ottimizzati che permettono di calcolare _tutti_ i pagamenti di Clarke "gratis" o quasi, nello stesso tempo che ci vuole a risolvere il problema base una sola volta.
+
+**In conclusione:** Grazie a VCG sappiamo che è possibile far dire la verità a tutti; grazie a Clarke sappiamo come farlo senza mandare in bancarotta nessuno e garantendo utilità positive; e grazie all'Algorithmic Mechanism Design sappiamo che possiamo calcolare tutto questo in tempi velocissimi anche su reti enormi come Internet.
+
+![center|500](img/Pasted%20image%2020260418142746.png)
+
