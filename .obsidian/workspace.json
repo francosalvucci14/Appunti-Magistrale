@@ -91,7 +91,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -174,17 +175,17 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-git:Open Git source control": false,
       "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "cd7e71b812eeb614",
+  "active": "912098ad0d3dd6fa",
   "lastOpenFiles": [
     "Appunti II Anno/Appunti IR/Lezione 2 IR - Intro p.2 & Inverted Index.md",
     "Appunti II Anno/Appunti IR/Lezione 3 IR - More on I.I., Boolean Retrieval Model & Phrase queries.md",
