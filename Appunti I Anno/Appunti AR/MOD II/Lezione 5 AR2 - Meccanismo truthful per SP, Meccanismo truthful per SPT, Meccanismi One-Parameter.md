@@ -97,6 +97,5 @@ Invece di eseguire Dijkstra da zero per ogni arco rimosso, questi algoritmi sfru
 Il risultato è straordinario: il tempo necessario per risolvere l'intero problema del Mechanism Design collassa esattamente alla stessa classe di complessità necessaria per calcolare un singolo Shortest Path in un ambiente non strategico: $O(m+n\log(n))$.
 
 
-
 ---
 # Meccanismi One-Parameter
