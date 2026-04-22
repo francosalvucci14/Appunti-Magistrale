@@ -11,154 +11,188 @@ Studiare paper, capire contesto, problema specifico e risultati e related work
 Capire se esistono altri paper che si collegano a questo, altri lavori simili
 
 ---
-# Analisi Avanzata della Rilevazione di Comunità Stabili in Reti Temporali tramite Clustering Basato sulla Densità Strutturale
+# Analisi Avanzata della Stabilità Strutturale e Rilevazione di Comunità in Reti Temporali
 
-L'evoluzione della scienza delle reti ha portato alla consapevolezza che le strutture sociali, biologiche e tecnologiche non sono entità statiche, ma sistemi dinamici le cui interazioni fluttuano nel tempo. Il problema della rilevazione di comunità, tradizionalmente affrontato su grafi statici, richiede oggi un cambio di paradigma verso i grafi temporali, dove ogni arco è marcato da un timestamp che ne definisce l'istante o l'intervallo di esistenza. Un approccio particolarmente promettente, analizzato nel dettaglio in questa sede, riguarda l'identificazione di comunità stabili, ovvero gruppi di nodi che non solo mostrano una densità di connessione elevata, ma mantengono questa coesione strutturale in modo persistente lungo la dimensione temporale.
+L'analisi dei dati di rete ha subito una trasformazione fondamentale con l'avvento dei grafi temporali, in cui ogni arco non è più considerato un'entità statica ma è associato a un timestamp specifico o a un intervallo di tempo. Questa evoluzione rispecchia la natura intrinsecamente dinamica dei sistemi del mondo reale, come le reti di comunicazione via email, le collaborazioni scientifiche e le interazioni sociali tra individui. La rilevazione di comunità in questi contesti non può limitarsi all'analisi della densità topologica istantanea, ma deve affrontare la sfida della stabilità temporale, distinguendo tra strutture coese persistenti e fluttuazioni transitorie nei flussi di dati.
 
-## Inquadramento Teorico e Motivazioni della Ricerca
+## Evoluzione della Network Analysis: dai Grafi Statici ai Grafi Temporali
 
-Le reti reali, come quelle di contatti umani, collaborazioni scientifiche o comunicazioni digitali, sono intrinsecamente temporali. In una rete di contatti, un arco $(u, v, t)$ rappresenta un'interazione tra due individui in un momento specifico; in una rete di co-autoria, denota la pubblicazione congiunta di un articolo in un dato anno. Gran parte degli algoritmi di rilevazione di comunità esistenti ignora queste informazioni temporali, aggregando i dati in un unico grafo statico. Questa semplificazione comporta la perdita di pattern critici, poiché interazioni avvenute in tempi distanti vengono trattate come simultanee, portando alla formazione di comunità "artificiali" che non riflettono la realtà operativa del sistema.
+Storicamente, la ricerca sulla rilevazione di comunità si è concentrata su grafi statici, definendo le comunità come gruppi di nodi con una densità di connessione interna superiore rispetto a quella esterna. Algoritmi classici basati sull'ottimizzazione della modularità, come il metodo di Louvain, o sulla ricerca di sottografi densi (clique e quasi-clique), hanno dominato la letteratura per decenni. Tuttavia, questi modelli ignorano l'informazione temporale, fallendo nell'identificare pattern cruciali come la stabilità a lungo termine delle relazioni.
 
-La ricerca di comunità stabili si differenzia nettamente dalla ricerca di comunità dinamiche o evolutive. Mentre queste ultime si concentrano su come i gruppi cambiano, si fondono o si dividono, la stabilità mira a isolare il nucleo invariante della rete. Ad esempio, in una rete di email universitarie, una comunità stabile può rivelare l'appartenenza allo stesso dipartimento, dove la comunicazione è costante e strutturata, distinguendola da gruppi di lavoro temporanei formati per progetti a breve termine. Allo stesso modo, nelle reti di collaborazione scientifica, identificare un team di esperti che collabora stabilmente da anni è fondamentale per assemblare gruppi di ricerca affidabili per progetti complessi.
+Nelle reti temporali, rappresentate formalmente come un insieme di nodi $\mathcal{V}$ e un insieme di archi temporali $\mathcal{E}$ composti da triplette $(u, v, t)$, l'obiettivo si sposta verso l'identificazione di strutture che mantengono la loro coesione strutturale attraverso il tempo. Un grafo temporale può essere visualizzato come un flusso di collegamenti (link stream) o come una sequenza di snapshot discreti $\mathcal{G}_1, \mathcal{G}_2, \dots, \mathcal{G}_T$, dove ogni snapshot cattura lo stato della rete in un determinato intervallo temporale. Questa distinzione è fondamentale per la scelta dell'approccio algoritmico: i modelli basati su snapshot permettono l'estensione di teorie statiche, mentre i modelli di link stream facilitano l'aggiornamento incrementale in tempo reale.
 
-Le tecniche tradizionali di clustering basate sulla densità, come SCAN (Structural Clustering Algorithm for Networks), hanno dimostrato grande efficacia nel gestire grafi di grandi dimensioni, grazie alla capacità di distinguere tra nodi core, hub e outlier. Tuttavia, l'estensione di SCAN al dominio temporale presenta sfide computazionali non banali. La definizione di "stabilità" richiede infatti che la somiglianza strutturale tra i nodi sia verificata non solo in modo aggregato, ma in una serie di snapshot temporali, introducendo una complessità legata al mining di pattern frequenti che cresce esponenzialmente con il numero di timestamp considerati.
+## Il Modello TSCAN: Clustering basato sulla Densità nelle Reti Temporali
 
-## Fondamenti Matematici e Definizioni di Stabilità
+Una delle innovazioni più significative per affrontare la stabilità temporale è il framework TSCAN (Temporal Structural Clustering Algorithm for Networks), proposto per estendere l'algoritmo SCAN ai contesti dinamici. Il cuore di questo approccio risiede nella misura della similarità strutturale tra i nodi, non più limitata a un singolo istante ma valutata sulla sua persistenza.
 
-Per formalizzare il problema, il grafo temporale $\mathcal{G}=(\mathcal{V},\mathcal{E})$ viene suddiviso in una sequenza di snapshot $\{G_1, G_2,..., G_T\}$, dove ogni $G_i=(V, E_i)$ rappresenta lo stato della rete nell'intervallo temporale $i$-esimo. La base del clustering strutturale risiede nella misura della similarità tra nodi adiacenti, calcolata tramite la sovrapposizione dei loro vicinati.
+### Fondamenti Matematici della Stabilità Strutturale
 
-### Similarità Strutturale e Stabilità Temporale
+TSCAN introduce il concetto di $\epsilon$-stable similarity, denotata come $S_{\epsilon}(u, v)$, che quantifica il numero di snapshot in cui la similarità strutturale $\sigma_i(u, v)$ tra due nodi supera una soglia $\epsilon$. La similarità strutturale nello snapshot $i$ è definita come:
 
-In uno snapshot specifico $G_i$, la similarità strutturale $\sigma_i(u,v)$ tra due nodi $u$ e $v$ è definita dalla frazione di vicini comuni rispetto alla media geometrica delle dimensioni dei loro vicinati inclusivi :
+$$\sigma_i(u, v) = \frac{|N_i[u] \cap N_i[v]|}{\sqrt{|N_i[u]| \times |N_i[v]|}}$$
 
-$$\sigma_{i}(u,v) \triangleq \frac{|N_{i}[u]\cap N_{i}[v]|}{\sqrt{|N_{i}[u]|\times|N_{i}[v]|}}$$
+dove $N_i[u]$ rappresenta il vicinato chiuso del nodo $u$ nello snapshot $i$. Se $S_{\epsilon}(u, v) \ge \tau$, l'arco $(u, v)$ è considerato $(\tau, \epsilon)$-connected, indicando una relazione strutturalmente significativa per almeno $\tau$ istanti temporali. Questo parametro $\tau$ agisce come un filtro di stabilità, permettendo di ignorare contatti casuali o di breve durata che non riflettono una vera appartenenza a una comunità.
 
-dove $N_i[u] = N_i(u) \cup \{u\}$. Se l'arco $(u,v)$ non esiste nello snapshot $i$, la similarità è posta a zero. Partendo da questa misura puntuale, viene introdotta la $\epsilon$-stable similarity ($S_\epsilon(u,v)$), che conta il numero di snapshot in cui la somiglianza strutturale supera una soglia definita $\epsilon$ :
+### Definizione di $(\mu, \tau, \epsilon)$-Stable Core
 
-$$S_{\epsilon}(u,v) = \sum_{i=1}^{T} \mathcal{I}(\sigma_{i}(u,v) \ge \epsilon)$$
+Un nodo $u$ è definito come un $(\mu, \tau, \epsilon)$-stable core se possiede almeno $\mu$ vicini con i quali forma una struttura a stella persistente per almeno $\tau$ snapshot. Questa definizione è più rigorosa rispetto ai modelli statici poiché richiede che la similarità strutturale sia soddisfatta simultaneamente per un gruppo di vicini, catturando l'essenza di un "nucleo" stabile all'interno della rete.
 
-dove $\mathcal{I}$ è la funzione indicatrice. Un arco è considerato $(\tau, \epsilon)$-connesso se $S_\epsilon(u,v) \ge \tau$, dove $\tau$ rappresenta la soglia minima di stabilità temporale.
+La rilevazione di una comunità stabile avviene quindi attraverso la propagazione della raggiungibilità strutturale dai core stabili. Una comunità stabile soddisfa due proprietà fondamentali:
 
-### Definizione del $(\mu, \tau, \epsilon)$-Stable Core
+1. **Massimalità:** Se un nodo $u$ appartiene a una comunità stabile, tutti i nodi raggiungibili strutturalmente da $u$ devono essere inclusi.
+    
+2. **Connettività:** Qualsiasi coppia di nodi nella comunità deve essere collegata attraverso un percorso di core stabili.
+    
 
-Il concetto cardine dell'algoritmo è lo stable core, che identifica i nodi "nucleo" attorno ai quali si sviluppano i cluster. Un nodo $u$ è definito $(\mu, \tau, \epsilon)$-stable core se possiede un insieme di almeno $\mu$ vicini che sono simultaneamente simili a $u$ in almeno $\tau$ snapshot. Formalmente, deve esistere un sottoinsieme $\tilde{N}(u) \subseteq N(u)$ tale che $|\tilde{N}(u)| \ge \mu$ e che esista un insieme di snapshot $\{G_{j_1},..., G_{j_l}\}$ con $l \ge \tau$ in cui, per ogni snapshot $G_{j_k}$ e per ogni $v \in \tilde{N}(u)$, si abbia $\sigma_{j_k}(u,v) \ge \epsilon$.
+### Simboli e Definizioni Chiave nel Clustering Temporale
 
-Questa definizione impone un vincolo di simultaneità molto forte: non è sufficiente che ogni vicino sia stabile singolarmente; è necessario che un intero gruppo di vicini sia strutturalmente simile al core negli stessi istanti temporali. Questo garantisce che la comunità identificata abbia una coesione interna che persiste come unità funzionale nel tempo.
-
-|**Simbolo**|**Definizione**|**Significato Algoritmico**|
+|**Simbolo**|**Definizione**|**Applicazione**|
 |---|---|---|
-|$\mathcal{G}=(\mathcal{V},\mathcal{E})$|Grafo temporale|Insieme di nodi e archi associati a timestamp.|
-|$G_i=(V, E_i)$|Snapshot $i$-esimo|Grafo statico derivato da un intervallo temporale.|
-|$\sigma_i(u,v)$|Similarità strutturale|Grado di vicinanza locale nello snapshot $i$.|
-|$S_\epsilon(u,v)$|$\epsilon$-stable similarity|Frequenza temporale della somiglianza $\ge \epsilon$.|
-|$\mu$|Parametro di densità|Numero minimo di vicini simili richiesti.|
-|$\tau$|Parametro di stabilità|Numero minimo di snapshot richiesti.|
-|$\epsilon$|Soglia di similarità|Valore minimo di $\sigma$ per considerare due nodi simili.|
+|$\mathcal{G}=(\mathcal{V}, \mathcal{E})$|Grafo temporale non orientato|Rappresentazione completa del dataset|
+|$\sigma_i(u, v)$|Similarità strutturale nello snapshot $i$|Misura dell'overlap locale al tempo $t$|
+|$S_{\epsilon}(u, v)$|$\epsilon$-stable similarity|Conteggio della persistenza della similarità|
+|$(\mu, \tau, \epsilon)$-stable core|Nodo con $\mu$ vicini stabili per $\tau$ istanti|Backbone della comunità stabile|
+|$\Delta$|Distanza temporale o finestra|Risoluzione temporale degli snapshot|
+|$G = (V, E)$|Grafo de-temporalizzato statico|Vista aggregata per analisi di base|
 
-## Architettura dell'Algoritmo TSCAN-B
+## Categorizzazione del Related Work: Prospettive e Metodologie
 
-Il framework algoritmico di base, denominato TSCAN-B (Temporal SCAN-Basic), adatta il processo di clustering di PSCAN alle reti temporali. Il processo si suddivide in due fasi principali: l'identificazione e il raggruppamento dei nodi core, e la successiva assegnazione dei nodi non-core.
+L'analisi della letteratura specialistica permette di mappare le direzioni di ricerca in tre grandi categorie: probabilistiche, strutturali/topologiche e basate sulla densità. Ognuna di queste classi risponde a diverse esigenze di interpretabilità e scalabilità.
 
-### Identificazione dei Core e Clustering
+### Modelli Probabilistici e Statistici
 
-Inizialmente, l'algoritmo attraversa ogni nodo $u \in V$ per determinare se soddisfa i requisiti di stable core. Data la complessità della definizione di core, l'approccio di base prevede l'utilizzo di algoritmi di frequent pattern mining massimale, come Apriori, trattando l'insieme dei vicini $\epsilon$-simili in ogni snapshot come una transazione. Se esiste un pattern frequente con supporto $\ge \tau$ e cardinalità $\ge \mu$, il nodo è marcato come core.
+I modelli probabilistici si basano spesso sul concetto di Stochastic Block Model (SBM), in cui i nodi sono assegnati a classi latenti e la probabilità di connessione tra due nodi dipende esclusivamente dalla loro appartenenza a tali classi. L'estensione dinamica, nota come Dynamic Stochastic Block Model (dSBM), è stata approfondita da Catherine Matias e Vincent Miele.
 
-Una volta identificati i core, l'algoritmo costruisce un grafo delle comunità $G_c$:
+Il dSBM combina la struttura statica dell'SBM con catene di Markov indipendenti che governano l'evoluzione delle appartenenze dei nodi nel tempo. Questo approccio permette di modellare non solo la presenza di archi, ma anche la loro frequenza o il loro peso in reti pesate. Un aspetto critico del dSBM è il controllo del "label switching", ovvero il problema di mantenere l'identità dei cluster coerente tra snapshots successivi. L'inferenza viene solitamente effettuata tramite algoritmi di Variational Expectation-Maximization (VEM), che approssimano la distribuzione a posteriori delle variabili latenti per rendere il calcolo trattabile su reti di grandi dimensioni.
 
-1. Se un nodo $u$ è un core, viene aggiunto a $G_c$.
+### Approcci Strutturali e Topologici
+
+Questa categoria si focalizza sull'identificazione di sottografi che soddisfano vincoli topologici precisi, come $k$-core e $k$-truss, estendendoli alla dimensione temporale. In questo contesto, il lavoro di Huang e altri ha investigato la manutenzione di comunità $k$-truss in grafi dinamici, mentre Wu ha proposto modelli di decomposizione $k$-core temporale basati sul conteggio degli archi temporali.
+
+Recentemente, il concetto di "comunità durevole" (durable community) è emerso come una variante del $k$-core temporale che identifica i sottografi più longevi in cui i membri rimangono invariati per un periodo continuo. Un'altra direzione rilevante riguarda la ricerca di "bursting cores", ovvero strutture dense che emergono con intensità in finestre temporali specifiche, rappresentando una forma di stabilità strutturale limitata a periodi di alta attività.
+
+### Framework basati sulla Densità
+
+Il framework basato sulla densità, esemplificato da SCAN e dalle sue evoluzioni (SCAN++, PSCAN), si distingue per la capacità di identificare non solo i cluster ma anche i ruoli periferici dei nodi, come hub e outlier. TSCAN appartiene a questa classe e introduce tecniche di potatura (pruning) per gestire l'elevata complessità computazionale derivante dall'analisi di molteplici snapshot.
+
+Il vantaggio principale degli approcci basati sulla densità è la loro efficacia pratica nel separare il rumore dalle strutture reali. Mentre i modelli probabilistici possono essere influenzati da assunzioni sulla distribuzione dei dati, il clustering strutturale basato sulla densità si fonda sulla connettività locale osservata, risultando più robusto in presenza di dati eterogenei.
+
+## Metodologie di Scomposizione Tensoriale e Non-Negative Tensor Factorization
+
+Un approccio alternativo e potente per la rilevazione di comunità temporali è la scomposizione tensoriale, in particolare la Non-Negative Tensor Factorization (NTF). Questo metodo tratta la rete temporale come un tensore a tre vie $\mathcal{X} \in \mathbb{R}^{N \times N \times T}$, dove le dimensioni rappresentano i nodi, i vicini e il tempo.
+
+### Il Modello di Gauvin et al.
+
+L'approccio proposto da Gauvin e colleghi permette di identificare simultaneamente le comunità e di tracciare la loro attività nel tempo. Il tensore viene approssimato come una somma di componenti di rango uno:
+
+$$\mathcal{X} \approx \sum_{r=1}^R a_r \circ b_r \circ c_r$$
+
+In questa formulazione:
+
+- I vettori $a_r$ e $b_r$ codificano l'appartenenza dei nodi alla comunità $r$.
     
-2. Per ogni vicino $v$ di $u$ nel grafo aggregato, se l'arco $(u,v)$ è $(\tau, \epsilon)$-connesso e anche $v$ è un core, viene aggiunto un arco tra $u$ e $v$ in $G_c$.
-    
-3. I componenti connessi di $G_c$ formano i nuclei delle comunità stabili.
-    
-
-### Assegnazione dei Nodi Periferici
-
-Il modello segue la filosofia SCAN nel non forzare ogni nodo all'interno di un cluster. I nodi che non sono core, ma sono $(\tau, \epsilon)$-connessi ad almeno un nodo core, vengono assegnati alla comunità di quel core. Se un nodo non-core è connesso a più comunità, esso assume il ruolo di hub; se non è connesso a nessuna, viene classificato come outlier o rumore. Questo approccio permette di identificare strutture di comunità naturali, preservando la capacità di isolare elementi marginali della rete che potrebbero distorcere l'analisi della stabilità.
-
-## Ottimizzazioni e Tecniche di Pruning: L'Algoritmo TSCAN-A
-
-Il limite principale di TSCAN-B risiede nel costo computazionale del mining dei pattern frequenti per ogni nodo, un'operazione che può richiedere $O(C_{\mathcal{T}}^{\tau})$ tempo. Per gestire grafi con milioni di nodi e archi, è stato sviluppato l'algoritmo TSCAN-A, che introduce tecniche di potatura (pruning) basate su modelli core rilassati: il Weak Core e il Strong Core.
-
-### Il Modello Weak Core
-
-Il Weak Core Pruning si basa sull'osservazione che un nodo stable core deve necessariamente avere almeno $\mu$ vicini che siano individualmente stabili. Un nodo $u$ è definito Weak Core se $|N_{(\tau,\epsilon)}(u)| \ge \mu$. Questa condizione è molto più semplice da verificare rispetto alla definizione di stable core, poiché richiede solo il calcolo delle somiglianze individuali $S_\epsilon(u,v)$ lungo il tempo.
-
-L'algoritmo WeakCore utilizza un approccio basato su limiti (bounds) per evitare calcoli superflui. Per ogni nodo $u$, viene mantenuto un contatore $cd(u)$ dei vicini stabili confermati e un limite superiore $\overline{cd}(u)$ dei potenziali vicini stabili. Inizialmente, $\overline{cd}(u)$ è pari al grado del nodo nel grafo aggregato. Se $\overline{cd}(u) < \mu$, il nodo $u$ viene scartato immediatamente, poiché non potrà mai diventare un core. Questo permette di ridurre drasticamente il numero di nodi candidati, specialmente in grafi sparsi dove molti nodi hanno gradi ridotti o interazioni temporali scarse.
-
-### Il Modello Strong Core
-
-Per raffinare ulteriormente la ricerca, viene introdotto il Strong Core Pruning. Un nodo $u$ è definito Strong Core se è un Weak Core e se esistono almeno $\tau$ snapshot in cui il numero di vicini strutturalmente simili (anche se diversi in ogni snapshot) è almeno $\mu$. Il Lemma 2 della ricerca dimostra che ogni $(\mu, \tau, \epsilon)$-stable core è necessariamente un Strong Core.
-
-L'algoritmo StrongCore verifica se $\sum_{i=1}^{\mathcal{T}} \mathcal{I}(|N_i^\epsilon(u)| \ge \mu) \ge \tau$. Anche in questo caso, vengono utilizzati bound inferiori e superiori per terminare anticipatamente il calcolo negli snapshot che non contribuiscono alla soglia $\tau$. Questa fase elimina i nodi che, pur avendo vicini stabili individualmente, non presentano una densità di vicinato sufficiente in un numero adeguato di snapshot.
-
-| **Livello di Pruning** | **Condizione Matematica**             | **Risultato**                                            |
-| ---------------------- | ------------------------------------- | -------------------------------------------------------- |
-| **Filtro Grado**       | $d(u) < \mu$                          | Eliminazione immediata dei nodi a bassa connettività.    |
-| **Weak Core**          | $                                     | N_{(\tau,\epsilon)}(u)                                   |
-| **Strong Core**        | Snapshots densi $< \tau$              | Eliminazione di nodi senza ricorrenza di densità locale. |
-| **Stable Core**        | Pattern frequente simultaneo $< \tau$ | Identificazione esatta tramite mining (Apriori).         |
-
-## Analisi della Complessità e Scalabilità
-
-L'efficienza di TSCAN-A deriva dalla sua capacità di ridurre il grafo a un numero limitato di Strong Cores prima di eseguire la parte più onerosa dell'algoritmo. Nel caso peggiore, la complessità del mining frequente è elevata, ma nella pratica, il numero di Strong Cores ($s$) è tipicamente inferiore al 2% della popolazione totale dei nodi in reti reali come DBLP.
-
-La complessità temporale di TSCAN-A può essere espressa come $O(m'm + |s| C_T^\tau |s|^\tau)$, dove $m'$ è il numero di archi nel grafo aggregato e $m$ il numero di archi temporali. Il termine $m'm$ deriva dal calcolo della similarità strutturale, che viene ottimizzato tramite caching per evitare ricalcoli. Grazie alle tecniche di potatura, l'algoritmo riesce a processare il dataset DBLP (1,7 milioni di nodi) in circa 100 secondi, un tempo significativamente inferiore rispetto a TSCAN-B, che risulta spesso intrattabile su tali scale.
-
-Dal punto di vista della memoria, TSCAN-A mantiene i punteggi di similarità calcolati, con un overhead spaziale che scala linearmente con il numero di archi del grafo aggregato. Gli esperimenti indicano che per DBLP sono necessari circa 678 MB di memoria per memorizzare questi punteggi, rendendo l'approccio applicabile su comuni server di calcolo.
-
-## Risultati Sperimentali e Metriche di Qualità
-
-La validazione dell'algoritmo è stata condotta su quattro dataset eterogenei: Chess, Lkml, Enron e DBLP, confrontando TSCAN-A con diverse baseline, tra cui PSCAN-W (una versione pesata di PSCAN che aggrega i timestamp come pesi degli archi) e TSCAN-S (una variante che utilizza i Strong Cores per il clustering).
-
-### Metriche Temporali di Buona Formazione
-
-Per valutare la qualità delle comunità stabili, sono state adattate quattro metriche classiche della scienza delle reti alla dimensione temporale :
-
-1. **Average Separability (AS):** Misura quanto le comunità sono isolate dal resto della rete. Un valore AS elevato indica che ci sono molti più archi temporali interni rispetto a quelli verso l'esterno.
-    
-2. **Average Density (AD):** Quantifica la frazione di archi temporali esistenti tra i nodi della comunità rispetto al massimo teorico.
-    
-3. **Average Cohesiveness (AC):** Basata sulla conduttanza, indica quanto sia difficile dividere internamente una comunità mantenendo archi temporali coerenti.
-    
-4. **Average Clustering Coefficient (ACC):** Riflette la tendenza dei nodi all'interno della comunità a formare triangoli strutturalmente simili nel tempo.
+- Il vettore $c_r$ descrive il profilo di attività temporale della comunità.
     
 
-### Analisi Comparativa delle Performance
+L'NTF è particolarmente utile per scoprire comunità che potrebbero essere sparse in un singolo istante ma che mostrano un'attività altamente correlata su periodi estesi. Ad esempio, nell'analisi dei contatti sociali in una scuola, questo metodo è in grado di recuperare con alta precisione la struttura delle classi e di rilevare comunità miste corrispondenti ad attività sociali negli spazi comuni. Inoltre, varianti come il modello Toffee utilizzano il prodotto tensoriale basato sulla convoluzione circolare (t-product) per catturare meglio le intercorrelazioni tra snapshots consecutivi.
 
-I risultati mostrano che TSCAN-A supera costantemente PSCAN-W in tutte le metriche di qualità. PSCAN-W, basandosi su pesi aggregati, tende a fondere comunità che sono dense in tempi diversi ma mai simultaneamente, portando a valori di separabilità e coesione inferiori. TSCAN-A, al contrario, identifica cluster che mantengono una fedeltà strutturale elevata lungo gli snapshot.
+### Confronto tra Metodologie Probabilistiche e Tensoriali
 
-|**Dataset**|**Metric**|**PSCAN-W**|**TSCAN-S**|**TSCAN-A**|
+|**Caratteristica**|**Modelli dSBM**|**Scomposizione Tensoriale (NTF)**|
+|---|---|---|
+|**Natura del Modello**|Probabilistica / Generativa|Algebrica / Fattorizzazione|
+|**Gestione Tempo**|Catene di Markov discrete|Dimensione tensoriale continua o discreta|
+|**Output Principale**|Appartenenza alle classi latenti|Vettori di appartenenza e profili attività|
+|**Punto di Forza**|Identificabilità statistica|Scoperta di pattern di attività correlati|
+|**Sfida Principale**|Label switching e scalabilità|Scelta del rango $R$ e sparsità del tensore|
+
+## Efficienza Computazionale e Tecniche di Potatura (Pruning)
+
+La sfida tecnica principale nella rilevazione di comunità stabili è il costo computazionale. Determinare se un nodo è un $(\mu, \tau, \epsilon)$-stable core richiederebbe, ingenuamente, di eseguire algoritmi di mining di pattern frequenti su tutti gli snapshot, un compito proibitivo per grafi con milioni di nodi. Per superare questo ostacolo, sono state sviluppate tecniche di riduzione del grafo basate su core deboli e forti.
+
+### Potatura tramite Weak Core e Strong Core
+
+L'algoritmo TSCAN-A utilizza due livelli di filtraggio per ridurre il numero di candidati core :
+
+1. **Weak Core Pruning:** Un nodo $u$ è un core debole se possiede almeno $\mu$ vicini $(\tau, \epsilon)$-connected nel grafo de-temporalizzato. Poiché ogni core stabile deve essere un core debole, tutti i nodi che non soddisfano questo requisito possono essere scartati immediatamente.
+    
+2. **Strong Core Pruning:** Un core forte è un core debole che soddisfa ulteriormente il vincolo di avere almeno $\mu$ vicini simili in almeno $\tau$ snapshot individuali, indipendentemente dalla simultaneità.
+    
+
+Questo processo di potatura è estremamente efficace. In dataset reali come DBLP, solo l'1,97% dei nodi viene identificato come core forte e solo lo 0,99% viene confermato come core stabile. Grazie a questa riduzione drastica, l'algoritmo può processare grafi di enormi dimensioni in tempi contenuti.
+
+### Analisi delle Performance su Dataset Reali
+
+I test condotti su quattro dataset (Chess, Lkml, Enron, DBLP) dimostrano la scalabilità degli approcci ottimizzati rispetto ai baseline.
+
+|**Dataset**|**Nodi (n)**|**Archi Temporali (m)**|**Snapshot (T)**|**Tempo TSCAN-A (s)**|
 |---|---|---|---|---|
-|**DBLP**|AS (norm)|0.22|0.81|1.00|
-|**DBLP**|AD (norm)|0.45|0.92|1.00|
-|**DBLP**|AC (norm)|0.61|0.88|1.00|
-|**DBLP**|ACC (norm)|0.38|0.85|1.00|
+|**Chess**|7.301|62.385|99|< 1|
+|**Lkml**|26.885|328.092|96|~5|
+|**Enron**|86.978|499.983|48|~10|
+|**DBLP**|1.729.816|12.007.380|78|~100|
 
-L'analisi dell'efficienza evidenzia che, sebbene PSCAN-W sia più veloce (poiché opera su un grafo pesato statico), la sua incapacità di catturare la stabilità lo rende inefficace per le applicazioni target. TSCAN-A offre il miglior compromesso tra rigore teorico (identificazione degli stable core esatti) e velocità operativa grazie al pruning.
+L'algoritmo TSCAN-A mantiene in memoria le similarità strutturali calcolate per evitare computazioni ridondanti, con un overhead di memoria che rimane proporzionale alla dimensione del grafo. Questo lo rende utilizzabile su macchine standard anche per reti di scala miliare.
 
-## Studio di Caso e Applicazioni Pratiche
+## Evoluzioni Recenti e Nuove Frontiere (2023-2026)
 
-Un'analisi qualitativa sul dataset DBLP ha permesso di esaminare la comunità stabile del ricercatore Qiang Yang. Mentre PSCAN-W restituisce una comunità "rumorosa" che include centinaia di co-autori occasionali accumulati in trent'anni, TSCAN-A isola un nucleo ristretto di collaboratori storici. Questi membri, identificati attraverso l'analisi manuale delle loro biografie, risultano essere i suoi ex studenti di dottorato e partner di ricerca a lungo termine presso Microsoft Research Asia.
+La ricerca tra il 2023 e il 2026 ha introdotto concetti innovativi per affrontare l'instabilità intrinseca delle reti temporali, spesso causata dal rumore spettrale o da una campionatura non uniforme.
 
-Questo risultato evidenzia la capacità dell'algoritmo di operare una distinzione fondamentale tra contatti superficiali (molti, ma brevi) e legami strutturali (stabili e persistenti). In termini di algoritmi, questo si traduce nella capacità di filtrare il rumore temporale che affligge le rappresentazioni statiche delle reti.
+### Instabilità e "Hallucinations" nelle GNN Temporali
 
-## Discussione delle Implicazioni Algoritmiche
+Un problema emergente riguarda le "allucinazioni" (hallucinations) nelle Graph Neural Networks (GNN) utilizzate per il clustering: queste reti possono produrre partizioni instabili o spurie a causa della sensibilità agli autovalori ad alta frequenza e al rumore. Per mitigare questo fenomeno, è stato proposto il framework F2-CommNet, che utilizza il calcolo di ordine frazionario (fractional-order calculus) per modellare effetti di "lunga memoria". Questo approccio permette di bilanciare la reattività del modello ai cambiamenti topologici rapidi con una stabilità globale, riducendo gli indici di allucinazione fino al 35% e aumentando il margine di stabilità $\rho$ di oltre tre volte.
 
-L'approccio basato sulla densità strutturale offre vantaggi unici rispetto ad altri modelli temporali come i "bursting cores". Mentre la ricerca di burst è focalizzata sull'identificazione di eventi improvvisi e densi (come una discussione virale su Twitter o un'emergenza in una rete di comunicazione), il mining di comunità stabili cerca la struttura "ossatura" del grafo.
+### Higher-Order Edge Enhancement (HOEE)
 
-### Confronto con Modelli di Bursting
+Un'altra direzione critica riguarda la perdita di strutture di ordine superiore (come i motivi a triangolo chiuso) durante la segmentazione del grafo in snapshot. L'algoritmo HOEE (Higher-Order Edge Enhancement), introdotto nel 2026, mira a ricostruire queste interazioni analizzando il potenziale di attività di ordine superiore (HAP) dei nodi tra snapshots consecutivi. Esiste infatti una correlazione positiva tra la perdita di queste strutture e l'instabilità dei risultati di rilevazione di comunità: ricostruendo i triangoli mancanti, HOEE garantisce una coerenza temporale molto superiore rispetto ai metodi di smoothing tradizionali.
 
-Un modello di bursting (es. $(l, \delta)$-maximal bursting core) richiede che un nodo abbia un grado medio elevato in un segmento temporale di lunghezza $l$. TSCAN-A, invece, non richiede necessariamente un'intensità esplosiva, ma una persistenza strutturale. In molti scenari reali, una comunità stabile può non essere mai la più "densa" in termini assoluti in un singolo istante, ma è l'unica che sopravvive alla scomposizione per snapshot senza perdere la propria configurazione di vicinato.
+### Comunità Quasi-Periodiche e Durabilità
 
-### Relazione con il Problema dell'Identità
+Il lavoro di Hongchao Qin e colleghi si è evoluto verso l'identificazione di comunità che mostrano una coesione non solo costante, ma ricorrente. Il modello delle "comunità quasi-periodiche" (quasi-periodic communities) rilassa i vincoli di periodicità stretta per adattarsi a ritmi reali leggermente irregolari. Parallelamente, la ricerca sulle "comunità durevoli" continua a perfezionare la capacità di trovare sottografi che resistono al turnover dei membri per tempi massimali, una proprietà fondamentale per l'analisi di team di esperti o gruppi criminali.
 
-Nelle reti dinamiche, un problema classico è l'Identity Problem: determinare se il cluster $C_t$ è lo stesso di $C_{t+1}$. TSCAN-A aggira intrinsecamente questo problema definendo la comunità sulla base di un'unica de-temporalizzazione guidata da vincoli di stabilità. Non c'è bisogno di tracciare l'evoluzione perché la definizione stessa di $(\mu, \tau, \epsilon)$-stable cluster garantisce che i membri appartengano a una struttura che è rimasta valida per almeno $\tau$ istanti. Questo riduce drasticamente la complessità logica necessaria per l'analisi post-clustering.
+## Metriche di Valutazione e Casi di Studio
 
-## Considerazioni Finali e Conclusioni
+La valutazione dell'efficacia degli algoritmi di rilevazione di comunità temporali richiede metriche specifiche che vadano oltre la semplice modularità statica.
 
-La ricerca presentata nel paper di Qin et al. stabilisce un nuovo punto di riferimento per l'analisi delle reti temporali, dimostrando che il clustering basato sulla densità strutturale può essere scalato efficacemente oltre i grafi statici. La chiave del successo di TSCAN-A risiede nell'integrazione sinergica tra la teoria dei grafi e le tecniche di mining di pattern, mediata da strategie di pruning che sfruttano le proprietà matematiche dei core nodali.
+### Goodness Metrics per Cluster Temporali
 
-L'algoritmo proposto non solo garantisce una qualità superiore delle comunità identificate, ma offre anche una robustezza eccezionale contro il rumore temporale e la marginalità dei nodi outlier, un limite noto dei metodi basati sulla modularità. Per un corso avanzato di Algoritmi, TSCAN-A rappresenta un eccellente esempio di come la scomposizione di un problema complesso in bound rilassati (Weak e Strong) possa trasformare un compito combinatorio intrattabile in un'operazione quasi-lineare in contesti di big data reali.
+Le metriche principali utilizzate includono:
 
-Le future direzioni di ricerca potrebbero includere l'estensione di questo modello a grafi orientati e pesati, nonché l'integrazione di attributi dei nodi per raffinare ulteriormente la definizione di somiglianza, passando da una stabilità puramente strutturale a una stabilità tematica o semantica. La capacità di identificare l'invariante temporale rimane, tuttavia, il contributo più significativo per la comprensione della dinamica dei sistemi complessi.
+1. **Average Separability (AS):** Cattura l'intuizione che le buone comunità dovrebbero avere pochi archi rivolti verso l'esterno rispetto a quelli interni.
+    
+2. **Average Density (AD):** Misura la frazione di archi temporali che appaiono tra i nodi del cluster.
+    
+3. **Average Cohesiveness (AC):** Basata sulla conduttanza, indica quanto sia difficile dividere la comunità in due sottogruppi.
+    
+4. **Average Clustering Coefficient (ACC):** Valuta la distribuzione locale degli archi basata sui vicini comuni.
+    
+
+Gli esperimenti dimostrano che all'aumentare del parametro di stabilità $\tau$, i valori di AS e ACC tendono a crescere, confermando che le comunità più stabili sono anche quelle strutturalmente più coese.
+
+### Caso di Studio: Prof. Qiang Yang (DBLP)
+
+Nell'analisi della rete di collaborazione DBLP, l'applicazione di TSCAN-A ha permesso di identificare la comunità stabile del Prof. Qiang Yang. Il risultato ha mostrato che i membri della comunità identificata non erano semplici co-autori occasionali, ma includevano collaboratori a lungo termine e ex studenti di dottorato che mantenevano legami stretti e persistenti. Al contrario, gli algoritmi statici aggregati non sono stati in grado di isolare questo nucleo, mescolando i collaboratori stabili con centinaia di autori legati a singoli paper pubblicati in anni diversi.
+
+## Conclusioni e Prospettive Future
+
+La rilevazione di comunità stabili nelle reti temporali rappresenta una frontiera critica della data science, con applicazioni che spaziano dalla sociologia alla cybersicurezza. La transizione dai modelli statici a quelli dinamici ha richiesto lo sviluppo di nuove definizioni di stabilità, come la $(\mu, \tau, \epsilon)$-stable similarity, e di algoritmi efficienti in grado di gestire dataset di scala miliare attraverso tecniche avanzate di pruning.
+
+Mentre i modelli probabilistici come il dSBM offrono una solida base teorica per l'evoluzione delle classi latenti, i framework basati sulla densità come TSCAN eccellono nell'identificare strutture locali robuste e nel separare il rumore. La scomposizione tensoriale continua a fornire strumenti unici per l'analisi dei pattern di attività, specialmente in presenza di relazioni multi-modali.
+
+Il futuro della disciplina sembra orientato verso l'integrazione di dinamiche di ordine superiore e l'utilizzo di strumenti di controllo per garantire la stabilità spettrale delle assegnazioni. L'emergere di tecniche come HOEE e F2-CommNet suggerisce che la prossima generazione di algoritmi non si limiterà a osservare il tempo, ma interverrà attivamente per ricostruire le informazioni perse e stabilizzare le traiettorie evolutive delle comunità. In sintesi, la comprensione della stabilità strutturale nei grafi temporali non è solo una sfida computazionale, ma una necessità interpretativa per navigare la complessità dei sistemi interconnessi moderni.
+
+## Riferimenti Chiave e Paper Correlati
+
+Di seguito sono riportati i contributi scientifici più significativi che definiscono lo stato dell'arte e le direzioni future nell'ambito del temporal clustering e della stabilità strutturale:
+
+1. **Qin et al. (2022) - "Mining Stable Communities in Temporal Networks by Density-Based Clustering"**: Il lavoro fondamentale che introduce il framework TSCAN, il concetto di $(\mu, \tau, \epsilon)$-stable core e le tecniche di potatura per grafi temporali su larga scala.
+    
+2. **Matias & Miele (2017) - "Statistical clustering of temporal networks through a dynamic stochastic block model"**: Propone l'utilizzo del modello dSBM e algoritmi VEM per gestire l'identificabilità delle comunità e il problema del label switching nel tempo.
+    
+3. **Gauvin et al. (2014) - "Detecting the community structure and activity patterns of temporal networks: A non-negative tensor factorization approach"**: Introduce la scomposizione tensoriale (NTF) per catturare simultaneamente la topologia delle comunità e i loro profili di attività temporale.
+    
+4. **Rossetti et al. (2017) - "TILES: an online algorithm for community discovery in dynamic social networks"**: Presenta un approccio iterativo online basato su una strategia a "effetto domino" per identificare comunità sovrapposte in flussi continui di interazioni.
+    
+5. **Qin et al. (2022) - "Mining Bursting Core in Large Temporal Graph"**: Estende la ricerca sulla stabilità identificando i "bursting cores", strutture dense che emergono con intensità in finestre temporali specifiche.
+    
+6. **Yin et al. (2026) - "Community Detection with Higher-Order Edge Enhancement in Temporal Networks"**: Uno dei lavori più recenti (2026) che affronta l'instabilità dei risultati tramite la ricostruzione di motivi a triangolo basata sul potenziale HAP.

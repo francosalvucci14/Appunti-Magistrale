@@ -20,4 +20,7 @@
 - [Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE](MOD%20II/Lezione%202%20AR2%20-%20Network%20Formation%20Games,%20Potential%20Technique,%20Find%20good%20NE.md)
 - [Lezione 3 AR2 - Local Connection Game](MOD%20II/Lezione%203%20AR2%20-%20Local%20Connection%20Game.md)
 - [Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism](MOD%20II/Lezione%204%20AR2%20-%20Algorithmic%20Mechanism%20Design,%20utilitarian%20problems%20&%20VGC%20mechanism.md)
-- 
+- [Lezione 5 AR2 - Meccanismo truthful per SP, Meccanismo truthful per SPT, Meccanismi One-Parameter](MOD%20II/Lezione%205%20AR2%20-%20Meccanismo%20truthful%20per%20SP,%20Meccanismo%20truthful%20per%20SPT,%20Meccanismi%20One-Parameter.md)
+- [Lezione 6 AR2 - Meccanismo truthful approssimato per il problema dell'asta combinatorica](MOD%20II/Lezione%206%20AR2%20-%20Meccanismo%20truthful%20approssimato%20per%20il%20problema%20dell'asta%20combinatorica.md)
+- [Lezione 7 AR2 - Mechanism Design without money - house allocation problem, kidney exchange](MOD%20II/Lezione%207%20AR2%20-%20Mechanism%20Design%20without%20money%20-%20house%20allocation%20problem,%20kidney%20exchange.md)
+- [[Lezione 8 AR2 - Equilibri di Nash in strategie pure e PLS-completezza](MOD%20II/Lezione%208%20AR2%20-%20Equilibri%20di%20Nash%20in%20strategie%20pure%20e%20PLS-completezza.md)]
