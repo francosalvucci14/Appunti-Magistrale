@@ -395,7 +395,7 @@ L'albero dei cammini minimi (SPT) appartiene a una sottocategoria speciale dei p
 Formalizziamo la regola d'oro:
 
 In **qualsiasi** problema di minimizzazione che sia Binary Demand (BD), l'algoritmo monotono avrà _sempre e per forza_ la forma della funzione a gradino vista nella prima slide.
-- formalmente: Un algoritmo g() per un problema BD di minimizzazione è monotono se $\forall$ agente $a_i$, e per tutti gli $r_{-i}=(r_1,\dots,r_{i-1},r_{i+1},\dots,r_N),w_i(g(r_{-i},r_i))$ è della forma: ![!center|500](img/Pasted%20image%2020260422171201.png)
+- formalmente: Un algoritmo g() per un problema BD di ***minimizzazione*** è monotono se $\forall$ agente $a_i$, e per tutti gli $r_{-i}=(r_1,\dots,r_{i-1},r_{i+1},\dots,r_N),w_i(g(r_{-i},r_i))$ è della forma: ![!center|500](img/Pasted%20image%2020260422171201.png)
 
 Di conseguenza, il pagamento per un agente vincente in un ambiente BD sarà **sempre e solo il valore soglia**:
 

@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 6 AR2 - Meccanismo truthful approssimato per il problema dell'asta combinatorica.md",
+                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 7 AR2 - Mechanism Design without money - house allocation problem, kidney exchange.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 6 AR2 - Meccanismo truthful approssimato per il problema dell'asta combinatorica"
+              "title": "Lezione 7 AR2 - Mechanism Design without money - house allocation problem, kidney exchange"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 6 AR2 - Meccanismo truthful approssimato per il problema dell'asta combinatorica.md",
+                "file": "Appunti I Anno/Appunti AR/MOD II/Lezione 7 AR2 - Mechanism Design without money - house allocation problem, kidney exchange.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 6 AR2 - Meccanismo truthful approssimato per il problema dell'asta combinatorica"
+              "title": "Outline of Lezione 7 AR2 - Mechanism Design without money - house allocation problem, kidney exchange"
             }
           },
           {
@@ -169,8 +169,15 @@
   },
   "active": "4087b0f98e2f2e6e",
   "lastOpenFiles": [
-    "Appunti I Anno/Appunti AR/MOD II/Lezione 5 AR2 - Meccanismo truthful per SP, Meccanismo truthful per SPT, Meccanismi One-Parameter.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 6 AR2 - Meccanismo truthful approssimato per il problema dell'asta combinatorica.md",
+    "^.md",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260423141737.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Screenshot_2026-04-23_14-12-31.png",
+    "Pasted image 20260423141234.png",
+    "Pasted image 20260423141055.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260423141003.png",
+    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260423120959.png",
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 5 AR2 - Meccanismo truthful per SP, Meccanismo truthful per SPT, Meccanismi One-Parameter.md",
     "Appunti I Anno/Appunti AR/Indice degli appunti AR.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 7 AR2 - Mechanism Design without money - house allocation problem, kidney exchange.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 8 AR2 - Equilibri di Nash in strategie pure e PLS-completezza.md",
@@ -178,11 +185,6 @@
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260422171201.png",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260422170631.png",
     "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260422164426.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260422164309.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260422163847.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Screenshot_2026-04-22_16-18-16_multiple_trees.jpeg",
-    "Pasted image 20260422161733.png",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260422161510.png",
     "Tesi Magistrale.md",
     "Appunti II Anno/Appunti IR/labs/lab1/Lab 1 - Intro to IR.md",
     "Appunti II Anno/Appunti IR/Lezione 1 IR - Intro.md",
@@ -191,7 +193,6 @@
     "Appunti II Anno/Appunti IR/labs/lab1/IR_Lab1_1_2025_2026_intro_to_IR.ipynb",
     "Appunti II Anno/Appunti IR/labs/lab1",
     "Appunti II Anno/Appunti IR/labs",
-    "Appunti I Anno/Appunti AR/MOD II/img/Pasted image 20260418153432.png",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism.md",
     "Untitled.base",
     "Appunti II Anno/Appunti IR/Lezione 8 IR - Scoring, Term Weighting & Vector Space Model.md",
@@ -213,7 +214,6 @@
     "Appunti II Anno/Appunti CDCI/Threat_Model_Azienda_Ospedaliera-1.pdf",
     "Appunti II Anno/Appunti CDCI/Lezione-1-CDCI.pdf",
     "Appunti II Anno/Appunti AIC/Indice degli appunti AIC.md",
-    "Appunti II Anno/Appunti KE/Lezione 2 KE - Semantic Web.md",
-    "Appunti II Anno/Appunti KE/Lezione 3 KE - RDF e RDFS.md"
+    "Appunti II Anno/Appunti KE/Lezione 2 KE - Semantic Web.md"
   ]
 }
