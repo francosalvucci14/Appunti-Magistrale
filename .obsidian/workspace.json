@@ -131,7 +131,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "b7d5f1914b483202",
@@ -167,7 +168,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4087b0f98e2f2e6e",
+  "active": "7f4a8ee5226470a0",
   "lastOpenFiles": [
     "Appunti I Anno/Appunti AR/MOD II/Lezione 6 AR2 - Meccanismo truthful approssimato per il problema dell'asta combinatorica.md",
     "^.md",
