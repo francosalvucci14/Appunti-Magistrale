@@ -1,3 +1,14 @@
+```table-of-contents
+title: 
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+include: 
+exclude: 
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
 # Introduzione ai Mechanism Desing
 
 Fino ad ora abbiamo analizzato giochi già esistenti (come i _Connection Games_) per vedere come si comportano i giocatori egoisti.

@@ -1,3 +1,14 @@
+```table-of-contents
+title: 
+style: nestedList # TOC style (nestedList|nestedOrderedList|inlineFirstLevel)
+minLevel: 0 # Include headings from the specified level
+maxLevel: 0 # Include headings up to the specified level
+include: 
+exclude: 
+includeLinks: true # Make headings clickable
+hideWhenEmpty: false # Hide TOC if no headings are found
+debugInConsole: false # Print debug info in Obsidian console
+```
 # Mechanism Desing Without Money
 
 Cambiamo totalmente scenario
@@ -44,7 +55,7 @@ Ora che l'Agente 1 se n'è andato, inizia il secondo giro per gli agenti rimasti
 - **Il Ciclo Perfetto:** Si è formato un grande ciclo: $2 \to 4 \to 3 \to 2$. Nessuno ha la sua casa ideale, ma tutti vogliono quella del vicino in un cerchio perfetto.
 - **Risoluzione:** L'algoritmo "esegue" il ciclo. L'Agente 2 si trasferisce nella casa 4, l'Agente 4 nella 3, l'Agente 3 nella 2. Tutti ottengono esattamente la casa che stavano indicando. Le case vengono vendute e gli agenti rimossi. Il mercato è vuoto, l'algoritmo termina.
 
-![center](img/Merge_Screenshot_2026-04-24_10-14-48.jpeg)
+![center|700](img/Merge_Screenshot_2026-04-24_10-14-48.jpeg)
 
 #### Definizione Formale del TTC
 
@@ -141,3 +152,216 @@ Cosa succede in questo ciclo ribelle $C$?
 $\blacksquare$
 ## Il Problema del Kidney Exchange
 
+Abbandoniamo le aste e i cavi di rete per entrare in uno degli scenari più affascinanti e nobili del Mechanism Design: **lo scambio di reni (Kidney Exchange)**. È un esempio perfetto di come la teoria dei giochi e gli algoritmi possano letteralmente salvare delle vite umane quando l'uso del denaro è legalmente e moralmente vietato.
+### Il Contesto Medico e l'Idea di Base
+
+Negli Stati Uniti (e nel resto del mondo) ci sono liste d'attesa infinite per i trapianti di rene. A differenza di altri organi, il rene permette la donazione da vivente: una persona sana può donare un rene a un parente malato e vivere benissimo con l'altro.
+
+Spesso, però, c'è un problema di **incompatibilità**: io voglio donare un rene a mio fratello, ma i nostri gruppi sanguigni o tessuti non sono compatibili.
+
+L'idea geniale alla base del sistema è lo **scambio incrociato**:
+
+Se la coppia Paziente 1 - Donatore 1 ($P_1, D_1$) è incompatibile, e la coppia Paziente 2 - Donatore 2 ($P_2, D_2$) è anch'essa incompatibile, possiamo incrociarli. Il Donatore 1 dà il rene al Paziente 2, e il Donatore 2 lo dà al Paziente 1.
+
+![center|400](img/Pasted%20image%2020260427145932.png)
+
+Poiché comprare e vendere organi è illegale, la sfida è: **come progettiamo un sistema per massimizzare questi scambi senza usare i soldi?**
+
+### La Prima Idea: Riciclare l'Algoritmo TTC
+
+La primissima intuizione degli economisti è stata quella di prendere il problema medico e "mascherarlo" da problema di House Allocation, per poter usare l'algoritmo **Top Trading Cycle (TTC)** che abbiamo appena studiato e di cui conosciamo l'assoluta affidabilità.
+
+La mappatura è intuitiva:
+
+- **L'Agente** diventa il Paziente.
+- **La Casa** (la proprietà iniziale) diventa il Donatore associato al paziente.
+- **Le Preferenze:** Ogni paziente stila una classifica (un ordine totale) di tutti i donatori disponibili nel sistema, basata sulla probabilità stimata di successo del trapianto. L'algoritmo TTC cercherebbe i cicli di scambio, garantendo che ogni paziente ottenga un donatore uguale o migliore di quello di partenza, senza alcun incentivo a mentire sui propri dati medici.
+
+Questo approccio elegante sulla carta presenta dei piccoli ostacoli tecnici iniziali:
+
+- Come gestiamo i pazienti in lista d'attesa che _non hanno_ un donatore (agenti senza casa)?
+- Come gestiamo i reni provenienti da donatori deceduti (case senza agente)? 
+
+Questi problemi, seppur fastidiosi, si possono risolvere estendendo matematicamente le regole del TTC. Ma i veri problemi sono altri.
+
+**I Problemi Critici e Logistici (Perché il TTC fallisce nella realtà)**
+
+Si evidenziano tre difetti fatali dell'approccio TTC applicato alla chirurgia:
+
+- **Il rischio di ritiro (Reneging) e la Simultaneità:** In uno scambio $P_1-D_1$ con $P_2-D_2$, le operazioni devono avvenire **simultaneamente**. Se facessimo prima il trapianto per $P_1$ usando il rene di $D_2$, il giorno dopo il donatore $D_1$ (il cui parente è ormai guarito) potrebbe tirarsi indietro e rifiutarsi di farsi operare. $P_2$ rimarrebbe senza rene, pur avendo il suo donatore già "pagato" il prezzo.
+- **I Cicli Troppo Lunghi:** L'algoritmo TTC non ha limiti sulla lunghezza dei cicli. Se trova un ciclo perfetto di 10 persone, fantastico! Ma logisticamente, un ciclo di 10 coppie richiede **20 sale operatorie e 20 equipe chirurgiche in contemporanea**. È fisicamente impossibile per quasi tutti gli ospedali del mondo. Il caso "really bad" mostra proprio questa catena infinita.
+- **Classifiche Inutili (Overkill):** Chiedere a un medico di fare una classifica perfetta dal 1° al 100° donatore è uno spreco di tempo. Nella pratica clinica, le preferenze sono quasi sempre **binarie**: un rene o è compatibile, o non lo è.
+
+![center|500](img/Pasted%20image%2020260427152216.png)
+
+Modellare i trapianti come un mercato di case è sbagliato. Dobbiamo cambiare il modello matematico e abbandonare il TTC. Il nuovo approccio si baserà sul **Graph Matching** (l'accoppiamento sui grafi), limitando la lunghezza degli scambi e usando preferenze binarie.
+### La soluzione: Graph Matching
+
+Come abbiamo visto, usare l'algoritmo TTC per i trapianti di rene era un'idea teoricamente affascinante ma impraticabile nel mondo reale a causa delle catene di scambio troppo lunghe (che richiederebbero decine di sale operatorie in contemporanea).
+
+Qui illustriamo il cambio di paradigma: abbandoniamo l'approccio dell'asta (House Allocation) e adottiamo la teoria dei grafi puri. Nello specifico, passiamo al **Graph Matching**.
+
+**Il Modello a Grafo e il Matching**
+
+Definiamo quindi la nuova infrastruttura matematica. Dimentichiamo i cicli direzionali infiniti e passiamo a un **grafo non orientato (undirected graph)**.
+
+- **I Nodi (Vertici):** Ogni nodo del grafo rappresenta un'intera coppia incompatibile Paziente-Donatore, che indichiamo con $(P_i, D_i)$.
+- **Gli Archi (Edges):** Disegniamo un arco tra il nodo $i$ e il nodo $j$ _se e solo se_ c'è una compatibilità reciproca perfetta. Ovvero: il donatore $D_i$ può salvare il paziente $P_j$, E il donatore $D_j$ può salvare il paziente $P_i$.
+- **Il Vantaggio Logistico:** Noti la differenza fondamentale? Un arco non orientato rappresenta uno scambio a due vie. Stiamo forzando matematicamente il sistema a usare **solo cicli di lunghezza 2 (Pairwise Exchange)**. Questo risolve l'incubo logistico: servono solo due sale operatorie.
+- **L'Obiettivo (Maximum Size Matching):** Un _matching_ in un grafo è un sottoinsieme di archi che non condividono alcun nodo (non puoi usare lo stesso donatore per due pazienti). L'obiettivo della società è trovare un **Maximum-Cardinality Matching**, ovvero il matching che contiene il maggior numero possibile di archi. Tradotto in termini medici: vogliamo salvare il massimo numero possibile di vite umane.
+
+![center|300](img/Pasted%20image%2020260427152740.png)
+
+**La Questione degli Incentivi**
+
+Ora dobbiamo assicurarci che i pazienti dicano la verità. Come può mentire un paziente in questo scenario?
+
+- **L'Asimmetria:** Un paziente $i$ ha un vero insieme di donatori compatibili (chiamiamolo $E_i$). Quando il sistema gli chiede con chi è compatibile, lui riporterà un insieme $F_i$.
+- **La Regola Medica:** È fisicamente impossibile fingere di essere compatibili con qualcuno con cui non lo si è. Ma è possibilissimo fare il contrario: **rifiutare un rene compatibile**. Un paziente potrebbe nascondere una compatibilità sperando di "manipolare" il grafo per ottenere un rene che ritiene migliore (ad esempio, da un donatore più giovane). Pertanto, la matematica ci dice che l'insieme dichiarato $F_i$ deve per forza essere un sottoinsieme del vero $E_i$ ($F_i \subseteq E_i$).
+
+Il meccanismo di base raccoglie questi $F_i$, costruisce il grafo e calcola il Maximum Matching. Ma è a prova di bugia? La risposta: _dipende da come gestiamo i pareggi_.
+
+![center|500](img/Pasted%20image%2020260427152908.png)
+
+**Il Problema dei Pareggi**
+
+Cosa succede se ci sono più modi diversi per salvare lo stesso numero massimo di persone?
+
+- Guarda gli esempi subito sotto. Nel quadrato in alto, puoi salvare 4 persone usando gli archi verticali (rossi a sinistra) OPPURE usando gli archi orizzontali (rossi a destra). Entrambi sono Maximum Matchings validi.
+- Se il sistema scegliesse a caso, un paziente furbetto potrebbe decidere di "tagliare" un arco (dichiarando una falsa incompatibilità) per forzare il sistema a scegliere l'altro matching, dove magari ottiene un rene che preferisce. Se lo fa, il sistema non è più _truthful_.
+- **La Soluzione (Prioritizing):** Per eliminare l'incertezza (e quindi le scappatoie strategiche), dobbiamo stabilire una **Priorità** rigorosa tra le coppie. Questo non è un trucco matematico, ma pura pratica clinica: gli ospedali usano già sistemi di priorità basati sull'urgenza medica, sul tempo passato in lista d'attesa o sull'età.
+
+**Esempi**
+
+![center|500](img/Pasted%20image%2020260427153019.png)
+
+#### Il Priority Mechanism
+
+L'ultima slide presenta l'algoritmo definitivo. È un meccanismo brillante che unisce il calcolo del massimo salvataggio globale con il rispetto ferreo delle priorità mediche.
+
+![center|500](img/Pasted%20image%2020260427153214.png)
+
+
+Funziona così:
+
+1. Ordina tutti i nodi (i pazienti) dal più urgente (priorità 1) al meno urgente (priorità $n$).
+2. Calcola **tutti** i Maximum Matchings possibili del grafo. Chiamiamo questo grande insieme di soluzioni di partenza $M_0$. Tutte queste soluzioni salvano il numero massimo assoluto di vite.
+3. Ora inizia a filtrare queste soluzioni partendo dal paziente più urgente ($i=1$ fino a $n$):
+    - Prendi le soluzioni valide al momento ($M_{i-1}$) e guarda solo quelle che riescono a trovare un rene per il paziente $i$. Chiamiamo questo sottogruppo $Z_i$. 
+    - **Se $Z_i$ non è vuoto** (significa che c'è un modo per salvare questo paziente prioritario senza diminuire il numero totale di vite salvate globale e senza togliere il rene a chi è più urgente di lui), allora scarta tutte le altre soluzioni e tieni solo quelle in $Z_i$ (poni $M_i = Z_i$).
+    - **Se $Z_i$ è vuoto** (significa che per salvare lui dovresti rinunciare al salvataggio globale o rubare il rene a un paziente più urgente), allora accetta tristemente di non poterlo salvare e mantieni le soluzioni del passo precedente ($M_i = M_{i-1}$).
+4. Alla fine del ciclo, restituisci una qualsiasi delle soluzioni rimaste in $M_n$.
+
+Questo algoritmo è un capolavoro perché non scende mai a compromessi sul numero totale di vite salvate, ma usa le flessibilità del grafo per "spingere" i reni verso i pazienti più bisognosi.
+
+Entriamo nel vivo dell'Informatica Teorica pura per dimostrare l'infallibilità di questo meccanismo, per poi spostarci su un livello di analisi completamente nuovo: il comportamento degli ospedali.
+
+**Il Teorema e la Dimostrazione**
+
+Enunciamo il risultato fondamentale di questo design
+
+>[!teorem]- Teorema
+>Nel Priority Mechanism per scambi a coppie, dichiarare in modo veritiero le proprie compatibilità ($E_i$) è **una strategia dominante** per ogni paziente.
+
+**dimostrazione**
+
+L'utilità di un paziente è strettamente binaria: vale $1$ se riceve un rene (viene accoppiato nel matching finale), vale $0$ se non lo riceve.
+
+Supponiamo che sia il turno del paziente $i$ nell'algoritmo
+
+- Dal turno precedente, il sistema ha ereditato un insieme di Maximum Matchings validi, chiamiamolo **$M_{i-1}$**.
+- L'agente $i$ possiede un insieme vero di compatibilità **$E_i$**. Tuttavia, essendo strategico, potrebbe decidere di nascondere alcuni donatori dichiarando un sottoinsieme **$F_i \subseteq E_i$** (sappiamo che non può inventare compatibilità inesistenti per motivi medici).
+- L'algoritmo guarda in $M_{i-1}$ e cerca quali di queste soluzioni globali ottime riescono a salvare il paziente $i$, usando _solo_ gli archi da lui dichiarati.
+- Se l'agente dichiara il vero ($E_i$), l'algoritmo trova un insieme di soluzioni valide che lo salvano: **$Z_i(E_i)$**.
+- Se l'agente mente ($F_i$), l'algoritmo trova un insieme di soluzioni valide che lo salvano: **$Z_i(F_i)$**.
+
+Ora, la matematica degli insiemi ci fornisce una verità assoluta: poiché $F_i \subseteq E_i$ (ci sono meno archi a disposizione), le soluzioni che il sistema può trovare mentendo saranno sempre e solo un sottoinsieme delle soluzioni che troverebbe dicendo la verità. Ovvero: **$Z_i(F_i) \subseteq Z_i(E_i)$**.
+
+Cosa comporta questo per l'utilità dell'agente?
+
+1. Se dicendo la verità l'agente **veniva salvato** ($Z_i(E_i)$ non è vuoto), mentendo rischia di far svuotare quell'insieme. Se $Z_i(F_i)$ diventa vuoto a causa degli archi nascosti, l'agente perde il rene. La sua utilità crolla da $1$ a $0$.
+2. Se dicendo la verità l'agente **NON veniva salvato** ($Z_i(E_i)$ è vuoto), nascondere archi non potrà _mai e poi mai_ creare magicamente nuove soluzioni. L'insieme $Z_i(F_i)$ resterà irrimediabilmente vuoto e la sua utilità rimarrà $0$.
+
+**Conclusione:** Mentire non offre mai una possibilità di passare da "non salvato" a "salvato", ma espone al rischio fatale di passare da "salvato" a "non salvato". Pertanto, dire la verità su tutte le proprie compatibilità è una strategia dominante.
+
+_(Nota sull'Exercise 2: Abbiamo già visto nelle slide precedenti che, se rompessimo i pareggi a caso invece che con la priorità, l'agente potrebbe nascondere un arco per uccidere un matching concorrente e forzare il sistema a scegliere un altro matching a lui più favorevole. La rigida regola della priorità distrugge proprio questa scappatoia)._
+
+Facciamo ora alcune osservazioni ed analizziamo le nuove direzioni della ricerca medica e algoritmica attuale.
+
+- **La lunghezza dei cicli (Scambi a 3 vie):** Il nostro Priority Mechanism usa scambi a 2 vie (Pairwise). Ma cosa succede se permettiamo cicli di lunghezza 3 ($A \to B \to C \to A$)? Gli studi dimostrano che usare scambi a 3 vie aumenta _drasticamente_ il numero totale di pazienti salvati a livello nazionale, al costo di dover sincronizzare tre sale operatorie. Andare oltre (scambi a 4 o 5 vie) aumenta troppo il rischio logistico di fallimento a fronte di pochissimi pazienti salvati in più.
+- **Il Vero Problema - Gli Incentivi degli Ospedali:** Qui c'è un colpo di scena concettuale. Nella realtà, non sono i pazienti a inviare i dati al database nazionale, ma i loro ospedali. L'**agente strategico** del nostro gioco cambia: diventa l'Ospedale. Il problema è che l'obiettivo della Società (salvare più persone possibili in tutta la nazione) **non è perfettamente allineato** con l'obiettivo del singolo Ospedale (salvare più pazienti _del proprio_ ospedale).
+
+Vediamo ora 2 esempi fondamentali
+##### Esempio 1: Il Mercato Virtuoso
+
+Illustriamo un caso in cui la cooperazione tra ospedali funziona perfettamente e avvantaggia tutti.
+
+- **Lo Scenario:** Abbiamo due ospedali. L'ospedale $H_1$ ha i pazienti 1, 2 e 3. L'ospedale $H_2$ ha i pazienti 4, 5 e 6. Le linee nere rappresentano tutte le compatibilità mediche reali (gli archi del grafo globale).
+- **Il comportamento egoistico:** Mettiamo che gli ospedali non vogliano partecipare al sistema nazionale e facciano solo scambi interni.
+    - $H_1$ si accorge che il paziente 1 e 2 sono compatibili tra loro (linea tratteggiata rossa). Li opera internamente e salva **2 pazienti**. Il paziente 3 resta ad aspettare.
+    - $H_2$ fa lo stesso: scambia tra 5 e 6. Salva **2 pazienti**. Il 4 resta ad aspettare.
+    - Totale salvati senza cooperare: **4 pazienti**.
+- **Il comportamento cooperativo:** Ora gli ospedali dichiarano tutti i loro pazienti al database nazionale. Il super-algoritmo nazionale calcola il Maximum Matching sul grafo completo.
+    - Scopre che la soluzione ottima globale (linee rosse verticali) è accoppiare (1 con 4), (2 con 5) e (3 con 6).
+    - Totale salvati cooperando: **6 pazienti**.
+
+![center|600](img/Merge_Screenshot_2026-04-27_15-34-16.jpeg)
+
+**La morale dell'Esempio 1:** Perché agli ospedali conviene cooperare in questo caso specifico? Semplice: se cooperano, l'ospedale $H_1$ riesce a salvare **3** suoi pazienti invece che 2. L'ospedale $H_2$ riesce a salvare **3** suoi pazienti invece che 2. Entrambi gli "agenti ospedale" hanno aumentato la propria utilità locale. Hanno tutto l'interesse a dire la verità e condividere i dati.
+
+##### Esempio 2: La Verità Globale e il Dilemma
+
+L'Esempio 1 ci aveva illuso che la cooperazione fosse sempre vantaggiosa per tutti. Questo **Esempio 2** è una doccia fredda e rappresenta un fondamentale **Risultato di Impossibilità (Impossibility Result)** per il Mechanism Design applicato agli ospedali.
+
+Mostriamo la realtà medica oggettiva:
+
+- **L'Ospedale $H_1$** ha i pazienti $\{2, 3, 7\}$.
+- **L'Ospedale $H_2$** ha i pazienti $\{1, 4, 5, 6\}$.
+- **Le compatibilità (Archi):** Se guardi bene le linee nere, i pazienti formano una singola, lunga catena perfetta: **$1-2-3-4-5-6-7$**.
+
+![center|500](img/Pasted%20image%2020260427154935.png)
+
+**Il problema matematico:** La catena ha $7$ nodi (un numero dispari). Un _matching_ può accoppiare i nodi solo a due a due. Qual è il numero massimo di persone che possiamo salvare in una catena di 7? Il massimo è **3 coppie (6 persone)**.
+
+Questo significa una cosa tragica e ineluttabile: in qualsiasi Maximum Matching globale che il sistema nazionale decida di applicare, **un paziente $x$ rimarrà sempre e per forza senza rene**.
+
+Il paziente sacrificato $x$ apparterrà necessariamente all'ospedale $H_1$ oppure all'ospedale $H_2$. E qui nasce il movente per il "delitto".
+
+**Il Comportamento Strategico di $H_1$**
+
+Supponiamo che il sistema centrale calcoli il Maximum Matching e la sfortuna voglia che il paziente lasciato fuori sia il numero $7$ (appartenente a $H_1$). In questo scenario, $H_1$ salva solo $2$ dei suoi $3$ pazienti.
+
+- L'ospedale $H_1$ guarda i propri dati interni e pensa: _"Perché devo rimetterci? Io ho i pazienti 2 e 3 che sono compatibili tra loro!"_
+- **La Bugia:** $H_1$ decide di manipolare il sistema. Chiude i pazienti 2 e 3 in una sala operatoria interna (linea tratteggiata rossa) e **non li dichiara** al database nazionale. Dichiara solo il paziente $7$.
+- **La conseguenza sul grafo:** Il sistema nazionale ora vede solo un grafo spezzato: il nodo $1$ da solo, e la sottocatena $4-5-6-7$.
+- **Il nuovo calcolo:** Il sistema è obbligato a trovare il Maximum Matching su questo grafo mutilato. L'unica soluzione ottima per salvare più gente possibile ora è accoppiare $(4,5)$ e accoppiare $(6,7)$.
+- **Il Risultato per $H_1$:** Ha salvato $2$ e $3$ internamente. Il sistema nazionale ha appena salvato il $7$ (usando il $6$). $H_1$ ha salvato **TUTTI (3 su 3)** i suoi pazienti. Mentire ha premiato!
+
+![center|500](img/Pasted%20image%2020260427155030.png)
+
+![center|500](img/Pasted%20image%2020260427155128.png)
+
+**Il Comportamento Strategico di $H_2$**
+
+Cosa succede se invece il sistema centrale, nella situazione iniziale, avesse lasciato fuori un paziente di $H_2$ (ad esempio il numero $1$)?
+
+- Anche $H_2$ nota una compatibilità interna tra i suoi pazienti $5$ e $6$.
+- **La Bugia:** $H_2$ nasconde $5$ e $6$ (li opera di nascosto, linea tratteggiata rossa) e dichiara al sistema solo $1$ e $4$.
+- **La conseguenza sul grafo:** Il sistema nazionale ora vede la catena $1-2-3-4$ e il nodo $7$ isolato.
+- **Il nuovo calcolo:** L'algoritmo calcola il Maximum Matching su $1-2-3-4$. L'unica soluzione per non lasciare fuori nessuno in questa sotto-catena è accoppiare $(1,2)$ e $(3,4)$.
+- **Il Risultato per $H_2$:** Ha salvato $5$ e $6$ internamente. Il sistema nazionale ha appena accoppiato il suo $1$ (col $2$) e il suo $4$ (col $3$). $H_2$ ha salvato **TUTTI (4 su 4)** i suoi pazienti. Anche per $H_2$ mentire è la strategia dominante!
+
+![center|500](img/Pasted%20image%2020260427155150.png)
+
+![center|500](img/Pasted%20image%2020260427155208.png)
+
+Perché un meccanismo sia _truthful_ (veritiero), **nessuno** degli agenti deve avere la tentazione di mentire.
+
+Tuttavia, abbiamo appena dimostrato che:
+
+1. Qualsiasi algoritmo cerchi di estrarre il Maximum Matching dovrà per forza lasciare fuori un ospedale.    
+2. L'ospedale lasciato fuori avrà **sempre** sia il movente sia la possibilità pratica (nascondendo archi interni) di ingannare l'algoritmo per forzarlo a salvare tutti i propri pazienti, a discapito della collettività.
+
+Ne consegue quindi che: **"No truthful maximum matching is possible!"** (Non è possibile alcun Maximum Matching veritiero).
+
+Quando gli agenti strategici diventano interi ospedali con proprie compatibilità interne, il sistema perde le sue garanzie matematiche di verità. L'interesse locale devasta l'ottimo globale.
