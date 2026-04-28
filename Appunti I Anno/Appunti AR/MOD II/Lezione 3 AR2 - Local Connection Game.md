@@ -480,10 +480,7 @@ $$\alpha|E|=\alpha|E_{cut}|+\alpha|E_{non-cut}|\leq\alpha(n-1)+n(n-1)2d\leq2d\cd
 
 Adesso uniamo i risultati ottenuti:
 
-$$\begin{align*}
-&SC(G)=\text{Costo Distanze}+\text{Costo Archi}\\
-&SC(G)\leq(d\cdot OPT)+(2d\cdot OPT)=3d\cdot OPT
-\end{align*}$$
+$$\begin{align}SC(G)&=\text{Costo Distanze}+\text{Costo Archi}\\ SC(G)&\leq(d\cdot OPT)+(2d\cdot OPT)=3d\cdot OPT\end{align}$$
 
 Poiché $3d$ appartiene alla classe di complessità $O(d)$, abbiamo appena dimostrato formalmente il teorema: **il Price of Anarchy è limitato da $O(d)$**, e siccome $d\leq 2\sqrt{\alpha}+1$ (da Prop. 1) otteniamo che 
 $$PoA=O(\sqrt{\alpha})$$

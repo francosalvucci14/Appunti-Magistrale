@@ -33,7 +33,7 @@ Se fosse facile, lo farebbero tutti. Qui vediamo qual è il vero "muro" contro c
 - **L'asimmetria informativa:** Il tuo problema enorme è che **tu non conosci le preferenze degli individui**. Non sai quanto un guidatore valuti il suo tempo, o quanto un utente valuti un oggetto all'asta.
 - **Il setting "Strategico":** Non solo non conosci le preferenze, ma hai a che fare con giocatori razionali ed egoisti. Il concetto chiave: le opinioni dei giocatori (le loro preferenze) sono **private** e, se chiedi loro cosa vogliono, _potrebbero mentire per manipolare il sistema_ a loro vantaggio.
 
-## 3. La definizione informale: Progettare un Gioco (Slide 3)
+## 3. La definizione informale: Progettare un Gioco 
 
 Definiamo tecnicamente cosa significhi fare Mechanism Design alla luce del problema appena visto.
 
@@ -188,8 +188,6 @@ Anche qui si notano $3$ casi:
 	1. si hai vinto, ma la tua utilità risulta essere negativa (non è proprio ottimale)
 
 DI conseguenza, raggruppando tutto notiamo che al giocatore $i$ mentire sulla propria offerta non porta mai ad una situazione di vantaggio e ad una migliore utilità, di conseguenza dire **sempre la verità** porta ad una ***strategia dominante*** $\blacksquare$
-
-**METTERE ESEMPIO VICKREY MINIMIZZAZIONE**
 
 ---
 # Mechanism Desing Problem
