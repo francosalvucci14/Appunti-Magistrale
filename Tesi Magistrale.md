@@ -196,3 +196,11 @@ Di seguito sono riportati i contributi scientifici più significativi che defini
 5. **Qin et al. (2022) - "Mining Bursting Core in Large Temporal Graph"**: Estende la ricerca sulla stabilità identificando i "bursting cores", strutture dense che emergono con intensità in finestre temporali specifiche.
     
 6. **Yin et al. (2026) - "Community Detection with Higher-Order Edge Enhancement in Temporal Networks"**: Uno dei lavori più recenti (2026) che affronta l'instabilità dei risultati tramite la ricostruzione di motivi a triangolo basata sul potenziale HAP.
+
+---
+
+3 direzioni
+
+1. algoritmo più veloce di quello del paper
+2. troviamo definzione più semplice di clustering temporale tale per cui le metriche siano migliori
+3. altro modo per fare clustering temporale?
