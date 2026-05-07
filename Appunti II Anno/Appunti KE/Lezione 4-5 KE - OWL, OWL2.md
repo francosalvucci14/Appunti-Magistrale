@@ -592,3 +592,255 @@ Se la proprietà _Funzionale_ (vista in precedenza) serviva a identificare univo
 - **Uso pratico (Le Chiavi):** Questa proprietà è fondamentale nel Web Semantico per unire dati provenienti da database diversi. Se due database parlano di persone diverse, ma in entrambi trovo un nodo che ha la proprietà inversa funzionale "haCodiceFiscale" che punta allo stesso numero "RSSMRA...", il motore di inferenza fonderà (merge) i due nodi persona in uno solo, perché sa che non possono esistere due soggetti diversi con lo stesso codice fiscale.
 
 ![center|500](img/Pasted%20image%2020260507152812.png)
+
+---
+# OWL 2
+
+Il nostro viaggio prosegue verso la naturale evoluzione del linguaggio: **OWL 2**.
+
+Divenuto raccomandazione ufficiale del W3C alla fine di dicembre 2012, OWL 2 ha completamente sostituito la prima versione. Il suo punto di forza principale è la **totale retrocompatibilità**: tutte le ontologie scritte in OWL 1 rimangono perfettamente valide in OWL 2 e producono le stesse identiche inferenze logiche.
+
+OWL 2 introduce molte novità, che le tue slide dividono in due categorie: nuove funzionalità che aumentano il vero e proprio potere espressivo (che vedremo in seguito), e il cosiddetto **Zucchero Sintattico (Syntactic Sugar)**.
+
+Lo "zucchero sintattico" non permette di fare inferenze nuove che in OWL 1 erano impossibili, ma fornisce scorciatoie per scrivere costrutti complessi in modo molto più compatto, leggibile e meno prono a errori.
+## Syntactic Sugar
+### Syntactic Sugar: Partizioni logiche: `owl:disjointUnionOf`
+
+Uno dei pattern di modellazione più comuni è la creazione di una **partizione**: definire una classe generale come l'unione di svariate sottoclassi che però sono rigorosamente _mutuamente esclusive_ (non si sovrappongono).
+
+L'esempio delle slide è la porta di un'automobile (`CarDoor`): essa deve essere _esclusivamente_ o una porta anteriore (`FrontDoor`), o posteriore (`RearDoor`), o del bagagliaio (`TrunkDoor`). Non può essere due cose insieme.
+
+**Il problema in OWL 1 (Verboso e complesso):**
+
+Per esprimere questo concetto in OWL 1, bisognava scrivere due blocchi di assiomi separati:
+
+1. Dichiarare che `CarDoor` è una `equivalentClass` formata dalla `unionOf` delle tre porte specifiche.
+    
+2. Scrivere manualmente le dichiarazioni di disgiunzione (`disjointWith`) tra `FrontDoor` e `RearDoor`, tra `FrontDoor` e `TrunkDoor`, ecc.
+    
+    Questo richiede decine di righe di codice (come mostrato nella prima slide sull'argomento).
+
+
+**La soluzione in OWL 2:**
+
+Viene introdotto il costrutto `owl:disjointUnionOf`. Con una sola riga, definiamo sia l'unione esaustiva delle sottoclassi, sia la loro mutua disgiunzione.
+
+Snippet di codice
+
+```
+:CarDoor rdf:type owl:Class ;
+         owl:disjointUnionOf ( :FrontDoor :RearDoor :TrunkDoor ) .
+```
+
+_(Nota: le slide usano qui la sintassi Turtle, molto più snella del pesante XML, perfetta per mostrare la compattezza del costrutto)._
+
+![center|500](img/Pasted%20image%2020260507154627.png)
+
+![center|500](img/Pasted%20image%2020260507154643.png)
+### Syntactic Sugar: Disgiunzione multipla: `owl:AllDisjointClasses`
+
+Ricordi quando, analizzando OWL 1, abbiamo notato che per dichiarare la disgiunzione tra i regni biologici (Animale, Vegetale, Fungo) dovevamo scrivere gli assiomi `owl:disjointWith` _a coppie_?
+
+In OWL 1 esisteva una comoda scorciatoia per differenziare molti _individui_ in un colpo solo (`owl:AllDifferent`), ma inspiegabilmente mancava l'equivalente per le _classi_.
+
+**La soluzione in OWL 2:**
+
+OWL 2 sana questa mancanza introducendo `owl:AllDisjointClasses`. Esattamente come per gli individui, possiamo passare una lista (una `Collection`) di classi e il _reasoner_ saprà automaticamente che nessuna di esse possiede istanze in comune con nessun'altra classe della lista.
+
+Snippet di codice
+
+```
+[] rdf:type owl:AllDisjointClasses ;
+   owl:members ( :UpperLobeOfLung 
+                 :MiddleLobeOfLung 
+                 :LowerLobeOfLung ) .
+```
+
+Questo riduce drasticamente il numero di assiomi necessari quando si modellano tassonomie vaste e ramificate.
+### Syntactic Sugar: Falsificare una relazione: `owl:NegativePropertyAssertion`
+
+Questo è un costrutto cruciale per dominare la **Open World Assumption (OWA)**.
+
+Se in un database tradizionale non c'è scritto che "Mario è sposato con Giulia", il database presume che non lo sia. Nel Web Semantico (OWA), l'assenza di questa tripla significa solo _"Non ho informazioni a riguardo"_.
+
+Come facciamo quindi a dire al motore logico che un'affermazione è **esplicitamente falsa**? Prima di OWL 2 era molto complesso (richiedeva l'uso di complementi di classe anonimi).
+
+**La soluzione in OWL 2:**
+
+Viene introdotta l'**Asserzione Negativa di Proprietà**. Permette di dichiarare esplicitamente che un determinato individuo _NON_ è connesso a un altro individuo (o a un valore letterale) tramite una certa proprietà.
+
+Data la struttura a grafo (Soggetto-Predicato-Oggetto), non si può semplicemente mettere un "NOT" davanti a una tripla in RDF puro. Quindi, OWL 2 usa un costrutto simile alla reificazione, creando un nodo anonimo (`_:x`) che funge da dichiarazione di negazione:
+
+**Per le Object Property (relazioni tra individui):**
+
+Snippet di codice
+
+```
+_:x rdf:type owl:NegativePropertyAssertion .
+_:x owl:sourceIndividual :Mario .      # Il soggetto (w)
+_:x owl:assertionProperty :sposatoCon . # La proprietà (y)
+_:x owl:targetIndividual :Giulia .     # L'oggetto negato (z)
+```
+
+Questo dice al sistema: "È un fatto accertato che Mario non è sposato con Giulia".
+
+**Per le Data Property (relazioni verso valori letterali):**
+
+Il costrutto è quasi identico, cambia solo l'ultimo attributo per indicare un valore testuale o numerico:
+
+Snippet di codice
+
+```
+_:x rdf:type owl:NegativePropertyAssertion .
+_:x owl:sourceIndividual :Mario .
+_:x owl:assertionProperty :haEta .
+_:x owl:targetValue "25"^^xsd:integer . # Il valore negato (z)
+```
+
+Questo dice al sistema: "È un fatto accertato che Mario non ha 25 anni".
+
+Grazie a queste "scorciatoie", OWL 2 rende la modellazione di ontologie non solo più potente, ma anche decisamente più pragmatica e vicina alle reali necessità degli ingegneri della conoscenza.
+
+## Expressiveness Improvements
+
+Abbandoniamo ora lo "zucchero sintattico" ed entriamo nel vivo del vero potenziamento di **OWL 2**. Le funzionalità che analizziamo ora non sono semplici scorciatoie di scrittura, ma veri e propri incrementi del **potere espressivo** del linguaggio. OWL 2 estende le basi logiche soggiacenti (passando matematicamente dalla logica $\mathcal{SHOIN}(\mathcal{D})$ alla $\mathcal{SROIQ}(\mathcal{D})$), permettendo di inferire nuova conoscenza che in OWL 1 era letteralmente impossibile dedurre.
+
+Esaminiamo rigorosamente queste nuove aggiunte, focalizzate quasi interamente sulle **proprietà**.
+
+### 0Auto-restrizioni (`owl:hasSelf`)
+
+In OWL 1 era impossibile dichiarare che un individuo è in relazione _con sé stesso_ in modo generico (senza cioè nominare l'individuo specifico). OWL 2 introduce la restrizione locale riflessiva.
+
+- **Definizione:** Permette di descrivere la classe anonima composta da tutte le entità che sono connesse a sé stesse tramite una specifica proprietà.
+    
+- **Esempio delle slide:** Un processo auto-regolante (`AutoRegulatingProcess`). È una sottoclasse delle cose che "regolano" (`:regulate`) sé stesse (`owl:hasSelf "true"`).
+    
+- **Notazione DL:** $\exists \text{regulate.Self}$
+    
+- **Implicazione Logica:** Se il motore di inferenza rileva nel grafo che il processo $P_1$ regola il processo $P_1$, lo classificherà automaticamente come un `AutoRegulatingProcess`.
+### Cardinalità Qualificata (Qualified Cardinality)
+
+Questo è stato uno degli aggiornamenti più richiesti dalla comunità dopo l'uscita di OWL 1.
+
+In OWL 1 potevi dire: _"Una bicicletta ha esattamente 2 parti"_. Ma **non potevi specificare di che tipo dovessero essere quelle parti**.
+
+OWL 2 introduce la cardinalità **qualificata**, permettendo di specificare non solo il _numero_ di relazioni, ma anche la _classe_ (o il tipo di dato) a cui gli oggetti devono appartenere.
+
+- **Sintassi:** Si aggiungono i costrutti `owl:onClass` (per gli oggetti) o `owl:onDataRange` (per i valori letterali) alle dichiarazioni di cardinalità.
+    
+- **Esempio Pratico:** Ora posso finalmente modellare formalmente il concetto: _"Un'automobile è un veicolo che ha esattamente 4 parti **che sono Ruote**_".
+    
+- **Notazione DL:** L'aggiunta della qualificazione trasforma la formula da $\leq n R$ a $\leq n R.C$ (dove $C$ è la classe target).
+    
+
+### Disgiunzione tra Proprietà (`owl:propertyDisjointWith`)
+
+Così come OWL 1 permetteva di dire che due classi non possono avere istanze in comune, OWL 2 permette di affermare che **due relazioni non possono mai coesistere tra la stessa coppia di individui**.
+
+- **Definizione:** Se le proprietà $P_1$ e $P_2$ sono disgiunte, è logicamente impossibile che $x \ P_1 \ y$ e contemporaneamente $x \ P_2 \ y$.
+    
+- **Esempio delle slide:** La proprietà `:startTime` (ora di inizio) deve essere rigorosamente disgiunta da `:endTime` (ora di fine). Un evento non può iniziare e finire nello stesso esatto millisecondo. Se i dati lo asseriscono, il _reasoner_ solleverà un'inconsistenza.
+    
+- **Variante Multipla:** Come per le classi, esiste la scorciatoia `owl:AllDisjointProperties` per dichiarare mutualmente disgiunte una lista di tre o più proprietà.
+
+### Nuove Caratteristiche Matematiche delle Proprietà
+
+OWL 2 amplia il vocabolario matematico per descrivere il comportamento degli archi nel grafo:
+
+- **Riflessiva (`owl:ReflexiveProperty`):** Afferma che **ogni** individuo nel dominio è in relazione con sé stesso tramite questa proprietà.
+    
+    - _DL:_ $\forall x (x \ P \ x)$
+        
+    - _Esempio:_ `part_of` (Ogni cosa è, in senso logico esteso, parte di sé stessa).
+        
+- **Irriflessiva (`owl:IrreflexiveProperty`):** Afferma che **nessun** individuo può mai essere in relazione con sé stesso tramite questa proprietà.
+    
+    - _DL:_ $\forall x \neg(x \ P \ x)$
+        
+    - _Esempio:_ `proper_part_of` (Una "parte propria" deve essere strettamente più piccola dell'intero. Nulla può essere una parte propria di sé stesso).
+        
+- **Asimmetrica (`owl:AsymmetricProperty`):** Se la relazione vale in un verso, è **impossibile** che valga nel verso opposto.
+    
+    - _DL:_ $x \ P \ y \implies \neg(y \ P \ x)$
+        
+    - _Esempio:_ `genitoreDi`. Se Mario è genitore di Luigi, Luigi non può in alcun modo essere genitore di Mario.
+### Catene di Proprietà (`owl:propertyChainAxiom`)
+
+Questa è forse l'aggiunta più potente di OWL 2. Permette di inferire una nuova relazione come risultato della **composizione (concatenazione) di due o più proprietà esistenti**.
+
+- **Definizione Logica (Composizione):** $S_1 \circ \dots \circ S_n \sqsubseteq R$
+    
+- **Esempi delle slide:**
+    
+    - Se $x$ ha come genitore $y$, e $y$ ha come genitore $z$, allora deduco automaticamente che $x$ ha come nonno $z$. L'assioma di catena definisce `:hasGrandparent` come la sequenza di due `:hasParent`.
+        
+    - Se $x$ è localizzato in $y$, e $y$ fa parte di $z$, allora deduco che $x$ è localizzato in $z$.
+#### Il vincolo di Decidibilità: Ruoli Semplici vs. Non-Semplici
+
+L'ultima parte sulle catene di proprietà affronta un limite matematico cruciale. Perché non possiamo usare tutte le caratteristiche logiche liberamente su tutte le proprietà? Perché **il ragionamento diventerebbe indecidibile** (il computer potrebbe entrare in un loop infinito di calcolo).
+
+Per evitare questo, la logica $\mathcal{SROIQ}$ di OWL 2 divide le proprietà (i _ruoli_) in due categorie ferree:
+
+1. **Ruoli Non-Semplici (Complex Roles):** Sono tutte le proprietà che sono transitive (`owl:TransitiveProperty`) oppure che sono dedotte da una **catena di proprietà** (`property chain axiom`). Queste proprietà possono propagarsi indefinitamente lungo il grafo.
+    
+2. **Ruoli Semplici (Simple Roles):** Sono tutte le altre proprietà dirette.
+    
+
+**La Regola d'Oro:** Per mantenere il sistema calcolabile, **i ruoli Non-Semplici NON possono essere usati nei seguenti costrutti**:
+
+- Restrizioni di cardinalità (es. non puoi dire "ha esattamente 2 nonni", se "nonno" è dedotto da una catena).
+    
+- Proprietà Funzionali o Inverse Funzionali.
+    
+- Proprietà Irriflessive o Asimmetriche.
+    
+- Disgiunzione tra proprietà.
+### Chiavi (`owl:hasKey`)
+
+Mentre in OWL 1 esisteva `owl:InverseFunctionalProperty` per identificare univocamente le risorse a livello globale, in OWL 2 vengono introdotte le **Chiavi**, più affini a come ragionano i database relazionali.
+
+- **Definizione:** Permette di specificare che una classe è identificata in modo univoco da un _set_ di proprietà (una o più di una). Se due istanze di quella classe hanno gli stessi esatti valori per quelle proprietà chiavi, il _reasoner_ dedurrà che sono lo stesso individuo (`owl:sameAs`).
+    
+- **Esempio delle slide:** La classe `Student` è identificata in modo univoco dal suo numero di matricola (student identification number). A differenza delle proprietà Inverse Funzionali, le Chiavi si applicano **solo alle istanze della classe specificata**, lasciando più libertà al resto dell'ontologia.
+
+## Supporto Esteso per i Datatype (Tipi di dato)
+
+In OWL 1, la gestione dei valori letterali era piuttosto basilare (ci si affidava ai tipi standard di XML Schema come interi, stringhe, date). OWL 2 introduce un controllo granulare e potentissimo sui dati primitivi.
+
+- **Custom Datatypes tramite "Facets" (Sfaccettature):** Ora è possibile creare _nuovi_ tipi di dato imponendo restrizioni matematiche o lessicali su quelli esistenti. Ad esempio, puoi definire il tipo di dato "Età Umana" limitando un `xsd:integer` a valori compresi tra 0 e 150. Oppure puoi restringere una stringa imponendo una specifica _Regular Expression_ (es. per validare un formato e-mail).
+    
+- **Operatori Insiemistici sui Dati:** Proprio come si fa con le classi, in OWL 2 è possibile combinare i _data range_ (gli intervalli di dati) utilizzando l'intersezione (AND), l'unione (OR) e il complemento (NOT). Ad esempio, puoi definire un tipo di dato che è "l'unione tra interi positivi e stringhe".
+## Simple Metamodeling (Il "Punning")
+
+Questa è una novità architetturale fondamentale che risolve uno dei limiti più fastidiosi di OWL 1 DL.
+
+Come avevamo visto, OWL 1 DL imponeva una separazione _strettissima_: un URI poteva essere una Classe, una Proprietà **OPPURE** un Individuo. Mai più di una cosa contemporaneamente (pena il passaggio all'indecidibile OWL Full).
+
+- **Il Punning (Gioco di parole):** OWL 2 introduce il "Punning", rilassando questa regola. Ora è lecito utilizzare **lo stesso identico URI** per denotare sia una Classe che un Individuo.
+    
+- **Come fa a rimanere decidibile?** Il motore inferenziale non si confonde. A seconda del _contesto sintattico_ in cui quell'URI viene usato, il reasoner lo tratterà come Classe o come Individuo, mantenendo le due identità logicamente separate nel calcolo matematico. Ad esempio, l'URI "Aquila" può essere usato come Classe (nella tripla `AquilaReale subClassOf Aquila`) e contemporaneamente come Individuo (nella tripla `Aquila specieA RischioEstinzione`).
+    
+## Estensione delle Annotazioni
+
+In OWL 1, le proprietà di annotazione (`rdfs:label`, `rdfs:comment`) servivano solo per mettere etichette testuali sugli URI. OWL 2 le trasforma in uno strumento di tracciabilità professionale.
+
+- **Annotazioni sugli Assiomi:** Questa è la novità più grande. Ora puoi annotare non solo le entità, ma **le singole relazioni (le triple stesse)**. Se asserisci che `A subClassOf B`, puoi attaccare a questa specifica dichiarazione un'annotazione per indicare, ad esempio, _chi_ l'ha dichiarata (provenienza) o con quale _grado di certezza_ (confidence score).
+    
+- **Struttura delle Annotazioni:** Le proprietà di annotazione possono ora avere un loro dominio e un loro range, e possono essere organizzate in gerarchie (es. `annotazioneMedica` come sotto-proprietà di `annotazioneGenerica`).
+## Altre Innovazioni Strutturali
+
+L'ultima slide raccoglie alcune aggiunte "di servizio" che chiudono i buchi logici e gestionali della versione precedente:
+
+- **Estremi Logici (Top e Bottom):**
+    
+    - In OWL 1 avevamo `owl:Thing` (la super-classe universale che contiene tutto, $\top$) e OWL 2 introduce formalmente il suo opposto, `owl:Nothing` (la classe vuota, il _Bottom_ logico, $\bot$). Nessun individuo può appartenere a `owl:Nothing`.
+        
+    - Questa logica degli estremi viene estesa alle proprietà: nascono `owl:topObjectProperty` (la relazione universale che collega qualsiasi coppia di individui) e `owl:bottomObjectProperty` (la relazione impossibile che non collega mai niente).
+        
+- **Versioning e Imports (Gestione del ciclo di vita):** OWL 2 struttura meglio l'ingegneria del software semantico. Un'ontologia ora possiede due identificatori distinti:
+    
+    - _Ontology IRI:_ L'indirizzo stabile del vocabolario (es. l'ontologia FOAF in generale).
+        
+    - _Version IRI:_ Un indirizzo specifico per ogni aggiornamento (es. FOAF versione 1.2), vitale per garantire che sistemi informatici che dipendono da vecchie versioni non si rompano quando l'ontologia viene aggiornata.
+        
+- **Espressioni Inverse Anonime:** Nello "zucchero sintattico" visto in precedenza avevamo `owl:inverseOf` per creare una nuova proprietà inversa dandole un nome. In OWL 2, se ti serve usare l'inversa di una proprietà solo "al volo" all'interno di una singola espressione di classe, puoi farlo usando il costrutto `owl:inverseOf` annidato senza dover per forza inventare e registrare un nuovo URI globale.
