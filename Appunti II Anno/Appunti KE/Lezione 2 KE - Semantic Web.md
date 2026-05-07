@@ -74,13 +74,9 @@ OWL, RDF ecc. ***non sono*** modelli di mondo/dominio.
 
 Sono modelli per la rappresentazione della conoscenza e quindi meta-modelli per descrivere oggetti del mondo reale.
 
-Ad esempio, se dici che A p.B C, puoi affermare che:
-- tutte le istanze di C sono anche istanze di A;
-- tutte le istanze di C sono soggette alla restrizione di intervallo sulla proprietà p (che deve puntare a oggetti in B);
-- etc..
+Ad esempio, se dichiariamo che `A` è una sottoclasse di `C`, il sistema deduce che tutte le istanze di `C` sono anche istanze di `A`, e sa come applicare le restrizioni di dominio o range. 
 
-Non è possibile dire:
-- in che modo le istanze di A (o C) siano effettivamente correlate agli oggetti del mondo reale
+Tuttavia, il sistema _non sa_ affatto come quelle entità si colleghino agli oggetti reali nel mondo (non sa cos'è fisicamente "A" o "C").
 
 ## Semantiche Ontologiche
 

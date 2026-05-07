@@ -206,7 +206,7 @@ Contro: $\times$
 | $\checkmark$ Li puoi cambiare                           |                                                                     |
 | $\checkmark$ Li puoi condividere con altri              |                                                                     |
 
-#### Vantaggi e svantaggi seconda prima stella
+#### Vantaggi e svantaggi seconda stella
 
 Pro: $\checkmark$ 
 Contro: $\times$ 
@@ -264,3 +264,17 @@ Tutti i benefit della quarta stella, più:
 [^5]:  http://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32003L0098
 
 [^6]: http://microformats.org/
+
+### Da Gemini
+
+Per valutare la bontà tecnica degli Open Data, si utilizza il celebre modello a 5 stelle elaborato da Tim Berners-Lee.
+
+- **1 Stella (★):** Pubblicare dati sul Web con una licenza aperta, in qualsiasi formato (es. un PDF scansionato). _Pro:_ Facile da pubblicare. _Contro:_ Difficile estrarre i dati.
+    
+- **2 Stelle (★★):** Rendere i dati disponibili in un formato strutturato (es. una tabella Excel invece di una foto della tabella). _Pro:_ Un utente può elaborarli e fare calcoli direttamente.
+    
+- **3 Stelle (★★★):** Utilizzare formati strutturati _non proprietari_ (es. CSV o XML invece dell'Excel Microsoft). _Pro:_ Puoi manipolarli senza essere costretto a comprare un software specifico.
+    
+- **4 Stelle (★★★★):** Usare gli URI (Uniform Resource Identifier) per denotare le cose, permettendo alle persone di puntare direttamente a una specifica riga o entità dei tuoi dati. _Pro:_ Puoi inserire il dato nei preferiti o linkarlo in modo chirurgico.
+    
+- **5 Stelle (★★★★★ - Linked Open Data):** Collegare i tuoi dati ad altri dati sul web per fornire un contesto ampio. _Pro:_ Scopri nuove informazioni navigando tra i dati combinati. _Contro:_ Richiede competenze tecniche avanzate, una curva di apprendimento ripida e bisogna gestire i "link rotti" se una fonte esterna smette di funzionare.
