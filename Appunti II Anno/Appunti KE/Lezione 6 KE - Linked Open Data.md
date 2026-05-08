@@ -121,8 +121,8 @@ Il consumatore si scontra con una difficoltà computazionale enorme: **riconosce
     
 - **A livello Concettuale (Classi/Proprietà):** Capire se la classe `Client` del database A è semanticamente equivalente alla classe `Customer` del database B. Questo processo si chiama _Schema Mapping_ o _Ontology Matching_.
 
-# Pubblicazione
-## Documenti Statici vs Dinamici
+## Pubblicazione
+### Documenti Statici vs Dinamici
 
 Una volta strutturati e allineati i dati, come li serviamo fisicamente su Internet?
 
@@ -151,7 +151,7 @@ Come portiamo questo immenso patrimonio preesistente nel Web dei Dati? Il W3C ha
 
 Ne presentano tre fondamentali: **RDB2RDF**, **SKOS** e **Data Cube**.
 
-## RDB2RDF: Dai Database Relazionali ai Linked Data
+### RDB2RDF: Dai Database Relazionali ai Linked Data
 
 La stragrande maggioranza delle applicazioni web e dei sistemi informativi aziendali è alimentata da **Database Relazionali (RDB)**, basati su tabelle e SQL. Affinché il Web Semantico decolli davvero, è vitale sbloccare questo enorme bacino di dati e pubblicarlo sotto forma di Linked Data.
 
@@ -168,7 +168,7 @@ La stragrande maggioranza delle applicazioni web e dei sistemi informativi azien
 - **Parallelo storico:** Le slide fanno un paragone molto calzante. Agli albori del Web, la crescita esplosiva fu garantita dalla possibilità di esporre via HTTP l'enorme mole di file già esistenti sui server FTP. RDB2RDF si propone di fare lo stesso salto evolutivo per i dati strutturati.
 
 ![center|500](img/Pasted%20image%2020260508110806.png)
-## 2. SKOS: Simple Knowledge Organization System
+### SKOS: Simple Knowledge Organization System
 
 Non tutta la conoscenza è formalizzata in rigide ontologie OWL. Esistono innumerevoli **KOS (Knowledge Organization Systems)** tradizionali: tesauri, glossari, vocabolari controllati e tassonomie (es. classificazioni mediche, indici bibliotecari).
 
@@ -195,7 +195,7 @@ L'architettura di SKOS opera su due livelli:
 - **Livello Lessicale Avanzato (SKOS-XL):** A volte trattare le etichette come semplici stringhe testuali non basta (ad esempio se si vuole studiare l'etimologia di una parola o la relazione tra due sinonimi). **SKOS-XL** trasforma le etichette stesse in risorse dotate di URI (`skosxl:Label`). Questo permette di creare relazioni esplicite _tra le parole stesse_ (`skosxl:labelRelation`), separando nettamente il livello del significato (Concept) da quello linguistico-lessicale (Label).
 
 ![center|500](img/Pasted%20image%2020260508110835.png)
-## 3. RDF Data Cube Vocabulary
+### RDF Data Cube Vocabulary
 
 I governi e gli enti di ricerca producono immense quantità di dati statistici (PIL, censimenti, dati meteorologici). Questi dati sono intrinsecamente **multidimensionali** (i famosi "ipercubi" OLAP). Il **Data Cube Vocabulary** (sviluppato dal _W3C Government Linked Data Working Group_) è lo standard per modellare queste statistiche in RDF.
 
@@ -231,3 +231,136 @@ Il Data Cube non reinventa la ruota. Per dichiarare i "concetti" alla base delle
     
 - **SDMX (Statistical Data and Metadata eXchange):** Lo standard ISO preesistente per i dati statistici. Il vocabolario Data Cube importa direttamente i concetti SDMX (`sdmx-concept:sex`, `sdmx-concept:refArea`) garantendo immediata interoperabilità con i sistemi degli istituti di statistica tradizionali.
 
+### Embedded RDF: Fondere dati e documenti
+
+Finora abbiamo parlato di come pubblicare interi dataset e ontologie su server dedicati (i _Triple Store_). Ma cosa succede se un utente o un'azienda possiede solo un normale sito web e **non può pubblicare nient'altro che semplici pagine (X)HTML**?
+
+Come facciamo a far capire alle macchine il significato del testo scritto in una pagina web tradizionale? La risposta è l'**Embedded RDF** (RDF incorporato) e l'**Annotazione Semantica**.
+
+L'obiettivo dell'Embedded RDF è prendere i dati strutturati (le triple S-P-O) e "nasconderli" all'interno del codice sorgente di una normale pagina web, in modo che il browser continui a mostrare il testo formattato per gli umani, ma i _crawler_ (i bot che leggono le pagine) possano estrarre il grafo logico sottostante.
+
+Esistono due approcci principali per farlo, standardizzati nel tempo:
+
+**A. Dati inframezzati al contenuto visibile (Interleaved)**
+
+In questo approccio, si usano attributi speciali direttamente dentro i tag HTML esistenti (`<span>`, `<div>`, `<a>`) per "etichettare" le parole mostrate a schermo.
+
+- **RDFa (RDF in Attributes):** È lo standard W3C più rigoroso per fare questo. Come mostra l'esempio nelle slide, permette di usare attributi come `about=` (per definire il Soggetto/URI), `property=` (per il Predicato) e `content=` (per l'Oggetto testuale). Se in una pagina c'è scritto "Wikinomics di Don Tapscott", RDFa trasforma invisibilmente quel testo nella tripla Turtle: `:wikinomics dc:creator "Don Tapscott"`.
+    
+- **Microformati e Microdata:** Sono tecnologie simili nate per HTML5. Sebbene i _microdata_ condividano lo stesso scopo (usando attributi come `itemprop`), la slide precisa giustamente che _non_ sono legati esplicitamente al modello formale astratto di RDF, risultando meno rigorosi ma storicamente molto diffusi.
+    
+
+**B. Dati isolati dal contenuto visibile**
+
+Invece di "sporcare" tutto il codice HTML con decine di attributi sparsi in ogni paragrafo (pratica che fa impazzire i web designer e rischia di rompersi se si cambia l'impaginazione), si crea un blocco dati separato, nascosto all'utente ma perfettamente leggibile dalle macchine.
+
+- **JSON-LD (JavaScript Object Notation for Linked Data):** È il vincitore assoluto sul web moderno. È una sintassi RDF basata su JSON che viene inserita semplicemente all'interno di un tag `<script type="application/ld+json">` nell'intestazione (head) della pagina web.
+    
+#### Il Motore del Cambiamento: La SEO e Schema.org
+
+Perché un'azienda dovrebbe spendere tempo e soldi per annotare semanticamente le proprie pagine web in RDFa o JSON-LD? Per molto tempo, la mancanza di incentivi commerciali ha frenato il Web Semantico.
+
+La svolta è arrivata quando i giganti della ricerca (**Google, Bing, Yahoo! e Yandex**) si sono resi conto che l'intelligenza artificiale e la semantica servivano per fornire risultati migliori.
+
+Hanno quindi fondato il progetto **Schema.org**. Non si tratta di una nuova sintassi, ma di un **vocabolario condiviso universale**. Invece di far inventare a ogni sviluppatore le proprie classi, Schema.org fornisce le definizioni ufficiali per descrivere qualsiasi cosa: un `Product`, una `Person`, un `Event`, una `Recipe`, ecc.
+
+L'incentivo per i webmaster è diventato l'**Ottimizzazione per i Motori di Ricerca (SEO)**. Se annoti la tua pagina seguendo le linee guida di Google, usando il vocabolario _Schema.org_ (preferibilmente serializzato in _JSON-LD_, come raccomandato da Google stessa), il motore di ricerca non dovrà "tirare a indovinare" di cosa parla la tua pagina, ma avrà il grafo dei dati servito su un piatto d'argento.
+
+#### I Risultati Pratici: Le "Search Result Features"
+
+Cosa succede quando Google legge questi dati strutturati perfettamente formattati? Trasforma i classici, noiosi link blu in risultati arricchiti, chiamati **Rich Snippets** o _Search Result Features_.
+
+La tua ultima slide mostra l'esempio perfetto, che tutti noi vediamo quotidianamente: la ricetta degli "Spaghetti Cacio e Pepe".
+
+Senza annotazione semantica, Google mostrerebbe solo il titolo e un pezzo di testo a caso.
+
+Grazie ai dati strutturati incorporati nella pagina web (che dichiarano esplicitamente `Type: Recipe`), Google estrae le singole entità logiche e costruisce una "scheda" interattiva che mostra:
+
+- **L'Immagine (Picture):** Associata al predicato semantico dell'immagine del piatto.
+    
+- **La Valutazione (Rating):** Le famose stelline gialle (es. 4.5 su 228 voti), derivanti dal tipo `AggregateRating`.
+    
+- **Il Tempo di Cottura (Total time):** Estratto dal predicato specifico `totalTime` (es. 20 min).
+    
+- **La Descrizione (Dish description):** Il riassunto puntuale.
+    
+
+**In conclusione:**
+
+Questo processo chiude il cerchio. Il Web Semantico non è rimasto un puro esercizio accademico relegato alla logica formale (OWL) o a database accademici. Attraverso l'annotazione semantica (JSON-LD) e vocabolari pragmatici (Schema.org), **il grafo della conoscenza è letteralmente fuso nel Web di tutti i giorni**, permettendo ai motori di ricerca di capire il mondo e agli utenti di trovare risposte precise e strutturate in millisecondi.
+
+## VoID
+
+Nel Web dei Dati, pubblicare un dataset RDF su un server non basta. Se non fornisci delle istruzioni chiare alle macchine su _cosa_ contiene quel dataset, _chi_ lo ha creato e _come_ interrogarlo, i tuoi dati saranno invisibili.
+
+Per risolvere questo problema, nasce **VoID (Vocabulary of Interlinked Datasets)**: un vocabolario RDF standardizzato dal W3C progettato per creare i "metadati" dei tuoi Linked Data.
+
+### La base di VoID: `void:Dataset`
+
+Il cuore dell'ontologia è la classe principale **`void:Dataset`**.
+
+Un dataset in VoID è definito come un insieme di triple RDF che sono pubblicate, mantenute o possedute da una singola entità. Quando descrivi il tuo grafo, la prima cosa che fai è dichiarare che il tuo progetto è un'istanza di questa classe.
+
+VoID divide poi la descrizione del dataset in quattro grandi categorie di metadati:
+
+![center|500](img/Pasted%20image%2020260508140909.png)
+
+![center|500](img/Pasted%20image%2020260508140932.png)
+#### A. Metadati Generali (General Metadata)
+
+VoID non reinventa la ruota. Per descrivere le informazioni di base, suggerisce di riutilizzare vocabolari già famosissimi, primo fra tutti il **Dublin Core (`dcterms`)** e **FOAF**. Nelle slide vediamo l'uso di:
+
+- `dcterms:title`: Il nome del dataset.
+    
+- `dcterms:description`: Un riassunto testuale di cosa contiene.
+    
+- `dcterms:creator` o `dcterms:publisher`: Chi ha creato o gestisce i dati.
+    
+- `dcterms:created` e `dcterms:modified`: Le date del ciclo di vita.
+    
+- `dcterms:subject`: L'argomento del dataset, spesso associato a concetti presi dalla DBpedia o da altre ontologie esterne.
+
+![center|500](img/Pasted%20image%2020260508141100.png)
+
+![center|500](img/Pasted%20image%2020260508141153.png)
+
+![center|500](img/Pasted%20image%2020260508141219.png)
+#### B. Metadati di Accesso (Access Metadata)
+
+Queste sono le istruzioni tecniche per i software. Dicono a un client: "Ecco come puoi tecnicamente mettere le mani sulle mie triple". Si usano proprietà specifiche di VoID o FOAF:
+
+- **`void:sparqlEndpoint`**: Fornisce l'indirizzo HTTP esatto del motore di ricerca dove il client può lanciare query SPARQL.
+    
+- **`void:dataDump`**: Fornisce il link diretto per scaricare l'intero archivio RDF in blocco (es. un file `.nt` o `.rdf` compresso).
+    
+- **`void:uriLookupEndpoint`**: L'indirizzo di base usato per la dereferenziazione (la ricerca tramite HTTP GET dei singoli URI).
+    
+- **`foaf:homepage`**: Il link a una pagina web in HTML leggibile da esseri umani che presenta il dataset.
+    
+
+#### C. Metadati Strutturali (Structural Metadata)
+
+Queste sono le "statistiche" vitali del tuo grafo. Danno l'idea della grandezza e della ricchezza semantica del dataset, elementi cruciali per chi vuole riutilizzare i tuoi dati.
+
+- **`void:triples`**: Il numero totale stimato di triple presenti nel dataset.
+    
+- **`void:classes`** e **`void:properties`**: Il numero di classi e predicati distinti utilizzati.
+    
+- **`void:entities`**: Il numero di individui (risorse) distinti.
+    
+- **`void:vocabulary`**: Una dichiarazione estremamente utile. Dice esplicitamente quali vocabolari esterni hai usato per modellare i tuoi dati (es. se indichi FOAF e SKOS, chi consuma i dati sa già che tipo di struttura aspettarsi).
+    
+
+#### D. La Descrizione dei Link (`void:Linkset`)
+
+Questa è la caratteristica più potente e unica di VoID, e risponde alla Regola n.4 dei Linked Data (collegarsi al resto del mondo).
+
+Un **Linkset** è esso stesso una sottoclasse di `void:Dataset`. Rappresenta un "pacchetto" di triple il cui **unico scopo è fare da ponte tra il tuo dataset e un dataset bersaglio (target)**.
+
+Per definire un Linkset, VoID usa queste proprietà:
+
+- **`void:target`**: Si indicano i due dataset che vengono messi in comunicazione.
+    
+- **`void:linkPredicate`**: Si specifica _quale predicato RDF_ viene usato per creare i ponti. Nella stragrande maggioranza dei casi (es. per allinearsi a DBpedia), questo predicato è `owl:sameAs`.
+    
+- Proprio come un dataset normale, anche un Linkset può avere la proprietà `void:triples` per indicare esattamente _quanti_ link fisici esistono tra i due grafi.
