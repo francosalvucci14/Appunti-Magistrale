@@ -336,31 +336,265 @@ Queste sono le istruzioni tecniche per i software. Dicono a un client: "Ecco com
 - **`void:uriLookupEndpoint`**: L'indirizzo di base usato per la dereferenziazione (la ricerca tramite HTTP GET dei singoli URI).
     
 - **`foaf:homepage`**: Il link a una pagina web in HTML leggibile da esseri umani che presenta il dataset.
-    
+
+![center|500](img/Pasted%20image%2020260509161948.png)
 
 #### C. Metadati Strutturali (Structural Metadata)
 
-Queste sono le "statistiche" vitali del tuo grafo. Danno l'idea della grandezza e della ricchezza semantica del dataset, elementi cruciali per chi vuole riutilizzare i tuoi dati.
+I metadati strutturali forniscono informazioni preziose sull'organizzazione interna e sulle dimensioni del dataset. Questo è cruciale per i consumatori di dati, in quanto permette loro di valutare se il dataset è adatto ai loro scopi prima di interrogarlo o scaricarlo.
 
-- **`void:triples`**: Il numero totale stimato di triple presenti nel dataset.
-    
-- **`void:classes`** e **`void:properties`**: Il numero di classi e predicati distinti utilizzati.
-    
-- **`void:entities`**: Il numero di individui (risorse) distinti.
-    
-- **`void:vocabulary`**: Una dichiarazione estremamente utile. Dice esplicitamente quali vocabolari esterni hai usato per modellare i tuoi dati (es. se indichi FOAF e SKOS, chi consuma i dati sa già che tipo di struttura aspettarsi).
-    
+I metadati strutturali in VoID si dividono in diverse aree chiave: esempi, partizioni e statistiche.
 
+##### 1. Orientamento Iniziale: Esempi e Vocabolari
+
+Prima di addentrarsi nei numeri, VoID permette di fornire un "assaggio" del dataset:
+
+- **Risorse di esempio (`void:exampleResource`):** Questa proprietà collega il dataset ad alcune risorse rappresentative. L'obiettivo è dare all'utente un'idea immediata del tipo di dati presenti, senza dover esplorare l'intero grafo.
+	- ![center|500](img/Pasted%20image%2020260509162505.png)    
+- **Vocabolari utilizzati (`void:vocabulary`):** Elenca i vocabolari fondamentali (come FOAF, Dublin Core, ecc.) impiegati nel dataset. Questo è essenziale per sapere quali termini (classi e proprietà) usare quando si interroga il dataset tramite SPARQL.
+    
+    - ![center|500](img/Pasted%20image%2020260509162619.png)
+- **Spazio degli URI (`void:uriSpace` e `void:uriRegexPattern`):** Definisce lo spazio dei nomi (namespace) o i pattern che accomunano gli URI delle risorse descritte nel dataset.
+    
+    - `void:uriSpace` indica un prefisso comune, ad esempio: ![center|500](img/Pasted%20image%2020260509162543.png)
+        
+    - Per scenari complessi, `void:uriRegexPattern` permette di usare un'espressione regolare che gli URI del dataset devono soddisfare.
+        
+##### 2. Organizzazione Interna: Sottoinsiemi e Partizioni
+
+Spesso i dataset sono molto grandi e complessi. VoID permette di descrivere l'architettura interna usando la proprietà `void:subset`, che collega un dataset principale a un suo sottoinsieme (anch'esso di tipo `void:Dataset`). 
+
+![center|500](img/Pasted%20image%2020260509162709.png)
+
+![center|500](img/Pasted%20image%2020260509162739.png)
+
+Questo permette di assegnare metadati specifici solo a certe parti del grafo.
+
+VoID offre costrutti per definire due tipi specifici di partizioni logiche (entrambe sono sottoclassi di `void:Dataset`):
+
+- **Partizioni basate sulle Classi (`void:classPartition`):** Definisce un sottoinsieme che contiene solo le istanze di una specifica classe.
+    
+    - _Esempio:_ Un sottoinsieme che raggruppa solo le istanze di tipo `foaf:Organization`. ![center|500](img/Pasted%20image%2020260509162759.png)
+        
+- **Partizioni basate sulle Proprietà (`void:propertyPartition`):** Definisce un sottoinsieme che contiene esclusivamente le triple che utilizzano un determinato predicato.
+    
+    - _Esempio:_ Un sottoinsieme contenente solo le triple che usano la proprietà `foaf:homepage`. ![center|500](img/Pasted%20image%2020260509162812.png)
+
+##### 3. Informazioni Statistiche
+
+L'aspetto forse più quantitativo dei metadati strutturali sono le statistiche. VoID definisce proprietà specifiche per quantificare i vari elementi del grafo. È importante notare che queste stesse proprietà possono essere usate anche per descrivere le partizioni (class/property-based) viste sopra.
+
+Ecco le proprietà statistiche principali:
+
+- **`void:triples`:** Il numero totale di triple contenute nel dataset.
+    
+- **`void:entities`:** Il numero totale di entità (risorse con un URI che rispetta l'eventuale `void:uriRegexPattern`) descritte nel dataset.
+    
+- **`void:classes`:** Il numero di classi _distinte_ presenti nel dataset (cioè gli URI unici che compaiono come oggetto in triple con predicato `rdf:type`).
+    
+- **`void:properties`:** Il numero di proprietà _distinte_ utilizzate nel dataset (gli URI unici che compaiono nella posizione del predicato).
+    
+- **`void:distinctSubjects`:** Il numero di soggetti (URI o blank node) _distinti_ presenti nel dataset.
+    
+- **`void:distinctObjects`:** Il numero di oggetti (URI, blank node o letterali) _distinti_ presenti nel dataset.
+    
+- **`void:documents`:** Questa proprietà indica il numero totale di documenti (es. file RDF/XML o pagine RDFa), ed è destinata a dataset in cui è difficile determinare il numero esatto di triple o entità.
+
+![center|500](img/Pasted%20image%2020260509162847.png)
+
+![center|500](img/Pasted%20image%2020260509162930.png)
+
+La maggior parte di queste statistiche non deve essere calcolata a mano, ma può essere derivata automaticamente eseguendo specifiche query SPARQL sul dataset.
 #### D. La Descrizione dei Link (`void:Linkset`)
 
 Questa è la caratteristica più potente e unica di VoID, e risponde alla Regola n.4 dei Linked Data (collegarsi al resto del mondo).
 
-Un **Linkset** è esso stesso una sottoclasse di `void:Dataset`. Rappresenta un "pacchetto" di triple il cui **unico scopo è fare da ponte tra il tuo dataset e un dataset bersaglio (target)**.
+Un **Linkset** (rappresentato dalla classe `void:Linkset`) è, concettualmente, un tipo speciale di dataset. La sua particolarità è che contiene _esclusivamente_ triple il cui scopo è collegare un soggetto che risiede in un dataset a un oggetto che risiede in un _altro_ dataset.
 
 Per definire un Linkset, VoID usa queste proprietà:
+##### 1. Definire i Target (Le estremità del ponte)
 
-- **`void:target`**: Si indicano i due dataset che vengono messi in comunicazione.
+Per prima cosa, devi dichiarare quali sono i due dataset messi in comunicazione dal linkset.
+
+- **`void:target`:** È la proprietà generica. Dichiari semplicemente che il linkset connette il Dataset A e il Dataset B, senza specificare la direzione della connessione.
     
-- **`void:linkPredicate`**: Si specifica _quale predicato RDF_ viene usato per creare i ponti. Nella stragrande maggioranza dei casi (es. per allinearsi a DBpedia), questo predicato è `owl:sameAs`.
+    - _Esempio:_ ![center|500](img/Pasted%20image%2020260509163547.png)
+
+- **`void:subjectsTarget` e `void:objectsTarget`:** Queste due proprietà specializzano `void:target` e offrono una precisione maggiore. Ti permettono di indicare la _direzione_ dei link, specificando in quale dataset si trovano i soggetti delle triple e in quale si trovano gli oggetti.
     
-- Proprio come un dataset normale, anche un Linkset può avere la proprietà `void:triples` per indicare esattamente _quanti_ link fisici esistono tra i due grafi.
+    - _Esempio:_ ![center|500](img/Pasted%20image%2020260509163637.png)
+
+##### 2. L'Appartenenza del Linkset (Dove si trova il ponte?)
+
+I link (le triple di connessione) possono essere fisicamente ospitati all'interno di uno dei due dataset collegati, oppure possono risiedere in un terzo dataset indipendente (un hub di collegamento).
+
+Le slide affrontano il caso più comune: i link sono forniti da uno dei due dataset stessi (ad esempio, il mio dataset contiene i link `owl:sameAs` che puntano a DBpedia).
+In questo scenario, la best practice di VoID è dichiarare che il Linkset è un **sottoinsieme (`void:subset`)** del dataset che lo ospita.
+
+##### 3. Il Predicato di Collegamento (`void:linkPredicate`)
+
+Questa è un'informazione cruciale per i software che consumano i dati. Oltre a sapere quali dataset sono collegati, devono sapere *come* sono collegati. Qual è la natura semantica della relazione?
+
+La proprietà **`void:linkPredicate`** indica l'URI della proprietà RDF utilizzata per formare i link all'interno di quel linkset.
+
+*   *L'uso più frequente:* Nella stragrande maggioranza dei casi nel mondo dei Linked Open Data, lo scopo di un linkset è dichiarare che un'entità in un dataset è esattamente la stessa entità in un altro. In questo caso, il predicato è `owl:sameAs`.
+    *   *Esempio:* ![center|500](img/Pasted%20image%2020260509163717.png)
+
+##### 4. Quantificare i Link (`void:triples`)
+
+Infine, come per qualsiasi altro dataset o sottoinsieme, è prassi comune indicare le dimensioni del linkset utilizzando la proprietà statistica `void:triples`.
+
+*   *Esempio:* `void:triples 1000` indica che ci sono mille connessioni esatte (mille "ponti") tra i due dataset bersaglio all'interno di questo specifico linkset. Questa informazione aiuta a valutare quanto forte e integrata sia la connessione tra le due fonti di dati.
+
+## Consumare i LD
+
+È il momento di passare dall'altra parte della barricata. Finora abbiamo visto come _pubblicare_ e descrivere i dati. Ora esaminiamo come le applicazioni e gli sviluppatori possono **consumare** (utilizzare e interrogare) questa immensa nuvola di Linked Data distribuita sul web.
+
+### 1. Dove cercare i dati? (Discovery)
+
+Prima di consumare i dati, devi trovarli. La nuvola dei Linked Open Data (LOD) non ha un unico punto di accesso centrale. Le slide elencano diverse fonti primarie per la ricerca:
+
+- **Data Hub (datahub.io):** Una directory storica di dataset (costruita con CKAN). È un catalogo generale dove cercare set di dati aperti.
+    
+- **Linked Open Vocabularies (LOV):** Questo non è un catalogo di _dati_ puri, ma una rete di _vocabolari_ (schemi RDF e ontologie OWL). Se devi modellare un nuovo dominio, cerchi qui per vedere se esiste già un'ontologia da riutilizzare.
+    
+- **Entity Name System (ENS):** Sono _authority_ specializzate che assegnano identificatori canonici a specifiche entità (es. luoghi, persone famose). Se ti serve l'URI ufficiale di "Roma", lo cerchi in un ENS.
+    
+- **Portali Governativi e Settoriali:** Molte nazioni hanno i propri portali Open Data (spesso basati su CKAN) come `dati.gov.it` o `data.gov`. Esistono poi istituti di statistica (ISTAT, Eurostat) e portali settoriali verticali (es. BioPortal per le scienze della vita).
+### 2. Consumare LD: Dereferenziazione
+
+Il metodo più basilare per consumare i Linked Data è sfruttare la regola fondamentale degli URI HTTP: la dereferenziazione.
+
+- **Come funziona:** L'applicazione invia una semplice richiesta HTTP GET all'indirizzo URI della risorsa di interesse. Il server risponde restituendo il documento RDF che descrive quella specifica risorsa (spesso usando il pattern SCBD visto nelle lezioni precedenti).
+    
+- **Chi lo usa:** I browser semantici (come Tabulator o Disco) navigano il grafo in questo modo, "cliccando" da un URI all'altro. Esistono anche linguaggi di interrogazione specializzati (come _LD Path_) che formulano query semplici seguendo questi "cammini" diretti.
+    
+- **Pro e Contro:**
+    
+    - _Pro:_ Massima **freschezza dell'informazione**. Ottieni il dato esatto nel momento in cui lo richiedi, direttamente dalla fonte.
+        
+    - _Contro:_ Elevata **latenza** (ogni salto nel grafo richiede una nuova chiamata HTTP). Crea un forte **carico sull'infrastruttura** di chi pubblica i dati (che riceve continue richieste GET). Inoltre, l'**espressività è limitata**: non puoi fare query complesse o aggregazioni globali.
+        
+### 3. Consumare LD: SPARQL Federato
+
+Se la dereferenziazione è troppo lenta per query complesse, l'alternativa è usare **SPARQL**, il linguaggio di interrogazione ufficiale.
+
+- **L'Endpoint SPARQL:** Un publisher serio dovrebbe offrire un _endpoint SPARQL_ pubblico per consentire un accesso efficiente ai propri dati.
+    
+- **Il problema della distribuzione:** Cosa succede se la mia query ha bisogno di unire i dati sui politici europei (su un endpoint) con i dati sui loro partiti (su un altro endpoint)?
+    
+- **La soluzione: SPARQL 1.1 Federated Query:** Questa estensione dello standard introduce la keyword `SERVICE`. Come mostriamo nell'esempio, si può scrivere una singola query in cui deleghi esplicitamente una _sotto-query_ (la parte dentro le parentesi graffe di `SERVICE`) a un endpoint remoto.
+    
+- **Il collo di bottiglia:** L'esperienza derivata dai vecchi database relazionali distribuiti ci insegna che è **molto difficile ottimizzare** l'esecuzione di queste query. Se sbagli l'ordine con cui chiami i vari `SERVICE`, rischi di trasferire gigabyte di dati inutili sulla rete, bloccando l'applicazione.
+
+![center|500](img/Pasted%20image%2020260509171437.png)
+### 4. Consumare LD: SPARQL Euristico
+
+Il limite più grande dello SPARQL Federato standard è che _devi conoscere a priori_ l'indirizzo esatto di tutti gli endpoint che contengono i dati necessari.
+
+In un Web dei Dati aperto e organico, questo è spesso irrealistico (non sai in anticipo chi ha pubblicato cosa).
+
+- **L'Approccio Ibrido:** Per superare questo limite, i ricercatori hanno sviluppato approcci "ibridi" (o basati su _link traversal_).
+    
+- **Come funziona:** L'applicazione riceve una normale query SPARQL (senza la clausola `SERVICE`). Il motore di esecuzione inizia a valutare la query e, usando delle **euristiche**, analizza in tempo reale i risultati parziali o i link scoperti nel grafo locale. Man mano che scopre nuovi URI rilevanti, va a dereferenziarli al volo per scaricare i "dati necessari" mancanti.
+    
+- **Pro e Contro:** È un approccio molto flessibile per interrogare la nuvola in modo dinamico, ma a causa della natura euristica (va a "tentativi" guidati), _non può garantire la piena conformità alla semantica formale di SPARQL_ (potrebbe perdersi dei dati validi nascosti in parti del web non esplorate).
+    
+### 5. Consumare LD: Linked Data Fragments (LDF)
+
+C'è un conflitto fondamentale nell'ecosistema: offrire un semplice data dump (scaricare l'intero file) ha un costo bassissimo per il server ma è terribile per il client; viceversa, offrire un endpoint SPARQL potentissimo è fantastico per il client, ma ha un **costo altissimo per il server** (che spesso va offline se riceve query complesse).
+
+I **Linked Data Fragments (LDF)** nascono per trovare una via di mezzo, bilanciando il carico tra client e server.
+
+- **Il Concetto:** Invece di chiedere al server di risolvere l'intera query complessa (SPARQL), o di scaricare l'intero database (Data Dump), il client richiede al server solo "frammenti" specifici del grafo.
+    
+- **Triple Pattern Fragment (TPF):** È il tipo più comune di LDF. Il server non accetta query SPARQL complete, ma accetta solo semplici "Triple Pattern" (es. "Dammi tutte le triple dove il soggetto è Roma e il predicato è Popolazione").
+    
+- **Come funziona:** Il server (che ora ha un compito facilissimo e non va in crash) restituisce la pagina con i dati richiesti, ma aggiunge dei **metadati** (es. "Ci sono in totale 10.000 risultati") e dei **controlli** (es. link ipertestuali per chiedere la "Pagina 2", "Pagina 3" dei risultati).
+    
+- Il grosso del lavoro computazionale (unire i vari frammenti, filtrare, ordinare) viene spostato sul software del client.
+### 6. Consumare LD: L'Approccio Crawler (Data Warehousing)
+
+Tutti i metodi visti finora interrogano il Web "in diretta". Ma per le applicazioni enterprise che richiedono altissima affidabilità e velocità, dipendere dalla rete in tempo reale è un rischio. La soluzione finale è l'approccio tramite **Crawler** (il modello Data Warehouse).
+
+- **Cos'è un Crawler LD:** È un "bot" (un agente software, es. _LDspider_) che naviga instancabilmente la nuvola dei Linked Data seguendo i link, con lo scopo di **raccogliere informazioni**.
+    
+- **Il Processo:** Il crawler scarica i dati e crea una **copia locale (cache)** sul tuo server aziendale.
+    
+- **L'Elaborazione (Data Access, Integration and Storage Layer):** Una volta che hai i dati in casa (nel tuo Triple Store integrato), puoi elaborarli pesantemente offline. Come mostrano gli schemi architetturali, questa fase (gestita da framework come LDIF) include:
+    
+    1. _Schema mapping_ (tradurre vocaboli esterni nei tuoi vocaboli interni).
+        
+    2. _Object consolidation/Identity Resolution_ (fondere entità che sono la stessa cosa).
+        
+    3. _Quality management/Data Fusion_ (valutare di quali fonti fidarsi di più e pulire i dati).
+        
+- **Pro e Contro:** L'applicazione finale interroga solo il database locale super-ottimizzato tramite un'API locale, garantendo velocità e permettendo ragionamenti logici complessi senza caricare i server pubblici. Il compromesso è che i dati nella cache potrebbero non essere freschi, richiedendo al crawler cicli di aggiornamento continui.
+
+![center|500](img/Pasted%20image%2020260509171549.png)
+
+![center|500](img/Pasted%20image%2020260509171603.png)
+
+---
+# Note Finali
+
+Chiudiamo l'argomento analizzando i limiti della semantica pura, il motivo per cui questo movimento è nato e la fondamentale distinzione tra "Dati Collegati" (Linked Data) e "Dati Aperti" (Open Data).
+## 1. Oltre la semantica RDF: Il problema del mondo reale
+
+Tutta l'infrastruttura logica che abbiamo studiato (RDF, OWL) si basa su un assunto matematico fondamentale: **assume che le triple siano accurate**. Se in un grafo c'è scritto che "Parigi è la capitale della Germania", il motore di inferenza lo accetta come una verità assoluta e ci ragiona sopra.
+
+Tuttavia, quando passiamo dall'accademia al contesto distribuito della _Linked Data cloud_, navigando tra migliaia di dataset disparati creati da sconosciuti, questa assunzione crolla. Emergono quindi tre problemi cruciali che vanno "oltre" la semantica:
+
+- **Tracking Provenance (Tracciamento della provenienza):** Chi ha generato questo dato? Da quale database originale è stato estratto?
+    
+- **Judging Trustworthiness (Valutazione dell'affidabilità):** Posso fidarmi di chi ha pubblicato questo dato? È un istituto di statistica ufficiale o un utente anonimo?
+    
+- **Evaluating Data Quality (Qualità del dato):** I dati sono aggiornati, formattati correttamente e privi di refusi?
+    
+
+Questi problemi sono facilmente gestibili all'interno di applicazioni chiuse che usano pochi dataset super-controllati, ma diventano **estremamente difficili da risolvere in generale** sull'intera nuvola globale dei Linked Data.
+
+## 2. Perché i Linked Data? (La "Liberazione" dei Dati)
+
+Perché fare tutta questa fatica? Oggi i grandi fornitori del web (Google, Meta, X) sono molto "felici" di fornire agli sviluppatori delle API (interfacce di programmazione) per invocare i propri servizi. Tuttavia, sono **timorosi di condividere i dati veri e propri**. Questo fenomeno è noto come **"database hugging"** (tenersi stretti i propri database per mantenere il monopolio dell'informazione).
+
+Il cuore del movimento dei Linked Data è l'esatto opposto: promuove la **liberazione dei dati nella loro forma grezza**. Solo mettendo a disposizione degli sviluppatori di tutto il mondo i dati puri e interconnessi, si creano i presupposti per la nascita di scenari d'uso innovativi e applicazioni che i creatori originali del dato non avrebbero mai potuto immaginare.
+## 3. Open Data e Open Government
+
+Questa spinta alla "liberazione" si sposa perfettamente con il movimento dell'Open Data.
+
+- **Definizione di Open Data:** Secondo la Open Definition, un dato è considerato "aperto" se **chiunque è libero di usarlo, riusarlo e ridistribuirlo**. Le uniche condizioni generalmente imposte sono la richiesta di _attribuzione_ (citare la fonte) o la condivisione _allo stesso modo_ (share-alike, ovvero se modifichi il dato devi ripubblicarlo aperto).
+    
+- **L'Open Government:** È il risvolto politico e civico di questo fenomeno. Il movimento chiede alle Pubbliche Amministrazioni di aprire i propri database per due motivi inattaccabili:
+    
+    1. I dati sono stati raccolti e gestiti usando i soldi dei contribuenti, quindi appartengono ai cittadini.
+        
+    2. Esiste una fondamentale esigenza democratica di trasparenza.
+        
+- I frutti di questo movimento sono i **grandi portali governativi**, come _data.gov_ negli Stati Uniti, _data.gov.uk_ nel Regno Unito e _dati.gov.it_ in Italia.
+    
+## 4. La matrice finale: Open Data vs Linked Data
+
+Arriviamo al chiarimento definitivo. Spesso i termini vengono confusi, ma **Open Data e Linked Data sono concetti ortogonali** (cioè indipendenti l'uno dall'altro).
+
+La matrice nella tua ultima slide li divide in due dimensioni:
+
+1. **Dimensione relativa alla Licenza (Legale):** Dati Aperti (Open data) contro Dati Chiusi/Proprietari (Closed data).
+    
+2. **Dimensione relativa alla Pubblicazione (Tecnica):** Dati Scollegati (Unlinked Data, come un PDF o un file Excel isolato) contro Dati Collegati (Linked Data, formattati in RDF).
+    
+
+Da questo incrocio capiamo che:
+
+- Un dato può essere **Open ma non Linked:** Ad esempio, il bilancio del tuo Comune caricato online in un file PDF. Tutti possono vederlo (è Open), ma nessuna macchina può incrociarlo con altri dati in automatico (è Unlinked).
+    
+- Un dato può essere **Linked ma non Open:** Ad esempio, il grafo delle conoscenze interne della CIA o i dati clinici dei pazienti di un ospedale. Sono formattati in RDF e iper-connessi tra loro, ma sono rigorosamente chiusi al pubblico per motivi di sicurezza o privacy.
+    
+
+**Il trionfo dei LOD (Linked Open Data):**
+
+Il vero ecosistema del Web Semantico nasce nel quadrante in alto a destra, dove le due dimensioni si incontrano.
+
+- I **Linked Data** forniscono i _mezzi tecnici_ avanzati per permettere il riuso e l'integrazione delle informazioni.
+    
+- Gli **Open Data** forniscono la licenza legale e la _massa critica_ (il volume di dati) necessaria affinché questo fenomeno globale possa avere successo.
