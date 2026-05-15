@@ -3,4 +3,12 @@
 - [Lezione 3 KE - RDF e RDFS](Lezione%203%20KE%20-%20RDF%20e%20RDFS.md)
 - [Lezione 4-5 KE - OWL, OWL2](Lezione%204-5%20KE%20-%20OWL,%20OWL2.md)
 - [Lezione 6 KE - Linked Open Data](Lezione%206%20KE%20-%20Linked%20Open%20Data.md)
+- [Lezione 7-8 KE - SPARQL e SPARQL 1.1](Lezione%207-8%20KE%20-%20SPARQL%20e%20SPARQL%201.1.md)
+- [Lezione 9-10 KE - SKOS](Lezione%209-10%20KE%20-%20SKOS.md)
+- [Lezione 11 KE - Ontolex-Lemon](Lezione%2011%20KE%20-%20Ontolex-Lemon.md)
+- [Lezione 12 KE - RDF4J](Lezione%2012%20KE%20-%20RDF4J.md)
+- [Lezione 13 KE - GraphDB + LOV](Lezione%2013%20KE%20-%20GraphDB%20+%20LOV.md)
+- [Lezione 14 KE - Esercizi Reasoning](Lezione%2014%20KE%20-%20Esercizi%20Reasoning.md)
+- [Lezione 15 KE - SHACL](Lezione%2015%20KE%20-%20SHACL.md)
+- [Lezione 16 KE - Protege e VocBench](Lezione%2016%20KE%20-%20Protege%20e%20VocBench.md)
 - 
