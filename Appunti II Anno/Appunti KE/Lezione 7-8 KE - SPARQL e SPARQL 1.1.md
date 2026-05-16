@@ -446,3 +446,230 @@ Anche questo restituisce un Grafo RDF, ma a differenza della `CONSTRUCT`, non de
 - _Attenzione:_ Come specifica la nota a piè di pagina nella slide, cosa significhi "tutto quello che sai" dipende da chi ha programmato il database. Di solito, un Triple Store restituirà tutte le triple in cui l'impiegato 1234 compare come _Soggetto_, e talvolta anche quelle in cui compare come _Oggetto_, offrendoti una fotografia completa a 360 gradi del nodo richiesto.
 
 ![center|500](img/Pasted%20image%2020260516152331.png)
+
+---
+# SPARQL 1.1
+
+Questo è un passaggio fondamentale! Con l'introduzione di **SPARQL 1.1**, il linguaggio ha fatto un salto di qualità enorme, colmando molte delle lacune che lo separavano dai classici database SQL e diventando uno strumento maturo e incredibilmente potente.
+
+## Aggregazione: Calcolare e Raggruppare
+
+In SPARQL 1.0 potevi estrarre i dati, ma non potevi farci dei calcoli sopra (ad esempio, contare quanti amici ha una persona o calcolare l'età media). SPARQL 1.1 risolve questo problema introducendo l'**Aggregazione**.
+
+Il meccanismo si basa su due pilastri presi in prestito da SQL:
+
+- **`GROUP BY`**: Permette di raggruppare i risultati in base a una o più variabili. Se hai una lista di 100 impiegati divisi in 3 dipartimenti, raggruppando per dipartimento otterrai 3 grandi "cesti".
+    
+- **Operatori di Aggregazione**: Una volta creati i cesti, puoi applicarci delle funzioni matematiche o statistiche:
+    
+    - `COUNT`: Conta quanti elementi ci sono nel cesto.
+        
+    - `SUM`, `AVG`, `MIN`, `MAX`: Somma, Media, Minimo e Massimo.
+        
+    - `GROUP_CONCAT`: Prende tutte le stringhe del cesto e le unisce in un'unica lunga stringa (utilissimo!).
+        
+    - `SAMPLE`: Pesca un valore a caso dal cesto.
+        
+
+**L'esempio pratico:**
+
+Snippet di codice
+
+```SPARQL
+SELECT ?x (AVG(?size) AS ?asize)
+WHERE { ?x :size ?size }
+GROUP BY ?x
+HAVING(AVG(?size) > 10)
+```
+
+Qui si estraggono degli elementi (`?x`) e le loro dimensioni (`?size`). Il motore raggruppa tutto per `?x` e ne calcola la media (`AVG`).
+
+La novità aggiuntiva è **`HAVING`**: funziona esattamente come un `FILTER`, ma agisce _dopo_ che i gruppi sono stati creati. In questo caso, dice: _"Restituiscimi i risultati solo se la media che hai appena calcolato è maggiore di 10"_. Da notare anche l'uso di **`AS`**, che permette di "ribattezzare" il risultato del calcolo assegnandolo a una nuova variabile (`?asize`) per poterla visualizzare nei risultati.
+## Subquery: Le Matrioske di SPARQL
+
+A volte, per rispondere a una domanda complessa, devi prima rispondere a una domanda più piccola e usare quel risultato come base di partenza. Le **Subquery** (query annidate) permettono esattamente questo.
+
+- **Come funzionano:** Si inserisce una normale query `SELECT` all'interno del blocco `WHERE` di un'altra query.
+    
+- **L'ordine di esecuzione:** Il motore SPARQL risolve _sempre_ prima la query più interna, e poi passa i risultati a quella esterna. Questo è vitale per forzare il sistema a eseguire le operazioni nell'ordine che vogliamo noi.
+    
+
+**L'esempio pratico:**
+
+Il database contiene Alice, Bob e Carol. Bob e Carol hanno diversi nomi/soprannomi registrati ("Bob", "B. Bar", ecc.). Vogliamo sapere chi conosce Alice e, per ciascuna di queste persone, vogliamo estrarre _solo_ il nome che viene prima in ordine alfabetico.
+
+- **Query Interna:** Raggruppa tutte le persone (`GROUP BY ?y`) e, usando la funzione `MIN(?name)`, calcola qual è il nome alfabeticamente "più piccolo" per ciascuno, salvandolo come `?minName`.
+    
+- **Query Esterna:** Chiede semplicemente: _"Chi conosce Alice? (`:alice :knows ?y`)"_. A questo punto incrocia questa informazione con la tabellina generata dalla query interna.
+    
+    Risultato: Bob viene associato a "B. Bar" e Carol a "C. Baz". Senza le subquery, fare questa operazione in un colpo solo sarebbe stato quasi impossibile!
+
+```SPARQL
+PREFIX : <http://people.example/>
+PREFIX : <http://people.example/>
+SELECT ?y ?minName
+WHERE {
+:alice :knows ?y .
+{
+	SELECT ?y (MIN(?name) AS ?minName)
+	WHERE {
+		?y :name ?name .
+		} GROUP BY ?y
+	}
+}
+```
+## Negazione
+
+Questa è forse una delle aggiunte più amate dagli sviluppatori. Nelle slide precedenti avevamo visto che per fare una negazione in SPARQL 1.0 (es. "Trovami chi NON ha un'email") si doveva usare un trucco macchinoso: `OPTIONAL` accoppiato a un `FILTER(!BOUND)`.
+
+In SPARQL 1.1, la negazione diventa nativa e si sdoppia in due costrutti simili ma con sfumature diverse:
+
+**A. `NOT EXISTS`**
+
+Si usa all'interno di un `FILTER`. Il motore valuta il pattern principale e, per ogni risultato trovato, va a sbirciare dentro il blocco `NOT EXISTS`. Se il pattern interno unifica (cioè esiste), il risultato viene scartato.
+
+- _Esempio:_ Trova tutte le entità di tipo Persona, ma scarta quelle che possiedono la proprietà `foaf:name`. Nel database, Alice ha un nome, Bob no. Il risultato sarà solo Bob.
+
+```SPARQL
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?person
+WHERE {
+	?person rdf:type foaf:Person .
+	FILTER NOT EXISTS { ?person foaf:name ?name }
+}
+```
+
+**B. `MINUS`**
+
+Questo è un operatore di pura **sottrazione di insiemi**. Il motore calcola _tutti_ i risultati del blocco principale. Poi calcola _tutti_ i risultati del blocco `MINUS`. Infine, sottrae la seconda tabella dalla prima.
+
+- _Esempio:_ Trova tutti i soggetti (`?s`) nel grafo. Ora, usando `MINUS`, togli da questa lista tutti i soggetti che hanno come nome di battesimo "Bob". Il risultato includerà Carol e Alice, ma l'intero record di Bob verrà spazzato via.
+
+```SPARQL
+PREFIX : <http://example/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT DISTINCT ?s
+WHERE {
+	?s ?p ?o .
+	MINUS {
+		?s foaf:givenName "Bob" .
+	}
+}
+```
+
+_(Nota tecnica: Sebbene spesso diano lo stesso risultato, `NOT EXISTS` si basa sull'esistenza di un pattern nel grafo contestuale, mentre `MINUS` fa una vera e propria sottrazione tra due insiemi di risultati già calcolati. Nella pratica quotidiana, `NOT EXISTS` è quello più sicuro e utilizzato nella maggior parte dei casi)._
+
+Eccoci arrivati a due delle funzionalità di SPARQL 1.1 che ti cambieranno letteralmente la vita quando scriverai query complesse: i **Property Path** (percorsi tra le proprietà) e l'**Assegnazione** (la capacità di creare o forzare dati "al volo").
+
+Queste due novità rendono il codice infinitamente più pulito, compatto e potente. Vediamo perché.
+## Property Path
+
+In SPARQL 1.0, se volevi trovare "il nome della persona conosciuta dalla persona conosciuta da Alice" (un amico di un amico), dovevi creare una catena di triple usando un sacco di variabili temporanee (es. `?a1`, `?a2`) che non ti interessavano minimamente, solo per fare da "ponte".
+
+I **Property Path** risolvono questo problema, permettendoti di usare una sintassi molto simile alle espressioni regolari per concatenare i predicati (le frecce del grafo).
+
+![center|500](img/Pasted%20image%2020260516162918.png)
+
+Ecco i superpoteri che ti mettono a disposizione:
+
+- **La Sequenza (`/`):** Invece di scrivere tre triple separate, puoi usare lo slash (`/`) per dire al motore di seguire un percorso dritto. `foaf:knows/foaf:knows/foaf:name` significa _"segui la prima freccia 'knows', poi da lì segui un'altra freccia 'knows', e infine segui la freccia 'name'"_. Tutto in una riga, senza variabili inutili!
+	- ![center|500](img/Pasted%20image%2020260516162955.png)
+- **Il Percorso Inverso (`^`):** In RDF, le frecce hanno una direzione fissa (da Soggetto a Oggetto). Ma cosa succede se vuoi risalire la corrente? Usi il simbolo dell'accento circonflesso (`^`). Nella Slide 3 c'è un esempio geniale: `?x foaf:knows/^foaf:knows ?y`. Questo significa _"Trovami un `?x` che conosce qualcuno, e partendo da questo 'qualcuno', vai all'indietro per trovare un `?y` che lo conosce"_. In pratica, stai trovando due persone (`?x` e `?y`) che hanno una conoscenza in comune!
+	- ![center|500](img/Pasted%20image%2020260516163026.png)
+- **L'Alternativa (`|`):** Permette di creare dei bivi. Ad esempio, `foaf:name | rdfs:label` dice al motore _"cerca la proprietà nome, ma se non la trovi, mi va bene anche la proprietà label"_.
+- **La Transitività, il vero Santo Graal (`*` e `+`):** Questa è la funzione più potente in assoluto. Se vuoi trovare _tutti_ gli amici di Alice, e gli amici degli amici, e così via per tutta la rete, quante volte devi ripetere `foaf:knows`? Non puoi saperlo a priori.
+    
+    - Usando il **Più (`+`)**, es. `foaf:knows+`, dici _"segui questa freccia da 1 a infinite volte"_.
+        
+    - Usando l'**Asterisco (`*`)**, dici _"segui questa freccia da 0 a infinite volte"_. È usatissimo nelle ontologie (es. `rdfs:subClassOf*`) per trovare tutte le super-classi di un oggetto esplorando l'intero albero gerarchico fino alla radice.
+    - ![center|500](img/Pasted%20image%2020260516163326.png)
+## L'Assegnazione
+
+Fino a SPARQL 1.0, potevi solo estrarre i dati così com'erano scritti nel database. Se avevi il Prezzo Lordo e lo Sconto, e volevi il Prezzo Netto, dovevi estrarli entrambi e fare il calcolo nel tuo programma (in Java, Python, ecc.).
+
+Con SPARQL 1.1 puoi fare in modo che sia il motore del database a fare il lavoro per te.
+
+**La Regola d'Oro:**
+
+Quando crei una nuova variabile tramite assegnazione, questa **deve essere vergine**, ovvero non deve essere mai stata usata prima in quel punto della query.
+
+Ci sono due strumenti principali per l'assegnazione:
+
+**A. Il costrutto BIND: Il Calcolatore**
+
+`BIND` prende un'espressione, la calcola per ogni singola soluzione trovata, e "lega" (bind) il risultato a una nuova variabile.
+
+- _Calcoli Matematici:_ Nel primo esempio, il database ha `?p` (il prezzo) e `?discount`. Con `BIND (?p*(1-?discount) AS ?price)` diciamo al motore di calcolare lo sconto riga per riga e di salvare il risultato finale nella nuova variabile `?price`, che ora possiamo usare tranquillamente nei filtri successivi (es. `FILTER(?price < 20)`).
+	- ![center|500](img/Pasted%20image%2020260516163447.png)
+- _Manipolazione di Stringhe:_ Nel secondo esempio, usiamo `BIND` insieme alla funzione `CONCAT`. Prendiamo il nome (`?G`) e il cognome (`?S`) che nel database sono separati, ci mettiamo uno spazio in mezzo, e creiamo al volo la variabile `?name` con il nome completo bello e formattato.
+	- ![center|500](img/Pasted%20image%2020260516163505.png)
+
+**B. Il costrutto VALUES: L'Iniettore**
+
+Mentre `BIND` calcola valori nuovi partendo da variabili esistenti, `VALUES` fa l'opposto: "inietta" valori specifici e predeterminati dentro una variabile all'inizio della query.
+
+- Nell'esempio: `VALUES ?book { :book1 :book3 }`.
+	- ![center|500](img/Pasted%20image%2020260516163655.png)
+- A cosa serve? Immagina di avere un database con milioni di libri, ma a te interessano i dati _solo ed esclusivamente_ di `book1` e `book3` (magari perché l'utente li ha selezionati da una spunta sul sito web). Usando `VALUES`, costringi la variabile `?book` ad assumere solo quei due specifici URI. Il motore ignorerà tutto il resto del database e cercherà il titolo e il prezzo solo per quei due libri specifici, rendendo la query incredibilmente veloce e mirata.
+
+## Update dei dati RDF
+### Dati Statici vs. Pattern Dinamici
+
+Prima di scendere nei dettagli, mettiamo in chiaro una distinzione fondamentale nella sintassi di aggiornamento di SPARQL. Per inserire o cancellare dati, hai due "modalità":
+
+- **La modalità `DATA` (`INSERT DATA` / `DELETE DATA`):** La usi quando sai _esattamente_ cosa vuoi aggiungere o togliere. In questa modalità **non puoi usare variabili** (`?x`). Devi scrivere le triple per esteso, inserendo gli URI e i valori esatti.
+    
+- **La modalità dinamica (`INSERT` / `DELETE`):** La usi quando vuoi modificare i dati basandoti su una ricerca. Questa modalità lavora obbligatoriamente in coppia con una clausola **`WHERE`**. Il motore prima cerca i dati usando il Graph Pattern (le variabili), e poi usa i risultati trovati per decidere cosa inserire o cancellare.
+
+### Aggiungere informazioni: INSERT e INSERT DATA
+
+Qui mostriamo visivamente questa differenza.
+
+- **Esempio (`INSERT DATA`):** È l'operazione più semplice. Stiamo letteralmente prendendo un nuovo libro (`<http://example/book1>`), gli diamo un titolo e un autore, e lo "appoggiamo" nel nostro database. Essendo dati espliciti e costanti, usiamo `INSERT DATA`.
+	- ![center|500](img/Pasted%20image%2020260516164050.png)
+- **Esempio (`INSERT` con `WHERE`):** Qui la faccenda è più sofisticata. Vogliamo copiare tutti i libri pubblicati dopo il 1970 dal nostro archivio principale e inserirli in un nuovo grafo dedicato chiamato `bookStore2`.
+    
+    - Prima, il blocco `WHERE` cerca nel grafo originale (`bookStore`) tutti i libri e filtra le date.
+        
+    - Poi, il blocco `INSERT` prende le variabili valorizzate (`?book`, `?p`, `?v`) e inietta queste triple nel nuovo grafo. È una sorta di "Copia-Incolla intelligente".
+    - ![center|500](img/Pasted%20image%2020260516164115.png)
+
+### Rimuovere informazioni: DELETE e DELETE DATA 
+
+La logica della cancellazione è perfettamente speculare a quella dell'inserimento.
+
+- **Esempio (`DELETE DATA`):** Hai fatto un errore di inserimento e vuoi eliminare esattamente la tripla che dice che "David Copperfield" è stato scritto da "Edmund Wells". Scrivi l'URI esatto del libro, il titolo esatto, e il motore rimuove chirurgicamente quella specifica informazione dal grafo.
+	- ![center|500](img/Pasted%20image%2020260516164215.png)
+- **Esempio (`DELETE` con `WHERE`):** Questo è potente (e pericoloso!). Supponiamo tu voglia fare pulizia nel database. Il blocco `WHERE` individua tutti i libri precedenti al 1970. Il blocco `DELETE` prende queste variabili e distrugge tutte le triple ad esse associate. È l'equivalente di una cancellazione massiva (bulk delete).
+	- ![center|500](img/Pasted%20image%2020260516164159.png)
+
+### L'arte del "Rinomina": DELETE + INSERT (Slide 4)
+
+Questa è una slide cruciale per capire la filosofia del Web Semantico. Se in SQL vuoi cambiare il nome di una persona da "Bill" a "William", usi il comando `UPDATE`.
+
+In RDF (e quindi in SPARQL), **il comando `UPDATE` per modificare un singolo valore non esiste**. Poiché tutto è basato su "triple" immutabili (Soggetto-Predicato-Oggetto), per cambiare un'informazione devi _distruggere la vecchia tripla e crearne una nuova_.
+
+Ecco perché SPARQL ti permette di combinare `DELETE` e `INSERT` in un'unica query atomica:
+
+1. Si usa la clausola **`WITH`** per dire al motore: _"Tutte le operazioni che seguono, falle all'interno di questo specifico grafo (addresses)"_. (In alternativa potevi usare le keyword `GRAPH` dentro le parentesi graffe).
+    
+2. Il blocco `WHERE` individua la persona il cui nome attuale è "Bill".
+    
+3. Il blocco `DELETE` rimuove la tripla con il nome vecchio.
+    
+4. Il blocco `INSERT` crea la tripla con il nome nuovo ("William").
+    
+![center|500](img/Pasted%20image%2020260516164309.png)
+
+Tutto questo avviene in un colpo solo. Se salta la corrente a metà operazione, il database non rimane in uno stato inconsistente (senza nome o con due nomi).
+
+### LOAD e CLEAR
+
+Infine, ci sono due comandi pensati per la gestione macroscopica del database, per spostare "scatoloni" interi di dati invece che singole triple.
+
+- **`LOAD`:** È il muletto del Triple Store. Gli dai l'URL di un file RDF (es. un'ontologia trovata su internet o un file locale) e lui scarica tutto il contenuto e lo inietta nel tuo database. Puoi specificare il grafo di destinazione con `INTO GRAPH`. L'opzione facoltativa `SILENT` è molto comoda: dice al motore _"Se il file non esiste o il link è rotto, non mandare in crash l'intero sistema con un errore, fai finta di niente e vai avanti"_.
+	- ![center|500](img/Pasted%20image%2020260516164354.png)
+- **`CLEAR`:** È il bulldozer. `CLEAR GRAPH <uri>` rade al suolo un intero grafo nominato, svuotandolo completamente in un istante. Come mostra il riquadro in basso nella slide, è semplicemente una scorciatoia (molto più veloce e ottimizzata dal punto di vista computazionale) per scrivere una noiosissima query che dice: _"Trova ogni singolo Soggetto, Predicato e Oggetto in questo grafo, e cancellali tutti"_.
+	- ![center|500](img/Pasted%20image%2020260516164412.png)
+
