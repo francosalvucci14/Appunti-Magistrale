@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
+                "file": "Appunti II Anno/Appunti CDCI/Appunti parte Golluscio.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 7-8 KE - SPARQL e SPARQL 1.1"
+              "title": "Appunti parte Golluscio"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
+                "file": "Appunti II Anno/Appunti CDCI/Appunti parte Golluscio.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 7-8 KE - SPARQL e SPARQL 1.1"
+              "title": "Outline of Appunti parte Golluscio"
             }
           },
           {
@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "b7d5f1914b483202",
@@ -167,6 +168,10 @@
   },
   "active": "4087b0f98e2f2e6e",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Laboratorio GNS3.md",
+    "Appunti II Anno/Appunti CDCI/Appunti parte Golluscio.md",
+    "Appunti II Anno/Appunti KE/Lezione 9-10 KE - SKOS.md",
+    "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260516164412.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260516164354.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260516164309.png",
@@ -177,7 +182,6 @@
     "Appunti II Anno/Appunti KE/img/Pasted image 20260516163655.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260516163505.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260516163447.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260516163326.png",
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
     "Appunti II Anno/Appunti KE/Lezione 15 KE - SHACL.md",
@@ -185,8 +189,6 @@
     "Appunti II Anno/Appunti KE/Lezione 13 KE - GraphDB + LOV.md",
     "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
     "Appunti II Anno/Appunti KE/Lezione 11 KE - Ontolex-Lemon.md",
-    "Appunti II Anno/Appunti KE/Lezione 9-10 KE - SKOS.md",
-    "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
     "Appunti II Anno/Appunti KE/Lezione 6 KE - Linked Open Data.md",
     "Appunti II Anno/Appunti KE/Lezione 3 KE - RDF e RDFS.md",
     "Appunti II Anno/Appunti KE/Lezione 4-5 KE - OWL, OWL2.md",
@@ -210,7 +212,6 @@
     "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Metasploitable/Privilege Escalation/Privilege Escalation - SUID.md",
     "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Metasploitable/Privilege Escalation/Privilege Escalation - sudoers.md",
     "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Metasploitable/Exploitation/Exploitation - PHP CGI.md",
-    "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Requirements.md",
     "Appunti II Anno/Appunti CDCI/Threat-Modeling-Ospedale.pdf",
     "Appunti II Anno/Appunti CDCI/Threat_Model_Azienda_Ospedaliera-1.pdf"
   ]
