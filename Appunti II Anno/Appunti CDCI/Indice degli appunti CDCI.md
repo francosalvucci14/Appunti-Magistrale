@@ -3,6 +3,8 @@ Indice degli appunti del corso di Cybersecurity-By-Design for Critical Infrastru
 - [Lezione-1-CDCI](Lezione%201.pdf)
 - [Lezione2](Lezione%202.pdf)
 - [Lezione3](Lezione%203.pdf)
+- [Lezione4](Lezione%204.pdf)
+- [Lezione5](Appunti%20II%20Anno/Appunti%20CDCI/Lezione%205.pdf)
 
 Esercitazioni
 
