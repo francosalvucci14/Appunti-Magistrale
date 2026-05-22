@@ -162,3 +162,131 @@ Infine, la classe `Models` supporta un **approccio basato sulle proprietà**, ch
 - **Scrittura/Aggiornamento:** Il metodo `Models.setProperty(model, subject, property, value)` permette di assegnare un nuovo valore a una determinata proprietà. Eseguendo questa operazione, il framework si occupa automaticamente di cancellare tutti i valori precedenti associati a quella proprietà per quel soggetto (limitatamente ai contesti indicati, o all'intero modello se non si specifica alcun contesto).
 
 ![center|500](img/Pasted%20image%2020260522120558.png)
+
+## RIO (RDF Input/Output)
+
+Il modulo **RIO** (acronimo di RDF Input/Output) di Eclipse RDF4J è il componente dedicato alla gestione dei flussi di ingresso e uscita dei dati RDF. Concentrandoci specificamente sulla fase di lettura, il protagonista assoluto è l'**RDFParser**, il cui compito è prendere in input un documento RDF scritto in una sintassi concreta (come Turtle, RDF/XML, ecc.) e tradurlo in oggetti Java conformi alle interfacce definite nel package _Model_ (viste in precedenza).
+### RIO Parser
+#### Creazione e Istanziazione del Parser
+
+Per ottenere un'istanza di un parser specifico per il formato che si desidera leggere, il framework offre due strade.
+
+La prima è un approccio più esplicito e rigoroso che passa attraverso l'uso di un registro:
+
+1. Si interroga l'`RDFParserRegistry` per ottenere l'istanza del registro contenente tutti i parser attualmente disponibili sul _classpath_.
+    
+2. Si richiede la _factory_ del parser per un formato specifico (ad esempio, `RDFFormat.TURTLE`).
+    
+3. Poiché il parser potrebbe non essere disponibile, il metodo restituisce un `Optional`. Se il formato non è supportato, viene lanciata un'eccezione dedicata (`Rio.unsupportedFormat`).
+    
+4. Se la factory è presente, si invoca il metodo `getParser()` per istanziare finalmente il parser.
+    
+
+La seconda strada è una comoda **scorciatoia** offerta dalla classe di utilità `Rio`. Tramite il metodo `Rio.createParser(rdfFormat [, valueFactory])`, è possibile istanziare direttamente il parser passandogli il formato desiderato e, opzionalmente, la `ValueFactory` da utilizzare.
+
+![center|500](img/Pasted%20image%2020260522121632.png)
+#### Configurazione del Parser
+
+Una volta ottenuto l'oggetto `RDFParser`, è possibile configurarne il comportamento tramite una serie di impostazioni opzionali prima di avviare la lettura vera e propria:
+
+- **`setValueFactory(...)`**: Definisce quale factory utilizzare per creare le istanze dei termini RDF (IRI, Literal, BNode) durante la lettura.
+    
+- **`setParseErrorListener(...)`**: Associa un listener che verrà notificato ogni volta che il parser incontra un errore di sintassi.
+    
+- **`setParseLocationListener(...)`**: Associa un listener per monitorare il progresso della lettura.
+    
+- **`setRDFHandler(...)`**: Questa è l'impostazione concettualmente più importante. Definisce il gestore (l'`RDFHandler`) a cui il parser "consegnerà" gli statement man mano che li estrae dal documento.
+    
+
+Per configurazioni più avanzate e specifiche dei singoli parser, si utilizza la classe `ParserConfig`. È possibile istanziare un oggetto `ParserConfig`, settarvi dei parametri rappresentati da oggetti `RioSetting<T>` (ognuno con il proprio valore), e infine passare l'intera configurazione al parser tramite `setParserConfig(config)`. Per conoscere quali impostazioni sono supportate da un determinato parser, si può invocare il suo metodo `getSupportedSettings()`.
+
+![center|500](img/Pasted%20image%2020260522121700.png)
+
+#### L'Architettura di Parsing: L'Approccio "Push"
+
+Il processo di lettura viene innescato richiamando il metodo `parse(inputStreamOrReader, baseURI)`.
+
+L'aspetto fondamentale da comprendere è che l'RDFParser opera utilizzando un **approccio _push_**, del tutto analogo a quello utilizzato dalle API SAX per il parsing dei documenti XML. Il parser legge il file in modo sequenziale e, non appena riconosce un elemento valido, lo "spinge" (push) verso l'`RDFHandler` precedentemente configurato, senza caricare l'intero documento in memoria tutto in una volta.
+
+La sequenza delle operazioni segue un ciclo di vita preciso:
+
+1. Inizia il parsing invocando `startRDF()` sull'handler.
+    
+2. Avvia un ciclo in cui analizza il testo. Man mano che incontra elementi, invoca metodi specifici sull'handler:
+    
+    - `handleNamespace(prefix, name)` quando incontra la dichiarazione di un prefisso (es. `@prefix ex: <http://example.org/>`).
+        
+    - `handleStatement(st)` quando estrae una tripla completa (soggetto, predicato, oggetto).
+        
+    - `handleComment(comment)` se incontra dei commenti nel file.
+        
+3. Al termine del documento, chiude il processo invocando `endRDF()`.
+
+![center|500](img/Pasted%20image%2020260522121726.png)
+
+![center|500](img/Pasted%20image%2020260522121747.png)
+#### Raccogliere i Dati: StatementCollector e Scorciatoie
+
+Poiché l'interfaccia base `RDFHandler` si limita a ricevere i dati in streaming, se si desidera memorizzarli e conservarli (ad esempio in un `Model` o in una semplice collection), RDF4J fornisce un'implementazione concreta chiamata **`StatementCollector`**. Questo componente funge da handler e si occupa di accumulare automaticamente tutti gli statement e i namespace ricevuti durante il parsing all'interno di una collezione in memoria.
+
+Infine, per i casi d'uso più comuni in cui l'obiettivo è semplicemente caricare un intero file RDF all'interno di un modello in memoria, il framework fornisce un'ulteriore, potentissima **scorciatoia**. Invece di istanziare il parser, configurare l'handler e avviare il parsing manualmente, è possibile utilizzare un unico metodo statico:
+
+```Java
+Model model = Rio.parse(inputStreamOrReader, baseURI, rdfFormat, [settings, valueFactory, errorListener], contexts...)
+```
+
+Questa singola istruzione esegue l'intero ciclo: crea il parser adatto, legge i dati dallo stream e restituisce direttamente un oggetto `Model` pronto per essere interrogato.
+
+### RIO Writer
+
+Passando alla fase di serializzazione e output, il modulo RIO mette a disposizione l'**RDFWriter**. Il suo compito è speculare a quello del parser: prende in input gli _statement_ RDF, rappresentati come oggetti Java conformi alle interfacce del package Model, e li scrive su un flusso di uscita codificandoli in un documento testuale secondo una specifica sintassi concreta (come, ad esempio, il formato Turtle).
+
+#### Creazione e Istanziazione del Writer
+
+Anche per la creazione di un writer il framework offre due approcci distinti, mantenendo una simmetria architetturale con la fase di lettura.
+
+Il primo metodo è esplicito e basato sul registro di sistema:
+
+1. Si ottiene l'istanza del registro interrogando `RDFWriterRegistry.getInstance()`, il quale contiene tutti i writer individuati nel _classpath_ del progetto.
+    
+2. Si richiede la _factory_ specifica per il formato desiderato (ad esempio, tramite `.get(RDFFormat.TURTLE)`).
+    
+3. Essendo il risultato incapsulato in un `Optional<RDFWriterFactory>`, in caso di formato non supportato si gestisce l'assenza lanciando un'eccezione dedicata tramite `.orElseThrow(Rio.unsupportedFormat(...))`.
+    
+4. Infine, dalla factory si ottiene l'oggetto writer invocando `.getWriter(outputStreamOrWriter [, baseURI])`, fornendo il flusso su cui scrivere e, opzionalmente, l'URI di base.
+    
+
+Il secondo metodo, più immediato, consiste nell'usare una **scorciatoia** fornita dalla classe di utilità `Rio`:
+
+Tramite l'istruzione `Rio.createWriter(rdfFormat, outputStreamOrWriter [, base URI])` si delega al framework l'intero processo di ricerca nel registro e istanziazione, ottenendo direttamente il writer pronto all'uso.
+
+![center|500](img/Pasted%20image%2020260522122614.png)
+#### Configurazione del Writer
+
+Prima di avviare la scrittura, è possibile personalizzare il comportamento del serializzatore. Questo avviene attraverso la classe `WriterConfig`.
+
+Il processo richiede di istanziare un oggetto `WriterConfig` e di popolarlo aggiungendo i vari parametri tramite il metodo `set(setting, value)`. Ogni parametro è rappresentato da un oggetto di tipo `RioSetting<T>`. Per garantire la correttezza della configurazione, è possibile interrogare il writer stesso invocando `getSupportedSettings()`, che restituisce l'elenco esatto delle impostazioni riconosciute da quello specifico serializzatore.
+
+Una volta completata la configurazione, la si applica al writer richiamando `setWriterConfig(config)`.
+
+#### Esecuzione della Scrittura
+
+Per innescare il processo di serializzazione di una collezione di triple (un oggetto _Iterable_ in Java), si utilizza nuovamente la classe di utilità `Rio`:
+
+- **Metodo standard:** Se si ha a disposizione il writer già configurato, basta richiamare `Rio.write(iterable, w);`.
+    
+- **Scorciatoia diretta (Shorthand):** È possibile compattare l'intero ciclo di vita (creazione, configurazione e scrittura) in una singola riga di codice invocando: `Rio.write(iterable, outputStreamOrWriter [, base URI], format, [writerConfig]);`
+
+![center|500](img/Pasted%20image%2020260522122627.png)
+### Il Vantaggio Architetturale: Efficienza in Memoria
+
+C'è un principio architetturale di vitale importanza che accomuna l'intero modulo RIO (sia per la lettura che per la scrittura): **non c'è mai bisogno di avere tutti gli statement caricati simultaneamente in memoria.**
+
+Il framework è progettato per operare su flussi continui in modo estremamente efficiente:
+
+- Durante il parsing, i _reader_ inviano all'handler i dati elaborando **uno statement alla volta**.
+    
+- In maniera del tutto speculare, un _writer_ è progettato per ricevere e serializzare sul flusso di output **uno statement alla volta**.
+
+
+Questa natura incrementale garantisce che il consumo di memoria (RAM) rimanga costante e ridotto, permettendo al sistema di elaborare e trasferire moli di dati potenzialmente infinite senza rischiare blocchi o crash dell'applicazione.
