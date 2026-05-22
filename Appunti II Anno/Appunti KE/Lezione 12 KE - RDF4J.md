@@ -91,3 +91,74 @@ L'interfaccia `ValueFactory` definisce l'API necessaria per istanziare i tipi de
 	- ![center|500](img/Pasted%20image%2020260522104957.png)
 - **Creazione di Statement:** Una volta creati un soggetto, un predicato e un oggetto, questi possono essere assemblati in una singola asserzione richiamando `vf.createStatement(soggetto, predicato, oggetto)`.
 	- ![center|500](img/Pasted%20image%2020260522105017.png)
+
+### I Model
+
+Proseguendo l'analisi del framework, il nucleo della gestione delle collezioni di triple è rappresentato dall'interfaccia **Model**.
+
+Un `Model` è, a tutti gli effetti, un insieme di `Statement`. A livello di codice, questa interfaccia estende le strutture dati standard di Java, come `Set<Statement>` e `Serializable`, combinandole con interfacce specifiche del contesto semantico, come `Graph` e `NamespaceAware`.
+
+![center|500](img/Pasted%20image%2020260522120120.png)
+
+Per gestire queste collezioni di statement direttamente in memoria (tipicamente per dataset di dimensioni contenute), il framework mette a disposizione due implementazioni principali:
+
+- **LinkedHashModel:** Un'implementazione che basa il suo funzionamento su una struttura a hash-table.
+    
+- **TreeModel:** Un'implementazione che utilizza alberi Red-Black, garantendo che i dati vengano mantenuti ordinati secondo l'ordine lessicale dei termini RDF.
+
+La creazione di un modello avviene semplicemente istanziando una di queste classi (es. `Model model = new LinkedHashModel();`).
+
+![center|500](img/Pasted%20image%2020260522120139.png)
+
+![center|500](img/Pasted%20image%2020260522120340.png)
+#### Interrogazione e Modifica del Modello: Il Ruolo dei Wildcard
+
+Rispetto a una generica collection di Java (come un `LinkedHashSet`), il `Model` di RDF4J semplifica notevolmente le operazioni di interrogazione. Mentre su un set standard per testare la presenza di una tripla tramite il metodo `contains()` è necessario istanziare e passare un oggetto `Statement` completo, il `Model` permette di passare direttamente i singoli costituenti della tripla (soggetto, predicato, oggetto).
+
+In queste operazioni di verifica (`contains`) e di rimozione (`remove`), il valore **`null`** assume un ruolo cruciale funzionando da _wildcard_ (jolly).
+
+Basandosi sulla documentazione Javadoc ufficiale, ecco come si comportano queste operazioni utilizzando il wildcard:
+
+- `model.contains(s1, null, null)`: restituisce `true` se esiste _almeno uno_ statement che ha `s1` come soggetto, ignorando quale sia il predicato o l'oggetto (logica identica per il `remove`, che eliminerà tutti gli statement con quel soggetto).
+    
+- `model.contains(null, null, null, c1)`: agisce specificamente sul quarto parametro, il contesto, verificando la presenza (o rimuovendo) ogni statement appartenente al contesto `c1`.
+    
+- `model.contains(null, null, null, (Resource)null)`: utilizzando un cast esplicito a risorsa nulla per il contesto, si intercettano tutti quegli statement che _non_ hanno alcun contesto associato.
+    
+- `model.contains(null, null, null, c1, c2, c3)`: è possibile anche passare una lista di contesti, operando quindi su qualsiasi statement che appartenga al contesto `c1`, oppure a `c2`, oppure a `c3`.
+
+![center|500](img/Pasted%20image%2020260522120405.png)
+
+Vediamo anche per quanto riguarda i `remove`
+
+![center|500](img/Pasted%20image%2020260522120455.png)
+#### Viste e Filtri sui Dati
+
+Un'altra funzionalità potente del `Model` è la capacità di generare delle **viste** dinamiche sui dati.
+
+Utilizzando il metodo `filter(subject, predicate, object, contexts...)`, è possibile ottenere un nuovo `Model` ridotto (filtrato) che contiene esclusivamente gli statement corrispondenti ai parametri indicati. La caratteristica fondamentale di questa vista è la sua natura bidirezionale: qualsiasi modifica apportata al modello di partenza si rifletterà automaticamente sulla vista filtrata, e viceversa.
+
+![center|500](img/Pasted%20image%2020260522120515.png)
+
+Inoltre, se si ha bisogno di estrarre solo parti specifiche delle triple, è possibile chiedere al modello una vista diretta sui singoli set di componenti tramite i metodi:
+
+- `model.subjects()` per ottenere un `Set<Resource>`.
+    
+- `model.predicates()` per ottenere un `Set<IRI>`.
+    
+- `model.objects()` per ottenere un `Set<Value>`.
+
+![center|500](img/Pasted%20image%2020260522120537.png)
+#### La Classe di Utilità Models
+
+Per semplificare ulteriormente le operazioni più comuni e avanzate, RDF4J fornisce la classe di utilità **`Models`**.
+
+Questa classe permette, ad esempio, di estrarre agilmente componenti di un tipo specifico dal modello. Richiamando `Models.objectLiterals(model)`, il framework restituirà tutti e soli gli oggetti presenti nel modello che sono di tipo letterale, filtrando via IRI o BNode.
+
+Infine, la classe `Models` supporta un **approccio basato sulle proprietà**, che risulta spesso più intuitivo rispetto alla manipolazione diretta degli statement:
+
+- **Lettura:** Tramite `Models.getPropertyString(model, subject, property)` si ottiene direttamente (sotto forma di `Optional<String>`) il valore testuale associato a un soggetto tramite una specifica proprietà. Questa è un'alternativa più compatta rispetto al dover filtrare prima il modello e poi estrarre la stringa dell'oggetto.
+    
+- **Scrittura/Aggiornamento:** Il metodo `Models.setProperty(model, subject, property, value)` permette di assegnare un nuovo valore a una determinata proprietà. Eseguendo questa operazione, il framework si occupa automaticamente di cancellare tutti i valori precedenti associati a quella proprietà per quel soggetto (limitatamente ai contesti indicati, o all'intero modello se non si specifica alcun contesto).
+
+![center|500](img/Pasted%20image%2020260522120558.png)
