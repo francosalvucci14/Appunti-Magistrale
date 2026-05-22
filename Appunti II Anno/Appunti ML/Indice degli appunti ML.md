@@ -17,5 +17,9 @@
 - [Lezione 14 ML - Ensemble Methods](Lezione%2014%20ML%20-%20Ensemble%20Methods.md)
 - [Lezione 15 ML - Clustering & SemiSupervised Learning](Lezione%2015%20ML%20-%20Clustering%20&%20SemiSupervised%20Learning.md)
 - [Lezione 16 ML - Dimensionality Reduction](Lezione%2016%20ML%20-%20Dimensionality%20Reduction.md)
+
+Progetto
+
+- [Progetto ML](Progetto%20ML.md)
 - 
 

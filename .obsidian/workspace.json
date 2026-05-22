@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/Lezione 11 KE - Ontolex-Lemon.md",
+                "file": "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 11 KE - Ontolex-Lemon"
+              "title": "Indice degli appunti ML"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/Lezione 11 KE - Ontolex-Lemon.md",
+                "file": "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 11 KE - Ontolex-Lemon"
+              "title": "Outline of Indice degli appunti ML"
             }
           },
           {
@@ -129,7 +129,8 @@
               "title": "Tags"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "b7d5f1914b483202",
@@ -165,8 +166,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f460895308e6293",
+  "active": "4087b0f98e2f2e6e",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
+    "Appunti II Anno/Appunti KE/Lezione 11 KE - Ontolex-Lemon.md",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260522101204.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260522101144.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260522101130.png",
@@ -177,13 +180,10 @@
     "Appunti II Anno/Appunti KE/img/Pasted image 20260522100608.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260522100555.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260522100314.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260522100248.png",
     "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
     "README.md",
-    "Appunti II Anno/Appunti KE/Lezione 11 KE - Ontolex-Lemon.md",
     "Appunti II Anno/Appunti KE/Lezione 9-10 KE - SKOS.md",
     "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
-    "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
     "Appunti II Anno/Appunti CDCI/Appunti parte Golluscio.md",
     "Appunti II Anno/Appunti CDCI/Indice degli appunti CDCI.md",
     "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Laboratorio GNS3.md",
