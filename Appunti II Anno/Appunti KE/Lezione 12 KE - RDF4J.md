@@ -278,7 +278,7 @@ Per innescare il processo di serializzazione di una collezione di triple (un ogg
 - **Scorciatoia diretta (Shorthand):** È possibile compattare l'intero ciclo di vita (creazione, configurazione e scrittura) in una singola riga di codice invocando: `Rio.write(iterable, outputStreamOrWriter [, base URI], format, [writerConfig]);`
 
 ![center|500](img/Pasted%20image%2020260522122627.png)
-### Il Vantaggio Architetturale: Efficienza in Memoria
+#### Il Vantaggio Architetturale: Efficienza in Memoria
 
 C'è un principio architetturale di vitale importanza che accomuna l'intero modulo RIO (sia per la lettura che per la scrittura): **non c'è mai bisogno di avere tutti gli statement caricati simultaneamente in memoria.**
 
@@ -290,3 +290,289 @@ Il framework è progettato per operare su flussi continui in modo estremamente e
 
 
 Questa natura incrementale garantisce che il consumo di memoria (RAM) rimanga costante e ridotto, permettendo al sistema di elaborare e trasferire moli di dati potenzialmente infinite senza rischiare blocchi o crash dell'applicazione.
+## Repository
+
+Procedendo nell'analisi del framework, abbandoniamo le semplici collezioni in memoria e incontriamo il vero cuore della gestione dei dati persistenti e strutturati: il **Repository**.
+
+Un `Repository` rappresenta il punto di accesso ufficiale a un database RDF (il _triplestore_). Rispetto ai `Model` visti in precedenza, i repository sono strumenti molto più avanzati e progettati per scenari reali di produzione. Le loro caratteristiche distintive includono il supporto per:
+
+- **Connessioni concorrenti** da parte di molteplici utenti simultaneamente.
+    
+- **Transazioni**, garantendo la possibilità di effettuare _commit_ o _rollback_ di gruppi di operazioni e gestendo diversi livelli di isolamento tra transazioni concorrenti.
+    
+- **Linguaggi di interrogazione e modifica**, offrendo supporto nativo e strutturato per l'esecuzione di query, tipicamente utilizzando SPARQL.
+    
+
+Un aspetto architetturale fondamentale è che l'utente o l'applicazione non esegue mai le operazioni di lettura o scrittura direttamente sull'oggetto `Repository`. Quest'ultimo funge da "fabbrica": per interagire con i dati è obbligatorio ottenere da esso una **`RepositoryConnection`**, attraverso la quale transitano tutte le operazioni.
+
+![center|500](img/Pasted%20image%2020260523145350.png)
+### Tipologie di Repository
+
+Il framework fornisce diverse implementazioni dell'interfaccia `Repository` (e delle relative `RepositoryConnection`), ognuna adatta a un contesto specifico:
+
+- **SPARQLRepository:** È pensato per accedere a un _endpoint SPARQL_ generico. Poiché si affida al protocollo standard SPARQL per le comunicazioni, è soggetto alle limitazioni del protocollo stesso (ad esempio, limitazioni nella gestione di transazioni complesse o nell'uso di BNode come parametri di input). Per questo motivo, il suo utilizzo è consigliato principalmente per singole operazioni SPARQL isolate. Prevede anche un costruttore specifico (un _overload_) per indicare un endpoint separato dedicato esclusivamente alle operazioni di modifica.
+	- ![center|500](img/Pasted%20image%2020260523145415.png)
+- **HTTPRepository:** Viene utilizzato per accedere a un repository remoto che espone i propri servizi specificamente attraverso l'API REST di RDF4J. Supporta la configurazione di credenziali (username e password) nel caso in cui l'accesso al server richieda autenticazione.
+	- ![center|500](img/Pasted%20image%2020260523145440.png)
+_Nota pratica sul ciclo di vita:_ Per entrambi questi repository, l'invocazione esplicita del metodo `init()` per l'inizializzazione è diventata opzionale nelle versioni recenti. È invece sempre obbligatorio e cruciale rilasciare le risorse invocando `shutDown()`, pratica che andrebbe sempre inserita all'interno di un blocco `finally` per assicurarne l'esecuzione.
+
+### Il cuore locale: SailRepository e l'interfaccia Sail
+
+La terza, e concettualmente più importante, implementazione è il **`SailRepository`**. Questo repository è un "contenitore" che avvolge un oggetto **`Sail`** (acronimo di _Storage and Inference Layer_).
+
+L'interfaccia `Sail` rappresenta il vero e proprio motore del database: è il livello che si occupa fisicamente dello storage, dell'esecuzione delle query e della logica di inferenza. Questa netta separazione tramite interfacce serve a **disaccoppiare** le implementazioni di basso livello del triplestore da tutti gli altri moduli di alto livello del framework (come i parser, le API per l'utente o i motori di analisi). Anche in questo caso, la divisione dei compiti è replicata specularmente: al `Sail` corrisponde una `SailConnection` per le operazioni dirette sui dati.
+
+#### Esempio: MemoryStore e la gestione della persistenza
+
+Un'implementazione classica di `Sail` è il `MemoryStore`. Se istanziato di base, opera esclusivamente in memoria RAM ed è perciò "non persistente" (i dati svaniscono alla chiusura).
+
+![center|300](img/Pasted%20image%2020260523145512.png)
+
+Tuttavia, il framework permette di renderlo persistente configurando una directory per i dati e invocando `setPersist(true)`. Il contenuto verrà così salvato in un file denominato `memorystore.data`.
+
+Le dinamiche di scrittura su questo file sono controllate minuziosamente dal parametro **`syncDelay`**:
+
+- **`syncDelay = 0`:** La scrittura su file avviene in maniera _sincrona_ a ogni commit. Questo massimizza la sicurezza (durabilità) dei dati, ma rallenta la transazione, che deve attendere i tempi fisici del disco. Inoltre, molte transazioni ravvicinate si traducono in continue e frammentate scritture fisiche.
+    
+- **`syncDelay > 0`:** La scrittura diventa un task _asincrono_ eseguito in background dopo il lasso di tempo indicato. La transazione in corso non deve più attendere i tempi del disco, migliorando drasticamente le prestazioni a fronte di una brevissima finestra di potenziale perdita di dati in caso di crash improvviso.
+    
+- **`syncDelay < 0`:** I dati vengono scaricati sul file esclusivamente alla fine, quando il `Sail` viene spento.
+
+![center|300](img/Pasted%20image%2020260523145541.png)
+#### Architettura Avanzata: Stackable e Notifying Sail
+
+La flessibilità dell'architettura Sail raggiunge il suo apice con il concetto di **Stackable Sail** (Sail impilabile).
+
+![center|500](img/Pasted%20image%2020260523145644.png)
+
+Uno Stackable Sail non conserva i dati in prima persona, ma opera come un "involucro" (wrapper) posizionato al di sopra di un altro Sail sottostante (chiamato _base_ o _delegate_).
+
+Questa architettura a strati permette di intercettare e modificare le operazioni in volo. Una connessione derivata da uno Stackable Sail restituisce un wrapper intorno alla connessione originaria. Questo è estremamente utile per iniettare logiche speciali al momento del commit o del rollback, oppure per intercettare e filtrare ogni singola richiesta di lettura, scrittura o query prima che raggiunga il database fisico.
+
+Per operare efficacemente, questi strati intermedi si avvalgono di un sistema ad eventi:
+
+- Uno Stackable Sail può sottoscriversi per ricevere notifiche generate da un Sail di base configurato come **`NotifyingSail`**. Tramite appositi _listener_ (come il `SailChangedListener`), viene informato ogniqualvolta uno statement viene aggiunto o rimosso.
+    
+- Parallelamente, il wrapper della connessione può sottoscriversi agli eventi della `NotifyingSailConnection` sottostante (tramite un `SailConnectionListener`), venendo notificato con precisione su quali statement sono stati _effettivamente_ modificati e confermati durante il ciclo di vita di una singola transazione.
+
+### Inferenza: ForwardChaining e SchemaCaching
+
+Il framework RDF4J permette di arricchire il repository base con capacità di ragionamento (reasoning) sfruttando l'architettura _stackable sail_. Vengono presentati due inferencer, sebbene entrambi siano contrassegnati come **deprecati**:
+
+- **`ForwardChainingRDFSInferencer`:** Questo stackable sail implementa il reasoning RDFS utilizzando il _forward chaining_. Il suo funzionamento si basa su due fasi:
+    
+    1. Aggiunge al repository le triple assiomatiche base (ad esempio, definisce che la proprietà `rdfs:subClassOf` ha come range la classe `rdfs:Class`).
+        
+    2. Al momento del _commit_ di una transazione, il reasoner calcola tutte le nuove triple implicate logicamente. Lo fa applicando in modo iterativo le regole che specificano la semantica RDFS.
+	    - **Gestione della Monotonia:** Poiché la semantica di RDFS (e OWL) è monotona, l'aggiunta di una nuova tripla non può mai invalidare le inferenze già fatte; il reasoner deve solo tentare di applicare nuovamente le regole. Al contrario, la _cancellazione_ di una tripla può invalidare le conclusioni precedenti. Se ciò accade, il reasoner è costretto a cancellare tutte le triple inferite e riavviare l'intero processo di reasoning da zero
+        
+- **`SchemaCachingRDFSInferencer`:** Un altro stackable sail deprecato per il reasoning RDFS. A differenza del precedente, non usa un approccio _rule-based_ (basato su regole applicate iterativamente), ma colleziona lo schema in una _cache_ interna, utilizzata per produrre le inferenze in modo più veloce.
+
+![center|500](img/Pasted%20image%2020260523150018.png)
+
+![center|500](img/Pasted%20image%2020260523150042.png)
+### Note Architetturali sulle Configurazioni
+
+Un aspetto importante di RDF4J è che **non distingue tra la creazione di un nuovo repository e l'apertura di uno creato in precedenza**.
+
+A livello interno, quando viene inizializzato un repository persistente, questo ispeziona la propria directory dei dati. Se trova dei file, carica i dati salvati in precedenza; altrimenti parte da zero. A causa di questo comportamento, è fondamentale che l'oggetto `Repository` venga **sempre configurato nello stesso identico modo** ad ogni avvio. Cambiare la configurazione (ad esempio, istanziando un _native store_ su dati creati da un _memory store_) può corrompere lo stato, a meno che non si tratti di un cambiamento esplicitamente sicuro (come l'aggiunta di indici non esistenti).
+
+### Gestione della RepositoryConnection
+
+Per interagire con i dati (lettura, scrittura, query), l'utente deve ottenere una connessione invocando `rep.getConnection()`.
+
+Poiché la connessione impegna risorse di sistema (memoria, file handle, lock del database), **deve essere sempre chiusa** al termine delle operazioni. Ci sono due pattern principali in Java per garantire questo:
+
+1. **Blocco try-finally:** Si apre la connessione, si eseguono le operazioni nel blocco `try`, e si garantisce la chiusura invocando `conn.close()` nel blocco `finally`.
+    
+2. **Try-with-resources (Consigliato in Java moderni):** Si dichiara l'apertura della connessione direttamente all'interno delle parentesi del blocco `try`. Java chiuderà automaticamente la risorsa al termine del blocco, rendendo il codice più pulito e sicuro.
+
+![center|500](img/Pasted%20image%2020260523150131.png)
+#### Inserimento Dati: Il metodo `add`
+
+La classe `RepositoryConnection` offre il metodo `add()` per inserire nuove triple nel database. Il framework mette a disposizione numerosi _overload_ (varianti) di questo metodo, rendendolo estremamente flessibile. Può accettare in input:
+
+- Singoli oggetti `Statement`.
+    
+- Le singole componenti esplose di uno statement (soggetto, predicato, oggetto).
+    
+- Collezioni di statement (`Iterable` o `Iteration`).
+    
+- Sorgenti esterne come `File`, `InputStream` o `Reader` (in questi casi il metodo legge il file, esegue il parsing e inserisce i dati direttamente).
+    
+
+È cruciale notare che se si passa il parametro opzionale **context**, si specifica esplicitamente in quali contesti (o grafi nominati) le triple devono essere inserite, _sovrascrivendo_ eventuali contesti già associati agli statement in input.
+
+![center|500](img/Pasted%20image%2020260523150150.png)
+#### Estrazione Dati: Il metodo `export`
+
+Speculare all'inserimento, il metodo `export()` permette di estrarre i dati dal repository e serializzarli.
+
+Per utilizzarlo, occorre configurare un `RDFHandler` (un writer, come visto in precedenza nel modulo RIO) e passarlo al metodo `export`. È possibile filtrare l'estrazione passando i contesti desiderati come parametri successivi. Ad esempio, `conn.export(nquadOutputter, g1)` esporterà solo i dati appartenenti al contesto identificato dall'IRI `g1`. Se non si specifica alcun contesto, verrà esportato l'intero contenuto del repository.
+
+![center|500](img/Pasted%20image%2020260523150243.png)
+
+Un dettaglio molto importante è che `RepositoryConnection.export()` esporta **unicamente gli statement espliciti**. Non estrarrà mai le triple generate logicamente dagli inferencer (se presenti nello stack).
+
+![center|500](img/Pasted%20image%2020260523150305.png)
+
+Infine, per rendere l'output testuale più leggibile, è possibile registrare dei prefissi (namespace) direttamente sulla connessione usando `conn.setNamespace(prefix, URI)`. Durante l'esportazione, il writer utilizzerà questi prefissi al posto degli URI estesi.
+
+![center|500](img/Pasted%20image%2020260523150323.png)
+
+Analizziamo come la `RepositoryConnection` permette di interrogare e manipolare i dati, partendo dai metodi di base fino ad arrivare all'esecuzione di query SPARQL complesse.
+
+#### Recupero Dati: Il metodo `getStatements`
+
+Per recuperare statement specifici dal repository senza utilizzare SPARQL, si utilizza il metodo `conn.getStatements()`. Il suo funzionamento è del tutto analogo a quanto visto per la ricerca all'interno dei `Model`, basandosi sull'uso dei wildcard (`null`) per filtrare soggetto, predicato, oggetto o contesto.
+
+L'invocazione di questo metodo restituisce un oggetto **`RepositoryResult<Statement>`**. Questo oggetto è essenzialmente un iteratore che permette di scorrere i risultati uno alla volta (usando i classici metodi `hasNext()` e `next()`).
+
+È fondamentale ricordare che, trattandosi di una risorsa aperta verso il database, l'iterazione deve avvenire all'interno di un blocco _try-with-resources_ per garantirne la chiusura automatica al termine della lettura.
+
+- **Inferenza di default:** Un aspetto cruciale di `getStatements()` è che, **per impostazione predefinita, include nei risultati anche gli statement inferiti** (se è configurato un reasoner). Se si desidera ottenere _esclusivamente_ gli statement espliciti, è necessario utilizzare un _overload_ del metodo che accetta un parametro booleano finale, passandogli il valore `false` (cioè `includeInferred a false`).
+
+![center|500](img/Pasted%20image%2020260523150943.png)
+
+In alternativa al classico ciclo `while`, la classe di utilità `QueryResults` offre metodi più moderni basati sugli stream di Java. Ad esempio, si può convertire il risultato in uno stream e stamparlo direttamente con un'unica riga: `QueryResults.stream(result).forEach(System.out::println);`.
+
+![center|500](img/Pasted%20image%2020260523150953.png)
+#### Rimozione Dati: Il metodo `remove`
+
+In perfetta simmetria con il metodo `add()`, la connessione offre il metodo `remove()` per eliminare triple dal database.
+
+Anche qui troviamo diversi _overload_ che permettono di passare input differenti:
+
+- Una collezione (`Iterable` o `Iteration`) di statement.
+    
+- Un singolo oggetto `Statement`.
+    
+- Le componenti separate (soggetto, predicato, oggetto), utilizzando anche in questo caso il `null` come wildcard per indicare "cancella tutti gli statement che corrispondono a questo pattern".
+    
+
+Come per l'inserimento, l'uso del parametro **context** è determinante:
+
+- Se specificato, il metodo rimuoverà le triple indicate **solo dai grafi nominati specificati**, sovrascrivendo eventuali contesti presenti nell'input.
+    
+- Se non viene specificato alcun contesto (né come argomento del metodo né all'interno degli statement passati in input), l'operazione di cancellazione avverrà sull'intero repository, indistintamente.
+    
+#### Esecuzione di Query SPARQL
+
+RDF4J supporta pienamente l'esecuzione di interrogazioni strutturate in linguaggio SPARQL. Il framework distingue i tipi di query in base al formato del risultato atteso.
+
+##### 1. Tuple Query (SELECT)
+
+Le Tuple Query corrispondono alle query SPARQL di tipo `SELECT`. Il loro scopo è restituire un set di "tuple", ovvero una tabella in cui ogni riga è un risultato e ogni colonna è una variabile richiesta.
+
+1. Si prepara la query passando la stringa SPARQL al metodo `conn.prepareTupleQuery()`.
+    
+2. Si possono legare dinamicamente dei valori alle variabili della query prima dell'esecuzione usando `query.setBinding()`.
+    
+3. Si esegue la query chiamando `query.evaluate()`. Il risultato è un **`TupleQueryResult`**.
+    
+4. Iterando sul risultato (sempre in un blocco try-with-resources), si estraggono i singoli `BindingSet` (le righe dei risultati). Da ogni `BindingSet` si può poi recuperare il `Value` associato a una specifica variabile nominata nella `SELECT` (es. `bindingSet.getValue("acquaintance")`).
+
+![center|400](img/Pasted%20image%2020260523151016.png)
+##### 2. Graph Query (CONSTRUCT / DESCRIBE)
+
+Le Graph Query corrispondono alle interrogazioni SPARQL di tipo `CONSTRUCT` o `DESCRIBE`. A differenza delle tuple, queste query non restituiscono una tabella di variabili, ma generano un **nuovo grafo RDF** (quindi un insieme di statement completi).
+
+1. Si prepara la query con `conn.prepareGraphQuery()`.
+    
+2. Si esegue sempre con `query.evaluate()`. In questo caso, il risultato è un **`GraphQueryResult`**.
+    
+3. L'iterazione su questo risultato non restituisce dei `BindingSet`, ma direttamente oggetti **`Statement`** completi (soggetto, predicato, oggetto), pronti per essere manipolati o stampati.
+    
+4. _Scorciatoia:_ Se si desidera caricare l'intero grafo risultante direttamente in memoria, si può usare la comodissima utilità `QueryResults.asModel(query.evaluate())`, che restituisce un oggetto `Model`.
+
+![center|500](img/Pasted%20image%2020260523151121.png)
+##### 3. Update (INSERT / DELETE)
+
+Le operazioni di aggiornamento SPARQL, che modificano lo stato del database, sono gestite separatamente.
+
+1. Si prepara l'operazione passando la stringa SPARQL di aggiornamento (es. combinazioni di `DELETE` e `INSERT` basate su un blocco `WHERE`) al metodo `conn.prepareUpdate()`.
+    
+2. Poiché questa operazione non restituisce dati, non si utilizza il metodo `evaluate`, ma si invoca semplicemente **`update.execute()`**.
+
+![center|400](img/Pasted%20image%2020260523151159.png)
+
+_Nota sull'inferenza nelle Query:_ Come per `getStatements`, tutte le query e le operazioni di update includono di default i dati inferiti. È sempre possibile disabilitare questo comportamento invocando `setIncludeInferred(false)` sull'oggetto query/update prima di eseguirlo.
+
+### Il Modello a Transazioni: Dall'Autocommit al Controllo Esplicito
+
+Per impostazione predefinita, RDF4J opera in modalità **autocommit**. Questo significa che ogni singola operazione eseguita su una `RepositoryConnection` (un inserimento, una cancellazione, un update) viene considerata autonoma e confermata in modo permanente nel repository non appena completata.
+
+Tuttavia, in scenari reali e complessi, è spesso necessario raggruppare diverse operazioni affinché vengano trattate come un'unica unità logica (es. trasferire fondi implica sottrarre da un conto _e_ aggiungere a un altro; entrambe devono riuscire, o nessuna delle due). Per questo, il framework permette di **gestire esplicitamente le transazioni**.
+
+Il flusso classico per gestire una transazione prevede tre fasi principali:
+
+1. **Apertura:** Si invoca `conn.begin()` per segnalare l'inizio della transazione e sospendere l'autocommit.
+    
+2. **Esecuzione e Conferma:** All'interno di un blocco `try`, si eseguono le varie operazioni (le "cose utili"). Se tutte vanno a buon fine, si invoca `conn.commit()` per rendere le modifiche permanenti e atomiche.
+    
+3. **Gestione degli Errori:** Si predispone un blocco `catch` per intercettare eventuali eccezioni (tipicamente `RepositoryException`). Se si verifica un errore, si invoca **`conn.rollback()`** per annullare tutte le operazioni effettuate dall'inizio della transazione, riportando il database allo stato precedente.
+    
+
+_Nota di sicurezza:_ Indipendentemente da come si conclude la transazione (commit o rollback), la connessione va sempre chiusa. Se si utilizza il costrutto `try-with-resources`, e si verifica un'eccezione non gestita _prima_ del commit, il metodo `close()` (chiamato automaticamente alla fine del blocco) forzerà un rollback di sicurezza prima di chiudere la connessione.
+
+![center|500](img/Pasted%20image%2020260523151545.png)
+### I Livelli di Isolamento (Isolation Levels)
+
+Quando più utenti (o thread) operano contemporaneamente sullo stesso database, le loro transazioni si incrociano. I **livelli di isolamento** definiscono quanto strettamente una transazione debba essere protetta (isolata) dalle modifiche apportate dalle altre transazioni concorrenti in corso.
+
+RDF4J permette di specificare il livello di isolamento passando un parametro specifico al metodo `begin()`. Ecco i livelli supportati, in ordine crescente di rigore:
+
+1. **NONE:** È il livello di isolamento più basso. Non c'è alcuna garanzia di isolamento tra le transazioni. Una transazione vede le proprie modifiche, ma potrebbe non essere in grado di effettuare un rollback. Questo livello estremo è usato quasi esclusivamente per le operazioni massive di caricamento dati (_bulk data upload_) dove la velocità è l'unica priorità e non ci sono altri utenti a fare da interferenza.
+    
+2. **READ_UNCOMMITTED:** Le transazioni possono essere annullate (rollback), ma l'isolamento non è garantito. Il problema principale qui sono i _dirty reads_ (letture sporche): una transazione può leggere dati che un'altra transazione concorrente ha modificato ma non ancora confermato (se l'altra fa rollback, si è letto un dato "fantasma").
+    
+3. **READ_COMMITTED:** Risolve il problema delle letture sporche: una transazione può vedere solo i dati che le altre transazioni hanno già confermato (_committed_). Tuttavia, se una transazione legge lo stesso dato due volte, e nel mezzo un'altra transazione lo modifica e lo conferma, la seconda lettura darà un risultato diverso (problema della _non-repeatable read_). È tipicamente usato per operazioni di lunga durata.
+    
+4. **SNAPSHOT_READ:** Oltre a garantire che si leggano solo dati confermati, garantisce che una query osservi uno "snapshot" coerente (una fotografia) del database al momento in cui la query inizia. Se altre transazioni modificano i dati mentre la query è in esecuzione, il risultato della query non ne sarà influenzato.
+    
+5. **SNAPSHOT:** Più rigoroso del precedente, fa sì che l'intera transazione operi su uno snapshot fissato. La transazione vedrà o tutti gli effetti completi delle altre transazioni concluse, o nessuno. È fondamentale negli scenari in cui un'operazione di scrittura dipende direttamente dal risultato di un'operazione di lettura eseguita precedentemente nella stessa transazione.
+    
+6. **SERIALIZABLE:** È il livello più alto e restrittivo. Oltre a garantire lo snapshot, assicura un isolamento totale, come se tutte le transazioni venissero eseguite rigorosamente in fila (serialmente), una dopo l'altra, eliminando alla radice qualsiasi anomalia di concorrenza.
+### Supporto nei Triplestore Nativi
+
+Le due implementazioni principali di storage fornite dal framework, il **MemoryStore** e il **NativeStore**, supportano pienamente tutti i livelli di isolamento descritti (da `NONE` a `SERIALIZABLE`).
+
+Il livello di isolamento **predefinito**, se non se ne specifica un altro chiamando `begin()`, è lo **`SNAPSHOT_READ`**.
+
+A livello di meccanica interna, per gestire questa concorrenza senza bloccare continuamente il database, entrambi questi triplestore utilizzano la tecnica del **locking ottimistico**.
+
+L'approccio ottimistico assume, come dice il nome, che i conflitti tra transazioni concorrenti siano rari. Pertanto, permette a più transazioni di eseguire contemporaneamente le loro scritture. Solo al momento di confermare (`commit`), il sistema verifica se le modifiche si scontrano (ad esempio, due transazioni hanno modificato esattamente lo stesso dato). Se rileva un conflitto reale e insormontabile, fa fallire (rollback) una delle transazioni per preservare l'integrità del database.
+## RDF4J Server & Workbench
+
+Spostandoci dall'uso strettamente programmatico e locale in Java, il framework mette a disposizione l'**RDF4J Server**. Si tratta di una vera e propria applicazione web progettata per esporre uno o più `Repository`, rendendoli accessibili dall'esterno attraverso un'**API REST** dedicata.
+
+Questa API non è costruita da zero, ma si basa sull'estensione e la combinazione di standard preesistenti. Nello specifico, integra:
+
+- Il **SPARQL 1.1 Protocol**, utilizzato per inviare le query e le operazioni di update ai processori sottostanti.
+    
+- Il **SPARQL 1.1 Graph Store HTTP Protocol**, che è lo standard dedicato alla gestione diretta dei _named graph_ (permettendo operazioni mirate come l'aggiunta, la rimozione o lo scaricamento di interi grafi).
+    
+
+La principale e più importante estensione apportata dall'API di RDF4J rispetto a questi protocolli standard riguarda il supporto per la **gestione delle transazioni** attraverso chiamate HTTP. Dal punto di vista sistemistico, il server viene fornito sotto forma di archivio WAR, pronto per essere distribuito all'interno di un _servlet container_ standard, come ad esempio Apache Tomcat.
+
+Per interagire graficamente e in modo agevole con i repository esposti dal server, l'ecosistema fornisce una seconda applicazione web chiamata **RDF4J Workbench**. Anch'essa distribuita come file WAR da far girare su un contenitore come Tomcat, funge da interfaccia utente visiva per interrogare, esplorare e amministrare i repository ospitati dall'RDF4J Server.
+
+### L'alternativa integrata: GraphDB Workbench
+
+Un'alternativa molto diffusa è il **Workbench di GraphDB**. Sebbene lo scopo di base sia analogo a quello degli strumenti nativi di RDF4J, l'architettura di GraphDB è molto più integrata e "pronta all'uso":
+
+- Può essere avviato autonomamente come programma a sé stante, senza avere alcun bisogno di configurare un _servlet container_ esterno.
+    
+- Integra all'interno dello stesso pacchetto sia la _user interface_ (il workbench vero e proprio) sia la componente _server_. Il server espone internamente i repository (zero o più) tramite un'API REST, e questa stessa API viene consumata direttamente dal workbench per mostrare i dati e le interfacce di amministrazione all'utente.
+
+**Connessione programmatica a GraphDB**
+
+Quando si sviluppa un'applicazione Java e si desidera utilizzare un database ospitato su GraphDB (istanzio quindi un `HTTPRepository` nel codice), è necessario conoscere l'indirizzo esatto a cui puntare.
+
+L'interfaccia del Workbench di GraphDB rende questa operazione molto semplice. Nella dashboard principale, all'interno del riquadro del repository attualmente attivo (dove vengono mostrate le statistiche generali, come il numero totale di statement, divisi tra espliciti e inferiti, e l'expansion ratio), è presente una serie di piccole icone d'azione.
+
+Cliccando sull'icona a forma di collegamento (una catena), il Workbench apre una finestra di dialogo in sovraimpressione contenente l'**URL completo del repository** (ad esempio, terminante con `/repositories/Test` se il repository si chiama "Test"). Questo URL è la stringa esatta che deve essere copiata e passata al costruttore in Java per stabilire correttamente la connessione via API.
+
+![center|500](img/Pasted%20image%2020260523151844.png)
+
+![center|500](img/Pasted%20image%2020260523151908.png)
