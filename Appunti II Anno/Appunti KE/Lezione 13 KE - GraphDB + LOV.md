@@ -226,3 +226,133 @@ Inserendo l'indirizzo web dell'ontologia (ad esempio `http://xmlns.com/foaf/0.1/
 ![center|300](img/Pasted%20image%2020260526151946.png)
 
 Confermate le impostazioni, il sistema prende in carico la richiesta. L'interfaccia del Workbench mostrerà la risorsa in un elenco di attività in corso con lo stato "Importing...", offrendo all'utente la possibilità di interrompere forzatamente il processo tramite un pulsante "Abort" qualora ci si accorga di aver commesso un errore di configurazione.
+## Visualizzazioni
+
+Per estrarre reale valore e comprensione da un database a grafo, la semplice interrogazione testuale spesso non è sufficiente. Disporre di visualizzazioni opportune è un requisito indispensabile per navigare la complessità dei dati interconnessi, riconoscere pattern nascosti e, in ultima analisi, generare _insight_ (intuizioni e approfondimenti) utili.
+
+Per rispondere a questa esigenza, l'ambiente di lavoro di GraphDB è equipaggiato con una suite di strumenti di esplorazione visiva, pensati per analizzare il dato da diverse prospettive:
+
+- **Resource view:** un'ispezione tabellare dettagliata per leggere e modificare le triple legate a una singola entità.
+    
+- **Visual graph:** una rappresentazione a nodi e archi per esplorare interattivamente la connettività e i percorsi tra le risorse.
+    
+- **Domain-range graph:** utile per gli architetti dell'informazione, mappa le relazioni formali tra le classi definite nell'ontologia.
+    
+- **Class relationships:** una vista aggregata che mostra le connessioni basate non sulle definizioni astratte, ma sulle istanze reali delle classi presenti nei dati.
+    
+
+Un elemento che lavora dietro le quinte per migliorare la leggibilità di queste visualizzazioni è l'**RDF Rank**. Questo algoritmo calcola dinamicamente un indice di "importanza" per ogni nodo del grafo (in modo concettualmente simile al PageRank dei motori di ricerca). Nelle visualizzazioni complesse, l'RDF Rank viene sfruttato per esaltare i nodi centrali e tagliare le ramificazioni meno rilevanti, evitando di sommergere l'utente in una ragnatela illeggibile di informazioni.
+
+### L'esplorazione macroscopica: Graph Overview
+
+Il punto di partenza naturale per esplorare un repository appena popolato è la sezione **Graphs overview**, accessibile dal menu "Explore". Questa schermata offre una visione di altissimo livello sull'organizzazione logica dei dati.
+
+Invece di mostrare le singole triple, presenta un elenco di tutti i **grafi nominati** (Named Graphs) attualmente presenti nel database, incluso il _Default graph_ (il contenitore generico). Questa vista funge da vero e proprio pannello di controllo amministrativo per i set di dati: da qui è possibile eseguire operazioni di pulizia radicale (_Clear repository_) o esportazione massiva (_Export repository_), così come agire chirurgicamente sui singoli grafi, svuotandoli o esportandone il contenuto in modo indipendente.
+
+![center|300](img/Pasted%20image%2020260526152626.png)
+### L'ispezione microscopica: Resource View
+
+Se la _Graph overview_ offre una vista dall'alto, il **Resource view** rappresenta la lente d'ingrandimento del sistema. È una visualizzazione ad altissima risoluzione dedicata allo studio approfondito di una specifica risorsa (identificata dal suo URI).
+
+Accedendo al Resource view di un'entità, il sistema organizza tutti gli _statement_ (le triple) che la coinvolgono in una chiara griglia composta da Soggetto, Predicato, Oggetto e Contesto (il grafo di appartenenza). La potenza di questo strumento risiede nei suoi filtri dinamici, che permettono di analizzare la risorsa sotto ogni sua sfaccettatura:
+
+- Come **Soggetto**: per scoprire tutto ciò che definisce la risorsa (le sue proprietà e attributi).
+    
+- Come **Oggetto**: per tracciare i riferimenti in ingresso, ovvero quali altre entità del database puntano a questa risorsa.
+    
+- Come **Predicato**: per capire, qualora la risorsa sia una proprietà, tra quali soggetti e oggetti sta stabilendo una connessione.
+    
+- Per **Contesto**: per isolare le informazioni provenienti da uno specifico grafo nominato.
+
+![center|400](img/Pasted%20image%2020260526152646.png)
+
+L'interfaccia offre ulteriori strumenti di raffinamento essenziali per chi lavora con il Web Semantico. Un menu a tendina cruciale permette di filtrare i dati in base alla loro natura logica: si può scegliere di visualizzare solo gli statement **espliciti** (i dati grezzi originariamente importati), solo quelli **impliciti** (le nuove deduzioni matematicamente generate dal motore di ragionamento), oppure una visione combinata di entrambi.
+
+Sono presenti anche comandi rapidi per mostrare o nascondere i _Blank Nodes_ (nodi anonimi senza un URI univoco, spesso usati per strutture dati complesse), un pulsante per scaricare istantaneamente il pacchetto di triple visualizzato in vari formati RDF, e un bottone per saltare direttamente dalla visualizzazione tabellare a quella grafica a nodi e archi (_Visual graph_).
+
+Infine, il Resource view non è un ambiente di sola lettura. Funge anche da editor principale dell'interfaccia: permette agli utenti autorizzati di modificare, cancellare o aggiungere manualmente singoli statement, o persino di definire nuove risorse da zero direttamente dal browser.
+
+Oltre all'ispezione delle singole risorse, GraphDB offre potenti strumenti visivi per comprendere la struttura logica e l'architettura dell'ontologia caricata. Questi strumenti sono fondamentali per gli ingegneri della conoscenza, in quanto permettono di validare il modello dati e di navigarlo a livello concettuale, prima ancora di analizzare i dati reali (le istanze).
+
+### La Visualizzazione Tassonomica: Class Hierarchy
+
+Accessibile dal menu "Explore", la sezione **Class hierarchy** fornisce una rappresentazione interattiva della tassonomia del vocabolario. Invece del classico albero a cartelle, GraphDB utilizza spesso un diagramma a bolle annidate o un grafo radiale per mostrare le relazioni di sussunzione (relazioni "is-a") tra le classi.
+
+Questo strumento permette di visualizzare ed esplorare l'intera gerarchia: le bolle più grandi rappresentano le superclassi (ad esempio, `Agent`), mentre le bolle contenute al loro interno o collegate gerarchicamente verso il basso rappresentano le sottoclassi più specifiche (ad esempio, `Person` o `Organization` come sottoclassi di `Agent`).
+
+Per gestire ontologie estremamente vaste senza sovraccaricare l'interfaccia visiva, la vista _Class hierarchy_ implementa meccanismi di filtraggio intelligenti:
+
+- **Priorità per popolarità:** È possibile limitare il numero totale di classi disegnate a schermo, istruendo il sistema a dare la priorità (mostrare per prime) alle classi che possiedono il maggior numero di istanze effettive nel database.
+    
+- **Slider di conteggio:** Un selettore grafico (spesso una barra verticale sulla sinistra) permette di aggiustare dinamicamente quante classi visualizzare contemporaneamente (es. le "Top 14").
+
+![center|400](img/Pasted%20image%2020260526153053.png)
+
+Interagendo con le bolle (cliccando su una specifica classe, come `foaf:Person`), si apre un **pannello laterale di dettaglio**. Questo cruscotto fornisce informazioni essenziali in tempo reale:
+
+- Le etichette descrittive (`rdfs:label`) e i commenti testuali (`rdfs:comment`) associati alla classe.
+    
+- Un contatore delle istanze (fino a un massimo di 1000 visualizzate direttamente, con un pulsante rapido per generare una query SPARQL che le estragga tutte).
+    
+- Un collegamento diretto per passare immediatamente all'analisi delle proprietà di quella specifica classe tramite la visualizzazione _Domain-Range Graph_. Se la classe selezionata non ha ancora istanze caricate nel database, il sistema mostrerà un avviso informativo, ma permetterà comunque di navigarne la struttura teorica.
+
+![center|400](img/Pasted%20image%2020260526153124.png)
+
+### L'Analisi Assiomatica: Domain-Range Graph
+
+Mentre la _Class hierarchy_ mostra "chi è figlio di chi", il **Domain-Range Graph** si concentra sulle regole di connessione. È uno strumento di analisi assiomatica che mappa visivamente le relazioni tra le classi attraverso le proprietà (i predicati) definite nell'ontologia.
+
+Quando si centra la vista su una specifica classe radice (ad esempio, il nodo centrale arancione `foaf:Person`), il grafo si espande mostrando due direzioni fondamentali:
+
+1. **Proprietà in uscita (Domain):** Gli archi che partono dalla classe centrale mostrano le proprietà per le quali quella classe funge da "dominio" (Domain). In parole povere, risponde alla domanda: "Quali caratteristiche può avere una Persona?". Gli archi puntano verso i nodi che rappresentano il "codominio" o "range" consentito (es. `foaf:knows` punta verso un'altra `Person`, mentre `foaf:based_near` potrebbe puntare a una `SpatialThing`).
+    
+2. **Proprietà in entrata (Range):** Gli archi che puntano _verso_ la classe centrale mostrano le proprietà in cui quella classe è il "range" atteso. Risponde alla domanda: "Quali altre entità possono avere una Persona come attributo?". (es. un `foaf:Group` ha una proprietà `foaf:member` che punta a una `Person`).
+
+![center|400](img/Pasted%20image%2020260526153148.png)
+
+Per mantenere il grafo leggibile, le proprietà che condividono le stesse esatte classi di dominio e range vengono raggruppate (collassate) in un singolo arco in grassetto (es. "8 predicates" o "19 predicates"), cliccabile per svelare l'elenco completo dei predicati nascosti.
+
+#### Il concetto di "Proprietà Implicita"
+
+Una delle caratteristiche più avanzate del Domain-Range Graph è la capacità di gestire le **proprietà implicite**. Spesso, l'interazione tra le regole di dominio/range e la gerarchia delle classi crea deduzioni non scritte esplicitamente nel codice.
+
+Il grafo utilizza stili di linea differenti (es. linee tratteggiate) per indicare queste proprietà ereditate. Ad esempio, se si analizza la proprietà `maker` tramite il Resource View, si potrebbe notare che il suo dominio è la classe molto generica `owl:Thing` e il suo range è `foaf:Agent`. Tuttavia, nel Domain-Range graph di `foaf:Person`, la proprietà `maker` appare in ingresso come proprietà implicita. Il motivo logico è che `Person` è una sottoclasse di `Agent`; pertanto, poiché qualsiasi cosa (`Thing`) può avere come "creatore" (`maker`) un `Agent`, il motore inferenziale deduce automaticamente che è perfettamente valido che il creatore sia, più specificamente, una `Person`. Questa visualizzazione rende palese questo livello di intelligenza del database.
+
+![center|400](img/Pasted%20image%2020260526153205.png)
+### Uno sguardo al futuro: Class Relationships
+
+Oltre alle viste basate sullo schema teorico (come Hierarchy e Domain-Range), esiste la vista **Class relationships**. Questa visualizzazione è profondamente diversa: non si basa su ciò che l'ontologia _permette_ in teoria, ma analizza le relazioni tra le classi basandosi esclusivamente sui **legami reali esistenti tra le loro istanze** (i dati concreti caricati).
+
+Se si tenta di aprire questo diagramma in un repository appena creato, contenente solo lo schema del vocabolario (come FOAF) ma senza alcun dato reale sulle persone, il sistema mostrerà un avviso indicando che non ci sono dipendenze da visualizzare. Questa vista diventa lo strumento principale di indagine solo nella fase successiva, dopo che il database è stato popolato con le istanze effettive.
+
+Dopo aver caricato lo schema dell'ontologia (ad esempio, FOAF), il database possiede la struttura logica ma è ancora privo di dati reali. Per iniziare a testare query e visualizzazioni, è necessario popolarlo con alcune istanze. Un metodo rapido per farlo senza dover preparare file esterni è l'inserimento diretto tramite frammenti di testo (snippet).
+
+## Importazione RDF tramite Text Snippet
+
+Dalla sezione "Import" -> "RDF" del Workbench, si seleziona l'opzione **"Import RDF text snippet"**. Questa funzionalità apre una finestra di dialogo contenente un'area di testo libera, in cui è possibile incollare o digitare direttamente codice RDF.
+
+Per l'inserimento manuale, il formato di serializzazione più comodo e leggibile è solitamente il **Turtle (`.ttl`)**. Un tipico snippet di popolamento si articola in due fasi:
+
+1. **Dichiarazione dei prefissi:** Si indicano le abbreviazioni per i namespace utilizzati, per evitare di scrivere URI lunghissimi (es. `@prefix : <http://example.org/> .` per le risorse locali, e i prefissi standard come `foaf:`).
+    
+2. **Definizione delle istanze e delle relazioni:** Si dichiarano i soggetti e le loro proprietà. Ad esempio, si possono creare istanze di fantasia della classe `foaf:Person` (es. `:john a foaf:Person ; foaf:givenName "John"` ecc.) e definire relazioni tra di loro usando i predicati dell'ontologia (es. `:john foaf:knows :mary`).
+
+**Esempio di inserimento dati**
+
+![center|350](img/Pasted%20image%2020260526153902.png)
+
+Una volta incollato il codice, il pulsante "Import" avvia il processo. Come avviene per l'importazione da URL, il sistema chiederà di specificare i _Target graphs_. Per mantenere l'ordine, è buona pratica non mescolare i dati grezzi con la definizione dell'ontologia, ma inserire le nuove triple in un **Grafo Nominato** dedicato (es. chiamato `http://example.org/`).
+
+### Gestione dei Namespace (Setup)
+
+Dopo aver caricato dati o ontologie, è utile verificare la configurazione dei namespace. Accedendo alla sezione **Setup -> Namespaces**, GraphDB mostra una tabella con tutti i prefissi attualmente registrati e i relativi URI completi.
+
+Questa gestione è cruciale per la leggibilità. Quando l'ontologia FOAF è stata importata, GraphDB ha automaticamente estratto e registrato la definizione per il prefisso `foaf:`. Grazie a questo passaggio automatico, in tutte le visualizzazioni del Workbench (e nelle query SPARQL), il sistema è in grado di abbreviare gli URI lunghi, mostrando all'utente stringhe compatte e leggibili come `foaf:Person` al posto di `http://xmlns.com/foaf/0.1/Person`. Da questo pannello, l'utente può anche aggiungere manualmente nuovi prefissi o modificare quelli esistenti.
+
+### Autocompletamento (Autocomplete Index)
+
+Un'altra funzionalità fondamentale di "Setup" per migliorare l'esperienza d'uso è l'**Autocomplete index**. GraphDB non lo attiva di default su tutti i repository per risparmiare risorse di calcolo e memoria, ma è caldamente consigliato abilitarlo per gli spazi di lavoro attivi.
+
+Andando su **Setup -> Autocomplete**, si trova un interruttore generale ("Autocomplete for repository X is OFF"). Attivandolo (spostandolo su ON), il sistema inizia a costruire un indice speciale. Questo indice analizza il testo presente nelle etichette delle risorse (solitamente la proprietà `rdfs:label`) in tutte le lingue supportate.
+
+Una volta che l'indice è stato costruito (lo stato diventa "Ready"), la barra di ricerca universale presente in molte schermate del Workbench (come in "Explore -> Resource view") diventerà "intelligente": iniziando a digitare il nome di una persona, di una classe o di un concetto, il sistema suggerirà dinamicamente le risorse corrispondenti, eliminando la necessità di ricordare a memoria gli URI esatti.

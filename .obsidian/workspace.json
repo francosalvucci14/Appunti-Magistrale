@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
+                "file": "Appunti II Anno/Appunti KE/Lezione 13 KE - GraphDB + LOV.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Lezione 12 KE - RDF4J"
+              "title": "Lezione 13 KE - GraphDB + LOV"
             }
           }
         ]
@@ -95,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
+                "file": "Appunti II Anno/Appunti KE/Lezione 13 KE - GraphDB + LOV.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 12 KE - RDF4J"
+              "title": "Outline of Lezione 13 KE - GraphDB + LOV"
             }
           },
           {
@@ -129,8 +129,7 @@
               "title": "Tags"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "b7d5f1914b483202",
@@ -166,28 +165,29 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4087b0f98e2f2e6e",
+  "active": "2f460895308e6293",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260526153902.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260526153205.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260526153148.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260526153124.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260526153053.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260526152646.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260526152626.png",
+    "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
     "Appunti II Anno/Appunti KE/Lezione 13 KE - GraphDB + LOV.md",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260526151946.png",
     "Appunti II Anno/Appunti KE/Lezione 3 KE - RDF e RDFS.md",
-    "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
     "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
     "Appunti II Anno/Appunti KE/Lezione 4-5 KE - OWL, OWL2.md",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260526150822.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260526150801.png",
     "Appunti II Anno/Appunti KE/img/Pasted image 20260526150733.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526150722.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526150303.png",
     "README.md",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526150244.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526150223.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526150201.png",
     "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
     "Appunti II Anno/Appunti KE/Lezione 15 KE - SHACL.md",
     "Appunti II Anno/Appunti KE/Lezione 14 KE - Esercizi Reasoning.md",
     "Appunti II Anno/Appunti CDCI/Appunti parte Golluscio.md",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260523151908.png",
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
     "Appunti II Anno/Appunti KE/Lezione 11 KE - Ontolex-Lemon.md",
