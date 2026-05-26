@@ -356,3 +356,189 @@ Un'altra funzionalità fondamentale di "Setup" per migliorare l'esperienza d'uso
 Andando su **Setup -> Autocomplete**, si trova un interruttore generale ("Autocomplete for repository X is OFF"). Attivandolo (spostandolo su ON), il sistema inizia a costruire un indice speciale. Questo indice analizza il testo presente nelle etichette delle risorse (solitamente la proprietà `rdfs:label`) in tutte le lingue supportate.
 
 Una volta che l'indice è stato costruito (lo stato diventa "Ready"), la barra di ricerca universale presente in molte schermate del Workbench (come in "Explore -> Resource view") diventerà "intelligente": iniziando a digitare il nome di una persona, di una classe o di un concetto, il sistema suggerirà dinamicamente le risorse corrispondenti, eliminando la necessità di ricordare a memoria gli URI esatti.
+## Visual Graph
+
+L'esplorazione dei dati raggiunge il suo massimo livello di intuitività con il **Visual Graph**, uno strumento interattivo che permette di navigare le relazioni tra le risorse non attraverso tabelle o codice, ma visivamente, muovendosi da un nodo all'altro.
+
+Accedendo alla sezione "Explore -> Visual graph", il Workbench offre tre diverse modalità di partenza per generare la visualizzazione:
+
+- **Easy graph:** È la via più rapida. Sfruttando l'indice di autocompletamento (se attivato in precedenza), è sufficiente digitare il nome di una risorsa (ad esempio "john") per trovarne l'IRI esatto e generare il grafo istantaneamente, senza scrivere una singola riga di codice SPARQL.
+    
+- **Advanced graph configurations:** Dedicato agli utenti esperti, permette di definire regole di visualizzazione su misura scrivendo query SPARQL personalizzate, filtrando a monte cosa deve essere disegnato a schermo.
+    
+- **Saved graphs:** Un comodo archivio per richiamare istantanee di grafi visivi precedentemente salvate, utile per riprendere il lavoro o condividere una specifica vista.
+
+![center|400](img/Pasted%20image%2020260526155028.png)
+### L'esperienza di navigazione e l'interfaccia
+
+Scegliendo l'approccio _Easy graph_ e centrando la vista su una risorsa specifica (come la nostra istanza di fantasia `:john`), l'interfaccia disegna una mappa concettuale dinamica.
+
+Gli elementi visivi sono codificati per trasmettere informazioni a colpo d'occhio:
+
+- **I Nodi (Cerchi):** Rappresentano le risorse individuali (es. John, Mary, Philip, Alice). Il colore del nodo è determinato automaticamente dalla classe di appartenenza (tutte le istanze di `foaf:Person` avranno lo stesso colore).
+    
+- **Gli Archi (Frecce):** Rappresentano i predicati che collegano le risorse, mostrando chiaramente la direzione della relazione (es. la freccia `knows` da John a Philip).
+    
+
+L'ambiente non è statico, ma altamente interattivo. In alto a destra è presente una barra degli strumenti che offre molteplici possibilità di configurazione del layout e il salvataggio della vista. Inoltre, interagendo direttamente con un nodo, appare un **menu contestuale radiale** che offre azioni rapide:
+
+- Espandere il nodo per rivelare ulteriori connessioni nascoste.
+    
+- Centrare l'intero grafo su quel nodo specifico, cambiando il punto di vista.
+    
+- Rimuovere il nodo dalla visualizzazione per fare pulizia.
+    
+- Aprire il pannello delle informazioni.
+
+![center|400](img/Pasted%20image%2020260526155105.png)
+
+### Il Pannello delle Informazioni (Info Panel)
+
+Cliccando sull'icona delle informazioni ("i") di un nodo, si apre un pannello laterale di dettaglio. Questo cruscotto è fondamentale perché, mentre il grafo mostra i collegamenti ad _altre risorse_ (Object Properties), il pannello laterale elenca tutte le proprietà intrinseche della risorsa stessa (Datatype Properties).
+
+Qui è possibile leggere immediatamente:
+
+- I **tipi** a cui la risorsa appartiene (es. `foaf:Person`).
+    
+- Le etichette testuali (`rdfs:label`) e i commenti (`rdfs:comment`).
+    
+- I valori letterali associati, come `foaf:givenName` ("John") o `foaf:familyName` ("Someone").
+    
+- Eventuali immagini associate (`foaf:depiction`), che GraphDB è in grado di renderizzare direttamente come miniature all'interno del pannello.
+
+![center|400](img/Pasted%20image%2020260526155140.png)
+### Il ruolo cruciale dell'RDF Rank nella visualizzazione
+
+Quando si ha a che fare con nodi estremamente interconnessi (i cosiddetti _hub_, come potrebbe essere una grande città in un database geografico o un autore prolifico), disegnare tutti i collegamenti contemporaneamente renderebbe il grafo un groviglio illeggibile.
+
+Qui entra in gioco l'**RDF Rank**, un valore numerico (visibile anche nel pannello info) che GraphDB calcola per stimare la popolarità e l'importanza di una risorsa all'interno del database:
+
+1. **Gestione del limite:** Di default, il Visual Graph mostra al massimo 20 connessioni in uscita da un nodo. Se ne esistono di più, il sistema utilizza l'RDF Rank per scegliere quali mostrare, dando la priorità alle connessioni che puntano verso le risorse statisticamente più "importanti".
+    
+2. **Impatto visivo:** La dimensione fisica del nodo sullo schermo è direttamente proporzionale al suo RDF Rank. Un nodo con un rank elevato (es. 0.76) apparirà come una bolla visibilmente più grande rispetto a un nodo periferico con rank 0, permettendo all'utente di discriminare immediatamente i centri di gravità del database dalle risorse minori.
+
+L'RDF Rank è un elemento centrale nell'ecosistema di GraphDB, essenziale per estrarre senso e ordine da grafi complessi e massivi. Per comprenderne appieno il valore e il funzionamento, è utile approfondirne le basi matematiche (vedi [qui](#^e63eee)) e le modalità operative all'interno del Workbench.
+#### Configurazione e Calcolo nel Workbench
+
+Poiché il calcolo di questi punteggi sull'intero grafo è un'operazione matematicamente intensiva, GraphDB non la esegue automaticamente di default, ma la affida al controllo dell'utente.
+
+Accedendo al menu **Setup -> RDF Rank**, si entra nel pannello di amministrazione dedicato. L'interfaccia indica chiaramente lo stato attuale (es. "RDFRank not built yet"). Il calcolo non avviene tramite un motore separato, ma, in modo molto elegante, GraphDB sfrutta la sua stessa potenza semantica: dietro le quinte, il sistema lancia una serie di complesse query di **UPDATE SPARQL** direttamente sul repository per calcolare i valori e scriverli nel database come normali triple.
+
+##### Filtri e Focus
+
+Prima di avviare il calcolo, l'interfaccia offre un potente interruttore di **Filtering**. Attivandolo, si apre un pannello di configurazione avanzata che permette di "ritagliare" la porzione di grafo su cui l'algoritmo deve concentrarsi. Questo è cruciale in database enormi dove si vuole valutare l'importanza delle risorse solo in un contesto specifico.
+
+- **Contenuto Logico:** Si può decidere se l'algoritmo debba navigare solo le triple _esplicite_ (caricate manualmente) o se debba percorrere anche le triple _implicite_ (inferite dal ragionatore).
+    
+- **Filtri Topologici:** Attraverso le schede "Graphs" e "Predicates", è possibile includere o escludere interamente specifici grafi nominati o specifici predicati dal calcolo (ad esempio, calcolare il rank basandosi solo sulle relazioni sociali `foaf:knows`, ignorando le proprietà descrittive come `rdfs:label`).
+##### Ricomputo: Completo vs Incrementale
+
+Una volta configurato, il pulsante **Compute Full** avvia il processo. Se il database è grande, questa operazione può richiedere tempo, poiché ricalcola la catena di Markov da zero.
+
+Tuttavia, i database reali sono entità vive e in continua evoluzione (si aggiungono nuovi utenti, si creano nuove relazioni). Rifare un _Compute Full_ ad ogni singolo aggiornamento sarebbe computazionalmente insostenibile.
+
+![center|400](img/Pasted%20image%2020260526155655.png)
+
+Per risolvere questo problema operativo, una volta che il calcolo completo iniziale è stato eseguito con successo, GraphDB sblocca una funzionalità avanzata: il **ricomputo incrementale**. Questa modalità utilizza un algoritmo alternativo e molto più rapido che non riparte da zero, ma aggiorna i valori di RDF Rank preesistenti tenendo conto solo delle ultime modifiche apportate alla base di conoscenza. Sebbene questo metodo introduca delle lievi approssimazioni matematiche rispetto al calcolo completo, offre un compromesso eccellente, permettendo di mantenere i ranghi delle risorse costantemente aggiornati in un contesto di produzione dove gli inserimenti di dati sono frequenti.
+
+### Class Relationships (Relazioni tra Classi Basate sui Dati)
+
+In precedenza avevamo accennato al diagramma **Class relationships**. A differenza delle visualizzazioni basate sull'ontologia pura (che mostrano cosa è _possibile_ in teoria), questo strumento diventa prezioso solo dopo aver popolato il database, perché mostra cosa _esiste realmente_ nei dati.
+
+Questa vista genera un diagramma a corda (chord diagram) circolare. Lungo la circonferenza sono disposte le classi presenti nel repository (es. `foaf:Person`, `foaf:Document`, `foaf:Group`). Tra queste classi vengono disegnati dei **fasci (chords)** che attraversano il cerchio.
+
+La lettura di questo diagramma segue regole precise:
+
+- **Il Fascio:** Ogni corda rappresenta un gruppo di collegamenti (statement) che uniscono istanze di due classi diverse.
+    
+- **L'Ampiezza:** Lo spessore del fascio alla base di una classe indica la quantità: più il fascio è largo, maggiore è il numero di link (le relazioni) stabiliti tra quelle due classi specifiche.
+    
+- **Il Colore e la Direzione:** Il fascio assume il colore della classe che riceve il maggior numero di link entranti da quella specifica relazione, aiutando a identificare a colpo d'occhio i flussi di dipendenza (chi punta a chi).
+
+![center|400](img/Pasted%20image%2020260526160030.png)
+
+A sinistra del diagramma, una tabella riepilogativa permette di filtrare la vista, mostrando solo le relazioni in ingresso (Incoming) o in uscita (Outgoing) per ogni classe, e riportando il numero esatto di link rilevati, fornendo così una mappa empirica di come i dati sono interconnessi nella realtà del nostro database.
+
+## L'Editor SPARQL: Interrogare il Grafo
+
+Le visualizzazioni sono eccellenti per l'esplorazione, ma per estrarre dati specifici, eseguire calcoli o aggiornare il database in modo massivo, si utilizza il linguaggio standard del Web Semantico: **SPARQL**. GraphDB fornisce un potente ambiente di sviluppo integrato (IDE) accessibile dalla sezione **SPARQL**.
+
+L'interfaccia principale è l'**Editor Query & Update**, diviso in due aree principali: l'area di scrittura del codice in alto e l'area di presentazione dei risultati in basso.
+
+### Scrivere ed Eseguire Query
+
+L'editor di testo supporta funzionalità avanzate come l'evidenziazione della sintassi (syntax highlighting), l'autocompletamento (premendo `Alt+Enter`) e la gestione automatica dei prefissi (se dichiarati nella sezione Setup, non è necessario scriverli a mano nella query).
+
+Per eseguire una query (ad esempio, una `SELECT` per trovare tutte le conoscenze di "John" e concatenare nome e cognome), si preme il pulsante **Run** (o la scorciatoia `Ctrl/Cmd+Enter`). Se la query è formulata correttamente, i risultati appariranno nella sezione sottostante sotto forma di tabella strutturata in colonne (le variabili richieste nella `SELECT`).
+
+![center|400](img/Pasted%20image%2020260526160045.png)
+
+![center|400](img/Pasted%20image%2020260526160106.png)
+### Strumenti dell'Editor
+
+Sulla destra dell'area di testo, una barra degli strumenti verticale offre opzioni essenziali per il flusso di lavoro dello sviluppatore:
+
+- **Salvare e Aprire:** Icone per salvare la query corrente nel Workbench o caricare query precedentemente salvate, permettendo di costruire una libreria di interrogazioni utili.
+    
+- **Condividere (Link alla query):** Genera un URL diretto (spesso molto lungo) che incorpora l'intera query. È utile per inviarla a un collega; aprendo il link, l'editor si popolerà automaticamente con quel codice.
+    
+- **Espansione `owl:sameAs` (Icona a tre cerchi):** Questo è un interruttore cruciale. Se attivato, GraphDB espanderà i risultati considerando l'equivalenza delle entità (se A è `sameAs` B, i risultati includeranno i dati di entrambi). Se disattivato, tratterà i nodi equivalenti come entità rigidamente separate, considerando solo il rappresentante formale della classe di equivalenza. Questo pulsante è utilissimo per fare debugging sulle regole di integrazione dei dati.
+
+![center|400](img/Pasted%20image%2020260526160122.png)
+
+### Il Potere dell'Inferenza (Il pulsante ">>")
+
+L'icona con la doppia freccia (`>>`), situata proprio sopra il pulsante Run, controlla il motore di ragionamento durante l'esecuzione della query.
+
+Per capire la differenza, immaginiamo di chiedere a GraphDB: "Qual è il tipo (la classe) dell'istanza `:john`?" (`SELECT ?type { :john a ?type . }`).
+
+- **Inferenza DISATTIVATA:** Il sistema si limita a leggere i dati grezzi che abbiamo inserito manualmente nello snippet. Il risultato sarà un'unica riga: `:john` è di tipo `foaf:Person`.
+    
+- **Inferenza ATTIVATA:** Il motore logico entra in azione. Sapendo (dall'ontologia FOAF che abbiamo importato all'inizio) che `Person` è una sottoclasse di `Agent`, e che `Agent` è a sua volta associato ad altri concetti (come `SpatialThing`), dedurrà logicamente tutte le appartenenze implicite. Il risultato mostrerà non una, ma molte righe: `:john` verrà classificato come `foaf:Person`, ma anche come `foaf:Agent`, `dcterms:Agent`, `wgs:SpatialThing`, ecc. Attivare o disattivare questo pulsante permette di esplorare l'abisso tra i dati crudi e la conoscenza dedotta.
+
+![center|400](img/Pasted%20image%2020260526160134.png)
+
+![center|400](img/Pasted%20image%2020260526160142.png)
+
+### Gestione e Visualizzazione dei Risultati
+
+L'area dei risultati non si limita a una semplice griglia. Offre diverse schede per analizzare l'output:
+
+- **Table:** La visualizzazione standard a righe e colonne, con la possibilità di filtrare rapidamente i risultati testualmente. I risultati possono essere scaricati (Download as) in vari formati strutturati (CSV, JSON, XML) per l'uso in applicazioni esterne.
+    
+- **Raw Response:** Mostra la risposta grezza esatta (es. il file JSON) restituita dal server API, utile per gli sviluppatori.
+    
+- **Pivot Table:** Permette di raggruppare e incrociare i dati estratti per generare report tabellari complessi, simile alle funzioni dei fogli di calcolo.
+    
+- **Google Chart:** Questa scheda apre un editor grafico integrato. Permette di "agganciare" i dati tabellari appena estratti dalla query SPARQL e trasformarli istantaneamente in grafici visivi (a torta, a barre, a dispersione, mappe) sfruttando le librerie di Google Charts, fornendo così un rudimentale ma efficace strumento di business intelligence direttamente all'interno del database.
+
+![center|400](img/Pasted%20image%2020260526160208.png)
+
+---
+# Appendice
+
+#### I Fondamenti Matematici dell'RDF Rank
+
+^e63eee
+
+Il concetto alla base dell'RDF Rank trae forte ispirazione dall'algoritmo **PageRank**, originariamente sviluppato da Google per valutare l'autorevolezza delle pagine web e ordinarle nei risultati di ricerca. Entrambi gli algoritmi condividono la stessa filosofia di fondo: l'importanza di un nodo non è determinata solo dal suo contenuto isolato, ma dal numero e dalla qualità delle sue interconnessioni all'interno dell'intera rete.
+
+In termini matematici, il PageRank valuta il **long-term visit rate** (tasso di visita a lungo termine). Immaginate un "navigatore casuale" (random surfer) che si muove ininterrottamente sul Web: partendo da una pagina qualsiasi, sceglie ciecamente uno dei link in uscita e vi clicca sopra, procedendo così all'infinito, con uguale probabilità di seguire ciascun link disponibile sulla pagina in cui si trova. Il PageRank di una specifica pagina rappresenta la probabilità matematica che il navigatore si trovi su quella precisa pagina in un dato istante futuro.
+
+Questo comportamento aleatorio viene modellato formalmente attraverso una **catena di Markov a tempo discreto**. Tuttavia, affinché la matematica funzioni (ovvero, affinché il calcolo del tasso di visita a lungo termine converga verso valori definiti e stabili), la teoria dei processi stocastici richiede che la catena di Markov sia **ergodica**.
+
+Un grafo reale (come il Web o un database RDF), però, è raramente ergodico. Presenta difetti strutturali:
+
+1. **Dead end (Vicoli ciechi):** Nodi che ricevono collegamenti ma non ne hanno in uscita. Il navigatore rimarrebbe bloccato per sempre.
+    
+2. **Spider traps (Trappole):** Piccoli gruppi di nodi isolati che puntano solo tra di loro, intrappolando il navigatore in un ciclo infinito e assorbendo tutto il "Rank" della rete.
+    
+
+Per forzare l'ergodicità e far funzionare il modello, l'algoritmo introduce un correttivo matematico chiamato **teleporting** (teletrasporto):
+
+- Se il navigatore finisce in un vicolo cieco, la regola cambia: invece di fermarsi, viene "teletrasportato" con probabilità uniforme su una risorsa qualsiasi dell'intero grafo, potendo così riprendere il viaggio.
+    
+- Per evitare le trappole, si stabilisce che ad ogni singolo passo, il navigatore ha una certa probabilità (il _teleportation rate_, spesso impostato tra il 10% e il 15%) di ignorare completamente i link presenti e saltare a caso su un altro nodo del grafo.
+    
+
+Applicando questo modello corretto al database RDF (dove le "pagine" sono le risorse e i "link" sono i predicati), GraphDB calcola il rango di ogni singola entità, assegnando punteggi più alti a quelle maggiormente referenziate. Questo dimostra un principio teorico fondamentale: i dati RDF non si limitano ad essere una rappresentazione per l'archiviazione, ma costituiscono un vero e proprio **grafo elaborabile**, a cui è possibile applicare la vasta gamma di algoritmi matematici originariamente sviluppati per la teoria dei grafi.
