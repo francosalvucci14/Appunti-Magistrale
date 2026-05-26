@@ -75,7 +75,7 @@ Accedendo al Workbench ci si trova di fronte a una dashboard organizzata e intui
 
 Al centro della schermata iniziale viene riportato lo stato delle connessioni attive; se non si è ancora connessi, il sistema invita a selezionare uno spazio di lavoro esistente o a crearne uno nuovo. Vengono inoltre mostrati i dettagli della licenza in uso (ad esempio, la validità perpetua e l'uso di core illimitati per la Free Edition).
 
-![center|500](img/Pasted%20image%2020260526150201.png)
+![center|300](img/Pasted%20image%2020260526150201.png)
 ### La Creazione di un Repository
 
 Il passaggio propedeutico e indispensabile per poter iniziare a lavorare con GraphDB è la creazione di un **repository**. Il repository è, a tutti gli effetti, il contenitore logico all'interno del quale verranno caricati e archiviati i dati (le triple RDF) ed è il soggetto primario su cui verranno eseguite quasi tutte le operazioni di interrogazione e inferenza. Il motore è capace di gestire e mantenere attivi molteplici repository contemporaneamente.
@@ -86,7 +86,7 @@ Il processo di creazione si articola in diverse fasi, iniziando dalla **scelta d
     
 - **Ontop Virtual SPARQL:** È un repository virtuale. Non memorizza fisicamente i dati RDF, ma funge da intermediario che traduce "al volo" le interrogazioni SPARQL per interrogare un database relazionale (SQL) preesistente, esponendolo come un endpoint semantico.
 
-![center|500](img/Pasted%20image%2020260526150223.png)
+![center|300](img/Pasted%20image%2020260526150223.png)
 
 Una volta scelta la tipologia, si passa alla definizione dei **parametri di configurazione**, che modelleranno il comportamento del motore di ragionamento e di archiviazione:
 
@@ -102,7 +102,7 @@ Una volta scelta la tipologia, si passa alla definizione dei **parametri di conf
     
 - **Modalità Sola Lettura (Read-only):** Questa opzione è pensata per "congelare" il database impedendo qualsiasi alterazione dei dati. Va solitamente attivata solo in un secondo momento, dopo aver concluso le fasi di creazione e popolamento del repository.
 
-![center|500](img/Pasted%20image%2020260526150244.png)
+![center|300](img/Pasted%20image%2020260526150244.png)
 
 **2. Indicizzazione e Limiti di Risorse**
 
@@ -114,7 +114,7 @@ Una volta scelta la tipologia, si passa alla definizione dei **parametri di conf
     
 - **Limiti operativi (Query e Timeout):** Per garantire la stabilità del server ed evitare che un'interrogazione scritta male o troppo complessa monopolizzi le risorse (bloccando il sistema), è possibile impostare delle soglie di sicurezza. Si può definire un tempo massimo di esecuzione (_Query timeout_) oltre il quale l'operazione viene recisa, e un numero massimo di risultati estraibili. Impostando questi valori su "0", si rimuove qualsiasi limite, permettendo esecuzioni illimitate nel tempo e nei risultati.
 
-![center|500](img/Pasted%20image%2020260526150303.png)
+![center|300](img/Pasted%20image%2020260526150303.png)
 
 Una volta completata la configurazione iniziale, il passaggio immediatamente successivo consiste nel connettersi al repository appena creato per renderlo operativo e iniziare a lavorarci.
 
@@ -122,16 +122,16 @@ Una volta completata la configurazione iniziale, il passaggio immediatamente suc
 
 L'interfaccia del Workbench rende l'attivazione dello spazio di lavoro molto intuitiva. Dalla schermata principale è possibile cliccare direttamente sul nome del repository di interesse (ad esempio, un ambiente denominato "Test") che appare nella lista degli spazi di lavoro non ancora connessi.
 
-![center|500](img/Pasted%20image%2020260526150722.png)
+![center|300](img/Pasted%20image%2020260526150722.png)
 
 In alternativa, l'interfaccia è provvista di un comodo menu a tendina situato in alto a destra, che permette di passare rapidamente da un repository all'altro in qualsiasi momento. Un aspetto molto utile di questo menu è la possibilità di ispezionare lo stato del database al volo: espandendo il menu e soffermandosi su un repository, il sistema fornisce un riepilogo dettagliato che include il tipo di database, i permessi (solitamente di lettura e scrittura) e un conteggio puntuale degli _statement_ (le triple RDF) presenti. Questo conteggio è particolarmente interessante perché divide nettamente le triple esplicitamente caricate dall'utente da quelle che il motore di inferenza ha dedotto logicamente, mostrando anche il rapporto di espansione tra i due insiemi.
 
-![center|500](img/Pasted%20image%2020260526150733.png)
+![center|300](img/Pasted%20image%2020260526150733.png)
 ### Importazione dei Dati RDF
 
 Con il repository attivo, lo step cruciale è popolarlo di dati. La procedura di importazione si avvia dal menu di navigazione laterale, espandendo la voce "Import" e selezionando l'opzione "RDF".
 
-![center|500](img/Pasted%20image%2020260526150801.png)
+![center|300](img/Pasted%20image%2020260526150801.png)
 
 L'ambiente di importazione è progettato per essere estremamente flessibile e offre due macro-strategie per caricare le triple nel database:
 
@@ -145,7 +145,7 @@ Questa modalità gestisce i dati inviati al server sotto forma di payload tramit
     
 - **Import RDF text snippet:** Una comodissima area di testo in cui è possibile incollare direttamente righe di codice RDF, utilissima per test rapidi o per l'inserimento di pochissime triple senza dover creare un file apposito.
 
-![center|500](img/Pasted%20image%2020260526150822.png)
+![center|300](img/Pasted%20image%2020260526150822.png)
 
 **2. Server files (File residenti sul server)**
 
@@ -223,6 +223,6 @@ Inserendo l'indirizzo web dell'ontologia (ad esempio `http://xmlns.com/foaf/0.1/
     
 - **Impostazioni Avanzate:** È possibile accedere a un menu contestuale per definire dettagli tecnici, come la conservazione degli identificatori per i nodi vuoti (_bnode ID_) o forzare ulteriori controlli sintattici durante il parsing.
 
-![center|500](img/Pasted%20image%2020260526151946.png)
+![center|300](img/Pasted%20image%2020260526151946.png)
 
 Confermate le impostazioni, il sistema prende in carico la richiesta. L'interfaccia del Workbench mostrerà la risorsa in un elenco di attività in corso con lo stato "Importing...", offrendo all'utente la possibilità di interrompere forzatamente il processo tramite un pulsante "Abort" qualora ci si accorga di aver commesso un errore di configurazione.

@@ -23,7 +23,7 @@ Per quanto riguarda la memorizzazione dei dati, il framework include nativamente
 
 L'architettura del sistema è fortemente stratificata. Alla base si trova l'RDF Model, che rappresenta le fondamenta dei dati. Sopra di esso operano moduli specifici come le Sail API, Rio (dedicato all'input/output) e un HTTPClient. Salendo di livello, troviamo le implementazioni dei repository (come SailRepository e HTTPRepository), che sono gestite attraverso la Repository API. È proprio a questo livello più alto, o tramite un HTTP Server, che l'applicazione finale interagisce con il framework. L'HTTPClient ha inoltre il compito di gestire le comunicazioni esterne, ad esempio interfacciandosi con un server HTTP remoto.
 
-![center|500](img/Pasted%20image%2020260522104350.png)
+![350](img/Pasted%20image%2020260522104350.png)
 
 Dal punto di vista della configurazione e dell'integrazione, l'uso del framework è reso molto snello grazie alla pubblicazione dei suoi artefatti su Maven Central. In un progetto basato su Apache Maven, è sufficiente includere le dipendenze desiderate nel file POM. Spesso basta aggiungere una singola dipendenza "raccoglitore", come `rdf4j-client` o `rdf4j-storage` (tipicamente con `<type>pom</type>`), per importare a cascata tutti i moduli necessari. A livello di configurazione del progetto, è raccomandato impostare le proprietà del compilatore Maven (source e target) alla versione 1.8 di Java.
 
@@ -46,7 +46,7 @@ Il framework modella i termini RDF attraverso una gerarchia di interfacce ben de
         
 - **Literal:** Rappresenta un valore letterale (es. stringhe, numeri, date). È dotata di metodi specifici per estrarre le sue componenti interne: `getLabel()` (restituisce il valore testuale), `getDatatype()` (restituisce un IRI che descrive il tipo di dato) e `getLanguage()` (restituisce un `Optional<String>` contenente il tag di lingua, se presente).
 
-![center|500](img/Pasted%20image%2020260522104759.png)
+![350](img/Pasted%20image%2020260522104759.png)
 ### Uguaglianza tra Valori
 
 In RDF4J, il concetto di uguaglianza tra i termini è implementato in modo rigoroso. Tutte le classi che concretizzano l'interfaccia `Value` sovrascrivono i metodi standard di Java `Object.equals(Object o)` e `Object.hashCode()` per garantire che il confronto avvenga sul valore logico e non sul riferimento in memoria. Nello specifico:
@@ -83,14 +83,14 @@ Poiché tutti gli elementi descritti finora (`IRI`, `BNode`, `Literal`, `Stateme
 L'interfaccia `ValueFactory` definisce l'API necessaria per istanziare i tipi del package Model. Un'implementazione concreta di questa factory può essere recuperata, ad esempio, aprendo una connessione verso un repository. Tramite una `ValueFactory` è possibile generare tutti i termini necessari:
 
 - **Creazione di IRI:** È possibile creare un IRI passando l'indirizzo per esteso (es. `vf.createIRI("http://example.org/Socrates")`) oppure concatenando un _namespace_ e un _local name_ (es. `vf.createIRI(ns + "Socrates")`). Inoltre, per i vocabolari semantici di uso comune (come RDF, RDFS, ecc.), RDF4J offre classi contenenti costanti predefinite (es. `RDF.TYPE`), che evitano di dover istanziare manualmente IRI ricorrenti.
-	- ![center|500](img/Pasted%20image%2020260522104859.png)
-	- ![center|500](img/Pasted%20image%2020260522104916.png)
+	- ![350](img/Pasted%20image%2020260522104859.png)
+	- ![350](img/Pasted%20image%2020260522104916.png)
 - **Creazione di BNode:** Si può generare un nodo anonimo chiamando il metodo privo di argomenti `vf.createBNode()`, oppure fornire un identificatore personalizzato come stringa (es. `vf.createBNode("abc...")`). È fondamentale notare che l'identità di un BNode in RDF4J è basata su questo identificatore di nodo locale, il quale non ha alcuna validità o esistenza in ambito globale.
-	- ![center|500](img/Pasted%20image%2020260522104941.png)
+	- ![350](img/Pasted%20image%2020260522104941.png)
 - **Creazione di Literal:** La factory permette di generare letterali con tag di lingua (es. `vf.createLiteral("dog", "en")`) o associati a specifici tipi di dato, passando l'IRI del _datatype_ corrispondente (es. usando la costante `XMLSchema.DATETIME`). È supportata anche la conversione a partire da oggetti Java, come quelli legati al tempo (`GregorianCalendar` o `XMLGregorianCalendar`).
-	- ![center|500](img/Pasted%20image%2020260522104957.png)
+	- ![350](img/Pasted%20image%2020260522104957.png)
 - **Creazione di Statement:** Una volta creati un soggetto, un predicato e un oggetto, questi possono essere assemblati in una singola asserzione richiamando `vf.createStatement(soggetto, predicato, oggetto)`.
-	- ![center|500](img/Pasted%20image%2020260522105017.png)
+	- ![350](img/Pasted%20image%2020260522105017.png)
 
 ### I Model
 
@@ -98,7 +98,7 @@ Proseguendo l'analisi del framework, il nucleo della gestione delle collezioni d
 
 Un `Model` è, a tutti gli effetti, un insieme di `Statement`. A livello di codice, questa interfaccia estende le strutture dati standard di Java, come `Set<Statement>` e `Serializable`, combinandole con interfacce specifiche del contesto semantico, come `Graph` e `NamespaceAware`.
 
-![center|500](img/Pasted%20image%2020260522120120.png)
+![350](img/Pasted%20image%2020260522120120.png)
 
 Per gestire queste collezioni di statement direttamente in memoria (tipicamente per dataset di dimensioni contenute), il framework mette a disposizione due implementazioni principali:
 
@@ -108,9 +108,9 @@ Per gestire queste collezioni di statement direttamente in memoria (tipicamente 
 
 La creazione di un modello avviene semplicemente istanziando una di queste classi (es. `Model model = new LinkedHashModel();`).
 
-![center|500](img/Pasted%20image%2020260522120139.png)
+![350](img/Pasted%20image%2020260522120139.png)
 
-![center|500](img/Pasted%20image%2020260522120340.png)
+![350](img/Pasted%20image%2020260522120340.png)
 #### Interrogazione e Modifica del Modello: Il Ruolo dei Wildcard
 
 Rispetto a una generica collection di Java (come un `LinkedHashSet`), il `Model` di RDF4J semplifica notevolmente le operazioni di interrogazione. Mentre su un set standard per testare la presenza di una tripla tramite il metodo `contains()` è necessario istanziare e passare un oggetto `Statement` completo, il `Model` permette di passare direttamente i singoli costituenti della tripla (soggetto, predicato, oggetto).
@@ -127,18 +127,18 @@ Basandosi sulla documentazione Javadoc ufficiale, ecco come si comportano queste
     
 - `model.contains(null, null, null, c1, c2, c3)`: è possibile anche passare una lista di contesti, operando quindi su qualsiasi statement che appartenga al contesto `c1`, oppure a `c2`, oppure a `c3`.
 
-![center|500](img/Pasted%20image%2020260522120405.png)
+![350](img/Pasted%20image%2020260522120405.png)
 
 Vediamo anche per quanto riguarda i `remove`
 
-![center|500](img/Pasted%20image%2020260522120455.png)
+![350](img/Pasted%20image%2020260522120455.png)
 #### Viste e Filtri sui Dati
 
 Un'altra funzionalità potente del `Model` è la capacità di generare delle **viste** dinamiche sui dati.
 
 Utilizzando il metodo `filter(subject, predicate, object, contexts...)`, è possibile ottenere un nuovo `Model` ridotto (filtrato) che contiene esclusivamente gli statement corrispondenti ai parametri indicati. La caratteristica fondamentale di questa vista è la sua natura bidirezionale: qualsiasi modifica apportata al modello di partenza si rifletterà automaticamente sulla vista filtrata, e viceversa.
 
-![center|500](img/Pasted%20image%2020260522120515.png)
+![350](img/Pasted%20image%2020260522120515.png)
 
 Inoltre, se si ha bisogno di estrarre solo parti specifiche delle triple, è possibile chiedere al modello una vista diretta sui singoli set di componenti tramite i metodi:
 
@@ -148,7 +148,7 @@ Inoltre, se si ha bisogno di estrarre solo parti specifiche delle triple, è pos
     
 - `model.objects()` per ottenere un `Set<Value>`.
 
-![center|500](img/Pasted%20image%2020260522120537.png)
+![350](img/Pasted%20image%2020260522120537.png)
 #### La Classe di Utilità Models
 
 Per semplificare ulteriormente le operazioni più comuni e avanzate, RDF4J fornisce la classe di utilità **`Models`**.
@@ -161,7 +161,7 @@ Infine, la classe `Models` supporta un **approccio basato sulle proprietà**, ch
     
 - **Scrittura/Aggiornamento:** Il metodo `Models.setProperty(model, subject, property, value)` permette di assegnare un nuovo valore a una determinata proprietà. Eseguendo questa operazione, il framework si occupa automaticamente di cancellare tutti i valori precedenti associati a quella proprietà per quel soggetto (limitatamente ai contesti indicati, o all'intero modello se non si specifica alcun contesto).
 
-![center|500](img/Pasted%20image%2020260522120558.png)
+![350](img/Pasted%20image%2020260522120558.png)
 
 ## RIO (RDF Input/Output)
 
@@ -184,7 +184,7 @@ La prima è un approccio più esplicito e rigoroso che passa attraverso l'uso di
 
 La seconda strada è una comoda **scorciatoia** offerta dalla classe di utilità `Rio`. Tramite il metodo `Rio.createParser(rdfFormat [, valueFactory])`, è possibile istanziare direttamente il parser passandogli il formato desiderato e, opzionalmente, la `ValueFactory` da utilizzare.
 
-![center|500](img/Pasted%20image%2020260522121632.png)
+![350](img/Pasted%20image%2020260522121632.png)
 #### Configurazione del Parser
 
 Una volta ottenuto l'oggetto `RDFParser`, è possibile configurarne il comportamento tramite una serie di impostazioni opzionali prima di avviare la lettura vera e propria:
@@ -200,7 +200,7 @@ Una volta ottenuto l'oggetto `RDFParser`, è possibile configurarne il comportam
 
 Per configurazioni più avanzate e specifiche dei singoli parser, si utilizza la classe `ParserConfig`. È possibile istanziare un oggetto `ParserConfig`, settarvi dei parametri rappresentati da oggetti `RioSetting<T>` (ognuno con il proprio valore), e infine passare l'intera configurazione al parser tramite `setParserConfig(config)`. Per conoscere quali impostazioni sono supportate da un determinato parser, si può invocare il suo metodo `getSupportedSettings()`.
 
-![center|500](img/Pasted%20image%2020260522121700.png)
+![350](img/Pasted%20image%2020260522121700.png)
 
 #### L'Architettura di Parsing: L'Approccio "Push"
 
@@ -222,9 +222,9 @@ La sequenza delle operazioni segue un ciclo di vita preciso:
         
 3. Al termine del documento, chiude il processo invocando `endRDF()`.
 
-![center|500](img/Pasted%20image%2020260522121726.png)
+![350](img/Pasted%20image%2020260522121726.png)
 
-![center|500](img/Pasted%20image%2020260522121747.png)
+![350](img/Pasted%20image%2020260522121747.png)
 #### Raccogliere i Dati: StatementCollector e Scorciatoie
 
 Poiché l'interfaccia base `RDFHandler` si limita a ricevere i dati in streaming, se si desidera memorizzarli e conservarli (ad esempio in un `Model` o in una semplice collection), RDF4J fornisce un'implementazione concreta chiamata **`StatementCollector`**. Questo componente funge da handler e si occupa di accumulare automaticamente tutti gli statement e i namespace ricevuti durante il parsing all'interno di una collezione in memoria.
@@ -260,7 +260,7 @@ Il secondo metodo, più immediato, consiste nell'usare una **scorciatoia** forni
 
 Tramite l'istruzione `Rio.createWriter(rdfFormat, outputStreamOrWriter [, base URI])` si delega al framework l'intero processo di ricerca nel registro e istanziazione, ottenendo direttamente il writer pronto all'uso.
 
-![center|500](img/Pasted%20image%2020260522122614.png)
+![350](img/Pasted%20image%2020260522122614.png)
 #### Configurazione del Writer
 
 Prima di avviare la scrittura, è possibile personalizzare il comportamento del serializzatore. Questo avviene attraverso la classe `WriterConfig`.
@@ -277,7 +277,7 @@ Per innescare il processo di serializzazione di una collezione di triple (un ogg
     
 - **Scorciatoia diretta (Shorthand):** È possibile compattare l'intero ciclo di vita (creazione, configurazione e scrittura) in una singola riga di codice invocando: `Rio.write(iterable, outputStreamOrWriter [, base URI], format, [writerConfig]);`
 
-![center|500](img/Pasted%20image%2020260522122627.png)
+![350](img/Pasted%20image%2020260522122627.png)
 #### Il Vantaggio Architetturale: Efficienza in Memoria
 
 C'è un principio architetturale di vitale importanza che accomuna l'intero modulo RIO (sia per la lettura che per la scrittura): **non c'è mai bisogno di avere tutti gli statement caricati simultaneamente in memoria.**
@@ -305,15 +305,15 @@ Un `Repository` rappresenta il punto di accesso ufficiale a un database RDF (il 
 
 Un aspetto architetturale fondamentale è che l'utente o l'applicazione non esegue mai le operazioni di lettura o scrittura direttamente sull'oggetto `Repository`. Quest'ultimo funge da "fabbrica": per interagire con i dati è obbligatorio ottenere da esso una **`RepositoryConnection`**, attraverso la quale transitano tutte le operazioni.
 
-![center|500](img/Pasted%20image%2020260523145350.png)
+![350](img/Pasted%20image%2020260523145350.png)
 ### Tipologie di Repository
 
 Il framework fornisce diverse implementazioni dell'interfaccia `Repository` (e delle relative `RepositoryConnection`), ognuna adatta a un contesto specifico:
 
 - **SPARQLRepository:** È pensato per accedere a un _endpoint SPARQL_ generico. Poiché si affida al protocollo standard SPARQL per le comunicazioni, è soggetto alle limitazioni del protocollo stesso (ad esempio, limitazioni nella gestione di transazioni complesse o nell'uso di BNode come parametri di input). Per questo motivo, il suo utilizzo è consigliato principalmente per singole operazioni SPARQL isolate. Prevede anche un costruttore specifico (un _overload_) per indicare un endpoint separato dedicato esclusivamente alle operazioni di modifica.
-	- ![center|500](img/Pasted%20image%2020260523145415.png)
+	- ![350](img/Pasted%20image%2020260523145415.png)
 - **HTTPRepository:** Viene utilizzato per accedere a un repository remoto che espone i propri servizi specificamente attraverso l'API REST di RDF4J. Supporta la configurazione di credenziali (username e password) nel caso in cui l'accesso al server richieda autenticazione.
-	- ![center|500](img/Pasted%20image%2020260523145440.png)
+	- ![350](img/Pasted%20image%2020260523145440.png)
 _Nota pratica sul ciclo di vita:_ Per entrambi questi repository, l'invocazione esplicita del metodo `init()` per l'inizializzazione è diventata opzionale nelle versioni recenti. È invece sempre obbligatorio e cruciale rilasciare le risorse invocando `shutDown()`, pratica che andrebbe sempre inserita all'interno di un blocco `finally` per assicurarne l'esecuzione.
 
 ### Il cuore locale: SailRepository e l'interfaccia Sail
@@ -343,7 +343,7 @@ Le dinamiche di scrittura su questo file sono controllate minuziosamente dal par
 
 La flessibilità dell'architettura Sail raggiunge il suo apice con il concetto di **Stackable Sail** (Sail impilabile).
 
-![center|500](img/Pasted%20image%2020260523145644.png)
+![350](img/Pasted%20image%2020260523145644.png)
 
 Uno Stackable Sail non conserva i dati in prima persona, ma opera come un "involucro" (wrapper) posizionato al di sopra di un altro Sail sottostante (chiamato _base_ o _delegate_).
 
@@ -368,9 +368,9 @@ Il framework RDF4J permette di arricchire il repository base con capacità di ra
         
 - **`SchemaCachingRDFSInferencer`:** Un altro stackable sail deprecato per il reasoning RDFS. A differenza del precedente, non usa un approccio _rule-based_ (basato su regole applicate iterativamente), ma colleziona lo schema in una _cache_ interna, utilizzata per produrre le inferenze in modo più veloce.
 
-![center|500](img/Pasted%20image%2020260523150018.png)
+![350](img/Pasted%20image%2020260523150018.png)
 
-![center|500](img/Pasted%20image%2020260523150042.png)
+![350](img/Pasted%20image%2020260523150042.png)
 ### Note Architetturali sulle Configurazioni
 
 Un aspetto importante di RDF4J è che **non distingue tra la creazione di un nuovo repository e l'apertura di uno creato in precedenza**.
@@ -387,7 +387,7 @@ Poiché la connessione impegna risorse di sistema (memoria, file handle, lock de
     
 2. **Try-with-resources (Consigliato in Java moderni):** Si dichiara l'apertura della connessione direttamente all'interno delle parentesi del blocco `try`. Java chiuderà automaticamente la risorsa al termine del blocco, rendendo il codice più pulito e sicuro.
 
-![center|500](img/Pasted%20image%2020260523150131.png)
+![350](img/Pasted%20image%2020260523150131.png)
 #### Inserimento Dati: Il metodo `add`
 
 La classe `RepositoryConnection` offre il metodo `add()` per inserire nuove triple nel database. Il framework mette a disposizione numerosi _overload_ (varianti) di questo metodo, rendendolo estremamente flessibile. Può accettare in input:
@@ -403,22 +403,22 @@ La classe `RepositoryConnection` offre il metodo `add()` per inserire nuove trip
 
 È cruciale notare che se si passa il parametro opzionale **context**, si specifica esplicitamente in quali contesti (o grafi nominati) le triple devono essere inserite, _sovrascrivendo_ eventuali contesti già associati agli statement in input.
 
-![center|500](img/Pasted%20image%2020260523150150.png)
+![350](img/Pasted%20image%2020260523150150.png)
 #### Estrazione Dati: Il metodo `export`
 
 Speculare all'inserimento, il metodo `export()` permette di estrarre i dati dal repository e serializzarli.
 
 Per utilizzarlo, occorre configurare un `RDFHandler` (un writer, come visto in precedenza nel modulo RIO) e passarlo al metodo `export`. È possibile filtrare l'estrazione passando i contesti desiderati come parametri successivi. Ad esempio, `conn.export(nquadOutputter, g1)` esporterà solo i dati appartenenti al contesto identificato dall'IRI `g1`. Se non si specifica alcun contesto, verrà esportato l'intero contenuto del repository.
 
-![center|500](img/Pasted%20image%2020260523150243.png)
+![350](img/Pasted%20image%2020260523150243.png)
 
 Un dettaglio molto importante è che `RepositoryConnection.export()` esporta **unicamente gli statement espliciti**. Non estrarrà mai le triple generate logicamente dagli inferencer (se presenti nello stack).
 
-![center|500](img/Pasted%20image%2020260523150305.png)
+![350](img/Pasted%20image%2020260523150305.png)
 
 Infine, per rendere l'output testuale più leggibile, è possibile registrare dei prefissi (namespace) direttamente sulla connessione usando `conn.setNamespace(prefix, URI)`. Durante l'esportazione, il writer utilizzerà questi prefissi al posto degli URI estesi.
 
-![center|500](img/Pasted%20image%2020260523150323.png)
+![350](img/Pasted%20image%2020260523150323.png)
 
 Analizziamo come la `RepositoryConnection` permette di interrogare e manipolare i dati, partendo dai metodi di base fino ad arrivare all'esecuzione di query SPARQL complesse.
 
@@ -432,11 +432,11 @@ L'invocazione di questo metodo restituisce un oggetto **`RepositoryResult<Statem
 
 - **Inferenza di default:** Un aspetto cruciale di `getStatements()` è che, **per impostazione predefinita, include nei risultati anche gli statement inferiti** (se è configurato un reasoner). Se si desidera ottenere _esclusivamente_ gli statement espliciti, è necessario utilizzare un _overload_ del metodo che accetta un parametro booleano finale, passandogli il valore `false` (cioè `includeInferred a false`).
 
-![center|500](img/Pasted%20image%2020260523150943.png)
+![350](img/Pasted%20image%2020260523150943.png)
 
 In alternativa al classico ciclo `while`, la classe di utilità `QueryResults` offre metodi più moderni basati sugli stream di Java. Ad esempio, si può convertire il risultato in uno stream e stamparlo direttamente con un'unica riga: `QueryResults.stream(result).forEach(System.out::println);`.
 
-![center|500](img/Pasted%20image%2020260523150953.png)
+![350](img/Pasted%20image%2020260523150953.png)
 #### Rimozione Dati: Il metodo `remove`
 
 In perfetta simmetria con il metodo `add()`, la connessione offre il metodo `remove()` per eliminare triple dal database.
@@ -485,7 +485,7 @@ Le Graph Query corrispondono alle interrogazioni SPARQL di tipo `CONSTRUCT` o `D
     
 4. _Scorciatoia:_ Se si desidera caricare l'intero grafo risultante direttamente in memoria, si può usare la comodissima utilità `QueryResults.asModel(query.evaluate())`, che restituisce un oggetto `Model`.
 
-![center|500](img/Pasted%20image%2020260523151121.png)
+![350](img/Pasted%20image%2020260523151121.png)
 ##### 3. Update (INSERT / DELETE)
 
 Le operazioni di aggiornamento SPARQL, che modificano lo stato del database, sono gestite separatamente.
@@ -515,7 +515,7 @@ Il flusso classico per gestire una transazione prevede tre fasi principali:
 
 _Nota di sicurezza:_ Indipendentemente da come si conclude la transazione (commit o rollback), la connessione va sempre chiusa. Se si utilizza il costrutto `try-with-resources`, e si verifica un'eccezione non gestita _prima_ del commit, il metodo `close()` (chiamato automaticamente alla fine del blocco) forzerà un rollback di sicurezza prima di chiudere la connessione.
 
-![center|500](img/Pasted%20image%2020260523151545.png)
+![350](img/Pasted%20image%2020260523151545.png)
 ### I Livelli di Isolamento (Isolation Levels)
 
 Quando più utenti (o thread) operano contemporaneamente sullo stesso database, le loro transazioni si incrociano. I **livelli di isolamento** definiscono quanto strettamente una transazione debba essere protetta (isolata) dalle modifiche apportate dalle altre transazioni concorrenti in corso.
@@ -573,6 +573,6 @@ L'interfaccia del Workbench di GraphDB rende questa operazione molto semplice. N
 
 Cliccando sull'icona a forma di collegamento (una catena), il Workbench apre una finestra di dialogo in sovraimpressione contenente l'**URL completo del repository** (ad esempio, terminante con `/repositories/Test` se il repository si chiama "Test"). Questo URL è la stringa esatta che deve essere copiata e passata al costruttore in Java per stabilire correttamente la connessione via API.
 
-![center|500](img/Pasted%20image%2020260523151844.png)
+![350](img/Pasted%20image%2020260523151844.png)
 
-![center|500](img/Pasted%20image%2020260523151908.png)
+![350](img/Pasted%20image%2020260523151908.png)
