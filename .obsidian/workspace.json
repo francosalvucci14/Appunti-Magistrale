@@ -11,12 +11,15 @@
             "id": "4087b0f98e2f2e6e",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/img/Pasted image 20260526160208.png"
+                "file": "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260526160208"
+              "icon": "lucide-file",
+              "title": "Lezione 16 KE - Protege e VocBench"
             }
           }
         ]
@@ -92,13 +95,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/img/Pasted image 20260526160208.png",
+                "file": "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Pasted image 20260526160208"
+              "title": "Outline of Lezione 16 KE - Protege e VocBench"
             }
           },
           {
@@ -164,25 +167,27 @@
   },
   "active": "2f460895308e6293",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606134311.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606134219.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606133458.png",
+    "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606133657.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606133633.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606133623.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606133544.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606133523.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606124820.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606124808.png",
+    "Appunti II Anno/Appunti KE/img/Pasted image 20260606124755.png",
+    "Appunti II Anno/Appunti KE/Lezione 15 KE - SHACL.md",
+    "Appunti II Anno/Appunti KE/Lezione 14 KE - Esercizi Reasoning.md",
     "Appunti II Anno/Appunti KE/Lezione 13 KE - GraphDB + LOV.md",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526160208.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526160142.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526160134.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526160122.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526160106.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526160045.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526160030.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526155655.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526155140.png",
-    "Appunti II Anno/Appunti KE/img/Pasted image 20260526155105.png",
+    "Tesi Magistrale.md",
     "Appunti II Anno/Appunti KE/Lezione 12 KE - RDF4J.md",
     "Appunti II Anno/Appunti KE/Lezione 3 KE - RDF e RDFS.md",
     "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
     "Appunti II Anno/Appunti KE/Lezione 4-5 KE - OWL, OWL2.md",
     "README.md",
-    "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
-    "Appunti II Anno/Appunti KE/Lezione 15 KE - SHACL.md",
-    "Appunti II Anno/Appunti KE/Lezione 14 KE - Esercizi Reasoning.md",
     "Appunti II Anno/Appunti CDCI/Appunti parte Golluscio.md",
     "Appunti II Anno/Appunti KE/Indice degli appunti KE.md",
     "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
@@ -206,7 +211,6 @@
     "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/DVWA/Command Execution.md",
     "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/DVWA/File Inclusion.md",
     "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/DVWA/SQL Injection.md",
-    "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Metasploitable/Information Gathering.md",
     "Appunti II Anno/Appunti CDCI/Threat-Modeling-Ospedale.pdf",
     "Appunti II Anno/Appunti CDCI/Threat_Model_Azienda_Ospedaliera-1.pdf"
   ]

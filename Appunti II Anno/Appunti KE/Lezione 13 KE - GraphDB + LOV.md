@@ -514,6 +514,51 @@ L'area dei risultati non si limita a una semplice griglia. Offre diverse schede 
 
 ![center|400](img/Pasted%20image%2020260526160208.png)
 
+Le prestazioni e il comportamento di GraphDB durante l'interrogazione (viste nel passaggio precedente) sono intimamente legate a come il sistema gestisce l'inferenza dietro le quinte.
+## Reasoning
+### La Strategia di Materializzazione Completa
+
+GraphDB adotta un approccio al ragionamento semantico definito **materializzazione completa** (o _forward-chaining_ puro, nella sua implementazione di base).
+
+Cosa significa in pratica? Quando l'inferenza è attiva, il motore applica ciclicamente tutte le regole logiche definite nel _ruleset_ scelto al momento della configurazione del repository. Questo processo iterativo continua fino a quando il sistema raggiunge un punto di saturazione, ovvero finché non è più matematicamente in grado di dedurre (inferire) alcuna nuova tripla dai dati esistenti. Tutte queste nuove triple dedotte vengono fisicamente scritte (materializzate) negli indici del database, esattamente come se fossero state inserite manualmente dall'utente.
+
+Questa scelta architetturale ha un impatto profondo sulle performance:
+
+- **Svantaggio in Scrittura:** Il "costo" computazionale del ragionamento viene interamente scaricato sulle operazioni di scrittura (inserimento, aggiornamento). Inserire nuovi dati è più lento, perché il sistema deve fermarsi a calcolare e scrivere tutte le conseguenze logiche prima di dichiarare conclusa la transazione.
+    
+- **Vantaggio in Lettura:** Le interrogazioni (query `SELECT`) sono estremamente veloci. Poiché tutte le possibili deduzioni sono già state pre-calcolate e salvate su disco, quando un utente lancia una query con l'inferenza attivata, GraphDB non deve fare alcun calcolo al volo; si limita a leggere i risultati già pronti dai suoi indici, garantendo tempi di risposta minimi.
+
+### Gestione Monotona degli Aggiornamenti
+
+La logica sottostante a questo meccanismo di inferenza è **monotona**. Questo significa che la conoscenza può solo crescere o restringersi in modo prevedibile.
+
+- **Aggiunta di una tripla:** Inserire un nuovo dato non può mai invalidare o contraddire le deduzioni logiche fatte in precedenza. Può, al massimo, innescare nuove regole e generare _ulteriori_ inferenze. Pertanto, l'aggiornamento è efficiente: il sistema non riparte da zero, ma riprende il processo di iterazione partendo solo dalle regole attivate dalla nuova tripla appena inserita.
+    
+- **Rimozione di una tripla:** Questo è lo scenario critico. Cancellare un dato di partenza rischia di far crollare un intero castello di deduzioni (se la tripla A generava B, e rimuovo A, devo rimuovere anche B, a patto che non ci fosse un'altra tripla C che generava anch'essa B). L'approccio _naive_ (ingenuo) per risolvere questo problema sarebbe cancellare tutte le inferenze e ricalcolare tutto il database da zero ad ogni singola cancellazione. Ovviamente, man mano che il repository cresce, questo diventerebbe impossibile. Per ovviare a ciò, GraphDB implementa un raffinato algoritmo di **cancellazione incrementale**:
+    
+    1. Esegue una ricerca in avanti (_forward-chaining_) per identificare con precisione chirurgica solo le triple che derivavano direttamente dal dato appena rimosso.
+        
+    2. Successivamente, esegue un controllo a ritroso (_backward-chaining_) su quelle triple sospette, per verificare se esistano "vie alternative" per derivarle. Se una tripla inferita non ha più alcuna giustificazione valida nei dati rimanenti, viene rimossa in modo efficiente.
+        
+
+### L'Ottimizzazione di `owl:sameAs`
+
+Una delle sfide computazionali più ardue nel Web Semantico è la gestione dell'identità. Il costrutto `owl:sameAs` dichiara che due risorse diverse si riferiscono allo stesso oggetto nel mondo reale.
+
+Per le regole di OWL, questa proprietà è una **relazione di equivalenza** (è riflessiva, simmetrica e transitiva). L'implicazione matematica è pesante: se ho $N$ risorse dichiarate come equivalenti (una _clique_), il ragionatore standard genererà $N^2$ relazioni `sameAs` esplicite tra di loro. Ancora peggio, ogni singolo _statement_ associato a ciascuna risorsa verrebbe copiato e ripetuto per tutte le altre risorse del gruppo. In dataset complessi, questo causa un'esplosione combinatoria che intasa gli indici.
+
+GraphDB risolve questo problema aggirando il motore a regole standard. Offre un'**implementazione non rule-based** altamente ottimizzata:
+
+Invece di moltiplicare le triple all'infinito, il sistema raggruppa le risorse equivalenti in **classi di equivalenza** a livello fisico (nei suoi indici interni). Elegge una singola risorsa come "rappresentante" formale del gruppo e memorizza in modo ultracompatto tutte le proprietà condivise legandole solo al rappresentante. Questa architettura spiega perché l'editor SPARQL (visto nella sezione precedente) dispone di un pulsante dedicato per espandere i risultati `owl:sameAs`: permette all'utente di scegliere se vedere la rappresentazione fisica compatta o l'espansione logica completa.
+
+### Oltre RDF: Dati Tabellari, Ricerca Testuale e Geospaziale
+
+Sebbene RDF sia il suo cuore, l'ecosistema di GraphDB è progettato per integrarsi con scenari di dati più ampi.
+
+1. **OntoRefine:** Riconoscendo che la maggior parte dei dati aziendali o aperti non nasce in formato semantico, il Workbench include **OntoRefine** (accessibile sotto "Import -> Tabular"). È uno strumento potente derivato da OpenRefine, progettato specificamente per ingerire dati in formati tabellari tradizionali (TSV, CSV, Excel, ma anche JSON e XML). Offre un'interfaccia interattiva per pulire i dati grezzi, trasformarli strutturalmente e, infine, mapparli su un'ontologia per importarli nel database a grafo come triple RDF perfette.
+    
+2. **Ricerca Full-text e Geospaziale:** Il motore non si limita a interrogazioni strutturali SPARQL. Sfruttando indici ausiliari specializzati (come i connettori Lucene), GraphDB supporta in modo nativo e performante la **Full-text search** (per cercare parole chiave all'interno dei testi lunghi o delle etichette descrittive) e interrogazioni **GeoSPARQL** (per calcolare distanze o intersezioni spaziali tra entità geografiche). Anche per la ricerca full-text, il sistema è progettato per aggiornare gli indici in maniera incrementale, garantendo che le ricerche testuali riflettano in tempo reale gli ultimi aggiornamenti apportati al database.
+
 ---
 # Appendice
 
