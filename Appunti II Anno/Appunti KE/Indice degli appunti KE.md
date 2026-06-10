@@ -11,4 +11,5 @@
 - [Lezione 14 KE - Esercizi Reasoning](Lezione%2014%20KE%20-%20Esercizi%20Reasoning.md)
 - [Lezione 15 KE - SHACL](Lezione%2015%20KE%20-%20SHACL.md)
 - [Lezione 16 KE - Protege e VocBench](Lezione%2016%20KE%20-%20Protege%20e%20VocBench.md)
-- 
+
+Merge file -> [KE_Merge](KE_Merge.pdf)

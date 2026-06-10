@@ -15,15 +15,11 @@ Questi appunti comprendono i corsi di :
 
 **Secondo anno**
 - Prof. Croce : Information Retrieval (**IR**)
+- Prof. Talamo & Prof.ssa Ruzzetti : Artificial Intelligence and Cybersecurity (**AIC**)
 - Prof. Croce & Prof. Gambosi : Machine Learning (**ML**)
 - Prof. Stellato : Knowledge Engineering (**KE**)
-- Prof. Talamo & Prof. Dimitri (forse Alma?) : Cybersecurity-by-Design for critical infrastructures (**CBD**) *ex Sicurezza dei Sistemi Informativi*
+- Prof. Talamo & Prof.ssa Pennacchi : Cybersecurity-by-Design for critical infrastructures (**CBD**) *ex Sicurezza dei Sistemi Informativi*
 - Prof. Intrigila : Metodi di Verifica dei Sistemi (**MVS**) (forse Model-Based System Engineering OPPURE Crittografia)
-
-Da capire i nuovi corsi che sono: 
-- Big Data Analysis : Prof. Vocca
-- Artificial Intelligence and Cybersecurity : Prof. Basili & Prof. Talamo
-- Neural Signal and Image Processing and Generation : Prof. Toschi & Prof. Duggento
 
 **Esami fatti**:
 
@@ -33,10 +29,10 @@ Da capire i nuovi corsi che sono:
 - [ ] AR (fatto per metà)
 - [x] CNS
 - [x] ISTI
-- [ ] IR/AIC
+- [x] IR/AIC
 - [x] ML
 - [ ] KE
-- [ ] CBD
+- [x] CBD
 - [x] MVS
 - [x] CYS
 
