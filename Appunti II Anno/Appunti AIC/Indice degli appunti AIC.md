@@ -8,3 +8,8 @@ Indice degli appunti del corso di Artificial Intelligence and Cybersecurity
 - [Lecture-6-AdversarialMachineLearning-Defenses](Lecture-6-AdversarialMachineLearning-Defenses.pdf)
 - [Lecture-7-Jailbreaks](Lecture-7-Jailbreaks.pdf)
 
+Extra
+
+- [Mini-corso AI locale.pptx](Mini-corso%20AI%20locale.pptx.pdf)
+- [SlideCDCI_AIC](Appunti%20II%20Anno/Appunti%20AIC/SlideCDCI_AIC.pdf)
+- 
