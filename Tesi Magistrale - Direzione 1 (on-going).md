@@ -223,3 +223,9 @@ La scomposizione tecnica del protocollo TSCAN-A evidenzia un pregevole e rarissi
 Se utilizzato in contesti puri, orfano di direttive restrittive preliminari, l'algoritmo Apriori si auto-proclama e collassa su se stesso nelle sfide Big Data a causa della sua disastrosa ramificazione esponenziale $\mathcal{O}(2^m)$ indotta dalla moltiplicazione delle combinazioni periferiche superflue. Trasferito nel reame impietoso della reticolazione temporale, dove ogni singolo istante moltiplica lo spazio d'indagine in un frattale esplosivo, la sua efficacia computazionale scivola drammaticamente ai confini dell'impossibilità tecnica.
 
 Nonostante la gravità di queste premesse, l'astrazione e il confezionamento della geniale serie di euristiche in cascata - la retroazione Weak Core e la strozzatura temporale Strong Core - operano una resezione chirurgica sul corpo massivo del Network, escludendo matematicamente ogni possibile candidato spurio e limitando i carichi finali unicamente a una minuscola porzione d'élite topologica. Riducendo drammaticamente e artificialmente i margini del perimetro elaborativo tramite il confinamento stringente in $\mathcal{O}(m' m + |s| C_{\mathcal{T}}^{\tau} |s|^{\tau})$, TSCAN-A redime lo strumento Apriori assoggettandolo e asservendolo, consegnando in conclusione misurazioni inappuntabili e comunità di altissimo livello coesivo certificate su frame ciclici a vastissima tiratura documentale, inaugurando di fatto uno standard formidabile nell'estrazione della persistenza in tracciati grafici temporalizzati di enormi proporzioni.
+
+---
+
+Effettuata dimostrazione che il prblema è NP-Hard in data 02/07/2026, c'è poco da fare
+
+Cambiare direzione? forse fare quella di pepè e straziota?
