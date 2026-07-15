@@ -1,0 +1,225 @@
+---
+title: "Distributed Computing - I"
+author:
+  name: "Emanuele Natale"
+  email: emanuele.natale@univ-cotedazur.fr
+  affiliation: CNRS, I3S, INRIA, UCA
+date: "15 04 2025"
+engine: julia
+julia:
+  exeflags: [
+    "--procs=2",
+    "--threads=4"
+  ]
+format:
+  revealjs:
+    theme: dark
+    code-line-numbers: false
+    slide-number: true
+    overview: true
+    scrollable: true
+execute:
+  echo: true
+  freeze: auto
+  error: true
+---
+
+# Review of tasks
+
+## Asynchronous tasks
+
+:::: {.columns}
+::: {.column width="50%"}
+```{julia}
+function lazyf(x)
+  sleep(0.25)
+  return x
+end
+
+@time t = @async lazyf(2)
+@time fetch(t)
+```
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+### Quiz
+```{julia}
+#| output-location: fragment
+@time for i in 1:4
+  lazyf(i)
+end
+```
+:::
+::: {.fragment}
+```{julia}
+@time for i in 1:4
+  @async lazyf(i)
+end
+```
+:::
+::: {.fragment}
+```{julia}
+@time @sync for i in 1:4
+  @async lazyf(i)
+end
+```
+:::
+:::
+::::
+
+## Back to $\pi$
+
+```{julia}
+function work(N)
+  series = 1.0
+  for i in 1:N
+    series += (isodd(i) ? -1 : 1) / (i*2+1)
+  end
+  return 4*series
+end
+@time work(100_000_000);
+```
+
+::: {.fragment}
+How long does this take?
+```{julia}
+#| output-location: fragment
+@time @sync for i in 1:10
+  @async work(100_000_000)
+end
+```
+:::
+
+# Distributed computing
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{julia}
+using Distributed
+nprocs()
+# addprocs(4)
+```
+
+
+```{julia}
+myid()
+```
+
+:::
+::: {.column width="50%"}
+
+::: {.fragment}
+```{julia}
+#| eval: false
+r = @spawnat 2 (myid(), rand())
+fetch(r)
+# (2, 0.6818163113888619)
+```
+:::
+::: {.fragment}
+```{julia}
+#| eval: false
+@elapsed r = @spawnat 2 (sleep(1), rand())
+# 0.000340812
+```
+
+```{julia}
+#| eval: false
+@elapsed fetch(r)
+# 0.000326885
+```
+:::
+
+:::
+::::
+
+## `@spawnat` vs `@async`
+
+:::: {.columns}
+::: {.column width="40%"}
+```{julia}
+#| eval: false
+@elapsed for i in 2:nprocs()
+  @spawnat i sleep(1)
+end
+# 0.000689852
+```
+
+```{julia}
+#| eval: false
+@elapsed begin
+  @sync for i in 2:nprocs()
+    @spawnat i sleep(1)
+  end
+end
+# 1.012463476
+```
+:::
+::: {.column width="60%"}
+::: {.fragment}
+```{julia}
+#| eval: false
+@everywhere function work(N)
+  series = 1.0
+  for i in 1:N
+    series += (isodd(i) ? -1 : 1) / (i*2+1)
+  end
+  return 4*series
+end
+work(1_000_000_000)
+
+@elapsed @sync for i in workers()
+  @spawnat i work(1_000_000_000)
+end
+# 1.068717001
+```
+:::
+:::
+::::
+
+## Back to $\pi$
+
+```{julia}
+#| eval: false
+@everywhere function part_pi(r)
+  series = 0.0
+  for i in r
+    series += (isodd(i) ? -1 : 1) / (i*2+1)
+  end
+  return 4*series
+end
+a = part_pi(0:999)
+a, a-pi
+# (3.140592653839794, -0.000999999749998981)
+```
+
+
+```{julia}
+#| eval: false
+b = part_pi(1000:9999)
+(a + b), (a+b) - pi
+# (3.1414926535900443, -9.999999974885654e-5)
+```
+
+## Hand-crafted distributed $\pi$
+
+```{julia}
+#| eval: false
+r = 0:nextpow(nprocs(),1_000_000_000)
+
+futures = Array{Future}(undef, nworkers())
+t = @elapsed begin
+  for (i, id) in enumerate(workers())
+    part_len = length(r) ÷ nworkers()
+    batch = 0:(part_len-1)
+    part_r = batch .+ (i-1)*(part_len)
+    futures[i] = @spawnat id part_pi(part_r)
+  end
+  p = sum(fetch.(futures))
+end
+
+t, p - pi
+# (0.616588778, -8.195844003466846e-10)
+```

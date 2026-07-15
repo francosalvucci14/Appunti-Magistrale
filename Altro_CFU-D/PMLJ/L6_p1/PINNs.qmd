@@ -1,0 +1,594 @@
+---
+title: "Physics-Informed Neural Networks"
+author:
+    name: "Emanuele Natale"
+    email: emanuele.natale@univ-cotedazur.fr
+    affiliation: CNRS, I3S, INRIA, UCA
+date: "07 04 2025"
+engine: julia
+julia:
+  exeflags: [
+    "--procs=2",
+    "--threads=4"
+  ]
+format:
+  revealjs:
+    theme: dark
+    code-line-numbers: false
+    toc: true
+    toc-depth: 1
+    slide-number: true
+    overview: true
+    scrollable: true
+execute:
+    echo: true
+    freeze: auto
+    error: true
+---
+
+## Neural Networks
+
+$$
+\text{NN}(x) = W_3\sigma_2(W_2\sigma_1(W_1x + b_1) + b_2) + b_3
+$$
+e.g.
+
+```{julia}
+W = [randn(32,10),randn(32,32),randn(5,32)]
+b = [zeros(32),zeros(32),zeros(5)]
+
+simpleNN(x) = W[3]*tanh.(W[2]*tanh.(W[1]*x + b[1]) + b[2]) + b[3]
+simpleNN(rand(Float32, 10));
+```
+
+## Flux
+
+:::: {.columns}
+::: {.column width="30%"}
+```{julia}
+#| eval: false
+]add Flux
+```
+Then
+```{julia}
+using Flux
+```
+If you prefer to namespace commands: `import Flux`
+:::
+::: {.column width="70%"}
+::: {.fragment}
+```{julia}
+NN2 = Chain(Dense(10,32,tanh),
+           Dense(32,32,tanh),
+           Dense(32,5))
+NN2(rand(Float32, 10))
+```
+:::
+:::
+::::
+
+## Layers
+
+Flux written in *pure julia* built on top of **automatic differentiation** libraries
+
+:::: {.columns}
+::: {.column width="65%"}
+```{julia}
+#| eval: false
+struct Dense{F,S<:AbstractArray,T<:AbstractArray}
+  W::S
+  b::T
+  σ::F
+end
+
+function Dense(in::Integer, out::Integer,
+                σ = identity;
+                initW = glorot_uniform,
+                initb = zeros)
+  return Dense(initW(out, in), initb(out), σ)
+end
+
+function (a::Dense)(x::AbstractArray)
+  W, b, σ = a.W, a.b, a.σ
+  σ.(W*x .+ b)
+end
+```
+:::
+::: {.column width="35%"}
+::: {.fragment}
+```{julia}
+f = Dense(32,32,tanh)
+f(rand(Float32, 32))
+```
+:::
+:::
+::::
+
+## Chain
+
+```{julia}
+#| eval: false
+#| code-line-numbers: "|1-4|9|6-7|"
+struct Chain{T<:Tuple}
+  layers::T
+  Chain(xs...) = new{typeof(xs)}(xs)
+end
+
+applychain(::Tuple{}, x) = x
+applychain(fs::Tuple, x) = applychain(tail(fs), first(fs)(x))
+
+(c::Chain)(x) = applychain(c.layers, x)
+```
+
+## Note on recursive definition
+
+A function definition lowers to something like
+
+```{julia}
+struct ff2 <: Function end
+(_::ff2)(x,y) = 2x + y
+const ff = ff2()
+```
+
+Primitive operation: calls on structs
+
+Why **singleton** types, i.e. where every instance is equivalent?
+
+::: {.fragment}
+Ans: we can have the function as compile-time information.
+:::
+
+## Zero-cost abstraction
+
+:::: {.columns}
+::: {.column width="40%"}
+Tuples are covariant:
+:::
+::: {.column width="60%"}
+```{julia}
+tup = (1.0,1,"1")
+typeof(tup)
+```
+:::
+::::
+
+::: {.fragment}
+`tup = (f,g,h)` has a different type for each of the functions: cannot specialize on the inputs if we use `tup[i]`.
+:::
+
+::: {.fragment}
+:::: {.columns}
+::: {.column width="40%"}
+This can be slow:
+:::
+::: {.column width="60%"}
+```{julia}
+#| eval: false
+for i in 1:length(tup)
+  x = tup[i](x)
+end
+```
+:::
+::::
+:::
+
+::: {.fragment}
+:::: {.columns}
+::: {.column width="50%"}
+Solution:
+:::
+::: {.column width="50%"}
+```{julia}
+#| eval: false
+tup[3](tup[2](tup[1](x)))
+```
+:::
+::::
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.fragment}
+How to call chain as if were written out explicitly?
+:::
+:::
+::: {.column width="50%"}
+::: {.fragment}
+Solution: **recursion** with `applychain`.
+:::
+:::
+::::
+
+## Model and loss
+
+Training = find weights minimizing loss function
+```{julia}
+data = [(rand(Float32,10), ones(5)) for i in 1:100];
+NN = Chain(Dense(10,32,tanh),
+           Dense(32,32,tanh),
+           Dense(32,5))
+loss(NN, x, y) = sum(abs2,NN(x) .- y)
+loss() = sum(loss(NN,x,y) for (x,y) in data), NN(rand(Float32,10))
+loss()
+```
+
+::: {.fragment}
+What are the weights?
+```{julia}
+NN[1].weight
+```
+:::
+
+## Training
+
+```{julia}
+#| code-line-numbers: "1|2-4|"
+#| output-location: fragment
+opt_state = Flux.setup(Adam(0.1), NN)
+epochs = 500
+for i in 1:epochs
+    Flux.train!(loss, NN, data, opt_state)
+    i % 100 == 0 && println("Epoch $i: $(loss())")
+end
+```
+
+::: {.fragment}
+Neural networks satisfy the [Universal Approximation Theorem (UAT)](https://en.wikipedia.org/wiki/Universal_approximation_theorem)
+:::
+
+## Why Neural Networks?
+
+Also polynomials can approximate functions (Taylor, Weierstrass...)
+
+::: {.fragment}
+[Tensor products](https://en.wikipedia.org/wiki/Tensor_product) of universal approximators are (higher dimensional) universal approximators
+:::
+::: {.fragment}
+⚠️ $n$ coefficients in each dimension $1,...,d = n^d$ (**curse of dimensionality**)
+:::
+::: {.fragment}
+#### Neural networks
+
+- polynomial of `d` for approximating `d`-dim. functions
+- "easy" to compute
+- assumptions can be encoded into architecture
+:::
+
+## [DifferentialEquations.jl](https://diffeq.sciml.ai/stable/)
+
+- High-performance Julia package for solving diff. eq.s
+- Unified interface for ODEs, SDEs, DDEs, PDEs
+
+```{julia}
+#| eval: false
+#| code-line-numbers: "1|1-5|1-7|1-8|1-9|"
+using DifferentialEquations
+
+function diffeq!(du, u, params, t)
+    du[1] = -u[1]
+end
+
+u0 = [1.0]
+tspan = (0.0, 5.0)
+prob = ODEProblem(diffeq!, u0, tspan)
+sol = solve(prob)
+```
+
+## ODE Example: Lotka-Volterra
+
+```{julia}
+#| output-location: slide
+#| code-line-numbers: "1|1-7|1-9|1-10|1-11|1-13|1-14|"
+using DifferentialEquations
+
+function lotka_volterra!(du, u, p, t)
+    α, β, δ, γ = p
+    du[1] = α*u[1] - β*u[1]*u[2]
+    du[2] = δ*u[1]*u[2] - γ*u[2]
+end
+
+u0 = [1.0, 1.0]
+tspan = (0.0, 10.0)
+p = (α = 1.5, β = 1.0, δ = 1.0, γ = 3.0)
+
+prob = ODEProblem(lotka_volterra!, u0, tspan, p)
+sol = solve(prob)
+
+using Plots
+plot(sol, xlabel="Time", ylabel="Population", label=["Prey" "Predator"])
+```
+
+## ODE Example: Replicator Dynamics
+
+```{julia}
+#| output-location: slide
+function replicator!(du, u, fit_matrix, t)
+    fitness = fit_matrix * u
+    avg_fitness = u' * fitness
+    du[:] = u .* (fitness .- avg_fitness)
+end
+
+u0 = [0.25, 0.25, 0.25, 0.25]
+fit_matrix = rand(4, 4)
+tspan = (0.0, 10.0)
+
+prob = ODEProblem(replicator!, u0, tspan, fit_matrix)
+sol = solve(prob)
+
+plot(sol, xlabel="Time", ylabel="Frequency",
+      label=["Type 1" "Type 2" "Type 3" "Type 4"])
+```
+
+
+## [Physics-informed neural networks (PINNs)](https://en.wikipedia.org/wiki/Physics-informed_neural_networks)
+
+Scientific Models $\approx$ Differential Equations
+$$ F = \frac {\mathbf p}{dt} $$
+
+**Experiments**: info on  $\Delta x$ vs $\Delta y$ for (unknown) law $y = f(x)$
+
+::: {.fragment}
+💡 use ANN to improve Scientific Models
+:::
+
+## How to use ANN with ODEs?
+
+Problem:
+
+$$u' = f(u,t) \qquad t \in [0,1], u(0)=u_0$$
+
+::: {.fragment}
+Assume $NN(t) \approx u(t)$, then $\frac {dNN(t)}{dt} = f(NN(t),t)$
+
+$$\text{loss}(p) = \sum_i \left(\frac{dNN(t_i)}{dt} - f(NN(t_i),t_i) \right)^2$$
+:::
+
+## Initial condition
+
+How to satisfy the initial condition $u(0)=u_0$?
+
+::: {.fragment}
+#### Solution 1
+$$ \small \text{loss}(p) = (NN(0) - u_0)^2 + \sum_i \left(\frac{dNN(t_i)}{dt} - f(NN(t_i),t_i) \right)^2$$
+:::
+
+::: {.fragment}
+#### Solution 2
+Define the scaled ANN
+$g(t) = t\cdot NN(t) + u_0$ so that  $g(0) = u_0$ and
+$$ \small \text{loss}(p) = \sum_i \left(\frac{dg(t_i)}{dt} - f(g(t_i),t_i) \right)^2$$
+:::
+
+## Let's code it (v1)
+
+Example:
+$$u' = \cos (2\pi t) , \qquad \text{ where } u(0) = 1.0$$
+
+```{julia}
+using Flux
+NN = Chain(x->[x],
+            Dense(1,32,tanh),
+            Dense(32,1),
+            first)
+
+g(t,NN) = t*NN(t) + 1f0; # trick
+```
+
+## Preparing the training (v1)
+We want $g' = \cos (2\pi t)$ so
+```{julia}
+#| code-line-numbers: "4-5|1,2,7|7-10|"
+using Statistics
+ϵ = sqrt(eps(Float32))
+
+data = [(t,cos(2π*t)) for t in 0:0.1:1.0]
+data = [Float32.(d) for d in data]
+
+loss(NN, t, y) = abs2(((g(t+ϵ,NN) - g(t,NN))/ϵ) - y)
+loss() = mean(loss(NN, t, y) for (t,y) in data)
+
+loss()
+```
+
+## Training the PINN (v1)
+
+```{julia}
+opt = Flux.setup(Adam(), NN)
+epochs = 1000
+for i in 1:epochs
+  i % 100 == 0 && println("Epoch $i: $(loss())")
+  Flux.train!(loss, NN, data, opt)
+end
+```
+
+## Let's code it again (v2)
+
+Example:
+$$u' = \cos (2\pi t) , \quad \text{ where } u(0) = 1.0$$
+
+```{julia}
+#| output-location: column
+#| code-line-numbers: "11|"
+using Flux
+NN = Chain(x->[x],
+            Dense(1,32,tanh),
+            Dense(32,1),
+            first)
+
+struct PINN{T <: Chain}
+  NN::T
+end
+
+(g2::PINN)(t) = g2.NN(t)*t + 1f0
+Flux.@layer PINN
+
+g2 = PINN(NN)
+```
+
+## Preparing the training (v2)
+
+We want $g' = \cos (2\pi t)$ so
+```{julia}
+#| code-line-numbers: "4-5|1,2,7|7-10|"
+using Statistics
+ϵ = sqrt(eps(Float32))
+
+data = [(t,cos(2π*t)) for t in 0:0.1:1.0]
+data = [Float32.(d) for d in data]
+
+loss(g2, t, y) = abs2(((g2(t+ϵ) - g2(t))/ϵ) - y)
+
+loss() = mean(loss(g2, t, y) for (t,y) in data)
+loss()
+```
+
+## Training the PINN (v2)
+
+```{julia}
+opt = Flux.setup(Adam(), g2)
+epochs = 1000
+for i in 1:epochs
+  i % 100 == 0 && println("Epoch $i: $(loss())")
+  Flux.train!(loss, g2, data, opt)
+end
+```
+
+## Testing the PINN
+
+By definition
+$$
+\int g' = \int \cos 2\pi t = C + \frac{\sin 2\pi t}{2\pi}
+$$
+
+```{julia}
+#| output-location: slide
+t = Float32.(0:0.001:1.0)
+plot(t,g2.(t),label="NN")
+plot!(t, 1.0 .+ sin.(2π.*t)/2π, label = "True Solution")
+```
+
+## Example: Harmonic-Oscillator
+
+Physical laws can be *encoded* in the loss function
+
+Measurements of (position,force) of real 1-d spring pushing and pulling against wall
+$$F(x) = \frac {d^2x}{dt^2} = -kx + 0.1\sin(x)$$
+
+```{julia}
+#| output-location: slide
+k = 1.0
+x0, v0 = 1.0, 0.0
+tspan = (0.0, 10.0)
+force(dx,x,k,t) = -k*x + 0.1sin(x)
+prob = SecondOrderODEProblem(force,v0,x0,tspan,k)
+sol = solve(prob)
+plot(sol,label=["Velocity" "Position"])
+```
+
+## Data: few measurements
+
+```{julia}
+#| output-location: slide
+t = 0:3.3:10
+
+plot_t = 0:0.01:10
+data_plot = sol(plot_t)
+pos_plot = Float32.([state[2] for state in data_plot])
+force_plot = [force(state[1],state[2],k,t) for state in data_plot]
+
+dataset = sol(t)
+pos_data = Float32.([state[2] for state in dataset])
+force_data = Float32.([force(state[1],state[2],k,t) for state in dataset])
+
+plot(plot_t,force_plot,xlabel="t",label="True Force")
+scatter!(t,force_data,label="Force Measurements")
+```
+
+## Using only the data
+
+```{julia}
+NNForce = Chain(x -> [x],
+           Dense(1,32,tanh),
+           Dense(32,1),
+           first)
+```
+
+Loss should match force at (position,force) in  dataset:
+```{julia}
+loss(NNForce) = sum(abs2, NNForce(pos_data[i]) - force_data[i]
+                          for i in 1:length(pos_data))
+loss(NNForce)
+```
+
+## Training the PINN
+
+```{julia}
+opt = Flux.setup(Adam(), NNForce)
+data = Iterators.repeated((), 1)
+epochs = 1000
+for i in 1:epochs
+  i % 100 == 0 && println("Epoch $i: $(loss(NNForce))")
+  Flux.train!(loss, NNForce, data, opt)
+end
+```
+
+## Checking what we learned
+
+```{julia}
+learned_force_plot = NNForce.(pos_plot)
+plot(plot_t,force_plot,xlabel="t",label="True Force")
+plot!(plot_t,learned_force_plot,label="Predicted Force")
+scatter!(t,force_data,label="Force Measurements")
+```
+
+## Guessing some Physics
+
+[Hooke's law](https://en.wikipedia.org/wiki/Hooke's_law):
+$$ F(x) = -kx $$
+
+```{julia}
+#| output-location: slide
+force2(dx,x,k,t) = -k*x
+prob_simplified = SecondOrderODEProblem(force2,v0,x0,tspan,k)
+sol_simplified = solve(prob_simplified)
+
+plot(sol,label=["Velocity" "Position"])
+plot!(sol_simplified,label=["Velocity Simplified" "Position Simplified"])
+```
+
+## Adding the Physics
+
+```{julia}
+rand_pos = Float32.([2rand()-1 for i in 1:100])
+loss_ode(NNForce) = sum(abs2,NNForce(x) - (-k*x) for x in rand_pos)
+loss_ode(NNForce)
+```
+
+When would this term be zero?
+
+::: {.fragment}
+```{julia}
+λ = 0.1
+comb_loss(NNForce) = loss(NNForce) + λ*loss_ode(NNForce)
+```
+$λ$ weights the physics assumption
+:::
+
+## Data + Physics
+
+```{julia}
+opt = Flux.setup(Adam(), NNForce)
+data = Iterators.repeated((), 1)
+for i in 1:epochs
+  i % 100 == 0 && println("Epoch $i: $(loss(NNForce))")
+  Flux.train!(comb_loss, NNForce, data, opt)
+end
+```
+
+```{julia}
+#| output-location: slide
+learned_force_plot = NNForce.(pos_plot)
+plot(plot_t,force_plot,xlabel="t",label="True Force")
+plot!(plot_t,learned_force_plot,label="Predicted Force")
+scatter!(t,force_data,label="Force Measurements")
+```

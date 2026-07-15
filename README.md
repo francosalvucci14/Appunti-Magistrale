@@ -19,7 +19,11 @@ Questi appunti comprendono i corsi di :
 - Prof. Croce & Prof. Gambosi : Machine Learning (**ML**)
 - Prof. Stellato : Knowledge Engineering (**KE**)
 - Prof. Talamo & Prof.ssa Pennacchi : Cybersecurity-by-Design for critical infrastructures (**CBD**) *ex Sicurezza dei Sistemi Informativi*
-- Prof. Intrigila : Metodi di Verifica dei Sistemi (**MVS**) (forse Model-Based System Engineering OPPURE Crittografia)
+- Prof. Intrigila : Metodi di Verifica dei Sistemi (**MVS**)
+
+**Progetti/Esami** per CFU-D:
+- [x] $3$ con Parallel Machine Learning in Julia (**PMLJ** )
+- [ ] $3$ da fare con *Presentazione Bitcoin*
 
 **Esami fatti**:
 
