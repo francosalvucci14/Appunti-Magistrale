@@ -1,0 +1,164 @@
+@prefix ex: <http://example.org/ontology/> .
+@prefix res: <http://example.org/resource/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# --- MACROAREE ---
+res:Italia_centrale a ex:MacroArea ; rdfs:label "Italia centrale"@it .
+res:Italia_meridionale a ex:MacroArea ; rdfs:label "Italia meridionale"@it .
+res:Italia_nord_occidentale a ex:MacroArea ; rdfs:label "Italia nord-occidentale"@it .
+res:Italia_nord_orientale a ex:MacroArea ; rdfs:label "Italia nord-orientale"@it .
+res:Isole_dell_Italia a ex:MacroArea ; rdfs:label "isole dell'Italia"@it .
+
+# --- REGIONI ---
+res:Lazio a ex:Regione ; rdfs:label "Lazio"@it ; ex:inMacroArea res:Italia_centrale .
+res:Marche a ex:Regione ; rdfs:label "Marche"@it ; ex:inMacroArea res:Italia_centrale .
+res:Toscana a ex:Regione ; rdfs:label "Toscana"@it ; ex:inMacroArea res:Italia_centrale .
+res:Umbria a ex:Regione ; rdfs:label "Umbria"@it ; ex:inMacroArea res:Italia_centrale .
+
+res:Abruzzo a ex:Regione ; rdfs:label "Abruzzo"@it ; ex:inMacroArea res:Italia_meridionale .
+res:Basilicata a ex:Regione ; rdfs:label "Basilicata"@it ; ex:inMacroArea res:Italia_meridionale .
+res:Calabria a ex:Regione ; rdfs:label "Calabria"@it ; ex:inMacroArea res:Italia_meridionale .
+res:Campania a ex:Regione ; rdfs:label "Campania"@it ; ex:inMacroArea res:Italia_meridionale .
+res:Molise a ex:Regione ; rdfs:label "Molise"@it ; ex:inMacroArea res:Italia_meridionale .
+res:Puglia a ex:Regione ; rdfs:label "Puglia"@it ; ex:inMacroArea res:Italia_meridionale .
+
+res:Liguria a ex:Regione ; rdfs:label "Liguria"@it ; ex:inMacroArea res:Italia_nord_occidentale .
+res:Lombardia a ex:Regione ; rdfs:label "Lombardia"@it ; ex:inMacroArea res:Italia_nord_occidentale .
+res:Piemonte a ex:Regione ; rdfs:label "Piemonte"@it ; ex:inMacroArea res:Italia_nord_occidentale .
+res:Valle_d_Aosta a ex:Regione ; rdfs:label "Valle d'Aosta"@it ; ex:inMacroArea res:Italia_nord_occidentale .
+
+res:Emilia_Romagna a ex:Regione ; rdfs:label "Emilia-Romagna"@it ; ex:inMacroArea res:Italia_nord_orientale .
+res:Friuli_Venezia_Giulia a ex:Regione ; rdfs:label "Friuli-Venezia Giulia"@it ; ex:inMacroArea res:Italia_nord_orientale .
+res:Trentino_Alto_Adige a ex:Regione ; rdfs:label "Trentino-Alto Adige"@it ; ex:inMacroArea res:Italia_nord_orientale .
+res:Veneto a ex:Regione ; rdfs:label "Veneto"@it ; ex:inMacroArea res:Italia_nord_orientale .
+
+res:Sardegna a ex:Regione ; rdfs:label "Sardegna"@it ; ex:inMacroArea res:Isole_dell_Italia .
+res:Sicilia a ex:Regione ; rdfs:label "Sicilia"@it ; ex:inMacroArea res:Isole_dell_Italia .
+
+# --- PROVINCE ---
+# Italia Centrale
+res:Frosinone a ex:Provincia ; rdfs:label "Frosinone"@it ; ex:inRegione res:Lazio .
+res:Latina a ex:Provincia ; rdfs:label "Latina"@it ; ex:inRegione res:Lazio .
+res:Rieti a ex:Provincia ; rdfs:label "Rieti"@it ; ex:inRegione res:Lazio .
+res:Roma a ex:Provincia ; rdfs:label "Roma"@it ; ex:inRegione res:Lazio .
+res:Viterbo a ex:Provincia ; rdfs:label "Viterbo"@it ; ex:inRegione res:Lazio .
+res:Ancona a ex:Provincia ; rdfs:label "Ancona"@it ; ex:inRegione res:Marche .
+res:Ascoli_Piceno a ex:Provincia ; rdfs:label "Ascoli Piceno"@it ; ex:inRegione res:Marche .
+res:Fermo a ex:Provincia ; rdfs:label "Fermo"@it ; ex:inRegione res:Marche .
+res:Macerata a ex:Provincia ; rdfs:label "Macerata"@it ; ex:inRegione res:Marche .
+res:Pesaro a ex:Provincia ; rdfs:label "Pesaro"@it ; ex:inRegione res:Marche .
+res:Urbino a ex:Provincia ; rdfs:label "Urbino"@it ; ex:inRegione res:Marche .
+res:Arezzo a ex:Provincia ; rdfs:label "Arezzo"@it ; ex:inRegione res:Toscana .
+res:Firenze a ex:Provincia ; rdfs:label "Firenze"@it ; ex:inRegione res:Toscana .
+res:Grosseto a ex:Provincia ; rdfs:label "Grosseto"@it ; ex:inRegione res:Toscana .
+res:Livorno a ex:Provincia ; rdfs:label "Livorno"@it ; ex:inRegione res:Toscana .
+res:Lucca a ex:Provincia ; rdfs:label "Lucca"@it ; ex:inRegione res:Toscana .
+res:Massa a ex:Provincia ; rdfs:label "Massa"@it ; ex:inRegione res:Toscana .
+res:Pisa a ex:Provincia ; rdfs:label "Pisa"@it ; ex:inRegione res:Toscana .
+res:Pistoia a ex:Provincia ; rdfs:label "Pistoia"@it ; ex:inRegione res:Toscana .
+res:Prato a ex:Provincia ; rdfs:label "Prato"@it ; ex:inRegione res:Toscana .
+res:Siena a ex:Provincia ; rdfs:label "Siena"@it ; ex:inRegione res:Toscana .
+res:Perugia a ex:Provincia ; rdfs:label "Perugia"@it ; ex:inRegione res:Umbria .
+res:Terni a ex:Provincia ; rdfs:label "Terni"@it ; ex:inRegione res:Umbria .
+
+# Italia Meridionale
+res:Chieti a ex:Provincia ; rdfs:label "Chieti"@it ; ex:inRegione res:Abruzzo .
+res:L_Aquila a ex:Provincia ; rdfs:label "L'Aquila"@it ; ex:inRegione res:Abruzzo .
+res:Pescara a ex:Provincia ; rdfs:label "Pescara"@it ; ex:inRegione res:Abruzzo .
+res:Teramo a ex:Provincia ; rdfs:label "Teramo"@it ; ex:inRegione res:Abruzzo .
+res:Matera a ex:Provincia ; rdfs:label "Matera"@it ; ex:inRegione res:Basilicata, res:Puglia .
+res:Potenza a ex:Provincia ; rdfs:label "Potenza"@it ; ex:inRegione res:Basilicata .
+res:Catanzaro a ex:Provincia ; rdfs:label "Catanzaro"@it ; ex:inRegione res:Calabria .
+res:Cosenza a ex:Provincia ; rdfs:label "Cosenza"@it ; ex:inRegione res:Calabria .
+res:Crotone a ex:Provincia ; rdfs:label "Crotone"@it ; ex:inRegione res:Calabria .
+res:Reggio_Calabria a ex:Provincia ; rdfs:label "Reggio Calabria"@it ; ex:inRegione res:Calabria .
+res:Vibo_Valentia a ex:Provincia ; rdfs:label "Vibo Valentia"@it ; ex:inRegione res:Calabria .
+res:Avellino a ex:Provincia ; rdfs:label "Avellino"@it ; ex:inRegione res:Campania .
+res:Benevento a ex:Provincia ; rdfs:label "Benevento"@it ; ex:inRegione res:Campania .
+res:Caserta a ex:Provincia ; rdfs:label "Caserta"@it ; ex:inRegione res:Campania .
+res:Napoli a ex:Provincia ; rdfs:label "Napoli"@it ; ex:inRegione res:Campania .
+res:Salerno a ex:Provincia ; rdfs:label "Salerno"@it ; ex:inRegione res:Campania .
+res:Campobasso a ex:Provincia ; rdfs:label "Campobasso"@it ; ex:inRegione res:Molise .
+res:Isernia a ex:Provincia ; rdfs:label "Isernia"@it ; ex:inRegione res:Molise .
+res:Andria a ex:Provincia ; rdfs:label "Andria"@it ; ex:inRegione res:Puglia .
+res:Bari a ex:Provincia ; rdfs:label "Bari"@it ; ex:inRegione res:Puglia .
+res:Barletta a ex:Provincia ; rdfs:label "Barletta"@it ; ex:inRegione res:Puglia .
+res:Brindisi a ex:Provincia ; rdfs:label "Brindisi"@it ; ex:inRegione res:Puglia .
+res:Foggia a ex:Provincia ; rdfs:label "Foggia"@it ; ex:inRegione res:Puglia .
+res:Lecce a ex:Provincia ; rdfs:label "Lecce"@it ; ex:inRegione res:Puglia .
+res:Taranto a ex:Provincia ; rdfs:label "Taranto"@it ; ex:inRegione res:Puglia .
+res:Trani a ex:Provincia ; rdfs:label "Trani"@it ; ex:inRegione res:Puglia .
+
+# Italia Nord-Occidentale
+res:Genova a ex:Provincia ; rdfs:label "Genova"@it ; ex:inRegione res:Liguria .
+res:Imperia a ex:Provincia ; rdfs:label "Imperia"@it ; ex:inRegione res:Liguria .
+res:La_Spezia a ex:Provincia ; rdfs:label "La Spezia"@it ; ex:inRegione res:Liguria .
+res:Savona a ex:Provincia ; rdfs:label "Savona"@it ; ex:inRegione res:Liguria .
+res:Bergamo a ex:Provincia ; rdfs:label "Bergamo"@it ; ex:inRegione res:Lombardia .
+res:Brescia a ex:Provincia ; rdfs:label "Brescia"@it ; ex:inRegione res:Lombardia .
+res:Como a ex:Provincia ; rdfs:label "Como"@it ; ex:inRegione res:Lombardia .
+res:Cremona a ex:Provincia ; rdfs:label "Cremona"@it ; ex:inRegione res:Lombardia .
+res:Lecco a ex:Provincia ; rdfs:label "Lecco"@it ; ex:inRegione res:Lombardia .
+res:Lodi a ex:Provincia ; rdfs:label "Lodi"@it ; ex:inRegione res:Lombardia .
+res:Mantova a ex:Provincia ; rdfs:label "Mantova"@it ; ex:inRegione res:Lombardia .
+res:Milano a ex:Provincia ; rdfs:label "Milano"@it ; ex:inRegione res:Lombardia .
+res:Monza a ex:Provincia ; rdfs:label "Monza"@it ; ex:inRegione res:Lombardia .
+res:Pavia a ex:Provincia ; rdfs:label "Pavia"@it ; ex:inRegione res:Lombardia .
+res:Sondrio a ex:Provincia ; rdfs:label "Sondrio"@it ; ex:inRegione res:Lombardia .
+res:Varese a ex:Provincia ; rdfs:label "Varese"@it ; ex:inRegione res:Lombardia .
+res:Alessandria a ex:Provincia ; rdfs:label "Alessandria"@it ; ex:inRegione res:Piemonte .
+res:Asti a ex:Provincia ; rdfs:label "Asti"@it ; ex:inRegione res:Piemonte .
+res:Biella a ex:Provincia ; rdfs:label "Biella"@it ; ex:inRegione res:Piemonte .
+res:Cuneo a ex:Provincia ; rdfs:label "Cuneo"@it ; ex:inRegione res:Piemonte .
+res:Novara a ex:Provincia ; rdfs:label "Novara"@it ; ex:inRegione res:Piemonte .
+res:Torino a ex:Provincia ; rdfs:label "Torino"@it ; ex:inRegione res:Piemonte .
+res:Verbania a ex:Provincia ; rdfs:label "Verbania"@it ; ex:inRegione res:Piemonte .
+res:Vercelli a ex:Provincia ; rdfs:label "Vercelli"@it ; ex:inRegione res:Piemonte .
+res:Aosta a ex:Provincia ; rdfs:label "Aosta"@it ; ex:inRegione res:Valle_d_Aosta .
+
+# Italia Nord-Orientale
+res:Bologna a ex:Provincia ; rdfs:label "Bologna"@it ; ex:inRegione res:Emilia_Romagna .
+res:Cesena a ex:Provincia ; rdfs:label "Cesena"@it ; ex:inRegione res:Emilia_Romagna .
+res:Ferrara a ex:Provincia ; rdfs:label "Ferrara"@it ; ex:inRegione res:Emilia_Romagna .
+res:Forli a ex:Provincia ; rdfs:label "Forlì"@it ; ex:inRegione res:Emilia_Romagna .
+res:Modena a ex:Provincia ; rdfs:label "Modena"@it ; ex:inRegione res:Emilia_Romagna .
+res:Parma a ex:Provincia ; rdfs:label "Parma"@it ; ex:inRegione res:Emilia_Romagna .
+res:Piacenza a ex:Provincia ; rdfs:label "Piacenza"@it ; ex:inRegione res:Emilia_Romagna .
+res:Ravenna a ex:Provincia ; rdfs:label "Ravenna"@it ; ex:inRegione res:Emilia_Romagna .
+res:Reggio_Emilia a ex:Provincia ; rdfs:label "Reggio Emilia"@it ; ex:inRegione res:Emilia_Romagna .
+res:Rimini a ex:Provincia ; rdfs:label "Rimini"@it ; ex:inRegione res:Emilia_Romagna .
+res:Gorizia a ex:Provincia ; rdfs:label "Gorizia"@it ; ex:inRegione res:Friuli_Venezia_Giulia .
+res:Pordenone a ex:Provincia ; rdfs:label "Pordenone"@it ; ex:inRegione res:Friuli_Venezia_Giulia .
+res:Trieste a ex:Provincia ; rdfs:label "Trieste"@it ; ex:inRegione res:Friuli_Venezia_Giulia .
+res:Udine a ex:Provincia ; rdfs:label "Udine"@it ; ex:inRegione res:Friuli_Venezia_Giulia .
+res:Bolzano a ex:Provincia ; rdfs:label "Bolzano"@it ; ex:inRegione res:Trentino_Alto_Adige .
+res:Trento a ex:Provincia ; rdfs:label "Trento"@it ; ex:inRegione res:Trentino_Alto_Adige .
+res:Belluno a ex:Provincia ; rdfs:label "Belluno"@it ; ex:inRegione res:Veneto .
+res:Padova a ex:Provincia ; rdfs:label "Padova"@it ; ex:inRegione res:Veneto .
+res:Rovigo a ex:Provincia ; rdfs:label "Rovigo"@it ; ex:inRegione res:Veneto .
+res:Treviso a ex:Provincia ; rdfs:label "Treviso"@it ; ex:inRegione res:Veneto .
+res:Venezia a ex:Provincia ; rdfs:label "Venezia"@it ; ex:inRegione res:Veneto .
+res:Verona a ex:Provincia ; rdfs:label "Verona"@it ; ex:inRegione res:Veneto .
+res:Vicenza a ex:Provincia ; rdfs:label "Vicenza"@it ; ex:inRegione res:Veneto .
+
+# Isole dell'Italia
+res:Cagliari a ex:Provincia ; rdfs:label "Cagliari"@it ; ex:inRegione res:Sardegna .
+res:Carbonia a ex:Provincia ; rdfs:label "Carbonia"@it ; ex:inRegione res:Sardegna .
+res:Lanusei a ex:Provincia ; rdfs:label "Lanusei"@it ; ex:inRegione res:Sardegna .
+res:Nuoro a ex:Provincia ; rdfs:label "Nuoro"@it ; ex:inRegione res:Sardegna .
+res:Olbia a ex:Provincia ; rdfs:label "Olbia"@it ; ex:inRegione res:Sardegna .
+res:Oristano a ex:Provincia ; rdfs:label "Oristano"@it ; ex:inRegione res:Sardegna .
+res:Sanluri a ex:Provincia ; rdfs:label "Sanluri"@it ; ex:inRegione res:Sardegna .
+res:Sassari a ex:Provincia ; rdfs:label "Sassari"@it ; ex:inRegione res:Sardegna .
+res:Tempio_Pausania a ex:Provincia ; rdfs:label "Tempio Pausania"@it ; ex:inRegione res:Sardegna .
+res:Tortoli a ex:Provincia ; rdfs:label "Tortolì"@it ; ex:inRegione res:Sardegna .
+res:Villacidro a ex:Provincia ; rdfs:label "Villacidro"@it ; ex:inRegione res:Sardegna .
+res:Agrigento a ex:Provincia ; rdfs:label "Agrigento"@it ; ex:inRegione res:Sicilia .
+res:Caltanissetta a ex:Provincia ; rdfs:label "Caltanissetta"@it ; ex:inRegione res:Sicilia .
+res:Catania a ex:Provincia ; rdfs:label "Catania"@it ; ex:inRegione res:Sicilia .
+res:Enna a ex:Provincia ; rdfs:label "Enna"@it ; ex:inRegione res:Sicilia .
+res:Messina a ex:Provincia ; rdfs:label "Messina"@it ; ex:inRegione res:Sicilia .
+res:Palermo a ex:Provincia ; rdfs:label "Palermo"@it ; ex:inRegione res:Sicilia .
+res:Ragusa a ex:Provincia ; rdfs:label "Ragusa"@it ; ex:inRegione res:Sicilia .
+res:Siracusa a ex:Provincia ; rdfs:label "Siracusa"@it ; ex:inRegione res:Sicilia .
+res:Trapani a ex:Provincia ; rdfs:label "Trapani"@it ; ex:inRegione res:Sicilia .

@@ -1,0 +1,31 @@
+@prefix ex: <http://example.org/ontology/> .
+@prefix res: <http://example.org/resource/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+res:Austria a ex:Nazione ; rdfs:label "Austria"@it .
+res:Belgio a ex:Nazione ; rdfs:label "Belgio"@it .
+res:Bulgaria a ex:Nazione ; rdfs:label "Bulgaria"@it .
+res:Cipro a ex:Nazione ; rdfs:label "Cipro"@it .
+res:Croazia a ex:Nazione ; rdfs:label "Croazia"@it .
+res:Danimarca a ex:Nazione ; rdfs:label "Danimarca"@it .
+res:Estonia a ex:Nazione ; rdfs:label "Estonia"@it .
+res:Finlandia a ex:Nazione ; rdfs:label "Finlandia"@it .
+res:Francia a ex:Nazione ; rdfs:label "Francia"@it .
+res:Germania a ex:Nazione ; rdfs:label "Germania"@it .
+res:Grecia a ex:Nazione ; rdfs:label "Grecia"@it .
+res:Irlanda a ex:Nazione ; rdfs:label "Irlanda"@it .
+res:Italia a ex:Nazione ; rdfs:label "Italia"@it .
+res:Lettonia a ex:Nazione ; rdfs:label "Lettonia"@it .
+res:Lituania a ex:Nazione ; rdfs:label "Lituania"@it .
+res:Lussemburgo a ex:Nazione ; rdfs:label "Lussemburgo"@it .
+res:Malta a ex:Nazione ; rdfs:label "Malta"@it .
+res:Paesi_Bassi a ex:Nazione ; rdfs:label "Paesi Bassi"@it .
+res:Polonia a ex:Nazione ; rdfs:label "Polonia"@it .
+res:Portogallo a ex:Nazione ; rdfs:label "Portogallo"@it .
+res:Repubblica_Ceca a ex:Nazione ; rdfs:label "Repubblica Ceca"@it .
+res:Romania a ex:Nazione ; rdfs:label "Romania"@it .
+res:Slovacchia a ex:Nazione ; rdfs:label "Slovacchia"@it .
+res:Slovenia a ex:Nazione ; rdfs:label "Slovenia"@it .
+res:Spagna a ex:Nazione ; rdfs:label "Spagna"@it .
+res:Svezia a ex:Nazione ; rdfs:label "Svezia"@it .
+res:Ungheria a ex:Nazione ; rdfs:label "Ungheria"@it .

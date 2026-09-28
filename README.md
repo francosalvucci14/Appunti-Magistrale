@@ -30,12 +30,12 @@ Questi appunti comprendono i corsi di :
 - [x] ADRC
 - [x] PCD
 - [x] PROB
-- [ ] AR (fatto per metà)
+- [x] AR
 - [x] CNS
 - [x] ISTI
 - [x] IR/AIC
 - [x] ML
-- [ ] KE
+- [x] KE
 - [x] CBD
 - [x] MVS
 - [x] CYS

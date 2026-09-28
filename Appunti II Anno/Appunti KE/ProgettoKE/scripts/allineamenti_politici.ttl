@@ -1,0 +1,27 @@
+@prefix owl-senato: <http://example.com/OWL-Senato/#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+
+<http://dati.senato.it/gruppo/33> owl-senato:haAllineamentoPolitico wd:Q76074 .
+
+<http://dati.senato.it/gruppo/49> owl-senato:haAllineamentoPolitico wd:Q6587194 .
+
+<http://dati.senato.it/gruppo/56> owl-senato:haAllineamentoPolitico wd:Q844072 .
+
+<http://dati.senato.it/gruppo/69> owl-senato:haAllineamentoPolitico wd:Q6587194 .
+
+<http://dati.senato.it/gruppo/71> owl-senato:haAllineamentoPolitico wd:Q3289782 .
+
+<http://dati.senato.it/gruppo/9> owl-senato:haAllineamentoPolitico wd:Q3289782 .
+
+<http://dati.senato.it/gruppo/85> owl-senato:haAllineamentoPolitico wd:Q76074 .
+
+<http://dati.senato.it/gruppo/91> owl-senato:haAllineamentoPolitico wd:Q6587194 .
+
+wd:Q3289782 a owl-senato:AllineamentoPolitico .
+
+wd:Q844072 a owl-senato:AllineamentoPolitico .
+
+wd:Q76074 a owl-senato:AllineamentoPolitico .
+
+wd:Q6587194 a owl-senato:AllineamentoPolitico .
+

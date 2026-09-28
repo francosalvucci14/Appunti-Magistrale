@@ -1,0 +1,31 @@
+@prefix owl-senato: <http://example.com/OWL-Senato/#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://dati.senato.it/gruppo/33> owl-senato:haAllineamentoPolitico owl-senato:Destra .
+
+<http://dati.senato.it/gruppo/49> owl-senato:haAllineamentoPolitico owl-senato:Centrismo .
+
+<http://dati.senato.it/gruppo/56> owl-senato:haAllineamentoPolitico owl-senato:Centro-Destra .
+
+<http://dati.senato.it/gruppo/69> owl-senato:haAllineamentoPolitico owl-senato:Centrismo .
+
+<http://dati.senato.it/gruppo/71> owl-senato:haAllineamentoPolitico owl-senato:Trasversalismo .
+
+<http://dati.senato.it/gruppo/85> owl-senato:haAllineamentoPolitico owl-senato:Destra .
+
+<http://dati.senato.it/gruppo/9> owl-senato:haAllineamentoPolitico owl-senato:Trasversalismo .
+
+<http://dati.senato.it/gruppo/91> owl-senato:haAllineamentoPolitico owl-senato:Centrismo .
+
+owl-senato:Centro-Destra a owl-senato:AllineamentoPolitico ;
+    rdfs:label "Centro-Destra"@it .
+
+owl-senato:Destra a owl-senato:AllineamentoPolitico ;
+    rdfs:label "Destra"@it .
+
+owl-senato:Trasversalismo a owl-senato:AllineamentoPolitico ;
+    rdfs:label "Trasversalismo"@it .
+
+owl-senato:Centrismo a owl-senato:AllineamentoPolitico ;
+    rdfs:label "Centrismo"@it .
+

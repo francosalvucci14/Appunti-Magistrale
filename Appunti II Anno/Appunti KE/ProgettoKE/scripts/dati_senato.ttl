@@ -1,0 +1,2553 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix osr: <http://dati.senato.it/osr/> .
+@prefix owl-senato: <http://example.com/OWL-Senato/#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dati.senato.it/senatore/1103> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1956-07-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2026-03-26"^^xsd:date ;
+    foaf:familyName "Gasparri" ;
+    foaf:firstName "Maurizio" .
+
+<http://dati.senato.it/senatore/1116> a osr:Senatore ;
+    osr:carica "Tesoriere",
+        "Vicepresidente" ;
+    osr:cittaNascita "Messina" ;
+    osr:dataNascita "1976-04-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Messina" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-11-08"^^xsd:date,
+        "2025-02-25"^^xsd:date ;
+    foaf:familyName "Germana'" ;
+    foaf:firstName "Antonino" .
+
+<http://dati.senato.it/senatore/1227> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1945-06-13"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Guidi" ;
+    foaf:firstName "Antonio" .
+
+<http://dati.senato.it/senatore/1275> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Paterno'" ;
+    osr:dataNascita "1947-07-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Catania" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "La Russa" ;
+    foaf:firstName "Ignazio" .
+
+<http://dati.senato.it/senatore/1407> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Luserna San Giovanni" ;
+    osr:dataNascita "1960-07-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Torino" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-11-09"^^xsd:date ;
+    foaf:familyName "Malan" ;
+    foaf:firstName "Lucio" .
+
+<http://dati.senato.it/senatore/1558> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Pieve Di Cadore" ;
+    osr:dataNascita "1961-12-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Belluno" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Menia" ;
+    foaf:firstName "Roberto" .
+
+<http://dati.senato.it/senatore/1579> a osr:Senatore ;
+    osr:cittaNascita "Palermo" ;
+    osr:dataNascita "1954-04-01"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Palermo" ;
+    osr:sesso "M" ;
+    foaf:familyName "Micciche'" ;
+    foaf:firstName "Gianfranco" .
+
+<http://dati.senato.it/senatore/1672> a osr:Senatore ;
+    osr:cittaNascita "Napoli" ;
+    osr:dataNascita "1925-06-29"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    foaf:familyName "Napolitano" ;
+    foaf:firstName "Giorgio" .
+
+<http://dati.senato.it/senatore/17542> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Ferrara" ;
+    osr:dataNascita "1959-06-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Ferrara" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Balboni" ;
+    foaf:firstName "Alberto" .
+
+<http://dati.senato.it/senatore/17811> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Vicenza" ;
+    osr:dataNascita "1961-07-13"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Vicenza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Zanettin" ;
+    foaf:firstName "Pierantonio" .
+
+<http://dati.senato.it/senatore/17924> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Portogruaro" ;
+    osr:dataNascita "1968-08-27"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Venezia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Martella" ;
+    foaf:firstName "Andrea" .
+
+<http://dati.senato.it/senatore/18055> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Brindisi" ;
+    osr:dataNascita "1970-07-01"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Brindisi" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Losacco" ;
+    foaf:firstName "Alberto" .
+
+<http://dati.senato.it/senatore/18121> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cuneo" ;
+    osr:dataNascita "1961-04-07"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cuneo" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Garnero Santanche'" ;
+    foaf:firstName "Daniela" .
+
+<http://dati.senato.it/senatore/18562> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Romano Di Lombardia" ;
+    osr:dataNascita "1977-12-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bergamo" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Pirovano" ;
+    foaf:firstName "Daisy" .
+
+<http://dati.senato.it/senatore/22263> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bari" ;
+    osr:dataNascita "1955-04-27"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bari" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Sisto" ;
+    foaf:firstName "Francesco Paolo" .
+
+<http://dati.senato.it/senatore/227> a osr:Senatore ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1936-09-29"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "M" ;
+    foaf:familyName "Berlusconi" ;
+    foaf:firstName "Silvio" .
+
+<http://dati.senato.it/senatore/22707> a osr:Senatore ;
+    osr:cittaNascita "Novara" ;
+    osr:dataNascita "1961-02-24"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Novara" ;
+    osr:sesso "M" ;
+    foaf:familyName "Augello" ;
+    foaf:firstName "Andrea" .
+
+<http://dati.senato.it/senatore/22814> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Vicenza" ;
+    osr:dataNascita "1960-10-04"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Vicenza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2023-03-29"^^xsd:date ;
+    foaf:familyName "De Poli" ;
+    foaf:firstName "Antonio" .
+
+<http://dati.senato.it/senatore/22871> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Bolzano" ;
+    osr:dataNascita "1970-12-28"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bolzano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2023-03-29"^^xsd:date ;
+    foaf:familyName "Biancofiore" ;
+    foaf:firstName "Michaela" .
+
+<http://dati.senato.it/senatore/22877> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Palermo" ;
+    osr:dataNascita "1966-03-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Palermo" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Bongiorno" ;
+    foaf:firstName "Giulia" .
+
+<http://dati.senato.it/senatore/22910> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Napoli" ;
+    osr:dataNascita "1968-01-25"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Cosenza" ;
+    foaf:firstName "Giulia" .
+
+<http://dati.senato.it/senatore/22914> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1960-10-25"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2026-03-26"^^xsd:date ;
+    foaf:familyName "Craxi" ;
+    foaf:firstName "Stefania Gabriella Anastasia" .
+
+<http://dati.senato.it/senatore/22918> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Napoli" ;
+    osr:dataNascita "1971-06-26"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "De Cristofaro" ;
+    foaf:firstName "Peppe" .
+
+<http://dati.senato.it/senatore/22963> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cuggiono" ;
+    osr:dataNascita "1968-04-08"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Garavaglia" ;
+    foaf:firstName "Massimo" .
+
+<http://dati.senato.it/senatore/22966> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Leno" ;
+    osr:dataNascita "1973-07-01"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Brescia" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2024-10-30"^^xsd:date ;
+    foaf:familyName "Gelmini" ;
+    foaf:firstName "Mariastella" .
+
+<http://dati.senato.it/senatore/23011> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bergamo" ;
+    osr:dataNascita "1968-09-04"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bergamo" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-06-06"^^xsd:date ;
+    foaf:familyName "Misiani" ;
+    foaf:firstName "Antonio" .
+
+<http://dati.senato.it/senatore/24016> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "Mercato Saraceno" ;
+    osr:dataNascita "1956-05-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Forli'-Cesena" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-25"^^xsd:date ;
+    foaf:familyName "Zampa" ;
+    foaf:firstName "Sandra" .
+
+<http://dati.senato.it/senatore/2444> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Padova" ;
+    osr:dataNascita "1957-07-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Padova" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Urso" ;
+    foaf:firstName "Adolfo" .
+
+<http://dati.senato.it/senatore/25377> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Citta' Di Castello" ;
+    osr:dataNascita "1956-01-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Perugia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Verini" ;
+    foaf:firstName "Walter" .
+
+<http://dati.senato.it/senatore/25402> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Latiano" ;
+    osr:dataNascita "1971-09-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Brindisi" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Sbrollini" ;
+    foaf:firstName "Daniela" .
+
+<http://dati.senato.it/senatore/25407> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1973-03-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Salvini" ;
+    foaf:firstName "Matteo" .
+
+<http://dati.senato.it/senatore/25411> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Torino" ;
+    osr:dataNascita "1963-06-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Torino" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Rossomando" ;
+    foaf:firstName "Anna" .
+
+<http://dati.senato.it/senatore/25429> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "Casal Di Principe" ;
+    osr:dataNascita "1956-07-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Caserta" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2022-11-08"^^xsd:date ;
+    foaf:familyName "Petrenga" ;
+    foaf:firstName "Giovanna" .
+
+<http://dati.senato.it/senatore/25446> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Boscoreale" ;
+    osr:dataNascita "1968-03-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Nastri" ;
+    foaf:firstName "Gaetano" .
+
+<http://dati.senato.it/senatore/25474> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1971-10-14"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-25"^^xsd:date ;
+    foaf:familyName "Lorenzin" ;
+    foaf:firstName "Beatrice" .
+
+<http://dati.senato.it/senatore/25555> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Bisceglie" ;
+    osr:dataNascita "1968-03-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Barletta-Andria-Trani" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-03-28"^^xsd:date ;
+    foaf:familyName "Boccia" ;
+    foaf:firstName "Francesco" .
+
+<http://dati.senato.it/senatore/25558> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bologna" ;
+    osr:dataNascita "1965-08-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bologna" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Bernini" ;
+    foaf:firstName "Anna Maria" .
+
+<http://dati.senato.it/senatore/27622> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1968-03-04"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-03-21"^^xsd:date ;
+    foaf:familyName "Sensi" ;
+    foaf:firstName "Filippo" .
+
+<http://dati.senato.it/senatore/28306> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Militello In Val Di Catania" ;
+    osr:dataNascita "1955-01-21"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Catania" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Musumeci" ;
+    foaf:firstName "Nello" .
+
+<http://dati.senato.it/senatore/28543> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Varese" ;
+    osr:dataNascita "1943-03-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Varese" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Monti" ;
+    foaf:firstName "Mario" .
+
+<http://dati.senato.it/senatore/28550> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bergamo" ;
+    osr:dataNascita "1946-06-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bergamo" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Terzi Di Sant'Agata" ;
+    foaf:firstName "Giuliomaria" .
+
+<http://dati.senato.it/senatore/28670> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Reggio Nell'Emilia" ;
+    osr:dataNascita "1960-04-27"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Reggio nell'Emilia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Delrio" ;
+    foaf:firstName "Graziano" .
+
+<http://dati.senato.it/senatore/28924> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Fermo" ;
+    osr:dataNascita "1972-10-05"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Fermo" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Verducci" ;
+    foaf:firstName "Francesco" .
+
+<http://dati.senato.it/senatore/29040> a osr:Senatore ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1963-03-11"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    foaf:familyName "Astorre" ;
+    foaf:firstName "Bruno" .
+
+<http://dati.senato.it/senatore/29067> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Pavia" ;
+    osr:dataNascita "1971-10-31"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pavia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Centinaio" ;
+    foaf:firstName "Gian Marco" .
+
+<http://dati.senato.it/senatore/29105> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Catania" ;
+    osr:dataNascita "1958-07-10"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Catania" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Giacobbe" ;
+    foaf:firstName "Francesco" .
+
+<http://dati.senato.it/senatore/29132> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Varedo" ;
+    osr:dataNascita "1969-09-28"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Monza e Brianza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Marton" ;
+    foaf:firstName "Bruno" .
+
+<http://dati.senato.it/senatore/29138> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1960-02-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-25"^^xsd:date ;
+    foaf:familyName "Mirabelli" ;
+    foaf:firstName "Franco" .
+
+<http://dati.senato.it/senatore/29185> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Valdagno" ;
+    osr:dataNascita "1971-07-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Vicenza" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Stefani" ;
+    foaf:firstName "Erika" .
+
+<http://dati.senato.it/senatore/29270> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "Genova" ;
+    osr:dataNascita "1976-02-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Genova" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-25"^^xsd:date ;
+    foaf:familyName "Basso" ;
+    foaf:firstName "Lorenzo" .
+
+<http://dati.senato.it/senatore/29273> a osr:Senatore ;
+    osr:carica "Vicepresidente Vicario" ;
+    osr:cittaNascita "Brescia" ;
+    osr:dataNascita "1969-12-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Brescia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-06-06"^^xsd:date ;
+    foaf:familyName "Bazoli" ;
+    foaf:firstName "Alfredo" .
+
+<http://dati.senato.it/senatore/29291> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "CORDOBA" ;
+    osr:dataNascita "1981-04-14"^^xsd:date ;
+    osr:nazioneNascita "Argentina" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Borghese" ;
+    foaf:firstName "Mario Alejandro" .
+
+<http://dati.senato.it/senatore/29292> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Brescia" ;
+    osr:dataNascita "1977-09-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Brescia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2025-02-25"^^xsd:date ;
+    foaf:familyName "Borghesi" ;
+    foaf:firstName "Stefano" .
+
+<http://dati.senato.it/senatore/29293> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Premosello-Chiovenda" ;
+    osr:dataNascita "1967-08-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Verbano Cusio Ossola" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2025-03-04"^^xsd:date ;
+    foaf:familyName "Borghi" ;
+    foaf:firstName "Enrico" .
+
+<http://dati.senato.it/senatore/29406> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "Torino" ;
+    osr:dataNascita "1972-01-25"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Torino" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2022-10-19"^^xsd:date ;
+    foaf:familyName "Fregolent" ;
+    foaf:firstName "Silvia" .
+
+<http://dati.senato.it/senatore/29425> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Torino" ;
+    osr:dataNascita "1965-04-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Torino" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Giorgis" ;
+    foaf:firstName "Andrea" .
+
+<http://dati.senato.it/senatore/29447> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "TORONTO" ;
+    osr:dataNascita "1975-10-30"^^xsd:date ;
+    osr:nazioneNascita "Canada" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "La Marca" ;
+    foaf:firstName "Francesca" .
+
+<http://dati.senato.it/senatore/29467> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cernusco Sul Naviglio" ;
+    osr:dataNascita "1972-08-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-03-28"^^xsd:date ;
+    foaf:familyName "Malpezzi" ;
+    foaf:firstName "Simona Flavia" .
+
+<http://dati.senato.it/senatore/29480> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Lecce" ;
+    osr:dataNascita "1974-06-11"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Lecce" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Marti" ;
+    foaf:firstName "Roberto" .
+
+<http://dati.senato.it/senatore/29490> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Quartu Sant'Elena" ;
+    osr:dataNascita "1971-06-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cagliari" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Meloni" ;
+    foaf:firstName "Marco" .
+
+<http://dati.senato.it/senatore/29521> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Vinci" ;
+    osr:dataNascita "1973-10-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Firenze" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Parrini" ;
+    foaf:firstName "Dario" .
+
+<http://dati.senato.it/senatore/29573> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "Pescara" ;
+    osr:dataNascita "1965-08-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pescara" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2022-10-19"^^xsd:date ;
+    foaf:familyName "Scalfarotto" ;
+    foaf:firstName "Ivan" .
+
+<http://dati.senato.it/senatore/29604> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Napoli" ;
+    osr:dataNascita "1976-09-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Valente" ;
+    foaf:firstName "Valeria" .
+
+<http://dati.senato.it/senatore/30110> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1973-04-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2023-11-09"^^xsd:date ;
+    foaf:familyName "Calenda" ;
+    foaf:firstName "Carlo" .
+
+<http://dati.senato.it/senatore/30294> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Avezzano" ;
+    osr:dataNascita "1978-09-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "L'Aquila" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Fina" ;
+    foaf:firstName "Michele" .
+
+<http://dati.senato.it/senatore/30510> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Gorizia" ;
+    osr:dataNascita "1934-03-31"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Gorizia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/69> ;
+    owl-senato:inizioAdesione "2022-11-09"^^xsd:date ;
+    foaf:familyName "Rubbia" ;
+    foaf:firstName "Carlo" .
+
+<http://dati.senato.it/senatore/30511> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1962-10-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/69> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Cattaneo" ;
+    foaf:firstName "Elena" .
+
+<http://dati.senato.it/senatore/30512> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Genova" ;
+    osr:dataNascita "1937-09-14"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Genova" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Piano" ;
+    foaf:firstName "Renzo" .
+
+<http://dati.senato.it/senatore/30742> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Firenze" ;
+    osr:dataNascita "1975-01-11"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Firenze" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Renzi" ;
+    foaf:firstName "Matteo" .
+
+<http://dati.senato.it/senatore/30915> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Negrar" ;
+    osr:dataNascita "1972-09-08"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Verona" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Tosato" ;
+    foaf:firstName "Paolo" .
+
+<http://dati.senato.it/senatore/31010> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Rovigo" ;
+    osr:dataNascita "1961-05-23"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Rovigo" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Amidei" ;
+    foaf:firstName "Bartolomeo" .
+
+<http://dati.senato.it/senatore/31725> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "Genova" ;
+    osr:dataNascita "1958-04-24"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Genova" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2025-06-04"^^xsd:date ;
+    foaf:familyName "Furlan" ;
+    foaf:firstName "Annamaria" .
+
+<http://dati.senato.it/senatore/31875> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "Potenza" ;
+    osr:dataNascita "1963-07-31"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Potenza" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-25"^^xsd:date ;
+    foaf:familyName "D'Elia" ;
+    foaf:firstName "Cecilia" .
+
+<http://dati.senato.it/senatore/32> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Rovigo" ;
+    osr:dataNascita "1946-08-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Rovigo" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Alberti Casellati" ;
+    foaf:firstName "Maria Elisabetta" .
+
+<http://dati.senato.it/senatore/32435> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1930-09-10"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Segre" ;
+    foaf:firstName "Liliana" .
+
+<http://dati.senato.it/senatore/32578> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Varese" ;
+    osr:dataNascita "1972-02-02"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Varese" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-06-06"^^xsd:date ;
+    foaf:familyName "Alfieri" ;
+    foaf:firstName "Alessandro" .
+
+<http://dati.senato.it/senatore/32583> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "Pisa" ;
+    osr:dataNascita "1972-08-21"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pisa" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-11-08"^^xsd:date ;
+    foaf:familyName "Barachini" ;
+    foaf:firstName "Alberto" .
+
+<http://dati.senato.it/senatore/32586> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bra" ;
+    osr:dataNascita "1963-11-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cuneo" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Bergesio" ;
+    foaf:firstName "Giorgio Maria" .
+
+<http://dati.senato.it/senatore/32590> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bologna" ;
+    osr:dataNascita "1976-09-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bologna" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Borgonzoni" ;
+    foaf:firstName "Lucia" .
+
+<http://dati.senato.it/senatore/32598> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Varese" ;
+    osr:dataNascita "1964-12-21"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Varese" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Cantu'" ;
+    foaf:firstName "Maria Cristina" .
+
+<http://dati.senato.it/senatore/32600> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Villaricca" ;
+    osr:dataNascita "1975-04-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Castellone" ;
+    foaf:firstName "Maria Domenica" .
+
+<http://dati.senato.it/senatore/32601> a osr:Senatore ;
+    osr:cittaNascita "Vallo Della Lucania" ;
+    osr:dataNascita "1942-10-13"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Salerno" ;
+    osr:sesso "M" ;
+    foaf:familyName "Castiello" ;
+    foaf:firstName "Francesco" .
+
+<http://dati.senato.it/senatore/32603> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Pordenone" ;
+    osr:dataNascita "1967-01-26"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pordenone" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-11-09"^^xsd:date ;
+    foaf:familyName "Ciriani" ;
+    foaf:firstName "Luca" .
+
+<http://dati.senato.it/senatore/32608> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Rimini" ;
+    osr:dataNascita "1972-09-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Rimini" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Croatti" ;
+    foaf:firstName "Marco" .
+
+<http://dati.senato.it/senatore/32619> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Sulmona" ;
+    osr:dataNascita "1977-05-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "L'Aquila" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Di Girolamo" ;
+    foaf:firstName "Gabriella" .
+
+<http://dati.senato.it/senatore/32624> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Brunico" ;
+    osr:dataNascita "1976-12-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bolzano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/69> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Durnwalder" ;
+    foaf:firstName "Meinhard" .
+
+<http://dati.senato.it/senatore/32628> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Messina" ;
+    osr:dataNascita "1972-02-24"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Messina" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Fazzolari" ;
+    foaf:firstName "Giovanbattista" .
+
+<http://dati.senato.it/senatore/32634> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Messina" ;
+    osr:dataNascita "1977-02-05"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Messina" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2023-04-18"^^xsd:date ;
+    foaf:familyName "Floridia" ;
+    foaf:firstName "Barbara" .
+
+<http://dati.senato.it/senatore/32637> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Monza" ;
+    osr:dataNascita "1944-07-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Monza e Brianza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2023-11-02"^^xsd:date ;
+    foaf:familyName "Galliani" ;
+    foaf:firstName "Adriano" .
+
+<http://dati.senato.it/senatore/32640> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Albanella" ;
+    osr:dataNascita "1966-01-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Salerno" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2025-01-09"^^xsd:date ;
+    foaf:familyName "Gaudiano" ;
+    foaf:firstName "Felicia" .
+
+<http://dati.senato.it/senatore/32644> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bassano Del Grappa" ;
+    osr:dataNascita "1975-09-21"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Vicenza" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Guidolin" ;
+    foaf:firstName "Barbara" .
+
+<http://dati.senato.it/senatore/32645> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "Torre Del Greco" ;
+    osr:dataNascita "1975-09-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Iannone" ;
+    foaf:firstName "Antonio" .
+
+<http://dati.senato.it/senatore/32650> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Pistoia" ;
+    osr:dataNascita "1961-04-10"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pistoia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "La Pietra" ;
+    foaf:firstName "Patrizio Giacomo" .
+
+<http://dati.senato.it/senatore/32653> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Sassari" ;
+    osr:dataNascita "1963-10-11"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Sassari" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Licheri" ;
+    foaf:firstName "Ettore Antonio" .
+
+<http://dati.senato.it/senatore/32655> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Gela" ;
+    osr:dataNascita "1967-07-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Caltanissetta" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Lorefice" ;
+    foaf:firstName "Pietro" .
+
+<http://dati.senato.it/senatore/32658> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1974-07-24"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Maiorino" ;
+    foaf:firstName "Alessandra" .
+
+<http://dati.senato.it/senatore/32660> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Imola" ;
+    osr:dataNascita "1969-05-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bologna" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Manca" ;
+    foaf:firstName "Daniele" .
+
+<http://dati.senato.it/senatore/32673> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "San Giovanni Rotondo" ;
+    osr:dataNascita "1969-06-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Foggia" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Naturale" ;
+    foaf:firstName "Gisella" .
+
+<http://dati.senato.it/senatore/32677> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Campo San Martino" ;
+    osr:dataNascita "1974-03-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Padova" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Ostellari" ;
+    foaf:firstName "Andrea" .
+
+<http://dati.senato.it/senatore/32681> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Trieste" ;
+    osr:dataNascita "1974-06-08"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Trieste" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Patuanelli" ;
+    foaf:firstName "Stefano" .
+
+<http://dati.senato.it/senatore/32691> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Torino" ;
+    osr:dataNascita "1973-07-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Torino" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Pirro" ;
+    foaf:firstName "Elisa" .
+
+<http://dati.senato.it/senatore/32697> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Sarzana" ;
+    osr:dataNascita "1967-03-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "La Spezia" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Pucciarelli" ;
+    foaf:firstName "Stefania" .
+
+<http://dati.senato.it/senatore/32699> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1962-11-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-11-09"^^xsd:date ;
+    foaf:familyName "Rauti" ;
+    foaf:firstName "Isabella" .
+
+<http://dati.senato.it/senatore/32703> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Trieste" ;
+    osr:dataNascita "1961-10-26"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Trieste" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Rojc" ;
+    foaf:firstName "Tatjana" .
+
+<http://dati.senato.it/senatore/32706> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Monza" ;
+    osr:dataNascita "1971-01-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Monza e Brianza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Romeo" ;
+    foaf:firstName "Massimiliano" .
+
+<http://dati.senato.it/senatore/32707> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1975-09-14"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2023-11-21"^^xsd:date ;
+    foaf:familyName "Ronzulli" ;
+    foaf:firstName "Licia" .
+
+<http://dati.senato.it/senatore/32721> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cavalese" ;
+    osr:dataNascita "1973-07-20"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Trento" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Testor" ;
+    foaf:firstName "Elena" .
+
+<http://dati.senato.it/senatore/32726> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Taranto" ;
+    osr:dataNascita "1968-06-14"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Taranto" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Turco" ;
+    foaf:firstName "Mario" .
+
+<http://dati.senato.it/senatore/32727> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Merano" ;
+    osr:dataNascita "1962-09-05"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bolzano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/69> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Unterberger" ;
+    foaf:firstName "Julia" .
+
+<http://dati.senato.it/senatore/32732> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Spoleto" ;
+    osr:dataNascita "1955-03-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Perugia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Zaffini" ;
+    foaf:firstName "Francesco" .
+
+<http://dati.senato.it/senatore/32747> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Barletta" ;
+    osr:dataNascita "1974-06-21"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Barletta-Andria-Trani" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Damiani" ;
+    foaf:firstName "Dario" .
+
+<http://dati.senato.it/senatore/32779> a osr:Senatore ;
+    osr:carica "Vicepresidente Vicario" ;
+    osr:cittaNascita "TORINO" ;
+    osr:dataNascita "1967-08-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Torino" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2026-03-31"^^xsd:date ;
+    foaf:familyName "Rosso" ;
+    foaf:firstName "Roberto" .
+
+<http://dati.senato.it/senatore/32851> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "BATTIPAGLIA" ;
+    osr:dataNascita "1982-06-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Salerno" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Bilotti" ;
+    foaf:firstName "Anna" .
+
+<http://dati.senato.it/senatore/32856> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Barcellona Pozzo Di Gotto" ;
+    osr:dataNascita "1963-06-27"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Messina" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Bucalo" ;
+    foaf:firstName "Carmela" .
+
+<http://dati.senato.it/senatore/32862> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Napoli" ;
+    osr:dataNascita "1968-02-02"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Cantalamessa" ;
+    foaf:firstName "Gianluca" .
+
+<http://dati.senato.it/senatore/32898> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Pieve Di Cadore" ;
+    osr:dataNascita "1972-08-07"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Belluno" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "De Carlo" ;
+    foaf:firstName "Luca" .
+
+<http://dati.senato.it/senatore/32988> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "VIZZOLO PREDABISSI" ;
+    osr:dataNascita "1977-05-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Morelli" ;
+    foaf:firstName "Alessandro" .
+
+<http://dati.senato.it/senatore/33005> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "LA SPEZIA" ;
+    osr:dataNascita "1974-11-23"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "La Spezia" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2025-03-04"^^xsd:date ;
+    foaf:familyName "Paita" ;
+    foaf:firstName "Raffaella" .
+
+<http://dati.senato.it/senatore/33022> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cecina" ;
+    osr:dataNascita "1976-07-21"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Livorno" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Potenti" ;
+    foaf:firstName "Manfredi" .
+
+<http://dati.senato.it/senatore/33027> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Reggio Di Calabria" ;
+    osr:dataNascita "1977-05-20"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Reggio di Calabria" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2024-11-27"^^xsd:date ;
+    foaf:familyName "Versace" ;
+    foaf:firstName "Giusy" .
+
+<http://dati.senato.it/senatore/33038> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Genova" ;
+    osr:dataNascita "1961-12-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Genova" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Zangrillo" ;
+    foaf:firstName "Paolo" .
+
+<http://dati.senato.it/senatore/33065> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Ascoli Piceno" ;
+    osr:dataNascita "1960-04-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Ascoli Piceno" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Cataldi" ;
+    foaf:firstName "Roberto" .
+
+<http://dati.senato.it/senatore/33070> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1970-06-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Borghi" ;
+    foaf:firstName "Claudio" .
+
+<http://dati.senato.it/senatore/33096> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Latina" ;
+    osr:dataNascita "1971-09-10"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Latina" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Durigon" ;
+    foaf:firstName "Claudio" .
+
+<http://dati.senato.it/senatore/33110> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Piacenza" ;
+    osr:dataNascita "1975-07-29"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Piacenza" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Murelli" ;
+    foaf:firstName "Elena" .
+
+<http://dati.senato.it/senatore/33137> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1962-11-08"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Silvestroni" ;
+    foaf:firstName "Marco" .
+
+<http://dati.senato.it/senatore/33863> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1967-05-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2024-05-08"^^xsd:date ;
+    foaf:familyName "Scurria" ;
+    foaf:firstName "Marco" .
+
+<http://dati.senato.it/senatore/33946> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Orzinuovi" ;
+    osr:dataNascita "1951-11-02"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Brescia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Maffoni" ;
+    foaf:firstName "Gianpietro" .
+
+<http://dati.senato.it/senatore/34243> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roncoferraro" ;
+    osr:dataNascita "1974-12-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Mantova" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Paganella" ;
+    foaf:firstName "Andrea" .
+
+<http://dati.senato.it/senatore/34485> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Latina" ;
+    osr:dataNascita "1966-11-05"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Latina" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Calandrini" ;
+    foaf:firstName "Nicola" .
+
+<http://dati.senato.it/senatore/34558> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Southampton" ;
+    osr:dataNascita "1976-04-17"^^xsd:date ;
+    osr:nazioneNascita "Regno Unito" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Mennuni" ;
+    foaf:firstName "Lavinia" .
+
+<http://dati.senato.it/senatore/35489> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Poggiardo" ;
+    osr:dataNascita "1975-07-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Lecce" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2023-05-09"^^xsd:date ;
+    foaf:familyName "Pellegrino" ;
+    foaf:firstName "Cinzia" .
+
+<http://dati.senato.it/senatore/36013> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Reggio Di Calabria" ;
+    osr:dataNascita "1960-07-24"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Reggio di Calabria" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Minasi" ;
+    foaf:firstName "Tilde" .
+
+<http://dati.senato.it/senatore/36381> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Muro Lucano" ;
+    osr:dataNascita "1946-12-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Potenza" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Aloisio" ;
+    foaf:firstName "Vincenza" .
+
+<http://dati.senato.it/senatore/36382> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Torino" ;
+    osr:dataNascita "1970-12-02"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Torino" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Ambrogio" ;
+    foaf:firstName "Paola" .
+
+<http://dati.senato.it/senatore/36383> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Crema" ;
+    osr:dataNascita "1956-03-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cremona" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Ancorotti" ;
+    foaf:firstName "Renato" .
+
+<http://dati.senato.it/senatore/36384> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "San Remo" ;
+    osr:dataNascita "1964-05-07"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Imperia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Berrino" ;
+    foaf:firstName "Gianni" .
+
+<http://dati.senato.it/senatore/36385> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "Partinico" ;
+    osr:dataNascita "1974-08-27"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Palermo" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Bevilacqua" ;
+    foaf:firstName "Dolores" .
+
+<http://dati.senato.it/senatore/36386> a osr:Senatore ;
+    osr:carica "Vicepresidente Vicario" ;
+    osr:cittaNascita "Bassano Del Grappa" ;
+    osr:dataNascita "1972-06-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Vicenza" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-11-08"^^xsd:date ;
+    foaf:familyName "Bizzotto" ;
+    foaf:firstName "Mara" .
+
+<http://dati.senato.it/senatore/36387> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1954-09-14"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Crisanti" ;
+    foaf:firstName "Andrea" .
+
+<http://dati.senato.it/senatore/36388> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Siena" ;
+    osr:dataNascita "1965-11-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Siena" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Castelli" ;
+    foaf:firstName "Guido" .
+
+<http://dati.senato.it/senatore/36389> a osr:Senatore ;
+    osr:cittaNascita "Cremona" ;
+    osr:dataNascita "1954-08-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cremona" ;
+    osr:sesso "M" ;
+    foaf:familyName "Cottarelli" ;
+    foaf:firstName "Carlo" .
+
+<http://dati.senato.it/senatore/36390> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1974-06-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Cucchi" ;
+    foaf:firstName "Ilaria" .
+
+<http://dati.senato.it/senatore/36391> a osr:Senatore ;
+    osr:carica "Vicepresidente Vicario" ;
+    osr:cittaNascita "Gela" ;
+    osr:dataNascita "1972-02-05"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Caltanissetta" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Damante" ;
+    foaf:firstName "Concetta" .
+
+<http://dati.senato.it/senatore/36392> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1955-08-14"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Camusso" ;
+    foaf:firstName "Susanna Lina Giulia" .
+
+<http://dati.senato.it/senatore/36393> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1971-05-24"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "De Priamo" ;
+    foaf:firstName "Andrea" .
+
+<http://dati.senato.it/senatore/36394> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Pompei" ;
+    osr:dataNascita "1978-06-20"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2024-02-21"^^xsd:date ;
+    foaf:familyName "De Rosa" ;
+    foaf:firstName "Raffaele" .
+
+<http://dati.senato.it/senatore/36395> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Termoli" ;
+    osr:dataNascita "1975-10-29"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Campobasso" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Della Porta" ;
+    foaf:firstName "Costanzo" .
+
+<http://dati.senato.it/senatore/36396> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Spilimbergo" ;
+    osr:dataNascita "1969-03-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pordenone" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Dreosto" ;
+    foaf:firstName "Marco" .
+
+<http://dati.senato.it/senatore/36397> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Brisighella" ;
+    osr:dataNascita "1962-01-01"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Ravenna" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Farolfi" ;
+    foaf:firstName "Marta" .
+
+<http://dati.senato.it/senatore/36398> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Foggia" ;
+    osr:dataNascita "1968-05-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Foggia" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Fallucchi" ;
+    foaf:firstName "Anna Maria" .
+
+<http://dati.senato.it/senatore/36399> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Verona" ;
+    osr:dataNascita "1967-05-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Verona" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/69> ;
+    owl-senato:inizioAdesione "2025-02-19"^^xsd:date ;
+    foaf:familyName "Floridia" ;
+    foaf:firstName "Aurora" .
+
+<http://dati.senato.it/senatore/36400> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Pistoia" ;
+    osr:dataNascita "1970-08-16"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pistoia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Franceschelli" ;
+    foaf:firstName "Silvio" .
+
+<http://dati.senato.it/senatore/36401> a osr:Senatore ;
+    osr:carica "Segretario d'Aula" ;
+    osr:cittaNascita "Reggio di Calabria" ;
+    osr:dataNascita "1982-01-05"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Reggio di Calabria" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-25"^^xsd:date ;
+    foaf:familyName "Irto" ;
+    foaf:firstName "Nicola" .
+
+<http://dati.senato.it/senatore/36402> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Recanati" ;
+    osr:dataNascita "1975-05-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Macerata" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Leonardi" ;
+    foaf:firstName "Elena" .
+
+<http://dati.senato.it/senatore/36403> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "L'Aquila" ;
+    osr:dataNascita "1979-06-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "L'Aquila" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Liris" ;
+    foaf:firstName "Guido Quintino" .
+
+<http://dati.senato.it/senatore/36404> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "Napoli" ;
+    osr:dataNascita "1971-09-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Lopreiato" ;
+    foaf:firstName "Ada" .
+
+<http://dati.senato.it/senatore/36405> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1957-05-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Lotito" ;
+    foaf:firstName "Claudio" .
+
+<http://dati.senato.it/senatore/36406> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cercola" ;
+    osr:dataNascita "1965-09-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Mazzella" ;
+    foaf:firstName "Orfeo" .
+
+<http://dati.senato.it/senatore/36407> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bari" ;
+    osr:dataNascita "1966-05-07"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bari" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Melchiorre" ;
+    foaf:firstName "Filippo" .
+
+<http://dati.senato.it/senatore/36408> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Roma" ;
+    osr:dataNascita "1976-04-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Mieli" ;
+    foaf:firstName "Ester" .
+
+<http://dati.senato.it/senatore/36409> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Messina" ;
+    osr:dataNascita "1974-12-04"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Messina" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/91> ;
+    owl-senato:inizioAdesione "2025-06-04"^^xsd:date ;
+    foaf:familyName "Musolino" ;
+    foaf:firstName "Dafne" .
+
+<http://dati.senato.it/senatore/36410> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Villaricca" ;
+    osr:dataNascita "1970-05-13"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Nave" ;
+    foaf:firstName "Luigi" .
+
+<http://dati.senato.it/senatore/36411> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Siracusa" ;
+    osr:dataNascita "1968-02-10"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Siracusa" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-06-06"^^xsd:date ;
+    foaf:familyName "Nicita" ;
+    foaf:firstName "Antonio" .
+
+<http://dati.senato.it/senatore/36412> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Santeramo in Colle" ;
+    osr:dataNascita "1974-12-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bari" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Nocco" ;
+    foaf:firstName "Vita Maria" .
+
+<http://dati.senato.it/senatore/36413> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cosenza" ;
+    osr:dataNascita "1964-01-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cosenza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Occhiuto" ;
+    foaf:firstName "Mario" .
+
+<http://dati.senato.it/senatore/36414> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Cosenza" ;
+    osr:dataNascita "1971-08-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cosenza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Orsomarso" ;
+    foaf:firstName "Fausto" .
+
+<http://dati.senato.it/senatore/36415> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "Trento" ;
+    osr:dataNascita "1957-12-28"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Trento" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/69> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Patton" ;
+    foaf:firstName "Pietro" .
+
+<http://dati.senato.it/senatore/36416> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Grosseto" ;
+    osr:dataNascita "1971-04-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Grosseto" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Petrucci" ;
+    foaf:firstName "Simona" .
+
+<http://dati.senato.it/senatore/36417> a osr:Senatore ;
+    osr:carica "Presidente" ;
+    osr:cittaNascita "Genova" ;
+    osr:dataNascita "1981-06-08"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Genova" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Pirondini" ;
+    foaf:firstName "Luca" .
+
+<http://dati.senato.it/senatore/36418> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Niscemi" ;
+    osr:dataNascita "1958-06-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Caltanissetta" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Rando" ;
+    foaf:firstName "Vincenza" .
+
+<http://dati.senato.it/senatore/36419> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Rossano" ;
+    osr:dataNascita "1967-05-02"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cosenza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Rapani" ;
+    foaf:firstName "Ernesto" .
+
+<http://dati.senato.it/senatore/36420> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Potenza" ;
+    osr:dataNascita "1965-03-27"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Potenza" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Rosa" ;
+    foaf:firstName "Gianni" .
+
+<http://dati.senato.it/senatore/36421> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Palermo" ;
+    osr:dataNascita "1971-03-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Palermo" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Russo" ;
+    foaf:firstName "Raoul" .
+
+<http://dati.senato.it/senatore/36422> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Vittoria" ;
+    osr:dataNascita "1977-01-31"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Ragusa" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-11-09"^^xsd:date ;
+    foaf:familyName "Sallemi" ;
+    foaf:firstName "Salvatore" .
+
+<http://dati.senato.it/senatore/36423> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Caltanissetta" ;
+    osr:dataNascita "1952-01-14"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Caltanissetta" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Scarpinato" ;
+    foaf:firstName "Roberto Maria Ferdinando" .
+
+<http://dati.senato.it/senatore/36424> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Vasto" ;
+    osr:dataNascita "1974-09-29"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Chieti" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Sigismondi" ;
+    foaf:firstName "Etelwardo" .
+
+<http://dati.senato.it/senatore/36425> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Milano" ;
+    osr:dataNascita "1961-02-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Sironi" ;
+    foaf:firstName "Elena" .
+
+<http://dati.senato.it/senatore/36426> a osr:Senatore ;
+    osr:carica "Vicepresidente Vicario" ;
+    osr:cittaNascita "Bolzano" ;
+    osr:dataNascita "1960-02-10"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bolzano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/69> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Spagnolli" ;
+    foaf:firstName "Luigi" .
+
+<http://dati.senato.it/senatore/36427> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Aosta" ;
+    osr:dataNascita "1971-07-28"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Aosta" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Spelgatti" ;
+    foaf:firstName "Nicoletta" .
+
+<http://dati.senato.it/senatore/36428> a osr:Senatore ;
+    osr:carica "Vicepresidente Vicario" ;
+    osr:cittaNascita "Venezia" ;
+    osr:dataNascita "1971-10-07"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Venezia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-11-09"^^xsd:date ;
+    foaf:familyName "Speranzon" ;
+    foaf:firstName "Raffaele" .
+
+<http://dati.senato.it/senatore/36429> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "Pisa" ;
+    osr:dataNascita "1974-06-27"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Pisa" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-06-06"^^xsd:date ;
+    foaf:familyName "Zambito" ;
+    foaf:firstName "Ylenia" .
+
+<http://dati.senato.it/senatore/36430> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Cagliari" ;
+    osr:dataNascita "1976-01-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cagliari" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-11-09"^^xsd:date ;
+    foaf:familyName "Zedda" ;
+    foaf:firstName "Antonella" .
+
+<http://dati.senato.it/senatore/36431> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "MODENA" ;
+    osr:dataNascita "1979-02-07"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Modena" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Barcaiuolo" ;
+    foaf:firstName "Michele" .
+
+<http://dati.senato.it/senatore/36432> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Tripoli" ;
+    osr:dataNascita "1966-02-03"^^xsd:date ;
+    osr:nazioneNascita "Libia" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Campione" ;
+    foaf:firstName "Susanna Donatella" .
+
+<http://dati.senato.it/senatore/36433> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "VERONA" ;
+    osr:dataNascita "1975-06-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Verona" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Gelmetti" ;
+    foaf:firstName "Matteo" .
+
+<http://dati.senato.it/senatore/36434> a osr:Senatore ;
+    osr:carica "Segretario" ;
+    osr:cittaNascita "ASSEMINI" ;
+    osr:dataNascita "1971-06-04"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Cagliari" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/71> ;
+    owl-senato:inizioAdesione "2026-02-26"^^xsd:date ;
+    foaf:familyName "Licheri" ;
+    foaf:firstName "Sabrina" .
+
+<http://dati.senato.it/senatore/36435> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "BOLOGNA" ;
+    osr:dataNascita "1977-03-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bologna" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Lisei" ;
+    foaf:firstName "Marco" .
+
+<http://dati.senato.it/senatore/36436> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "LOCRI" ;
+    osr:dataNascita "1981-01-02"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Reggio di Calabria" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2023-11-09"^^xsd:date ;
+    foaf:familyName "Lombardo" ;
+    foaf:firstName "Marco" .
+
+<http://dati.senato.it/senatore/36437> a osr:Senatore ;
+    osr:carica "Tesoriere" ;
+    osr:cittaNascita "BARZAGO" ;
+    osr:dataNascita "1947-06-29"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Lecco" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/9> ;
+    owl-senato:inizioAdesione "2023-03-16"^^xsd:date ;
+    foaf:familyName "Magni" ;
+    foaf:firstName "Tino" .
+
+<http://dati.senato.it/senatore/36438> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "ASOLA" ;
+    osr:dataNascita "1973-11-04"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Mantova" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Mancini" ;
+    foaf:firstName "Paola" .
+
+<http://dati.senato.it/senatore/36439> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "FIRENZE" ;
+    osr:dataNascita "1961-03-23"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Firenze" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Marcheschi" ;
+    foaf:firstName "Paolo" .
+
+<http://dati.senato.it/senatore/36440> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "BENEVENTO" ;
+    osr:dataNascita "1965-05-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Benevento" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Matera" ;
+    foaf:firstName "Domenico" .
+
+<http://dati.senato.it/senatore/36441> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "CATANIA" ;
+    osr:dataNascita "1972-03-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Catania" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Pogliese" ;
+    foaf:firstName "Salvo" .
+
+<http://dati.senato.it/senatore/36442> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "NAPOLI" ;
+    osr:dataNascita "1966-01-17"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Rastrelli" ;
+    foaf:firstName "Sergio" .
+
+<http://dati.senato.it/senatore/36443> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "COLLEFERRO" ;
+    osr:dataNascita "1968-02-10"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/92> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Salvitti" ;
+    foaf:firstName "Giorgio" .
+
+<http://dati.senato.it/senatore/36444> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "ROMA" ;
+    osr:dataNascita "1965-01-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Roma" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Satta" ;
+    foaf:firstName "Giovanni" .
+
+<http://dati.senato.it/senatore/36445> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "ARZANO" ;
+    osr:dataNascita "1971-10-22"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Napoli" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Silvestro" ;
+    foaf:firstName "Francesco" .
+
+<http://dati.senato.it/senatore/36446> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "BOLLATE" ;
+    osr:dataNascita "1968-04-12"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Milano" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Sisler" ;
+    foaf:firstName "Sandro" .
+
+<http://dati.senato.it/senatore/36447> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "SAMMICHELE DI BARI" ;
+    osr:dataNascita "1969-01-08"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bari" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Spinelli" ;
+    foaf:firstName "Domenica" .
+
+<http://dati.senato.it/senatore/36448> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "COPERTINO" ;
+    osr:dataNascita "1976-01-26"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Lecce" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2024-08-07"^^xsd:date ;
+    foaf:familyName "Trevisi" ;
+    foaf:firstName "Antonio Salvatore" .
+
+<http://dati.senato.it/senatore/36449> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "MONFALCONE" ;
+    osr:dataNascita "1982-08-06"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Gorizia" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Tubetti" ;
+    foaf:firstName "Francesca" .
+
+<http://dati.senato.it/senatore/36450> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "CASSANO DELLE MURGE" ;
+    osr:dataNascita "1959-08-20"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bari" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Zullo" ;
+    foaf:firstName "Ignazio" .
+
+<http://dati.senato.it/senatore/37415> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Siracusa" ;
+    osr:dataNascita "1975-05-09"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Siracusa" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2026-03-31"^^xsd:date ;
+    foaf:familyName "Ternullo" ;
+    foaf:firstName "Daniela" .
+
+<http://dati.senato.it/senatore/37739> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Terlizzi" ;
+    osr:dataNascita "1978-11-28"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bari" ;
+    osr:sesso "F" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2023-05-31"^^xsd:date ;
+    foaf:familyName "Tajani" ;
+    foaf:firstName "Cristina" .
+
+<http://dati.senato.it/senatore/3900> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Lucca" ;
+    osr:dataNascita "1943-01-28"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Lucca" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Pera" ;
+    foaf:firstName "Marcello" .
+
+<http://dati.senato.it/senatore/407> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Como" ;
+    osr:dataNascita "1964-10-15"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Como" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/85> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Butti" ;
+    foaf:firstName "Alessio" .
+
+<http://dati.senato.it/senatore/4192> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Fondi" ;
+    osr:dataNascita "1961-10-07"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Latina" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Fazzone" ;
+    foaf:firstName "Claudio" .
+
+<http://dati.senato.it/senatore/422> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bergamo" ;
+    osr:dataNascita "1956-04-18"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bergamo" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/33> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Calderoli" ;
+    foaf:firstName "Roberto" .
+
+<http://dati.senato.it/senatore/4512> a osr:Senatore ;
+    osr:carica "Vicepresidente" ;
+    osr:cittaNascita "Brescia" ;
+    osr:dataNascita "1962-03-30"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Brescia" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/56> ;
+    owl-senato:inizioAdesione "2026-03-31"^^xsd:date ;
+    foaf:familyName "Paroli" ;
+    foaf:firstName "Adriano" .
+
+<http://dati.senato.it/senatore/520> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Bologna" ;
+    osr:dataNascita "1955-12-03"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Bologna" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Casini" ;
+    foaf:firstName "Pier Ferdinando" .
+
+<http://dati.senato.it/senatore/5799> a osr:Senatore ;
+    osr:carica "Membro" ;
+    osr:cittaNascita "Ferrara" ;
+    osr:dataNascita "1958-10-19"^^xsd:date ;
+    osr:nazioneNascita "Italia" ;
+    osr:provinciaNascita "Ferrara" ;
+    osr:sesso "M" ;
+    owl-senato:appartieneAGruppo <http://dati.senato.it/gruppo/49> ;
+    owl-senato:inizioAdesione "2022-10-18"^^xsd:date ;
+    foaf:familyName "Franceschini" ;
+    foaf:firstName "Dario" .
+
+<http://dati.senato.it/gruppo/69> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Per le Autonomie (SVP-PATT, Campobase)" .
+
+<http://dati.senato.it/gruppo/9> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Misto" .
+
+<http://dati.senato.it/gruppo/91> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Italia Viva - Casa Riformista" .
+
+<http://dati.senato.it/gruppo/92> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Civici d'Italia-UDC-Noi Moderati (Noi con l'Italia, Coraggio Italia, Italia al Centro)-MAIE-Centro Popolare" .
+
+<http://dati.senato.it/gruppo/56> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Forza Italia - Berlusconi Presidente - PPE" .
+
+<http://dati.senato.it/gruppo/71> a owl-senato:GruppoParlamentare ;
+    osr:titolo "MoVimento 5 Stelle" .
+
+<http://dati.senato.it/gruppo/33> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Lega Salvini Premier - Partito Sardo d'Azione" .
+
+<http://dati.senato.it/gruppo/49> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Partito Democratico - Italia Democratica e Progressista" .
+
+<http://dati.senato.it/gruppo/85> a owl-senato:GruppoParlamentare ;
+    osr:titolo "Fratelli d'Italia" .
+

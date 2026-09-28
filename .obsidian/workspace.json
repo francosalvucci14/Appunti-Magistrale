@@ -42,7 +42,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -95,13 +97,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Lezione 16 KE - Protege e VocBench"
+              "title": "Outline"
             }
           },
           {
@@ -166,19 +168,31 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8f2a1fe169fd102d",
+  "active": "2f460895308e6293",
   "lastOpenFiles": [
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/SPARQL_queries.md",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/MacroAree-Regione.ttl",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/dati_senato.ttl",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/script_data_enrichment2.py",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/Nazione.ttl",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/script_data_enrichment.py",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/pyvenv.cfg",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/include",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/SPARQLWrapper/__pycache__/sparql_dataframe.cpython-314.pyc",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/SPARQLWrapper/__pycache__/main.cpython-314.pyc",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/SPARQLWrapper/__pycache__/__init__.cpython-314.pyc",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/pip-26.1.2.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/pip/_vendor/idna/LICENSE.md",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/pyparsing/ai/best_practices.md",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/idna-3.18.dist-info/licenses/LICENSE.md",
+    "Appunti II Anno/Appunti KE/ProgettoKE/scripts/venv/lib/python3.14/site-packages/SPARQLWrapper-2.0.0.dist-info/AUTHORS.md",
+    "TesiMagistrale/Tesi Magistrale direzione 2.md",
+    "TesiMagistrale/Tesi Magistrale - Direzione 1 (Abbandonata).md",
+    "TesiMagistrale/Analisi Similarità e Metriche.md",
+    "TesiMagistrale/CalcoloSimilaritàPaper.png",
+    "TesiMagistrale/Tesi Magistrale.md",
+    "Appunti I Anno/Appunti AR/MOD II/Lezione 2 AR2 - Network Formation Games, Potential Technique, Find good NE.md",
     "README.md",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro.css",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.woff",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.ttf",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibolditalic.eot",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.woff",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.ttf",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-semibold.eot",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.woff",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.ttf",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/distributed_2_files/libs/revealjs/dist/theme/fonts/source-sans-pro/source-sans-pro-regular.eot",
     "Altro_CFU-D/PMLJ/L8/lecture_08/2_gpu/gpu_files/figure-revealjs/cell-14-output-1.svg",
     "Altro_CFU-D/PMLJ/L8/lecture_08/2_gpu/gpu_files/figure-revealjs/cell-11-output-1.svg",
     "Altro_CFU-D/PMLJ/L8/lecture_08/3_projects/imgs/vella_gpu.png",
@@ -188,10 +202,7 @@
     "Altro_CFU-D/PMLJ/L8/lecture_08/3_projects/imgs/conways_game_of_life.gif",
     "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/imgs/whatismyip.png",
     "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/imgs/err_distributed.png",
-    "Altro_CFU-D/PMLJ/L8/lecture_08/1_distributed/imgs/dist_arr.png",
-    "Tesi Magistrale.md",
     "Appunti I Anno/Appunti AR/MOD II/Lezione 4 AR2 - Algorithmic Mechanism Design, utilitarian problems & VGC mechanism.md",
-    "Tesi Magistrale - Direzione 1 (on-going).md",
     "Appunti II Anno/Appunti KE/ProgettoKE/Leggere.md",
     "Appunti II Anno/Appunti KE/Lezione 13 KE - GraphDB + LOV.md",
     "Appunti II Anno/Appunti KE/Lezione 16 KE - Protege e VocBench.md",
@@ -204,14 +215,6 @@
     "Appunti II Anno/Appunti KE/Lezione 11 KE - Ontolex-Lemon.md",
     "Appunti II Anno/Appunti KE/Lezione 9-10 KE - SKOS.md",
     "Appunti II Anno/Appunti KE/Lezione 7-8 KE - SPARQL e SPARQL 1.1.md",
-    "Appunti II Anno/Appunti KE/Lezione 6 KE - Linked Open Data.md",
-    "Appunti II Anno/Appunti KE/Lezione 4-5 KE - OWL, OWL2.md",
-    "Appunti II Anno/Appunti KE/Lezione 3 KE - RDF e RDFS.md",
-    "Appunti II Anno/Appunti KE/Lezione 2 KE - Semantic Web.md",
-    "Appunti II Anno/Appunti KE/Lezione 1 KE - Open Data.md",
-    "Appunti II Anno/Appunti CDCI/Appunti parte Golluscio.md",
-    "Appunti II Anno/Appunti ML/Indice degli appunti ML.md",
-    "Appunti I Anno/Appunti ADRC/Lezione 11 ADRC - Ancora su CD, Algoritmo Rand-Delta+, Random Election Leader, Maximal Indipendent Set Distribuito.md",
-    "Appunti II Anno/Appunti CDCI/Sicurezza Sistemi Informativi/Laboratorio GNS3.md"
+    "Appunti II Anno/Appunti KE/Lezione 6 KE - Linked Open Data.md"
   ]
 }

@@ -229,3 +229,192 @@ Nonostante la gravità di queste premesse, l'astrazione e il confezionamento del
 Effettuata dimostrazione che il prblema è NP-Hard in data 02/07/2026, c'è poco da fare
 
 Cambiare direzione? forse fare quella di pepè e straziota?
+
+# Analisi Metriche
+
+**Origine e Adattamento delle Metriche** Le metriche utilizzate in "Paper.pdf" non sono state inventate appositamente da zero, ma sono un adattamento diretto delle metriche di "bontà" (goodness metrics) originali proposte in "Metrics.pdf". In "Metrics.pdf", gli autori definiscono quattro metriche assiomatiche per misurare la qualità delle comunità all'interno di reti statiche. In "Paper.pdf", gli autori hanno preso queste quattro metriche e le hanno specificamente adattate al problema delle reti temporali, estendendo i calcoli per tenere conto dei timestamp degli archi.
+
+Di seguito il confronto dettagliato:
+
+- **Separability (Separabilità):** In "Metrics.pdf", questa metrica quantifica quanto una comunità è ben separata dal resto della rete misurando il rapporto tra il numero di archi interni e il numero di archi esterni. In "Paper.pdf", questa viene adattata nella _Average Separability (AS)_. Questa misura il rapporto tra il numero di archi temporali interni alla comunità e il numero di archi temporali diretti verso l'esterno.
+    
+- **Density (Densità):** In "Metrics.pdf", la densità calcola la frazione degli archi esistenti rispetto a tutti i possibili archi tra i membri della comunità. In "Paper.pdf", la metrica adattata _Average Density (AD)_ misura invece la media dei gradi temporali dei nodi che appartengono alla comunità.
+    
+- **Cohesiveness (Coesione):** In "Metrics.pdf", la coesione caratterizza la struttura interna valutando la conduttanza massima del taglio interno, per verificare quanto sia difficile dividere la comunità in due. In "Paper.pdf", la _Average Cohesiveness (AC)_ utilizza lo stesso principio, ma calcola la conduttanza massima basandosi sul sottografo temporale indotto.
+    
+- **Clustering Coefficient (Coefficiente di Clustering):** In "Metrics.pdf", questa metrica si basa sulla probabilità che coppie di nodi con vicini in comune siano connesse tra loro. In "Paper.pdf", l'_Average Clustering Coefficient (ACC)_ traduce questo concetto calcolando il numero di archi temporali relativi ai vicini in comune diviso per il grado temporale dei nodi all'interno del cluster.
+
+## Analisi Critica delle Metriche: Originali (Statiche) vs. Adattate (Temporali)
+
+Gli autori di "Paper.pdf" hanno preso le metriche assiomatiche di "Metrics.pdf" e le hanno applicate alle reti temporali. Tuttavia, la loro trasposizione presenta delle criticità importanti.
+
+- **Separability / Average Separability (AS)**
+    
+    - _Definizione originale:_ Rapporto tra archi interni ed esterni.
+        
+    - _Versione temporale:_ Rapporto tra la somma totale di tutti gli _archi temporali_ (interazioni) interni e quelli esterni al cluster.
+        
+    - _Giudizio:_ **Discreta, ma limitata.** Ha senso matematico, ma compie un "appiattimento temporale". Un cluster che ha avuto 1000 interazioni in un singolo giorno e zero per i restanti 5 anni avrà lo stesso punteggio di un cluster che ha avuto 1 interazione al giorno per 1000 giorni. Valuta il _volume_ delle interazioni isolate, non la loro stabilità temporale.
+        
+- **Density / Average Density (AD)**
+    
+    - _Definizione originale:_ È una vera densità, ovvero una frazione (compresa tra 0 e 1) tra gli archi esistenti e quelli teoricamente possibili.
+        
+    - _Versione temporale:_ È definita come la media del grado temporale (numero di interazioni) dei nodi all'interno della comunità.
+        
+    - _Giudizio:_ **Poco sensata (o mal nominata).** Questa non è una densità, è semplicemente il grado medio ponderato! Poiché somma le interazioni nel tempo, non è limitata tra 0 e 1. Un cluster con 3 nodi che si scambiano 1000 mail in un giorno avrà una "Average Density" altissima, mentre la densità topologica reale (se formano un triangolo) viene ignorata. È una metrica di intensità, non di densità strutturale.
+        
+- **Cohesiveness / Average Cohesiveness (AC)**
+    
+    - _Definizione originale:_ La difficoltà di "spezzare" la comunità a metà, misurata tramite la massima conduttanza di un taglio interno.
+        
+    - _Versione temporale:_ Usa la stessa logica, ma sul sottografo indotto pesato in base alle interazioni temporali.
+        
+    - _Giudizio:_ **Buona dal punto di vista topologico, debole su quello temporale.** Di nuovo, aggregando gli archi temporali, la metrica valuta se il cluster è coeso in senso assoluto, ma non ci dice se questa coesione sopravvive nel tempo. Potrebbe esserci un "ponte" temporale fortissimo in un solo snapshot che tiene unita la comunità agli occhi della metrica.
+        
+- **Clustering Coefficient / Average Clustering Coefficient (ACC)**
+    
+    - _Definizione originale:_ Basata sui triangoli formati dai nodi.
+        
+    - _Versione temporale:_ Valuta la frazione di interazioni temporali tra i vicini di un nodo rispetto alle interazioni totali di quel nodo nel cluster.
+        
+    - _Giudizio:_ **Buona per valutare l'omofilia.** Risente degli stessi problemi delle altre: favorisce i picchi di interazione brevi ma intensi rispetto a interazioni topologicamente chiuse ma distribuite nel tempo.
+        
+## 2. Il Giudizio Complessivo: Hanno senso per il Clustering Temporale?
+
+**La risposta breve è: No, non misurano la vera "stabilità temporale".**
+
+La debolezza fatale delle metriche di "Paper.pdf" è che trasformano il grafo temporale in un **multigrafo pesato**, dove il peso di un arco è semplicemente la somma delle volte in cui è apparso nel tempo. L'algoritmo proposto nel paper (TSCAN) si sforza di trovare "stable cores" verificando che la struttura a stella appaia in almeno $\tau$ snapshot distinti. Tuttavia, quando vanno a _valutare_ i cluster generati, usano metriche (AS, AD, AC, ACC) che **non premiano questo sforzo**. Le loro metriche darebbero punteggi altissimi anche a cluster "esplosivi" (bursty), nati e morti in un singolo snapshot con un volume enorme di contatti, fallendo nell'obiettivo di misurare la _stabilità_.
+
+## 3. Spunti per la Tesi Magistrale: Sviluppare un Nuovo Algoritmo
+
+Per presentarti al professore con una marcia in più, puoi usare questa critica per proporre una nuova direzione di ricerca. Ecco tre pilastri su cui basare un nuovo algoritmo e relative metriche di valutazione:
+
+1. **Dalla "Somma" alla "Varianza Temporale" (Temporal Consistency)** Invece di aggregare gli archi temporali, una buona metrica per le reti temporali dovrebbe misurare la _varianza_ della struttura nel tempo. Un cluster è veramente stabile se la sua Densità Strutturale (quella compresa tra 0 e 1 definita in "Metrics.pdf") calcolata nei singoli snapshot $t_1, t_2, ..., t_n$ ha una varianza molto bassa.
+    
+    - _Idea per algoritmo:_ Sviluppare un approccio che non cerchi solo "cores" frequenti, ma che penalizzi i cluster le cui metriche strutturali subiscono crolli o interruzioni prolungate nel tempo.
+        
+2. **Superare la Density fuorviante: Temporal Graph Density reale** L'AD di "Paper.pdf" è un grado medio. Dovresti proporre una "True Temporal Density" che valuti la frazione tra i _tempi attivi_ degli archi esistenti e i _tempi attivi_ teoricamente possibili, oppure una densità calcolata come media delle densità statiche dei singoli snapshot in cui il cluster è in vita.
+    
+3. **Continuità del Taglio (Temporal Cohesiveness)**
+    
+    La coesione non dovrebbe essere valutata su un grafo collassato. Potresti proporre un concetto in cui un cluster è "Temporalmente Coeso" solo se non esiste alcun snapshot (o sequenza di snapshot) in cui la conduttanza interna crolla rovinosamente. Un cluster è forte quanto il suo momento di massima frammentazione nel tempo.
+    
+In teoria dei grafi, per comprendere a fondo la **conduttanza massima del taglio interno** (maximum internal cut conductance), è necessario scomporre il concetto in tre parti: cos'è un taglio, cos'è la conduttanza e cosa significa applicare questi concetti all'interno di una singola comunità.
+
+**1. Il concetto di "Taglio" e "Conduttanza" in Teoria dei Grafi**
+
+- **Taglio (Cut):** Dato un grafo, un taglio è una partizione dei suoi nodi in due sottoinsiemi disgiunti. La "dimensione" del taglio equivale al numero di archi che collegano i nodi di un sottoinsieme a quelli dell'altro.
+    
+- **Conduttanza ($\phi$):** È una misura che valuta quanto un sottoinsieme di nodi sia "isolato" rispetto al resto della rete. Matematicamente, è il rapporto tra il numero di archi del taglio (quelli che escono dal sottoinsieme) e il "volume" del sottoinsieme (la somma dei gradi dei suoi nodi). Una conduttanza _bassa_ indica un'ottima comunità, perché significa che ci sono pochissimi archi che escono verso l'esterno rispetto alla densità interna.
+    
+
+**2. Il "Taglio Interno" (Internal Cut)**
+
+Quando parliamo di taglio interno, smettiamo di guardare l'intera rete e isoliamo _soltanto_ i nodi che compongono una specifica comunità. Un taglio interno consiste nel dividere questa singola comunità in due ulteriori sotto-comunità.
+
+La conduttanza calcolata su questo taglio interno ci dice quanto sia "fragile" la comunità: se esiste un taglio interno con pochissimi archi, significa che la comunità è in realtà formata da due blocchi quasi disconnessi, tenuti insieme da un "ponte" debole.
+
+**3. Il legame con la Cohesiveness (Coesione)** Nel documento originale sulle reti statiche, la **Cohesiveness** formalizza l'intuizione che una "buona" comunità debba essere connessa al suo interno in modo forte e uniforme.
+
+- Una comunità coesa dovrebbe essere relativamente difficile da dividere in due sotto-comunità.
+    
+- Per misurare questa difficoltà, la metrica $g(S)$ calcola il valore massimo della conduttanza tra tutti i possibili sottoinsiemi interni: $g(S) = \max_{S' \subset S} \phi(S')$.
+    
+- Il calcolo di $\phi(S')$ viene effettuato sul sottografo indotto dai nodi della comunità.
+    
+- L'intuizione alla base è che una buona comunità richiede l'eliminazione di molti archi prima di potersi frammentare internamente in componenti disconnesse, manifestando quindi un'alta conduttanza interna.
+    
+
+**4. Il legame con la Average Cohesiveness (AC)**
+
+Nel secondo documento dedicato alle reti temporali, questa formula viene ereditata per valutare non la singola comunità, ma l'intero risultato dell'algoritmo di clustering (ovvero l'insieme di tutte le comunità trovate).
+
+- La **Average Cohesiveness (AC)** è definita come la somma (o media) della massima conduttanza interna calcolata per ciascuna comunità temporale $C_i$: $\sum_{C_i \in \mathcal{C}} \max_{S \subseteq C_i} \phi(S)$.
+    
+- Lo scopo di questa metrica è quantificare il numero massimo di archi che permetterebbero di spezzare la comunità $C_i$.
+    
+- Proprio come nel caso statico, il calcolo della conduttanza $\phi(S)$ viene effettuato valutando le interazioni misurate nel sottografo temporale indotto.
+
+---
+# Analisi dei costi di Similarità
+
+![500|center](CalcoloSimilaritàPaper.png)
+
+Questa è proprio la procedura che si trova nel codice di TSCAN per calcolare la similarità stabile `$S_\epsilon(u, v)$` descritta in "Paper.pdf". Analizzando questo pseudo-codice riga per riga, possiamo capire matematicamente perché il limite superiore della complessità per valutare una singola coppia di nodi è `$O(m)$`.
+
+Ecco lo smontaggio della complessità basato sull'immagine fornita:
+
+### 1. I cicli annidati e l'uso dell'HashSet
+
+L'algoritmo non fa un prodotto cartesiano tra tutti i nodi, ma usa un approccio molto intelligente basato sugli insiemi per calcolare l'intersezione (i vicini in comune).
+
+- **Ciclo esterno:** Il ciclo `for i <- 1 : T` itera attraverso tutti i timestamp disponibili.
+    
+- **Ciclo interno:** Il ciclo `for node w in {N_i(u) U N_i(v)}` scorre l'unione dei vicini del nodo $u$ e del nodo $v$ nello specifico timestamp $i$.
+    
+- **Operazione $O(1)$:** All'interno del ciclo, l'operazione `HashSet.has(w)` richiede tempo costante, ovvero `$O(1)$`. Se il nodo $w$ viene visto due volte (una volta come vicino di $u$ e una volta come vicino di $v$), il contatore sale. Alla fine, contando i nodi con contatore maggiore di zero, si ottiene l'intersezione esatta in tempo lineare rispetto al numero dei vicini.
+    
+
+### 2. La dimostrazione del costo $O(m)$
+
+Il costo computazionale di questa singola funzione dipende da quante volte viene eseguito il ciclo interno in totale (sommando tutti i timestamp).
+
+- Il numero di iterazioni al timestamp $i$ è pari a $\vert{}N_i(u)\vert{} + \vert{}N_i(v)\vert{}$ (il numero di vicini di $u$ al tempo $i$ più il numero di vicini di $v$ al tempo $i$).
+    
+- Se sommiamo questo valore per tutti i $\mathcal{T}$ timestamp, otteniamo la formula:
+    
+    $$\sum_{i=1}^{\mathcal{T}} (\vert{}N_i(u)\vert{} + \vert{}N_i(v)\vert{})$$
+    
+- Questa somma rappresenta esattamente il **grado temporale totale** del nodo $u$ sommato al grado temporale totale del nodo $v$ lungo l'intera storia della rete.
+    
+- Nel caso pessimo assoluto (ad esempio, se $u$ e $v$ sono "super-hub" connessi a tutti gli altri nodi in ogni singolo istante di tempo), la somma dei loro gradi temporali non supererà mai il numero totale di archi temporali dell'intero grafo, che in "Paper.pdf" è definito come $m$.
+    
+
+Ecco perché una singola chiamata alla funzione `Compute S_e(u, v)` costa al massimo `$O(m)$`.
+
+### 3. Dal costo singolo al costo globale $O(m'm)$
+
+Ora che abbiamo stabilito che calcolare `$S_\epsilon(u, v)$` costa `$O(m)$`, il passaggio finale è capire quante volte viene chiamata questa funzione.
+
+- L'algoritmo non valuta tutte le coppie di nodi possibili (che sarebbero $n^2$), ma **solo i nodi che condividono almeno un arco temporale**.
+    
+- Il numero di coppie uniche che hanno interagito almeno una volta è pari al numero di archi $m'$ nel grafo statico de-temporalizzato.
+    
+- Poiché la procedura viene memorizzata (caching) e chiamata **esattamente una volta** per ogni arco statico, il costo totale è $m'$ chiamate moltiplicate per il costo pessimo `$O(m)$` di ciascuna, risultando in `$O(m'm)$`.
+
+Il motivo per cui tutta la complessità dell'algoritmo (escludendo la parte di frequent pattern mining) si riduce a $O(m'm)$ deriva dal modo in cui TSCAN gestisce e memorizza i calcoli per evitare ridondanze.
+
+Ecco la spiegazione dettagliata, passo dopo passo:
+
+### 1. Definizione delle variabili in gioco
+
+Per capire la formula, dobbiamo prima avere chiari i due parametri che descrivono la dimensione della rete:
+
+- $m$: è il numero totale di _archi temporali_ presenti nel dataset. Ogni interazione registrata a un tempo $t$ conta come un arco.
+    
+- $m'$: è il numero di archi nel grafo _de-temporalizzato_ (statico) $G$, dove $m' \le m$. In pratica, se due nodi interagiscono 100 volte nel tempo, nel grafo de-temporalizzato questo corrisponde a $1$ solo arco, e quindi contribuisce con $1$ al conteggio di $m'$ ma con $100$ al conteggio di $m$.
+    
+
+### 2. Il costo del calcolo di una singola similarità
+
+Il cuore dell'Algoritmo 1 è il calcolo della similarità stabile $S_\epsilon(u,v)$ tra due nodi collegati. Per calcolarla, l'algoritmo utilizza una procedura incrementale che sfrutta un HashSet per contare i vicini in comune. Nel caso peggiore in assoluto (che si verifica quando due nodi sono connessi a quasi tutti gli altri nodi in quasi tutti i timestamp), iterare sui vicini per calcolare questa similarità richiede un tempo proporzionale al numero totale di interazioni nella rete. Pertanto, il costo per valutare una singola coppia $(u, v)$ è limitato superiormente da $O(m)$.
+
+### 3. Evitare calcoli ridondanti
+
+Il vero trucco che tiene bassa la complessità è la memorizzazione (caching). Il testo specifica che l'algoritmo TSCAN calcola $S_\epsilon(u,v)$ una sola volta per ogni coppia. Quante sono le coppie da valutare? L'algoritmo valuta solo i nodi che hanno un arco nel grafo statico, i quali sono esattamente $m'$. Quindi, se hai $m'$ calcoli da fare e ognuno di essi costa al massimo $O(m)$, il costo totale di questa fase di elaborazione delle similarità è il prodotto dei due: $O(m'm)$.
+
+### 4. Il costo degli Algoritmi 3 e 5
+
+Il paper giustifica il resto del costo analizzando le altre fasi:
+
+- **Algoritmo 3 (Strong Core):** La ricerca dei "strong core" si basa anch'essa sull'iterazione dei vicini e sul calcolo o recupero delle similarità strutturali $\sigma_i(u,v)$. Utilizzando la stessa logica di memorizzazione e limitazione superiore (upper bounding), il paper afferma che anche il limite di complessità di questa funzione è $O(m'm)$ nel caso peggiore.
+    
+- **Algoritmo 5 (Clustering):** Una volta trovati i core, l'algoritmo deve unire i nodi nei rispettivi cluster trovando le componenti connesse. Questa operazione di attraversamento del grafo finale richiede un tempo lineare proporzionale al numero di archi totali, che è limitato da $O(m)$.
+    
+
+### Conclusione: Il termine dominante
+
+Se sommiamo le complessità di queste fasi (escludendo il data mining pesante con Apriori, che nel caso peggiore costa $O(\vert{}s\vert{}C_T^\tau \vert{}s\vert{}^\tau)$), otteniamo:
+
+$$Costo Totale = O(m'm) + O(m'm) + O(m)$$
